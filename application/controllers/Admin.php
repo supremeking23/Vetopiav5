@@ -24,6 +24,8 @@ class Admin extends CI_Controller {
 
         $this->load->model('inventory_management');
 
+        $this->load->model('article_model');
+
         $this->load->model('settings_model');
         //$this->load->model('user_logs_model');
 
@@ -41,6 +43,7 @@ class Admin extends CI_Controller {
 		 		 $profile = $f_admin->profile;
 		 	 	$complete_name = $f_admin->firstname .' '. $f_admin->middlename .' '. $f_admin->lastname;
 		 }
+
 
 
     }
@@ -86,8 +89,15 @@ class Admin extends CI_Controller {
 
     
 
-	public function dashboard()
-	{
+
+   /** public function notifications(){
+    	//echo "ivans";
+    	$data['count_appointment_pending'] = $this->appointment_management->count_appointment_pending();
+
+    	//return $data['count_appointment_pending'];
+    }*/
+
+	public function dashboard(){
 		$settings_id = 1;
 		$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
 
@@ -95,9 +105,17 @@ class Admin extends CI_Controller {
 
 		$data['title'] = "Vetopia";
 
+		$data['count_admins'] = $this->admin_management->count_all_admins();
 
+
+		$data['count_vets'] = $this->veterinarian_management->count_all_veterinarians();
+
+		$data['count_staffs'] = $this->staff_management->count_all_staffs();
+		
 
 		$data['count_customers'] = $this->customer_management->count_all_customers();
+
+
 
 		$data['count_pets'] = $this->pet_management_model->count_all_pets();
 
@@ -129,6 +147,12 @@ class Admin extends CI_Controller {
 
 
 		
+		//notifications
+		//$this->notifications(); 
+		$data['count_appointment_pending'] = $this->appointment_management->count_appointment_pending();
+		
+
+
 		$this->load->view('admin/dashboard',$data);
 		//echo "admin/index";
 	}
@@ -165,6 +189,9 @@ class Admin extends CI_Controller {
 
 
 		$this->admin_management->insert_new_log($data2);
+
+
+
 
 		$today_now = date('Y-m-d');
 		$data['all_customers'] = $this->customer_management->get_all_customer();
@@ -1060,7 +1087,7 @@ class Admin extends CI_Controller {
 			"log_date" => $now,
 		);
 
-
+		
 
 		$this->admin_management->insert_new_log($data2);
 
@@ -1195,7 +1222,80 @@ class Admin extends CI_Controller {
 
 
 
+	public function pet_health_care_library(){
 
+		$settings_id = 1;
+		$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
+		$data['title'] = "Vetopia";
+
+
+		$name = $this->session->userdata('complete_name');
+		$log_usertype =  $this->session->userdata('account_type');
+		$log_userID = $this->session->userdata("user_id");
+		$log_action = "View Pet Health Care Library";
+		
+
+
+		$now = date('Y-m-d H:i:s');
+		$data2 = array(
+			"log_user" => $name,
+			"log_usertype" => $log_usertype,
+			"log_userID" => $log_userID,
+			"log_action" => $log_action,
+			"log_date" => $now,
+		);
+
+
+
+
+		$this->admin_management->insert_new_log($data2);
+
+
+		$data['articles'] = $this->article_model->get_all_articles();
+
+		$this->load->view('admin/pet_health_care_library',$data);
+
+
+	}
+
+
+
+
+	public function library_article_detail(){
+		$settings_id = 1;
+		$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
+		$data['title'] = "Vetopia";
+
+
+		 $id = $this->uri->segment(3);
+
+		 $data['find_library_article'] = $this->article_model->find_article_from_library_by_library_id($id);
+		 $data['find_article_contents'] = $this->article_model->find_article_content_by_library_id($id);
+		 $data['find_article_links'] =$this->article_model->find_library_link_by_librarru_id($id);
+
+
+		$name = $this->session->userdata('complete_name');
+		$log_usertype =  $this->session->userdata('account_type');
+		$log_userID = $this->session->userdata("user_id");
+		$log_action = "View Inventory";
+		
+
+
+		$now = date('Y-m-d H:i:s');
+		$data2 = array(
+			"log_user" => $name,
+			"log_usertype" => $log_usertype,
+			"log_userID" => $log_userID,
+			"log_action" => $log_action,
+			"log_date" => $now,
+		);
+
+
+
+		$this->admin_management->insert_new_log($data2);
+		$this->load->view('admin/library_article_detail',$data);
+
+	}
 
 	public function settings(){
 
@@ -1227,6 +1327,11 @@ class Admin extends CI_Controller {
 
 
 		$this->admin_management->insert_new_log($data2);
+
+
+
+		//get banners
+		$data['banners'] = $this->settings_model->load_banners();
 
 		$this->load->view('admin/setting',$data);
 		//echo  "settings";

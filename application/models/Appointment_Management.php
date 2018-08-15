@@ -112,7 +112,7 @@ class Appointment_Management extends CI_Model
 
 
 
-      public function get_all_appointment_by_pet_id($pet_id){
+    public function get_all_appointment_by_pet_id($pet_id){
         $this->db->select('*');
         $this->db->from('tbl_appointments');
         $this->db->order_by('appointment_table_id',"desc");
@@ -126,6 +126,13 @@ class Appointment_Management extends CI_Model
 
 
 
+
+
+   //status base
+   public function count_appointment_pending(){
+        $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_appointments  WHERE appointment_status ="Pending" ');
+        return $result_set->result();
+   }
 
 
 

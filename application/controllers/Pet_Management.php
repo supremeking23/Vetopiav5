@@ -128,6 +128,8 @@ class Pet_Management extends CI_Controller {
 
 
 
+
+    //we will set breed to inactive
     function delete_breed(){ 
         $data = array(
             'breed_id' => $this->input->post('breed_id'), 

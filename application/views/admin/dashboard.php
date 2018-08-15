@@ -1,9 +1,24 @@
 <?php foreach($theme_color as $t_color){
 
-  $skin_color = $t_color->theme_color;
-  $settings_id =$t_color->settings_id;
+    $skin_color = $t_color->theme_color;
+    $settings_id =$t_color->settings_id;
 
-}?>
+    $box_color = "";
+
+    if($skin_color == "skin-green"){
+      $box_color = "box-success";
+    }else if($skin_color == "skin-blue"){
+      $box_color = "box-primary";
+    }else if($skin_color == "skin-red"){
+      $box_color = "box-danger";
+    }else if($skin_color == "skin-yellow"){
+      $box_color = "box-warning";
+    }
+
+
+  }
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -15,6 +30,12 @@
 
 
   <?php $this->load->view('include_pages_admin/document_header');?>
+
+  <style type="text/css">
+    .common-task{
+      margin-bottom: 7px
+    }
+  </style>
  
   <?php $this->load->view('include_pages_admin/sidebar');?>
   <!-- Content Wrapper. Contains page content -->
@@ -32,65 +53,207 @@
     <section class="content">
 
       <div class="row">
-        <div class="col-lg-4 col-xs-12">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <?php foreach($count_customers as $customer_count):?>
-              <h3><?php echo $customer_count->count_all;?></h3>
+
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-blue"><i class="fa fa-user-secret"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Total number of admins</span>
+               <?php foreach($count_admins as $admin_count):?>
+              <span class="info-box-number"><?php echo $admin_count->count_all;?></span>
               <?php endforeach;?>
-              <p>Customers</p>
             </div>
-            <div class="icon">
-              <i class="ion ion-person"></i>
-            </div>
-            
+            <!-- /.info-box-content -->
           </div>
+          <!-- /.info-box -->
         </div>
-        <!-- ./col -->
-        <div class="col-lg-4 col-xs-12">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
+        <!-- /.col -->
 
-              <?php foreach($count_pets as $pet_count):?>
-              <h3><?php echo $pet_count->count_all;?></h3>
-            <?php endforeach;?>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="fa fa-users"></i></span>
 
-              <p>Pets</p>
+            <div class="info-box-content">
+              <span class="info-box-text">Total number of veterinarians</span>
+               <?php foreach($count_vets as $vet_count):?>
+              <span class="info-box-number"><?php echo $vet_count->count_all;?></span>
+              <?php endforeach;?>
             </div>
-            <div class="icon">
-              <i class="fa fa-paw"></i>
-            </div>
-            
+            <!-- /.info-box-content -->
           </div>
+          <!-- /.info-box -->
         </div>
-        <!-- ./col -->
-        <div class="col-lg-4 col-xs-12">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <?php foreach($count_products as $product_count):?>
-              <h3><?php echo $product_count->count_all?></h3>
-            <?php endforeach;?>
-              <p>Product</p>
+        <!-- /.col -->
+
+
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="fa fa-users"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Total number of staff</span>
+               <?php foreach($count_staffs as $staff_count):?>
+              <span class="info-box-number"><?php echo $staff_count->count_all;?></span>
+              <?php endforeach;?>
             </div>
-            <div class="icon">
-              <i class="ion ion-archive"></i>
-            </div>
-           
+            <!-- /.info-box-content -->
           </div>
+          <!-- /.info-box -->
         </div>
-        <!-- ./col -->
-      
+        <!-- /.col -->
+
+
       </div>
+
+      <div class="row">
+
+
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="fa fa-users"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Total number of customer</span>
+               <?php foreach($count_customers as $customer_count):?>
+              <span class="info-box-number"><?php echo $customer_count->count_all;?></span>
+              <?php endforeach;?>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        
+      
+        <div class="col-md-4  col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-orange"><i class="fa fa-paw"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Total number of pets</span>
+               <?php foreach($count_pets as $pet_count):?>
+              <span class="info-box-number"><?php echo $pet_count->count_all;?></span>
+              <?php endforeach;?>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+
+        <div class="col-md-4  col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="fa fa-archive"></i></span>
+
+            <div class="info-box-content" >
+              <span class="info-box-text">Total number of Products</span>
+               <?php foreach($count_products as $product_count):?>
+              <span class="info-box-number"><?php echo $product_count->count_all?></span>
+              <?php endforeach;?>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+      </div>
+
+
+      <div class="row">
+       
+          <div class="col-md-12">
+             <div class="callout callout-default">
+                <h4 class="text-center">Welcome to Vetopia, Please choose a common task below to get started!</h4>
+              </div>
+
+              <div class="row">
+                  <div class="col-md-12">
+                    
+
+                    <div class="row">
+                        <div class=" col-md-6 col-xs-12">
+                          <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>admin/appointments">
+                            <i class="fa fa-calendar"></i> View appointment records
+
+                            <?php foreach($count_appointment_pending as $cap):?>
+                            <?php if($cap->count_all == 0){
+                            }else{ ?>
+
+                              <span class="badge label-danger" data-tooltip="tooltip" title="You have <?php echo $cap->count_all; ?> new appointment request" >
+                              <?php  echo $cap->count_all; ?>
+                              </span>
+                           <?php  }?>
+                          <?php endforeach;?>
+                          </a>
+                        </div>
+                        <div class=" col-md-6  col-xs-12">
+                          <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>admin/pos">
+                            <i class="fa fa-shopping-cart"></i> Start a new sale
+                          </a>
+                        </div>
+
+                       
+                    </div>
+
+                    <div class="row">
+
+                           <div class="col-md-6  col-xs-12">
+                              <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>admin/inventory">
+                                <i class="fa fa-sticky-note"></i> View Inventory Report
+                              </a>
+                          </div>
+
+
+                          <div class="col-md-6  col-xs-12">
+                              <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>admin/sales">
+                                <i class="fa fa-cart-arrow-down"></i> View Sales Report
+                              </a>
+                            </div>
+
+                    </div>  
+
+
+                    <div class="row">
+
+                           <div class="col-md-6  col-xs-12">
+                              <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>admin/logs">
+                                <i class="fa fa-sticky-note-o"></i> View Log Report
+                              </a>
+                          </div>
+
+
+                          <div class="col-md-6  col-xs-12">
+                              <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>admin/settings">
+                                <i class="fa fa-gear"></i> View Store Setting
+                              </a>
+                            </div>
+
+                    </div>
+
+
+                    
+
+                   
+
+                  </div>
+              </div>
+          </div>
+
+      </div>
+
+      <br />
      
       <div class="row">
         <div class="col-md-12">
-          <div class="box box-info">
+          <div class="box box-solid <?php echo $box_color;?>">
             <div class="box-header with-border">
               <h3 class="box-title">Product Count Report</h3>
-
+              <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="">
+                    <i class="fa fa-minus"></i></button>
+                  
+                </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive">
@@ -174,7 +337,7 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Beta Version</b> 
+      
     </div>
     <strong>Copyright &copy; <?php echo date('Y');?>  All rights
     reserved.

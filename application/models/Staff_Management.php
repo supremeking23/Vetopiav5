@@ -53,6 +53,12 @@ class Staff_Management extends CI_Model {
     }
 
 
+    public function count_all_staffs(){
+        $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_staffs');
+        return $result_set->result();
+    }
+
+
 
     public function login_staff($username,$password){
         $active = "Active";

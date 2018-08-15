@@ -81,10 +81,16 @@
                           <li class="list-group-item">
                            <b> Supply Count</b> <a class="pull-right"><?php echo $f_detail->productInStore?>
                            
-                           <?php if($f_detail->productInStore <20):?>  
+                           <?php if($f_detail->productInStore < 100):?>   
                             <span class="fa fa-exclamation-circle text-danger" data-tooltip="tooltip" data-title="product count is critical"></span>
                            <?php endif?>
 
+                           </a>
+                        </li>
+
+                        <li class="list-group-item">
+                           <b> Store Price</b> <a class="pull-right">
+                            ₱
                            </a>
                         </li>
                              

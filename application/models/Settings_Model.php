@@ -32,7 +32,24 @@ class Settings_Model extends CI_Model {
 
 
 
-   
+   public function add_banner($data){
+    $this->db->insert('tbl_bannerimages',$data);
+   }
+
+
+
+   public function load_banners(){
+        $this->db->select('*');
+        $this->db->from('tbl_bannerimages');
+        
+        //$this->db->where('settings_id',$settings_id);
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+   }
   
 }
 ?>

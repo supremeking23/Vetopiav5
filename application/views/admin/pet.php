@@ -2,6 +2,19 @@
 
   $skin_color = $t_color->theme_color;
   $settings_id =$t_color->settings_id;
+  
+   $box_color = "";
+
+    if($skin_color == "skin-green"){
+      $box_color = "box-success";
+    }else if($skin_color == "skin-blue"){
+      $box_color = "box-primary";
+    }else if($skin_color == "skin-red"){
+      $box_color = "box-danger";
+    }else if($skin_color == "skin-yellow"){
+      $box_color = "box-warning";
+    }
+
 
 }?>
 <!DOCTYPE html>
@@ -96,7 +109,7 @@
      
       <div class="row">
         <div class="col-md-12">
-          <div class="box box-info">
+          <div class="box box-solid <?php echo $box_color;?>">
             <div class="box-header with-border">
               <h3 class="box-title">Pet List</h3>
 
@@ -134,7 +147,7 @@
                         <td> <?php echo $pets->firstname .' '. $pets->middlename .' '. $pets->lastname;?></td>
                        
                         <td>
-                        <a href="<?php echo site_url()?>admin/pet_details/<?php echo $pets->pet_table_id;?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-warning"><span class="fa fa-paw"></span></a>
+                        <a href="<?php echo site_url()?>admin/pet_details/<?php echo $pets->pet_table_id;?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info">View Full Detail</a>
                           
                         </td>
                      </tr>

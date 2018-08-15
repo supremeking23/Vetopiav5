@@ -37,7 +37,7 @@
 
      $("#item a:contains('Items')").parent().addClass('active');
      $("#food a:contains('Foods')").parent().addClass('active');
-     $("#medicine a:contains('Medicine')").parent().addClass('active');
+     $("#medicine a:contains('Medicines')").parent().addClass('active');
 
 
      //reports
@@ -79,6 +79,9 @@
     $("#appointment a:contains('Appointment)").parent().addClass('active');
     $("#pets a:contains('Pet')").parent().addClass('active');
     $("#medicine a:contains('Medicine')").parent().addClass('active');
+
+
+    $("#library a:contains('Health Care Library')").parent().addClass('active');
      
 
     //for tables
@@ -92,6 +95,53 @@
       'info'        : true,
       //'autoWidth'   : false,      
     });
+
+
+    $('.datatableexta').DataTable( {
+        'ordering'    : false,
+        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        'paging'      : true,
+        'info'        : true,
+        dom: 'Bfrtip',
+        /*buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],*/
+
+        buttons: [
+            {
+              extend: 'pdfHtml5',
+              title: 'Inventory Report',
+              customize: function(doc) {
+                //setHeader2();
+                doc.styles.title = {
+                  color: '',
+                  fontSize: '40',
+                  background: '',
+                  alignment: 'center'
+                }   
+              }  
+            },
+
+             {
+               extend: 'excelHtml5',
+               title: 'Log Report',
+  
+            },
+
+            {
+               extend: 'csvHtml5',
+               title: 'Log Report',
+               
+            },
+
+                ]
+    } );
+
+
+
+    
+
+
 
 
 

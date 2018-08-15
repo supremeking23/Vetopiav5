@@ -199,11 +199,11 @@ class Customer extends CI_Controller {
 		}else if($id == 30){
 			$this->load->view('customer/health_library_assets/health_detail_blastomycosis',$data);
 		}else if($id == 31){
-			$this->load->view('customer/health_library_assets/health_detail_chemical_injury',$data);
+			$this->load->view('customer/health_library_assets/health_detail_diarrhea_and_vomiting',$data);
 		}else if($id == 32){
-			$this->load->view('customer/health_library_assets/health_detail_alcohol_ethanol_poisoning',$data);
+			$this->load->view('customer/health_library_assets/health_detail_dehydration',$data);
 		}else if($id == 33){
-			$this->load->view('customer/health_library_assets/health_detail_epistaxis',$data);
+			$this->load->view('customer/health_library_assets/health_detail_grapiprant',$data);
 		}else if($id == 34){
 			$this->load->view('customer/health_library_assets/health_detail_azulfidine',$data);
 		}else if($id == 35){

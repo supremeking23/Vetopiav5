@@ -56,7 +56,7 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="price" class="col-sm-2 control-label">Price</label>
+                        <label for="price" class="col-sm-2 control-label">Product base price</label>
 
                         <div class="col-sm-10">
                           <input type="text" class="form-control" value="<?php echo $f_details->price;?>" name="price" placeholder="Price">
@@ -97,12 +97,12 @@
 
                          
 
-                              <table  class="datatables table table-bordered table-striped">
+                              <table  class="datatableexta table table-bordered table-striped">
                                 <thead>
                                 <tr>
                                   <th>Date</th>
                                   <th>User </th>
-                                  <th>Detail</th>
+                                  <th>Action</th>
                                   <th>Quantity</th>
                                  
                                 </tr>

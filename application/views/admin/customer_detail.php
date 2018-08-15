@@ -99,6 +99,13 @@
                          <li class="list-group-item">
                           <b>Status</b> <a class="pull-right"><?php echo $c_details->is_active;?></a>
                         </li>
+
+                        <li class="list-group-item">
+                          <b>Member Since</b> <a class="pull-right"><?php  
+
+                              $date =date_create($c_details->dateAdded);
+                             echo  $log_date_format= date_format($date,"F d, Y ");?></a>
+                        </li>
                       </ul>
 
                      

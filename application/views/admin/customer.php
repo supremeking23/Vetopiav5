@@ -3,6 +3,19 @@
   $skin_color = $t_color->theme_color;
   $settings_id =$t_color->settings_id;
 
+ $box_color = "";
+
+  if($skin_color == "skin-green"){
+    $box_color = "box-success";
+  }else if($skin_color == "skin-blue"){
+    $box_color = "box-primary";
+  }else if($skin_color == "skin-red"){
+    $box_color = "box-danger";
+  }else if($skin_color == "skin-yellow"){
+    $box_color = "box-warning";
+  }
+
+
 }?>
 <!DOCTYPE html>
 <html>
@@ -76,7 +89,7 @@
 
      <div class="row">
         <div class="col-md-12">
-          <div class="box box-info">
+          <div class="box <?php echo $box_color;?> box-solid">
             <div class="box-header with-border">
               <h3 class="box-title">Customers</h3>
 
@@ -108,12 +121,14 @@
                       <?php if($customers->is_active == "Active"){
 
                             $btn_status = "btn-primary";
+                            $tooltip = "Current Status is Active. Click here to change to Not Active";
                       }else{
 
                           $btn_status = "btn-danger";
+                          $tooltip = "Current Status is Not Active. Click here to change to  Active";
                       }?>
                        
-                       <input type="submit" name="current_state" value="<?php echo $customers->is_active?>" class="btn btn-flat <?php echo $btn_status;?> btn-sm">
+                       <input type="submit" name="current_state" value="<?php echo $customers->is_active?>" data-placement="right" data-tooltip="tooltip" data-title="<?php echo $tooltip;?>" class="btn btn-flat <?php echo $btn_status;?> btn-sm">
 
                        <input type="hidden" name="change_state_user" value="<?php echo $customers->customer_table_id;?>">
 
@@ -127,7 +142,7 @@
                     <td><?php echo $customers->contact;?></td>
                    
                     <td>
-                    <a href="<?php echo site_url()?>admin/customer_details/<?php echo $customers->customer_table_id;?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-warning"><span class="fa fa-user"></span></a>
+                    <a href="<?php echo site_url()?>admin/customer_details/<?php echo $customers->customer_table_id;?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info">View Full Detail</a>
                       
                     </td>
                </tr>

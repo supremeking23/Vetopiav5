@@ -38,7 +38,7 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="price" class="col-sm-2 control-label">Price</label>
+                        <label for="price" class="col-sm-2 control-label">Product base price</label>
 
                         <div class="col-sm-10">
                           <input type="text" class="form-control" value="<?php echo $i_details->price;?>" name="price" placeholder="Price">
@@ -78,7 +78,7 @@
                   <!-- /.tab-pane -->
                    <div class=" tab-pane" id="inventoryDetail">
                   
-                              <table  class="datatables table table-bordered table-striped">
+                              <table  class="datatableexta table table-bordered table-striped">
                                 <thead>
                                 <tr>
                                   <th>Date</th>
@@ -91,7 +91,10 @@
                                 
                                 <?php foreach($item_inventory_detail as $item_inventory):?>
                                   <tr>
-                                    <td><?php echo $item_inventory->inventory_date;?></td>
+                                    <td><?php //echo $med_inventory->inventory_date;
+                                        $date =date_create($item_inventory->inventory_date);
+                                        echo  $inventory_date= date_format($date,"F d, Y h:i:sa");
+                                    ?></td>
                                     <td><?php echo $item_inventory->user_name ?> (<?php echo $item_inventory->user_type ?>)</td>
 
                                      <td><?php echo $item_inventory->action;?></td>
@@ -115,6 +118,15 @@
 
 
   <script>
+
+
+
+  $(document).ready(function() {
+
+
+    //setHeader()
+     
+  } );
 
 
     /*

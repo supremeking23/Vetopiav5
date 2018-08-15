@@ -97,25 +97,43 @@
 
                          
 
-                              <table  class="datatables table table-bordered table-striped">
+                              <table  class="datatableexta table table-bordered table-striped">
                                 <thead>
                                 <tr>
                                   <th>Date</th>
                                   <th>User </th>
                                   <th>Action</th>
                                   <th>Quantity</th>
-                                  <th>Expiration Date</th>
+                                  
                                 </tr>
                                 </thead>
                                 <tbody>
                                 
                                 <?php foreach($med_inventory_detail as $med_inventory):?>
                                   <tr>
-                                    <td><?php echo $med_inventory->inventory_date;?></td>
+                                    <td><?php //echo $med_inventory->inventory_date;
+                                        $date =date_create($med_inventory->inventory_date);
+                                        echo  $inventory_date= date_format($date,"F d, Y h:i:sa");
+                                    ?>
+
+                                    </td>
                                     <td><?php echo $med_inventory->user_name;?> (<?php echo $med_inventory->user_type;?>)</td>
-                                    <td><?php echo $med_inventory->action;?> </td>
+                                    <td><?php echo $med_inventory->action;?> 
+                                    <br />
+                                      <?php if($med_inventory->product_exp_date == "0000-00-00"){
+
+                                      }else{ ?>
+                                        <b>Expiration Date:</b> <?php // echo $food_inventory->product_exp_date;
+                                       
+
+
+                                        $date =date_create($med_inventory->product_exp_date);
+                                       echo  $exp_date= date_format($date,"F d, Y ");
+                                        ?>
+                                     <?php }?>
+                                  </td>
                                     <td><?php echo $med_inventory->quantity;?> </td>
-                                    <td><?php echo $med_inventory->product_exp_date;?> </td>
+                                  
                                   </tr>
                                  
                                 <?php endforeach;?>

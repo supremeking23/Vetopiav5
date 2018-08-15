@@ -2,6 +2,18 @@
 
   $skin_color = $t_color->theme_color;
   $settings_id =$t_color->settings_id;
+   $box_color = "";
+
+    if($skin_color == "skin-green"){
+      $box_color = "box-success";
+    }else if($skin_color == "skin-blue"){
+      $box_color = "box-primary";
+    }else if($skin_color == "skin-red"){
+      $box_color = "box-danger";
+    }else if($skin_color == "skin-yellow"){
+      $box_color = "box-warning";
+    }
+
 
 }?>
 
@@ -34,7 +46,7 @@
       <div class="row">
         <div class="col-md-12">
 
-            <div class="box box-info">
+            <div class="box box-solid <?php echo $box_color;?>">
               <div class="box-header with-border">
                 <h3 class="box-title">Logs</h3>        
               </div>
@@ -123,7 +135,7 @@
   $(document).ready(function() {
 
 
-    setHeader()
+     //setHeader()
      $('.datatablelogs').DataTable( {
         'ordering'    : false,
         "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
@@ -137,7 +149,7 @@
         buttons: [
             {
               extend: 'pdfHtml5',
-              title: 'Log Report',
+              title: 'Log Report  ',
               customize: function(doc) {
                 //setHeader2();
                 doc.styles.title = {

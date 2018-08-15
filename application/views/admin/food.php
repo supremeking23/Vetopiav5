@@ -3,6 +3,20 @@
   $skin_color = $t_color->theme_color;
   $settings_id =$t_color->settings_id;
 
+
+   $box_color = "";
+
+    if($skin_color == "skin-green"){
+      $box_color = "box-success";
+    }else if($skin_color == "skin-blue"){
+      $box_color = "box-primary";
+    }else if($skin_color == "skin-red"){
+      $box_color = "box-danger";
+    }else if($skin_color == "skin-yellow"){
+      $box_color = "box-warning";
+    }
+
+
 }?>
 
 <!DOCTYPE html>
@@ -94,7 +108,7 @@
 
      <div class="row">
         <div class="col-md-12">
-          <div class="box box-info">
+          <div class="box box-solid <?php echo $box_color;?>">
             <div class="box-header with-border">
               <h3 class="box-title">Foods</h3>
 
@@ -107,7 +121,7 @@
                 <thead>
                 <tr>
                   <th>Product Name</th>
-                  <th>Price</th>
+                  <th>Store Price</th>
                   <th>Number of Supply Left</th>
                   
                   <th>Action</th>
@@ -124,7 +138,12 @@
                     </td>
                     <td>₱<?php echo $foods->price;?></td>
                     <td>
-                    <?php echo $foods->productInStore;?>
+                    <?php echo $foods->productInStore;
+
+                     if($foods->productInStore < 100):
+                    ?>
+                      <span class="badge label-danger"><i class="fa fa-exclamation-circle"></i></span>
+                     <?php endif;?>
                     </td>
                     <td>
                     <a href="<?php echo site_url()?>admin/food_details/<?php echo $foods->food_table_id;?>"  class="btn btn-sm btn-fat btn-info"  data-tooltip="tooltip" data-title="View Detail"><span class="fa fa-file-o"></span></a>

@@ -79,10 +79,10 @@
                               <tr class="success">
                                 <th>Product</th>
                                 <th>Product Type</th>
-                                <th style="width: 15%;text-align:center;">Price</th>
-                                <th style="width: 15%;text-align:center;">Qty</th>
-                                <th style="width: 20%;text-align:center;">Subtotal</th>
-                                <th style="width: 20px;" class="satu"><i class="fa fa-trash-o"></i></th>
+                                <th style="width: 15%;text-align:;">Price</th>
+                                <th style="width: 15%;text-align:;">Qty</th>
+                                <th style="width: 20%;text-align:;">Subtotal</th>
+                                <th style="width: 20px;text-align: center;" class="satu"><i class="fa fa-trash-o"></i></th>
                               </tr>
                               </thead>
 

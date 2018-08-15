@@ -24,7 +24,11 @@ class Inventory extends CI_Controller {
         //for inventory
 
         $this->load->model('inventory_management');
-         $this->load->model('veterinarian_management');
+        $this->load->model('veterinarian_management');
+
+
+        //for tax na 12%
+        $this->load->model('settings_model');
 
     }
 
@@ -430,6 +434,9 @@ class Inventory extends CI_Controller {
 	        	exit;
 	        }
 
+
+	        //get tax
+
 		 	//add to productfood table
             $data = array(
             'food_id' => $this->input->post('food_id'),
@@ -443,7 +450,8 @@ class Inventory extends CI_Controller {
 
             'supplier' => $this->input->post('supplier'),
 
-            'exp_date' =>$this->input->post('exp_date')
+            'exp_date' =>$this->input->post('exp_date'),
+
             );
 
             $this->inventory_management->insert_new_food($data);

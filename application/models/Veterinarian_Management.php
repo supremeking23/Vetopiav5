@@ -53,6 +53,12 @@ class Veterinarian_Management extends CI_Model {
     }
 
 
+    public function count_all_veterinarians(){
+        $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_veterinarians');
+        return $result_set->result();
+    }
+
+
     public function login_vet($username,$password){
         $active = "Active";
         $this->db->select('*');

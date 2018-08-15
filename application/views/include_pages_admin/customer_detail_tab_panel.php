@@ -159,7 +159,7 @@
                   <div class="tab-pane" id="pets">
                     
                   
-                        <table  class="datatables table table-bordered table-striped">
+                        <table id="example" class="datatablecustomerpet table table-bordered table-striped">
                             <thead>
                             <tr>
                               
@@ -202,7 +202,7 @@
 
                     <div class=" tab-pane" id="logHistory">
                         
-                        <table  class="datatables table table-bordered table-striped">
+                        <table  class="datatablelogcustomer table table-bordered table-striped">
                           <thead>
                           <tr>
                             <th>Log Date</th>
@@ -239,6 +239,135 @@
 
   <script>
 
+      $(function(){
+
+        $('.datatablelogcustomer').DataTable( {
+          'ordering'    : false,
+          "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+          'paging'      : true,
+          'info'        : true,
+          dom: 'Bfrtip',
+          /*buttons: [
+              'copy', 'csv', 'excel', 'pdf', 'print'
+          ],*/
+
+          buttons: [
+              {
+                extend: 'pdfHtml5',
+                title: 'Log Report for Customer: <?php echo $logs->log_user;?>' ,
+                message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+                customize: function(doc) {
+                  //setHeader2();
+                  doc.styles.title = {
+                    color: '',
+                    fontSize: '40',
+                    background: '',
+                    alignment: 'center'
+                  }   
+                }  
+              },
+
+               {
+                 extend: 'excelHtml5',
+                 title: 'Log Report for Customer: <?php echo $logs->log_user;?>' ,
+                message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+    
+              },
+
+              {
+                 extend: 'csvHtml5',
+                 title: 'Log Report for Customer: <?php echo $logs->log_user;?>' ,
+                 message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+                 
+              },
+
+                  ]
+        } );
+
+
+
+
+
+
+         $('.datatablecustomerpet').DataTable( {
+          'ordering'    : false,
+          "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+          'paging'      : true,
+          'info'        : true,
+          dom: 'Bfrtip',
+          /*buttons: [
+              'copy', 'csv', 'excel', 'pdf', 'print'
+          ],*/
+
+          buttons: [
+              {
+                extend: 'pdfHtml5',
+                title: 'Pet List  for Customer: <?php echo $logs->log_user;?>' ,
+                message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+                customize: function(doc) {
+                  setHeader();
+                  doc.styles.title = {
+                    color: '',
+                    fontSize: '40',
+                    background: '',
+                    alignment: 'center'
+                  }   
+                }  
+              },
+
+               {
+                 extend: 'excelHtml5',
+                 title: 'Pet List for Customer: <?php echo $logs->log_user;?>' ,
+                message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+    
+              },
+
+              {
+                 extend: 'csvHtml5',
+                 title: 'Pet List for Customer: <?php echo $logs->log_user;?>' ,
+                 message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+                 
+              },
+
+                  ]
+        } );
+
+      });
+
+
+      function setHeader() {
+            $tr = $('<tr>');
+            $tr.append($('<th>').text("Pet ID"));
+            $tr.append($('<th>').text("Pet Name"));
+            $tr.append($('<th>').text("Pet Type"));
+            $tr.append($('<th>').text("Breed"));
+            $tr.append($('<th>').text(""));
+            $tr.appendTo('#example thead');
+        }
 
     /*
 

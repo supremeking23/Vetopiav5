@@ -146,7 +146,7 @@ class Appointment extends CI_Controller {
 					"log_user" => $name,
 					"log_usertype" => $user_type,
 					"log_userID" => $log_userID,
-					"log_action" => "User Login",
+					"log_action" => "Send Appointment Request",
 					"log_date" => $now,
 				);
 

@@ -76,17 +76,21 @@
 
                       <ul class="list-group list-group-unbordered">
                        
-                        <li class="list-group-item">
-                          <b> Product Type</b> <a class="pull-right"><?php echo $i_detail->productType ?></a>
-                        </li>
+                      
 
                           <li class="list-group-item">
                            <b> Supply Count</b> <a class="pull-right"><?php echo $i_detail->productInStore?>
                            
-                           <?php if($i_detail->productInStore <20):?>  
+                           <?php if($i_detail->productInStore <100):?>  
                             <span class="fa fa-exclamation-circle text-danger" data-tooltip="tooltip" data-title="product count is critical"></span>
                            <?php endif?>
 
+                           </a>
+                        </li>
+
+                        <li class="list-group-item">
+                           <b> Store Price</b> <a class="pull-right">
+                            ₱
                            </a>
                         </li>
                              

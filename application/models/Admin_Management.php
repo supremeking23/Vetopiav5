@@ -7,9 +7,7 @@ class Admin_Management extends CI_Model {
     
 
 
-    public function add_article($data){
-        $this->db->insert('tbl_pet_library',$data);
-    }
+
 
     public function insert_new_admin($data){
         $this->db->insert('tbl_admins',$data);
@@ -67,6 +65,13 @@ class Admin_Management extends CI_Model {
         $result_set = $query->result();
 
         return $result_set;
+    }
+
+
+
+    public function count_all_admins(){
+        $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_admins');
+        return $result_set->result();
     }
 
 

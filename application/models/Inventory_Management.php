@@ -404,7 +404,7 @@ class Inventory_Management extends CI_Model {
   }
 
 
-    public function find_item_by_name($name){
+  public function find_item_by_name($name){
         $this->db->select('*');
         $this->db->from('tbl_productitems');
         
@@ -419,6 +419,36 @@ class Inventory_Management extends CI_Model {
         return $result_set;
   }
 
+
+  ///for notification
+
+  public function get_count_lower_product_count(){
+       $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_products  WHERE productInStore < 100 ');
+            return $result_set->result();
+  }
+
+
+  public function get_count_lower_product_medicine(){
+       $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_products  WHERE productInStore < 100   AND  productType = "Medicine"');
+            return $result_set->result();
+  }
+
+
+  public function get_count_lower_product_item(){
+       $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_products  WHERE productInStore < 100   AND  productType = "Item"');
+            return $result_set->result();
+  }
+
+  public function get_count_lower_product_food(){
+       $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_products  WHERE productInStore < 100   AND  productType = "Food"');
+            return $result_set->result();
+  }
+
+
+
+
   
 }
+
+
 ?>
