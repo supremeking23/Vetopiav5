@@ -53,6 +53,10 @@
   <!-- Select2 -->
   <link rel="stylesheet" href="<?php echo site_url(); ?>assets/bower_components/select2/dist/css/select2.min.css">
 
+
+  <!--sweetalert -->
+  <link rel="stylesheet" href="<?php echo site_url()?>assets/dist/css/sweetalert.css">
+
   <!--- 
     date picker
   <link rel="stylesheet" href="<?php echo site_url()?>assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
@@ -224,4 +228,7 @@
 
 <!-- Select2 -->
 <script src="<?php echo site_url()?>assets/bower_components/select2/dist/js/select2.full.min.js"></script>
+
+<script src="<?php echo site_url()?>assets/dist/js/sweetalert.min.js"></script>
+<script src="<?php echo site_url()?>assets/dist/js/sweetalert-dev.js"></script>
 </head>

@@ -25,7 +25,7 @@ class Pet_Management extends CI_Controller {
 
     public function add_new_pet(){
 
-         //config for upload image \assets\images\profiles
+        //config for upload image \assets\images\profiles
         $config['upload_path']          = './assets/images/pets/';
         //$config['upload_path']          = './uploads/';
         $config['allowed_types']        = 'gif|jpg|png|jpeg';
@@ -43,30 +43,67 @@ class Pet_Management extends CI_Controller {
                 echo "ivan";
         }
 
-            $now = date('Y-m-d H:i:s');
-            $data = array(
-            'pet_id' => $this->input->post('pet_id'),
-            'customer_table_id' => $this->input->post('customer_id'),
-            'petname' => $this->input->post('petname'),
-            'pettype' => $this->input->post('pet_type'),
-            'breed' => $this->input->post('breed'),
-            'gender' => $this->input->post('gender'),
-            'birthdate' => $this->input->post('birthdate'),
-            'pet_profile' => $image,
-            //'is_active' => "Active",
-            
-            'dateAdded' => $now,
-            );
+        $now = date('Y-m-d H:i:s');
+        $data = array(
+        'pet_id' => $this->input->post('pet_id'),
+        'customer_table_id' => $this->input->post('customer_id'),
+        'petname' => $this->input->post('petname'),
+        'pettype' => $this->input->post('pet_type'),
+        'breed' => $this->input->post('breed'),
+        'gender' => $this->input->post('gender'),
+        'birthdate' => $this->input->post('birthdate'),
+        'pet_profile' => $image,
+        //'is_active' => "Active",
+        
+        'dateAdded' => $now,
+        );
 
-            $this->pet_management_model->insert_new_pet($data);
+        $this->pet_management_model->insert_new_pet($data);
 
-            $this->session->set_flashdata('add_pet_success','New Pet has been added');
-            redirect('admin/pets');
+        $this->session->set_flashdata('add_pet_success','New Pet has been added');
+        redirect('admin/pets');
     }
 
 
+    public function add_pettype(){
+        $pettype_code = strtolower($this->input->post("pettype"));
+        $pettype = ucfirst($this->input->post("pettype"));
+        $status = "Active";
 
-    public function add_pet_breed(){
+        $add_pettype = array(
+            'pettype_code' => $pettype_code,
+            'pettype' => $pettype,
+            'pettype_status' => $status,
+        );
+
+        $this->pet_management_model->insert_new_pettype($add_pettype);
+
+        $name = $this->session->userdata('complete_name');
+        $log_usertype =  $this->session->userdata('account_type');
+        $log_userID = $this->session->userdata("user_id");
+        $log_action = "Add New Pet Type ";
+        
+
+
+        $now = date('Y-m-d H:i:s');
+        $data2 = array(
+            "log_user" => $name,
+            "log_usertype" => $log_usertype,
+            "log_userID" => $log_userID,
+            "log_action" => $log_action,
+            "log_date" => $now,
+        );
+
+
+
+        $this->admin_management->insert_new_log($data2);
+
+        $msg = "New Pet Type has been added successfully";
+
+        echo json_encode(['code'=>200, 'msg'=>$msg]);
+    }
+
+   /* public function add_pet_breed(){
         //var_dump($this->input->post());
 
         $pettype_id = $this->input->post("pet_type");
@@ -96,10 +133,65 @@ class Pet_Management extends CI_Controller {
             redirect('admin/pets');
 
         var_dump($data);
+    }*/
+
+
+    //ajax base add_pet_breed
+    public function add_pet_breed(){
+        $pettype_id = $this->input->post("pet_type");
+        $get_pettype_code = $this->pet_management_model->find_pettype_by_pettype_id($pettype_id);
+        foreach($get_pettype_code as $gpc){
+            $code = $gpc->pettype_code;
+        }
+
+        $breed = $this->input->post("pet_breed");
+        $description = $this->input->post("breed_description");
+
+        $breed_status = "Active";
+
+
+        $add_petbreed = array(
+            'pettype_id' => $pettype_id,
+            'pettype_code' => $code,
+            'pet_breed' => $breed,
+            'breed_description' => $description,
+            'breed_status' => $breed_status,
+        );
+
+
+        var_dump($add_petbreed);
+
+
+        $this->pet_management_model->insert_new_pet_breed($add_petbreed);
+
+
+
+        $name = $this->session->userdata('complete_name');
+        $log_usertype =  $this->session->userdata('account_type');
+        $log_userID = $this->session->userdata("user_id");
+        $log_action = "Add New Pet Breed ";
+        
+        $now = date('Y-m-d H:i:s');
+        $data2 = array(
+            "log_user" => $name,
+            "log_usertype" => $log_usertype,
+            "log_userID" => $log_userID,
+            "log_action" => $log_action,
+            "log_date" => $now,
+        );
+
+
+
+        $this->admin_management->insert_new_log($data2);
+
+        $msg = "New Pet Breed has been added successfully";
+
+        echo json_encode(['code'=>200, 'msg'=>$msg]);
+
     }
 
 
-
+    //ajax load ... i  think this will not be use???
     function show_breeds(){
         $output ='';
 
@@ -241,7 +333,7 @@ class Pet_Management extends CI_Controller {
     ///staff action
     public function add_new_pet_staff_action(){
 
-         //config for upload image \assets\images\profiles
+        //config for upload image \assets\images\profiles
         $config['upload_path']          = './assets/images/pets/';
         //$config['upload_path']          = './uploads/';
         $config['allowed_types']        = 'gif|jpg|png|jpeg';
@@ -376,10 +468,7 @@ class Pet_Management extends CI_Controller {
     }
 
 
-
-   
-
-
+    //gago
     public function update_state_pet_staff_action(){
 
 
@@ -410,9 +499,140 @@ class Pet_Management extends CI_Controller {
             $this->session->set_flashdata('change_state_admin_success','Admin State has been successfully updated');
             redirect('staff/pets');
             
-  }
+    }
 
 
+
+
+   //services
+    public function add_new_service(){
+        $for_what_pet = $this->input->post("for_what_pet");
+        $for_pet_ages = $this->input->post("for_pet_ages");
+        $service_name = $this->input->post("service_name");
+        $service_description = $this->input->post("service_description");
+        $service_fee = $this->input->post("service_fee");
+        $service_status = "Active";
+
+
+        $add_service = array(
+            'for_what_pet' => $for_what_pet,
+            'for_pet_ages' => $for_pet_ages,
+            'service_name' => $service_name,
+            'service_description' => $service_description,
+            'service_fee' => $service_fee,
+            'service_status' => $service_status,
+        );
+
+
+        $this->pet_management_model->add_service($add_service);
+       
+
+        $name = $this->session->userdata('complete_name');
+        $log_usertype =  $this->session->userdata('account_type');
+        $log_userID = $this->session->userdata("user_id");
+        $log_action = "Add new Pet Service";  
+
+        $now = date('Y-m-d H:i:s');
+        $data2 = array(
+            "log_user" => $name,
+            "log_usertype" => $log_usertype,
+            "log_userID" => $log_userID,
+            "log_action" => $log_action,
+            "log_date" => $now,
+        );      
+
+        $this->admin_management->insert_new_log($data2);
+
+
+        $msg = "New Pet Service has been added successfully";
+        echo json_encode(['code'=>200, 'msg'=>$msg]); 
+
+    }
+
+    //change status 
+    public function change_status_service(){
+        $status = $this->input->post("status");
+        $service_id = $this->input->post("service_id");
+        $service_name = $this->input->post("service_name");
+
+
+        $data = array(
+            'service_status' => $status,
+
+        );
+
+        $this->pet_management_model->update_service_detail($data,$service_id);
+
+
+
+        $name = $this->session->userdata('complete_name');
+        $log_usertype =  $this->session->userdata('account_type');
+        $log_userID = $this->session->userdata("user_id");
+        $log_action = "Change Status of  service " . $service_name . " to " . $status;
+        
+        $now = date('Y-m-d H:i:s');
+        $logs = array(
+            "log_user" => $name,
+            "log_usertype" => $log_usertype,
+            "log_userID" => $log_userID,
+            "log_action" => $log_action,
+            "log_date" => $now,
+        );
+
+
+
+        $this->admin_management->insert_new_log($logs);
+
+
+        $msg = "Service status has been updated";
+        echo json_encode(['code'=>200, 'msg'=>$msg]);
+    }
+
+
+    public function edit_service_detail(){
+        $for_what_pet = $this->input->post("for_what_pet");
+        $for_pet_ages = $this->input->post("for_pet_ages");
+        $service_name = $this->input->post("service_name");
+        $service_description = $this->input->post("service_description");
+        $service_fee = $this->input->post("service_fee");
+
+        $service_id = $this->input->post("service_id");
+
+        $edit_service = array(
+            'for_what_pet' => $for_what_pet,
+            'for_pet_ages' => $for_pet_ages,
+            'service_name' => $service_name,
+            'service_description' => $service_description,
+            'service_fee' => $service_fee,
+         
+        );
+
+
+        $this->pet_management_model->update_service_detail($edit_service,$service_id);
+
+        $name = $this->session->userdata('complete_name');
+        $log_usertype =  $this->session->userdata('account_type');
+        $log_userID = $this->session->userdata("user_id");
+        $log_action = "Update  Pet Service Details";  
+
+        $now = date('Y-m-d H:i:s');
+        $data2 = array(
+            "log_user" => $name,
+            "log_usertype" => $log_usertype,
+            "log_userID" => $log_userID,
+            "log_action" => $log_action,
+            "log_date" => $now,
+        );      
+
+        $this->admin_management->insert_new_log($data2);
+
+
+        $msg = "Pet Service detail has been updated successfully";
+        echo json_encode(['code'=>200, 'msg'=>$msg]); 
+
+    }
+
+/* luma to
 
     public function add_new_service(){
         $program_for = $this->input->post('program_for');
@@ -523,7 +743,7 @@ class Pet_Management extends CI_Controller {
 
 
 
-
+    // will not be use kasi papalitan natin ung sa services -------
     public function edit_service_dog(){
         $program_name = $this->input->post('program_name');
         $program_description = $this->input->post('program_description');
@@ -697,8 +917,8 @@ class Pet_Management extends CI_Controller {
         redirect("admin/services");
     }
 
-
-
+    ///will not be use kasi papalitan natin ung sa services -------
+    */
 
 
   //ajax request for pet breed

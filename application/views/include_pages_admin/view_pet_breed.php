@@ -15,7 +15,7 @@
                 <p>Pet breed information has been deleted successfully </p>
             </div>
 
-              <table  class="table table-striped table-condensed table-hover list-table" style="margin:0px;" data-height="100">
+              <table  class="datatables table-striped table-condensed table-hover list-table" style="margin:0px;" data-height="100">
                               <thead>
                               <tr>
                             

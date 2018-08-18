@@ -10,6 +10,11 @@ class Pet_Management_Model extends CI_Model {
     }
 
 
+    public function insert_new_pettype($data){
+        $this->db->insert('tbl_pettype',$data);
+    }
+
+
     public function insert_new_pet_breed($data){
         $this->db->insert('tbl_petbreeds',$data);
     }
@@ -121,6 +126,40 @@ class Pet_Management_Model extends CI_Model {
     }
 
 
+    //get all active pettype
+    public function get_all_active_pettype(){
+
+        $active = "Active";
+        $this->db->select('*');
+        $this->db->from('tbl_pettype');
+        
+        $this->db->where('pettype_status',$active);
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+    }    
+
+
+    public function count_pets_by_pettype($pettype_id){
+        $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_pets WHERE pettype = ' . $pettype_id);
+        return $result_set->result();
+    }
+
+
+    public function count_pets_by_breed($breed_id){
+        $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_pets WHERE breed = ' . $breed_id);
+        return $result_set->result();
+    }
+
+
+    public function count_number_of_breeds_pettype($pettype_id){
+         $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_petbreeds WHERE pettype_id = ' . $pettype_id);
+        return $result_set->result();
+    }    
+
     public function count_pet_of_customer($customer_id){
         $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_pets WHERE customer_table_id = ' . $customer_id);
         return $result_set->result();
@@ -213,6 +252,71 @@ class Pet_Management_Model extends CI_Model {
     }
 
 
+
+
+    //new functions for services
+    public function add_service($data){
+        $this->db->insert('tbl_services',$data);
+    }
+
+
+    public function update_service_detail($data,$service_id){
+        $this->db->where('service_id', $service_id);
+        $this->db->update('tbl_services',$data);
+    }
+
+
+    public function get_all_pet_services(){
+        $this->db->select('*');
+        $this->db->from('tbl_services');
+        
+        $this->db->order_by('service_id', 'DESC');
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;        
+    }
+
+
+
+    //pet diagnosis //checkup history
+    public function add_checkup_detail($data){
+        $this->db->insert('tbl_checkupdetails',$data);
+    }
+
+
+
+    public function get_pet_service_by_appointment_id($appointment_id){
+        $this->db->select('*');
+        $this->db->from('tbl_checkupdetails');
+       
+        $this->db->where('appointment_id',$appointment_id);
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+    }
+
+
+
+    public function get_pet_service_by_pet_id($pet_id){
+        $this->db->select('*');
+        $this->db->from('tbl_checkupdetails');
+       
+        $this->db->where('pet_id',$pet_id);
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+    }
+
+
+ /* remove previouse services */
+ /*
 
     public function add_service_for_adult_dogs($data){
         $this->db->insert('tbl_adult_dogs_programs',$data);
@@ -372,39 +476,10 @@ class Pet_Management_Model extends CI_Model {
         return $result_set;
     }       
 
-
-
-    public function add_checkup_detail($data){
-        $this->db->insert('tbl_checkupdetails',$data);
-    }
+/* remove previous servicess */
 
 
 
-    public function get_pet_service_by_appointment_id($appointment_id){
-        $this->db->select('*');
-        $this->db->from('tbl_checkupdetails');
-       
-        $this->db->where('appointment_id',$appointment_id);
-        $query = $this->db->get();
-
-        $result_set = $query->result();
-
-        return $result_set;
-    }
-
-
-
-    public function get_pet_service_by_pet_id($pet_id){
-        $this->db->select('*');
-        $this->db->from('tbl_checkupdetails');
-       
-        $this->db->where('pet_id',$pet_id);
-        $query = $this->db->get();
-
-        $result_set = $query->result();
-
-        return $result_set;
-    }
   
 }
 ?>

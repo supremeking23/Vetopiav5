@@ -12,10 +12,10 @@ class Veterinarian_Management extends CI_Model {
     }
 
 
-    public function change_state_veterinarian($veterinarian_table_id,$data){
+   /* public function change_state_veterinarian($veterinarian_table_id,$data){
       $this->db->where('veterinarian_table_id', $veterinarian_table_id);
       $this->db->update('tbl_veterinarians', $data);
-    }
+    }*/
 
 
     public function get_veterinarian_by_id($data){

@@ -73,24 +73,16 @@
 
 
 
-           <?php if ($this->session->flashdata('change_state_veterinarian_success')) { ?>
-
-            <div class="alert alert-success display-success">
+            <div class="alert alert-success display-success_change_status_vet" style="display: none">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <p> <?php echo $this->session->flashdata('change_state_veterinarian_success'); ?> </p>
-            </div>
-
-          <?php }?>
+               <div class="success-message_change_status_vet"></div>
+            </div> 
 
 
-          <?php if ($this->session->flashdata('change_state_staff_success')) { ?>
 
-            <div class="alert alert-success display-success">
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <p> <?php echo $this->session->flashdata('change_state_staff_success'); ?> </p>
-            </div>
 
-          <?php }?>
+
+        
 
 
 
@@ -126,23 +118,19 @@
 
                   <tr>
                      <td>
-                      
-                     <form action="<?php echo site_url()?>user_management/update_state_vet" method="POST">
+                          <div class="row">
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                  <div class="checkbox">
+                                    <label class="switch">
 
-                      <?php if($vets->is_active == "Active"){
-
-                            $btn_status = "btn-primary";
-                      }else{
-
-                          $btn_status = "btn-danger";
-                      }?>
-                       
-                       <input type="submit" name="current_state" value="<?php echo $vets->is_active?>" class="btn btn-flat <?php echo $btn_status;?> btn-sm">
-
-                       <input type="hidden" name="change_state_user" value="<?php echo $vets->veterinarian_table_id;?>">
-
-                     </form>
-
+                                      <input type="checkbox" class="status_changer" data-veterinariantableid="<?php echo $vets->veterinarian_table_id;?>" data-veterinarianid="<?php echo $vets->veterinarian_id;?>"" data-status="<?php echo $vets->veterinarian_status?>" data-veterinarianname="<?php echo $vets->firstname .' '. $vets->middlename .' '. $vets->lastname;?>" <?php echo ($vets->veterinarian_status == "Active") ?  "checked": ""; ?> > 
+                                      <span class="slider round"></span>
+                                    </label>
+                                  </div>
+                                </div>    
+                            </div>
+                          </div>                       
                     </td>
                     <td><?php echo $vets->veterinarian_id;?></td>
                     <td>
@@ -191,7 +179,7 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Beta Version</b> 
+ 
     </div>
     <strong>Copyright &copy; <?php echo date('Y');?>  All rights
     reserved.
@@ -217,18 +205,49 @@
 
 <script src="<?php echo site_url();?>assets/dist/js/generalscripts.js"></script>
 
-<!-- page script -->
+
 <script>
 
-    var check_status = document.querySelector('#check_status').addEventListener('click',function(){
-         alert('ivan');
-    });
+  $(function(){
 
 
+   //refresh after 2 seconds
+    function reload(){
      
+      setTimeout(function(){ 
 
+          $(".display-success").fadeOut("fast");
+          location.reload();
+           }, 2000);
+    }  
+
+    $('.status_changer').on("change",function(){
+     
+      var status    = $(this).data("status");
+      var veterinarian_table_id = $(this).data("veterinariantableid");
+      var veterinarian_name = $(this).data("veterinarianname");
+      var veterinarian_id  = $(this).data("veterinarianid");
+      var new_status = "";
+      if(status == "Active"){
+          new_status = "Inactive";
+      }else{
+          new_status = "Active";
+      }
+      //alert('status is ' + libraryid);
+      $.ajax({
+          url : "<?php echo site_url('user_management/change_status_veterinarian');?>",
+          method : "POST",
+
+          data : {veterinarian_table_id: veterinarian_table_id,veterinarian_id: veterinarian_id, status:new_status,veterinarian_name:veterinarian_name},
+          success: function(data){
+             $(".display-success_change_status_vet").css("display","block");
+             $(".success-message_change_status_vet").html("<p>Veterinarian " +veterinarian_name + " status has been updated to "+ new_status  +"</p>");
+             reload();
+          }
+      });
+    });  
+  });
+      
 </script>
-
-
 </body>
 </html>

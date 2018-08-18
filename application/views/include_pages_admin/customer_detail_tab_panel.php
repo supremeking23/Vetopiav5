@@ -157,9 +157,8 @@
 
 
                   <div class="tab-pane" id="pets">
-                    
-                  
-                        <table id="example" class="datatablecustomerpet table table-bordered table-striped">
+
+                        <table class="datatablecustomerpet table table-bordered table-striped">
                             <thead>
                             <tr>
                               
@@ -201,8 +200,18 @@
 
 
                     <div class=" tab-pane" id="logHistory">
+
+                        <?php 
+                          $datatable = "";
+                          if($this->session->userdata('account_type') == "Super Admin"){
+                            $datatable = "datatablelogcustomer";
+                          }else{
+                            $datatable = "datatables";
+                          }
+                        ?>                     
+
                         
-                        <table  class="datatablelogcustomer table table-bordered table-striped">
+                        <table  class="<?php echo $datatable;?> table table-bordered table-striped">
                           <thead>
                           <tr>
                             <th>Log Date</th>

@@ -14,10 +14,10 @@ class Admin_Management extends CI_Model {
     }
 
 
-    public function change_state_admin($admin_table_id,$data){
+    /*public function change_state_admin($admin_table_id,$data){
       $this->db->where('admin_table_id', $admin_table_id);
       $this->db->update('tbl_admins', $data);
-    }
+    }*/
 
 
     public function get_admin_by_id($data){
@@ -100,7 +100,7 @@ class Admin_Management extends CI_Model {
         $this->db->from('tbl_admins');
         $this->db->where('username',$username);
         $this->db->where('password',$password);
-        $this->db->where('is_active',$active);
+        $this->db->where('admin_status',$active);
 
         $query = $this->db->get();
 

@@ -100,9 +100,9 @@
 
                                       $age =0;
                                       if($age_years  == 0){
-                                         $age =  $age_months . " Months old";
+                                         $age =  $age_months . " Month(s) old";
                                       }else{
-                                        $age = $age_years ." Years old";
+                                        $age = $age_years ." Year(s) old";
                                       }
 
                                ?>

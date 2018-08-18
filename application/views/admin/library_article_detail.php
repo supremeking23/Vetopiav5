@@ -58,15 +58,92 @@
         <div class="row">
           <div class="col-md-12">
             <img width="503" height="171" style="margin: 5px auto; display: block;" src="<?php echo site_url()?>assets/images/library/<?php echo $image?>" >
+            <button type="button" class="btn btn-success btn-sm btn-flat" data-toggle="modal" data-target="#changeImage">Change Article Image</button>
+
+              <div class="modal fade" id="changeImage">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title">Change Article Image</h4>
+                    </div>
+                    
+                    <?php echo form_open_multipart('','id="changeImageArticle"');?>
+                      <div class="modal-body">
+
+                          <div class="alert alert-success display-success_update_image" style="display: none">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                             <div class="success-success_update_image"></div> 
+                          </div>
+
+                           <div class="row">
+                                      <div class="col-md-12">
+                                     
+                                          <?php 
+
+                                          echo form_label('Article Image', 'article_image','class="control-label"');
+                                          ?>
+
+
+
+                                          <input type="file" id="article_image" name="article_image" class="form-control" onchange="document.getElementById('article_Image').src = window.URL.createObjectURL(this.files[0])" required="">
+
+                                         <img  id="article_Image"  class="img-rounded" alt="" width="100%" height="200" src="" />
+                                     </div>   
+                          </div>
+
+                          <br/>
+                        
+                      </div>
+                      <div class="modal-footer">
+
+                          
+                          <input type="hidden" id="library_id" name="library_id" value="<?php echo $library_id?>">
+                          <input type="hidden" name="article_title" id="article_title" value="<?php echo $article_title?>">
+                         
+                          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                           <?php 
+
+                                          $data = array(
+                                            'name' => 'submit',
+                                            'value' => 'Save',
+                                            'id' => 'save',
+                                            'class' => 'btn btn-primary',
+                                          );
+
+                                        echo form_submit($data);?>
+                      </div>
+                  </form>
+                  </div>
+                  <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+              </div>
+              <!-- /.modal -->
+
+
           </div>
         </div>
 
         <br />
 
+        <div class="row">
+          <div class="col-md-12">
+                        <!-- ajax bae -->
+              <div class="alert alert-success display-success_remove_article_content" style="display: none">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                 <div class="success-success_remove_article_content"></div> 
+              </div>
+          </div>
+        </div>
+
+        <br/>
+
         <?php foreach($find_article_contents as $fac):?>
           <div class="row">
             <div class="col-md-12">
-              <p><?php echo $fac->article_contents?><button type="button" class="btn btn-success btn-sm btn-flat" data-toggle="modal" data-target="#changeContent<?php echo $fac->content_id?>">Change Content</button>|<button type="button" class="btn btn-danger btn-sm btn-flat remove-content" id="<?php echo $fac->content_id?>">Remove Content</button></p>
+              <p><?php echo $fac->article_contents?><button type="button" class="btn btn-success btn-sm btn-flat" data-toggle="modal" data-target="#changeContent<?php echo $fac->content_id?>">Change Content</button>|<button type="button" class="btn btn-danger btn-sm btn-flat remove-content" id="<?php echo $fac->content_id?>" data-articletitle="<?php echo  $article_title;?>">Remove Content</button></p>
             </div>
           </div>
 
@@ -137,7 +214,6 @@
         <div class="row">
           <div class="col-md-12">
             <button type="button" class="btn btn-warning btn-sm btn-flat" data-toggle="modal" data-target="#addContent">Add Content</button>
-
 
                 <div class="modal fade" id="addContent">
                   <div class="modal-dialog">
@@ -210,13 +286,92 @@
           </div>
         </div>
 
+
+
+
+        <div class="row">
+          <div class="col-md-12">
+                        <!-- ajax bae -->
+              <div class="alert alert-success display-success_remove_article_link" style="display: none">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                 <div class="success-success_remove_article_link"></div> 
+              </div>
+          </div>
+        </div>
+
         <?php foreach($find_article_links as $fal):?>
           <div class="row">
             <div class="col-md-12">
-              <a href="<?php echo $fal->web_link?>"><?php echo $fal->web_link?></a>
+              <p><a href="<?php echo $fal->web_link?>"><?php echo $fal->web_link?></a><button type="button" class="btn btn-danger btn-sm btn-flat remove-link" id="<?php echo $fal->links_id?>" data-articletitle="<?php echo  $article_title;?>">Remove Links</button></p>
             </div>
           </div>
         <?php endforeach;?>
+
+
+        <div class="row">
+          <div class="col-md-12">
+              <button type="button" class="btn btn-warning btn-sm btn-flat" data-toggle="modal" data-target="#addLink">Add Link</button>
+              
+              <div class="modal fade" id="addLink">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title">Add new Link</h4>
+                    </div>
+                    
+                    <?php echo form_open_multipart('','id="addArticleLink"');?>
+                      <div class="modal-body">
+
+                          <div class="alert alert-success display-success_add_article_link" style="display: none">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                             <div class="success-success_add_article_link"></div> 
+                          </div>
+
+
+                          <div class="row">
+                                  <div class="col-md-12">
+                                 
+                                      <?php 
+
+                                      echo form_label('Web Link', 'link','class="control-label"');
+                                      ?>
+
+                                     <input type="text" name="link" id="link" class="form-control">
+                                 </div>   
+                         </div>
+
+
+                        
+                      </div>
+                      <div class="modal-footer">
+
+                          
+                          <input type="hidden" id="library_id" name="library_id" value="<?php echo $library_id?>">
+                          <input type="hidden" name="article_title" id="article_title" value="<?php echo $article_title?>">
+                         
+                          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                           <?php 
+
+                                          $data = array(
+                                            'name' => 'submit',
+                                            'value' => 'Save',
+                                            'id' => 'save',
+                                            'class' => 'btn btn-primary',
+                                          );
+
+                                        echo form_submit($data);?>
+                      </div>
+                  </form>
+                  </div>
+                  <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+              </div>
+              <!-- /.modal -->
+          </div>
+        </div>
 
 
     </section>
@@ -296,6 +451,7 @@
       event.preventDefault();
       //$('#action').attr('disabled', 'disabled');
       var form_data = new FormData(this);
+      //alert(form_data);
       $.ajax({
         method:"POST",
         url:'<?php echo site_url()?>article_controller/add_article_content',
@@ -305,8 +461,6 @@
         cache: false,
         processData:false,
         success:function(data){
-        
-
             $(".display-success_add_article_content").css("display","block");
             $(".success-success_add_article_content").html("<p>Article content has been added successfully</p>");
             reload();
@@ -316,20 +470,127 @@
     });
 
 
-    $(document).on('click', '.remove-content', function(){
-      var content_id = $(this).attr("id");      
+    $(document).on('submit', '#changeImageArticle', function(event){
+      
+      event.preventDefault();
+      //$('#action').attr('disabled', 'disabled');
+      var form_data = new FormData(this);
+      //alert(form_data);
+      $.ajax({
+        method:"POST",
+        url:'<?php echo site_url()?>article_controller/update_article_image',
+        data:form_data,
+        //dataType: 'json',
+        contentType: false,
+        cache: false,
+        processData:false,
+        success:function(data){
+            $(".display-success_update_image").css("display","block");
+            $(".success-success_update_image").html("<p>Article image has been added successfully</p>");
+            reload();
+        }
 
-        $.ajax({
-          url:"order_action.php",
+      });
+    });
+
+
+    
+
+
+
+    $(document).on('submit','#addArticleLink',function(event){
+
+
+      event.preventDefault();
+      //$('#action').attr('disabled', 'disabled');
+      var form_data = new FormData(this);
+      $.ajax({
+        method:"POST",
+        url:'<?php echo site_url()?>article_controller/add_article_link',
+        data:form_data,
+        //dataType: 'json',
+        contentType: false,
+        cache: false,
+        processData:false,
+        success:function(data){
+        
+
+            $(".display-success_add_article_link").css("display","block");
+            $(".success-success_add_article_link").html("<p>Article link has been added successfully</p>");
+            reload();
+        }
+
+      });
+    });
+
+
+    $(document).on('click', '.remove-content', function(){
+      var content_id = $(this).attr("id"); 
+      var article_title = $(this).data("articletitle");     
+
+      //alert(content_id);
+       
+         /*swal({
+          title: "Update Holiday..",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#f57c00",
+          confirmButtonText: "Yes, update it!",
+          cancelButtonText: "No, wait!",
+          closeOnConfirm: false,
+          closeOnCancel: true,
+          text: "Update this holiday..."
+        },*/
+
+
+         $.ajax({
+          url:"<?php echo site_url()?>article_controller/remove_content",
           method:"POST",
-          data:{content_id:content_id},
+          data:{content_id:content_id,article_title:article_title},
           success:function(data)
           {
-            $('#alert_action').fadeIn().html('<div class="alert alert-info">'+data+'</div>');
-            orderdataTable.ajax.reload();
+            //$('#alert_action').fadeIn().html('<div class="alert alert-info">'+data+'</div>');
+            //orderdataTable.ajax.reload();
+            $(".display-success_remove_article_content").css("display","block");
+            $(".success-success_remove_article_content").html("<p>Article content has been removed</p>");
+            reload();
           }
-        })
+        });
 
+    });
+
+
+    $(document).on('click', '.remove-link', function(){
+      var link_id = $(this).attr("id"); 
+      var article_title = $(this).data("articletitle"); 
+      //alert(content_id);
+       
+         /*swal({
+          title: "Update Holiday..",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#f57c00",
+          confirmButtonText: "Yes, update it!",
+          cancelButtonText: "No, wait!",
+          closeOnConfirm: false,
+          closeOnCancel: true,
+          text: "Update this holiday..."
+        },*/
+
+
+         $.ajax({
+          url:"<?php echo site_url()?>article_controller/remove_link",
+          method:"POST",
+          data:{link_id:link_id,article_title:article_title},
+          success:function(data)
+          {
+            //$('#alert_action').fadeIn().html('<div class="alert alert-info">'+data+'</div>');
+            //orderdataTable.ajax.reload();
+            $(".display-success_remove_article_link").css("display","block");
+            $(".success-success_remove_article_link").html("<p>Article Link has been removed</p>");
+            reload();
+          }
+        });
 
     });
 

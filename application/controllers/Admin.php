@@ -345,7 +345,81 @@ class Admin extends CI_Controller {
 	}
 
 
-	//ajax request
+
+
+
+	public function view_pettype(){
+		$data['title'] = "Vetopia";
+
+		$settings_id = 1;
+		$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
+
+		$name = $this->session->userdata('complete_name');
+		$log_usertype =  $this->session->userdata('account_type');
+		$log_userID = $this->session->userdata("user_id");
+		$log_action = "View Pet Type List";
+		
+
+
+		$now = date('Y-m-d H:i:s');
+		$data2 = array(
+			"log_user" => $name,
+			"log_usertype" => $log_usertype,
+			"log_userID" => $log_userID,
+			"log_action" => $log_action,
+			"log_date" => $now,
+		);
+
+
+
+		$this->admin_management->insert_new_log($data2);
+
+
+		$data['pettype_list'] = $this->pet_management_model->get_all_pettype();
+
+
+
+		$this->load->view('admin/view_pettype',$data);
+	}
+
+
+	public function view_petbreed(){
+		$data['title'] = "Vetopia";
+
+		$settings_id = 1;
+		$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);	
+
+
+		$name = $this->session->userdata('complete_name');
+		$log_usertype =  $this->session->userdata('account_type');
+		$log_userID = $this->session->userdata("user_id");
+		$log_action = "View Pet Breed List";
+		
+
+
+		$now = date('Y-m-d H:i:s');
+		$data2 = array(
+			"log_user" => $name,
+			"log_usertype" => $log_usertype,
+			"log_userID" => $log_userID,
+			"log_action" => $log_action,
+			"log_date" => $now,
+		);
+
+
+		$data['all_pettype'] = $this->pet_management_model->get_all_pettype();
+		$data['breed_list'] = $this->pet_management_model->get_all_breed();
+		$this->admin_management->insert_new_log($data2);
+
+		$this->load->view('admin/view_petbreed',$data);
+	}
+
+
+
+
+
+
+	//ajax request nagamit
     public function pet_breed($id){
         $id = $id;
         $result = $this->db->where("pettype_id",$id)->get("tbl_petbreeds")->result();
@@ -353,12 +427,16 @@ class Admin extends CI_Controller {
     }
 
 
+    //not sure pero wag nalang tanggalin
     public function customers_pets($customer_table_id){
         $customer_table_id = $customer_table_id;
         $result = $this->db->where("customer_table_id",$customer_table_id)->get("tbl_pets")->result();
         echo json_encode($result);
     }
 
+
+
+    /* papalitan ng bago
 	public function services(){
 		$settings_id = 1;
 		$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
@@ -406,6 +484,39 @@ class Admin extends CI_Controller {
 
 
 		$this->load->view('admin/service',$data);
+	}*/
+
+
+	public function services(){
+		$data['title'] = "Vetopia";
+
+
+		$settings_id = 1;
+		$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
+		
+		//$data['all_vets'] = $this->veterinarian_management->get_all_veterinarian();
+		$data['all_pettype'] = $this->pet_management_model->get_all_active_pettype();
+
+		$name = $this->session->userdata('complete_name');
+		$log_usertype =  $this->session->userdata('account_type');
+		$log_userID = $this->session->userdata("user_id");
+		$log_action = "View Services";	
+
+		$now = date('Y-m-d H:i:s');
+		$data2 = array(
+			"log_user" => $name,
+			"log_usertype" => $log_usertype,
+			"log_userID" => $log_userID,
+			"log_action" => $log_action,
+			"log_date" => $now,
+		);		
+
+		$this->admin_management->insert_new_log($data2);
+
+
+		$data['get_all_pet_services'] = $this->pet_management_model->get_all_pet_services();
+		
+		$this->load->view('admin/services',$data);
 	}
 
 
@@ -413,9 +524,6 @@ class Admin extends CI_Controller {
 		$settings_id = 1;
 		$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
 		$data['title'] = "Vetopia";
-
-
-
 
 		$this->load->view('admin/product',$data);
 	}

@@ -47,11 +47,12 @@
       <div class="row">
         <div class="col-md-12">
           <button class="btn btn-flat btn-info btn-sm" data-toggle="modal" data-target="#addPet">Add New Pet</button>
+           <a href="<?php echo site_url()?>admin/view_pettype" class="btn btn-warning btn-flat btn-sm">View Pet Type</a>
+          <a href="<?php echo site_url()?>admin/view_petbreed" class="btn btn-success btn-flat btn-sm">View Pet Breed</a>
 
           <?php if($this->session->userdata('account_type') == "Super Admin"):?>
-           <button class="btn btn-flat btn-warning btn-sm" data-toggle="modal" data-target="#addpetbreed">Pet Breed</button>
-           <button class="btn btn-flat btn-success btn-sm" data-toggle="modal" data-target="#petbreed">View Pet Breed</button>
-
+           <!--<button class="btn btn-flat btn-warning btn-sm" data-toggle="modal" data-target="#addpetbreed">Pet Breed</button>
+           <button class="btn btn-flat btn-success btn-sm" data-toggle="modal" data-target="#petbreed">View Pet Breed</button> -->
            <?php endif;?>
            
         </div>
@@ -80,6 +81,8 @@
           <?php }?>
 
 
+
+          <!--not use -->
             <?php if ($this->session->flashdata('add_pettype_success')) { ?>
 
             <div class="alert alert-success display-success">
@@ -89,10 +92,10 @@
 
           <?php }?>
 
-
+          <!--not use -->
           
 
-
+          <!--not use -->
            <?php if ($this->session->flashdata('change_state_pet_success')) { ?>
 
             <div class="alert alert-success display-success">
@@ -101,7 +104,7 @@
             </div>
 
           <?php }?>
-
+          <!--not use -->
 
 
           </div>
@@ -179,7 +182,7 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Beta Version</b> 
+   
     </div>
     <strong>Copyright &copy; <?php echo date('Y');?>  All rights
     reserved.

@@ -12,10 +12,11 @@ class Staff_Management extends CI_Model {
     }
 
 
-    public function change_state_staff($staff_table_id,$data){
+  /*  public function change_state_staff($staff_table_id,$data){
       $this->db->where('staff_table_id', $staff_table_id);
       $this->db->update('tbl_staffs', $data);
     }
+ */
 
 
     public function get_staff_by_id($data){

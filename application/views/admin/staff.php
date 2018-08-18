@@ -73,16 +73,13 @@
           <?php }?>
 
 
-
-
-          <?php if ($this->session->flashdata('change_state_staff_success')) { ?>
-
-            <div class="alert alert-success display-success">
+            <div class="alert alert-success display-success_change_status_staff" style="display: none">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <p> <?php echo $this->session->flashdata('change_state_staff_success'); ?> </p>
-            </div>
+               <div class="success-message_change_status_staff"></div>
+            </div> 
 
-          <?php }?>
+
+
 
 
 
@@ -119,23 +116,19 @@
 
                   <tr>
                      <td>
-                      
-                     <form action="<?php echo site_url()?>user_management/update_state_staff" method="POST">
+                          <div class="row">
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                  <div class="checkbox">
+                                    <label class="switch">
 
-                      <?php if($staffs->is_active == "Active"){
-
-                            $btn_status = "btn-primary";
-                      }else{
-
-                          $btn_status = "btn-danger";
-                      }?>
-                       
-                       <input type="submit" name="current_state" value="<?php echo $staffs->is_active?>" class="btn btn-flat <?php echo $btn_status;?> btn-sm">
-
-                       <input type="hidden" name="change_state_user" value="<?php echo $staffs->staff_table_id;?>">
-
-                     </form>
-
+                                      <input type="checkbox" class="status_changer" data-stafftableid="<?php echo $staffs->staff_table_id;?>" data-staffid="<?php echo $staffs->staff_id;?>" data-status="<?php echo $staffs->staff_status?>" data-staffname=" <?php echo $staffs->firstname .' '. $staffs->middlename .' '. $staffs->lastname;?>" <?php echo ($staffs->staff_status == "Active") ?  "checked": ""; ?> > 
+                                      <span class="slider round"></span>
+                                    </label>
+                                  </div>
+                                </div>    
+                            </div>
+                          </div>   
                     </td>
                     <td><?php echo $staffs->staff_id;?></td>
                     <td>
@@ -212,15 +205,47 @@
 <!-- page script -->
 <script>
 
-    var check_status = document.querySelector('#check_status').addEventListener('click',function(){
-         alert('ivan');
-    });
+  $(function(){
 
 
+   //refresh after 2 seconds
+    function reload(){
      
+      setTimeout(function(){ 
 
+          $(".display-success").fadeOut("fast");
+          location.reload();
+           }, 2000);
+    }  
+
+    $('.status_changer').on("change",function(){
+     
+      var status    = $(this).data("status");
+      var staff_table_id = $(this).data("stafftableid");
+      var staff_name = $(this).data("staffname");
+      var staff_id  = $(this).data("staffid");
+      var new_status = "";
+      if(status == "Active"){
+          new_status = "Inactive";
+      }else{
+          new_status = "Active";
+      }
+      //alert('status is ' + libraryid);
+      $.ajax({
+          url : "<?php echo site_url('user_management/change_status_staff');?>",
+          method : "POST",
+
+          data : {staff_table_id: staff_table_id,staff_id: staff_id, status:new_status,staff_name:staff_name},
+          success: function(data){
+             $(".display-success_change_status_staff").css("display","block");
+             $(".success-message_change_status_staff").html("<p>Staff " +staff_name + " status has been updated to "+ new_status  +"</p>");
+             reload();
+          }
+      });
+    });  
+  });
+      
 </script>
-
 
 </body>
 </html>

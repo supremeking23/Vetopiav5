@@ -88,7 +88,7 @@
 
 
                          <li class="list-group-item">
-                          <b>Status</b> <a class="pull-right"><?php echo $a_details->is_active;?></a>
+                          <b>Status</b> <a class="pull-right"><?php echo $a_details->admin_status;?></a>
                         </li>
 
                         <li class="list-group-item">

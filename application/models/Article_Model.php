@@ -37,10 +37,13 @@ class Article_Model extends CI_Model {
     }
 
 
-    public function update_aticle_content($content_id,$data){
+    public function update_article_content($content_id,$data){
         $this->db->where('content_id', $content_id);
         $this->db->update('tbl_pet_library_content', $data);
     }
+
+
+
 
 
     public function find_article_from_library_by_library_id($library_id){
@@ -65,6 +68,9 @@ class Article_Model extends CI_Model {
 
         return $result_set;
     }
+
+
+
 
 
     public function find_library_link_by_librarru_id($library_id){
@@ -94,6 +100,17 @@ class Article_Model extends CI_Model {
 
     }*/
 
+
+
+    public function delete_content($content_id){
+        $this->db->where('content_id', $content_id);
+        $this->db->delete('tbl_pet_library_content');
+    }
+
+    public function delete_link($links_id){
+        $this->db->where('links_id', $links_id);
+        $this->db->delete('tbl_pet_library_links');
+    }
 
 }
 

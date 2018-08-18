@@ -2,6 +2,7 @@
 
   $skin_color = $t_color->theme_color;
   $settings_id =$t_color->settings_id;
+  
    $box_color = "";
 
     if($skin_color == "skin-green"){
@@ -16,13 +17,12 @@
 
 
 }?>
-
 <!DOCTYPE html>
 <html>
 
 <?php $this->load->view('include_pages_admin/page_header');?>
 
-<body class="hold-transition <?php echo $skin_color;?> sidebar-mini" id="logs">
+<body class="hold-transition <?php echo $skin_color;?> sidebar-mini" id="pets">
 <div class="wrapper">
 
 
@@ -34,7 +34,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Logs
+        Pet Type List
         
       </h1>
     
@@ -42,44 +42,100 @@
 
     <!-- Main content -->
     <section class="content">
-     
+
+
       <div class="row">
         <div class="col-md-12">
 
-            <div class="box box-solid <?php echo $box_color;?>">
-              <div class="box-header with-border">
-                <h3 class="box-title">Logs</h3>        
-              </div>
+
+          <?php if($this->session->userdata('account_type') == "Super Admin"):?>
+           <!--<button class="btn btn-flat btn-warning btn-sm" data-toggle="modal" data-target="#addpetbreed">Pet Breed</button>
+           <button class="btn btn-flat btn-success btn-sm" data-toggle="modal" data-target="#petbreed">View Pet Breed</button> -->
+
+
+          <a href="<?php echo site_url()?>admin/pets" class="btn btn-info btn-flat btn-sm">View Pet List</a>
+          <a href="<?php echo site_url()?>admin/view_petbreed" class="btn btn-success btn-flat btn-sm">View Pet Breed</a>
+
+           <button class="btn btn-flat btn-warning btn-sm" data-toggle="modal" data-target="#addpettype">Add Pet Type </button>
+           
+
+  
+
+
+           <?php endif;?>
+           
+        </div>
+
+
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+      <br>
+
+
+      <div class="row">
+          <div class="col-md-12">
+
+         
+            
+
+          </div>
+      </div>
+     
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box box-solid <?php echo $box_color;?>">
+            <div class="box-header with-border">
+              <h3 class="box-title">Pet Type</h3>
+
+
+            </div>
             <!-- /.box-header -->
-              <div class="box-body table-responsive">
+            <div class="box-body table-responsive">
 
-                  <table id="" class="datatablelogs table table-bordered table-striped">
-                    <thead>
-                    <tr>
-                      <th>Log Date</th>
-                      <th>Users</th>
-                      <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    
-                    <?php foreach($all_logs as $logs):?>
-                    <tr>
-                      <td><?php 
-
-                             $date =date_create($logs->log_date);
-                             echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
-                           ;?> </td>
-                      <td><?php echo $logs->log_user;?> (<?php echo $logs->log_usertype;?>) </td>
-                      <td><?php echo $logs->log_action;?>  </td>
-                    </tr>
-                  <?php endforeach;?>
-                    </tbody>
+              <table  class="datatable_view_pettype table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Pet Type</th>
+                  <th>Number of Pet Breed</th>
+                  <th>Number of Pets</th>
+                </tr>
+                </thead>
+                <tbody>
                    
-                  </table>
+                   <?php foreach($pettype_list as $pl):?>
+                    <tr>
+                      <td><?php echo $pl->pettype;?></td>
 
 
-              </div>
+                      <td>
+                        
+                        <?php 
+                            $no_breeds = $this->pet_management_model->count_number_of_breeds_pettype($pl->pettype_id);
+                            foreach($no_breeds as $no_breed){
+                            echo $no_breed->count_all;
+                        }
+                        ?>
+                      </td>
+
+                      <td>
+                        <?php $no_pets = $this->pet_management_model->count_pets_by_pettype($pl->pettype_id);
+
+                        foreach($no_pets as $no_pet){
+                          echo $no_pet->count_all;
+                        }
+                        ?>
+                      </td>
+                    </tr>
+
+                  <?php endforeach;?>
+                </tbody>
+               
+              </table>
+
+
+            </div>
             <!-- ./box-body -->
             <div class="box-footer">
             
@@ -87,15 +143,11 @@
             <!-- /.box-footer -->
           </div>
           <!-- /.box -->
-       
         </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
 
-
-     
-   
 
     </section>
     <!-- /.content -->
@@ -103,7 +155,7 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Beta Version</b> 
+   
     </div>
     <strong>Copyright &copy; <?php echo date('Y');?>  All rights
     reserved.
@@ -120,23 +172,22 @@
 
 
 <!--modals -->
-<?php $this->load->view('include_pages_admin/modals');?>
+<?php $this->load->view('include_pages_admin/add_pettype');?>
+
 
 <!--page scripts -->
 
 
 <!-- footer scripts -->
-<?php $nows = date('Y-m-d H:i:s');?>
+
 <script src="<?php echo site_url();?>assets/dist/js/generalscripts.js"></script>
 
 <!-- page script -->
 <script>
 
-  $(document).ready(function() {
+$(function(){
 
-
-     //setHeader()
-     $('.datatablelogs').DataTable( {
+     $('.datatable_view_pettype').DataTable( {
         'ordering'    : false,
         "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
         'paging'      : true,
@@ -149,7 +200,7 @@
         buttons: [
             {
               extend: 'pdfHtml5',
-              title: 'Log Report  ',
+              title: 'Pet Type List',
               message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
                 $now = date('Y-m-d H:i:s');
                  $date =date_create($now);
@@ -168,7 +219,7 @@
 
              {
                extend: 'excelHtml5',
-               title: 'Log Report',
+               title: 'Pet Type List',
                message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
                 $now = date('Y-m-d H:i:s');
                  $date =date_create($now);
@@ -179,7 +230,7 @@
 
             {
                extend: 'csvHtml5',
-               title: 'Log Report',
+               title: 'Pet Type List',
                message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
                 $now = date('Y-m-d H:i:s');
                  $date =date_create($now);
@@ -190,33 +241,10 @@
 
                 ]
             } );
-  } );
 
 
-
-function setHeader() {
-        $tr = $('<tr>');
-        $tr.append($('<th>').text("Name"));
-        $tr.append($('<th>').text("Position"));
-        $tr.append($('<th>').text("Office"));
-        $tr.append($('<th>').text("Age"));
-        $tr.append($('<th>').text("Start date"));
-        $tr.append($('<th>').text("Salary"));
-        
-        $tr.appendTo('#example thead');
-    }
-
-function setHeader2() {
-        $tr = $('<tr>');
-        $tr.append($('<th>').text("Names"));
-        $tr.append($('<th>').text("Positions"));
-        $tr.append($('<th>').text("Offices"));
-        $tr.append($('<th>').text("Ages"));
-        $tr.append($('<th>').text("Start dates"));
-        $tr.append($('<th>').text("Salarys"));
-        
-        $tr.appendTo('#example thead');
-    }
+});
+   
      
 
 </script>

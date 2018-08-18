@@ -7,10 +7,16 @@
               <h4 class="modal-title">Add Pet Breed</h4>
             </div>
            
-            <?php echo form_open_multipart('pet_management/add_pet_breed','id=""');?>
+            <?php echo form_open_multipart('','id="addPetBreed"');?>
 
             <div class="modal-body">
 
+
+              <!-- ajax bae -->
+             <div class="alert alert-success display-success" style="display: none">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                 <div class="success-message"></div> 
+             </div>
 
               <div class="row">
                       <div class="col-md-12">
@@ -20,7 +26,7 @@
                           echo form_label('Pet Type', 'pet_type','class="control-label"');
                           ?>
 
-                           <select name="pet_type" class="form-control" required="" >
+                           <select id="pet_type" name="pet_type" class="form-control" required="" >
                                   <option value="">Pet Type</option>
                                   <?php foreach($all_pettype as $pettype):?>
                                     
@@ -77,7 +83,7 @@
 
 
 
-                           <textarea class="form-control textareas" name="breed_description"></textarea>
+                           <textarea class="form-control textareas" id="breed_description" name="breed_description"></textarea>
                        </div>   
               </div>
 
@@ -113,4 +119,41 @@
 
   <script type="text/javascript">
     
+  $(function(){
+
+    function reload(){
+     
+        setTimeout(function(){ 
+
+            $(".display-success").fadeOut("fast");
+            location.reload();
+             }, 2000);
+    }
+
+    $(document).on('submit', '#addPetBreed', function(event){
+      
+      event.preventDefault();
+      //$('#action').attr('disabled', 'disabled');
+      var form_data = new FormData(this);
+      $.ajax({
+        method:"POST",
+        url:'<?php echo site_url()?>pet_management/add_pet_breed',
+        data:form_data,
+        //dataType: 'json',
+        contentType: false,
+        cache: false,
+        processData:false,
+        success:function(data){
+        
+
+            $(".display-success").css("display","block");
+            $(".success-message").html("<p>New Pet Breed has been added successfully </p>");
+            reload();
+        }
+
+      });
+    });
+
+
+  });
   </script>

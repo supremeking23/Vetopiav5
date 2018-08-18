@@ -12,10 +12,10 @@ class Customer_Management extends CI_Model {
     }
 
 
-    public function change_state_customer($customer_table_id,$data){
+   /* public function change_state_customer($customer_table_id,$data){
       $this->db->where('customer_table_id', $customer_table_id);
       $this->db->update('tbl_customers', $data);
-    }
+    }*/
 
 
    

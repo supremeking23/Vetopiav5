@@ -77,14 +77,12 @@
           <?php }?>
 
 
-           <?php if ($this->session->flashdata('change_state_admin_success')) { ?>
 
-            <div class="alert alert-success display-success">
+            <div class="alert alert-success display-success_change_status_admin" style="display: none">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <p> <?php echo $this->session->flashdata('change_state_admin_success'); ?> </p>
-            </div>
+               <div class="success-message_change_status_admin"></div>
+            </div> 
 
-          <?php }?>
 
 
 
@@ -128,21 +126,19 @@
                     <?php if($this->session->userdata('account_type') == "Super Admin"):?>
                      <td>
                       <?php if($this->session->userdata('account_type') != $admins->admin_type):?>
-                       <form action="<?php echo site_url()?>user_management/update_state_admin" method="POST">
+                          <div class="row">
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                  <div class="checkbox">
+                                    <label class="switch">
 
-                          <?php if($admins->is_active == "Active"){
-
-                                $btn_status = "btn-primary";
-                          }else{
-
-                              $btn_status = "btn-danger";
-                          }?>
-                           
-                           <input type="submit" name="current_state" value="<?php echo $admins->is_active?>" class="btn btn-flat <?php echo $btn_status;?> btn-sm">
-
-                           <input type="hidden" name="change_state_user" value="<?php echo $admins->admin_table_id;?>">
-
-                       </form>
+                                      <input type="checkbox" class="status_changer" data-admintableid="<?php echo $admins->admin_table_id;?>" data-adminid="<?php echo $admins->admin_id;?>" data-status="<?php echo $admins->admin_status?>" data-adminname=" <?php echo $admins->firstname .' '. $admins->middlename .' '. $admins->lastname;?>" <?php echo ($admins->admin_status == "Active") ?  "checked": ""; ?> > 
+                                      <span class="slider round"></span>
+                                    </label>
+                                  </div>
+                                </div>    
+                            </div>
+                          </div>                       
                      <?php endif;?>
                     </td>
                     <?php endif;?>
@@ -190,7 +186,7 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Beta Version</b> 
+
     </div>
     <strong>Copyright &copy; <?php echo date('Y');?>  All rights
     reserved.
@@ -219,33 +215,47 @@
 <!-- page script -->
 <script>
 
-      $(function(){
+  $(function(){
 
-        //all are not use
 
-        var check_status = document.querySelector('#check_status').addEventListener('click',function(){
-        // alert('ivan');
-        //alert(check_status.val());
-    });
-      
+   //refresh after 2 seconds
+    function reload(){
+     
+      setTimeout(function(){ 
 
-        function removeSuccessMessage() {
-          setTimeout(function(){ 
-
-          $(".display-success").fadeOut("slow");
+          $(".display-success").fadeOut("fast");
           location.reload();
            }, 2000);
-         }
+    }  
 
+    $('.status_changer').on("change",function(){
+     
+      var status    = $(this).data("status");
+      var admin_table_id = $(this).data("admintableid");
+      var admin_name = $(this).data("adminname");
+      var admin_id = $(this).data("adminid");
 
-          //removeSuccessMessage();
+      var new_status = "";
+      if(status == "Active"){
+          new_status = "Inactive";
+      }else{
+          new_status = "Active";
+      }
+      //alert('status is ' + libraryid);
+      $.ajax({
+          url : "<?php echo site_url('user_management/change_status_admin');?>",
+          method : "POST",
 
-
-         //passwordChecker();
-
-         //addAdmin();
+          data : {admin_table_id: admin_table_id,admin_id: admin_id,status:new_status,admin_name:admin_name},
+          success: function(data){
+             $(".display-success_change_status_admin").css("display","block");
+             $(".success-message_change_status_admin").html("<p>Admin " +admin_name + " status has been updated to "+ new_status  +"</p>");
+             reload();
+          }
       });
-
+    });  
+  });
+      
 </script>
 
 

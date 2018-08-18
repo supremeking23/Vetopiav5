@@ -213,6 +213,10 @@
 
                     </div>  
 
+                    <?php 
+                      if($this->session->userdata('account_type') == "Super Admin"):
+                      
+                      ?>        
 
                     <div class="row">
 
@@ -231,7 +235,7 @@
 
                     </div>
 
-
+                  <?php endif;?>
                     
 
                    

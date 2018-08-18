@@ -152,7 +152,15 @@
                   </div>
                   <!-- /.tab-pane -->
                    <div class=" tab-pane" id="logHistory">
-                        <table  class="datatablelogadmin table table-bordered table-striped">
+                        <?php 
+                          $datatable = "";
+                          if($this->session->userdata('account_type') == "Super Admin"){
+                            $datatable = "datatablelogadmin";
+                          }else{
+                            $datatable = "datatables";
+                          }
+                          ?>
+                        <table  class="<?php echo $datatable;?> table table-bordered table-striped">
                           <thead>
                           <tr>
                             <th>Log Date</th>

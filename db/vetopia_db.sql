@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2018 at 05:56 AM
+-- Generation Time: Aug 17, 2018 at 03:00 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -110,18 +110,20 @@ CREATE TABLE `tbl_appointments` (
   `complaints` text NOT NULL,
   `cancel_reason` text NOT NULL,
   `cancel_date` datetime NOT NULL,
-  `tapos_na` int(11) NOT NULL
+  `is_finished` int(11) NOT NULL,
+  `date_confirmed` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_appointments`
 --
 
-INSERT INTO `tbl_appointments` (`appointment_table_id`, `appointment_id`, `customer_id`, `customer_name`, `preferredDate`, `preferredtime`, `pet_name`, `pet_id`, `pettype`, `petbreed`, `age`, `is_adult`, `appointment_status`, `date_requested`, `vet_id`, `vet_in_charge`, `complaints`, `cancel_reason`, `cancel_date`, `tapos_na`) VALUES
-(39, '#1807261204481', 'C1807251258419', 'Apple Salad David', '2018-07-26', '11:00 am - 12: 00 nn', 'Steel', 'P1807250114188', 'Dog', 'German Shepherd', '6 Months old', 0, 'Done', '2018-07-26 00:04:48', 'V1806231110251', 'Dominic Lanz Uy', 'ivan', '', '0000-00-00 00:00:00', 1),
-(40, '#1807260430180', 'C1807251258419', 'Apple Salad David', '2018-07-26', '12:00 nn - 1:00 pm', 'Steel', 'P1807250114188', 'Dog', 'German Shepherd', '6 Months old', 0, 'Done', '2018-07-26 16:30:18', 'V1806231110251', 'Dominic Lanz Uy', 'dasdadadasd', '', '0000-00-00 00:00:00', 1),
-(41, '#1807260437012', 'C1807251258419', 'Apple Salad David', '2018-07-26', '4: 00 pm - 5: 00pm', 'Steel', 'P1807250114188', 'Dog', 'German Shepherd', '6 Months old', 0, 'Cancelled', '2018-07-26 16:37:01', 'V1806231110251', 'Dominic Lanz Uy', 'dasdsdadsdsddddsds', 'wala na finish na\r\n                              \r\n                            ', '2018-07-26 16:37:14', 0),
-(42, '#1808020112256', 'C1807251258419', 'Apple Salad David', '2018-08-02', '4: 00 pm - 5: 00pm', 'Apple', 'P1807251259295', 'Dog', 'German Shepherd', '1 Years old', 1, 'Approved', '2018-08-02 01:12:25', 'V1806231110251', 'Dominic Lanz Uy', 'Pa groom :D', '', '0000-00-00 00:00:00', 0);
+INSERT INTO `tbl_appointments` (`appointment_table_id`, `appointment_id`, `customer_id`, `customer_name`, `preferredDate`, `preferredtime`, `pet_name`, `pet_id`, `pettype`, `petbreed`, `age`, `is_adult`, `appointment_status`, `date_requested`, `vet_id`, `vet_in_charge`, `complaints`, `cancel_reason`, `cancel_date`, `is_finished`, `date_confirmed`) VALUES
+(39, '#1807261204481', 'C1807251258419', 'Apple Salad David', '2018-07-26', '11:00 am - 12: 00 nn', 'Steel', 'P1807250114188', 'Dog', 'German Shepherd', '6 Months old', 0, 'Done', '2018-07-26 00:04:48', 'V1806231110251', 'Dominic Lanz Uy', 'ivan', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00'),
+(40, '#1807260430180', 'C1807251258419', 'Apple Salad David', '2018-07-26', '12:00 nn - 1:00 pm', 'Steel', 'P1807250114188', 'Dog', 'German Shepherd', '6 Months old', 0, 'Done', '2018-07-26 16:30:18', 'V1806231110251', 'Dominic Lanz Uy', 'dasdadadasd', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00'),
+(41, '#1807260437012', 'C1807251258419', 'Apple Salad David', '2018-07-26', '4: 00 pm - 5: 00pm', 'Steel', 'P1807250114188', 'Dog', 'German Shepherd', '6 Months old', 0, 'Cancelled', '2018-07-26 16:37:01', 'V1806231110251', 'Dominic Lanz Uy', 'dasdsdadsdsddddsds', 'wala na finish na\r\n                              \r\n                            ', '2018-07-26 16:37:14', 0, '0000-00-00 00:00:00'),
+(42, '#1808020112256', 'C1807251258419', 'Apple Salad David', '2018-08-02', '4: 00 pm - 5: 00pm', 'Apple', 'P1807251259295', 'Dog', 'German Shepherd', '1 Years old', 1, 'Approved', '2018-08-02 01:12:25', 'V1806231110251', 'Dominic Lanz Uy', 'Pa groom :D', '', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
+(43, '#1808150214051', 'C1807251258419', 'Apple Salad David', '2018-08-16', '9:00 am - 10:00 am', 'Apple', 'P1807251259295', 'Dog', 'German Shepherd', '1 Years old', 1, 'Approved', '2018-08-15 02:14:05', 'V1806251201455', 'Ben Simon Shawn Simmons', 'hahahaha', '', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -149,7 +151,8 @@ INSERT INTO `tbl_bannerimages` (`bannerimage_id`, `settings_id`, `banner_image`,
 (5, 1, 'ram_pic2.PNG', 'sadsd', 'sdadsad'),
 (6, 1, 'ram_pic3.PNG', 'ivansdsda', 'yausdsd'),
 (7, 1, 'ram_pic4.PNG', 'ivansdasdsd', '4545453454ffsf'),
-(8, 1, 'ram_pic5.PNG', 'dsdas', 'sadsdsd');
+(8, 1, 'ram_pic5.PNG', 'dsdas', 'sadsdsd'),
+(9, 1, 'carousel-stateoftheart.jpg', 'Doctor Strange', 'Deads na');
 
 -- --------------------------------------------------------
 
@@ -1487,7 +1490,936 @@ INSERT INTO `tbl_logs` (`log_id`, `log_user`, `log_usertype`, `log_userID`, `log
 (2260, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-13 22:15:49'),
 (2261, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-13 22:16:14'),
 (2262, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-13 22:16:24'),
-(2263, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-13 22:16:54');
+(2263, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-13 22:16:54'),
+(2264, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-08-14 14:19:02'),
+(2265, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 14:19:02'),
+(2266, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 14:21:48'),
+(2267, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Edit System Information', '2018-08-14 14:21:50'),
+(2268, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 14:21:51'),
+(2269, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Edit System Information', '2018-08-14 14:21:52'),
+(2270, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 14:21:52'),
+(2271, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Edit System Information', '2018-08-14 14:21:55'),
+(2272, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 14:21:55'),
+(2273, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Edit About us content', '2018-08-14 14:22:29'),
+(2274, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 14:22:31'),
+(2275, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 14:37:43'),
+(2276, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 14:40:11'),
+(2277, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 14:52:49'),
+(2278, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 14:52:57'),
+(2279, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 15:21:26'),
+(2280, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 15:21:59'),
+(2281, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 15:22:07'),
+(2282, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 15:22:26'),
+(2283, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 15:22:57'),
+(2284, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 15:23:09'),
+(2285, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 15:23:31'),
+(2286, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 15:26:36'),
+(2287, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 15:26:54'),
+(2288, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 15:27:04'),
+(2289, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 15:27:12'),
+(2290, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 15:27:23'),
+(2291, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 15:28:05'),
+(2292, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 15:28:43'),
+(2293, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 15:28:51'),
+(2294, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 15:29:08'),
+(2295, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 15:29:58'),
+(2296, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 16:20:58'),
+(2297, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 16:21:51'),
+(2298, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Edit System Information', '2018-08-14 16:23:12'),
+(2299, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 16:23:12'),
+(2300, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Edit System Information', '2018-08-14 16:23:16'),
+(2301, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 16:23:16'),
+(2302, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Edit System Information', '2018-08-14 16:23:22'),
+(2303, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 16:23:23'),
+(2304, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Clinic Services', '2018-08-14 16:24:18'),
+(2305, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Sales Report', '2018-08-14 16:25:56'),
+(2306, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Sales Report', '2018-08-14 16:34:16'),
+(2307, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 16:34:17'),
+(2308, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-14 16:47:11'),
+(2309, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-08-14 22:38:03'),
+(2310, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 22:38:03');
+INSERT INTO `tbl_logs` (`log_id`, `log_user`, `log_usertype`, `log_userID`, `log_action`, `log_date`) VALUES
+(2311, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-14 22:38:06'),
+(2312, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 22:38:51'),
+(2313, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:21:12'),
+(2314, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:21:33'),
+(2315, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:21:43'),
+(2316, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:26:27'),
+(2317, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:27:07'),
+(2318, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:27:09'),
+(2319, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:28:46'),
+(2320, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:30:08'),
+(2321, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:30:42'),
+(2322, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:30:44'),
+(2323, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:31:44'),
+(2324, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:32:37'),
+(2325, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:34:00'),
+(2326, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-14 23:34:02'),
+(2327, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-14 23:34:22'),
+(2328, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:34:23'),
+(2329, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:35:17'),
+(2330, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-14 23:35:18'),
+(2331, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer list', '2018-08-14 23:35:38'),
+(2332, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-08-14 23:35:40'),
+(2333, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-14 23:35:51'),
+(2334, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-14 23:39:57'),
+(2335, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:39:58'),
+(2336, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:40:14'),
+(2337, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:40:36'),
+(2338, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:40:59'),
+(2339, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:41:56'),
+(2340, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-14 23:41:58'),
+(2341, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-14 23:43:18'),
+(2342, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-14 23:44:25'),
+(2343, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:44:37'),
+(2344, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-14 23:44:48'),
+(2345, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:44:50'),
+(2346, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:45:41'),
+(2347, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-14 23:45:43'),
+(2348, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-14 23:46:20'),
+(2349, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-14 23:46:29'),
+(2350, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-14 23:47:18'),
+(2351, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:47:21'),
+(2352, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:47:47'),
+(2353, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:48:42'),
+(2354, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-14 23:48:44'),
+(2355, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:48:46'),
+(2356, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:49:24'),
+(2357, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:49:39'),
+(2358, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:49:44'),
+(2359, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-14 23:59:29'),
+(2360, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:08:10'),
+(2361, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:08:25'),
+(2362, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:08:44'),
+(2363, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:08:57'),
+(2364, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:09:09'),
+(2365, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:09:50'),
+(2366, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:10:00'),
+(2367, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:10:24'),
+(2368, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:10:32'),
+(2369, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:10:36'),
+(2370, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:10:37'),
+(2371, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:11:01'),
+(2372, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:11:18'),
+(2373, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:11:36'),
+(2374, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:11:52'),
+(2375, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:12:02'),
+(2376, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:12:23'),
+(2377, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:13:02'),
+(2378, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:14:05'),
+(2379, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:14:20'),
+(2380, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:14:49'),
+(2381, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:18:05'),
+(2382, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:22:08'),
+(2383, 'Jackies Lee Chan', 'Staff', 'S1806231153417', 'User Login', '2018-08-15 00:22:33'),
+(2384, 'Jackies Lee Chan', 'Staff', 'S1806231153417', 'View POS', '2018-08-15 00:22:33'),
+(2385, 'Jackies Lee Chan', 'Staff', 'S1806231153417', 'View POS', '2018-08-15 00:23:07'),
+(2386, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:23:12'),
+(2387, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-08-15 00:23:27'),
+(2388, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-08-15 00:23:31'),
+(2389, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-08-15 00:23:37'),
+(2390, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-15 00:23:39'),
+(2391, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-08-15 00:23:41'),
+(2392, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-15 00:24:12'),
+(2393, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-08-15 00:24:14'),
+(2394, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-15 00:24:29'),
+(2395, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 00:24:31'),
+(2396, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 00:26:31'),
+(2397, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-15 00:26:36'),
+(2398, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-08-15 00:26:37'),
+(2399, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-08-15 00:30:51'),
+(2400, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-08-15 00:31:18'),
+(2401, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-08-15 00:31:33'),
+(2402, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-08-15 00:31:37'),
+(2403, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-15 00:32:28'),
+(2404, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 00:32:30'),
+(2405, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 00:34:06'),
+(2406, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 00:34:25'),
+(2407, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-15 00:34:27'),
+(2408, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 00:34:28'),
+(2409, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 00:34:30'),
+(2410, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 00:34:30'),
+(2411, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 00:35:09'),
+(2412, 'Jackies Lee Chan', 'Staff', 'S1806231153417', 'View POS', '2018-08-15 00:35:21'),
+(2413, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 00:35:23'),
+(2414, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 00:35:34'),
+(2415, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 00:35:36'),
+(2416, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Clinic Services', '2018-08-15 00:35:52'),
+(2417, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 00:38:28'),
+(2418, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-08-15 00:38:29'),
+(2419, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-08-15 00:39:40'),
+(2420, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-08-15 00:39:54'),
+(2421, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-08-15 00:40:04'),
+(2422, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-15 00:43:06'),
+(2423, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-08-15 00:43:07'),
+(2424, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-08-15 00:45:18'),
+(2425, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 00:45:24'),
+(2426, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-08-15 00:45:26'),
+(2427, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 00:45:35'),
+(2428, 'Jackies Lee Chan', 'Staff', 'S1806231153417', 'User Logout', '2018-08-15 00:47:47'),
+(2429, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-08-15 00:52:12'),
+(2430, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-15 00:52:32'),
+(2431, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-08-15 00:52:33'),
+(2432, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 00:52:36'),
+(2433, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-08-15 00:52:38'),
+(2434, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-08-15 00:52:41'),
+(2435, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-08-15 00:52:43'),
+(2436, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 00:52:52'),
+(2437, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-08-15 00:52:54'),
+(2438, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-08-15 00:53:11'),
+(2439, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-15 00:53:17'),
+(2440, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-15 00:53:22'),
+(2441, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-15 00:53:48'),
+(2442, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 00:53:51'),
+(2443, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-08-15 00:53:53'),
+(2444, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-08-15 00:54:06'),
+(2445, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-08-15 00:54:25'),
+(2446, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 00:55:44'),
+(2447, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-08-15 00:55:46'),
+(2448, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-15 00:55:49'),
+(2449, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-15 00:57:26'),
+(2450, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-08-15 00:57:28'),
+(2451, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 00:57:34'),
+(2452, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-08-15 00:57:36'),
+(2453, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-08-15 00:57:55'),
+(2454, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-08-15 00:57:58'),
+(2455, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-08-15 00:57:59'),
+(2456, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 00:58:05'),
+(2457, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-15 00:58:07'),
+(2458, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-08-15 00:58:11'),
+(2459, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 01:01:36'),
+(2460, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-08-15 01:01:38'),
+(2461, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-15 01:01:40'),
+(2462, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-08-15 01:01:41'),
+(2463, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 01:01:53'),
+(2464, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-08-15 01:01:55'),
+(2465, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-08-15 01:02:13'),
+(2466, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 01:02:15'),
+(2467, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-08-15 01:02:17'),
+(2468, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-08-15 01:02:18'),
+(2469, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-08-15 01:07:19'),
+(2470, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-08-15 01:07:21'),
+(2471, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-08-15 01:08:10'),
+(2472, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-08-15 01:08:21'),
+(2473, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 01:08:21'),
+(2474, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-08-15 01:08:24'),
+(2475, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-08-15 01:08:28'),
+(2476, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-08-15 01:09:03'),
+(2477, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-08-15 01:09:33'),
+(2478, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-08-15 01:09:39'),
+(2479, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-08-15 01:10:38'),
+(2480, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-08-15 01:10:40'),
+(2481, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 01:10:44'),
+(2482, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-08-15 01:10:45'),
+(2483, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-08-15 01:10:48'),
+(2484, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-08-15 01:10:50'),
+(2485, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-08-15 01:11:14'),
+(2486, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-15 01:11:51'),
+(2487, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 01:11:52'),
+(2488, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-08-15 01:11:54'),
+(2489, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-08-15 01:11:59'),
+(2490, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-15 01:12:07'),
+(2491, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-08-15 01:12:09'),
+(2492, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-08-15 01:12:57'),
+(2493, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 01:13:08'),
+(2494, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-08-15 01:13:10'),
+(2495, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-08-15 01:13:41'),
+(2496, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-08-15 01:13:43'),
+(2497, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-15 01:13:55'),
+(2498, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 01:13:57'),
+(2499, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-15 01:13:59'),
+(2500, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-08-15 01:14:00'),
+(2501, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Sales Report', '2018-08-15 01:14:41'),
+(2502, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-15 01:14:53'),
+(2503, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-08-15 01:14:55'),
+(2504, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-15 01:15:14'),
+(2505, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View logs', '2018-08-15 01:16:09'),
+(2506, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View logs', '2018-08-15 01:17:24'),
+(2507, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-15 01:19:50'),
+(2508, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-08-15 01:19:51'),
+(2509, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-08-15 01:19:54'),
+(2510, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-08-15 01:20:19'),
+(2511, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 01:20:19'),
+(2512, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-15 01:20:22'),
+(2513, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-08-15 01:20:23'),
+(2514, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-08-15 01:21:26'),
+(2515, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-08-15 01:22:28'),
+(2516, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 01:23:37'),
+(2517, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-08-15 01:23:39'),
+(2518, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-08-15 01:23:51'),
+(2519, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-08-15 01:23:55'),
+(2520, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin list', '2018-08-15 01:24:01'),
+(2521, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 01:24:02'),
+(2522, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-08-15 01:26:12'),
+(2523, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-08-15 01:26:14'),
+(2524, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-15 01:26:18'),
+(2525, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-08-15 01:26:19'),
+(2526, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-08-15 01:26:22'),
+(2527, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-08-15 01:26:23'),
+(2528, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-08-15 01:26:55'),
+(2529, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-15 01:27:01'),
+(2530, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin list', '2018-08-15 01:27:09'),
+(2531, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 01:27:11'),
+(2532, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 01:32:15'),
+(2533, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 01:32:30'),
+(2534, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 01:32:41'),
+(2535, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin profile', '2018-08-15 01:32:46'),
+(2536, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin profile', '2018-08-15 01:33:10'),
+(2537, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin list', '2018-08-15 01:33:17'),
+(2538, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 01:33:19'),
+(2539, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 01:34:46'),
+(2540, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 01:36:04'),
+(2541, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 01:38:55'),
+(2542, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 01:39:10'),
+(2543, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 01:39:16'),
+(2544, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian list', '2018-08-15 01:39:23'),
+(2545, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin list', '2018-08-15 01:39:25'),
+(2546, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 01:39:26'),
+(2547, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin list', '2018-08-15 01:39:40'),
+(2548, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 01:39:42'),
+(2549, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 01:40:34'),
+(2550, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 01:41:12'),
+(2551, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 01:41:22'),
+(2552, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 01:42:41'),
+(2553, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 01:43:07'),
+(2554, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin list', '2018-08-15 01:43:20'),
+(2555, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 01:43:22'),
+(2556, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian list', '2018-08-15 01:43:26'),
+(2557, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-08-15 01:43:28'),
+(2558, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin list', '2018-08-15 01:43:30'),
+(2559, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer list', '2018-08-15 01:45:04'),
+(2560, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-08-15 01:45:05'),
+(2561, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-08-15 01:46:02'),
+(2562, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-08-15 01:46:19'),
+(2563, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-08-15 01:47:02'),
+(2564, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-08-15 01:47:03'),
+(2565, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-08-15 01:47:38'),
+(2566, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-08-15 01:47:50'),
+(2567, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-08-15 01:49:45'),
+(2568, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-08-15 01:51:37'),
+(2569, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-08-15 01:55:06'),
+(2570, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-08-15 01:57:48'),
+(2571, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-08-15 01:58:14'),
+(2572, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-08-15 01:58:44'),
+(2573, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-08-15 02:00:23'),
+(2574, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin list', '2018-08-15 02:00:24'),
+(2575, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 02:00:26'),
+(2576, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer list', '2018-08-15 02:00:59'),
+(2577, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer list', '2018-08-15 02:01:00'),
+(2578, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-08-15 02:01:01'),
+(2579, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-08-15 02:03:37'),
+(2580, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian list', '2018-08-15 02:03:38'),
+(2581, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-08-15 02:03:40'),
+(2582, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-08-15 02:04:22'),
+(2583, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian list', '2018-08-15 02:04:24'),
+(2584, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-08-15 02:04:25'),
+(2585, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Staff List', '2018-08-15 02:07:11'),
+(2586, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Staff Details', '2018-08-15 02:07:13'),
+(2587, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin list', '2018-08-15 02:07:46'),
+(2588, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 02:07:48'),
+(2589, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian list', '2018-08-15 02:07:54'),
+(2590, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-08-15 02:07:56'),
+(2591, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin list', '2018-08-15 02:08:23'),
+(2592, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 02:08:25'),
+(2593, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin list', '2018-08-15 02:08:27'),
+(2594, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 02:08:28'),
+(2595, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin list', '2018-08-15 02:08:30'),
+(2596, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-15 02:08:32'),
+(2597, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-08-15 02:12:07'),
+(2598, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-08-15 02:12:09'),
+(2599, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Staff List', '2018-08-15 02:12:14'),
+(2600, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Staff Details', '2018-08-15 02:12:15'),
+(2601, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian list', '2018-08-15 02:12:18'),
+(2602, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-08-15 02:12:19'),
+(2603, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-08-15 02:12:31'),
+(2604, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin list', '2018-08-15 02:12:37'),
+(2605, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Staff List', '2018-08-15 02:12:38'),
+(2606, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer list', '2018-08-15 02:12:39'),
+(2607, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-08-15 02:12:40'),
+(2608, 'Apple Salad David', 'Customer', 'C1807251258419', 'User Login', '2018-08-15 02:13:56'),
+(2609, 'Apple Salad David', 'Customer', 'C1807251258419', 'Send Appointment Request', '2018-08-15 02:14:05'),
+(2610, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-08-15 02:14:08'),
+(2611, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-15 02:14:12'),
+(2612, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-15 02:14:17'),
+(2613, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-15 02:15:34'),
+(2614, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-15 02:15:57'),
+(2615, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-15 02:23:34'),
+(2616, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 02:23:36'),
+(2617, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 02:23:53'),
+(2618, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 02:24:25'),
+(2619, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 02:24:37'),
+(2620, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 02:24:38'),
+(2621, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-08-15 02:25:12'),
+(2622, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 02:25:12'),
+(2623, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 02:25:14'),
+(2624, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 03:04:39'),
+(2625, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-08-15 13:00:48'),
+(2626, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 13:00:48'),
+(2627, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-15 13:00:52'),
+(2628, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-15 13:00:58'),
+(2629, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 13:01:02'),
+(2630, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-15 13:01:05'),
+(2631, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 13:11:14'),
+(2632, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 14:15:45'),
+(2633, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 14:17:45'),
+(2634, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 14:23:52'),
+(2635, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 14:24:28'),
+(2636, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 14:25:08'),
+(2637, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 14:25:46'),
+(2638, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 14:26:07'),
+(2639, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 14:41:15'),
+(2640, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 14:41:43'),
+(2641, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 14:42:18'),
+(2642, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 14:42:51'),
+(2643, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-15 14:45:14'),
+(2644, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 14:45:53'),
+(2645, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 14:46:55'),
+(2646, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 14:47:18'),
+(2647, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 14:47:49'),
+(2648, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 14:49:02'),
+(2649, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 14:50:46'),
+(2650, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 14:50:58'),
+(2651, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 14:51:34'),
+(2652, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 14:52:27'),
+(2653, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-08-15 14:52:42'),
+(2654, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 14:52:42'),
+(2655, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 14:52:44'),
+(2656, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 14:54:07'),
+(2657, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 14:54:21'),
+(2658, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:05:21'),
+(2659, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:06:45'),
+(2660, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:07:37'),
+(2661, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:07:58'),
+(2662, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:08:57'),
+(2663, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:10:31'),
+(2664, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:18:39'),
+(2665, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:22:20'),
+(2666, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:24:34'),
+(2667, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:24:55'),
+(2668, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:26:49'),
+(2669, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:27:17'),
+(2670, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:27:23'),
+(2671, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:29:27'),
+(2672, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:29:37'),
+(2673, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:29:54'),
+(2674, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:30:50'),
+(2675, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:31:42'),
+(2676, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:32:03'),
+(2677, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:34:06'),
+(2678, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:36:05'),
+(2679, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:36:33'),
+(2680, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:37:15'),
+(2681, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:48:59'),
+(2682, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:50:54'),
+(2683, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:51:20'),
+(2684, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:55:21'),
+(2685, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:55:27'),
+(2686, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 15:56:42'),
+(2687, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 16:04:40'),
+(2688, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 16:05:29'),
+(2689, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 16:06:40'),
+(2690, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 16:10:17'),
+(2691, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 16:10:29'),
+(2692, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 16:20:11'),
+(2693, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 16:21:23'),
+(2694, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 16:25:21'),
+(2695, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 16:27:27'),
+(2696, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 16:28:01'),
+(2697, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 16:28:59'),
+(2698, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 16:29:40'),
+(2699, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 16:33:04'),
+(2700, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 16:34:09'),
+(2701, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 16:34:50'),
+(2702, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 16:35:50'),
+(2703, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 16:37:36');
+INSERT INTO `tbl_logs` (`log_id`, `log_user`, `log_usertype`, `log_userID`, `log_action`, `log_date`) VALUES
+(2704, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 16:39:37'),
+(2705, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 16:42:29'),
+(2706, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 16:43:09'),
+(2707, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 16:46:26'),
+(2708, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 17:20:05'),
+(2709, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 17:28:05'),
+(2710, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 17:29:09'),
+(2711, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add article in Pet Health Care Library', '2018-08-15 17:29:21'),
+(2712, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 17:30:02'),
+(2713, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add article in Pet Health Care Library', '2018-08-15 17:30:12'),
+(2714, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 17:30:56'),
+(2715, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add article in Pet Health Care Library', '2018-08-15 17:31:08'),
+(2716, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 17:31:54'),
+(2717, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add article in Pet Health Care Library', '2018-08-15 17:32:07'),
+(2718, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 17:32:40'),
+(2719, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add article in Pet Health Care Library', '2018-08-15 17:32:49'),
+(2720, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 17:50:03'),
+(2721, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add article in Pet Health Care Library', '2018-08-15 17:50:21'),
+(2722, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 17:51:28'),
+(2723, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 17:56:49'),
+(2724, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add article in Pet Health Care Library', '2018-08-15 17:57:03'),
+(2725, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 17:59:01'),
+(2726, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add article in Pet Health Care Library', '2018-08-15 17:59:15'),
+(2727, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 17:59:17'),
+(2728, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 18:17:48'),
+(2729, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 18:19:03'),
+(2730, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 18:25:43'),
+(2731, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 18:26:08'),
+(2732, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 18:27:22'),
+(2733, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 18:29:43'),
+(2734, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 18:30:06'),
+(2735, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 18:30:45'),
+(2736, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 18:32:11'),
+(2737, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 18:32:31'),
+(2738, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 19:05:41'),
+(2739, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 19:05:57'),
+(2740, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 19:05:58'),
+(2741, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 19:06:58'),
+(2742, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 19:07:35'),
+(2743, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 19:07:42'),
+(2744, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-08-15 23:08:56'),
+(2745, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 23:08:56'),
+(2746, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:09:15'),
+(2747, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:09:48'),
+(2748, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:18:43'),
+(2749, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:18:47'),
+(2750, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:19:13'),
+(2751, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of one article in the pet health care library', '2018-08-15 23:19:15'),
+(2752, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:19:20'),
+(2753, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of one article in the pet health care library', '2018-08-15 23:19:23'),
+(2754, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of one article in the pet health care library', '2018-08-15 23:19:37'),
+(2755, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:19:40'),
+(2756, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:20:03'),
+(2757, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of one article in the pet health care library', '2018-08-15 23:20:04'),
+(2758, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:20:04'),
+(2759, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:20:48'),
+(2760, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of one article in the pet health care library', '2018-08-15 23:20:49'),
+(2761, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:20:49'),
+(2762, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:21:55'),
+(2763, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of one article in the pet health care library', '2018-08-15 23:22:01'),
+(2764, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:22:01'),
+(2765, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of one article in the pet health care library', '2018-08-15 23:22:04'),
+(2766, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:22:04'),
+(2767, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of one article in the pet health care library', '2018-08-15 23:22:13'),
+(2768, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:22:13'),
+(2769, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:22:27'),
+(2770, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of one article in the pet health care library', '2018-08-15 23:22:29'),
+(2771, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:22:52'),
+(2772, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of one article in the pet health care library', '2018-08-15 23:22:54'),
+(2773, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 23:23:35'),
+(2774, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View logs', '2018-08-15 23:23:40'),
+(2775, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:25:16'),
+(2776, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of one article in the pet health care library', '2018-08-15 23:25:19'),
+(2777, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:26:04'),
+(2778, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of one article in the pet health care library', '2018-08-15 23:26:07'),
+(2779, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:26:18'),
+(2780, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:26:38'),
+(2781, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:26:42'),
+(2782, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:26:44'),
+(2783, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:26:55'),
+(2784, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of one article in the pet health care library', '2018-08-15 23:26:58'),
+(2785, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:26:59'),
+(2786, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:28:14'),
+(2787, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of one article in the pet health care library', '2018-08-15 23:28:17'),
+(2788, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:28:19'),
+(2789, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of one article in the pet health care library', '2018-08-15 23:28:25'),
+(2790, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:28:28'),
+(2791, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:32:08'),
+(2792, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of  article dadsad to Inactive', '2018-08-15 23:32:09'),
+(2793, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:32:11'),
+(2794, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:32:19'),
+(2795, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of  article dasdsds to Inactive', '2018-08-15 23:32:20'),
+(2796, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:32:22'),
+(2797, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of  article DASDASDASD to Inactive', '2018-08-15 23:32:24'),
+(2798, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:32:26'),
+(2799, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:33:13'),
+(2800, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of  article DASDASDASD to Active', '2018-08-15 23:33:14'),
+(2801, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:33:16'),
+(2802, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of  article dadsad to Active', '2018-08-15 23:33:18'),
+(2803, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:33:20'),
+(2804, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:40:15'),
+(2805, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:41:16'),
+(2806, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:43:21'),
+(2807, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:43:25'),
+(2808, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of  article dasdsds to Active', '2018-08-15 23:43:28'),
+(2809, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:43:30'),
+(2810, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of  article dadada to Inactive', '2018-08-15 23:43:33'),
+(2811, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:43:35'),
+(2812, 'Apple Salad David', 'Customer', 'C1807251258419', 'User Login', '2018-08-15 23:54:28'),
+(2813, 'Apple Salad David', 'Customer', 'C1807251258419', 'View Pet Health Library', '2018-08-15 23:54:36'),
+(2814, 'Apple Salad David', 'Customer', 'C1807251258419', 'View Pet Health Library', '2018-08-15 23:55:02'),
+(2815, 'Apple Salad David', 'Customer', 'C1807251258419', 'View Pet Health Library', '2018-08-15 23:55:16'),
+(2816, 'Apple Salad David', 'Customer', 'C1807251258419', 'View Pet Health Library', '2018-08-15 23:55:20'),
+(2817, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:56:44'),
+(2818, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-15 23:56:48'),
+(2819, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:56:53'),
+(2820, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-15 23:56:54'),
+(2821, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-15 23:57:14'),
+(2822, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-15 23:57:15'),
+(2823, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-15 23:57:17'),
+(2824, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-15 23:57:25'),
+(2825, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-15 23:57:27'),
+(2826, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-16 00:54:12'),
+(2827, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:06:32'),
+(2828, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:07:48'),
+(2829, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:08:15'),
+(2830, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:08:57'),
+(2831, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:09:10'),
+(2832, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:09:23'),
+(2833, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:10:14'),
+(2834, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:10:16'),
+(2835, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:10:25'),
+(2836, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:10:43'),
+(2837, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:10:44'),
+(2838, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:10:51'),
+(2839, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:10:52'),
+(2840, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:11:47'),
+(2841, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:13:03'),
+(2842, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:13:15'),
+(2843, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:13:26'),
+(2844, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:13:31'),
+(2845, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:13:59'),
+(2846, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:16:19'),
+(2847, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:19:05'),
+(2848, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:21:48'),
+(2849, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:21:50'),
+(2850, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:21:51'),
+(2851, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-16 01:21:56'),
+(2852, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:21:58'),
+(2853, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:22:34'),
+(2854, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-16 01:22:44'),
+(2855, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add article in Pet Health Care Library', '2018-08-16 01:23:18'),
+(2856, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-16 01:23:21'),
+(2857, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:23:28'),
+(2858, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:26:04'),
+(2859, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:27:52'),
+(2860, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:32:25'),
+(2861, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:32:39'),
+(2862, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-16 01:33:34'),
+(2863, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:33:35'),
+(2864, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:33:56'),
+(2865, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-16 01:33:58'),
+(2866, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:33:59'),
+(2867, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-16 01:34:02'),
+(2868, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-16 01:34:06'),
+(2869, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:34:09'),
+(2870, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:34:12'),
+(2871, 'Apple Salad David', 'Customer', 'C1807251258419', 'View Pet Health Library', '2018-08-16 01:34:48'),
+(2872, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-16 01:34:52'),
+(2873, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:34:55'),
+(2874, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:36:28'),
+(2875, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:36:33'),
+(2876, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:37:54'),
+(2877, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:39:39'),
+(2878, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:39:52'),
+(2879, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:40:12'),
+(2880, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:41:15'),
+(2881, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:41:21'),
+(2882, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:46:18'),
+(2883, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:46:20'),
+(2884, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:50:22'),
+(2885, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:51:02'),
+(2886, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:52:25'),
+(2887, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 01:53:03'),
+(2888, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 02:09:45'),
+(2889, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-16 02:09:57'),
+(2890, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 02:09:58'),
+(2891, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Update Content of  article dasdsdasdsad', '2018-08-16 02:10:03'),
+(2892, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 02:10:05'),
+(2893, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 02:10:24'),
+(2894, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-16 02:10:28'),
+(2895, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 02:10:30'),
+(2896, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Update Content of  article Kennel Cough', '2018-08-16 02:10:40'),
+(2897, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 02:10:42'),
+(2898, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 02:16:09'),
+(2899, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 02:17:43'),
+(2900, 'Apple Salad David', 'Customer', 'C1807251258419', 'User Logout', '2018-08-16 02:25:47'),
+(2901, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 02:34:16'),
+(2902, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 02:35:19'),
+(2903, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 02:37:19'),
+(2904, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 02:38:01'),
+(2905, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 02:38:06'),
+(2906, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 02:38:35'),
+(2907, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 02:39:04'),
+(2908, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 02:39:28'),
+(2909, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add Content of  article Kennel Cough', '2018-08-16 02:39:37'),
+(2910, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 02:39:49'),
+(2911, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-16 02:42:11'),
+(2912, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 02:42:14'),
+(2913, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add Content of  article Kennel Cough', '2018-08-16 02:42:18'),
+(2914, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 02:42:54'),
+(2915, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add Content of  article Kennel Cough', '2018-08-16 02:42:57'),
+(2916, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 02:42:59'),
+(2917, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-08-16 09:56:01'),
+(2918, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-16 09:56:01'),
+(2919, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-16 09:56:04'),
+(2920, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 09:56:07'),
+(2921, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 10:03:19'),
+(2922, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-16 10:03:20'),
+(2923, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of  article Kennel Cough to Inactive', '2018-08-16 10:03:22'),
+(2924, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-16 10:03:24'),
+(2925, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 10:06:18'),
+(2926, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 10:09:56'),
+(2927, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 10:10:38'),
+(2928, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 10:30:35'),
+(2929, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 10:31:11'),
+(2930, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 10:31:50'),
+(2931, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add Content of  article ', '2018-08-16 10:31:53'),
+(2932, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 10:31:55'),
+(2933, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add Content of  article ', '2018-08-16 10:32:09'),
+(2934, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 10:32:11'),
+(2935, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add Content of  article Kennel Cough', '2018-08-16 10:32:14'),
+(2936, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 10:32:16'),
+(2937, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add Content of  article ', '2018-08-16 10:32:19'),
+(2938, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 10:32:21'),
+(2939, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View logs', '2018-08-16 10:42:28'),
+(2940, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View logs', '2018-08-16 10:44:44'),
+(2941, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-16 10:44:47'),
+(2942, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 10:44:48'),
+(2943, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 11:06:30'),
+(2944, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 11:06:49'),
+(2945, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-08-16 21:10:42'),
+(2946, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-16 21:10:42'),
+(2947, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-16 21:10:51'),
+(2948, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 21:10:53'),
+(2949, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 21:14:46'),
+(2950, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 21:14:55'),
+(2951, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 21:21:24'),
+(2952, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 21:30:36'),
+(2953, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 21:31:01'),
+(2954, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 21:31:36'),
+(2955, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 21:33:06'),
+(2956, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 21:34:01'),
+(2957, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 21:34:35'),
+(2958, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 21:35:37'),
+(2959, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add Website Link of  article Kennel Cough', '2018-08-16 21:35:41'),
+(2960, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 21:35:43'),
+(2961, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 21:36:05'),
+(2962, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add Website Link of  article Kennel Cough', '2018-08-16 21:36:14'),
+(2963, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 21:36:16'),
+(2964, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 21:36:40'),
+(2965, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Remove Link of  article Kennel Cough', '2018-08-16 21:36:42'),
+(2966, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 21:36:45'),
+(2967, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add Content of  article Kennel Cough', '2018-08-16 21:37:19'),
+(2968, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 21:37:21'),
+(2969, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Remove Content of  article Kennel Cough', '2018-08-16 21:37:25'),
+(2970, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 21:37:27'),
+(2971, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Remove Link of  article Kennel Cough', '2018-08-16 21:37:52'),
+(2972, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 21:37:54'),
+(2973, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 21:38:59'),
+(2974, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 21:42:57'),
+(2975, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 21:47:51'),
+(2976, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 21:59:54'),
+(2977, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 22:25:54'),
+(2978, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 22:27:27'),
+(2979, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 22:30:52'),
+(2980, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Update Image of  article Kennel Cough', '2018-08-16 22:30:58'),
+(2981, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-16 22:31:00'),
+(2982, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-16 22:31:10'),
+(2983, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-16 22:31:15'),
+(2984, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-16 22:31:33'),
+(2985, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet details', '2018-08-16 22:32:50'),
+(2986, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-16 22:32:59'),
+(2987, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet details', '2018-08-16 22:33:02'),
+(2988, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-16 22:33:16'),
+(2989, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet details', '2018-08-16 22:33:18'),
+(2990, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet details', '2018-08-16 22:34:13'),
+(2991, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-16 22:34:18'),
+(2992, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-16 22:35:25'),
+(2993, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet details', '2018-08-16 22:35:27'),
+(2994, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-16 22:35:29'),
+(2995, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-16 22:36:17'),
+(2996, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-16 22:39:32'),
+(2997, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-16 22:40:11'),
+(2998, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-16 22:46:51'),
+(2999, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-16 22:46:52'),
+(3000, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-16 22:53:02'),
+(3001, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-16 22:53:17'),
+(3002, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-16 22:53:53'),
+(3003, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-16 22:54:22'),
+(3004, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-16 22:54:32'),
+(3005, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-16 22:54:33'),
+(3006, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-16 22:54:34'),
+(3007, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-16 22:54:36'),
+(3008, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-16 22:54:40'),
+(3009, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-16 23:07:51'),
+(3010, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-16 23:08:12'),
+(3011, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Logout', '2018-08-16 23:08:15'),
+(3012, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-08-16 23:08:23'),
+(3013, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-16 23:08:24'),
+(3014, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin list', '2018-08-16 23:08:26'),
+(3015, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin details', '2018-08-16 23:08:29'),
+(3016, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Logout', '2018-08-16 23:08:38'),
+(3017, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'User Login', '2018-08-16 23:09:08'),
+(3018, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Dashboard', '2018-08-16 23:09:08'),
+(3019, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Pet List', '2018-08-16 23:09:21'),
+(3020, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Veterinarian list', '2018-08-16 23:11:23'),
+(3021, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Veterinarian details', '2018-08-16 23:11:25'),
+(3022, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Veterinarian list', '2018-08-16 23:12:05'),
+(3023, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Pet Health Care Library', '2018-08-16 23:12:07'),
+(3024, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Inventory', '2018-08-16 23:12:15'),
+(3025, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Admin profile', '2018-08-16 23:13:44'),
+(3026, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Inventory', '2018-08-16 23:13:50'),
+(3027, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Admin list', '2018-08-16 23:13:55'),
+(3028, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Admin details', '2018-08-16 23:13:57'),
+(3029, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Admin details', '2018-08-16 23:15:20'),
+(3030, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Veterinarian list', '2018-08-16 23:16:20'),
+(3031, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Admin list', '2018-08-16 23:16:23'),
+(3032, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Veterinarian list', '2018-08-16 23:16:25'),
+(3033, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Veterinarian details', '2018-08-16 23:16:26'),
+(3034, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Veterinarian details', '2018-08-16 23:17:33'),
+(3035, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Customer list', '2018-08-16 23:17:37'),
+(3036, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Customer details', '2018-08-16 23:17:39'),
+(3037, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Customer details', '2018-08-16 23:17:58'),
+(3038, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Customer details', '2018-08-16 23:18:30'),
+(3039, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Customer details', '2018-08-16 23:18:43'),
+(3040, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Customer details', '2018-08-16 23:18:49'),
+(3041, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Customer details', '2018-08-16 23:19:53'),
+(3042, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Customer details', '2018-08-16 23:20:24'),
+(3043, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Staff List', '2018-08-16 23:21:02'),
+(3044, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Staff Details', '2018-08-16 23:21:03'),
+(3045, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Staff Details', '2018-08-16 23:27:50'),
+(3046, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Customer list', '2018-08-16 23:27:54'),
+(3047, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Veterinarian list', '2018-08-16 23:27:54'),
+(3048, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Veterinarian details', '2018-08-16 23:27:56'),
+(3049, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Veterinarian details', '2018-08-16 23:28:36'),
+(3050, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Staff List', '2018-08-16 23:28:38'),
+(3051, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Customer list', '2018-08-16 23:28:39'),
+(3052, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Admin list', '2018-08-16 23:28:40'),
+(3053, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Admin details', '2018-08-16 23:28:43'),
+(3054, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Pet List', '2018-08-16 23:30:15'),
+(3055, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Pet List', '2018-08-16 23:30:57'),
+(3056, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Pet List', '2018-08-16 23:30:58'),
+(3057, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Pet Type List', '2018-08-16 23:31:03'),
+(3058, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'User Logout', '2018-08-16 23:31:10'),
+(3059, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-08-16 23:31:15'),
+(3060, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-16 23:31:15'),
+(3061, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Clinic Services', '2018-08-16 23:32:03'),
+(3062, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-16 23:32:06'),
+(3063, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-16 23:32:08'),
+(3064, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-16 23:51:35'),
+(3065, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-16 23:51:37'),
+(3066, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-16 23:51:41'),
+(3067, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-16 23:51:42'),
+(3068, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-16 23:51:44'),
+(3069, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-16 23:51:45'),
+(3070, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet details', '2018-08-16 23:51:47'),
+(3071, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet details', '2018-08-16 23:52:39'),
+(3072, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet details', '2018-08-16 23:53:01'),
+(3073, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-16 23:53:09'),
+(3074, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet details', '2018-08-16 23:53:10'),
+(3075, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-16 23:53:14'),
+(3076, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet details', '2018-08-16 23:53:18'),
+(3077, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-16 23:55:43'),
+(3078, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-16 23:55:46'),
+(3079, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-17 00:15:37'),
+(3080, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-17 00:15:39'),
+(3081, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Update Content of  article Kennel Cough', '2018-08-17 00:15:45'),
+(3082, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-17 00:15:47'),
+(3083, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add Website Link of  article Kennel Cough', '2018-08-17 00:16:20'),
+(3084, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-17 00:16:23'),
+(3085, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-17 00:16:54'),
+(3086, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-17 00:16:56'),
+(3087, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-17 00:16:58'),
+(3088, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-17 00:18:09'),
+(3089, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-17 00:18:46'),
+(3090, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-17 00:18:57'),
+(3091, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-17 00:19:20'),
+(3092, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-17 00:19:34'),
+(3093, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-17 00:19:42'),
+(3094, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-17 00:20:23'),
+(3095, 'Apple Salad David', 'Customer', 'C1807251258419', 'User Login', '2018-08-17 00:20:59'),
+(3096, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-17 00:21:48'),
+(3097, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-17 00:22:48'),
+(3098, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-17 00:22:50'),
+(3099, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-17 00:23:58'),
+(3100, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-17 00:25:25'),
+(3101, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add New Pet Type ', '2018-08-17 00:25:35'),
+(3102, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-17 00:25:38'),
+(3103, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-17 00:25:54'),
+(3104, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-17 00:26:24'),
+(3105, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-17 00:38:06'),
+(3106, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-17 00:38:49');
+INSERT INTO `tbl_logs` (`log_id`, `log_user`, `log_usertype`, `log_userID`, `log_action`, `log_date`) VALUES
+(3107, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-17 00:39:01'),
+(3108, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-17 00:43:36'),
+(3109, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-17 00:43:38'),
+(3110, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-17 00:43:39'),
+(3111, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian list', '2018-08-17 00:45:32'),
+(3112, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-17 00:45:36'),
+(3113, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View logs', '2018-08-17 00:45:47'),
+(3114, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-08-17 00:45:52'),
+(3115, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View logs', '2018-08-17 00:46:58'),
+(3116, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-17 00:47:25'),
+(3117, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-17 00:48:42'),
+(3118, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-17 00:49:35'),
+(3119, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-17 00:50:08'),
+(3120, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-17 00:50:25'),
+(3121, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-17 00:50:40'),
+(3122, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-17 00:50:41'),
+(3123, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 00:50:58'),
+(3124, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-17 00:51:00'),
+(3125, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 00:51:01'),
+(3126, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-17 00:51:02'),
+(3127, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-17 00:51:03'),
+(3128, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 00:51:04'),
+(3129, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-17 00:51:05'),
+(3130, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-17 00:51:57'),
+(3131, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 00:51:58'),
+(3132, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-17 00:52:04'),
+(3133, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-17 00:52:30'),
+(3134, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 00:52:32'),
+(3135, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 00:52:58'),
+(3136, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 00:53:00'),
+(3137, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-17 00:53:03'),
+(3138, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 00:53:07'),
+(3139, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 00:53:20'),
+(3140, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-17 00:53:22'),
+(3141, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-17 00:53:23'),
+(3142, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 00:53:25'),
+(3143, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 00:53:42'),
+(3144, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-17 00:53:44'),
+(3145, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 00:53:45'),
+(3146, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 00:54:11'),
+(3147, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 00:54:24'),
+(3148, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-17 00:57:03'),
+(3149, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-17 00:57:06'),
+(3150, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-17 00:57:49'),
+(3151, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 00:57:51'),
+(3152, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 01:07:33'),
+(3153, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 01:07:50'),
+(3154, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 01:10:15'),
+(3155, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-08-17 01:11:07'),
+(3156, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-08-17 01:11:11'),
+(3157, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 01:11:17'),
+(3158, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 01:14:43'),
+(3159, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 01:14:55'),
+(3160, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 01:15:21'),
+(3161, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 01:15:58'),
+(3162, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 01:16:51'),
+(3163, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 01:33:34'),
+(3164, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add New Pet Type ', '2018-08-17 01:33:49'),
+(3165, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 01:33:51'),
+(3166, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 01:34:18'),
+(3167, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 01:34:44'),
+(3168, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 01:35:35'),
+(3169, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 01:36:27'),
+(3170, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 01:39:52'),
+(3171, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 01:40:55'),
+(3172, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 01:42:31'),
+(3173, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add New Pet Breed ', '2018-08-17 01:42:39'),
+(3174, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 01:42:41'),
+(3175, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 01:43:28'),
+(3176, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add New Pet Breed ', '2018-08-17 01:43:43'),
+(3177, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 01:43:45'),
+(3178, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 01:43:55'),
+(3179, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add New Pet Breed ', '2018-08-17 01:44:12'),
+(3180, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-08-17 01:44:15'),
+(3181, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-17 01:44:28'),
+(3182, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-17 01:46:12'),
+(3183, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-17 01:46:13'),
+(3184, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Logout', '2018-08-17 01:46:18'),
+(3185, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'User Login', '2018-08-17 01:46:23'),
+(3186, 'Lewis Alfred LA Tenorio', 'Admin', 'A1806231052520', 'View Dashboard', '2018-08-17 01:46:23'),
+(3187, 'Apple Salad David', 'Customer', 'C1807251258419', 'User Logout', '2018-08-17 01:49:05'),
+(3188, 'Jackies Lee Chan', 'Staff', 'S1806231153417', 'User Login', '2018-08-17 01:49:11'),
+(3189, 'Jackies Lee Chan', 'Staff', 'S1806231153417', 'View POS', '2018-08-17 01:49:12');
 
 -- --------------------------------------------------------
 
@@ -1500,23 +2432,26 @@ CREATE TABLE `tbl_petbreeds` (
   `pettype_id` int(11) NOT NULL,
   `pettype_code` varchar(45) NOT NULL,
   `pet_breed` varchar(45) NOT NULL,
-  `breed_description` text NOT NULL
+  `breed_description` text NOT NULL,
+  `breed_status` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_petbreeds`
 --
 
-INSERT INTO `tbl_petbreeds` (`breed_id`, `pettype_id`, `pettype_code`, `pet_breed`, `breed_description`) VALUES
-(12, 2, 'cat', 'British Shorthair', '<p>\r\n\r\nThe British Shorthair is the pedigreed version of the traditional British domestic cat, with a distinctively chunky body, dense coat and broad face.&nbsp;</p><p>Origin : Great Britain</p><p>Scientific Name: Felis Catus</p><p><small></small><br></p>'),
-(13, 2, 'cat', 'Maine Coon', '<p>\r\n\r\nThe Maine Coon is one of the largest domesticated breeds of cat. It has a distinctive physical appearance and valuable hunting skills .</p><p><br></p><p>Scientific Name:&nbsp;\r\n\r\nFelis catus\r\n\r\n</p>'),
-(14, 2, 'cat', 'Persian Cat', '<p>\r\n\r\nThe Persian cat is a long-haired breed of cat characterized by its round face and short muzzle. It is also known as the Persian Longhair in the English-speaking countries.<br></p><p><br></p><p>Scientific Name:&nbsp;\r\n\r\nFelis catus\r\n\r\n</p><p><br></p><p><br></p>'),
-(15, 2, 'cat', 'Ragdoll', '<p>\r\n\r\nThe Ragdoll is a cat breed with blue eyes and a distinct colourpoint coat. It is a large and muscular semi-longhair cat with a soft and silky coat. Like all long haired cats, Ragdolls need grooming to ensure that their fur does not mat\r\n\r\n<br></p>'),
-(16, 2, 'cat', 'Siamese Cat', '<p>\r\n\r\nThe Siamese cat is one of the first distinctly recognized breeds of Asian cat. Derived from the Wichianmat landrace, one of several varieties of cat native to Thailand\r\n\r\n<br></p>'),
-(17, 1, 'dog', 'Chihuahua', '<p>\r\n\r\nThe Chihuahua is the smallest breed of dog and is named after the state of Chihuahua in Mexico. Chihuahuas come in a wide variety of colors, and two coat lengths .<br></p><p><br></p><p>Life Span: 12 – 20 years\r\n\r\n<br></p>'),
-(18, 1, 'dog', 'German Shepherd', '<p>\r\n\r\nThe German Shepherd is a breed of medium to large-sized working dog that originated in Germany. The breed\'s officially recognized name is German Shepherd Dog in the English language. The breed is known as the Alsatian in Britain and Ireland.\r\n\r\n<br></p><p><br></p><p>Life span:&nbsp;\r\n\r\n9 – 13 years\r\n\r\n</p>'),
-(19, 1, 'dog', 'Golden Retriever', '<p>\r\n\r\nThe Golden Retriever is a large-sized breed of dog bred as gun dogs to retrieve shot waterfowl such as ducks and upland game birds during hunting and shooting parties, and were named \'retriever\'\r\n\r\n<br></p><p><br></p><p>Life span: 10 – 12 years&nbsp;</p>'),
-(20, 1, 'dog', 'Labrador Retriever', '<p>\r\n\r\nThe Labrador Retriever, or just Labrador, is a type of retriever-gun dog. The Labrador is one of the most popular breeds of dog in Canada, the United Kingdom and the United States\r\n\r\n<br></p><p><br></p><p>Life span :<small>&nbsp;\r\n\r\n10 – 14 years\r\n\r\n</small></p>');
+INSERT INTO `tbl_petbreeds` (`breed_id`, `pettype_id`, `pettype_code`, `pet_breed`, `breed_description`, `breed_status`) VALUES
+(12, 2, 'cat', 'British Shorthair', '<p>\r\n\r\nThe British Shorthair is the pedigreed version of the traditional British domestic cat, with a distinctively chunky body, dense coat and broad face.&nbsp;</p><p>Origin : Great Britain</p><p>Scientific Name: Felis Catus</p><p><small></small><br></p>', ''),
+(13, 2, 'cat', 'Maine Coon', '<p>\r\n\r\nThe Maine Coon is one of the largest domesticated breeds of cat. It has a distinctive physical appearance and valuable hunting skills .</p><p><br></p><p>Scientific Name:&nbsp;\r\n\r\nFelis catus\r\n\r\n</p>', ''),
+(15, 2, 'cat', 'Ragdoll', '<p>\r\n\r\nThe Ragdoll is a cat breed with blue eyes and a distinct colourpoint coat. It is a large and muscular semi-longhair cat with a soft and silky coat. Like all long haired cats, Ragdolls need grooming to ensure that their fur does not mat\r\n\r\n<br></p>', ''),
+(16, 2, 'cat', 'Siamese Cat', '<p>\r\n\r\nThe Siamese cat is one of the first distinctly recognized breeds of Asian cat. Derived from the Wichianmat landrace, one of several varieties of cat native to Thailand\r\n\r\n<br></p>', ''),
+(17, 1, 'dog', 'Chihuahua', '<p>\r\n\r\nThe Chihuahua is the smallest breed of dog and is named after the state of Chihuahua in Mexico. Chihuahuas come in a wide variety of colors, and two coat lengths .<br></p><p><br></p><p>Life Span: 12 – 20 years\r\n\r\n<br></p>', ''),
+(18, 1, 'dog', 'German Shepherd', '<p>\r\n\r\nThe German Shepherd is a breed of medium to large-sized working dog that originated in Germany. The breed\'s officially recognized name is German Shepherd Dog in the English language. The breed is known as the Alsatian in Britain and Ireland.\r\n\r\n<br></p><p><br></p><p>Life span:&nbsp;\r\n\r\n9 – 13 years\r\n\r\n</p>', ''),
+(19, 1, 'dog', 'Golden Retriever', '<p>\r\n\r\nThe Golden Retriever is a large-sized breed of dog bred as gun dogs to retrieve shot waterfowl such as ducks and upland game birds during hunting and shooting parties, and were named \'retriever\'\r\n\r\n<br></p><p><br></p><p>Life span: 10 – 12 years&nbsp;</p>', ''),
+(20, 1, 'dog', 'Labrador Retriever', '<p>\r\n\r\nThe Labrador Retriever, or just Labrador, is a type of retriever-gun dog. The Labrador is one of the most popular breeds of dog in Canada, the United Kingdom and the United States\r\n\r\n<br></p><p><br></p><p>Life span :<small>&nbsp;\r\n\r\n10 – 14 years\r\n\r\n</small></p>', ''),
+(22, 3, 'dinosaur', 'Indominous Rex', '<p>sdadsadsdas</p>', 'Active'),
+(23, 3, 'dinosaur', 'Viloso Raptor', '<p>sdadsdsdasddfdfada</p>', 'Active'),
+(24, 3, 'dinosaur', 'Indominous Rex2', '<p>dasdsdadasdsa</p>', 'Active');
 
 -- --------------------------------------------------------
 
@@ -1556,16 +2491,18 @@ INSERT INTO `tbl_pets` (`pet_table_id`, `pet_id`, `petname`, `customer_table_id`
 CREATE TABLE `tbl_pettype` (
   `pettype_id` int(11) NOT NULL,
   `pettype_code` varchar(45) NOT NULL,
-  `pettype` varchar(45) NOT NULL
+  `pettype` varchar(45) NOT NULL,
+  `pettype_status` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_pettype`
 --
 
-INSERT INTO `tbl_pettype` (`pettype_id`, `pettype_code`, `pettype`) VALUES
-(1, 'dog', 'Dog'),
-(2, 'cat', 'Cat');
+INSERT INTO `tbl_pettype` (`pettype_id`, `pettype_code`, `pettype`, `pettype_status`) VALUES
+(1, 'dog', 'Dog', 'Active'),
+(2, 'cat', 'Cat', 'Active'),
+(3, 'dinosaur', 'Dinosaur', 'Active');
 
 -- --------------------------------------------------------
 
@@ -1575,34 +2512,81 @@ INSERT INTO `tbl_pettype` (`pettype_id`, `pettype_code`, `pettype`) VALUES
 
 CREATE TABLE `tbl_pet_library` (
   `library_id` int(11) NOT NULL,
-  `link` text NOT NULL,
   `title` varchar(45) NOT NULL,
   `content` varchar(45) NOT NULL,
-  `article_image` text NOT NULL
+  `article_image` text NOT NULL,
+  `article_status` varchar(45) NOT NULL,
+  `created_by` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_pet_library`
 --
 
-INSERT INTO `tbl_pet_library` (`library_id`, `link`, `title`, `content`, `article_image`) VALUES
-(17, '', 'Kennel Cough', 'Kennel cough is an infectious bronchitis of d', 'kennel.gif'),
-(18, '', 'Ibuprofen Toxicity in Dogs and Cats', 'Ibuprofen has been available as a human pain ', ''),
-(19, '', 'Influenza Strains in Dogs', 'Just like people, dogs can be affected by dif', ''),
-(20, '', 'Tremoring or Shivering in Dogs', 'Dogs are often brought in for tremoring or sh', ''),
-(21, '', 'Xylitol Toxicosis in Dogs', 'Xylitol is a white, crystalline sugar alcohol', ''),
-(22, '', 'Chemical Injuries: First Aid', 'Chemical injuries to tissue are caused by con', ''),
-(23, '', 'Alcohol (Ethanol) Poisoning', 'Dogs and cats can get more than just drunk wh', ''),
-(24, '', 'Bloody Nose (Epistaxis) in Dogs and Cats', 'Some blood-tinged droplets sneezed on the flo', ''),
-(25, '', 'Sulfasalazine (Azulfidine)', 'Colitis is another word for inflammation of t', ''),
-(26, '', 'Colitis Causes Gooey Diarrhea in Dogs and Cat', 'In brief, colitis is the term for inflammatio', ''),
-(27, '', 'Itraconazole (Sporonox)', 'The development of oral medications to be use', ''),
-(28, '', 'Ranitidine (Zantac)', 'Stomach ulceration in humans is a prominent m', ''),
-(29, '', 'Cimetidine (Tagamet)', 'Stomach ulceration in humans is a prominent m', ''),
-(30, '', 'Blastomycosis is a Systemic Fungal infection ', 'Blastomycosis, caused by Blastomyces dermatit', ''),
-(31, '', 'Diarrhea and Vomiting: First Aid', 'Diarrhea is the frequent evacuation of watery', ''),
-(32, '', 'Dehydration: First Aid', 'Dehydration is excessive loss of water from t', ''),
-(33, '', 'Grapiprant (Galliprant)', 'The importance of pain relief cannot be overe', '');
+INSERT INTO `tbl_pet_library` (`library_id`, `title`, `content`, `article_image`, `article_status`, `created_by`) VALUES
+(34, 'DASDASDASD', 'DADSA', 'black-cat5.jpg', 'Active', 'Ivan Christian Jay Echanes Funcion'),
+(35, 'dadada', 'daddssasdsdsg ', 'black-cat6.jpg', 'Inactive', 'Ivan Christian Jay Echanes Funcion'),
+(36, 'dsds', 'sdasdsds svianvasfsadad ', 'black-cat7.jpg', 'Active', 'Ivan Christian Jay Echanes Funcion'),
+(37, 'dasdasd', 'sdadadasd ', 'black-dog2.jpg', 'Active', 'Ivan Christian Jay Echanes Funcion'),
+(38, 'dadsad', 'dadasdsa ', 'bootstrap2.png', 'Active', 'Ivan Christian Jay Echanes Funcion'),
+(39, 'dasdsds', 'sdaddasdds dasdsdadsds ', 'black-dog3.jpg', 'Active', 'Ivan Christian Jay Echanes Funcion'),
+(40, 'dasdsdasdsad', 'sadasdsdasdasd ', 'carousel-stateoftheart.jpg', 'Active', 'Ivan Christian Jay Echanes Funcion'),
+(41, 'Kennel Cough', 'Kennel cough is an infectious bronchitis of d', 'carousel-stateoftheart2.jpg', 'Inactive', 'Ivan Christian Jay Echanes Funcion');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_pet_library_content`
+--
+
+CREATE TABLE `tbl_pet_library_content` (
+  `content_id` int(11) NOT NULL,
+  `library_id` int(11) NOT NULL,
+  `article_contents` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_pet_library_content`
+--
+
+INSERT INTO `tbl_pet_library_content` (`content_id`, `library_id`, `article_contents`) VALUES
+(1, 35, 'daddssasdsdsg'),
+(2, 36, 'sdasdsds'),
+(3, 36, 'svianvasfsadad'),
+(4, 37, 'sdadadasd'),
+(5, 38, 'dadasdsa'),
+(6, 39, 'sdaddasdds'),
+(7, 39, 'dasdsdadsds'),
+(8, 40, 'Dogs can make an assortment of respiratory sounds. Usually a cough is recognizable but it is important to be aware of another sound called a reverse sneeze. The reverse sneeze is often mistaken for a cough, a choking fit, sneezing, retching, or even for some sort of respiratory distress. In fact, the reverse sneeze represents a post-nasal drip or tickle in the throat. It is considered normal especially for small dogs or dogs and only requires attention if it is felt to be excessive. The point here is to know a cough when you see one. A cough can be dry or productive, meaning it is followed by a gag, swallowing motion, production of foamy mucus (not to be confused with vomiting). Here are some videos that might help'),
+(9, 41, '<b>Kennel cough</b> is an infectious bronchitis of dogs characterized by a harsh, hacking cough that most people describe as sounding like “something stuck in my dog’s throat.” This bronchitis may be of brief duration and mild enough to warrant no treatment at all or it may progress all the way to a life-threatening pneumonia depending on which infectious agents are involved and the immunological strength of the patient. An uncomplicated kennel cough runs a course of a week or two and entails frequent fits of coughing in a patient who otherwise feels active and normal. Uncomplicated cases do not involve fever or listlessness, just lots of coughing.'),
+(10, 41, 'Dogs can make an assortment of respiratory sounds. Usually a cough is recognizable but it is important to be aware of another sound called a reverse sneeze. The reverse sneeze is often mistaken for a cough, a choking fit, sneezing, retching, or even for some sort of respiratory distress. In fact, the reverse sneeze represents a post-nasal drip or tickle in the throat. It is considered normal especially for small dogs or dogs and only requires attention if it is felt to be excessive. The point here is to know a cough when you see one. A cough can be dry or productive, meaning it is followed by a gag, swallowing motion, production of foamy mucus (not to be confused with vomiting). Here are some videos that might help.'),
+(11, 41, '<p>isdjakdja ivan dahsdsddsd</p>');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_pet_library_links`
+--
+
+CREATE TABLE `tbl_pet_library_links` (
+  `links_id` int(11) NOT NULL,
+  `library_id` int(11) NOT NULL,
+  `web_link` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_pet_library_links`
+--
+
+INSERT INTO `tbl_pet_library_links` (`links_id`, `library_id`, `web_link`) VALUES
+(1, 35, 'fgfgfgasds'),
+(2, 36, 'https://google.com'),
+(3, 37, 'dasdsda'),
+(4, 38, 'dsdadas'),
+(5, 39, 'asdasdsada'),
+(6, 40, 'dasdsdsdasd'),
+(7, 41, 'https://google.com'),
+(10, 41, 'google.com');
 
 -- --------------------------------------------------------
 
@@ -1619,15 +2603,16 @@ CREATE TABLE `tbl_productfoods` (
   `foodImage` text NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `supplier` varchar(45) NOT NULL,
-  `exp_date` date NOT NULL
+  `exp_date` date NOT NULL,
+  `store_price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_productfoods`
 --
 
-INSERT INTO `tbl_productfoods` (`food_table_id`, `food_id`, `foodname`, `forwhatpet`, `fooddescription`, `foodImage`, `price`, `supplier`, `exp_date`) VALUES
-(7, '#Food1807301209130', 'Dog Food', 'Dogs', 'Dog Food', 'AdSlots468_MK_Q2_20184.jpg', '111.00', 'Dog Corp', '2018-10-23');
+INSERT INTO `tbl_productfoods` (`food_table_id`, `food_id`, `foodname`, `forwhatpet`, `fooddescription`, `foodImage`, `price`, `supplier`, `exp_date`, `store_price`) VALUES
+(7, '#Food1807301209130', 'Dog Food', 'Dogs', 'Dog Food', 'AdSlots468_MK_Q2_20184.jpg', '111.00', 'Dog Corp', '2018-10-23', '0.00');
 
 -- --------------------------------------------------------
 
@@ -1673,7 +2658,9 @@ INSERT INTO `tbl_productinventories` (`inv_table_id`, `product_rel_id`, `product
 (139, 4, '#Med1807301212149', 'Multivitamins', 'Medicines', 'Pull out product', 'Veterinarian', 'Dominic Lanz Uy', '2018-08-02 17:09:54', 1, '0000-00-00'),
 (140, 4, '#Med1807301212149', 'Multivitamins', 'Medicine', 'Add Supply', 'Super Admin', 'Ivan Christian Jay Echanes Funcion', '2018-08-02 17:12:43', 11, '2018-08-24'),
 (141, 28, '#Med1807301214251', 'Sentinel Spectrum', 'Medicine', 'Purchased Product', 'Customer(Member)', 'Apple Salad David', '2018-08-05 16:36:44', 1, '0000-00-00'),
-(142, 26, '#Med1807301212149', 'Multivitamins', 'Medicine', 'Purchased Product', 'Customer(Member)', 'Apple Salad David', '2018-08-05 16:36:44', 1, '0000-00-00');
+(142, 26, '#Med1807301212149', 'Multivitamins', 'Medicine', 'Purchased Product', 'Customer(Member)', 'Apple Salad David', '2018-08-05 16:36:44', 1, '0000-00-00'),
+(143, 24, '#Item1807301206321', 'Dog Shampoo', 'Item', 'Purchased Product', 'Customer(Walkin)', 'hahahahha', '2018-08-15 00:23:07', 12, '0000-00-00'),
+(144, 25, '#Food1807301209130', 'Dog Food', 'Food', 'Purchased Product', 'Customer(Walkin)', 'sdadsd', '2018-08-15 00:35:21', 14, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -1688,15 +2675,16 @@ CREATE TABLE `tbl_productitems` (
   `itemdescription` text NOT NULL,
   `itemImage` text NOT NULL,
   `price` decimal(10,2) NOT NULL,
-  `supplier` varchar(45) NOT NULL
+  `supplier` varchar(45) NOT NULL,
+  `store_price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_productitems`
 --
 
-INSERT INTO `tbl_productitems` (`item_table_id`, `item_id`, `itemname`, `itemdescription`, `itemImage`, `price`, `supplier`) VALUES
-(16, '#Item1807301206321', 'Dog Shampoo', 'Dog Shampoo', 'AdSlots468_PU_Q2_2018.jpg', '68.00', 'Dog Corp');
+INSERT INTO `tbl_productitems` (`item_table_id`, `item_id`, `itemname`, `itemdescription`, `itemImage`, `price`, `supplier`, `store_price`) VALUES
+(16, '#Item1807301206321', 'Dog Shampoo', 'Dog Shampoo', 'AdSlots468_PU_Q2_2018.jpg', '68.00', 'Dog Corp', '0.00');
 
 -- --------------------------------------------------------
 
@@ -1714,16 +2702,17 @@ CREATE TABLE `tbl_productmedicines` (
   `dateAdded` datetime NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `supplier` varchar(45) NOT NULL,
-  `exp_date` date NOT NULL
+  `exp_date` date NOT NULL,
+  `store_price` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_productmedicines`
 --
 
-INSERT INTO `tbl_productmedicines` (`med_table_id`, `med_id`, `medType`, `medname`, `meddescription`, `medImage`, `dateAdded`, `price`, `supplier`, `exp_date`) VALUES
-(4, '#Med1807301212149', 'Vitamins', 'Multivitamins', 'Medicine for both cats and Dogs', 'AdSlots468_HI_Q3_20181.jpg', '0000-00-00 00:00:00', '30.00', 'All Corp', '2018-10-18'),
-(6, '#Med1807301214251', 'Vitamins', 'Sentinel Spectrum', 'Sentinel Spectrum for puppies', 'AdSlots468_HI_Q3_201811.jpg', '0000-00-00 00:00:00', '55.00', 'Dog Corp', '2018-12-20');
+INSERT INTO `tbl_productmedicines` (`med_table_id`, `med_id`, `medType`, `medname`, `meddescription`, `medImage`, `dateAdded`, `price`, `supplier`, `exp_date`, `store_price`) VALUES
+(4, '#Med1807301212149', 'Vitamins', 'Multivitamins', 'Medicine for both cats and Dogs', 'AdSlots468_HI_Q3_20181.jpg', '0000-00-00 00:00:00', '30.00', 'All Corp', '2018-10-18', NULL),
+(6, '#Med1807301214251', 'Vitamins', 'Sentinel Spectrum', 'Sentinel Spectrum for puppies', 'AdSlots468_HI_Q3_201811.jpg', '0000-00-00 00:00:00', '55.00', 'Dog Corp', '2018-12-20', NULL);
 
 -- --------------------------------------------------------
 
@@ -1740,18 +2729,19 @@ CREATE TABLE `tbl_products` (
   `productInStore` int(11) NOT NULL,
   `dateAdded` datetime NOT NULL,
   `productImage` text NOT NULL,
-  `product_price` decimal(10,2) NOT NULL
+  `product_price` decimal(10,2) NOT NULL,
+  `store_price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_products`
 --
 
-INSERT INTO `tbl_products` (`product_table_id`, `product_relation_id`, `product_name`, `productType`, `product_id`, `productInStore`, `dateAdded`, `productImage`, `product_price`) VALUES
-(24, 16, 'Dog Shampoo', 'Item', '#Item1807301206321', 111, '2018-07-30 12:07:11', 'AdSlots468_PU_Q2_2018.jpg', '68.00'),
-(25, 7, 'Dog Food', 'Food', '#Food1807301209130', 111, '2018-07-30 12:09:49', 'AdSlots468_MK_Q2_20184.jpg', '111.00'),
-(26, 4, 'Multivitamins', 'Medicine', '#Med1807301212149', 109, '2018-07-30 12:12:18', 'AdSlots468_HI_Q3_20181.jpg', '30.00'),
-(28, 6, 'Sentinel Spectrum', 'Medicine', '#Med1807301214251', 31, '2018-07-30 12:15:25', 'AdSlots468_HI_Q3_201811.jpg', '55.00');
+INSERT INTO `tbl_products` (`product_table_id`, `product_relation_id`, `product_name`, `productType`, `product_id`, `productInStore`, `dateAdded`, `productImage`, `product_price`, `store_price`) VALUES
+(24, 16, 'Dog Shampoo', 'Item', '#Item1807301206321', 99, '2018-07-30 12:07:11', 'AdSlots468_PU_Q2_2018.jpg', '68.00', '0.00'),
+(25, 7, 'Dog Food', 'Food', '#Food1807301209130', 97, '2018-07-30 12:09:49', 'AdSlots468_MK_Q2_20184.jpg', '111.00', '0.00'),
+(26, 4, 'Multivitamins', 'Medicine', '#Med1807301212149', 109, '2018-07-30 12:12:18', 'AdSlots468_HI_Q3_20181.jpg', '30.00', '0.00'),
+(28, 6, 'Sentinel Spectrum', 'Medicine', '#Med1807301214251', 31, '2018-07-30 12:15:25', 'AdSlots468_HI_Q3_201811.jpg', '55.00', '0.00');
 
 -- --------------------------------------------------------
 
@@ -1864,7 +2854,9 @@ INSERT INTO `tbl_sales` (`sales_id`, `invoice_number`, `customer_type`, `custome
 (40, '#1808020524289', 'Walkin', '0', 'sdadas', '110.00', '2018-08-02 17:24:28', 'Jackies Lee Chan', 'S1806231153417'),
 (41, '#1808020524372', 'Walkin', '0', 'sdadas', '110.00', '2018-08-02 17:24:37', 'Jackies Lee Chan', 'S1806231153417'),
 (42, '#1808050434353', 'Member', 'C1807251258419', 'Apple Salad David', '85.00', '2018-08-05 16:34:35', 'Jackies Lee Chan', 'S1806231153417'),
-(43, '#1808050436443', 'Member', 'C1807251258419', 'Apple Salad David', '85.00', '2018-08-05 16:36:44', 'Jackies Lee Chan', 'S1806231153417');
+(43, '#1808050436443', 'Member', 'C1807251258419', 'Apple Salad David', '85.00', '2018-08-05 16:36:44', 'Jackies Lee Chan', 'S1806231153417'),
+(44, '#1808151223079', 'Walkin', '0', 'hahahahha', '816.00', '2018-08-15 00:23:07', 'Jackies Lee Chan', 'S1806231153417'),
+(45, '#1808151235210', 'Walkin', '0', 'sdadsd', '1554.00', '2018-08-15 00:35:21', 'Jackies Lee Chan', 'S1806231153417');
 
 -- --------------------------------------------------------
 
@@ -1923,7 +2915,25 @@ INSERT INTO `tbl_salesdetails` (`salesdetail_id`, `sales_id`, `product_id`, `pro
 (39, 37, '', 'Medicine', 'Sentinel Spectrum', '55.00', 2, '110.00'),
 (40, 38, '', 'Medicine', 'Sentinel Spectrum', '55.00', 1, '55.00'),
 (41, 43, '#Med1807301214251', 'Medicine', 'Sentinel Spectrum', '55.00', 1, '55.00'),
-(42, 43, '#Med1807301212149', 'Medicine', 'Multivitamins', '30.00', 1, '30.00');
+(42, 43, '#Med1807301212149', 'Medicine', 'Multivitamins', '30.00', 1, '30.00'),
+(43, 44, '#Item1807301206321', 'Item', 'Dog Shampoo', '68.00', 12, '816.00'),
+(44, 45, '#Food1807301209130', 'Food', 'Dog Food', '111.00', 14, '1554.00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_services`
+--
+
+CREATE TABLE `tbl_services` (
+  `service_id` int(11) NOT NULL,
+  `for_what_pet` varchar(45) NOT NULL,
+  `for_pet_ages` varchar(45) NOT NULL,
+  `service_name` varchar(45) NOT NULL,
+  `service_description` varchar(45) NOT NULL,
+  `service_fee` decimal(10,2) NOT NULL,
+  `service_status` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1963,7 +2973,7 @@ CREATE TABLE `tbl_settings` (
 --
 
 INSERT INTO `tbl_settings` (`settings_id`, `theme_color`, `aboutus_content`, `vet_fee`, `clinic_email_address`, `clinic_home_address`, `clinic_barangay_address`, `clinic_city_address`, `clinic_postal_id`, `vat`, `store_name`) VALUES
-(1, 'skin-red', '<p>Wisdom Pet Medicine strives to blend the best in traditional and alternative medicine in the diagnosis and treatment of companion animals including dogs, cats, birds, reptiles, rodents, and fish. We apply the wisdom garnered in the centuries old tradition of veterinary medicine, to find the safest treatments and <i>cures. </i>We strive to be your pet\'s medical experts from youth through the senior years. We build preventative health care plans for each and every one of our patients, based on breed, age, and sex, so that your pet receives the most appropriate care at crucial milestones. We want to give your pet a long and healthy life<br></p><p>ivan</p>\r\n\r\n<p></p>', '111.00', 'vetopias_D@gmail.com', '#1433', 'Barangay bas', 'Makati City', '121', '.12', 'Agapa ng Ina m0');
+(1, 'skin-red', '<p>Wisdom Pet Medicine strives to blend the best in traditional and alternative medicine in the diagnosis and treatment of companion animals including dogs, cats, birds, reptiles, rodents, and fish. We apply the wisdom garnered in the centuries old tradition of veterinary medicine, to find the safest treatments and <i>cures. </i>We strive to be your pet\'s medical experts from youth through the senior years. We build preventative health care plans for each and every one of our patients, based on breed, age, and sex, so that your pet receives the most appropriate care at crucial milestones. We want to give your pet a long and healthy life<br></p><p>ivan christian jay</p>\r\n\r\n<p></p>', '111.00', 'vetopias_D@gmail.com', '#1433', 'Barangay bas', 'Makati City', '121', '.12', 'Agapa ng Ina m0');
 
 -- --------------------------------------------------------
 
@@ -2153,6 +3163,18 @@ ALTER TABLE `tbl_pet_library`
   ADD PRIMARY KEY (`library_id`);
 
 --
+-- Indexes for table `tbl_pet_library_content`
+--
+ALTER TABLE `tbl_pet_library_content`
+  ADD PRIMARY KEY (`content_id`);
+
+--
+-- Indexes for table `tbl_pet_library_links`
+--
+ALTER TABLE `tbl_pet_library_links`
+  ADD PRIMARY KEY (`links_id`);
+
+--
 -- Indexes for table `tbl_productfoods`
 --
 ALTER TABLE `tbl_productfoods`
@@ -2213,6 +3235,12 @@ ALTER TABLE `tbl_salesdetails`
   ADD PRIMARY KEY (`salesdetail_id`);
 
 --
+-- Indexes for table `tbl_services`
+--
+ALTER TABLE `tbl_services`
+  ADD PRIMARY KEY (`service_id`);
+
+--
 -- Indexes for table `tbl_service_details`
 --
 ALTER TABLE `tbl_service_details`
@@ -2266,12 +3294,12 @@ ALTER TABLE `tbl_adult_dogs_programs`
 -- AUTO_INCREMENT for table `tbl_appointments`
 --
 ALTER TABLE `tbl_appointments`
-  MODIFY `appointment_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `appointment_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 --
 -- AUTO_INCREMENT for table `tbl_bannerimages`
 --
 ALTER TABLE `tbl_bannerimages`
-  MODIFY `bannerimage_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `bannerimage_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `tbl_checkupdetails`
 --
@@ -2291,12 +3319,12 @@ ALTER TABLE `tbl_kittens_programs`
 -- AUTO_INCREMENT for table `tbl_logs`
 --
 ALTER TABLE `tbl_logs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2264;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3190;
 --
 -- AUTO_INCREMENT for table `tbl_petbreeds`
 --
 ALTER TABLE `tbl_petbreeds`
-  MODIFY `breed_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `breed_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `tbl_pets`
 --
@@ -2306,12 +3334,22 @@ ALTER TABLE `tbl_pets`
 -- AUTO_INCREMENT for table `tbl_pettype`
 --
 ALTER TABLE `tbl_pettype`
-  MODIFY `pettype_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `pettype_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tbl_pet_library`
 --
 ALTER TABLE `tbl_pet_library`
-  MODIFY `library_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `library_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+--
+-- AUTO_INCREMENT for table `tbl_pet_library_content`
+--
+ALTER TABLE `tbl_pet_library_content`
+  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `tbl_pet_library_links`
+--
+ALTER TABLE `tbl_pet_library_links`
+  MODIFY `links_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tbl_productfoods`
 --
@@ -2321,7 +3359,7 @@ ALTER TABLE `tbl_productfoods`
 -- AUTO_INCREMENT for table `tbl_productinventories`
 --
 ALTER TABLE `tbl_productinventories`
-  MODIFY `inv_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
+  MODIFY `inv_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
 --
 -- AUTO_INCREMENT for table `tbl_productitems`
 --
@@ -2356,12 +3394,17 @@ ALTER TABLE `tbl_puppies_programs`
 -- AUTO_INCREMENT for table `tbl_sales`
 --
 ALTER TABLE `tbl_sales`
-  MODIFY `sales_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `sales_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 --
 -- AUTO_INCREMENT for table `tbl_salesdetails`
 --
 ALTER TABLE `tbl_salesdetails`
-  MODIFY `salesdetail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `salesdetail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+--
+-- AUTO_INCREMENT for table `tbl_services`
+--
+ALTER TABLE `tbl_services`
+  MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_service_details`
 --

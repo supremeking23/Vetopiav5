@@ -204,7 +204,7 @@
                                             ?>
 
 
-                                            <?php if($appointment_detail->tapos_na == 1){?>
+                                            <?php if($appointment_detail->is_finished == 1){?>
 
                                               <dl class="dl-horizontal">
                                               <?php $checkup_detail = 1;?>
@@ -245,7 +245,7 @@
 
 
 
-                                              <?php if($appointment_detail->tapos_na == 1):?>
+                                              <?php if($appointment_detail->is_finished == 1):?>
 
                                                 <?php //echo $a_appointment->appointment_id;?>
 
