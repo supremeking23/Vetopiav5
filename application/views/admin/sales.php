@@ -162,7 +162,7 @@
 
                                   </div>
                                   <div class="modal-footer">
-                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                                    <a  class="btn btn-default pull-left" target="_blanck" href=""><i class="fa fa-print"></i>Print</a>
                                    
                                   </div>
                                 </div>

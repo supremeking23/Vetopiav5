@@ -130,8 +130,10 @@
                         <label for="password" class="col-sm-2 control-label">Password</label>
 
                         <div class="col-sm-10">
-                          <input type="password" class="form-control" value="<?php echo $a_details->password;?>" name="password" placeholder="Password">
+                          <input type="password" id="password" class="form-control " value="<?php echo $a_details->password;?>" name="password" placeholder="Password">
+                           <button class="btn btn-sm btn-warning btn-flat" id="showPass" type="button"><span id="maskMark"><b>show</b></span></button>
                         </div>
+                                         
                       </div>
 
 
@@ -199,6 +201,7 @@
     
 
   $(function(){
+ 
 
     $('.datatablelogadmin').DataTable( {
         'ordering'    : false,
@@ -254,6 +257,8 @@
 
                 ]
     } );
+
+
   });
 
 

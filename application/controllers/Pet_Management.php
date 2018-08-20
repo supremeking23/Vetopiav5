@@ -65,6 +65,71 @@ class Pet_Management extends CI_Controller {
     }
 
 
+
+    public function add_pet_ajax(){
+
+        //config for upload image \assets\images\profiles
+        $config['upload_path']          = './assets/images/pets/';
+        //$config['upload_path']          = './uploads/';
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
+        //$config['max_size']             = 100;
+        // $config['max_width']            = 1024;
+        // $config['max_height']           = 768;
+        $this->load->library('upload', $config);
+
+
+        if($this->upload->do_upload('upload_image')){
+                //get the file name of the uploaded file
+                $uploadData = $this->upload->data();
+                $image = $uploadData['file_name'];
+                //echo 1;
+                echo "ivan";
+        }
+
+        $now = date('Y-m-d H:i:s');
+        $data = array(
+        'pet_id' => $this->input->post('pet_id'),
+        'customer_table_id' => $this->input->post('customer_table_id'),
+        'petname' => $this->input->post('petname'),
+        'pettype' => $this->input->post('pet_type'),
+        'breed' => $this->input->post('breed'),
+        'gender' => $this->input->post('gender'),
+        'birthdate' => $this->input->post('birthdate'),
+        'pet_profile' => $image,
+        //'is_active' => "Active",
+        
+        'dateAdded' => $now,
+        );
+
+        $this->pet_management_model->insert_new_pet($data);
+
+        $name = $this->session->userdata('complete_name');
+        $log_usertype =  $this->session->userdata('account_type');
+        $log_userID = $this->session->userdata("user_id");
+        $log_action = "Add New Pet";
+        
+
+
+        $now = date('Y-m-d H:i:s');
+        $data2 = array(
+            "log_user" => $name,
+            "log_usertype" => $log_usertype,
+            "log_userID" => $log_userID,
+            "log_action" => $log_action,
+            "log_date" => $now,
+        );
+
+
+
+        $this->admin_management->insert_new_log($data2);
+
+        $msg = "New Pet has been added successfully";
+
+        echo json_encode(['code'=>200, 'msg'=>$msg]);
+
+    }
+
+
     public function add_pettype(){
         $pettype_code = strtolower($this->input->post("pettype"));
         $pettype = ucfirst($this->input->post("pettype"));

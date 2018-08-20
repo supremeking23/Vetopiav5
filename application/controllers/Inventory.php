@@ -99,7 +99,17 @@ class Inventory extends CI_Controller {
 	        	exit;
 	        }
 
+	        $price = $this->input->post('price');
 
+	        $get_vat = $this->settings_model->get_all_settings_detail_by_settings_id(1);
+	        foreach($get_vat as $g_vat){
+	        	$tax = $g_vat->vat;
+	        }
+
+	        //ito ung idadagdag sa price
+	        $vat =  $this->input->post('price') * $tax;
+
+	        $store_price = $this->input->post('price') + $vat;
 		 	//add to productitem table
             $data = array(
             'item_id' => $this->input->post('item_id'),
@@ -110,7 +120,8 @@ class Inventory extends CI_Controller {
             'itemImage' => $image,
             'price' => $this->input->post('price'),
 
-            'supplier' => $this->input->post('supplier')
+            'supplier' => $this->input->post('supplier'),
+            'store_price' => $store_price,
             );
 
             $this->inventory_management->insert_new_item($data);
@@ -136,7 +147,8 @@ class Inventory extends CI_Controller {
             	'dateAdded' => $now,
             	'product_name' => $this->input->post('itemname'),
             	'productImage' => $image,
-            	'product_price' => $this->input->post('price')
+            	'product_price' => $this->input->post('price'),
+            	'store_price' => $store_price,
             );
 
 
@@ -332,6 +344,18 @@ class Inventory extends CI_Controller {
 		$item_table_id =  $this->input->post('item_table_id');
 		$item_id = $this->input->post('item_id');
 
+		$price = $this->input->post('price');
+
+        $get_vat = $this->settings_model->get_all_settings_detail_by_settings_id(1);
+        foreach($get_vat as $g_vat){
+        	$tax = $g_vat->vat;
+        }
+
+        //ito ung idadagdag sa price
+        $vat =  $this->input->post('price') * $tax;
+
+        $store_price = $this->input->post('price') + $vat;
+
 
 		$data = array(
 
@@ -340,7 +364,7 @@ class Inventory extends CI_Controller {
             'itemdescription' =>$this->input->post('itemdescription'),
             'price' => $this->input->post('price'),
             'supplier' => $this->input->post('supplier'),
-    
+    		'store_price' => $store_price,
 
         );
 
@@ -353,7 +377,7 @@ class Inventory extends CI_Controller {
 
         	'product_name' =>$this->input->post('itemname'),
         	'product_price' => $this->input->post('price'),
-
+        	'store_price' => $store_price,
         );
 
 
@@ -437,6 +461,26 @@ class Inventory extends CI_Controller {
 
 	        //get tax
 
+
+	        $price = $this->input->post('price');
+
+	        $get_vat = $this->settings_model->get_all_settings_detail_by_settings_id(1);
+	        foreach($get_vat as $g_vat){
+	        	$tax = $g_vat->vat;
+	        }
+
+	        //ito ung idadagdag sa price
+	        $vat =  $this->input->post('price') * $tax;
+
+	        $store_price = $this->input->post('price') + $vat;
+
+	        $product_unit = $this->input->post('product_unit');
+	        $product_unit_number = $this->input->post('product_unit_number');
+	        $product_unit_with_number = $product_unit_number .' ('.$product_unit .') ';
+
+
+
+
 		 	//add to productfood table
             $data = array(
             'food_id' => $this->input->post('food_id'),
@@ -451,7 +495,10 @@ class Inventory extends CI_Controller {
             'supplier' => $this->input->post('supplier'),
 
             'exp_date' =>$this->input->post('exp_date'),
-
+            'product_unit' => $product_unit_with_number,
+            'product_unit_number' => $product_unit_number,
+            'product_unit_measure' => $product_unit,
+            'store_price' => $store_price,
             );
 
             $this->inventory_management->insert_new_food($data);
@@ -478,7 +525,8 @@ class Inventory extends CI_Controller {
             	'product_name' => $this->input->post('foodname'),
             	'productImage' => $image,
             	'product_price' => $this->input->post('price'),
-
+            	'product_unit' => $product_unit_with_number,
+            	'store_price' => $store_price,
             );
 
 
@@ -678,6 +726,23 @@ class Inventory extends CI_Controller {
 		$food_table_id =  $this->input->post('food_table_id');
 		$food_id =  $this->input->post('food_id');
 
+		 $price = $this->input->post('price');
+
+	    $get_vat = $this->settings_model->get_all_settings_detail_by_settings_id(1);
+	    foreach($get_vat as $g_vat){
+	        	$tax = $g_vat->vat;
+	    }
+
+			//ito ung idadagdag sa price
+	    $vat =  $this->input->post('price') * $tax;
+
+	    $store_price = $this->input->post('price') + $vat;
+
+	    $product_unit = $this->input->post('product_unit');
+	    $product_unit_number = $this->input->post('product_unit_number');
+	    $product_unit_with_number = $product_unit_number .' ('.$product_unit .') ';
+
+
 		$data = array(
 
          
@@ -685,11 +750,14 @@ class Inventory extends CI_Controller {
             'forwhatpet' => $this->input->post('forwhatpet'),
             'fooddescription' =>$this->input->post('fooddescription'),
             'price' => $this->input->post('price'),
-
             'supplier' => $this->input->post('supplier'),
-    
-
+ 
+            'product_unit' => $product_unit_with_number,
+            'product_unit_number' => $product_unit_number,
+            'product_unit_measure' => $product_unit,
+            'store_price' => $store_price,
         );
+
 
 
        
@@ -698,9 +766,9 @@ class Inventory extends CI_Controller {
 
 
 		 $data2 = array(
-
-        	'product_name' =>$this->input->post('foodname'),
-
+			 'product_unit' => $product_unit_with_number,
+    	     'store_price' => $store_price,
+        	 'product_name' =>$this->input->post('foodname'),
              'product_price' => $this->input->post('price'),
 
         );
@@ -776,7 +844,21 @@ class Inventory extends CI_Controller {
 	        }
 
 
+			$price = $this->input->post('price');
 
+	        $get_vat = $this->settings_model->get_all_settings_detail_by_settings_id(1);
+	        foreach($get_vat as $g_vat){
+	        	$tax = $g_vat->vat;
+	        }
+
+	        //ito ung idadagdag sa price
+	        $vat =  $this->input->post('price') * $tax;
+
+	        $store_price = $this->input->post('price') + $vat;
+
+	        $product_unit = $this->input->post('product_unit');
+	        $product_unit_number = $this->input->post('product_unit_number');
+	        $product_unit_with_number = $product_unit_number .' ('.$product_unit .') ';
 		 	//add to productitem table
             $data = array(
             'med_id' => $this->input->post('med_id'),
@@ -790,7 +872,12 @@ class Inventory extends CI_Controller {
 
             'supplier' => $this->input->post('supplier'),
 
-            'exp_date' =>$this->input->post('exp_date')
+            'exp_date' =>$this->input->post('exp_date'),
+            'store_price' => $store_price,
+            'product_unit_number' => $product_unit_number,
+            'product_unit_measure' => $product_unit,
+            'product_unit' => $product_unit_with_number,
+
             );
 
             $this->inventory_management->insert_new_medicine($data);
@@ -817,6 +904,8 @@ class Inventory extends CI_Controller {
             	'dateAdded' => $now,
             	'productImage' => $image,
             	'product_price' => $this->input->post('price'),
+            	'store_price' => $store_price,
+            	'product_unit' => $product_unit_with_number,
             );
 
 
@@ -1012,6 +1101,19 @@ class Inventory extends CI_Controller {
 		$med_table_id =  $this->input->post('med_table_id');
 		$med_id =  $this->input->post('med_id');
 
+
+		$price = $this->input->post('price');
+
+        $get_vat = $this->settings_model->get_all_settings_detail_by_settings_id(1);
+        foreach($get_vat as $g_vat){
+        	$tax = $g_vat->vat;
+        }
+
+        //ito ung idadagdag sa price
+        $vat =  $this->input->post('price') * $tax;
+
+        $store_price = $this->input->post('price') + $vat;
+        $product_unit_with_number = $product_unit_number .' ('.$product_unit .') ';
 		$data = array(
 
          
@@ -1020,7 +1122,10 @@ class Inventory extends CI_Controller {
             'meddescription' =>$this->input->post('meddescription'),
             'price' => $this->input->post('price'),
             'supplier' => $this->input->post('supplier'),
-    
+    		'store_price' => $store_price,
+            'product_unit_number' => $product_unit_number,
+            'product_unit_measure' => $product_unit,
+            'product_unit' => $product_unit_with_number,
 
         );
 
@@ -1032,7 +1137,8 @@ class Inventory extends CI_Controller {
         	'product_name' =>$this->input->post('medname'),
 
              'product_price' => $this->input->post('price'),
-
+             'store_price' => $store_price,
+             'product_unit' => $product_unit_with_number,
         );
 
         $this->inventory_management->update_medicine_details_from_tblproducts($med_id,$data2);

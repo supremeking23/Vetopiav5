@@ -60,12 +60,16 @@
         <li class="header">MAIN NAVIGATION</li>
        
         <li><a href="<?php echo site_url()?>admin/dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+
+         <li><a href="<?php echo site_url()?>admin/pos"><i class="fa fa-shopping-cart"></i> <span>POS</span></a></li>
+
         <li><a href="<?php echo site_url()?>admin/appointments"><i class="fa fa-calendar"></i> <span>Appointment</span>
-                    <span class="badge label-danger"><?php if($cap == 0){
-                      //echo $cap;
-                    }else{
-                      echo $cap;
-                    }?></span>      
+                 <?php if($cap == 0){  //echo $cap;?>     
+                    <?php  }else{ ?>
+                    <span class="badge label-danger">
+                     <?php echo $cap; ?>
+                      </span>  
+                   <?php }?>    
         </a></li>
 
         <li class="treeview">
@@ -153,9 +157,11 @@
           </ul>
         </li>
 
-        <li><a href="<?php echo site_url()?>admin/pet_health_care_library"><i class="fa fa-book"></i> Health Care Library</a></li>
+        
+         <li><a href="<?php echo site_url()?>admin/<?php echo site_url()?>admin/pet_health_care_library"><i class="fa fa-book"></i> <span>Health Care Library</span></a></li>
 
         <?php if($this->session->userdata('account_type') == "Super Admin"):?>
+
 
         <li><a href="<?php echo site_url()?>admin/logs"><i class="fa  fa-sticky-note-o"></i> <span>Logs</span></a></li>
 

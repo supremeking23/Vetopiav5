@@ -140,7 +140,7 @@
                     <?php echo $meds->medname;?>
                     </td>
                     <td><?php echo $meds->medType;?></td>
-                    <td>₱<?php echo $meds->price;?></td>
+                    <td>₱<?php echo $meds->store_price;?></td>
                     <td>
                     <?php echo $meds->productInStore;
                         if($meds->productInStore < 100):

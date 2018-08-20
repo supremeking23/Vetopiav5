@@ -84,6 +84,24 @@
     $("#library a:contains('Health Care Library')").parent().addClass('active');
      
 
+      //pasword    
+      var mask = true;
+
+      $('#showPass').click(function(){
+      if(mask === true){
+          mask = false;
+          $('#password').attr("type", "text");
+          
+          //$('#username').attr("type", "password");
+          $('#maskMark').html("<b>hide</b>");
+        } else {
+          mask = true;
+          $('#password').attr("type", "password");
+          //$('#username').attr("type", "text");
+          $('#maskMark').html("<b>show</b>");
+        } 
+    }); 
+
     //for tables
     $('.datatables').DataTable({
 

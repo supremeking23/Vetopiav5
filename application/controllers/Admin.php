@@ -34,6 +34,7 @@ class Admin extends CI_Controller {
 		}
 
 
+
 		//echo $data['complete_name'] = $this->session->userdata('complete_name');
 
 		 $user_id = $this->session->userdata('user_id');
@@ -155,6 +156,44 @@ class Admin extends CI_Controller {
 
 		$this->load->view('admin/dashboard',$data);
 		//echo "admin/index";
+	}
+
+
+
+	public function pos(){
+		
+
+		$settings_id = 1;
+		$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
+
+
+		$name = $this->session->userdata('complete_name');
+		$log_usertype =  $this->session->userdata('account_type');
+		$log_userID = $this->session->userdata("user_id");
+		$log_action = "View POS";
+		
+
+
+		$now = date('Y-m-d H:i:s');
+		$data2 = array(
+			"log_user" => $name,
+			"log_usertype" => $log_usertype,
+			"log_userID" => $log_userID,
+			"log_action" => $log_action,
+			"log_date" => $now,
+		);
+
+
+
+		$this->staff_management->insert_new_log($data2);
+
+
+		$data['all_product'] = $this->inventory_management->get_all_products();
+
+		$data['all_customer'] = $this->customer_management->get_all_customer();
+
+		$data['title'] = "Vetopia";
+		$this->load->view('admin/pos',$data);
 	}
 
 
@@ -694,7 +733,7 @@ class Admin extends CI_Controller {
 
 				$data['numberofpets'] = $this->pet_management_model->count_pet_of_customer($id);
 				$data['customer_details'] = $this->customer_management->get_customer_by_id($id);
-
+				$data['all_pettype'] = $this->pet_management_model->get_all_pettype();
 				//retrieve pets of this customer
 
 				$name = $this->session->userdata('complete_name');
@@ -1090,7 +1129,7 @@ class Admin extends CI_Controller {
 		$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
 		$data['title'] = "Vetopia";
 		$data['all_foods'] = $this->inventory_management->get_all_food_with_number_of_supply();
-
+		$data['all_pets'] =$this->pet_management_model->get_all_pettype();
 
 		$name = $this->session->userdata('complete_name');
 		$log_usertype =  $this->session->userdata('account_type');
@@ -1131,7 +1170,7 @@ class Admin extends CI_Controller {
 
 
 		$data['food_details'] = $this->inventory_management->get_food_detail_by_id($id);
-
+		$data['all_pets'] =$this->pet_management_model->get_all_pettype();
 		//product id use for searching in inventory
 
 		$product_id_in_tblproduct = $this->inventory_management->get_food_detail_by_id($id);

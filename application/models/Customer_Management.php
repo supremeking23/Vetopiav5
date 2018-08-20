@@ -82,7 +82,7 @@ class Customer_Management extends CI_Model {
         $this->db->from('tbl_customers');
         $this->db->where('username',$username);
         $this->db->where('password',$password);
-        $this->db->where('is_active',$active);
+        $this->db->where('customer_status',$active);
 
         $query = $this->db->get();
 

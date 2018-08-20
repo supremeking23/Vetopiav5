@@ -173,7 +173,7 @@
 
                           
                          </div>   
-                 </div>
+                </div>
 
 
 
@@ -220,7 +220,7 @@
 
           $('select[name="pet_type"]').on('change', function() {
 
-          var pet_type = $(this).val();
+            var pet_type = $(this).val();
 
             if(pet_type) {
 
@@ -253,7 +253,7 @@
 
             }
 
-      });
+          });
 
 
 

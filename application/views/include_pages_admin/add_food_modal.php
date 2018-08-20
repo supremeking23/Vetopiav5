@@ -69,10 +69,10 @@
 
 
 
-                              <select name="forwhatpet" class="form-control">
-                               <option value="Cats and Dogs">Cats and Dogs</option>
-                               <option value="Cats">Cats</option>
-                               <option value="Dogs">Dogs</option>
+                              <select name="forwhatpet" class="form-control" id="forwhatpet">
+                                <?php foreach($all_pets as $ap):?>
+                                  <option value="<?php echo $ap->pettype_code?>"><?php echo $ap->pettype?></option>
+                                <?php endforeach;?>
                              </select>
                          </div>   
                     </div>
@@ -130,7 +130,7 @@
                          
                               <?php 
 
-                              echo form_label('Price', 'price','class="control-label"');
+                              echo form_label('Product Base Price', 'price','class="control-label"');
                               ?>
 
 
@@ -138,6 +138,42 @@
                               <input type="number" name="price" min="0" max="2500" class="form-control" required="">
                          </div>   
                     </div>
+
+                        <br />
+
+                  <div class="form-group">
+                      <?php 
+
+                      echo form_label('Enter Product Unit', 'product_unit','class="control-label"');
+                      ?>
+                        <div class="input-group">
+                            <input type="text" name="product_unit_number" id="product_unit_number" class="form-control" required pattern="[+-]?([0-9]*[.])?[0-9]+" /> 
+                            <span class="input-group-addon">
+                              <select name="product_unit" id="product_unit">
+                                    <option value="">Select Unit</option>
+                                    <option value="MilliGrams">MilliGrams</option>
+                                    <option value="MilliLiters">MilliLiters</option>
+                                    <option value="Gallon">Gallon</option>
+                                    <option value="Grams">Grams</option>
+                                    <option value="Inch">Inch</option>
+                                    <option value="Kg">Kg</option>
+                                    <option value="Liters">Liters</option>
+                                    <option value="Meter">Meter</option>
+                                    <!--<option value="Nos">Nos</option> 
+                                    <option value="Packet">Packet</option>
+                                    <option value="Rolls">Rolls</option>
+                                     <option value="Dozens">Dozens</option>
+                                    <option value="Feet">Feet</option>
+                                     <option value="Box">Box</option>
+                                     <option value="Bags">Bags</option>
+                                    <option value="Bottles">Bottles</option>
+                                    -->
+                              </select>
+                            </span>
+                        </div>
+                  </div>
+
+                 
 
                      <br />
 
@@ -150,7 +186,7 @@
                               echo form_label('Expiration Date', 'exp_date','class="control-label"');
                               ?>
 
-                              <input type="date" class="form-control"  value="" name="exp_date" required="">
+                              <input type="date" class="form-control"  value="" name="exp_date" id="exp_date" required="">
 
                           
                          </div>   
@@ -240,7 +276,26 @@
 
 <script>
 	
+    var dtToday = new Date();
+    
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+    
+    var minDate= year + '-' + month + '-' + day;
 
+
+    console.log("todays date: " + dtToday);
+    console.log("todays month: " + month);
+    console.log("todays day: " + day);
+    console.log("todays year: " + year);
+    console.log("min date: " + minDate);
+    
+    $('#exp_date').attr('min', minDate);  
     var food_id = document.getElementById("food_id");
     food_id = "<?= '#Food'.date("ymdhis") . abs(rand('0','9'));  ?>";
     $('#food_id').val(food_id);

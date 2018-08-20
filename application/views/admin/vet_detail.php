@@ -83,7 +83,7 @@
 
 
                          <li class="list-group-item">
-                          <b>Status</b> <a class="pull-right"><?php echo $v_details->is_active;?></a>
+                          <b>Status</b> <a class="pull-right"><?php echo $v_details->veterinarian_status;?></a>
                         </li>
 
                         <li class="list-group-item">

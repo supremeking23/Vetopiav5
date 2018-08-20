@@ -229,6 +229,11 @@
 <!-- Select2 -->
 <script src="<?php echo site_url()?>assets/bower_components/select2/dist/js/select2.full.min.js"></script>
 
+
+<!-- not use ... hindi ko alam kung pano to -->
 <script src="<?php echo site_url()?>assets/dist/js/sweetalert.min.js"></script>
 <script src="<?php echo site_url()?>assets/dist/js/sweetalert-dev.js"></script>
+
+<!-- not compatible -->
+<!-- <script src="<?php echo site_url()?>assets/dist/js/canvasjs.min.js"></script> -->
 </head>

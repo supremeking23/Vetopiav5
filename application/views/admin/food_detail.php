@@ -90,7 +90,7 @@
 
                         <li class="list-group-item">
                            <b> Store Price</b> <a class="pull-right">
-                            ₱
+                            ₱<?php echo $f_detail->store_price?>
                            </a>
                         </li>
                              

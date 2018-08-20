@@ -78,7 +78,7 @@ class Inventory_Management extends CI_Model {
 
 
     public function get_item_detail_by_id($id){
-        $this->db->select('a.item_table_id,a.item_id,a.itemname,a.price,a.itemImage,a.itemdescription,a.supplier,b.productInStore,b.product_table_id,b.product_id,b.product_relation_id,b.productType');
+        $this->db->select('a.item_table_id,a.item_id,a.itemname,a.price,a.itemImage,a.itemdescription,a.supplier,b.productInStore,b.product_table_id,b.product_id,b.product_relation_id,b.productType,b.store_price');
         $this->db->from('tbl_productitems a');
         $this->db->join('tbl_products b','a.item_id = b.product_id');
         $this->db->where('item_table_id', $id);
@@ -132,7 +132,7 @@ class Inventory_Management extends CI_Model {
 
 
     public function get_all_items_with_number_of_supply(){
-        $this->db->select('a.item_table_id,a.item_id,a.itemname,a.price,b.productInStore,b.product_table_id,b.product_id,b.product_relation_id');
+        $this->db->select('a.item_table_id,a.item_id,a.itemname,a.price,b.productInStore,b.product_table_id,b.product_id,b.product_relation_id,b.store_price');
         $this->db->from('tbl_productitems a');
         $this->db->join('tbl_products b','a.item_id = b.product_id');
        
@@ -171,7 +171,7 @@ class Inventory_Management extends CI_Model {
 
 
    public function get_all_food_with_number_of_supply(){
-        $this->db->select('a.food_table_id,a.food_id,a.foodname,a.foodImage,a.price,a.forwhatpet,a.fooddescription,b.productInStore,b.product_table_id,b.product_id,b.product_relation_id');
+        $this->db->select('a.food_table_id,a.food_id,a.foodname,a.foodImage,a.price,a.forwhatpet,a.fooddescription,b.productInStore,b.product_table_id,b.product_id,b.product_relation_id,b.store_price');
         $this->db->from('tbl_productfoods a');
         $this->db->join('tbl_products b','a.food_id = b.product_id');
        
@@ -210,7 +210,7 @@ class Inventory_Management extends CI_Model {
 
 
     public function get_food_detail_by_id($id){
-        $this->db->select('a.food_table_id,a.food_id,a.foodname,a.price,a.foodImage,a.forwhatpet,a.fooddescription,a.supplier,b.productInStore,b.product_table_id,b.product_id,b.product_relation_id,b.productType');
+        $this->db->select('a.food_table_id,a.food_id,a.foodname,a.price,a.foodImage,a.forwhatpet,a.fooddescription,a.supplier,a.product_unit,a.product_unit_number,a.product_unit_measure,b.productInStore,b.product_table_id,b.product_id,b.product_relation_id,b.productType,b.store_price');
         $this->db->from('tbl_productfoods a');
         $this->db->join('tbl_products b','a.food_id = b.product_id');
         $this->db->where('food_table_id', $id);
@@ -261,7 +261,7 @@ class Inventory_Management extends CI_Model {
   }
 
  public function get_all_medicine_with_number_of_supply(){
-        $this->db->select('a.med_table_id,a.med_id,a.medname,a.medType,a.medImage,a.meddescription,a.price,b.productInStore,b.product_table_id,b.product_id,b.product_relation_id');
+        $this->db->select('a.med_table_id,a.med_id,a.medname,a.medType,a.medImage,a.meddescription,a.price,b.productInStore,b.store_price,b.product_name,b.product_table_id,b.product_id,b.product_relation_id,b.store_price');
         $this->db->from('tbl_productmedicines a');
         $this->db->join('tbl_products b','a.med_id = b.product_id');
        
@@ -299,7 +299,7 @@ class Inventory_Management extends CI_Model {
 
 
     public function get_medicine_detail_by_id($id){
-        $this->db->select('a.med_table_id,a.med_id,a.medname,a.price,a.medImage,a.medType,a.meddescription,a.supplier,b.productInStore,b.product_table_id,b.product_id,b.product_relation_id,b.productType');
+        $this->db->select('a.med_table_id,a.med_id,a.medname,a.price,a.medImage,a.medType,a.meddescription,a.supplier,a.product_unit,a.product_unit_number,a.product_unit_measure,b.productInStore,b.product_table_id,b.product_id,b.product_relation_id,b.productType,b.store_price');
         $this->db->from('tbl_productmedicines a');
         $this->db->join('tbl_products b','a.med_id = b.product_id');
         $this->db->where('med_table_id', $id);

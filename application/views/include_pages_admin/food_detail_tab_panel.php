@@ -34,16 +34,11 @@
                         <label for="forwhatpet" class="col-sm-2 control-label">Food For</label>
 
                         <div class="col-sm-10">
-
-                          <?php 
-                            $option = array(
-                              'Cats and Dogs' => 'Cats and Dogs',
-                              'Dogs' => 'Dogs',
-                              'Cats' => 'Cats',
-                            );
-                          ?>
-
-                         <?php echo form_dropdown('forwhatpet',$option,$f_details->forwhatpet,'class="form-control" required');?>
+                              <select name="forwhatpet" class="form-control" id="forwhatpet">
+                                <?php foreach($all_pets as $ap):?>
+                                  <option value="<?php echo $ap->pettype_code?>" <?php if($f_details->forwhatpet == $ap->pettype_code){echo "selected"; } ?> ><?php echo $ap->pettype?></option>
+                                <?php endforeach;?>
+                             </select>
                         </div>
                       </div>
 
@@ -63,7 +58,39 @@
                         </div>
                       </div>
 
-                     
+                      <div class="form-group">
+                              <?php 
+
+                              echo form_label('Enter Product Unit', 'product_unit','class="control-label col-sm-2"');
+                              ?>
+                               <div class="col-sm-10">
+                                  <div class="input-group">
+                                    <input type="text" name="product_unit_number" id="product_unit_number" value="<?php echo $f_details->product_unit_number;?>" class="form-control" required pattern="[+-]?([0-9]*[.])?[0-9]+" /> 
+                                    <span class="input-group-addon">
+                                      <select name="product_unit" id="product_unit" required="">
+                                            <option value="">Select Unit</option>
+                                            <option value="MilliGrams" <?php if($f_details->product_unit_measure == "MilliGrams"){echo "selected";} ?> >MilliGrams</option>
+                                            <option value="MilliLiters" <?php if($f_details->product_unit_measure == "MilliLiters"){echo "selected";} ?>>MilliLiters</option>
+                                            <option value="Gallon" <?php if($f_details->product_unit_measure == "Gallon"){echo "selected";} ?>>Gallon</option>
+                                            <option value="Grams"  <?php if($f_details->product_unit_measure == "Gallon"){echo "selected";} ?>>Grams</option>
+                                            <option value="Inch"  <?php if($f_details->product_unit_measure == "Gallon"){echo "selected";} ?>>Inch</option>
+                                            <option value="Kg"  <?php if($f_details->product_unit_measure == "Kg"){echo "selected";} ?>>Kg</option>
+                                            <option value="Liters"  <?php if($f_details->product_unit_measure == "Liters"){echo "selected";} ?>>Liters</option>
+                                            <option value="Meter"  <?php if($f_details->product_unit_measure == "Meter"){echo "selected";} ?>>Meter</option>
+                                            <!--<option value="Nos">Nos</option> 
+                                            <option value="Packet">Packet</option>
+                                            <option value="Rolls">Rolls</option>
+                                             <option value="Dozens">Dozens</option>
+                                            <option value="Feet">Feet</option>
+                                             <option value="Box">Box</option>
+                                             <option value="Bags">Bags</option>
+                                            <option value="Bottles">Bottles</option>
+                                            -->
+                                      </select>
+                                    </span>
+                                </div>
+                               </div>
+                      </div>                    
                     
 
                        <div class="form-group">

@@ -138,7 +138,7 @@
                      <td>
                     <?php echo $items->itemname;?>
                     </td>
-                    <td>₱<?php echo $items->price;?></td>
+                    <td>₱<?php echo $items->store_price;?></td>
                     <td>
                     <?php echo $items->productInStore;
                        if($items->productInStore < 100):

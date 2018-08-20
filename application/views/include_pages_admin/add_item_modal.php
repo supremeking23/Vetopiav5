@@ -105,7 +105,7 @@
                          
                               <?php 
 
-                              echo form_label('Price', 'price','class="control-label"');
+                              echo form_label('Product Base Price', 'price','class="control-label"');
                               ?>
 
 

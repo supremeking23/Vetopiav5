@@ -32,7 +32,7 @@
     }
   </style>
 </head>
-<body onload="window.print();">
+<body onload="">
 <div class="wrapper">
   <!-- Main content -->
   <section class="invoice">
@@ -44,13 +44,14 @@
       foreach($clinic_detail as $clinic_d){
          $clinic_address =  $clinic_d->clinic_home_address .' '.$clinic_d->clinic_barangay_address .' '. $clinic_d->clinic_city_address.', '.$clinic_d->clinic_postal_id;
          $clinic_email = $clinic_d->clinic_email_address;
+         $clinic_name = $clinic_d->store_name;
       }
   ?>
           <img src="<?php echo site_url()?>assets/site_images/logo3.png" width="50"> <?php echo $title;?>
           <small class="pull-right"></small>
            <center>  
               <b><span style="font-size:24px"></span></b><br>
-              <b><span style="font-size:36px">Animal Ark Clinic</span></b><br>
+              <b><span style="font-size:36px"><?php echo $clinic_name;?></span></b><br>
               <i><?php echo $clinic_address;?></i><br>
               <i>Tel. No.:865-8400</i><br>
               <i>Email: <?php echo $clinic_email;?></i><br>
@@ -84,7 +85,8 @@
 
         <?php //for total_amount,total_tax,sales_total
             $total_amount = $data_from_sales->total_amount;
-         
+            $cash = $data_from_sales->cash;
+            $change = $data_from_sales->change;
         ?>
 
       <?php endforeach;?>
@@ -95,15 +97,22 @@
     <!-- Table row -->
     <div class="row">
       <div class="col-xs-12 table-responsive">
-        <table class="table table-striped">
+        <table class="table table-striped" border="3">
           <thead>
-          <tr>
-            <th>Product Name</th>
-            <th>Product Type</th>
-            <th>Product Price</th>
-             <th>Qty</th>
-            <th>Subtotal</th>
-          </tr>
+            <tr>
+              
+              <th rowspan="2">Product</th>
+              <th rowspan="2">Product Type</th>
+              <th rowspan="2">Quantity</th>
+              <th rowspan="2">Price</th>
+              <th rowspan="2">Actual Amt.</th>
+              <th colspan="2"><center>Tax (%)</center></th>
+              <th rowspan="2">Total</th>
+            </tr>
+            <tr>
+              <th>Rate</th>
+              <th>Amt.</th>
+            </tr>
           </thead>
           <tbody>
 
@@ -113,9 +122,12 @@
               
               <td><?php echo $data_from_sales_detail->product_name;?></td>
               <td><?php echo $data_from_sales_detail->product_type;?></td>
-              <td>₱<?php echo $data_from_sales_detail->price_per_product;?></td>
-               <td><?php echo $data_from_sales_detail->sales_quantity;?></td>
-              <td>₱<?php echo $data_from_sales_detail->total_per_product;?></td>
+              <td><?php echo $data_from_sales_detail->sales_quantity;?></td>
+              <td>₱<?php echo $data_from_sales_detail->price_per_product;?></td> 
+              <td>₱<?php $actual_amt = $data_from_sales_detail->price_per_product * $data_from_sales_detail->sales_quantity; echo number_format($actual_amt, 2)?></td>
+              <td><?php echo 100 * $data_from_sales_detail->tax;?>%</td>
+            <td align="right"><?php echo $tax_nadagdag =  $actual_amt *  $data_from_sales_detail->tax;?></td>
+            <td align="right"><?php echo $actual_amt + $tax_nadagdag;?></td>
             </tr>
           
           <?php endforeach;?>
@@ -140,6 +152,14 @@
             <tr>
               <th style="width:50%">Total Amount:</th>
               <td>₱<?php echo $total_amount;?></td>
+            </tr>
+            <tr>
+              <th style="width:50%">Cash:</th>
+              <td>₱<?php echo $cash;?></td>
+            </tr>
+            <tr>
+              <th style="width:50%">Change:</th>
+              <td>₱<?php echo $change;?></td>
             </tr>
            
           </table>

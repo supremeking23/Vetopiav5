@@ -136,7 +136,7 @@
                      <td>
                     <?php echo $foods->foodname;?>
                     </td>
-                    <td>₱<?php echo $foods->price;?></td>
+                    <td>₱<?php echo $foods->store_price;?></td>
                     <td>
                     <?php echo $foods->productInStore;
 
@@ -195,7 +195,7 @@
                                         echo form_label('Expiration Date', 'exp_date','class="control-label"');
                                         ?>
 
-                                        <input type="date" class="form-control"  value="" name="exp_date" required="">
+                                        <input type="date" class="form-control"  value="" name="exp_date" id="exp_date" required="">
 
                                     
                                    </div>   
@@ -286,6 +286,28 @@
 
 <!-- page script -->
 <script>
+
+
+    var dtToday = new Date();
+    
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+    
+    var minDate= year + '-' + month + '-' + day;
+
+
+    console.log("todays date: " + dtToday);
+    console.log("todays month: " + month);
+    console.log("todays day: " + day);
+    console.log("todays year: " + year);
+    console.log("min date: " + minDate);
+    
+    $('#exp_date').attr('min', minDate);  
 
       $(function(){
 

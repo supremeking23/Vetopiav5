@@ -67,7 +67,7 @@ class Staff_Management extends CI_Model {
         $this->db->from('tbl_staffs');
         $this->db->where('username',$username);
         $this->db->where('password',$password);
-        $this->db->where('is_active',$active);
+        $this->db->where('staff_status',$active);
 
         $query = $this->db->get();
 
