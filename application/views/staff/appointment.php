@@ -1,9 +1,25 @@
 <?php foreach($theme_color as $t_color){
 
-  $skin_color = $t_color->theme_color;
-  $settings_id =$t_color->settings_id;
+    $skin_color = $t_color->theme_color;
+    $settings_id =$t_color->settings_id;
 
-}?>
+    $box_color = "";
+
+    if($skin_color == "skin-green"){
+      $box_color = "box-success";
+    }else if($skin_color == "skin-blue"){
+      $box_color = "box-primary";
+    }else if($skin_color == "skin-red"){
+      $box_color = "box-danger";
+    }else if($skin_color == "skin-yellow"){
+      $box_color = "box-warning";
+    }
+
+
+  }
+
+?>
+
 
 <!DOCTYPE html>
 <html>
@@ -30,7 +46,8 @@
       <!-- Main content -->
       <section class="content">
 
-        <div class="row">
+
+         <div class="row">
           <div class="col-md-12">
             <button class="btn btn-flat btn-info btn-sm" data-toggle="modal" data-target="#addAppointment">Set An Appointment</button>
           </div>
@@ -76,7 +93,7 @@
        
       <div class="row">
         <div class="col-md-12">
-          <div class="box box-warning box-solid">
+          <div class="box <?php echo $box_color;?> box-solid">
               <div class="box-header with-border">
                 <h3 class="box-title text-center">Appointment Records</h3>
 
@@ -148,10 +165,10 @@
                           | <button type="button" class="btn btn-flat btn-sm btn-danger" data-toggle="modal" data-target="#cancelAppointment<?php echo $a_appointment->appointment_table_id?>">Cancel Appointment</button>
                           |
                           <br>
-                            <?php echo form_open_multipart('appointment/done_appointment_for_staff');?>
+                            <?php echo form_open_multipart('appointment/done_appointment');?>
                              <input type="hidden" name="appointment_table_id" value="<?php echo $a_appointment->appointment_table_id;?>">
                               <input type="submit" name="submit" class="btn btn-flat btn-sm btn-success" value="Done" />
-                            </form>
+                            <?php echo form_close();?>
 
                         <?php }else if($a_appointment->appointment_status == "Done"){?>
 
@@ -181,7 +198,7 @@
                           </div>
 
                           
-                           <?php echo form_open_multipart('appointment/set_veterinarian_for_staff');?>
+                           <?php echo form_open_multipart('appointment/set_veterinarian');?>
                           <div class="modal-body">
                             <select name="veterinarian" class="form-control select2" style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;">
                               <?php foreach($all_vets as $vets):?>
@@ -196,7 +213,7 @@
                             <input type="Submit" name="submit" value="Submit" class="btn btn-primary btn-sm btn-flat">
                           </div>
 
-                          </form>
+                          <?php echo form_close();?>
                         </div>
                         <!-- /.modal-content -->
                       </div>
@@ -217,7 +234,7 @@
                             <h4 class="modal-title">Cancel Reason</h4>
                           </div>
 
-                          <?php echo form_open_multipart('appointment/cancel_appointment_for_staff');?>
+                          <?php echo form_open_multipart('appointment/cancel_appointment');?>
                           <div class="modal-body">
                             <textarea class="form-control" name="cancel_reason">
                               
@@ -228,7 +245,8 @@
                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                              <input type="Submit" name="submit" value="Submit" class="btn btn-primary btn-sm btn-flat">
                           </div>
-                        </form>
+
+                          <?php echo form_close();?>
                         </div>
                         <!-- /.modal-content -->
                       </div>
@@ -244,7 +262,7 @@
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">Appointment Detail</h4>
+                            <h4 class="modal-title">Appointment Detail </h4>
                           </div>
                           <div class="modal-body">
                               <dl class="dl-horizontal">
@@ -265,9 +283,34 @@
                                     <dd><?php  $date =date_create($a_appointment->cancel_date);
                                   echo  $cancel_date= date_format($date,"F d, Y h:i:s a");?></dd>
                                     <dt>Cancel Reason</dt>
-                                    <dd><?php echo $a_appointment->cancel_reason;;?></dd>
+                                    <dd><?php echo $a_appointment->cancel_reason;?></dd>
                                  </dl>
 
+                              <?php endif;?>
+
+
+
+                              <?php if($a_appointment->is_finished == 1):?>
+
+                                <?php //echo $a_appointment->appointment_id;?>
+
+                                <?php 
+
+                                //echo $a_appointment->$appointment_id;
+                                $tapos_na_detail =  $this->pet_management_model->get_pet_service_by_appointment_id($a_appointment->appointment_id);?>
+
+
+                                <?php foreach($tapos_na_detail as $tn_d):?>
+                                  <hr>
+                                  <dl class="dl-horizontal">
+                                    <dt>Services</dt>
+                                    <dd><?php echo $tn_d->all_services?></dd>
+                                    <dt>Service Fee</dt>
+                                    <dd><?php echo $tn_d->service_fee;?></dd>
+                                 </dl>
+
+                                <?php endforeach;?>
+                                  
                               <?php endif;?>
                           </div>
                           <div class="modal-footer">
@@ -306,7 +349,7 @@
     <!-- /.content-wrapper -->
     <footer class="main-footer">
       <div class="pull-right hidden-xs">
-        <b>Beta Version</b> 
+        <b></b> 
       </div>
       <strong>Copyright &copy; <?php echo date('Y');?>  All rights
       reserved.
@@ -347,12 +390,6 @@
 
 <!--page scripts -->
 <script>
-
-
-
-
-
- 
 
 </script>
 

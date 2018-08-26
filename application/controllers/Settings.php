@@ -233,13 +233,25 @@ class Settings extends CI_Controller {
 		}
 
 
+		if(empty($this->input->post("service_content"))){
+			
+			$errorMessage .= "<li>About us content cannot be blank</li>";
+
+		}else{
+			
+			$service_content = $this->input->post("service_content");
+
+		}
+
+
 		if (empty($errorMessage)) {
 
 
 			echo $settings_id = 1;
 			//echo $this->input->post('theme_color');
 			$data = array(
-				'aboutus_content' => $this->input->post('aboutus_content'),			
+				'aboutus_content' => $this->input->post('aboutus_content'),	
+				'service_content' => $this->input->post('service_content'),			
 			);
 
 			//var_dump($this->input->post());
@@ -265,7 +277,7 @@ class Settings extends CI_Controller {
 			$this->admin_management->insert_new_log($data2);
 
 
-			$msg = "About us content has been updated successfully";
+			$msg = "Content section has been updated successfully";
 			echo json_encode(['code'=>200, 'msg'=>$msg]);
 			exit;
 		}else{
@@ -328,6 +340,14 @@ class Settings extends CI_Controller {
 
         $msg = "Banner image has been added successfully";
         echo json_encode(['code'=>200, 'msg'=>$msg]);
+	}
+
+
+	public function delete_banner(){
+
+		$bannerimage_id = $this->input->post('bannerimage_id');
+
+		$this->settings_model->delete_banner($bannerimage_id);
 	}
 
 

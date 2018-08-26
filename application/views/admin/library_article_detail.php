@@ -89,7 +89,7 @@
 
                                           <input type="file" id="article_image" name="article_image" class="form-control" onchange="document.getElementById('article_Image').src = window.URL.createObjectURL(this.files[0])" required="">
 
-                                         <img  id="article_Image"  class="img-rounded" alt="" width="100%" height="200" src="" />
+                                         <div id="image_viewer"><img  id="article_Image"  class="img-rounded" alt="" width="100%" height="200" src="" /></div>
                                      </div>   
                           </div>
 
@@ -108,8 +108,8 @@
                                           $data = array(
                                             'name' => 'submit',
                                             'value' => 'Save',
-                                            'id' => 'save',
-                                            'class' => 'btn btn-primary',
+                                            'id' => 'save_update_image',
+                                            'class' => 'btn btn-primary btn-sm btn-flat',
                                           );
 
                                         echo form_submit($data);?>
@@ -128,22 +128,14 @@
 
         <br />
 
-        <div class="row">
-          <div class="col-md-12">
-                        <!-- ajax bae -->
-              <div class="alert alert-success display-success_remove_article_content" style="display: none">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                 <div class="success-success_remove_article_content"></div> 
-              </div>
-          </div>
-        </div>
+
 
         <br/>
 
         <?php foreach($find_article_contents as $fac):?>
           <div class="row">
             <div class="col-md-12">
-              <p><?php echo $fac->article_contents?><button type="button" class="btn btn-success btn-sm btn-flat" data-toggle="modal" data-target="#changeContent<?php echo $fac->content_id?>">Change Content</button>|<button type="button" class="btn btn-danger btn-sm btn-flat remove-content" id="<?php echo $fac->content_id?>" data-articletitle="<?php echo  $article_title;?>">Remove Content</button></p>
+              <p><?php echo $fac->article_contents?><button type="button" class="btn btn-success btn-sm btn-flat" data-toggle="modal" data-target="#changeContent<?php echo $fac->content_id?>">Change Content</button>|<button type="button" class="btn btn-danger btn-sm btn-flat" data-toggle="modal" data-target="#remove_content<?php echo $fac->content_id;?>">Remove Content</button></p>
             </div>
           </div>
 
@@ -177,7 +169,7 @@
 
 
 
-                               <textarea class="form-control textareas" id="article_content" name="article_content"><?php echo $fac->article_contents?></textarea>
+                               <textarea class="form-control textareas" id="article_content_update" name="article_content"><?php echo $fac->article_contents?></textarea>
                            </div>   
                    </div>
 
@@ -192,8 +184,8 @@
                                 $data = array(
                                   'name' => 'submit',
                                   'value' => 'Save',
-                                  'id' => 'save',
-                                  'class' => 'btn btn-primary',
+                                  'id' => 'save_content',
+                                  'class' => 'btn btn-primary btn-sm btn-flat',
                                 );
 
                               echo form_submit($data);?>
@@ -206,6 +198,38 @@
             </div>
             <!-- /.modal-dialog -->
           </div>
+
+          <div class="modal fade" id="remove_content<?php echo $fac->content_id;?>">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">Are you sure?</h4>
+                </div>
+                <div class="modal-body">
+
+                  <div class="row">
+                    <div class="col-md-12">
+                                  <!-- ajax bae -->
+                        <div class="alert alert-success display-success_remove_article_content" style="display: none">
+                          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                           <div class="success-success_remove_article_content"></div> 
+                        </div>
+                    </div>
+                  </div>
+                  <div class="confirmation_content"><p>Do you want to delete this content ?</p></div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-danger btn-sm btn-flat remove-content" id="<?php echo $fac->content_id?>" data-articletitle="<?php echo  $article_title;?>">Remove Content</button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- /.modal -->
 
           <?php //$this->load->view('include_pages_admin/modify_article_content');?>
         <?php endforeach;?>
@@ -259,8 +283,8 @@
                                       $data = array(
                                         'name' => 'submit',
                                         'value' => 'Save',
-                                        'id' => 'save',
-                                        'class' => 'btn btn-primary',
+                                        'id' => 'save_new_content',
+                                        'class' => 'btn btn-primary btn-flat btn-sm',
                                       );
 
                                     echo form_submit($data);?>
@@ -289,22 +313,51 @@
 
 
 
-        <div class="row">
-          <div class="col-md-12">
-                        <!-- ajax bae -->
-              <div class="alert alert-success display-success_remove_article_link" style="display: none">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                 <div class="success-success_remove_article_link"></div> 
-              </div>
-          </div>
-        </div>
+
 
         <?php foreach($find_article_links as $fal):?>
           <div class="row">
             <div class="col-md-12">
-              <p><a href="<?php echo $fal->web_link?>"><?php echo $fal->web_link?></a><button type="button" class="btn btn-danger btn-sm btn-flat remove-link" id="<?php echo $fal->links_id?>" data-articletitle="<?php echo  $article_title;?>">Remove Links</button></p>
+              <p><a href="<?php echo $fal->web_link?>"><?php echo $fal->web_link?></a><button type="button" class="btn btn-danger btn-sm btn-flat " data-toggle="modal" data-target="#remove_link<?php echo $fal->links_id?>">Remove Links</button></p>
             </div>
           </div>
+
+
+          <div class="modal fade" id="remove_link<?php echo $fal->links_id?>">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">Are you sure?</h4>
+                </div>
+                <div class="modal-body">
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-12">
+                                      <!-- ajax bae -->
+                            <div class="alert alert-success display-success_remove_article_link" style="display: none">
+                              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                               <div class="success-success_remove_article_link"></div> 
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="confirmation_content"><p>Do you want to delete this article ?</p></div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-danger btn-sm btn-flat remove-link" id="<?php echo $fal->links_id?>" data-articletitle="<?php echo  $article_title;?>">Remove Links</button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- /.modal -->
         <?php endforeach;?>
 
 
@@ -425,6 +478,7 @@
       
       event.preventDefault();
       //$('#action').attr('disabled', 'disabled');
+      //$('#changeContentArticle')[0].reset();
       var form_data = new FormData(this);
       $.ajax({
         method:"POST",
@@ -435,15 +489,22 @@
         cache: false,
         processData:false,
         success:function(data){
-        
-
+            $('#changeContentArticle')[0].reset();
+            $('#save_content').attr("disabled",true); 
             $(".display-success_article").css("display","block");
+            //$('#article_content_update').val('iva');
             $(".success-message_article").html("<p>Content has been updated successfully </p>");
+            //$('#article_content').attr('readonly',true);
             reload();
         }
 
       });
     });
+
+
+   $('#save_content').on('click',function(){
+    //alert('ivan');
+   })
 
 
     $(document).on('submit', '#addArticleContent', function(event){
@@ -462,6 +523,8 @@
         processData:false,
         success:function(data){
             $(".display-success_add_article_content").css("display","block");
+            $('#save_new_content').attr("disabled",true);
+            $('#addArticleContent')[0].reset();
             $(".success-success_add_article_content").html("<p>Article content has been added successfully</p>");
             reload();
         }
@@ -485,6 +548,9 @@
         cache: false,
         processData:false,
         success:function(data){
+            $('#image_viewer').css("display","none");
+            $('#save_update_image').attr('disabled',true);
+            $('#changeImageArticle')[0].reset();
             $(".display-success_update_image").css("display","block");
             $(".success-success_update_image").html("<p>Article image has been added successfully</p>");
             reload();
@@ -524,6 +590,11 @@
     });
 
 
+
+
+
+
+
     $(document).on('click', '.remove-content', function(){
       var content_id = $(this).attr("id"); 
       var article_title = $(this).data("articletitle");     
@@ -533,7 +604,7 @@
          /*swal({
           title: "Update Holiday..",
           type: "warning",
-          showCancelButton: true,
+          showCancelButton: true, 
           confirmButtonColor: "#f57c00",
           confirmButtonText: "Yes, update it!",
           cancelButtonText: "No, wait!",
@@ -543,7 +614,33 @@
         },*/
 
 
-         $.ajax({
+     /*  swal({
+          title: "Are you sure?",
+          text: "Once deleted, you will not be able to recover this imaginary file!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+          }).then((willDelete) => {
+            if (willDelete) {
+              swal("Poof! Your imaginary file has been deleted!", {
+                icon: "success",
+              });
+
+              alert('delete');
+            } else {
+              swal("Your imaginary file is safe!");
+            }
+      });*/
+
+
+
+
+
+
+        /*swal("Are you sure you want to do this?", {
+          buttons: ["Oh noez!", true],
+        });*/
+      $.ajax({
           url:"<?php echo site_url()?>article_controller/remove_content",
           method:"POST",
           data:{content_id:content_id,article_title:article_title},
@@ -551,8 +648,10 @@
           {
             //$('#alert_action').fadeIn().html('<div class="alert alert-info">'+data+'</div>');
             //orderdataTable.ajax.reload();
+            $('.confirmation_content').css("display","none");
             $(".display-success_remove_article_content").css("display","block");
             $(".success-success_remove_article_content").html("<p>Article content has been removed</p>");
+            $('.remove-content').attr('disabled',true);
             reload();
           }
         });
@@ -586,8 +685,10 @@
           {
             //$('#alert_action').fadeIn().html('<div class="alert alert-info">'+data+'</div>');
             //orderdataTable.ajax.reload();
+            $('.confirmation_content').css("display","none");
             $(".display-success_remove_article_link").css("display","block");
             $(".success-success_remove_article_link").html("<p>Article Link has been removed</p>");
+            $('.remove-link').attr('disabled',true);
             reload();
           }
         });

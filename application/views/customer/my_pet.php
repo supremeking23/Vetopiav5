@@ -2,6 +2,18 @@
 
   $skin_color = $t_color->theme_color;
   $settings_id =$t_color->settings_id;
+  $box_color = "";
+
+    if($skin_color == "skin-green"){
+      $box_color = "box-success";
+    }else if($skin_color == "skin-blue"){
+      $box_color = "box-primary";
+    }else if($skin_color == "skin-red"){
+      $box_color = "box-danger";
+    }else if($skin_color == "skin-yellow"){
+      $box_color = "box-warning";
+    }
+
 
 }?>
 
@@ -40,7 +52,7 @@
 
           <div class="col-xs-12 col-md-6 col-lg-4">
               
-                      <div class="box box-warning box-solid">
+                      <div class="box <?php echo $box_color?> box-solid">
                             <div class="box-header with-border">
                               <h3 class="box-title text-center"><?php echo $c_pets->petname?></h3>
 

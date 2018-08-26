@@ -29,6 +29,33 @@ class Staff extends CI_Controller {
         //$this->load->model('user_logs_model');
     }
 
+
+
+    public function change_password(){
+    	$settings_id = 1;
+		$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
+
+
+		$name = $this->session->userdata('complete_name');
+		$log_usertype =  $this->session->userdata('account_type');
+		$log_userID = $this->session->userdata("user_id");
+		$log_action = "Change Password";
+		
+
+
+		$now = date('Y-m-d H:i:s');
+		$data2 = array(
+			"log_user" => $name,
+			"log_usertype" => $log_usertype,
+			"log_userID" => $log_userID,
+			"log_action" => $log_action,
+			"log_date" => $now,
+		);
+
+		$data['title'] = "Vetopia";
+		$this->load->view('staff/change_password',$data);
+    }
+
 	
 	public function pos(){
 
@@ -201,7 +228,7 @@ class Staff extends CI_Controller {
 
 				$data['numberofpets'] = $this->pet_management_model->count_pet_of_customer($id);
 				$data['customer_details'] = $this->customer_management->get_customer_by_id($id);
-
+				$data['all_pettype'] = $this->pet_management_model->get_all_pettype();
 				//retrieve pets of this customer
 
 				$name = $this->session->userdata('complete_name');

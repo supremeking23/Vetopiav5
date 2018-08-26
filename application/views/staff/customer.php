@@ -3,6 +3,19 @@
   $skin_color = $t_color->theme_color;
   $settings_id =$t_color->settings_id;
 
+ $box_color = "";
+
+  if($skin_color == "skin-green"){
+    $box_color = "box-success";
+  }else if($skin_color == "skin-blue"){
+    $box_color = "box-primary";
+  }else if($skin_color == "skin-red"){
+    $box_color = "box-danger";
+  }else if($skin_color == "skin-yellow"){
+    $box_color = "box-warning";
+  }
+
+
 }?>
 <!DOCTYPE html>
 <html>
@@ -47,14 +60,6 @@
 
 
 
-            <?php if ($this->session->flashdata('change_state_customer_success')) { ?>
-
-                <div class="alert alert-success display-success">
-                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <p> <?php echo $this->session->flashdata('change_state_customer_success'); ?> </p>
-                </div>
-
-            <?php }?>
 
 
 
@@ -68,6 +73,10 @@
             <?php }?>
 
             
+            <div class="alert alert-success display-success_change_status_customer" style="display: none">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+               <div class="success-message_change_status_customer"></div>
+            </div> 
 
           </div>
       </div>
@@ -76,7 +85,7 @@
 
      <div class="row">
         <div class="col-md-12">
-          <div class="box box-info">
+          <div class="box <?php echo $box_color;?> box-solid">
             <div class="box-header with-border">
               <h3 class="box-title">Customers</h3>
 
@@ -102,23 +111,19 @@
 
                   <tr>
                      <td>
-                      
-                     <form action="<?php echo site_url()?>user_management/update_state_customer_staff_action" method="POST">
+                          <div class="row">
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                  <div class="checkbox">
+                                    <label class="switch">
 
-                      <?php if($customers->is_active == "Active"){
-
-                            $btn_status = "btn-primary";
-                      }else{
-
-                          $btn_status = "btn-danger";
-                      }?>
-                       
-                       <input type="submit" name="current_state" value="<?php echo $customers->is_active?>" class="btn btn-flat <?php echo $btn_status;?> btn-sm">
-
-                       <input type="hidden" name="change_state_user" value="<?php echo $customers->customer_table_id;?>">
-
-                     </form>
-
+                                      <input type="checkbox" class="status_changer" data-customertableid="<?php echo $customers->customer_table_id;?>" data-customerid="<?php echo $customers->customer_id;?>"" data-status="<?php echo $customers->customer_status?>" data-customername=" <?php echo $customers->firstname .' '. $customers->middlename .' '. $customers->lastname;?>" <?php echo ($customers->customer_status == "Active") ?  "checked": ""; ?> > 
+                                      <span class="slider round"></span>
+                                    </label>
+                                  </div>
+                                </div>    
+                            </div>
+                          </div>                          
                     </td>
                     <td><?php echo $customers->customer_id;?></td>
                     <td>
@@ -127,7 +132,7 @@
                     <td><?php echo $customers->contact;?></td>
                    
                     <td>
-                    <a href="<?php echo site_url()?>staff/customer_details/<?php echo $customers->customer_table_id;?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-warning"><span class="fa fa-user"></span></a>
+                    <a href="<?php echo site_url()?>staff/customer_details/<?php echo $customers->customer_table_id;?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info">View Full Detail</a>
                       
                     </td>
                </tr>
@@ -165,7 +170,7 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Beta Version  <?php //var_dump(substr('A1806231044313', 0, 1));?></b> 
+
     </div>
     <strong>Copyright &copy; <?php echo date('Y');?>  All rights
     reserved.
@@ -191,18 +196,49 @@
 
 <script src="<?php echo site_url();?>assets/dist/js/generalscripts.js"></script>
 
-<!-- page script -->
 <script>
 
-    var check_status = document.querySelector('#check_status').addEventListener('click',function(){
-         alert('ivan');
-    });
+  $(function(){
 
 
+   //refresh after 2 seconds
+    function reload(){
      
+      setTimeout(function(){ 
 
+          $(".display-success").fadeOut("fast");
+          location.reload();
+           }, 2000);
+    }  
+
+    $('.status_changer').on("change",function(){
+     
+      var status    = $(this).data("status");
+      var customer_table_id = $(this).data("customertableid");
+      var customer_name = $(this).data("customername");
+      var customers_id  = $(this).data("customerid");
+      var new_status = "";
+      if(status == "Active"){
+          new_status = "Inactive";
+      }else{
+          new_status = "Active";
+      }
+      //alert('status is ' + libraryid);
+      $.ajax({
+          url : "<?php echo site_url('user_management/change_status_customer');?>",
+          method : "POST",
+
+          data : {customer_table_id: customer_table_id,customer_id: customer_id, status:new_status,customer_name:customer_name},
+          success: function(data){
+             $(".display-success_change_status_customer").css("display","block");
+             $(".success-message_change_status_customer").html("<p>Customer " +customer_name + " status has been updated to "+ new_status  +"</p>");
+             reload();
+          }
+      });
+    });  
+  });
+      
 </script>
-
 
 </body>
 </html>

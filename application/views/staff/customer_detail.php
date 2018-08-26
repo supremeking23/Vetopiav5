@@ -55,7 +55,11 @@
        <div class="row">
         
 
-        <?php foreach($customer_details as $c_details):?>
+        <?php foreach($customer_details as $c_details):
+
+
+          $_SESSION['customer_table_id'] = $c_details->customer_table_id;
+          ?>
 
          <div class="col-md-3">
            
@@ -97,8 +101,10 @@
 
 
                          <li class="list-group-item">
-                          <b>Status</b> <a class="pull-right"><?php echo $c_details->is_active;?></a>
+                          <b>Status</b> <a class="pull-right"><?php echo $c_details->customer_status;?></a>
                         </li>
+
+                      
                       </ul>
 
                      
@@ -150,7 +156,7 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Beta Version</b> 
+
     </div>
     <strong>Copyright &copy; <?php echo date('Y');?>  All rights
     reserved.

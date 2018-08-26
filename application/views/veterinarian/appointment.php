@@ -1,9 +1,24 @@
 <?php foreach($theme_color as $t_color){
 
-  $skin_color = $t_color->theme_color;
-  $settings_id =$t_color->settings_id;
+    $skin_color = $t_color->theme_color;
+    $settings_id =$t_color->settings_id;
 
-}?>
+    $box_color = "";
+
+    if($skin_color == "skin-green"){
+      $box_color = "box-success";
+    }else if($skin_color == "skin-blue"){
+      $box_color = "box-primary";
+    }else if($skin_color == "skin-red"){
+      $box_color = "box-danger";
+    }else if($skin_color == "skin-yellow"){
+      $box_color = "box-warning";
+    }
+
+
+  }
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -33,7 +48,7 @@
        
        <br />
 
-        <div class="row">
+        <!--<div class="row">
             <div class="col-md-12">
 
 
@@ -66,11 +81,11 @@
                 <?php }?>
               
             </div>
-        </div>
+        </div> -->
        
       <div class="row">
         <div class="col-md-12">
-          <div class="box box-warning box-solid">
+          <div class="box <?php echo $box_color;?> box-solid">
               <div class="box-header with-border">
                 <h3 class="box-title text-center">Today's Appointment</h3>
 
@@ -101,13 +116,17 @@
                     <td>
                       <?php echo $vets_appointment_today->age;?>
                     </td>
-                    <td><?php if($vets_appointment_today->tapos_na == 0){ ?>
-                    <button type="button" data-toggle="modal" data-target="#checkup<?php echo $vets_appointment_today->appointment_table_id?>" class="btn btn-sm btn-flat btn-primary">Add Record</button>
+                    <td><?php if($vets_appointment_today->is_finished == 0){ ?>
+                    <button type="button" data-toggle="modal" data-target="#checkup<?php echo $vets_appointment_today->appointment_table_id?>" class="btn btn-sm btn-flat btn-primary add-record-modal">Add Record</button>
+                    
                     <?php }else{ ?>  
-                      <label class="label label-success"> Done</label>
+                      <!--<label class="label label-success"> Done</label> -->
+
+                      <!--<a href="<?php echo site_url()?>veterinarian/pet_details/<?php echo $vets_appointment_today->pet_table_id;?>" class="btn btn-info btn-sm btn-flat">View Pet Detail</a> -->
+                      <button type="button" data-toggle="modal" class="btn btn-info btn-sm btn-flat" data-target="#viewprescription<?php echo $vets_appointment_today->appointment_table_id?>">View Prescription</button>
                     <?php }?>
                     </td>
-                        <div class="modal fade" id="checkup<?php echo $vets_appointment_today->appointment_table_id?>">
+                        <div class="modal fade"  id="checkup<?php echo $vets_appointment_today->appointment_table_id?>">
                             <div class="modal-dialog">
                               <div class="modal-content">
                                 <div class="modal-header">
@@ -117,9 +136,15 @@
                                    
                                   </h4>
                                 </div>
-
-                                <?php echo form_open_multipart('pet_management/add_diagnosis','id=""');?>
+                                <?php //pet_management/add_diagnosis ?>
+                                <?php echo form_open_multipart('pet_management/add_diagnosis_record_vet_action','id=""');?>
                                   <div class="modal-body">
+                                   
+                                  <div class="alert alert-success display-success_add_record" style="display: none">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                     <div class="success-message_add_record"></div> 
+                                  </div>
+
                                     <div class="row">
                                           <div class="col-md-9 offset-md-3">
                                             <div class="row">
@@ -133,12 +158,10 @@
                                               </div>
                                             </div>  
                                           </div>
-                                    </div>
+                                    </div> 
 
 
-
-
-                                     <div class="row">
+                                    <div class="row">
                                           <div class="col-md-9 offset-md-3">
                                             <div class="row">
                                               <div class="col-md-4">
@@ -151,165 +174,120 @@
                                               </div>
                                             </div>  
                                           </div>
-                                    </div>
-
-
-                                 
-
+                                    </div>        
 
                                     <div class="row">
                                       <div class="col-md-12">
                                         <label>Customer Description/Complaints : </label> 
                                         <div class="form-group">
-                                        <textarea name="complaints" id="complaints" class="form-control" style="height:100px" placeholder="Input Owner Statement"><?php echo $vets_appointment_today->complaints;?></textarea>
+                                        <textarea name="complaints" id="complaints" class="form-control textareas" style="height:100px" placeholder="Input Owner Statement" required=""><?php echo $vets_appointment_today->complaints;?></textarea>
                                         </div>
                                       </div>
                                     </div>
+
 
                                     <div class="row">
                                       <div class="col-md-12">
-                                        <label> Treatment : </label> 
+                                        <label>Treatment : </label> 
                                         <div class="form-group">
-                                        <textarea name="treatment" id="treatment" class="form-control" style="height:100px" placeholder="Input Veterinarian Statement/ Observation / Treatment"></textarea>
+                                        <textarea name="treatment" id="treatment" class="form-control textareas" style="height:100px" placeholder="Input Owner Statement" required="" placeholder="Input Veterinarian Statement/ Observation / Treatment">Input Veterinarian Statement/ Observation / Treatment</textarea>
                                         </div>
                                       </div>
                                     </div>
-
 
                                     <div class="row">
                                       <div class="col-md-12">
                                         <label> Prescription: </label> 
                                         <div class="form-group">
-                                        <textarea name="prescription" id="prescription" class="form-control" style="height:100px" placeholder="Prescrition / ">
-                                            
+                                        <textarea name="prescription" id="prescription" class="form-control textareas" style="height:100px" placeholder="Prescrition / " required="">
+                                            Prescriptions / Medicines / Doctors Comments and Recomendation
                                         </textarea>
                                         </div>
                                       </div>
                                     </div>
 
+                                
+                                 
+                                 <?php //other data?>
+                                 <input type="hidden" name="date" id="date" value="<?php echo $vets_appointment_today->preferredDate;?>">
+                                 <input type="hidden" name="time" id="time"  value="<?php echo $vets_appointment_today->preferredtime;?>">
 
-                                    <div class="row">
+                                 <input type="hidden" name="appointment_id" id="appointment_id"  value="<?php echo $vets_appointment_today->appointment_id;?>">
+                                 <input type="hidden" name="appointment_table_id" id="appointment_table_id"  value="<?php echo $vets_appointment_today->appointment_table_id;?>">
+
+                                 <input type="hidden" name="veterinarian" id="veterinarian"  value="<?php echo $this->session->userdata('complete_name');?>">
+
+                                 <input type="hidden" name="vet_id" id="vet_id"  value="<?php echo $this->session->userdata("user_id");?>">
+
+
+                                 <input type="hidden" name="pet_id" id="pet_id"  value="<?php echo $vets_appointment_today->pet_id;?>">
+                                 <input type="hidden" name="pet_name" id="pet_name"  value="<?php echo $vets_appointment_today->pet_name;?>">
+
+                                <input type="hidden" name="age" id="age"  value="<?php echo $vets_appointment_today->age;?>">
+
+
+
+                                <div class="row">
                                   <div class="col-md-12">
                                         <label> Pet Services: </label> 
                                            <?php 
                                       $pettype = $vets_appointment_today->pettype;
+                                    $pettype_ulit = strtolower($pettype);
                                       $is_adult = $vets_appointment_today->is_adult;
-                                      
-                                      if($pettype == "Dog" && $is_adult == 1){
-                                        //echo "Pet Services"; ?>
-                                        <div class="form-group">
+                                      //adult (1 year old and above)
+                                      //young adult (11 months old and below)
 
+                                      if($is_adult == 1){
+                                        $age = "adult (1 year old and above)";
+                                      }else{
+                                        $age = "young adult (11 months old and below)";
+                                      }
 
+                                      /*$isa = $this->pet_management_model->get_all_services_for_specific_pet_age_and_active($pettype_ulit);
 
-                                        <select name="services" class="form-control select2" required="" style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;">
+                                      foreach($isa as $a){
+                                        echo $a->service_name;
+                                      }*/
+                                   
+                                       // echo "puppies"; 
 
-                                          <option value="0">General Checkup</option>
-                                        
-                                          <?php foreach($get_pet_services_for_adult_dogs as $s_dogs):?>
-                                                                       <!-- checkbox -->
-                                            <option value="<?php echo $s_dogs->adult_dog_prog_id;?>"><?php echo $s_dogs->adult_dog_prog_name;?></option>
-                               
-                                          <?php endforeach;?>
-                                         </select>
+                                     $services =  $this->pet_management_model->get_all_services_for_specific_pet_age_and_active($pettype_ulit,$age);
+                                      ?>
 
-                                         
-                                        </div>
+                                
+                                          <div class="col-md-12">
+                                              <select name="service_id[]" id="service_id" class="form-control select2" multiple required style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;">
+                                              <option value="0">General Checkup</option>
+                                              <?php foreach($services as $s):?>
+                                                <option value="<?php echo $s->service_id?>"><?php echo $s->service_name;?></option>
+                                              <?php endforeach;?>
+                                             </select>
+                                         </div>
+                                   
 
-                                      <?php }else if($pettype == "Dog" && $is_adult == 0){
-                                       // echo "puppies"; ?>
-
-                                       <div class="form-group">
-
-                                        <select name="services" class="form-control select2" required="" style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;">
-
-
-                                          <option value="0">General Checkup</option>
-                                        
-                                          <?php foreach($get_pet_services_puppies as $s_pups):?>
-                                                                       <!-- checkbox -->
-                                            <option value="<?php echo $s_pups->puppies_prog_id;?>"><?php echo $s_pups->puppies_prog_name;?></option>
-                               
-                                          <?php endforeach;?>
-                                         </select>
-
-                                     
-                                        </div>
-
-                                      <?php }else if($pettype == "Cat" && $is_adult == 1){
-                                        //echo "Cat";?>
-
-
-                                      <div class="form-group">
-
-                                        <select name="services" class="form-control select2" required="" style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;">
-
-
-                                          <option value="0">General Checkup</option>
-                                        
-                                          <?php foreach($get_pet_services_cats as $s_cats):?>
-                                                                       <!-- checkbox -->
-                                            <option value="<?php echo $s_cats->cats_prog_id;?>"><?php echo $s_pups->cats_prog_name;?></option>
-                               
-                                          <?php endforeach;?>
-                                         </select>
-                                      </div>
-
-
-                                      <?php }else if($pettype == "Cat" && $is_adult == 0){
-                                       // echo "Kitten"; ?>
-
-                                      <div class="form-group">
-
-                                        <select name="services" class="form-control select2" required="" style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;">
-
-                                          <option value="0">General Checkup</option>
-                                        
-                                          <?php foreach($get_pet_services_kittens as $s_kittens):?>
-                                                                       <!-- checkbox -->
-                                            <option value="<?php echo $s_cats->cats_prog_id;?>"><?php echo $s_kittens->kittens_prog_name;?></option>
-                               
-                                          <?php endforeach;?>
-                                         </select>
-                                      </div>
-
-                                      <?php }
-                                    ?>
                                     </div>
+                                    
+
+
                                 </div>
+                                       
 
                                    
 
-
-
-
-                                   
-                                 <?php //other data?>
-                                 <input type="hidden" name="date" value="<?php echo $vets_appointment_today->preferredDate;?>">
-
-                                 <input type="hidden" name="time" value="<?php echo $vets_appointment_today->preferredtime;?>">
-
-                                 <input type="hidden" name="appointment_id" value="<?php echo $vets_appointment_today->appointment_id;?>">
-
-                                 <input type="hidden" name="veterinarian" value="<?php echo $this->session->userdata('complete_name');?>">
-
-                                 <input type="hidden" name="vet_id" value="<?php echo $this->session->userdata("user_id");?>">
-
-
-                                 <input type="hidden" name="pet_id" value="<?php echo $vets_appointment_today->pet_id;?>">
-                                 <input type="hidden" name="pet_name" value="<?php echo $vets_appointment_today->pet_name;?>">
-
-                                 <input type="hidden" name="age" value="<?php echo $vets_appointment_today->age;?>">
                                  
-                                 <input type="hidden" name="pettype" value="<?php echo $pettype;?>">
-                                 <input type="hidden" name="is_adult" value="<?php echo $is_adult;?>">
+                                 <input type="hidden" name="pettype" id="pettype"  value="<?php echo $pettype;?>">
+                                 <input type="hidden" name="is_adult" id="is_adult"  value="<?php echo $is_adult;?>">
+
+
+                                  
 
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                    <input type="submit" class="btn btn-primary" name="submit" value="Save">
+                                    <input type="submit" class="btn btn-primary btn-sm btn-flat btn-add-record" id="submit" name="submit" value="Save">
                                   </div>
 
-                                <?php echo form_close();?>
+                                </form>
                               </div>
                               <!-- /.modal-content -->
                             </div>
@@ -318,7 +296,34 @@
                         <!-- /.modal -->  
 
 
+                      <div class="modal fade" id="viewprescription<?php echo $vets_appointment_today->appointment_table_id?>">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                              <h4 class="modal-title">Prescription</h4>
+                            </div>
+                            <div class="modal-body">
+                              <?php 
 
+                                 $prescription = $this->pet_management_model->get_prescription_by_appointment_table_id($vets_appointment_today->appointment_table_id);
+
+                                foreach($prescription as $p){
+                                  echo $p->prescription;
+                                }
+                              ?>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                              
+                            </div>
+                          </div>
+                          <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                      </div>
+                      <!-- /.modal -->
 
 
 
@@ -335,7 +340,9 @@
               <!-- /.box-body -->
               <div class="box-footer">
 
-
+                <?php 
+                
+                ?>
               </div>
               <!-- /.box-footer-->
           </div>
@@ -391,22 +398,78 @@
 <!--page scripts -->
 <script>
 
+$(function(){
 
-    //iCheck for checkbox and radio inputs
-    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-      checkboxClass: 'icheckbox_minimal-blue',
-      radioClass   : 'iradio_minimal-blue'
-    })
-    //Red color scheme for iCheck
-    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-      checkboxClass: 'icheckbox_minimal-red',
-      radioClass   : 'iradio_minimal-red'
-    })
-    //Flat red color scheme for iCheck
-    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-      checkboxClass: 'icheckbox_flat-green',
-      radioClass   : 'iradio_flat-green'
-    })
+
+//get_all_pet_services
+
+
+
+
+    function add_service_section(count = ''){
+        
+
+        var html = '';
+        html += '<span id="row'+count+'"><div class="row">';
+        var counts = count + 1;
+        html += '<div class="col-md-11">';
+        html += '<select name="service_id[]" id="service_id'+count+'" class="form-control ">';
+        html += '<?php $services = $this->pet_management_model->get_all_services_for_specific_pet_age_and_active($pettype_ulit,$age);
+
+        foreach($services as $s){ ?>';
+
+        html += '<option value ="<?php echo $s->service_id;?>"> <?php echo $s->service_name;?>';
+
+        html += '<?php } ?>';
+        html += '</select><input type="hidden" name="hidden_service_id[]" id="hidden_service_id'+count+'" />';
+        html += '</div>';
+       
+        html += '<div class="col-md-1">';
+        if(count == '' )
+        {
+          html += '<button type="button" name="add_more" id="add_more" data-tooltip="tooltip" data-tittle="Add Service" class="btn btn-success btn-xs">+</button>';
+        }
+        else
+        {
+          html += '<button type="button" name="remove" id="'+count+'" class="btn btn-danger btn-xs remove">-</button>';
+        }
+        html += '</div>';
+        html += '</div></div><br /></span>';
+        $('.span_service_section').append(html);
+    }
+
+
+
+
+
+  
+ /* $(document).on('click', '#add_more', function(){
+      count = count + 1;
+      add_service_section(count);
+  });
+
+  $(document).on('click', '.remove', function(){
+      var row_no = $(this).attr("id");
+      $('#row'+row_no).remove();
+  });*/
+
+
+  function reload(){
+     
+      setTimeout(function(){ 
+
+            $(".display-success").fadeOut("fast");
+                location.reload();
+             }, 2000);
+      }
+
+
+
+
+
+
+
+});
 
 </script>
 

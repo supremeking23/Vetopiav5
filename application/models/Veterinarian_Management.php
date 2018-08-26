@@ -53,6 +53,21 @@ class Veterinarian_Management extends CI_Model {
     }
 
 
+    public function get_all_veterinarian_active(){
+
+        $this->db->select('*');
+        $this->db->from('tbl_veterinarians');
+        
+        $this->db->where('veterinarian_status','Active');
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+    }
+
+
     public function count_all_veterinarians(){
         $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_veterinarians');
         return $result_set->result();
@@ -65,7 +80,7 @@ class Veterinarian_Management extends CI_Model {
         $this->db->from('tbl_veterinarians');
         $this->db->where('username',$username);
         $this->db->where('password',$password);
-        $this->db->where('is_active',$active);
+        $this->db->where('veterinarian_status',$active);
 
         $query = $this->db->get();
 
@@ -74,7 +89,19 @@ class Veterinarian_Management extends CI_Model {
         return $result_set;
     }
 
+    public function check_status_by_user_id($user_id){
+        $active = "Active";
+        $this->db->select('*');
+        $this->db->from('tbl_veterinarians');
+        $this->db->where('veterinarian_id',$user_id);
+        $this->db->where('veterinarian_status',$active);
 
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+    }
 
 
     public function insert_new_log($data){

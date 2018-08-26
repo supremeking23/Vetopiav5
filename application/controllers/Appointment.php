@@ -33,6 +33,39 @@ class Appointment extends CI_Controller {
 
 
 
+	//email try
+	public function emailtry(){
+		$config = array(
+			'protocol' => 'smtp',
+			'smtp_host' => 'ssl://smtp.googlemail.com',
+			'smtp_port' => 465,
+			'smtp_user' => 'vetopiaC@gmail.com',
+			'smtp_pass' => 'vetopiaC123',
+			//'mailtype' => 'html',
+			'charset' => 'iso-8859-1',
+			'wordwrap' => TRUE
+
+		);
+
+		$message = "Hello ivan";
+
+		$this->load->library('email',$config);
+		$this->email->set_newline("\r\n");
+		$this->email->from('vetopiaC@gmail.com');
+		$this->email->to('icjfuncion@gmail.com');
+		$this->email->subject('Subject: test subject');
+
+		if($this->email->send()){
+			echo "email sent.";
+		}else{
+			show_error($this->email->print_debugger());
+		}
+
+		         
+	}
+
+
+
 	public function send_appointment_request(){
 
 
@@ -177,10 +210,21 @@ class Appointment extends CI_Controller {
 		$data = array(
 			'vet_in_charge' => $vet_name,
 			'vet_id' => $vet_id,
-			'appointment_status' => "Approved",
+			'appointment_status' => "Confirmed",
 		);
 
-		$this->appointment_management->update_appointment_detail($appointment_table_id,$data);
+		/*$this->appointment_management->update_appointment_detail($appointment_table_id,$data);
+
+		//get customer id by appointment table id 
+		$customer_id = $this->appointment_management->search_appointment_by_id($appointment_table_id);
+
+		foreach($customer_id as $customer){
+			$customer->customer_id;
+		}
+
+
+		//search customer by user id;*/
+
 
 		$this->session->set_flashdata('assigned_vet','A veterinarian has been assigned to this appointment');
 
@@ -328,13 +372,14 @@ class Appointment extends CI_Controller {
 			'pet_id' => $pet_id,
 			'pettype' => $pettype,
 			'petbreed' => $breed,
-			'appointment_status' => "Approved",
+			'appointment_status' => "Confirmed",
 			'date_requested' => $now,
 			'vet_in_charge' => $vet_name,
 			'vet_id' => $vet_id,
 			'complaints' => $complaints,
 			'age' =>$age,
 			'is_adult' => $is_adult,
+			'pet_table_id' => $pet_table_id,
 
 		);
 
@@ -392,7 +437,7 @@ class Appointment extends CI_Controller {
 
 		$data = array(
 			'vet_in_charge' => $vet_name,
-			'appointment_status' => "Approved",
+			'appointment_status' => "Confirmed",
 			'vet_id' => $vet_id,
 		);
 
@@ -521,13 +566,14 @@ class Appointment extends CI_Controller {
 			'pet_id' => $pet_id,
 			'pettype' => $pettype,
 			'petbreed' => $breed,
-			'appointment_status' => "Approved",
+			'appointment_status' => "Confirmed",
 			'date_requested' => $now,
 			'vet_in_charge' => $vet_name,
 			'vet_id' => $vet_id,
 			'complaints' => $complaints,
 			'age' =>$age,
 			'is_adult' => $is_adult,
+			'pet_table_id' => $pet_table_id,
 
 		);
 
@@ -554,6 +600,109 @@ class Appointment extends CI_Controller {
 
 		redirect('staff/appointments');
 
+	}
+
+
+
+
+	//for onprocess
+	public function change_to_onprocess(){
+		$appointment_table_id = $this->input->post('appointment_table_id');
+		$appointment_status = $this->input->post('appointment_status');
+
+
+		$change_appointment_status = array(
+			'appointment_status' => $appointment_status,
+		);
+
+
+		$this->appointment_management->update_appointment_detail($appointment_table_id,$change_appointment_status);
+	}
+
+
+	//for appointment done receipt
+
+	public function appointment_receipt(){
+
+	echo 	$appointment_table_id = $this->input->post('appointment_table_id');
+
+		$total_fee = $this->input->post('total_fee');
+
+		$cash = $this->input->post('cash');
+
+		$change = $this->input->post('change');
+
+		$appointment_status = $this->input->post('appointment_status');
+
+		$update_appointment_detail = array(
+			'total_payment' => $total_fee,
+			'cash' => $cash,
+			'change' => $change,
+			'appointment_status' =>$appointment_status,
+		);
+
+		$this->appointment_management->update_appointment_detail($appointment_table_id,$update_appointment_detail);
+	}
+
+
+
+
+	public function print_appointment_receipt(){
+		$data['title'] = "Vetopia";
+
+		$settings_id = 1;
+		$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
+
+		//$data['all_customers'] = $this->customer_management->get_all_customer();
+
+
+
+		$name = $this->session->userdata('complete_name');
+		$log_usertype =  $this->session->userdata('account_type');
+		$log_userID = $this->session->userdata("user_id");
+		$log_action = "Print Appointment Detail";
+		
+
+
+		$now = date('Y-m-d H:i:s');
+		$data2 = array(
+			"log_user" => $name,
+			"log_usertype" => $log_usertype,
+			"log_userID" => $log_userID,
+			"log_action" => $log_action,
+			"log_date" => $now,
+		);
+
+
+
+		$this->admin_management->insert_new_log($data2);
+
+
+	     $settings_id = 1;
+        $data['clinic_detail'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
+       // $data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
+
+        $data['title'] = "Vetopia";
+        $appointment_table_id = $this->uri->segment(3);
+        $data['id'] = $appointment_table_id;
+
+        $data['get_appointment_detail_by_appointment_data_id'] = $this->appointment_management->search_appointment_by_id($appointment_table_id);
+        //echo $sales_id;
+
+        $data['get_prescription_by_appointment_table_id'] = $this->pet_management_model->get_prescription_by_appointment_table_id($appointment_table_id);
+
+        $data['get_services_by_appointment_table_id'] = $this->appointment_management->get_services_by_appointment_table_id($appointment_table_id);
+  
+
+        //for the products that has been purchased
+       
+
+        //tbl_sales
+
+        //sales details
+
+
+		$this->load->view('staff/print_appointment_slip',$data);
 	}
 
 

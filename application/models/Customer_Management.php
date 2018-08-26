@@ -91,6 +91,20 @@ class Customer_Management extends CI_Model {
         return $result_set;
     }
 
+    public function check_status_by_user_id($user_id){
+        $active = "Active";
+        $this->db->select('*');
+        $this->db->from('tbl_customers');
+        $this->db->where('customer_id',$user_id);
+        $this->db->where('customer_status',$active);
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+    }
+
 
 
      public function insert_new_log($data){

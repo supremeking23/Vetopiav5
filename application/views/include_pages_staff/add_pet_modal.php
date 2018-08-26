@@ -159,6 +159,21 @@
                          </div>   
                  </div>
 
+                 <br />
+
+                <div class="row">
+                          <div class="col-md-12">
+                         
+                              <?php 
+
+                              echo form_label('Pet Image', 'upload_image','class="control-label"');
+                              ?>
+
+                              <input type="file" class="form-control"  value="" name="upload_image" required="">
+
+                          
+                         </div>   
+                </div>
 
 
 
@@ -205,7 +220,7 @@
 
           $('select[name="pet_type"]').on('change', function() {
 
-          var pet_type = $(this).val();
+            var pet_type = $(this).val();
 
             if(pet_type) {
 
@@ -238,7 +253,7 @@
 
             }
 
-        });
+          });
 
 
 

@@ -59,7 +59,7 @@
          <div class="col-md-3">
              <div class="box box-primary">
                   <div class="box-body box-profile">
-                      
+                      <a href="" data-toggle="modal" data-target="#changeProfile">
 
                       <?php if(empty($p_detail->pet_profile)){ //guest2?>
                              <img class="profile-user-img img-responsive img-circle" src="<?php echo site_url()?>assets/images/profiles/guest2.jpg" alt="User profile picture">
@@ -67,7 +67,7 @@
                           <?php }else{ ?>
                                 <img class="profile-user-img img-responsive img-circle" src="<?php echo site_url()?>assets/images/pets/<?php echo $p_detail->pet_profile; ?>" alt="User's Name">
                           <?php } ?>
-                     
+                      </a>
 
                       <h3 class="profile-username text-center"><?php echo $p_detail->petname;?></h3>
 
@@ -102,7 +102,7 @@
                                       if($age_years  == 0){
                                          $age =  $age_months . " Month(s) old";
                                       }else{
-                                        $age = $age_years ." Years(s) old";
+                                        $age = $age_years ." Year(s) old";
                                       }
 
                                ?>
@@ -181,7 +181,7 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Beta Version</b> 
+
     </div>
     <strong>Copyright &copy; <?php echo date('Y');?>  All rights
     reserved.

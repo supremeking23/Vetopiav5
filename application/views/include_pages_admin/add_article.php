@@ -30,7 +30,7 @@
 
                               <input type="file" id="article_image" name="article_image" class="form-control" onchange="document.getElementById('article_Image').src = window.URL.createObjectURL(this.files[0])" required="">
 
-                             <img  id="article_Image"  class="img-rounded" alt="" width="100%" height="200" src="" />
+                              <div id="image_viewer"> <img  id="article_Image"  class="img-rounded" alt="" width="100%" height="200" src="" /></div>
                          </div>   
               </div>
 
@@ -77,7 +77,7 @@
                         'name' => 'submit',
                         'value' => 'Add',
                         'id' => 'add_article_btn',
-                        'class' => 'btn btn-primary',
+                        'class' => 'btn btn-primary btn-sm btn-flat',
                       );
 
                     echo form_submit($data);?>
@@ -144,7 +144,7 @@
         html += '<span id="row'+count+'"><div class="row">';
         var counts = count + 1;
         html += '<div class="col-md-11">';
-        html += '<textarea style="height: 200px" required="" name="content[]" id="content'+count+'" class="form-control text" placeholder= "Content Section '+ counts +'">';
+        html += '<textarea style="height: 200px" required="" name="content[]" id="content'+count+'" class="form-control text" placeholder= "Content Section ">';
         html += '</textarea>';
         html += '</div>';
        
@@ -226,8 +226,10 @@
         cache: false,
         processData:false,
         success:function(data){
-        
+            $('#formAddArticle')[0].reset();
+            $('#image_viewer').css("display","none");
 
+            $('#add_article_btn').attr("disabled",true);
             $(".display-success_article").css("display","block");
             $(".success-message_article").html("<p>Article has been added to the library </p>");
             reload();

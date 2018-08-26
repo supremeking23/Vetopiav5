@@ -3,6 +3,7 @@
   $skin_color = $t_color->theme_color;
   $settings_id =$t_color->settings_id;
   $aboutus_content =  $t_color->aboutus_content;
+  $service_content = $t_color->service_content;
 
   $clinic_home_address = $t_color->clinic_home_address;
   $clinic_barangay_address = $t_color->clinic_barangay_address;
@@ -281,15 +282,26 @@
 
                   <form method="POST" id="formContentSection" enctype="multipart/form-data">
                      
-                           <?php echo form_label('About Section', 'aboutus_content','class="control-label"');?>
+                      <?php echo form_label('About Section', 'aboutus_content','class="control-label"');?>
 
                          <textarea class="form-control textareas" id ="aboutus_content" name="aboutus_content" cols="6" rows="8"><?php echo $aboutus_content;?></textarea>
+                 
+
+
+                 <hr>
+
+                  <?php echo form_label('Service Section', 'service_content','class="control-label"');?>
+
+                         <textarea class="form-control textareas" id ="service_content" name="service_content" cols="6" rows="8"><?php echo $service_content;?></textarea>
                  
                        
 
                           <input type="hidden" name="settings_id" value="1" id="settings_id">
 
                           <br />
+
+
+
                      <input type="submit" name="save_about_us" id="save_about_us" value="Save" class="btn btn-sm btn-flat btn-primary pull-right">
 
                          
@@ -329,45 +341,95 @@
 
                   <div class="row banner-data">
                       <div class="col-xs-12 col-md-12 col-lg-12">
+
+                        <?php
+                           // for carousel slides only
+                            $connect = mysqli_connect("localhost", "root", "", "vetopia_db");
+                            function make_query($connect)
+                            {
+                             $query = "SELECT * FROM tbl_bannerimages ORDER BY bannerimage_id ASC";
+                             $result = mysqli_query($connect, $query);
+                             return $result;
+                            }
+
+                            function make_slide_indicators($connect)
+                            {
+                             $output = ''; 
+                             $count = 0;
+                             $result = make_query($connect);
+                             while($row = mysqli_fetch_array($result))
+                             {
+                              if($count == 0)
+                              {
+                               $output .= '
+                               <li data-target="#dynamic_slide_show" data-slide-to="'.$count.'" class="active"></li>
+                               ';
+                              }
+                              else
+                              {
+                               $output .= '
+                               <li data-target="#dynamic_slide_show" data-slide-to="'.$count.'"></li>
+                               ';
+                              }
+                              $count = $count + 1;
+                             }
+                             return $output;
+                            }
+
+                            function make_slides($connect)
+                            {
+                             $output = '';
+                             $count = 0;
+                             $result = make_query($connect);
+                             while($row = mysqli_fetch_array($result))
+                             {
+                              if($count == 0)
+                              {
+                               $output .= '<div class="item active">';
+                              }
+                              else
+                              {
+                               $output .= '<div class="item">';
+                              }
+                              $output .= '
+
+
+                               <img src= "'.site_url().'assets/images/site_images/'.$row["banner_image"].'" alt="'.$row["banner_caption_heading"].'" />
+                               <div class="carousel-caption" style="background: rgba(0,0,0,0.2);">
+                                <h2>'.$row["banner_caption_heading"].'</h2>
+                                <h3>'.$row["banner_caption"].'</h3>
+                              <button type="button" class="btn btn-outline-light btn-lg btn-banner-remove" id="'.$row["bannerimage_id"].'">Delete Banner</button>
+
+                              
+                                  <!-- /.modal -->
+                               </div>
+                              </div>
+                              ';
+                              $count = $count + 1;
+                             }
+                             return $output;
+                            }
+
+                            ?>
                           
 
-                           <div class="carousel slide" data-ride="carousel" id="featured">
+                           <div class="carousel slide" data-ride="carousel" id="dynamic_slide_show">
 
 
-                              <div class="carousel-inner">
+                            <ol class="carousel-indicators">
+                                <?php echo make_slide_indicators($connect); ?>
+                            </ol>
 
-                                  <?php foreach($banners as $banner):?>
-
-                                    <?php if( $banner->bannerimage_id == 1){
-                                        $carousel_item_active ="active";
-                                    }else{
-                                       $carousel_item_active="";
-                                    }
-
-                                    ?>
-
-                                    <div class="item <?php echo $carousel_item_active; ?>" style="height: 400px">
-                                       <img src="<?php echo site_url()?>assets/images/site_images/<?php echo $banner->banner_image;?>" alt="">
-
-                                       <div class="carousel-caption" style="background: rgba(0,0,0,0.2);">
-                                        <h1 class="display-2"><?php echo $banner->banner_caption_heading;?></h1>
-                                        <h3><?php echo $banner->banner_caption?></h3>
-                                        <button type="button" class="btn btn-outline-light btn-lg btn-banner" id="<?php echo $banner->bannerimage_id;?>">VIEW DEMO </button>
-                                      </div>
-
-                                    </div>
-
-                                  
-                                  <?php endforeach;?>
-
+                                <div class="carousel-inner">
+                               <?php echo make_slides($connect); ?>
                               </div>
 
 
-                              <a class="left carousel-control" href="#featured" role="button" data-slide="prev">
+                              <a class="left carousel-control" href="#dynamic_slide_show" role="button" data-slide="prev">
                                 <span class="glyphicon glyphicon-chevron-left"></span>
                               </a>
 
-                                <a class="right carousel-control" href="#featured" role="button" data-slide="next">
+                                <a class="right carousel-control" href="#dynamic_slide_show" role="button" data-slide="next">
                                 <span class="glyphicon glyphicon-chevron-right"></span>
                               </a>
                            </div>
@@ -437,7 +499,7 @@
     function reload(){
      
       setTimeout(function(){ 
-
+         
           $(".display-success").fadeOut("fast");
           location.reload();
            }, 2000);
@@ -489,12 +551,12 @@
         method : 'POST',
         url: '<?php echo site_url()?>settings/aboutus_content_changer',
         data: formData2,
-        dataType: 'json',
+        //dataType: 'json',
         contentType: false,
         cache: false,
         processData:false,
         success:function(data){
-          if(data.code == 200){
+          /*if(data.code == 200){
             $(".display-success_about_us").css("display","block");
             $(".display-error_about_us").css("display","none");
             $(".success-message_about_us").html("<p>"+ data.msg +" </p>");
@@ -505,7 +567,12 @@
             $(".display-error_about_us").css("display","block");
             $(".display-success_about_us").css("display","none");
           }
+          */
 
+          $(".display-success_about_us").css("display","block");
+          $(".display-error_about_us").css("display","none");
+          $(".success-message_about_us").html("<p>Content section has been updated successfully</p>");
+          reload(); 
         console.log("vvasads");
         },
       });
@@ -514,7 +581,7 @@
     });
    
     //ayaw gumana ng success function sa formcontent manual na gawin natin
-    $("#save_about_us").on("click",function(event){
+  /*  $("#save_about_us").on("click",function(event){
       //alert("naclick");
 
       var aboutus_content = $("#aboutus_content").val();
@@ -530,7 +597,7 @@
         reload();
       }
       
-    });
+    });*/
 
     $("#theme_color").on("change", function(event){
       event.preventDefault();
@@ -571,13 +638,34 @@
 
 
 
-    $(document).on('click','.btn-banner',function(){
-
-       alert(1); 
-    });
 
     //$('.banner-data').load("<?php echo site_url('settings/show_banner');?>");
 
+
+
+    $(document).on('click','.btn-banner-remove',function(){
+
+      var bannerimage_id = $(this).attr("id"); 
+
+      $.ajax({
+          url:"<?php echo site_url()?>settings/delete_banner",
+          method:"POST",
+          data:{bannerimage_id:bannerimage_id},
+          success:function(data)
+          {
+            //$('#alert_action').fadeIn().html('<div class="alert alert-info">'+data+'</div>');
+            //orderdataTable.ajax.reload();
+            /*$('.confirmation_content').css("display","none");
+            $(".display-success_remove_banner").css("display","block");
+            $(".success-success_remove_banner").html("<p>Banner Image has been removed</p>");
+            $('.remove-banner').attr('disabled',true);*/
+
+            //alert('delete na');
+            reload();
+          }
+      });
+
+    });
   });
 
 </script>

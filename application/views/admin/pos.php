@@ -391,7 +391,7 @@
     //prod id is the product id of all products
 
     $('.add_cart').click(function(){
-            $('#detail_cart').load("<?php echo site_url('pos_controller/load_cart');?>");
+           // $('#detail_cart').load("<?php echo site_url('pos_controller/load_cart');?>");
             var product_id    = $(this).data("productid");
             var prod_id = $(this).data("prod_id");
             var product_name  = $(this).data("productname");

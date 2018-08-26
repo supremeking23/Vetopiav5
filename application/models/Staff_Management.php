@@ -54,6 +54,21 @@ class Staff_Management extends CI_Model {
     }
 
 
+    public function get_all_staff_active(){
+
+        $this->db->select('*');
+        $this->db->from('tbl_staffs');
+        
+        $this->db->where('staff_status','Active');
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+    }
+
+
     public function count_all_staffs(){
         $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_staffs');
         return $result_set->result();
@@ -67,6 +82,21 @@ class Staff_Management extends CI_Model {
         $this->db->from('tbl_staffs');
         $this->db->where('username',$username);
         $this->db->where('password',$password);
+        $this->db->where('staff_status',$active);
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+    }
+
+
+    public function check_status_by_user_id($user_id){
+        $active = "Active";
+        $this->db->select('*');
+        $this->db->from('tbl_staffs');
+        $this->db->where('staff_id',$user_id);
         $this->db->where('staff_status',$active);
 
         $query = $this->db->get();

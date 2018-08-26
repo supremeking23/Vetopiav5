@@ -2,145 +2,15 @@
                 <ul class="nav nav-tabs">
                
                   
-                  <li class="active"><a href="#changePetInfo" data-toggle="tab">Change Pet Information</a></li>
-                  <li ><a href="#checkupHistory" data-toggle="tab">Checkup History</a></li>
+                 
+                  <li class="active"><a href="#checkupHistory" data-toggle="tab">Checkup History</a></li>
 
                 </ul>
                 <div class="tab-content">
 
-                  <div class="tab-pane active" id="changePetInfo">
-                   
-                   <?php foreach($pet_details as $p_detail):?>
-                    <form class="form-horizontal" action="<?php echo site_url()?>pet_management/update_pet_details_staff_action" method="POST">
+                
 
-
-
-                      <div class="form-group">
-                        <label for="customerID" class="col-sm-2 control-label">Pet ID</label>
-
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="pet_id" placeholder="Pet ID" readonly="" value="<?php echo $p_detail->pet_id;?>">
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="customer_id" class="col-sm-2 control-label">Customer Name</label>
-
-                        <div class="col-sm-10">
-                            <select name="customer_id" class="form-control select2"  style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;">
-                                  
-                                  <?php foreach($all_customers as $customer):?>
-                                    <option value="<?php echo $customer->customer_table_id; ?>"
-                                      <?php if($customer->customer_table_id == $p_detail->customer_table_id){echo "selected";} ?> ><?php echo $customer->firstname.' '.$customer->middlename.' '.$customer->lastname;?></option>
-
-                                 <?php endforeach;?>
-                            </select>
-                        </div>
-                      </div>
-
-                       <div class="form-group">
-                        <label for="petname" class="col-sm-2 control-label">Pet Name</label>
-
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="petname" name="petname" placeholder="Pet Name" value="<?php echo $p_detail->petname;?>">
-                        </div>
-                      </div>
-
-                      <!--emergency -->
-
-                      <?php $pet_breedAndType = $this->pet_management_model->get_pet_by_id_2($p_detail->pet_table_id);
-
-                        foreach ($pet_breedAndType as $breedandtype) {
-                            $pettype_id_of_pet = $breedandtype->pettype;
-                             $breed_id_of_pet = $breedandtype->breed;
-                            
-
-                        }
-                      ?>
-
-                      <div class="form-group">
-                        <label for="pettype" class="col-sm-2 control-label">Pet Type</label>
-
-                        <div class="col-sm-10">
-                         
-                              <select name="pet_type" class="form-control select2"  style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;">
-                                  
-                                  <?php foreach($all_pettype as $pettypes):?>
-                                   <option value="<?php echo $pettypes->pettype_id;?>"
-                                        <?php if($pettypes->pettype_id == $pettype_id_of_pet){echo "selected";} ?> ><?php echo $pettypes->pettype;?></option>
-                                  <?php endforeach;?>
-
-                            </select>
-
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="breed" class="col-sm-2 control-label">Pet Breed</label>
-
-                        <div class="col-sm-10">
-                           
-
-                             <select name="breed" class="form-control select2" style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;">
-                                  
-                                
-                            </select>
-                        </div>
-
-                        <input type="hidden" name="breed_init" value="<?php echo $breed_id_of_pet;?>">
-                      </div>
-                      
-                      <div class="form-group">
-                        <label for="birthDate" class="col-sm-2 control-label">Birth Date</label>
-
-                        <div class="col-sm-10">
-                          <input type="date" class="form-control" name="birthdate" value="<?php echo $p_detail->birthdate;?>">
-                        </div>
-                      </div>
-
-
-                      <div class="form-group">
-                        <label for="gender" class="col-sm-2 control-label">Gender</label>
-
-                        <div class="col-sm-10">
-
-                             <?php //option for  gender
-                                $option = array(
-                                  
-                                    "Male" => "Male",
-                                    "Female" => "Female",
-                                    
-                                );
-                            ?>
-
-                      <?php //parameters(attribute name , options,selected option,added attibute ex:class,required)?>
-                             <?php echo form_dropdown('gender',$option,$p_detail->gender,'class="form-control" ');?>
-                              
-                        </div>
-                      </div>
-
-
-                    
-
-                      <input type="hidden" name="pet_id_update" value="<?php echo $p_detail->pet_table_id;?>">
-                    
-                     
-                      <br />
-
-                      <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                          <button type="submit" class="btn btn-danger">Submit</button>
-                        </div>
-                      </div>
-                    </form>
-
-
-                    
-
-                        <?php endforeach;?>
-                  </div>
-                  
-
-                <div class="tab-pane " id="checkupHistory">
+                  <div class="tab-pane active" id="checkupHistory">
                         
                             <table  class="datatables table table-bordered table-striped">
                               <thead>
@@ -157,7 +27,7 @@
                               <?php 
                                  $id = $this->uri->segment(3);
 
-                                 $get_pet_id = $this->pet_management_model->get_pet_by_id($id);
+                                $get_pet_id = $this->pet_management_model->get_pet_by_id($id);
 
                                 foreach($get_pet_id as $g_pet_id){
                                   $pet_id = $g_pet_id->pet_id;
@@ -199,26 +69,49 @@
                                                  $complaints = $c_detail->complaints;
                                                  $treatment = $c_detail->treatment;
                                                  $prescription = $c_detail->prescription;
+                                                 /*$service_get = $c_detail->service_name;
+                                                 $service_fee = $c_detail->service_fee;*/
                                               }
 
                                             ?>
 
 
-                                            <?php if($appointment_detail->tapos_na == 1){?>
+                                           
 
-                                              <dl class="dl-horizontal">
-                                              <?php $checkup_detail = 1;?>
+                                             <?php if($appointment_detail->appointment_status != "Cancelled"):?>
+                                               <dl class="dl-horizontal">
+                                                <?php //$checkup_detail = 1;?>
 
-                                                <dt>Reason/Complaint</dt>
-                                                <dd><?php echo $complaints;?></dd>
-                                                <dt>Treatment</dt>
-                                                <dd><?php echo $treatment;?></dd>
-                                                 <dt>Prescription</dt>
-                                                <dd><?php echo $prescription;?></dd>
-                                               
+                                                  <dt>Reason/Complaint</dt>
+                                                  <dd><?php echo $complaints;?></dd>
+                                                  <dt>Treatment</dt>
+                                                  <dd><?php echo $treatment;?></dd>
+                                                   <dt>Prescription</dt>
+                                                  <dd><?php echo $prescription;?></dd>
+                                                  <dt>Services</dt>
+
+                                                  <?php $services = $this->pet_management_model->get_services_by_checkup_id($c_detail->checkup_id);
+
+                                                        $service_fee = 0;
+                                                        foreach($services as $s):
+                                                        
+                                                  ?>
+
+                                                  <dd ><?php echo $s->service_name;?> = ₱<?php echo $s->service_fees;?></dd>
+                                                  <?php 
+                                                  $service_format = $service_fee + $s->service_fees;
+                                                  $service_fee = number_format($service_format,2);
+                                                endforeach; //end service?>
+                                  
+                                                 <dt>Total Fee</dt>
+                                                 <dd>₱<?php echo $service_fee;?><dd/>
                                               </dl>
+                                             <?php endif;?>
 
-                                              <?php }else{ ?>
+                                            <!-- 
+
+                                               <?php if($appointment_detail->is_finished == 1){?>
+                                             <?php }else{ ?>
 
                                                <dl class="dl-horizontal">
                                                   <dt>Reason/Complaint</dt>
@@ -229,7 +122,7 @@
                                                   <dd>N/A</dd>
                                                </dl>
 
-                                             <?php }?>
+                                             <?php }?> -->
 
                                               <?php if($appointment_detail->appointment_status == "Cancelled"):?>
                                                 <hr>
@@ -245,32 +138,11 @@
 
 
 
-                                              <?php if($appointment_detail->tapos_na == 1):?>
-
-                                                <?php //echo $a_appointment->appointment_id;?>
-
-                                                <?php 
-
-                                                //echo $a_appointment->$appointment_id;
-                                                $tapos_na_detail =  $this->pet_management_model->get_pet_service_by_appointment_id($appointment_detail->appointment_id);?>
-
-
-                                                <?php foreach($tapos_na_detail as $tn_d):?>
-                                                  <hr>
-                                                  <dl class="dl-horizontal">
-                                                    <dt>Services</dt>
-                                                    <dd><?php echo $tn_d->all_services?></dd>
-                                                    <dt>Service Fee</dt>
-                                                    <dd>₱<?php echo $tn_d->service_fee;?></dd>
-                                                 </dl>
-
-                                                <?php endforeach;?>
-                                                  
-                                              <?php endif;?>
+                                           
                                           </div>
                                           <div class="modal-footer">
                                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                           <?php if($appointment_detail->appointment_status != "Cancelled"):?> <button  class="btn btn-primary btn-sm btn-flat" href="<?php echo site_url();?>pet_management/print_prescription" target="_blank">Print Priscription</a> <?php endif;?>
                                           </div>
                                         </div>
                                         <!-- /.modal-content -->

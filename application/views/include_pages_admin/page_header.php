@@ -231,8 +231,10 @@
 
 
 <!-- not use ... hindi ko alam kung pano to -->
-<script src="<?php echo site_url()?>assets/dist/js/sweetalert.min.js"></script>
-<script src="<?php echo site_url()?>assets/dist/js/sweetalert-dev.js"></script>
+<!---<script src="<?php echo site_url()?>assets/dist/js/sweetalert.min.js"></script>
+<script src="<?php echo site_url()?>assets/dist/js/sweetalert-dev.js"></script>  -->
+<script src="<?php echo site_url()?>assets/dist/js/sweetalert.min.js"></script> 
+
 
 <!-- not compatible -->
 <!-- <script src="<?php echo site_url()?>assets/dist/js/canvasjs.min.js"></script> -->

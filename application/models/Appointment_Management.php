@@ -42,6 +42,39 @@ class Appointment_Management extends CI_Model
 
 
 
+   public function get_appointment_detail_by_appointment_data_id($appointment_id){
+        $this->db->select('*');
+        $this->db->from('tbl_appointments');
+        $this->db->where('appointment_id',$appointment_id);
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;  
+   }
+
+
+  public function get_services_by_appointment_table_id($appointment_table_id){
+        $this->db->select('*');
+        $this->db->from('tbl_service_rendered');
+       
+        $this->db->where('appointment_table_id',$appointment_table_id);
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;    
+    }
+
+
+   public function update_appointment_detail_by_appointment_data_id($appointment_id,$data){
+      $this->db->where('appointment_id', $appointment_id);
+      $this->db->update('tbl_appointments', $data);
+    }
+
+
+
    public function get_appointment_today($now){
         $this->db->select('*');
         $this->db->from('tbl_appointments');
@@ -73,8 +106,8 @@ class Appointment_Management extends CI_Model
    public function get_all_appointment(){
         $this->db->select('*');
         $this->db->from('tbl_appointments');
-       $this->db->order_by('appointment_table_id',"desc");
-
+        $this->db->order_by('appointment_table_id',"desc");
+       // $this->db->order_by('preferredDate',"desc");
         $query = $this->db->get();
 
         $result_set = $query->result();

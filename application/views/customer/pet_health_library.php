@@ -66,6 +66,7 @@
             
               <th>Title</th>
               <th>Content</th>
+              <th>Created By</th>
             </tr>
             <?php 
             $sno = $row+1;
@@ -74,8 +75,9 @@
               $content = substr($data['content'],0, 100)." ...";
               echo "<tr>";
               
-              echo "<td><a href='".site_url()."customer/health_detail/".$data['library_id']."' target='_blank'>".$data['title']."</a></td>";
+              echo "<td><a href='".site_url()."customer/library_article_detail/".$data['library_id']."' target='_blank'>".$data['title']."</a></td>";
               echo "<td>".$content."</td>";
+              echo "<td>".$data['created_by']."</td>";
               echo "</tr>";
               $sno++;
 

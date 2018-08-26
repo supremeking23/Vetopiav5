@@ -2,12 +2,14 @@
                 <ul class="nav nav-tabs">
                
                   
-                  
-                  <li class="active"><a href="#checkupHistory" data-toggle="tab">Checkup History</a></li>
                  
+                  <li class="active"><a href="#checkupHistory" data-toggle="tab">Checkup History</a></li>
+
                 </ul>
                 <div class="tab-content">
-                  
+
+                
+
                   <div class="tab-pane active" id="checkupHistory">
                         
                             <table  class="datatables table table-bordered table-striped">
@@ -67,26 +69,49 @@
                                                  $complaints = $c_detail->complaints;
                                                  $treatment = $c_detail->treatment;
                                                  $prescription = $c_detail->prescription;
+                                                 /*$service_get = $c_detail->service_name;
+                                                 $service_fee = $c_detail->service_fee;*/
                                               }
 
                                             ?>
 
 
-                                            <?php if($appointment_detail->tapos_na == 1){?>
+                                           
 
-                                              <dl class="dl-horizontal">
-                                              <?php $checkup_detail = 1;?>
+                                             <?php if($appointment_detail->appointment_status != "Cancelled"):?>
+                                               <dl class="dl-horizontal">
+                                                <?php //$checkup_detail = 1;?>
 
-                                                <dt>Reason/Complaint</dt>
-                                                <dd><?php echo $complaints;?></dd>
-                                                <dt>Treatment</dt>
-                                                <dd><?php echo $treatment;?></dd>
-                                                 <dt>Prescription</dt>
-                                                <dd><?php echo $prescription;?></dd>
-                                               
+                                                  <dt>Reason/Complaint</dt>
+                                                  <dd><?php echo $complaints;?></dd>
+                                                  <dt>Treatment</dt>
+                                                  <dd><?php echo $treatment;?></dd>
+                                                   <dt>Prescription</dt>
+                                                  <dd><?php echo $prescription;?></dd>
+                                                  <dt>Services</dt>
+
+                                                  <?php $services = $this->pet_management_model->get_services_by_checkup_id($c_detail->checkup_id);
+
+                                                        $service_fee = 0;
+                                                        foreach($services as $s):
+                                                        
+                                                  ?>
+
+                                                  <dd ><?php echo $s->service_name;?> = ₱<?php echo $s->service_fees;?></dd>
+                                                  <?php 
+                                                  $service_format = $service_fee + $s->service_fees;
+                                                  $service_fee = number_format($service_format,2);
+                                                endforeach; //end service?>
+                                  
+                                                 <dt>Total Fee</dt>
+                                                 <dd>₱<?php echo $service_fee;?><dd/>
                                               </dl>
+                                             <?php endif;?>
 
-                                              <?php }else{ ?>
+                                            <!-- 
+
+                                               <?php if($appointment_detail->is_finished == 1){?>
+                                             <?php }else{ ?>
 
                                                <dl class="dl-horizontal">
                                                   <dt>Reason/Complaint</dt>
@@ -97,7 +122,7 @@
                                                   <dd>N/A</dd>
                                                </dl>
 
-                                             <?php }?>
+                                             <?php }?> -->
 
                                               <?php if($appointment_detail->appointment_status == "Cancelled"):?>
                                                 <hr>
@@ -113,32 +138,11 @@
 
 
 
-                                              <?php if($appointment_detail->tapos_na == 1):?>
-
-                                                <?php //echo $a_appointment->appointment_id;?>
-
-                                                <?php 
-
-                                                //echo $a_appointment->$appointment_id;
-                                                $tapos_na_detail =  $this->pet_management_model->get_pet_service_by_appointment_id($appointment_detail->appointment_id);?>
-
-
-                                                <?php foreach($tapos_na_detail as $tn_d):?>
-                                                  <hr>
-                                                  <dl class="dl-horizontal">
-                                                    <dt>Services</dt>
-                                                    <dd><?php echo $tn_d->all_services?></dd>
-                                                    <dt>Service Fee</dt>
-                                                    <dd>₱<?php echo $tn_d->service_fee;?></dd>
-                                                 </dl>
-
-                                                <?php endforeach;?>
-                                                  
-                                              <?php endif;?>
+                                           
                                           </div>
                                           <div class="modal-footer">
                                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                           <?php if($appointment_detail->appointment_status != "Cancelled"):?> <button  class="btn btn-primary btn-sm btn-flat" href="<?php echo site_url();?>pet_management/print_prescription" target="_blank">Print Priscription</a> <?php endif;?>
                                           </div>
                                         </div>
                                         <!-- /.modal-content -->
@@ -156,7 +160,6 @@
                              
                             </table>
                   </div><!--checkup -->
-                
              
 
                  
@@ -169,139 +172,103 @@
 
   <script>
 
-          var passwordErrorMessage = $('.passwordErrorMessage');
-          var passwordCorrectMessage = $('.passwordCorrectMessage');
-         
-          passwordErrorMessage.hide();
-          passwordCorrectMessage.hide();
+     $(document).ready(function() {
 
-          var password = document.getElementById('password');
-          var confirmPassword = document.getElementById('confirmPassword');
-         
 
-          confirmPassword.addEventListener('keyup',function(){
-             if(password.value == confirmPassword.value ){
-                  //alert('matched');
-                 //confirmPassword.style.backgroundColor ="";
-                 $('#password').css('border-color','#00AA08');
-                 $('#confirmPassword').css('border-color','#00AA08');
-                 passwordCorrectMessage.addClass("alert alert-success");
+
+      var hidden_init = $('input[name="breed_init"]').val();
+      console.log(hidden_init);
+      //$('#breed').hide();
+      //var stateID = $(this).val();
+        var typeID = $('select[name="pet_type"]').val();
+        //alert('session' + typeID);
+        console.log(typeID)
+
+
+         if(typeID) {
+
+                
+                $.ajax({
+
+                    url: '<?php echo base_url('admin/pet_breed/')?>'+typeID,
+
+                    type: "GET",
+
+                    dataType: "json",
+
+                    success:function(data) {
+
+
+
+                        $('select[name="breed"]').empty();
+                         $.each(data, function(key, value) {
+
+                              var added_att = "";
+                              if(hidden_init == value.breed_id){
+                                  added_att = "selected";
+                              }else{
+                                  added_att = "";
+                              }
+
+                            $('select[name="breed"]').append('<option value="'+ value.breed_id +'" '+ added_att +'>'+ value.pet_breed +'</option>');
+
+                        });
+
+                    }
+
+                });
+
+            }
+
+
+
+        
+
+          $('#breed').hide(); 
+
+          $('select[name="pet_type"]').on('change', function() {
+
+            var pet_type = $(this).val();
+
+            if(pet_type) {
+
+                 $('#breed').show(); 
                  
+                 $.ajax({
 
-                 passwordCorrectMessage.html("Password and Confirm Password Matched");
-                 passwordErrorMessage.hide();
-                 passwordCorrectMessage.show();
-                 console.log("Password  Match");
-             }else{
-                //alert('doesnt matched');
-                //confirmPassword.style.backgroundColor ="#ff6666";
-                //$('#password').css('border-color','#ff6666');
-                $('#confirmPassword').css('border-color','#ff6666');
-                passwordErrorMessage.addClass("alert alert-danger");
-                passwordErrorMessage.show();
-                passwordCorrectMessage.hide();
-                passwordErrorMessage.html("Password and Confirm Password Doesnt Matched");
-                console.log("Password Dont Match");
-             }
+                    url: '<?php echo base_url('admin/pet_breed/')?>'+pet_type,
 
-          });
+                    type: "GET",
 
+                    dataType: "json",
 
+                    success:function(data) {
 
-            /* initialize the calendar
-         -----------------------------------------------------------------*/
-        //Date for the calendar events (dummy data)
-        var date = new Date()
-        var d    = date.getDate(),
-            m    = date.getMonth(),
-            y    = date.getFullYear()
-        $('#calendar').fullCalendar({
-          header    : {
-            left  : 'prev,next today',
-            center: 'title',
-            right : 'month,agendaWeek,agendaDay'
-          },
-          buttonText: {
-            today: 'today',
-            month: 'month',
-            week : 'week',
-            day  : 'day'
-          },
-          //Random default events
-          events    : [
-            {
-              title          : 'All Day Event',
-              start          : new Date(y, m, 1),
-              backgroundColor: '#f56954', //red
-              borderColor    : '#f56954' //red
-            },
-            {
-              title          : 'Long Event',
-              start          : new Date(y, m, d - 5),
-              end            : new Date(y, m, d - 2),
-              backgroundColor: '#f39c12', //yellow
-              borderColor    : '#f39c12' //yellow
-            },
-            {
-              title          : 'Meeting',
-              start          : new Date(y, m, d, 10, 30),
-              allDay         : false,
-              backgroundColor: '#0073b7', //Blue
-              borderColor    : '#0073b7' //Blue
-            },
-            {
-              title          : 'Lunch',
-              start          : new Date(y, m, d, 12, 0),
-              end            : new Date(y, m, d, 14, 0),
-              allDay         : false,
-              backgroundColor: '#00c0ef', //Info (aqua)
-              borderColor    : '#00c0ef' //Info (aqua)
-            },
-            {
-              title          : 'Birthday Party',
-              start          : new Date(y, m, d + 1, 19, 0),
-              end            : new Date(y, m, d + 1, 22, 30),
-              allDay         : false,
-              backgroundColor: '#00a65a', //Success (green)
-              borderColor    : '#00a65a' //Success (green)
-            },
-            {
-              title          : 'Click for Google',
-              start          : new Date(y, m, 28),
-              end            : new Date(y, m, 29),
-              url            : 'http://google.com/',
-              backgroundColor: '#3c8dbc', //Primary (light-blue)
-              borderColor    : '#3c8dbc' //Primary (light-blue)
-            }
-          ],
-          editable  : true,
-          droppable : true, // this allows things to be dropped onto the calendar !!!
-          drop      : function (date, allDay) { // this function is called when something is dropped
+                        $('select[name="breed"]').empty();
+                         $.each(data, function(key, value) {
 
-            // retrieve the dropped element's stored Event Object
-            var originalEventObject = $(this).data('eventObject')
+                            $('select[name="breed"]').append('<option value="'+ value.breed_id +'">'+ value.pet_breed +'</option>');
 
-            // we need to copy it, so that multiple events don't have a reference to the same object
-            var copiedEventObject = $.extend({}, originalEventObject)
+                        });
 
-            // assign it the date that was reported
-            copiedEventObject.start           = date
-            copiedEventObject.allDay          = allDay
-            copiedEventObject.backgroundColor = $(this).css('background-color')
-            copiedEventObject.borderColor     = $(this).css('border-color')
+                    }
 
-            // render the event on the calendar
-            // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-            $('#calendar').fullCalendar('renderEvent', copiedEventObject, true)
+                  });
 
-            // is the "remove after drop" checkbox checked?
-            if ($('#drop-remove').is(':checked')) {
-              // if so, remove the element from the "Draggable Events" list
-              $(this).remove()
+            }else{
+
+                $('select[name="breed"]').empty();
+
             }
 
-          }
-        })
+        });
+
+
+
+    //modal test
+     
+
+    });
 
   </script>
 

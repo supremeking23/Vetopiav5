@@ -61,7 +61,7 @@
                              echo  $sales_date_format= date_format($date,"F d, Y h:i:sa");
                            ;?></td>
                                   <td>₱<?php echo $s->total_amount;?></td>
-                                  <td>  <a role="button"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#sales_full_details<?php echo $s->sales_id?>"><span class="glyphicon glyphicon-fullscreen"> </span>View Full Detail</a>
+                                  <td>  <a role="button"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#sales_full_details<?php echo $s->sales_id?>"><span class="glyphicon glyphicon-fullscreen"> </span> View Full Detail</a>
 
                                   <div class="modal fade" id="sales_full_details<?php echo $s->sales_id?>">
                                         <div class="modal-dialog">
@@ -136,8 +136,7 @@
                                               </div>
                                             </div>
                                             <div class="modal-footer">
-                                              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                              <button type="button" class="btn btn-primary">Save changes</button>
+                                             
                                             </div>
                                           </div>
                                           <!-- /.modal-content -->

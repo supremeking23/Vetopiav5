@@ -144,7 +144,7 @@
                               echo form_label('Birth Date', 'birthDate','class="control-label"');
                               ?>
 
-                              <input type="date" class="form-control"  value="" name="birthdate" required="">
+                              <input type="date" class="form-control" id="max_date"  value="" name="birthdate" required="">
 
                           
                          </div>   
@@ -182,6 +182,22 @@
 
 
                      <br />
+                    <div class="row">
+                          <div class="col-md-12">
+                         
+                              <?php 
+
+                              echo form_label('Email', 'email','class="control-label"');
+                              ?>
+
+
+
+                            
+                             <input type="email" name="email" id="email" class="form-control">  
+                         </div>   
+                    </div>
+
+                    <br >
 
                     <div class="row">
                           <div class="col-md-12">
@@ -304,68 +320,6 @@
                     </div>
 
 
-                  <hr>
-
-                  <h4>Account Settings</h4>
-
-
-                  <div class="row">
-                          <div class="col-md-12">
-                         
-                              <?php 
-
-                              echo form_label('Username', 'username','class="control-label"');
-                              ?>
-
-
-
-                              <?php 
-                                $data = array(
-                                        'name'          => 'username',
-                                        'id'            => 'usernameS',
-                                        'value'         => '',
-                                        //'minlength'     => '2',
-                                        'size'          => '',
-                                        'required'      => 'required',
-                                        
-                                        'class'         => 'form-control',
-                                        
-                                );
-
-                                echo form_input($data);
-                              ?>      
-                         </div>   
-                    </div>
-
-                    <br />
-
-                    <div class="row">
-                          <div class="col-md-12">
-                         
-                              <?php 
-
-                              echo form_label('Password', 'password','class="control-label"');
-                              ?>
-
-
-
-                              <?php 
-                                $data = array(
-                                        'name'          => 'password',
-                                        'id'            => 'password',
-                                        'value'         => '',
-                                        //'minlength'     => '2',
-                                        'size'          => '',
-                                        'required'      => 'required',
-
-                                        'class'         => 'form-control',
-                                        
-                                );
-
-                                echo form_password($data);
-                              ?>      
-                         </div>   
-                    </div>
 
 
                 </div>
@@ -376,7 +330,7 @@
                       $data = array(
                         'name' => 'submit',
                         'value' => 'Add',
-                        'id' => 'add_admin_btn',
+                        'id' => 'add_staff_btn',
                         'class' => 'btn btn-primary',
                       );
 
@@ -399,4 +353,20 @@
 
 
       // $('#usernameS').val(staff_id);
+//for future date
+$(function(){
+    var dtToday = new Date();
+    
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+    
+    var maxDate = year + '-' + month + '-' + day;
+     //alert(maxDate);
+    $('#max_date').attr('max', maxDate);
+});
 </script>

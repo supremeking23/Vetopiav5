@@ -31,6 +31,12 @@ class Settings_Model extends CI_Model {
     }
 
 
+    public function delete_banner($bannerimage_id){
+      $this->db->where('bannerimage_id', $bannerimage_id);
+        $this->db->delete('tbl_bannerimages');
+    }
+
+
 
    public function add_banner($data){
     $this->db->insert('tbl_bannerimages',$data);

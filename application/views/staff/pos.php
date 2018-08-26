@@ -106,7 +106,7 @@
                           </tr>
 
 
-                        <?php echo form_open_multipart('pos_controller/checkouts_admin','id="formCheckout"');?>
+                        <?php echo form_open_multipart('pos_controller/checkouts_staff','id="formCheckout"');?>
 
                            <tr>
                               <td> 

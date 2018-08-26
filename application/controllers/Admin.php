@@ -789,6 +789,7 @@ class Admin extends CI_Controller {
 				$data['id'] = $id;
 
 				$data['admin_details'] = $this->admin_management->get_admin_by_id($id);
+				
 
 				//search for the user_id of the uri
 

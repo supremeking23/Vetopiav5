@@ -16,7 +16,7 @@ class Customer extends CI_Controller {
 
 
         //for reading.. retrieving
-        //$this->load->model('admin_management');
+        $this->load->model('admin_management');
         $this->load->model('customer_management');
         //$this->load->model('veterinarian_management');
         //$this->load->model('staff_management');
@@ -28,6 +28,9 @@ class Customer extends CI_Controller {
 
         $this->load->model('settings_model');
         $this->load->model('pos_management');
+
+        $this->load->model('article_model');
+
 
         if(!$this->session->userdata('logged_in')){
 				redirect('landing_page/login');
@@ -139,6 +142,46 @@ class Customer extends CI_Controller {
 	}
 
 
+	public function library_article_detail(){
+		$settings_id = 1;
+		$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
+		$data['title'] = "Vetopia";
+
+
+		 $id = $this->uri->segment(3);
+
+		 $data['find_library_article'] = $this->article_model->find_article_from_library_by_library_id($id);
+		 $data['find_article_contents'] = $this->article_model->find_article_content_by_library_id($id);
+		 $data['find_article_links'] =$this->article_model->find_library_link_by_librarru_id($id);
+
+
+		$name = $this->session->userdata('complete_name');
+		$log_usertype =  $this->session->userdata('account_type');
+		$log_userID = $this->session->userdata("user_id");
+		$log_action = "Read Article";
+		
+
+
+		$now = date('Y-m-d H:i:s');
+		$data2 = array(
+			"log_user" => $name,
+			"log_usertype" => $log_usertype,
+			"log_userID" => $log_userID,
+			"log_action" => $log_action,
+			"log_date" => $now,
+		);
+
+
+
+		$this->admin_management->insert_new_log($data2);
+		$this->load->view('customer/library_article_detail',$data);
+
+	}
+
+
+
+
+	///mawawawala na to .... parang ikaw
 	public function health_detail(){
 		$settings_id = 1;
 		$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
@@ -291,6 +334,34 @@ class Customer extends CI_Controller {
 			$user_id = $this->session->userdata('user_id');
 			$data['sales'] = $this->pos_management->get_all_sales_by_customer_id($user_id);
 			$this->load->view('customer/purchase_history',$data);
+	}
+
+
+
+	public function change_password(){
+
+    	$settings_id = 1;
+		$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
+
+
+		$name = $this->session->userdata('complete_name');
+		$log_usertype =  $this->session->userdata('account_type');
+		$log_userID = $this->session->userdata("user_id");
+		$log_action = "Change Password";
+		
+
+
+		$now = date('Y-m-d H:i:s');
+		$data2 = array(
+			"log_user" => $name,
+			"log_usertype" => $log_usertype,
+			"log_userID" => $log_userID,
+			"log_action" => $log_action,
+			"log_date" => $now,
+		);
+
+		$data['title'] = "Vetopia";
+		$this->load->view('customer/change_password',$data);
 	}
 
 	

@@ -158,7 +158,7 @@
         </li>
 
         
-         <li><a href="<?php echo site_url()?>admin/<?php echo site_url()?>admin/pet_health_care_library"><i class="fa fa-book"></i> <span>Health Care Library</span></a></li>
+         <li><a href="<?php echo site_url()?>admin/pet_health_care_library"><i class="fa fa-book"></i> <span>Health Care Library</span></a></li>
 
         <?php if($this->session->userdata('account_type') == "Super Admin"):?>
 

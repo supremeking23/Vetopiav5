@@ -75,13 +75,15 @@ class Veterinarian extends CI_Controller {
 			}*/
 
 
-			$data['get_pet_services_for_adult_dogs'] = $this->pet_management_model->get_pet_services_for_adult_dogs();
+			/*$data['get_pet_services_for_adult_dogs'] = $this->pet_management_model->get_pet_services_for_adult_dogs();
 
 			$data['get_pet_services_puppies'] = $this->pet_management_model->get_pet_services_puppies();
 
 			$data['get_pet_services_cats'] = $this->pet_management_model->get_pet_services_cats();
 
-			$data['get_pet_services_kittens'] = $this->pet_management_model->get_pet_services_kittens();
+			$data['get_pet_services_kittens'] = $this->pet_management_model->get_pet_services_kittens();*/
+
+			//$data['services'] = $this->pet_management_model->get_all_pet_services_active();
 
 			$data['title'] = "Vetopia";
 			$this->load->view('veterinarian/appointment',$data);

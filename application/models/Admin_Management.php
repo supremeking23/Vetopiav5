@@ -112,12 +112,24 @@ class Admin_Management extends CI_Model {
 
 
 
+    public function check_status_by_user_id($user_id){
+        $active = "Active";
+        $this->db->select('*');
+        $this->db->from('tbl_admins');
+        $this->db->where('admin_id',$user_id);
+        $this->db->where('admin_status',$active);
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+    }
 
 
 
 
-
-
+    //* global... means can use by any one
 
     //for Logs
 
@@ -156,6 +168,68 @@ class Admin_Management extends CI_Model {
         return $result_set;
     }
 
+
+
+
+    //inser username and password to tbl_users
+    public function insert_username_password($data){
+        $this->db->insert('tbl_users',$data);
+    }
+
+
+    public function update_credentials($user_id,$data){
+        $this->db->where('user_id', $user_id);
+        $this->db->update('tbl_users', $data);
+    }
+
+    public function get_credentials_by_user_id($user_id){
+        $this->db->select('*');
+        $this->db->from('tbl_users');
+        $this->db->where('user_id',$user_id);
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+    }
+
+
+
+
+
+
+    public function check_credentials($username,$password){
+        
+        $this->db->select('*');
+        $this->db->from('tbl_users');
+        $this->db->where('username',$username);
+        $this->db->where('password',$password);
+       
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+    }
+
+
+
+    //for changing password
+    public function check_password_user_id_matched($user_id,$password){
+        $this->db->select('*');
+        $this->db->from('tbl_users');
+        $this->db->where('user_id',$user_id);
+        $this->db->where('password',$password);
+       
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+    }
   
 }
 ?>

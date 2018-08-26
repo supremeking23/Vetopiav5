@@ -14,10 +14,10 @@
                     <?php foreach($staff_details as $s_details):?>
 
                       <div class="form-group">
-                        <label for="customerID" class="col-sm-2 control-label">Admin ID</label>
+                        <label for="staff_id" class="col-sm-2 control-label">Staff ID</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" value="<?php echo $s_details->staff_id;?>" name="customer_id" placeholder="Customer ID" readonly="">
+                          <input type="text" class="form-control" value="<?php echo $s_details->staff_id;?>" name="staff_id" id="staff_id" placeholder="Staff_id" readonly="">
                         </div>
                       </div>
 
@@ -77,6 +77,14 @@
                           <input type="text" class="form-control" value="<?php echo $s_details->contact;?>" name="contact" placeholder="Contact Number">
                         </div>
                       </div>
+
+                       <div class="form-group">
+                        <label for="email" class="col-sm-2 control-label">Email</label>
+
+                        <div class="col-sm-10">
+                          <input type="email" class="form-control" value="<?php echo $s_details->email;?>" name="email" placeholder="Email">
+                        </div>
+                      </div> 
                       
                        <div class="form-group">
                         <label for="homeAddress" class="col-sm-2 control-label">Home Address</label>
@@ -117,11 +125,18 @@
 
                       <hr />
 
+                       <?php $get_credentials_by_user_id = $this->admin_management->get_credentials_by_user_id($s_details->staff_id);
+                            foreach($get_credentials_by_user_id as $credentials){
+                             $username=  $credentials->username;
+                              $password = $credentials->password;
+                            }
+                      ?>
+
                       <div class="form-group">
                         <label for="username" class="col-sm-2 control-label">Username</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" value="<?php echo $s_details->username;?>" name="username" placeholder="Username">
+                          <input type="text" class="form-control" value="<?php echo $username;?>" name="username" placeholder="Username">
                         </div>
                       </div>
 
@@ -130,7 +145,7 @@
                         <label for="password" class="col-sm-2 control-label">Password</label>
 
                         <div class="col-sm-10">
-                          <input type="password" id="password" class="form-control" value="<?php echo $s_details->password;?>" name="password" placeholder="Password">
+                          <input type="password" id="password" class="form-control" value="<?php echo $password;?>" name="password" placeholder="Password">
                            <button class="btn btn-sm btn-warning btn-flat" id="showPass" type="button"><span id="maskMark"><b>show</b></span></button>
                         </div>
                       </div>

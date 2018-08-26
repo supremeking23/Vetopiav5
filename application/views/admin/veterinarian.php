@@ -66,7 +66,7 @@
 
             <div class="alert alert-success display-success">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <p> <?php echo $this->session->flashdata('add_admin_success'); ?> </p>
+                <p> <?php echo $this->session->flashdata('add_vet_success'); ?> </p>
             </div>
 
           <?php }?>

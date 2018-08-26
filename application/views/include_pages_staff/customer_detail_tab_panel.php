@@ -18,7 +18,7 @@
                         <label for="customerID" class="col-sm-2 control-label">Customer ID</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" value="<?php echo $c_details->customer_id;?>" name="customer_id" placeholder="Customer ID" readonly="">
+                          <input type="text" class="form-control" value="<?php echo $c_details->customer_id;?>" id="customer_id" name="customer_id" placeholder="Customer ID" readonly="">
                         </div>
                       </div>
 
@@ -78,6 +78,13 @@
                           <input type="text" class="form-control" value="<?php echo $c_details->contact;?>" name="contact" placeholder="Contact Number">
                         </div>
                       </div>
+                       <div class="form-group">
+                        <label for="email" class="col-sm-2 control-label">Email</label>
+
+                        <div class="col-sm-10">
+                          <input type="email" class="form-control" value="<?php echo $c_details->email;?>" name="email" placeholder="Email">
+                        </div>
+                      </div>                       
                       
                        <div class="form-group">
                         <label for="homeAddress" class="col-sm-2 control-label">Home Address</label>
@@ -118,11 +125,18 @@
 
                       <hr />
 
+                      <?php $get_credentials_by_user_id = $this->admin_management->get_credentials_by_user_id($c_details->customer_id);
+                            foreach($get_credentials_by_user_id as $credentials){
+                             $username=  $credentials->username;
+                              $password = $credentials->password;
+                            }
+                      ?>
+
                       <div class="form-group">
                         <label for="username" class="col-sm-2 control-label">Username</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" value="<?php echo $c_details->username;?>" name="username" placeholder="Username">
+                          <input type="text" id="username" class="form-control" value="<?php echo $username;?>" name="username" placeholder="Username">
                         </div>
                       </div>
 
@@ -131,12 +145,13 @@
                         <label for="password" class="col-sm-2 control-label">Password</label>
 
                         <div class="col-sm-10">
-                          <input type="password" class="form-control" value="<?php echo $c_details->password;?>" name="password" placeholder="Password">
+                          <input type="password" id="password" class="form-control " value="<?php echo $password;?>" name="password" placeholder="Password">
+                           <button class="btn btn-sm btn-warning btn-flat" id="showPass" type="button"><span id="maskMark"><b>show</b></span></button>
                         </div>
                       </div>
 
 
-                      <input type="hidden" name="user_id_update" value="<?php echo $c_details->customer_table_id;?>">
+                      <input type="hidden" id="user_id_update" name="user_id_update" value="<?php echo $c_details->customer_table_id;?>">
 
                     <?php endforeach;?>
 
@@ -157,9 +172,11 @@
 
 
                   <div class="tab-pane" id="pets">
-                    
-                  
-                        <table  class="datatables table table-bordered table-striped">
+
+                    <button style="margin-bottom: 15px" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#addPetAjax">Add Pet</button>
+                    <br >
+
+                        <table class="datatablecustomerpet table table-bordered table-striped">
                             <thead>
                             <tr>
                               
@@ -185,8 +202,8 @@
                                   <td><?php echo $cus_pet->pet_breed?></td>
                                  
                                   <td>
-                                  <a href="<?php echo site_url()?>staff/pet_details/<?php echo $cus_pet->pet_table_id?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-warning"><span class="fa fa-paw"></span></a>
-                                    
+                                 <!-- <a href="<?php echo site_url()?>staff/pet_details/<?php echo $cus_pet->pet_table_id?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-warning"><span class="fa fa-paw"></span></a> -->
+                                     <a href="<?php echo site_url()?>staff/pet_details/<?php echo $cus_pet->pet_table_id?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info">View Full Detail</a>
                                   </td>
                                </tr>
 
@@ -201,8 +218,18 @@
 
 
                     <div class=" tab-pane" id="logHistory">
+
+                        <?php 
+                          $datatable = "";
+                          if($this->session->userdata('account_type') == "Super Admin"){
+                            $datatable = "datatablelogcustomer";
+                          }else{
+                            $datatable = "datatables";
+                          }
+                        ?>                     
+
                         
-                        <table  class="datatables table table-bordered table-striped">
+                        <table  class="<?php echo $datatable;?> table table-bordered table-striped">
                           <thead>
                           <tr>
                             <th>Log Date</th>
@@ -214,6 +241,7 @@
                           
                           <?php foreach($user_logs as $logs):?>
                           <tr>
+                            <?php $logs->log_user;?>
                             <td><?php 
 
                           $date =date_create($logs->log_date);
@@ -237,7 +265,133 @@
     <!-- /.nav-tabs-custom -->
 
 
+  <?php $this->load->view('include_pages_admin/addPetAjax');?>
   <script>
+
+      $(function(){
+
+
+ 
+
+
+        $('.datatablelogcustomer').DataTable( {
+          'ordering'    : false,
+          "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+          'paging'      : true,
+          'info'        : true,
+          dom: 'Bfrtip',
+          /*buttons: [
+              'copy', 'csv', 'excel', 'pdf', 'print'
+          ],*/
+
+          buttons: [
+              {
+                extend: 'pdfHtml5',
+                title: 'Log Report for Customer: <?php echo $logs->log_user;?>' ,
+                message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+                customize: function(doc) {
+                  //setHeader2();
+                  doc.styles.title = {
+                    color: '',
+                    fontSize: '40',
+                    background: '',
+                    alignment: 'center'
+                  }   
+                }  
+              },
+
+               {
+                 extend: 'excelHtml5',
+                 title: 'Log Report for Customer: <?php echo $logs->log_user;?>' ,
+                message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+    
+              },
+
+              {
+                 extend: 'csvHtml5',
+                 title: 'Log Report for Customer: <?php echo $logs->log_user;?>' ,
+                 message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+                 
+              },
+
+                  ]
+        } );
+
+
+
+
+
+
+         $('.datatablecustomerpet').DataTable( {
+          'ordering'    : false,
+          "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+          'paging'      : true,
+          'info'        : true,
+          dom: 'Bfrtip',
+          /*buttons: [
+              'copy', 'csv', 'excel', 'pdf', 'print'
+          ],*/
+
+          buttons: [
+              {
+                extend: 'pdfHtml5',
+                title: 'Pet List  for Customer: <?php echo $logs->log_user;?>',
+                message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+                customize: function(doc) {
+  
+                  doc.styles.title = {
+                    color: '',
+                    fontSize: '40',
+                    background: '',
+                    alignment: 'center'
+                  }   
+                }  
+              },
+
+               {
+                 extend: 'excelHtml5',
+                 title: 'Pet List for Customer: <?php echo $logs->log_user;?>' ,
+                message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+    
+              },
+
+              {
+                 extend: 'csvHtml5',
+                 title: 'Pet List for Customer: <?php echo $logs->log_user;?>' ,
+                 message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+                 
+              },
+
+                  ]
+        } );
+
+      });
+
+
 
 
     /*
@@ -284,101 +438,7 @@
 
 
 
-            /* initialize the calendar
-         -----------------------------------------------------------------*/
-        //Date for the calendar events (dummy data)
-        var date = new Date()
-        var d    = date.getDate(),
-            m    = date.getMonth(),
-            y    = date.getFullYear()
-        $('#calendar').fullCalendar({
-          header    : {
-            left  : 'prev,next today',
-            center: 'title',
-            right : 'month,agendaWeek,agendaDay'
-          },
-          buttonText: {
-            today: 'today',
-            month: 'month',
-            week : 'week',
-            day  : 'day'
-          },
-          //Random default events
-          events    : [
-            {
-              title          : 'All Day Event',
-              start          : new Date(y, m, 1),
-              backgroundColor: '#f56954', //red
-              borderColor    : '#f56954' //red
-            },
-            {
-              title          : 'Long Event',
-              start          : new Date(y, m, d - 5),
-              end            : new Date(y, m, d - 2),
-              backgroundColor: '#f39c12', //yellow
-              borderColor    : '#f39c12' //yellow
-            },
-            {
-              title          : 'Meeting',
-              start          : new Date(y, m, d, 10, 30),
-              allDay         : false,
-              backgroundColor: '#0073b7', //Blue
-              borderColor    : '#0073b7' //Blue
-            },
-            {
-              title          : 'Lunch',
-              start          : new Date(y, m, d, 12, 0),
-              end            : new Date(y, m, d, 14, 0),
-              allDay         : false,
-              backgroundColor: '#00c0ef', //Info (aqua)
-              borderColor    : '#00c0ef' //Info (aqua)
-            },
-            {
-              title          : 'Birthday Party',
-              start          : new Date(y, m, d + 1, 19, 0),
-              end            : new Date(y, m, d + 1, 22, 30),
-              allDay         : false,
-              backgroundColor: '#00a65a', //Success (green)
-              borderColor    : '#00a65a' //Success (green)
-            },
-            {
-              title          : 'Click for Google',
-              start          : new Date(y, m, 28),
-              end            : new Date(y, m, 29),
-              url            : 'http://google.com/',
-              backgroundColor: '#3c8dbc', //Primary (light-blue)
-              borderColor    : '#3c8dbc' //Primary (light-blue)
-            }
-          ],
-          editable  : true,
-          droppable : true, // this allows things to be dropped onto the calendar !!!
-          drop      : function (date, allDay) { // this function is called when something is dropped
-
-            // retrieve the dropped element's stored Event Object
-            var originalEventObject = $(this).data('eventObject')
-
-            // we need to copy it, so that multiple events don't have a reference to the same object
-            var copiedEventObject = $.extend({}, originalEventObject)
-
-            // assign it the date that was reported
-            copiedEventObject.start           = date
-            copiedEventObject.allDay          = allDay
-            copiedEventObject.backgroundColor = $(this).css('background-color')
-            copiedEventObject.borderColor     = $(this).css('border-color')
-
-            // render the event on the calendar
-            // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-            $('#calendar').fullCalendar('renderEvent', copiedEventObject, true)
-
-            // is the "remove after drop" checkbox checked?
-            if ($('#drop-remove').is(':checked')) {
-              // if so, remove the element from the "Draggable Events" list
-              $(this).remove()
-            }
-
-          }
-        })
-
+      
   </script>
 
 

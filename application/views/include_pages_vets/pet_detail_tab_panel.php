@@ -69,26 +69,49 @@
                                                  $complaints = $c_detail->complaints;
                                                  $treatment = $c_detail->treatment;
                                                  $prescription = $c_detail->prescription;
+                                                 /*$service_get = $c_detail->service_name;
+                                                 $service_fee = $c_detail->service_fee;*/
                                               }
 
                                             ?>
 
 
-                                            <?php if($appointment_detail->tapos_na == 1){?>
+                                           
 
-                                              <dl class="dl-horizontal">
-                                              <?php $checkup_detail = 1;?>
+                                             <?php if($appointment_detail->appointment_status != "Cancelled"):?>
+                                               <dl class="dl-horizontal">
+                                                <?php //$checkup_detail = 1;?>
 
-                                                <dt>Reason/Complaint</dt>
-                                                <dd><?php echo $complaints;?></dd>
-                                                <dt>Treatment</dt>
-                                                <dd><?php echo $treatment;?></dd>
-                                                 <dt>Prescription</dt>
-                                                <dd><?php echo $prescription;?></dd>
-                                               
+                                                  <dt>Reason/Complaint</dt>
+                                                  <dd><?php echo $complaints;?></dd>
+                                                  <dt>Treatment</dt>
+                                                  <dd><?php echo $treatment;?></dd>
+                                                   <dt>Prescription</dt>
+                                                  <dd><?php echo $prescription;?></dd>
+                                                  <dt>Services</dt>
+
+                                                  <?php $services = $this->pet_management_model->get_services_by_checkup_id($c_detail->checkup_id);
+
+                                                        $service_fee = 0;
+                                                        foreach($services as $s):
+                                                        
+                                                  ?>
+
+                                                  <dd ><?php echo $s->service_name;?> = ₱<?php echo $s->service_fees;?></dd>
+                                                  <?php 
+                                                  $service_format = $service_fee + $s->service_fees;
+                                                  $service_fee = number_format($service_format,2);
+                                                endforeach; //end service?>
+                                  
+                                                 <dt>Total Fee</dt>
+                                                 <dd>₱<?php echo $service_fee;?><dd/>
                                               </dl>
+                                             <?php endif;?>
 
-                                              <?php }else{ ?>
+                                            <!-- 
+
+                                               <?php if($appointment_detail->is_finished == 1){?>
+                                             <?php }else{ ?>
 
                                                <dl class="dl-horizontal">
                                                   <dt>Reason/Complaint</dt>
@@ -99,7 +122,7 @@
                                                   <dd>N/A</dd>
                                                </dl>
 
-                                             <?php }?>
+                                             <?php }?> -->
 
                                               <?php if($appointment_detail->appointment_status == "Cancelled"):?>
                                                 <hr>
@@ -115,32 +138,11 @@
 
 
 
-                                              <?php if($appointment_detail->tapos_na == 1):?>
-
-                                                <?php //echo $a_appointment->appointment_id;?>
-
-                                                <?php 
-
-                                                //echo $a_appointment->$appointment_id;
-                                                $tapos_na_detail =  $this->pet_management_model->get_pet_service_by_appointment_id($appointment_detail->appointment_id);?>
-
-
-                                                <?php foreach($tapos_na_detail as $tn_d):?>
-                                                  <hr>
-                                                  <dl class="dl-horizontal">
-                                                    <dt>Services</dt>
-                                                    <dd><?php echo $tn_d->all_services?></dd>
-                                                    <dt>Service Fee</dt>
-                                                    <dd>₱<?php echo $tn_d->service_fee;?></dd>
-                                                 </dl>
-
-                                                <?php endforeach;?>
-                                                  
-                                              <?php endif;?>
+                                           
                                           </div>
                                           <div class="modal-footer">
                                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                           <?php if($appointment_detail->appointment_status != "Cancelled"):?> <button  class="btn btn-primary btn-sm btn-flat" href="<?php echo site_url();?>pet_management/print_prescription" target="_blank">Print Priscription</a> <?php endif;?>
                                           </div>
                                         </div>
                                         <!-- /.modal-content -->

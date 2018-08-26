@@ -1,9 +1,19 @@
-<!DOCTYPE html>
-<html>
 <?php foreach($theme_color as $t_color){
 
   $skin_color = $t_color->theme_color;
   $settings_id =$t_color->settings_id;
+  $box_color = "";
+
+    if($skin_color == "skin-green"){
+      $box_color = "box-success";
+    }else if($skin_color == "skin-blue"){
+      $box_color = "box-primary";
+    }else if($skin_color == "skin-red"){
+      $box_color = "box-danger";
+    }else if($skin_color == "skin-yellow"){
+      $box_color = "box-warning";
+    }
+
 
 }?>
 
@@ -54,108 +64,17 @@
       </div>
       
 
-      <div class="row">
-        <div class="col-md-12">
-          <div class="box box-warning box-solid">
-              <div class="box-header with-border">
-                <h3 class="box-title text-center">Appointment Record</h3>
-                <div class="box-tools pull-right">
-                <button type="button" class="btn btn-flat  btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-               
-              </div>
-              </div>
-              <div class="box-body">
-
-              <table  class="datatables table table-bordered table-striped">
-                <thead>
-                <tr>
-                  
-                  
-                  
-                  <th>Date</th>
-                  <th>Time</th>
-                  <th>Veterinarian in Charge</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                
-
-                <?php foreach($all_appointment_of_this_customer as $c_appointment):?>
-
-                  <tr>
-                    
-                   
-                    
-                    <td> <?php 
-
-                    $date =date_create($c_appointment->preferredDate);
-                       echo  $preferred_date= date_format($date,"F d, Y");
-                     ;?></td>
-
-                    <td><?php echo $c_appointment->preferredtime;?></td>
-                    <td><?php if(empty($c_appointment->vet_in_charge)){
-                      echo "None";
-                    }else{
-                      echo $c_appointment->vet_in_charge;
-                    }?></td>
-                    <td>
-                        
-                         <?php if($c_appointment->appointment_status == "Pending"){
-                                  $label_type = "warning";
-                          }else if($c_appointment->appointment_status == "Approved"){
-                                  $label_type = "info";
-                          }else if($c_appointment->appointment_status == "Cancelled"){
-                                  $label_type = "danger";
-                          }else if($c_appointment->appointment_status == "Done"){
-                             $label_type = "success";
-                          }?>
-                            
-                            
-                          <span class="label label-<?php echo $label_type;?>"><?php echo ucfirst($c_appointment->appointment_status)?></span>
-
-                    </td>
-                    <td>
-                        <?php if($c_appointment->appointment_status == "Approved"):?>
-
-                               <a href="<?php echo site_url()?>appointment/print_appointment_slip/<?php echo $c_appointment->appointment_table_id;?>"  class="btn btn-sm btn-info"  target="_blank">Print <span class="fa fa-print"></span></a>
-                        <?php endif;?>
-                    </td>
-                  </tr>
-
-
-
-                 
-
-                  <?php endforeach;?>
-
-                </tbody>
-               
-              </table>
-                            
-              </div>
-              <!-- /.box-body -->
-              <div class="box-footer">
-               
-              </div>
-              <!-- /.box-footer-->
-          </div>
-
-        </div>
-      </div>
 
       <div class="row">
         <div class="col-md-12">
-          <div class="box box-warning box-solid collapsed-box">
+          <div class="box <?php echo $box_color;?> box-solid ">
               <div class="box-header with-border">
                 <h3 class="box-title text-center">Send Request</h3>
-                <div class="box-tools pull-right">
-                <button type="button" class="btn btn-flat  btn-sm" data-widget="collapse"><i class="fa fa-plus"></i>
-                </button>
-               
-              </div>
+              <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="">
+                    <i class="fa fa-minus"></i></button>
+                  
+                </div>
               </div>
               <div class="box-body">
 
@@ -215,6 +134,100 @@
 
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box <?php echo $box_color;?> box-solid collapsed-box">
+              <div class="box-header with-border">
+                <h3 class="box-title text-center">Appointment Record</h3>
+              <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="">
+                    <i class="fa fa-plus"></i></button>
+                  
+                </div>
+              </div>
+              <div class="box-body">
+
+              <table  class="datatables table table-bordered table-striped">
+                <thead>
+                <tr>
+                  
+                  
+                  
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Veterinarian in Charge</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                
+
+                <?php foreach($all_appointment_of_this_customer as $c_appointment):?>
+
+                  <tr>
+                    
+                   
+                    
+                    <td> <?php 
+
+                    $date =date_create($c_appointment->preferredDate);
+                       echo  $preferred_date= date_format($date,"F d, Y");
+                     ;?></td>
+
+                    <td><?php echo $c_appointment->preferredtime;?></td>
+                    <td><?php if(empty($c_appointment->vet_in_charge)){
+                      echo "None";
+                    }else{
+                      echo $c_appointment->vet_in_charge;
+                    }?></td>
+                    <td>
+                        
+                         <?php if($c_appointment->appointment_status == "Pending"){
+                                  $label_type = "warning";
+                          }else if($c_appointment->appointment_status == "Confirmed"){
+                                  $label_type = "info";
+                          }else if($c_appointment->appointment_status == "Cancelled"){
+                                  $label_type = "danger";
+                          }else if($c_appointment->appointment_status == "Done"){
+                             $label_type = "success";
+                          }?>
+                            
+                            
+                          <span class="label label-<?php echo $label_type;?>"><?php echo ucfirst($c_appointment->appointment_status)?></span>
+
+                    </td>
+                    <td>
+                        <?php if($c_appointment->appointment_status == "Confirmed"):?>
+
+                               <a href="<?php echo site_url()?>appointment/print_appointment_slip/<?php echo $c_appointment->appointment_table_id;?>"  class="btn btn-sm btn-info"  target="_blank">Print <span class="fa fa-print"></span></a>
+                        <?php endif;?>
+                    </td>
+                  </tr>
+
+
+
+                 
+
+                  <?php endforeach;?>
+
+                </tbody>
+               
+              </table>
+                            
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+               
+              </div>
+              <!-- /.box-footer-->
+          </div>
+
+        </div>
+      </div>
+
+
 
 
        

@@ -279,11 +279,98 @@ class Pet_Management_Model extends CI_Model {
         return $result_set;        
     }
 
+    public function get_all_pet_services_active(){
+        $this->db->select('*');
+        $this->db->from('tbl_services');
+        
+        $this->db->order_by('service_id', 'DESC');
+        $this->db->where('service_status','Active');
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;        
+    }
+
+    public function get_all_pet_services_by_service_id($service_id){
+        $this->db->select('*');
+        $this->db->from('tbl_services');
+        
+        $this->db->order_by('service_id', 'DESC');
+        $this->db->where('service_id',$service_id);
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;        
+    }
+
+
+    public function get_all_services_for_specific_pet_age_and_active($pettype,$age){
+
+
+        $this->db->select('*');
+        $this->db->from('tbl_services');
+        $this->db->where('for_what_pet',$pettype);
+        $this->db->where('for_pet_ages',$age);
+        $this->db->order_by('service_id', 'DESC');
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;         
+    }
+
+
+
+
+
+
+
+   /* public function get_all_services_for_specific_pet_age_and_active(){
+
+
+        $this->db->select('*');
+        $this->db->from('tbl_services');
+        $this->db->order_by('service_id', 'DESC');
+        $this->db->where('service_status','Active');;
+        $this->db->where('for_pet_ages','young adult (11 months old and below)');
+        $this->db->where('for_what_pet','cat');
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;        
+    }*/
+
+    
+
 
 
     //pet diagnosis //checkup history
     public function add_checkup_detail($data){
         $this->db->insert('tbl_checkupdetails',$data);
+    }
+
+    public function update_checkup_detail($data,$checkup_id){
+        $this->db->where('checkup_id', $service_id);
+        $this->db->update('tbl_checkupdetails',$data);
+    }
+
+
+    public function check_is_service_is_done_by_appointment_table_id_and_service_id($appointment_id,$service_id){
+        $this->db->select('*');
+        $this->db->from('tbl_checkupdetails');
+       
+        $this->db->where('appointment_id',$appointment_id);
+        $this->db->where('service_id',$service_id);
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+
     }
 
 
@@ -301,6 +388,22 @@ class Pet_Management_Model extends CI_Model {
     }
 
 
+    public function get_prescription_by_appointment_table_id($appointment_table_id){
+        $this->db->select('*');
+        $this->db->from('tbl_checkupdetails');
+       
+        $this->db->where('appointment_table_id',$appointment_table_id);
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;    
+    }
+
+
+
+
+
 
     public function get_pet_service_by_pet_id($pet_id){
         $this->db->select('*');
@@ -313,6 +416,32 @@ class Pet_Management_Model extends CI_Model {
 
         return $result_set;
     }
+
+
+
+
+    public function add_service_rendered_data($data){
+        $this->db->insert('tbl_service_rendered',$data);
+    }
+
+
+
+    public function get_services_by_checkup_id($checkup_id){
+        $this->db->select('*');
+        $this->db->from('tbl_service_rendered');
+       
+        $this->db->where('checkup_id',$checkup_id);
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+    }
+
+
+
+
+
 
 
  /* remove previouse services */
