@@ -25,6 +25,7 @@ class Veterinarian extends CI_Controller {
         $this->load->model('inventory_management');
 
         $this->load->model('settings_model');
+        $this->load->model('article_model');
         //$this->load->model('user_logs_model');
 
         if(!$this->session->userdata('logged_in')){
@@ -275,6 +276,82 @@ class Veterinarian extends CI_Controller {
 
 
 		$this->load->view('veterinarian/medicine',$data);
+
+	}
+
+
+	public function pet_health_care_library(){
+
+		$settings_id = 1;
+		$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
+		$data['title'] = "Vetopia";
+
+
+		$name = $this->session->userdata('complete_name');
+		$log_usertype =  $this->session->userdata('account_type');
+		$log_userID = $this->session->userdata("user_id");
+		$log_action = "View Pet Health Care Library";
+		
+
+
+		$now = date('Y-m-d H:i:s');
+		$data2 = array(
+			"log_user" => $name,
+			"log_usertype" => $log_usertype,
+			"log_userID" => $log_userID,
+			"log_action" => $log_action,
+			"log_date" => $now,
+		);
+
+
+
+
+		$this->admin_management->insert_new_log($data2);
+
+
+		$data['articles'] = $this->article_model->get_all_articles();
+
+		$this->load->view('veterinarian/pet_health_care_library',$data);
+
+
+	}
+
+
+
+
+	public function library_article_detail(){
+		$settings_id = 1;
+		$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
+		$data['title'] = "Vetopia";
+
+
+		 $id = $this->uri->segment(3);
+
+		 $data['find_library_article'] = $this->article_model->find_article_from_library_by_library_id($id);
+		 $data['find_article_contents'] = $this->article_model->find_article_content_by_library_id($id);
+		 $data['find_article_links'] =$this->article_model->find_library_link_by_librarru_id($id);
+
+
+		$name = $this->session->userdata('complete_name');
+		$log_usertype =  $this->session->userdata('account_type');
+		$log_userID = $this->session->userdata("user_id");
+		$log_action = "View Inventory";
+		
+
+
+		$now = date('Y-m-d H:i:s');
+		$data2 = array(
+			"log_user" => $name,
+			"log_usertype" => $log_usertype,
+			"log_userID" => $log_userID,
+			"log_action" => $log_action,
+			"log_date" => $now,
+		);
+
+
+
+		$this->admin_management->insert_new_log($data2);
+		$this->load->view('veterinarian/library_article_detail',$data);
 
 	}
 

@@ -98,14 +98,14 @@
                 <h3 class="box-title text-center">Appointment Records</h3>
 
               </div>
-              <div class="box-body">
+              <div class="box-body table-responsive">
 
               <table  class="datatables table table-bordered table-striped">
                 <thead>
                 <tr>
                   
+                  <th>Appointment ID</th>
                   <th>Customer Name</th>
-                  
                   <th>Date</th>
                   <th>Time</th>
                   <th>Veterinarian in Charge</th>
@@ -120,6 +120,7 @@
 
                   <tr>
                     
+                    <td><?php echo $a_appointment->appointment_id;?></td>
                     <td><?php echo $a_appointment->customer_name;?></td>
                     
                     <td> <?php 
@@ -138,12 +139,14 @@
                         
                          <?php if($a_appointment->appointment_status == "Pending"){
                                   $label_type = "warning";
-                          }else if($a_appointment->appointment_status == "Approved"){
+                          }else if($a_appointment->appointment_status == "Confirmed"){
                                   $label_type = "info";
                           }else if($a_appointment->appointment_status == "Cancelled"){
                                   $label_type = "danger";
                           }else if($a_appointment->appointment_status == "Done"){
                              $label_type = "success";
+                          }else if($a_appointment->appointment_status == "On-Process"){
+                               $label_type = "primary";
                           }?>
                             
                             
@@ -158,21 +161,19 @@
                          |
                       <button type="button" class="btn btn-flat btn-sm btn-info" data-toggle="modal" data-target="#detailAppointment<?php echo $a_appointment->appointment_table_id?>">View Details</button>
 
-                        <?php }else if($a_appointment->appointment_status == "Approved"){ ?>
+                        <?php }else if($a_appointment->appointment_status == "Confirmed"){ ?>
 
                            <button type="button" class="btn btn-flat btn-sm btn-info" data-toggle="modal" data-target="#detailAppointment<?php echo $a_appointment->appointment_table_id?>">View Details</button>
 
                           | <button type="button" class="btn btn-flat btn-sm btn-danger" data-toggle="modal" data-target="#cancelAppointment<?php echo $a_appointment->appointment_table_id?>">Cancel Appointment</button>
-                          |
-                          <br>
-                            <?php echo form_open_multipart('appointment/done_appointment');?>
-                             <input type="hidden" name="appointment_table_id" value="<?php echo $a_appointment->appointment_table_id;?>">
-                              <input type="submit" name="submit" class="btn btn-flat btn-sm btn-success" value="Done" />
-                            <?php echo form_close();?>
+                          | <button type="button" class="btn btn-flat btn-sm btn-primary onprocess" data-appointmenttableid="<?php echo $a_appointment->appointment_table_id?>">On Process</button>
+
+                          
+                          
 
                         <?php }else if($a_appointment->appointment_status == "Done"){?>
 
-                            <button type="button" class="btn btn-flat btn-sm btn-info" data-toggle="modal" data-target="#detailAppointment<?php echo $a_appointment->appointment_table_id?>">View Details</button>
+                            <button type="button" class="btn btn-flat btn-sm btn-info" data-toggle="modal" data-target="#detailAppointment_done<?php echo $a_appointment->appointment_table_id?>">View Details</button>
 
 
                         <?php }else if($a_appointment->appointment_status == "Cancelled"){ ?>
@@ -180,6 +181,88 @@
 
                             <button type="button" class="btn btn-flat btn-sm btn-info" data-toggle="modal" data-target="#detailAppointment<?php echo $a_appointment->appointment_table_id?>">View Details</button>
 
+
+                        <?php }else if($a_appointment->appointment_status == "On-Process"){ ?>
+
+                              <button type="button" class="btn btn-flat btn-sm btn-primary" disabled="" >On Process</button> |
+                     
+                                  <?php if($a_appointment->is_finished == 1):?>
+
+                              <button type="button" class="btn btn-flat btn-sm btn-success" data-toggle="modal" data-target="#payment<?php echo $a_appointment->appointment_table_id?>">Payment</button>
+
+
+                             <div class="modal fade" id="payment<?php echo $a_appointment->appointment_table_id?>">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button>
+                                      <h4 class="modal-title">Appointment Summary</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                      
+                                     <?php $checkup_detail = $this->pet_management_model->get_prescription_by_appointment_table_id($a_appointment->appointment_table_id);
+                                      foreach($checkup_detail as $cd):
+                                     ?>
+                                      <dl class="dl-horizontal">
+                                      
+                                        <dt>Pet Name</dt>
+                                        <dd><?php echo $cd->petname;?></dd>
+
+                                        <dt>Reason/Complaint</dt>
+                                        <dd><?php echo $cd->complaints;?></dd>
+
+                                        <dt>Treatment</dt>
+                                        <dd><?php echo $cd->treatment;?></dd>
+
+                                        <dt>Prescription</dt>
+                                        <dd><?php echo $cd->prescription;?></dd>
+
+
+                                        <dt>Services</dt>
+
+                                        <?php $services = $this->pet_management_model->get_services_by_checkup_id($cd->checkup_id);
+
+                                              $service_fee = 0;
+                                              foreach($services as $s):
+                                              
+                                        ?>
+
+                                              <dd ><?php echo $s->service_name;?> = ₱<?php echo $s->service_fees;?></dd>
+                                              <?php 
+                                              $service_format = $service_fee + $s->service_fees;
+                                              $service_fee = number_format($service_format,2);
+                                            endforeach; //end service?>
+                                      <hr>
+                                           <dt >Total Fee</dt>
+                                           <dd style="margin-bottom: 15px"><span id=""></span>
+                                            <input type="" name="" id="total_fee" value="<?php echo $service_fee;?>" class="form-control">
+                                            <dd/>
+                                           <dt>Cash </dt>
+                                           <dd style="margin-bottom: 15px"><input type="" name="" id="cash" class="form-control" value=""></dd>
+                                           <dt>Change</dt>
+                                           <dd style="margin-bottom: 15px"><input type="" name="" id="change" class="form-control" value="" readonly=""></dd>
+                                      </dl>
+
+
+                                      
+                                    <?php endforeach;?>
+                                    </div>
+                                    <div class="modal-footer">
+                                     <div class="hide-after-checkout">
+                                        <button type="button" class="btn btn-default btn-sm btn-flat pull-left" id="computeChange">Compute</button>
+                                        <button type="button" class="btn btn-primary btn-sm btn-flat btn-checkout" data-appointmenttableid="<?php echo $a_appointment->appointment_table_id;?>" disabled="" id="checkout">Checkout</button>
+                                      </div>
+                                      <a href="<?php echo site_url()?>appointment/print_appointment_receipt/<?php echo $a_appointment->appointment_table_id;?>" target="_blank" class="btn btn-sm btn-info btn-flat btn-block btn-receipt" style="display: none">Print</a>
+                                    </div>
+                                  </div>
+                                  <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                              </div>
+                              <!-- /.modal -->
+
+                                  <?php endif;?>
 
                         <?php }?>
                      
@@ -236,7 +319,7 @@
 
                           <?php echo form_open_multipart('appointment/cancel_appointment');?>
                           <div class="modal-body">
-                            <textarea class="form-control" name="cancel_reason">
+                            <textarea class="form-control textareas" name="cancel_reason" required="">
                               
                             </textarea>
                           </div>
@@ -289,33 +372,10 @@
                               <?php endif;?>
 
 
-
-                              <?php if($a_appointment->is_finished == 1):?>
-
-                                <?php //echo $a_appointment->appointment_id;?>
-
-                                <?php 
-
-                                //echo $a_appointment->$appointment_id;
-                                $tapos_na_detail =  $this->pet_management_model->get_pet_service_by_appointment_id($a_appointment->appointment_id);?>
-
-
-                                <?php foreach($tapos_na_detail as $tn_d):?>
-                                  <hr>
-                                  <dl class="dl-horizontal">
-                                    <dt>Services</dt>
-                                    <dd><?php echo $tn_d->all_services?></dd>
-                                    <dt>Service Fee</dt>
-                                    <dd><?php echo $tn_d->service_fee;?></dd>
-                                 </dl>
-
-                                <?php endforeach;?>
-                                  
-                              <?php endif;?>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                           
                           </div>
                         </div>
                         <!-- /.modal-content -->
@@ -323,6 +383,70 @@
                       <!-- /.modal-dialog -->
                    </div>
                     <!-- /.modal -->
+
+                    <div class="modal fade" id="detailAppointment_done<?php echo $a_appointment->appointment_table_id?>">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Appointment Detail </h4>
+                          </div>
+                          <div class="modal-body">
+                               <?php $checkup_detail = $this->pet_management_model->get_prescription_by_appointment_table_id($a_appointment->appointment_table_id);
+                                      foreach($checkup_detail as $cd):
+                                     ?>
+                                      <dl class="dl-horizontal">
+                                      
+                                        <dt>Pet Name</dt>
+                                        <dd><?php echo $cd->petname;?></dd>
+
+                                        <dt>Reason/Complaint</dt>
+                                        <dd><?php echo $cd->complaints;?></dd>
+
+                                        <dt>Treatment</dt>
+                                        <dd><?php echo $cd->treatment;?></dd>
+
+                                        <dt>Prescription</dt>
+                                        <dd><?php echo $cd->prescription;?></dd>
+
+
+                                        <dt>Services</dt>
+
+                                        <?php $services = $this->pet_management_model->get_services_by_checkup_id($cd->checkup_id);
+
+                                              $service_fee = 0;
+                                              foreach($services as $s):
+                                              
+                                        ?>
+
+                                              <dd ><?php echo $s->service_name;?> = ₱<?php echo $s->service_fees;?> </dd>
+                                              <?php 
+
+                                                $service_format = $service_fee + $s->service_fees;
+                                              $service_fee = number_format($service_format,2); ?>
+
+
+                                        <?php    endforeach; //end service ?>
+
+                                         <dt>Total Payment</dt>
+                                              <dd>₱<?php echo $service_fee ?></dd>
+                                     <?php endforeach;
+                                        ?>
+                                      <hr>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                           
+                          </div>
+                        </div>
+                        <!-- /.modal-content -->
+                      </div>
+                      <!-- /.modal-dialog -->
+                   </div>
+                    <!-- /.modal -->
+
+                    
 
 
                   <?php endforeach;?>
@@ -390,7 +514,87 @@
 
 <!--page scripts -->
 <script>
+  $(function(){
 
+          $('.onprocess').click(function(){
+
+            var appointment_table_id  = $(this).data("appointmenttableid");
+            var appointment_status = "On-Process";
+
+            $.ajax({
+                url : "<?php echo site_url('appointment/change_to_onprocess');?>",
+                method : "POST",
+                data : {appointment_table_id: appointment_table_id,appointment_status:appointment_status},
+                success: function(data){
+                    
+                    console.log("nadagdag na" + data.code);
+                    //document.getElementById("reloaded").contentDocument.location.reload(true);
+                    //$("#reloaded").load();
+                    location.reload();
+                    
+                }
+            });
+          });
+
+
+
+        $('#computeChange').click(function(){
+
+            //alert('as');
+            $("#checkout").attr("disabled",false);
+            //$("#money_change").show();
+            //compute
+            var total_fee = $('#total_fee').val();
+            var cash = $('#cash').val();
+
+            var change = cash - total_fee;
+            $("#change").val(change);
+
+
+            //alert(total_amount);
+          });
+
+
+        $('.btn-checkout').click(function(){
+              var total_fee = $('#total_fee').val();
+              var cash = $('#cash').val();
+              var change =  $("#change").val();
+              var appointment_table_id  = $(this).data("appointmenttableid");
+              var appointment_status = "Done";
+
+              $.ajax({
+                  url : "<?php echo site_url('appointment/appointment_receipt');?>",
+                  method : "POST",
+                  data : {appointment_table_id: appointment_table_id,total_fee:total_fee,cash:cash,change:change,appointment_status:appointment_status},
+                  success: function(data){
+                      
+                      console.log("nadagdag na" + data.code);
+                      //document.getElementById("reloaded").contentDocument.location.reload(true);
+                      //$("#reloaded").load();
+                      //location.reload();
+                     alert('tapos na')
+
+                      $('.hide-after-checkout').css('display','none');
+                      $('.btn-receipt').css('display','block');
+                  }
+              });    
+          });
+
+
+        function reload(){
+       
+          setTimeout(function(){ 
+
+              $(".display-success").fadeOut("fast");
+              location.reload();
+               }, 2000);
+        }
+
+        $('.btn-receipt').click(function(){
+
+            reload();
+        });
+  });
 </script>
 
 

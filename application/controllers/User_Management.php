@@ -228,7 +228,6 @@ class User_Management extends CI_Controller {
 
     //END ADMIN
 
-
     public function add_new_customer(){
             //for username and password
             $firstname = $this->input->post('first_name');
@@ -303,9 +302,12 @@ class User_Management extends CI_Controller {
             );
 
             $this->admin_management->insert_new_log($data2);     
+        
 
 
-            //for email
+         
+        /*
+        //for email
         $config = array(
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
@@ -320,13 +322,16 @@ class User_Management extends CI_Controller {
 
        // $message = "Hello ivan";
 
+
+        //email for passing username and password
+      
         $this->load->library('email',$config);
         $this->email->set_newline("\r\n");
-        $this->email->from('icjfuncion@gmail.com');
+        $this->email->from('vetopiaC@gmail.com');
         $this->email->to($this->input->post('email'));
         $this->email->subject('Subject: test subject');
 
-        $message = "Hi " . $this->input->post('first_name') . '! \n here is your username and password   '.$username.' : '.$password.' ';
+        $message = "Hi " . $this->input->post('first_name') . "!  here is your username and password   ".$username." : ".$password." ";
 
         $this->email->message($message);
 
@@ -334,10 +339,198 @@ class User_Management extends CI_Controller {
             echo "email sent.";
         }else{
             show_error($this->email->print_debugger());
-        }                 
+        }
+        */
+    
+
+
+        $this->session->set_flashdata('add_customer_success','New Customer has been added');
+        redirect('admin/customers');
+    }
+
+    public function add_new_customer_staff_action(){
+            //for username and password
+            $firstname = $this->input->post('first_name');
+            $substring_firstname = substr($firstname, 0, 1);
+            $lastname = $this->input->post('last_name');
+            $username = $substring_firstname .''. $lastname;
+
+            //password will be the user id
+            $password = $this->input->post('customer_id');
+            echo $hash_password = password_hash($password, PASSWORD_DEFAULT);
+
+
+
+            $now = date('Y-m-d H:i:s');
+            $data = array(
+            'customer_id' => $this->input->post('customer_id'),
+           
+            'firstname' => $this->input->post('first_name'),
+            'middlename' => $this->input->post('middle_name'),
+            'lastname' => $this->input->post('last_name'),
+            'gender' => $this->input->post('gender'),
+            'birthdate' => $this->input->post('birthdate'),
+            'contact' => $this->input->post('contact'),
+            'homeAddress' => $this->input->post('homeAddress'),
+            'barangayAddress' => $this->input->post('barangayAddress'),
+
+            'cityAddress' => $this->input->post('cityAddress'),
+
+            'postalID'=> $this->input->post('postalID'),
+
+            'email' => $this->input->post('email'),
+            'customer_status' => "Active",
+            'dateAdded' => $now,
+            );
+
+            $this->customer_management->insert_new_customer($data);
+
+
+
+
+           
+
+
+            //insert credentials
+
+            $data_credentials = array(
+                'user_type' => 'Customer',
+                'user_id' =>$this->input->post('customer_id'),
+                'username' => $username,
+                'password' => $password,
+                'hash_password' => $hash_password,
+                'last_modified' => $now,
+            );
+            
+
+            $this->admin_management->insert_username_password($data_credentials);
+
+            $name = $this->session->userdata('complete_name');
+            $log_usertype =  $this->session->userdata('account_type');
+            $log_userID = $this->session->userdata("user_id");
+            $log_action = "Add new Customer";
+            
+
+
+            $now = date('Y-m-d H:i:s');
+            $data2 = array(
+                "log_user" => $name,
+                "log_usertype" => $log_usertype,
+                "log_userID" => $log_userID,
+                "log_action" => $log_action,
+                "log_date" => $now,
+            );
+
+            $this->admin_management->insert_new_log($data2); 
+
+
+             /*
+
+            //for email
+            $config = array(
+                'protocol' => 'smtp',
+                'smtp_host' => 'ssl://smtp.googlemail.com',
+                'smtp_port' => 465,
+                'smtp_user' => 'vetopiaC@gmail.com',
+                'smtp_pass' => 'vetopiaC123',
+                //'mailtype' => 'html',
+                'charset' => 'iso-8859-1',
+                'wordwrap' => TRUE
+
+            );
+
+           // $message = "Hello ivan";
+
+
+            //email for passing username and password
+          
+            $this->load->library('email',$config);
+            $this->email->set_newline("\r\n");
+            $this->email->from('vetopiaC@gmail.com');
+            $this->email->to($this->input->post('email'));
+            $this->email->subject('Subject: test subject');
+
+            $message = "Hi " . $this->input->post('first_name') . '! <br /> here is your username and password   '.$username.' : '.$password.' ';
+
+            $this->email->message($message);
+
+            if($this->email->send()){
+                echo "email sent.";
+            }else{
+                show_error($this->email->print_debugger());
+            }
+
+            */                    
 
             $this->session->set_flashdata('add_customer_success','New Customer has been added');
-            redirect('admin/customers');
+            redirect('staff/customers');
+    }
+
+
+
+
+
+    public function update_profile_customer_staff_action(){
+
+
+     $user_id_update =  $this->input->post('user_id_update');
+
+
+            //config for upload image \assets\images\profiles
+            $config['upload_path']          = './assets/images/profiles/';
+            //$config['upload_path']          = './uploads/';
+            $config['allowed_types']        = 'gif|jpg|png|jpeg';
+            //$config['max_size']             = 100;
+            // $config['max_width']            = 1024;
+            // $config['max_height']           = 768;
+            $this->load->library('upload', $config);
+
+
+            if($this->upload->do_upload('upload_image')){
+                    //get the file name of the uploaded file
+                    $uploadData = $this->upload->data();
+                    $image = $uploadData['file_name'];
+                    //echo 1;
+                    echo "ivan";
+            }else{
+                        //echo 'wala laman';
+                        //set the image name to the previously upload image
+                        $default_image_name = $this->customer_management->get_customer_by_id($user_id_update);
+                        foreach ($default_image_name as $default_image) {
+                                   $image = $default_image->profile; 
+                        
+                        }
+                        
+
+
+                       //$image ='';
+                                 
+                       echo 12;      
+                       echo "dsds"; 
+
+
+                       //check for errors
+                      /* $error = array('error' => $this->upload->display_errors());
+
+                        $this->load->view('file_view', $error);*/
+            }
+
+            $data = array(
+
+             
+                'profile' =>$image,
+        
+
+            );
+
+
+            var_dump($data);
+
+
+                $this->customer_management->update_customer($user_id_update,$data);
+
+                $this->session->set_flashdata('update_customer_success','Customer information has been updated successfully');
+                redirect('staff/customer_details/'.$user_id_update);
     }
 
 
@@ -702,8 +895,8 @@ class User_Management extends CI_Controller {
         //$config['upload_path']          = './uploads/';
         $config['allowed_types']        = 'gif|jpg|png|jpeg';
         //$config['max_size']             = 100;
-        // $config['max_width']            = 1024;
-        // $config['max_height']           = 768;
+        //$config['max_width']            = 761;
+        //$config['max_height']           = 602;
         $this->load->library('upload', $config);
 
 
@@ -751,7 +944,7 @@ class User_Management extends CI_Controller {
             $this->veterinarian_management->update_veterinarian($user_id_update,$data);
 
             $this->session->set_flashdata('update_vet_success','Veterinarian information has been updated successfully');
-            redirect('admin/vet_details/'.$user_id_update);
+           // redirect('admin/vet_details/'.$user_id_update);
 
     }
 
@@ -1378,180 +1571,6 @@ class User_Management extends CI_Controller {
   }*/
 
 
-public function add_new_customer_staff_action(){
-        //for username and password
-        $firstname = $this->input->post('first_name');
-        $substring_firstname = substr($firstname, 0, 1);
-        $lastname = $this->input->post('last_name');
-        $username = $substring_firstname .''. $lastname;
-
-        //password will be the user id
-        $password = $this->input->post('customer_id');
-        echo $hash_password = password_hash($password, PASSWORD_DEFAULT);
-
-
-
-        $now = date('Y-m-d H:i:s');
-        $data = array(
-        'customer_id' => $this->input->post('customer_id'),
-       
-        'firstname' => $this->input->post('first_name'),
-        'middlename' => $this->input->post('middle_name'),
-        'lastname' => $this->input->post('last_name'),
-        'gender' => $this->input->post('gender'),
-        'birthdate' => $this->input->post('birthdate'),
-        'contact' => $this->input->post('contact'),
-        'homeAddress' => $this->input->post('homeAddress'),
-        'barangayAddress' => $this->input->post('barangayAddress'),
-
-        'cityAddress' => $this->input->post('cityAddress'),
-
-        'postalID'=> $this->input->post('postalID'),
-
-        'email' => $this->input->post('email'),
-        'customer_status' => "Active",
-        'dateAdded' => $now,
-        );
-
-        $this->customer_management->insert_new_customer($data);
-
-
-
-
-       
-
-
-        //insert credentials
-
-        $data_credentials = array(
-            'user_type' => 'Customer',
-            'user_id' =>$this->input->post('customer_id'),
-            'username' => $username,
-            'password' => $password,
-            'hash_password' => $hash_password,
-            'last_modified' => $now,
-        );
-        
-
-        $this->admin_management->insert_username_password($data_credentials);
-
-        $name = $this->session->userdata('complete_name');
-        $log_usertype =  $this->session->userdata('account_type');
-        $log_userID = $this->session->userdata("user_id");
-        $log_action = "Add new Customer";
-        
-
-
-        $now = date('Y-m-d H:i:s');
-        $data2 = array(
-            "log_user" => $name,
-            "log_usertype" => $log_usertype,
-            "log_userID" => $log_userID,
-            "log_action" => $log_action,
-            "log_date" => $now,
-        );
-
-        $this->admin_management->insert_new_log($data2);                      
-
-        $this->session->set_flashdata('add_customer_success','New Customer has been added');
-        redirect('staff/customers');
-}
-
-
-public function update_state_customer_staff_action(){
-
-            $change_state_user = $this->input->post('change_state_user');
-            
-            $current_state =  $this->input->post('current_state');
-
-            if($current_state == "Active"){
-
-                $new_state = "Not Active";
-            }else{
-
-                $new_state =  "Active";
-            }
-
-            //echo $change_state_user ;
-
-            $state_data = array(
-                'is_active' => $new_state,
-            );
-
-
-            var_dump($state_data);
-
-
-            $this->customer_management->change_state_customer($change_state_user,$state_data);
-
-            $this->session->set_flashdata('change_state_customer_success','Customer State has been successfully updated');
-            redirect('staff/customers');
-
-  }
-
-
-public function update_profile_customer_staff_action(){
-
-
- $user_id_update =  $this->input->post('user_id_update');
-
-
-        //config for upload image \assets\images\profiles
-        $config['upload_path']          = './assets/images/profiles/';
-        //$config['upload_path']          = './uploads/';
-        $config['allowed_types']        = 'gif|jpg|png|jpeg';
-        //$config['max_size']             = 100;
-        // $config['max_width']            = 1024;
-        // $config['max_height']           = 768;
-        $this->load->library('upload', $config);
-
-
-        if($this->upload->do_upload('upload_image')){
-                //get the file name of the uploaded file
-                $uploadData = $this->upload->data();
-                $image = $uploadData['file_name'];
-                //echo 1;
-                echo "ivan";
-        }else{
-                    //echo 'wala laman';
-                    //set the image name to the previously upload image
-                    $default_image_name = $this->customer_management->get_customer_by_id($user_id_update);
-                    foreach ($default_image_name as $default_image) {
-                               $image = $default_image->profile; 
-                    
-                    }
-                    
-
-
-                   //$image ='';
-                             
-                   echo 12;      
-                   echo "dsds"; 
-
-
-                   //check for errors
-                  /* $error = array('error' => $this->upload->display_errors());
-
-                    $this->load->view('file_view', $error);*/
-        }
-
-        $data = array(
-
-         
-            'profile' =>$image,
-    
-
-        );
-
-
-        var_dump($data);
-
-
-            $this->customer_management->update_customer($user_id_update,$data);
-
-            $this->session->set_flashdata('update_customer_success','Customer information has been updated successfully');
-            redirect('staff/customer_details/'.$user_id_update);
-}
 
 
 }

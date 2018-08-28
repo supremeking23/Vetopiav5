@@ -193,7 +193,7 @@ class Appointment extends CI_Controller {
 	}
 
 
-	//approved
+	//confirmed
 	public function set_veterinarian(){
 		echo $vet_table_id = $this->input->post('veterinarian');
 		echo $appointment_table_id =  $this->input->post('appointment_table_id');
@@ -224,6 +224,45 @@ class Appointment extends CI_Controller {
 
 
 		//search customer by user id;*/
+
+
+		 /*
+
+        //for email
+        $config = array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'vetopiaC@gmail.com',
+            'smtp_pass' => 'vetopiaC123',
+            //'mailtype' => 'html',
+            'charset' => 'iso-8859-1',
+            'wordwrap' => TRUE
+
+        );
+
+       // $message = "Hello ivan";
+
+
+        //email for passing username and password
+      
+        $this->load->library('email',$config);
+        $this->email->set_newline("\r\n");
+        $this->email->from('vetopiaC@gmail.com');
+        $this->email->to($this->input->post('email'));
+        $this->email->subject('Subject: test subject');
+
+        $message = "Hi " . $this->input->post('first_name') . '! <br /> here is your username and password   '.$username.' : '.$password.' ';
+
+        $this->email->message($message);
+
+        if($this->email->send()){
+            echo "email sent.";
+        }else{
+            show_error($this->email->print_debugger());
+        }
+
+        */
 
 
 		$this->session->set_flashdata('assigned_vet','A veterinarian has been assigned to this appointment');
@@ -385,6 +424,46 @@ class Appointment extends CI_Controller {
 
 		$this->appointment_management->add_appointment($data);
 
+
+ /*
+
+        //for email
+        $config = array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'vetopiaC@gmail.com',
+            'smtp_pass' => 'vetopiaC123',
+            //'mailtype' => 'html',
+            'charset' => 'iso-8859-1',
+            'wordwrap' => TRUE
+
+        );
+
+       // $message = "Hello ivan";
+
+
+        //email for passing username and password
+      
+        $this->load->library('email',$config);
+        $this->email->set_newline("\r\n");
+        $this->email->from('vetopiaC@gmail.com');
+        $this->email->to($this->input->post('email'));
+        $this->email->subject('Subject: test subject');
+
+        $message = "Hi " . $this->input->post('first_name') . '! <br /> here is your username and password   '.$username.' : '.$password.' ';
+
+        $this->email->message($message);
+
+        if($this->email->send()){
+            echo "email sent.";
+        }else{
+            show_error($this->email->print_debugger());
+        }
+
+        */
+
+
 		$this->session->set_flashdata('schedule_appointment','Appointment has been scheduled');
 
 		redirect("admin/appointments");
@@ -442,6 +521,46 @@ class Appointment extends CI_Controller {
 		);
 
 		$this->appointment_management->update_appointment_detail($appointment_table_id,$data);
+
+
+		//email
+		 /*
+
+        //for email
+        $config = array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'vetopiaC@gmail.com',
+            'smtp_pass' => 'vetopiaC123',
+            //'mailtype' => 'html',
+            'charset' => 'iso-8859-1',
+            'wordwrap' => TRUE
+
+        );
+
+       // $message = "Hello ivan";
+
+
+        //email for passing username and password
+      
+        $this->load->library('email',$config);
+        $this->email->set_newline("\r\n");
+        $this->email->from('vetopiaC@gmail.com');
+        $this->email->to($this->input->post('email'));
+        $this->email->subject('Subject: test subject');
+
+        $message = "Hi " . $this->input->post('first_name') . '! <br /> here is your username and password   '.$username.' : '.$password.' ';
+
+        $this->email->message($message);
+
+        if($this->email->send()){
+            echo "email sent.";
+        }else{
+            show_error($this->email->print_debugger());
+        }
+
+        */
 
 		$this->session->set_flashdata('assigned_vet','A veterinarian has been assigned to this appointment');
 		redirect('staff/appointments');
@@ -579,6 +698,46 @@ class Appointment extends CI_Controller {
 
 
 		$this->appointment_management->add_appointment($data);
+
+
+
+		 /*
+
+        //for email
+        $config = array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'vetopiaC@gmail.com',
+            'smtp_pass' => 'vetopiaC123',
+            //'mailtype' => 'html',
+            'charset' => 'iso-8859-1',
+            'wordwrap' => TRUE
+
+        );
+
+       // $message = "Hello ivan";
+
+
+        //email for passing username and password
+      
+        $this->load->library('email',$config);
+        $this->email->set_newline("\r\n");
+        $this->email->from('vetopiaC@gmail.com');
+        $this->email->to($this->input->post('email'));
+        $this->email->subject('Subject: test subject');
+
+        $message = "Hi " . $this->input->post('first_name') . '! <br /> here is your username and password   '.$username.' : '.$password.' ';
+
+        $this->email->message($message);
+
+        if($this->email->send()){
+            echo "email sent.";
+        }else{
+            show_error($this->email->print_debugger());
+        }
+
+        */
 		$this->session->set_flashdata('schedule_appointment','Appointment has been scheduled');
 
 		redirect("staff/appointments");

@@ -39,7 +39,7 @@
 
                   <div class="form-group">
                     <label for="scheduleDate">Date</label>
-                    <input type="date" required="" class="form-control"  name="scheduleDate">
+                    <input type="date" required="" class="form-control" id="scheduleDate"  name="scheduleDate">
                   </div>
 
                   <div class="form-group">
@@ -56,7 +56,7 @@
                   <label for="complaints" class="">Description / Complaints</label>
 
                   
-                    <textarea required="" class="form-control" id="complaints" name="complaints" placeholder=""></textarea>
+                    <textarea required=""  class="form-control textareas" id="complaints" name="complaints" placeholder=""></textarea>
                   
                 </div>
 
@@ -88,6 +88,28 @@
     <script>
       
           $(document).ready(function() {
+
+
+            var dtToday = new Date();
+    
+            var month = dtToday.getMonth() + 1;
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
+            if(month < 10)
+                month = '0' + month.toString();
+            if(day < 10)
+                day = '0' + day.toString();
+            
+            var minDate= year + '-' + month + '-' + day;
+
+
+            console.log("todays date: " + dtToday);
+            console.log("todays month: " + month);
+            console.log("todays day: " + day);
+            console.log("todays year: " + year);
+            console.log("min date: " + minDate);
+            
+            $('#scheduleDate').attr('min', minDate); 
 
             $('#pets').hide(); 
 

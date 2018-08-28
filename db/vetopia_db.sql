@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 26, 2018 at 09:21 AM
+-- Generation Time: Aug 28, 2018 at 09:14 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -101,7 +101,8 @@ INSERT INTO `tbl_appointments` (`appointment_table_id`, `appointment_id`, `custo
 (57, '#1808241120106', 'C1808211035448', 13, 'Lee Min Horse', '2018-08-24', '2:00 pm - 3:00 pm', 'Arnelsz', 'P1808221021292', 'Cat', 'Ragdoll', '3 Years old', 1, 'Done', '2018-08-24 11:20:10', 'V1808211104490', 'Carlos Almonds Valdez', 'ivansdsa', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '411.00', '415.00', '4.00'),
 (58, '#1808251235347', 'C1808211035448', 16, 'Lee Min Horse', '2018-08-25', '10:00 am - 11:00 am', 'Aninags', 'P1808221121554', 'Cat', 'British Shorthair', '2 Years old', 1, 'Cancelled', '2018-08-25 00:35:34', 'V1808211104490', 'Carlos Almonds Valdez', 'hahaha ako ulit', '<p>wala sya</p><p><br></p>', '2018-08-26 04:43:43', 0, '0000-00-00 00:00:00', '0.00', '0.00', '0.00'),
 (59, '#1808250239451', 'C1808211035448', 15, 'Lee Min Horse', '2018-08-25', '2:00 pm - 3:00 pm', 'cole', 'P1808221048598', 'Cat', 'British Shorthair', '1 Years old', 1, 'Cancelled', '2018-08-25 02:39:45', 'V1808211104490', 'Carlos Almonds Valdez', '<p>Ako at ikaw</p>', '<p>wala sya</p>', '2018-08-26 04:43:37', 0, '0000-00-00 00:00:00', '0.00', '0.00', '0.00'),
-(60, '#1808260444092', 'C1808211035448', 15, 'Lee Min Horse', '2018-08-26', '9:00 am - 10:00 am', 'cole', 'P1808221048598', 'Cat', 'British Shorthair', '1 Years old', 1, 'Done', '2018-08-26 04:44:09', 'V1808211104490', 'Carlos Almonds Valdez', '<p>tahol daw ng tahol</p>', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '411.00', '500.00', '89.00');
+(60, '#1808260444092', 'C1808211035448', 15, 'Lee Min Horse', '2018-08-26', '9:00 am - 10:00 am', 'cole', 'P1808221048598', 'Cat', 'British Shorthair', '1 Years old', 1, 'Done', '2018-08-26 04:44:09', 'V1808211104490', 'Carlos Almonds Valdez', '<p>tahol daw ng tahol</p>', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '411.00', '500.00', '89.00'),
+(61, '#1808271105234', 'C1808260134527', 17, 'Carl Vincent Lorenzo Echanez', '2018-08-27', '12:00 nn - 1:00 pm', 'ivan', 'P1808260139232', 'Dog', 'Chihuahua', '16 Years old', 1, 'On-Process', '2018-08-27 11:05:23', 'V1808211104490', 'Carlos Almonds Valdez', '<p>ivan is sick</p>', '', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '0.00', '0.00', '0.00');
 
 -- --------------------------------------------------------
 
@@ -192,7 +193,9 @@ INSERT INTO `tbl_customers` (`customer_table_id`, `customer_id`, `firstname`, `m
 (7, 'C1808211035448', 'Lee', 'Min', 'Horse', '1988-02-09', 'kor', 'korq', 'kors', '144', '2018-08-21 22:35:47', '', '', 'Active', 'team1.png', '09021232212', 'Male', 'leemin@gmail.com'),
 (8, 'C1808221128307', 'Renato', 'Magtanggol', 'Dalisay', '1994-05-25', '#3333', 'ivn street', 'makati city', '1111', '2018-08-22 11:29:22', '', '', 'Active', 'Aristotle_Color11.jpg', '09021232212', 'Male', 'recardo@gmail.com'),
 (9, 'C1808260134527', 'Carl Vincent', 'Lorenzo', 'Echanez', '1993-03-05', 'las pinas ', 'las pinas ', 'las pinas ', '3323', '2018-08-26 13:36:04', '', '', 'Active', '', '09157299313', 'Male', 'sad539281@gmail.com'),
-(10, 'C1808260210291', 'Sandra', 'Abdul', 'Dela Cruz', '1996-01-17', 'dsda', 'dsda', 'sdasd', '1111', '2018-08-26 14:11:41', '', '', 'Active', '', '09266019033', 'Female', 'psandradelacruz@gmail.com');
+(10, 'C1808260210291', 'Sandra', 'Abdul', 'Dela Cruz', '1996-01-17', 'dsda', 'dsda', 'sdasd', '1111', '2018-08-26 14:11:41', '', '', 'Active', '', '09266019033', 'Female', 'psandradelacruz@gmail.com'),
+(11, 'C1808280158054', 'Ely Jireh', 'M', 'Mojares', '1958-05-20', '#3333', 'ivn street', 'makati city', '1111', '2018-08-28 13:59:08', '', '', 'Active', '', '09021232212', 'Male', 'sky.winter30@gmail.com'),
+(12, 'C1808280159141', ' Almira', 'Incarnation', 'Layola', '2000-06-20', '#3333', 'ivn street', 'makati city', '1111', '2018-08-28 14:07:23', '', '', 'Active', '', '09021232212', 'Female', 'sky.winter30@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -1722,7 +1725,115 @@ INSERT INTO `tbl_logs` (`log_id`, `log_user`, `log_usertype`, `log_userID`, `log
 (1503, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-26 14:14:55'),
 (1504, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-26 14:14:58'),
 (1505, 'Sandra Abdul Dela Cruz', 'Customer', 'C1808260210291', 'Read Article', '2018-08-26 14:15:02'),
-(1506, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-26 14:15:54');
+(1506, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-26 14:15:54'),
+(1507, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'User Login', '2018-08-27 10:43:20'),
+(1508, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-08-27 10:43:20'),
+(1509, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View Customer list', '2018-08-27 10:43:23'),
+(1510, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'Update status of Customer C1808271043245 to Inactive', '2018-08-27 10:43:27'),
+(1511, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View Customer list', '2018-08-27 10:43:29'),
+(1512, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'Update status of Customer C1808271043291 to Active', '2018-08-27 10:43:30'),
+(1513, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View Customer list', '2018-08-27 10:43:32'),
+(1514, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View Pet List', '2018-08-27 10:43:33'),
+(1515, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View Pet details', '2018-08-27 10:43:37'),
+(1516, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-08-27 10:45:28'),
+(1517, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-08-27 10:56:19'),
+(1518, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-27 10:56:19'),
+(1519, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-27 10:56:25'),
+(1520, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-08-27 10:59:02'),
+(1521, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-08-27 11:02:23'),
+(1522, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-08-27 11:02:43'),
+(1523, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-08-27 11:04:06'),
+(1524, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-08-27 11:05:00'),
+(1525, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-08-27 11:05:23'),
+(1526, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-08-27 11:05:32'),
+(1527, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-27 12:28:26'),
+(1528, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-27 12:29:34'),
+(1529, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-27 12:31:22'),
+(1530, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-27 12:31:56'),
+(1531, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-27 12:32:05'),
+(1532, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-08-27 15:04:25'),
+(1533, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-27 15:04:25'),
+(1534, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-08-27 15:07:32'),
+(1535, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-08-27 15:07:41'),
+(1536, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Handle POS', '2018-08-27 15:14:11'),
+(1537, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-08-27 15:14:11'),
+(1538, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-08-27 15:14:24'),
+(1539, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Services', '2018-08-27 15:14:53'),
+(1540, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of  service Deworming  to Inactive', '2018-08-27 15:15:11'),
+(1541, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Services', '2018-08-27 15:15:13'),
+(1542, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of  service Deworming  to Active', '2018-08-27 15:15:19'),
+(1543, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Services', '2018-08-27 15:15:21'),
+(1544, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-27 15:16:07'),
+(1545, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-08-27 15:16:15'),
+(1546, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-27 15:16:44'),
+(1547, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-08-27 15:17:38'),
+(1548, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-08-27 15:17:43'),
+(1549, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Sales Report', '2018-08-27 15:18:47'),
+(1550, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-27 15:19:18'),
+(1551, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-27 15:20:26'),
+(1552, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-27 15:21:43'),
+(1553, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-27 15:21:53'),
+(1554, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-27 15:22:29'),
+(1555, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-27 15:23:08'),
+(1556, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Edit System Information', '2018-08-27 15:23:29'),
+(1557, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-27 15:23:29'),
+(1558, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Edit System Information', '2018-08-27 15:23:33'),
+(1559, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-27 15:23:33'),
+(1560, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Edit System Information', '2018-08-27 15:23:37'),
+(1561, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-08-27 15:23:37'),
+(1562, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-08-28 13:13:51'),
+(1563, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-28 13:13:52'),
+(1564, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Logout', '2018-08-28 13:54:26'),
+(1565, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-08-28 13:58:02'),
+(1566, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-08-28 13:58:02'),
+(1567, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer list', '2018-08-28 13:58:05'),
+(1568, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add new Customer', '2018-08-28 13:59:08'),
+(1569, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer list', '2018-08-28 13:59:14'),
+(1570, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add new Customer', '2018-08-28 14:07:23'),
+(1571, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer list', '2018-08-28 14:07:46'),
+(1572, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian list', '2018-08-28 14:14:46'),
+(1573, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-08-28 14:15:12'),
+(1574, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-08-28 14:15:36'),
+(1575, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-08-28 14:16:57'),
+(1576, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-08-28 14:17:23'),
+(1577, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-08-28 14:17:26'),
+(1578, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-08-28 14:17:27'),
+(1579, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-08-28 14:18:13'),
+(1580, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-08-28 14:19:17'),
+(1581, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-08-28 14:19:18'),
+(1582, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-08-28 14:19:25'),
+(1583, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-28 14:56:11'),
+(1584, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add article in Pet Health Care Library', '2018-08-28 14:56:55'),
+(1585, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-28 14:56:57'),
+(1586, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-28 14:57:00'),
+(1587, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add Content of  article Allergies: Atopic Dermatitis (Airborne)', '2018-08-28 14:57:14'),
+(1588, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-08-28 14:57:16'),
+(1589, 'Lee Min Horse', 'Customer', 'C1808211035448', 'User Login', '2018-08-28 14:57:37'),
+(1590, 'Lee Min Horse', 'Customer', 'C1808211035448', 'Read Article', '2018-08-28 14:57:42'),
+(1591, 'Lee Min Horse', 'Customer', 'C1808211035448', 'User Logout', '2018-08-28 15:05:44'),
+(1592, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'User Login', '2018-08-28 15:05:58'),
+(1593, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-08-28 15:05:58'),
+(1594, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-08-28 15:06:47'),
+(1595, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet Health Care Library', '2018-08-28 15:06:48'),
+(1596, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Inventory', '2018-08-28 15:06:54'),
+(1597, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet Health Care Library', '2018-08-28 15:06:57'),
+(1598, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet Health Care Library', '2018-08-28 15:09:25'),
+(1599, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-28 15:09:37'),
+(1600, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-28 15:09:57'),
+(1601, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-28 15:10:10'),
+(1602, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-28 15:10:15'),
+(1603, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-08-28 15:10:23'),
+(1604, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet Health Care Library', '2018-08-28 15:10:27'),
+(1605, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet Health Care Library', '2018-08-28 15:10:37'),
+(1606, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet Health Care Library', '2018-08-28 15:10:47'),
+(1607, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet Health Care Library', '2018-08-28 15:11:00'),
+(1608, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet Health Care Library', '2018-08-28 15:11:33'),
+(1609, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet Health Care Library', '2018-08-28 15:11:40'),
+(1610, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Inventory', '2018-08-28 15:11:42'),
+(1611, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet Health Care Library', '2018-08-28 15:12:33'),
+(1612, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Inventory', '2018-08-28 15:13:11'),
+(1613, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Inventory', '2018-08-28 15:13:45'),
+(1614, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Inventory', '2018-08-28 15:14:21');
 
 -- --------------------------------------------------------
 
@@ -1829,7 +1940,8 @@ CREATE TABLE `tbl_pet_library` (
 
 INSERT INTO `tbl_pet_library` (`library_id`, `title`, `content`, `article_image`, `article_status`, `created_by`) VALUES
 (48, 'Colitis', 'In brief, colitis is the term for inflammatio', 'carousel-exoticanimals.jpg', 'Active', 'Ivan Christian Jay Echanes Funcion'),
-(49, 'uBO', 'DASDSADS ', 'blog1.jpg', 'Active', 'Ivan Christian Jay Echanes Funcion');
+(49, 'uBO', 'DASDSADS ', 'blog1.jpg', 'Active', 'Ivan Christian Jay Echanes Funcion'),
+(50, 'Allergies: Atopic Dermatitis (Airborne)', 'very one knows someone with hay fever. Airbor', 'carousel-lifestyle.jpg', 'Active', 'Ivan Christian Jay Echanes Funcion');
 
 -- --------------------------------------------------------
 
@@ -1851,7 +1963,9 @@ INSERT INTO `tbl_pet_library_content` (`content_id`, `library_id`, `article_cont
 (33, 48, 'In brief, colitis is the term for inflammation of the colon. The chief feature of colitis is a gooey, frequently splattery diarrhea featuring mucus, fresh blood, or both. The stool may start normal then finish soft or may seem gooey throughout. There is often accompanying cramping, gas, and a sense of immediate urgency (the sudden need to run for a bathroom). Vomiting can be a feature of this condition though the characteristic diarrhea is the hallmark. Colitis may be acute (lasting only a few days) or chronic (lasting weeks or months on end). Even in chronic cases, weight loss is usually not a feature of this condition.'),
 (34, 48, 'The colon is another term for the large or lower intestine. For those who do not know the lower intestine from the upper intestine, the colon/lower intestine is basically the last segment of the digestive tract. Before reaching the colon, food has been extensively processed. First, food is chewed up in the mouth, moved to the stomach via the esophagus where it undergoes acid treatment and extensive digestion with enzymes breaking down nutrients in to smaller molecular structures. Digestion continues early in the small intestine, but most of the small intestine (the segment immediately after the stomach) is about absorbing&nbsp; nutrients. By the time the food has passed through the small intestine, all the digestible nutrients have been broken down and absorbed, leaving only water and undigestible nutrients to enter the colon.'),
 (35, 48, 'But the digestive tract is not through with the food remnants quite yet and this is the where the business of the colon comes in. The colon has three functions: absorbing water, storing stool, and further digesting unabsorbed nutrients. The bacterial population in the colon is about 10 times more dense than that of the small intestine. These bacteria, often referred to as&nbsp; good or helpful bacteria, take fibers that were undigestible to the host and actually process them into biochemicals that provide nourishment to the colon cells. The bacteria that live in the colon not only feed the cells of the colon, but they also control the pH of the colon environment so that excreted toxins are trapped in the stool and will be pooped away rather than be reabsorbed back into the body. They also produce flatulent gases and the pigments that lead to the ultimate color of stool. The relationship we have with our colon bacteria is mutually beneficial and is an excellent example of symbiosis'),
-(36, 49, 'DASDSADS');
+(36, 49, 'DASDSADS'),
+(37, 50, 'very one knows someone with hay fever. Airborne pollens, molds, dust particles, etc. are inhaled and soon the sneezing and sniffling begins. A simple way to think of atopy for pets would be simply saying that the airborne allergen is inhaled but instead of sneezing and sniffling, the pet gets itchy skin. In fact, this was what we thought was happening for many years but the situation turns out to be more complicated. Airborne pollens, molds, dust particles etc. gain entry to the skin through a defective skin barrier, and from there their proteins are presented to the immune system. Cells of inflammation migrate back to the skin and soon the itching and scratching begins. The allergens come from the air but the itch is manifested in the skin.'),
+(38, 50, '<p>\r\n\r\n</p><p><strong>Features of Atopy</strong></p><p>There are many reasons for pets to itch: parasites, allergy to flea bites, food allergy, secondary infection and the list goes on.</p><p>The following are findings in the history and examination of the patient that might lead to a diagnosis of atopy. In fact, meeting five criteria from this list yields an 85 percent accuracy for the diagnosis of atopic dermatitis, at least for dogs:</p><ul><li><em>Young age of onset</em><br>Seasonal itchiness due to atopy tends to begin early in a pet\'s life (between ages 1 and 3 years in 70 percent of dogs diagnosed with atopy). <a target=\"_blank\" rel=\"nofollow\" href=\"http://www.veterinarypartner.com/Content.plx?P=A&amp;S=0&amp;C=0&amp;A=652\">Food allerg</a>y tends to begin later (more like age 5 or 6 years in dogs) or earlier (less than 6 months of age). Age at which itching first manifests is not as reliable a sign in cats as in dogs.</li><li><em>Mostly indoor lifestyle</em><br>It is indoors where many airborne allergens concentrated; however, it is important to note that allergens in the air are in the air for miles so it is not easy to escape allergens by simply going outdoors nor by simply going indoors.</li><li><em>Good response to steroids</em><br>Whether the patient is a dog or cat, itchiness due to atopy responds rapidly to cortisone-type medications (prednisone, depomedrol, dexamethasone, etc.) as does itching due to insect bite allergy. Food allergy is more variable in its response; it may or may not respond well.</li><li><em>Chronic or recurring yeast infections in the skin</em><br>Yeast (<em>Malassezia pachydermatis</em>) live on the surface of the skin normally but with all the changes allergy causes to the skin\'s microenvironment, yeast will proliferate and create a stinky, thickened, pigmented skin that resembles elephant skin or even tree bark. Environmental allergy is a strong predisposing factor in developing yeast dermatitis.</li><li><em>Front feet involved</em></li><li><em>Ear flaps involved</em><br>There is a lesion distribution that is common in inhalant allergy. It is, unfortunately, very similar to that of <a target=\"_blank\" rel=\"nofollow\" href=\"http://www.veterinarypartner.com/Content.plx?P=A&amp;S=0&amp;C=0&amp;A=616\">sarcoptic mange</a>&nbsp;and overlaps greatly with the lesion distribution of flea bite allergy.</li><li><em>Ear margins not involved</em><br>Ear margin involvement is suggestive of sarcoptic mange and would lead one away from airborne allergies.</li><li><em>Lower back area not involved</em><br>The lower back is the flea bite zone. There are few conditions other than flea bite allergy that cause itching in this area, so if this area is involved, make sure <a target=\"_blank\" rel=\"nofollow\" href=\"http://www.veterinarypartner.com/Content.plx?P=A&amp;A=2858&amp;S=4&amp;SourceID=61\">flea control</a>&nbsp;is achieved before further evaluating the skin.</li></ul>\r\n\r\n<br><p></p>');
 
 -- --------------------------------------------------------
 
@@ -1871,7 +1985,8 @@ CREATE TABLE `tbl_pet_library_links` (
 
 INSERT INTO `tbl_pet_library_links` (`links_id`, `library_id`, `web_link`) VALUES
 (17, 48, 'https://veterinarypartner.vin.com/doc/?id=4951414&amp;pid=19239'),
-(18, 49, 'https://google.com');
+(18, 49, 'https://google.com'),
+(19, 50, 'https://veterinarypartner.vin.com/default.aspx?pid=19239&catId=102899&id=4951475');
 
 -- --------------------------------------------------------
 
@@ -2060,7 +2175,9 @@ INSERT INTO `tbl_productinventories` (`inv_table_id`, `product_rel_id`, `product
 (253, 40, '#Med1808200154179', 'Dino Capsule Evolution', 'Medicine', 'Purchased Product', 'Customer(Walking)', '', '2018-08-26 09:41:41', 1, '0000-00-00'),
 (254, 13, '#Med1808200154179', 'Dino Capsule Evolution', 'Medicines', 'Pull out product', 'Veterinarian', 'Carlos Almonds Valdez', '2018-08-26 09:50:54', 1, '0000-00-00'),
 (255, 40, '#Med1808200154179', 'Dino Capsule Evolution', 'Medicine', 'Purchased Product', 'Customer(Walking)', '', '2018-08-26 14:06:28', 1, '0000-00-00'),
-(256, 39, '#Item1808200149209', 'Cat Shampoo', 'Item', 'Purchased Product', 'Customer(Walking)', '', '2018-08-26 14:06:28', 1, '0000-00-00');
+(256, 39, '#Item1808200149209', 'Cat Shampoo', 'Item', 'Purchased Product', 'Customer(Walking)', '', '2018-08-26 14:06:28', 1, '0000-00-00'),
+(257, 40, '#Med1808200154179', 'Dino Capsule Evolution', 'Medicine', 'Purchased Product', 'Customer(Walking)', 'mika', '2018-08-27 15:14:11', 2, '0000-00-00'),
+(258, 19, '#Item1808270316449', 'Dog mat', 'Item', 'Add new Product', 'Super Admin', 'Ivan Christian Jay Echanes Funcion', '2018-08-27 15:17:38', 100, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -2084,7 +2201,8 @@ CREATE TABLE `tbl_productitems` (
 --
 
 INSERT INTO `tbl_productitems` (`item_table_id`, `item_id`, `itemname`, `itemdescription`, `itemImage`, `price`, `supplier`, `store_price`) VALUES
-(18, '#Item1808200149209', 'Cat Shampoo', 'Cat Shampoo', 'AdSlots468_MK_Q2_201822.jpg', '100.00', 'Cat Corp', '112.00');
+(18, '#Item1808200149209', 'Cat Shampoo', 'Cat Shampoo', 'AdSlots468_MK_Q2_201822.jpg', '100.00', 'Cat Corp', '112.00'),
+(19, '#Item1808270316449', 'Dog mat', 'dog mat dog', 'g222.jpg', '90.00', 'Qualifoam', '100.80');
 
 -- --------------------------------------------------------
 
@@ -2143,7 +2261,8 @@ CREATE TABLE `tbl_products` (
 INSERT INTO `tbl_products` (`product_table_id`, `product_relation_id`, `product_name`, `product_unit`, `productType`, `product_id`, `productInStore`, `dateAdded`, `productImage`, `product_price`, `store_price`) VALUES
 (38, 11, 'Dino Flakes', '5 (Kg) ', 'Food', '#Food1808200141256', 42, '2018-08-20 01:42:34', 'AdSlots468_HI_Q3_2018111.jpg', '100.00', '112.00'),
 (39, 18, 'Cat Shampoo', '', 'Item', '#Item1808200149209', 92, '2018-08-20 01:50:18', 'AdSlots468_MK_Q2_201822.jpg', '100.00', '112.00'),
-(40, 13, 'Dino Capsule Evolution', '3 (Liters) ', 'Medicine', '#Med1808200154179', 55, '2018-08-20 01:55:20', 'AdSlots468_HI_Q3_201821.jpg', '1111.00', '1244.32');
+(40, 13, 'Dino Capsule Evolution', '3 (Liters) ', 'Medicine', '#Med1808200154179', 53, '2018-08-20 01:55:20', 'AdSlots468_HI_Q3_201821.jpg', '1111.00', '1244.32'),
+(41, 19, 'Dog mat', '', 'Item', '#Item1808270316449', 100, '2018-08-27 15:17:38', 'g222.jpg', '90.00', '100.80');
 
 -- --------------------------------------------------------
 
@@ -2205,7 +2324,8 @@ INSERT INTO `tbl_sales` (`sales_id`, `invoice_number`, `customer_type`, `custome
 (123, '#1808241150287', 'Walking', '0', '', '2018-08-24 23:50:28', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '1244.32', '1300.00', '55.68'),
 (124, '#1808260902018', 'Walking', '0', '', '2018-08-26 09:02:01', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '1244.32', '1500.00', '255.68'),
 (125, '#1808260941411', 'Walking', '0', '', '2018-08-26 09:41:41', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '1244.32', '1300.00', '55.68'),
-(126, '#1808260206287', 'Walking', '0', '', '2018-08-26 14:06:28', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '1356.32', '1500.00', '143.68');
+(126, '#1808260206287', 'Walking', '0', '', '2018-08-26 14:06:28', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '1356.32', '1500.00', '143.68'),
+(127, '#1808270314117', 'Walking', '0', 'mika', '2018-08-27 15:14:11', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '2488.64', '2500.00', '11.36');
 
 -- --------------------------------------------------------
 
@@ -2260,7 +2380,8 @@ INSERT INTO `tbl_salesdetails` (`salesdetail_id`, `sales_id`, `product_id`, `pro
 (136, 124, '#Med1808200154179', 'Medicine', 'Dino Capsule Evolution', '1111.00', 1, '1244.32', '0.12', '149.32', '1393.64'),
 (137, 125, '#Med1808200154179', 'Medicine', 'Dino Capsule Evolution', '1111.00', 1, '1244.32', '0.12', '149.32', '1393.64'),
 (138, 126, '#Med1808200154179', 'Medicine', 'Dino Capsule Evolution', '1111.00', 1, '1244.32', '0.12', '149.32', '1393.64'),
-(139, 126, '#Item1808200149209', 'Item', 'Cat Shampoo', '100.00', 1, '112.00', '0.12', '13.44', '125.44');
+(139, 126, '#Item1808200149209', 'Item', 'Cat Shampoo', '100.00', 1, '112.00', '0.12', '13.44', '125.44'),
+(140, 127, '#Med1808200154179', 'Medicine', 'Dino Capsule Evolution', '1111.00', 2, '2488.64', '0.12', '298.64', '2787.28');
 
 -- --------------------------------------------------------
 
@@ -2440,7 +2561,9 @@ INSERT INTO `tbl_users` (`tbluser_id`, `user_type`, `user_id`, `username`, `pass
 (10, 'Staff', 'S1808221221365', 'kBallesteros', 'kirra', '$2y$10$4Je5ST8maCyBTiiDHaWdXeK2eHneq1nIqVWM9e', '2018-08-22 23:35:49'),
 (11, 'Customer', 'C1808221128307', 'RDalisay', 'cardo', '$2y$10$uYwEdmPJ7wR4IKyuLeR33uEJyW41a1wG.fc/3R', '2018-08-22 11:29:36'),
 (12, 'Customer', 'C1808260134527', 'CEchanez', 'C1808260134527', '$2y$10$BgI3rSI9BxwkSM5IdHf84uLVqT.qR8Y0p.EJrL', '2018-08-26 13:36:04'),
-(13, 'Customer', 'C1808260210291', 'SDela Cruz', 'C1808260210291', '$2y$10$o28edQ/VGnnVtEWOr/lEF.fYVLovQ7Lr907dmM', '2018-08-26 14:11:41');
+(13, 'Customer', 'C1808260210291', 'SDela Cruz', 'C1808260210291', '$2y$10$o28edQ/VGnnVtEWOr/lEF.fYVLovQ7Lr907dmM', '2018-08-26 14:11:41'),
+(14, 'Customer', 'C1808280158054', 'EMojares', 'C1808280158054', '$2y$10$TYjx/CXmyhAKAViHzfTZXOkLBGdEFuRqbMBzTS', '2018-08-28 13:59:08'),
+(15, 'Customer', 'C1808280159141', ' Layola', 'C1808280159141', '$2y$10$ssNRTHiPP.roAeyeHpAkrO2ibuoxnK5McVyQzy', '2018-08-28 14:07:23');
 
 -- --------------------------------------------------------
 
@@ -2477,7 +2600,7 @@ CREATE TABLE `tbl_veterinarians` (
 INSERT INTO `tbl_veterinarians` (`veterinarian_table_id`, `veterinarian_id`, `firstname`, `middlename`, `lastname`, `birthdate`, `homeAddress`, `barangayAddress`, `cityAddress`, `postalID`, `dateAdded`, `username`, `password`, `veterinarian_status`, `vetbio`, `profile`, `gender`, `contact`, `email`) VALUES
 (0, 'V1808211104221', 'Recardo', 'Lebron ', 'James', '1976-05-12', '#3333', 'sdsd', 'asdsd', 'sdadsa', '2018-08-21 23:04:49', '', '', 'Active', '<p>wala ako dito</p>', 'team12.png', 'Male', '09021232212', 'rj@gmail.com'),
 (8, 'V1808211104490', 'Carlos', 'Almonds', 'Valdez', '1985-02-12', '#3333', 'dsassd', 'sdasd', '1111', '2018-08-21 23:06:10', 'CValdez', 'carlos', 'Active', '<p>vibe 20</p>', 'team3.png', 'Male', '09021232212', 'carlosvaldex10@gmail.com'),
-(9, 'V1808211106539', 'Renato', 'Ren', 'Anto', '1984-05-21', 'sdsd', 'sads', 'sdsd', 'asdsd', '2018-08-21 23:07:31', '', '', 'Active', '<p>sssasdsad</p>', 'doctor-sanders.jpg', 'Male', '09021232212', 'rj@gmail.com');
+(9, 'V1808211106539', 'Renato', 'Ren', 'Anto', '1984-05-21', 'sdsd', 'sads', 'sdsd', 'asdsd', '2018-08-21 23:07:31', '', '', 'Active', '<p>sssasdsad</p>', 'doctor-winthrop.jpg', 'Male', '09021232212', 'rj@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -2658,7 +2781,7 @@ ALTER TABLE `tbl_admins`
 -- AUTO_INCREMENT for table `tbl_appointments`
 --
 ALTER TABLE `tbl_appointments`
-  MODIFY `appointment_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `appointment_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 --
 -- AUTO_INCREMENT for table `tbl_bannerimages`
 --
@@ -2673,12 +2796,12 @@ ALTER TABLE `tbl_checkupdetails`
 -- AUTO_INCREMENT for table `tbl_customers`
 --
 ALTER TABLE `tbl_customers`
-  MODIFY `customer_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `customer_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `tbl_logs`
 --
 ALTER TABLE `tbl_logs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1507;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1615;
 --
 -- AUTO_INCREMENT for table `tbl_petbreeds`
 --
@@ -2698,17 +2821,17 @@ ALTER TABLE `tbl_pettype`
 -- AUTO_INCREMENT for table `tbl_pet_library`
 --
 ALTER TABLE `tbl_pet_library`
-  MODIFY `library_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `library_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 --
 -- AUTO_INCREMENT for table `tbl_pet_library_content`
 --
 ALTER TABLE `tbl_pet_library_content`
-  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `tbl_pet_library_links`
 --
 ALTER TABLE `tbl_pet_library_links`
-  MODIFY `links_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `links_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `tbl_productfoods`
 --
@@ -2718,12 +2841,12 @@ ALTER TABLE `tbl_productfoods`
 -- AUTO_INCREMENT for table `tbl_productinventories`
 --
 ALTER TABLE `tbl_productinventories`
-  MODIFY `inv_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=257;
+  MODIFY `inv_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=259;
 --
 -- AUTO_INCREMENT for table `tbl_productitems`
 --
 ALTER TABLE `tbl_productitems`
-  MODIFY `item_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `item_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `tbl_productmedicines`
 --
@@ -2733,7 +2856,7 @@ ALTER TABLE `tbl_productmedicines`
 -- AUTO_INCREMENT for table `tbl_products`
 --
 ALTER TABLE `tbl_products`
-  MODIFY `product_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `product_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 --
 -- AUTO_INCREMENT for table `tbl_pullouts`
 --
@@ -2743,12 +2866,12 @@ ALTER TABLE `tbl_pullouts`
 -- AUTO_INCREMENT for table `tbl_sales`
 --
 ALTER TABLE `tbl_sales`
-  MODIFY `sales_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+  MODIFY `sales_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 --
 -- AUTO_INCREMENT for table `tbl_salesdetails`
 --
 ALTER TABLE `tbl_salesdetails`
-  MODIFY `salesdetail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
+  MODIFY `salesdetail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
 --
 -- AUTO_INCREMENT for table `tbl_services`
 --
@@ -2778,7 +2901,7 @@ ALTER TABLE `tbl_timeschedule`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `tbluser_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `tbluser_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `tbl_veterinarians`
 --

@@ -47,7 +47,7 @@
 
 
       <li><a href="<?php echo site_url()?>veterinarian/medicines"><i class="fa fa-server"></i> <span>Medicines</span></a></li>
-
+            <li><a href="<?php echo site_url()?>veterinarian/pet_health_care_library"><i class="fa fa-book"></i> <span>Health Care Library</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
