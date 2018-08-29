@@ -108,6 +108,12 @@ class Settings extends CI_Controller {
 			$clinic_email_address = $this->input->post("clinic_email_address");
 		}
 
+		if(empty($this->input->post("telephone"))){
+			$errorMessage .= "<li>Telephone number cannot be blank </li>";
+		}else{
+			$telephone = $this->input->post("telephone");
+		}
+
 
 		if(empty($this->input->post("vet_fee"))){
 			$errorMessage .= "<li>Vet fee cannot be blank </li>";
@@ -115,6 +121,12 @@ class Settings extends CI_Controller {
 			$vet_fee = $this->input->post("vet_fee");
 		}
 
+		if(empty($this->input->post("max_product_count"))){
+			$errorMessage .= "<li>Max Product Count cannot be blank </li>";
+		}else{
+			$max_product_count = $this->input->post("max_product_count");
+		}
+		
 
 		
 		$settings_id = $this->input->post("settings_id");
@@ -131,6 +143,8 @@ class Settings extends CI_Controller {
 				'clinic_postal_id' => $clinic_postal_id,
 				'clinic_email_address' => $clinic_email_address,
 				'vet_fee' => $vet_fee,
+				'telephone' =>$telephone,
+				'max_product_count' => $max_product_count,
 			);
 
 

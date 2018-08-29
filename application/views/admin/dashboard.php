@@ -2,7 +2,7 @@
 
     $skin_color = $t_color->theme_color;
     $settings_id =$t_color->settings_id;
-
+    $max_product_count = $t_color->max_product_count;
     $box_color = "";
 
     if($skin_color == "skin-green"){
@@ -284,13 +284,13 @@
                   <td>
                       <div class="progress-group">
                         <span class="progress-text">&nbsp;</span>
-                        <span class="progress-number"><b><?php echo $a_products->productInStore;?></b>/200</span>
+                        <span class="progress-number"><b><?php echo $a_products->productInStore;?></b>/<?php echo   $max_product_count;?></span>
 
                         <div class="progress sm">
 
                           <?php 
                             $remaining_supply = $a_products->productInStore;
-                            $get_decimal = $remaining_supply / 200;
+                            $get_decimal = $remaining_supply / $max_product_count;
 
                             $percentage = $get_decimal * 100;
 
@@ -333,25 +333,32 @@
       <!-- /.row -->
 
 
-            <!-- LINE CHART -->
-      <div class="box <?php echo $box_color?> box-solid box-collapse">
-        <div class="box-header with-border">
-          <h3 class="box-title">Sales Statistics</h3>
-
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-            </button>
-     
-          </div>
-        </div>
-        <div class="box-body chart-responsive">
-          <div class="chart" id="line-chart" style="height: 300px;"></div>
-        </div>
-        <!-- /.box-body -->
-      </div>
       <!-- /.box -->
 
+      <div class="row">
+              <div class="col-md-12">
+          <!-- LINE CHART -->
+          <div class="box box-solid <?php echo $box_color?>">
+            <div class="box-header with-border">
+              <h3 class="box-title">Sales Chart</h3>
 
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+               
+              </div>
+            </div>
+              <div class="box-body chart-responsive">
+              <div class="chart" id="line-chart" style="height: 300px;"></div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+
+      </div>
+        <!-- /.col (RIGHT) -->
+      </div>
    
 
     </section>
@@ -381,31 +388,88 @@
 
 <!--page scripts -->
 
+<?php 
+//index.php
+$connect = mysqli_connect("localhost", "root", "", "vetopia_db");
+$query = "SELECT date(sales_date) as sales_D,SUM(total_amount) AS 'total_am' FROM tbl_sales group by date(sales_date);";
+$result = mysqli_query($connect, $query);
+/*$chart_data = '';
+$chart_labels = '';
+while($row = mysqli_fetch_array($result))
+{
+  $chart_data .= $row["total_am"];
+  $date =date_create($row["sales_D"]);
+  $sales_d= date_format($date,"F d, Y ");
+ $chart_labels .= $sales_d;
+
+
+
+}
+
+echo $sales = json_encode($chart_data);
+ $sample = "{ label:'ivan'}";
+ $sm = json_encode($chart_labels);
+*/
+
+$sales = array();
+foreach($result as $r){
+  $datas = array();
+  $datas['x'] = $r['sales_D'];
+  $datas['item1'] = $r['total_am'];
+
+
+  //merget the vent array into the return array
+  array_push($sales, $datas);
+}
+
+//echo json_encode($sales);
+
+
+
+//for labels 
+
+
+
+
+//execute query
+/*$result = mysqli_query($connect, $query);
+//$result = $mysqli->query($query);
+
+//loop through the returned data
+$data = array();
+foreach ($result as $row) {
+  $data[] = $row;
+}
+
+
+$datas = json_encode($data);*/
+?>
+
+
 <!-- page script -->
 <script>
 
     // LINE CHART
-    var line = new Morris.Line({
+   var line = new Morris.Line({
       element: 'line-chart',
       resize: true,
-      data: [
-        {y: '2011 Q1', item1: 2666},
-        {y: '2011 Q2', item1: 2778},
-        {y: '2011 Q3', item1: 4912},
-        {y: '2011 Q4', item1: 3767},
-        {y: '2012 Q1', item1: 6810},
-        {y: '2012 Q2', item1: 5670},
-        {y: '2012 Q3', item1: 4820},
-        {y: '2012 Q4', item1: 15073},
-        {y: '2013 Q1', item1: 10687},
-        {y: '2013 Q2', item1: 8432}
-      ],
-      xkey: 'y',
+      data: 
+        <?php echo json_encode($sales);?>
+      ,
+      xkey: 'x',
       ykeys: ['item1'],
-      labels: ['Item 1'],
+      labels: ['Sales'],
       lineColors: ['#3c8dbc'],
       hideHover: 'auto'
     });
+
+
+
+
+
+
+
+
 </script>
 <!-- footer scripts -->
 

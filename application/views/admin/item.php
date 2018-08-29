@@ -2,7 +2,10 @@
 
   $skin_color = $t_color->theme_color;
   $settings_id =$t_color->settings_id;
+  $max_product_count = $t_color->max_product_count;
    $box_color = "";
+
+
 
     if($skin_color == "skin-green"){
       $box_color = "box-success";
@@ -141,7 +144,7 @@
                     <td>₱<?php echo $items->store_price;?></td>
                     <td>
                     <?php echo $items->productInStore;
-                       if($items->productInStore < 100):
+                       if($items->productInStore < $max_product_count):
                     ?>
                       <span class="badge label-danger"><i class="fa fa-exclamation-circle"></i></span>
                      <?php endif;?>
@@ -180,7 +183,7 @@
 
 
 
-                                        <input type="number" name="supplycount" min="0" max="200" class="form-control" required="">
+                                        <input type="number" name="supplycount" min="0" max="<?php echo $max_product_count;?>" class="form-control" required="">
                                    </div>   
                               </div>
 

@@ -5,6 +5,7 @@
 		$clinic_email = $contents->clinic_email_address;
 		$clinic_address = $contents->clinic_home_address .' '. $contents->clinic_barangay_address .' '. $contents->clinic_city_address;
 		$postal_id = $contents->clinic_postal_id;
+		$telephone =  $contents->telephone;
 	}
 
 ?>
@@ -20,6 +21,7 @@
 	<script src="<?php echo site_url()?>assets/dist/js/jquery-3.2.1.min.js"></script>
 	<script src="<?php echo site_url()?>assets/dist/js/popper.min.js"></script>
 	<script src="<?php echo site_url()?>assets/dist/js/bootstrap.min.js"></script>
+	<script src="<?php echo site_url()?>assets/dist/js/scroll2Section.js"></script>
 	<!--<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script> -->
 	<link href="<?php echo site_url()?>assets/dist/css/font-awesome.min.css" rel="stylesheet">
 	<link href="<?php echo site_url()?>assets/dist/css/style.css" rel="stylesheet">
@@ -30,24 +32,24 @@
 <!-- Navigation -->
 	<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top" style="">
 		<div class="container-fluid">
-				<a class="navbar-brand" href="#">Vetopia</a>
+				<a class="navbar-brand" data-section href="#!slides">Vetopia</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 						<ul class="navbar-nav ml-auto">
 							<li class="nav-item active">
-								<a class="nav-link" href="#slides">Home</a>
+								<a class="nav-link" data-section href="#!slides">Home</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#about">About</a>
+								<a class="nav-link" data-section href="#!about">About</a>
 							</li>
 							
 							<li class="nav-item">
-								<a class="nav-link" href="#team">Team</a>
+								<a class="nav-link" data-section href="#!team">Team</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#services">Services</a>
+								<a class="nav-link" data-section href="#!services">Services</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="<?php echo site_url()?>login">Sign In</a>
@@ -225,7 +227,7 @@ function make_slides($connect)
 						<div class="col-md-4">
 								<h1>Vetopia</h1>
 								<hr class="light">
-								<p>555-555-555</p>
+								<p><?php echo $telephone;?></p>
 								<p><?php echo $clinic_address?>, <?php echo $postal_id;?></p>
 								
 								
@@ -253,5 +255,14 @@ function make_slides($connect)
 		</div>
 </footer>
 
+
+
+<script>
+	$("section").scroll2Section({menu:'nav',offsetTop:56}).on('update',function(event,element){
+			var href = $(element).attr('href');
+			//href.css('background','red');
+			
+		});
+</script>
 </body>
 </html>

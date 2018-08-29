@@ -91,6 +91,7 @@
                   <th>Status</th>
                   <th>Title</th>
                   <th>Content</th>
+                  <th>Published By</th>
                   <th>Action</th>
 
                 </tr>
@@ -115,9 +116,8 @@
                       </td>
                       <td><?php echo $article->title;?></td>
                       <td><?php echo substr($article->content ,0, 100)." ...";?>
-                        
-
                       </td>
+                      <td><?php echo $article->created_by ?></td>
                       <td><a href="<?php echo site_url()?>admin/library_article_detail/<?php echo $article->library_id?>" class="btn btn-info btn-sm btn-flat">Read Article</a></td>
                     </tr>
                   <?php endforeach;?>

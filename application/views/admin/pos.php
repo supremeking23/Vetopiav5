@@ -246,7 +246,7 @@
                   <?php foreach($all_product as $products):?>
                     
                       <div  class="product-item col-md-4" >
-                         <div class="thumbnail">
+                         <div class="thumbnail" style="height: 370px">
                           <img class="product-image" src="<?php echo site_url()?>assets/images/products/<?php echo $products->productImage?>" width="100px"  />
                           <div class="caption">
                             <h4  data-type="<?php echo $products->productType;?>"><?php echo $products->product_name;?><br /><small><?php echo $products->product_unit;?></small></h4> 

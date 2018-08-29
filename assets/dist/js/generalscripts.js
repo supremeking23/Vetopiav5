@@ -142,13 +142,13 @@
 
              {
                extend: 'excelHtml5',
-               title: 'Log Report',
+               title: 'Inventory Report',
   
             },
 
             {
                extend: 'csvHtml5',
-               title: 'Log Report',
+               title: 'Inventory Report',
                
             },
 

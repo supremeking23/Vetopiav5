@@ -187,6 +187,9 @@
   <!-- Bootstrap WYSIHTML5 -->
   <script src="<?php echo site_url()?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 
+  <!-- ChartJS -->
+  <script src="<?php echo site_url()?>assets/bower_components/chart.js/Chart.js"></script>
+  <script src="<?php echo site_url()?>assets/dist/js/loader.js"></script>
 
 
   <!-- Slimscroll -->
