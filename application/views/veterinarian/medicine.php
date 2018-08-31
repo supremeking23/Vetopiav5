@@ -95,8 +95,9 @@
                      <td>
                     <?php echo $meds->medname;?>
                     </td>
-                    <td><?php echo $meds->medType;?></td>
+                    
                     <td><img  class="img img-responsive "src="<?php echo site_url()?>assets/images/products/<?php echo $meds->medImage;?>" width="140px"></td>
+                    <td><?php echo $meds->medType;?></td>
                     <td><?php echo $meds->meddescription;?></td>
                     
                     <td>

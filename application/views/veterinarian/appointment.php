@@ -25,6 +25,11 @@
 
 <?php $this->load->view('include_pages_vets/page_header');?>
 
+<style type="text/css">
+  
+
+</style>
+
 <body class="hold-transition <?php echo $skin_color;?> sidebar-mini" id="appointment">
   <div class="wrapper">
 
@@ -254,12 +259,14 @@
                                      $services =  $this->pet_management_model->get_all_services_for_specific_pet_age_and_active($pettype_ulit,$age);
                                       ?>
 
-                                
+                                          <style type="text/css">
+                                             
+                                          </style>
                                           <div class="col-md-12">
-                                              <select name="service_id[]" id="service_id" class="form-control select2" multiple required style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;">
-                                              <option value="0">General Checkup</option>
+                                              <select name="service_id[]" id="service_id" class="form-control select2" multiple required style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto; ">
+                                              <option value="0" class="blacks">General Checkup</option>
                                               <?php foreach($services as $s):?>
-                                                <option value="<?php echo $s->service_id?>"><?php echo $s->service_name;?></option>
+                                                <option class="blacks" value="<?php echo $s->service_id?>"><?php echo $s->service_name;?></option>
                                               <?php endforeach;?>
                                              </select>
                                          </div>

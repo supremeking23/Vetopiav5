@@ -144,7 +144,14 @@
                     <td>₱<?php echo $items->store_price;?></td>
                     <td>
                     <?php echo $items->productInStore;
-                       if($items->productInStore < $max_product_count):
+
+                       $remaining_supply = $items->productInStore;
+                            $get_decimal = $remaining_supply / $max_product_count;
+
+                            $percentage = $get_decimal * 100;
+
+
+                       if($percentage < 50):
                     ?>
                       <span class="badge label-danger"><i class="fa fa-exclamation-circle"></i></span>
                      <?php endif;?>
@@ -182,8 +189,8 @@
                                         ?>
 
 
-
-                                        <input type="number" name="supplycount" min="0" max="<?php echo $max_product_count;?>" class="form-control" required="">
+                                        <?php  $needed_product =$max_product_count - $remaining_supply;?>
+                                        <input type="number" name="supplycount" min="0" max="<?php echo $needed_product;?>" class="form-control" required="">
                                    </div>   
                               </div>
 

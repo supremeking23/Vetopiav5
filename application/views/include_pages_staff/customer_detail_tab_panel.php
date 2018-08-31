@@ -171,12 +171,12 @@
 
 
 
-                  <div class="tab-pane" id="pets">
+                  <div class="tab-pane table-responsive" id="pets">
 
                     <button style="margin-bottom: 15px" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#addPetAjax">Add Pet</button>
-                    <br >
+          
 
-                        <table class="datatablecustomerpet table table-bordered table-striped">
+                        <table class="datatables table table-bordered table-striped">
                             <thead>
                             <tr>
                               

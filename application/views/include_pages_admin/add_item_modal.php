@@ -1,3 +1,13 @@
+ <?php foreach($theme_color as $t_color){
+
+ 
+  $max_product_count = $t_color->max_product_count;
+  
+
+
+}?>
+
+
  <div class="modal fade" id="addProduct">
         <div class="modal-dialog">
           <div class="modal-content modal-md">
@@ -126,7 +136,7 @@
 
 
 
-                              <input type="number" name="supplycount" min="0" max="200" class="form-control" required="">
+                              <input type="number" name="supplycount" min="0" max="<?php echo $max_product_count;?>" class="form-control" required="">
                          </div>   
                     </div>
 

@@ -46,7 +46,8 @@ class Admin extends CI_Controller {
 		 }
 
 
-
+		 //echo APPPATH;
+		 //echo gmdate("D, d M Y H:i:s");
     }
 
 

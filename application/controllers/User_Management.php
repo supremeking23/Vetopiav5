@@ -220,7 +220,7 @@ class User_Management extends CI_Controller {
             $this->admin_management->update_admin($user_id_update,$data);
 
             $this->session->set_flashdata('update_admin_success','Admin information has been updated successfully');
-            redirect('admin/admin_details/'.$user_id_update);
+            //redirect('admin/admin_details/'.$user_id_update);
 
     }
 
@@ -306,9 +306,9 @@ class User_Management extends CI_Controller {
 
 
          
-        /*
-        //for email
-        $config = array(
+        
+        //for email  uncomment if you are connected to the internet
+        /*$config = array(
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
             'smtp_port' => 465,
@@ -329,7 +329,7 @@ class User_Management extends CI_Controller {
         $this->email->set_newline("\r\n");
         $this->email->from('vetopiaC@gmail.com');
         $this->email->to($this->input->post('email'));
-        $this->email->subject('Subject: test subject');
+        $this->email->subject('Subject: Customer Registration');
 
         $message = "Hi " . $this->input->post('first_name') . "!  here is your username and password   ".$username." : ".$password." ";
 
@@ -340,9 +340,9 @@ class User_Management extends CI_Controller {
         }else{
             show_error($this->email->print_debugger());
         }
-        */
+        
     
-
+        */
 
         $this->session->set_flashdata('add_customer_success','New Customer has been added');
         redirect('admin/customers');
@@ -426,7 +426,7 @@ class User_Management extends CI_Controller {
 
              /*
 
-            //for email
+            //for email uncomment if you are connected to the internet
             $config = array(
                 'protocol' => 'smtp',
                 'smtp_host' => 'ssl://smtp.googlemail.com',
@@ -448,7 +448,7 @@ class User_Management extends CI_Controller {
             $this->email->set_newline("\r\n");
             $this->email->from('vetopiaC@gmail.com');
             $this->email->to($this->input->post('email'));
-            $this->email->subject('Subject: test subject');
+            $this->email->subject('Subject: Customer Registration');
 
             $message = "Hi " . $this->input->post('first_name') . '! <br /> here is your username and password   '.$username.' : '.$password.' ';
 
@@ -944,7 +944,7 @@ class User_Management extends CI_Controller {
             $this->veterinarian_management->update_veterinarian($user_id_update,$data);
 
             $this->session->set_flashdata('update_vet_success','Veterinarian information has been updated successfully');
-           // redirect('admin/vet_details/'.$user_id_update);
+            redirect('admin/vet_details/'.$user_id_update);
 
     }
 

@@ -62,7 +62,7 @@
                                           <div class="modal-body">
 
                                             <?php //checkup details
-                                              $checkup_detail = $this->pet_management_model->get_pet_service_by_pet_id($pet_id);
+                                              $checkup_detail = $this->pet_management_model->get_prescription_by_appointment_table_id($appointment_detail->appointment_table_id);
 
 
                                               foreach($checkup_detail as $c_detail){
@@ -78,7 +78,7 @@
 
                                            
 
-                                             <?php if($appointment_detail->appointment_status != "Cancelled"):?>
+                                             <?php if($appointment_detail->appointment_status != "Cancelled" AND $appointment_detail->appointment_status !="Confirmed" AND  $appointment_detail->appointment_status !="On-Process"):?>
                                                <dl class="dl-horizontal">
                                                 <?php //$checkup_detail = 1;?>
 
@@ -141,10 +141,10 @@
                                            
                                           </div>
                                           <div class="modal-footer">
-                                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                           <?php if($appointment_detail->appointment_status != "Cancelled"):?> <button  class="btn btn-primary btn-sm btn-flat" href="<?php echo site_url();?>pet_management/print_prescription" target="_blank">Print Priscription</a> <?php endif;?>
+                                           <!-- <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                                           <?php if($appointment_detail->appointment_status != "Cancelled" AND $appointment_detail->appointment_status !="Confirmed" AND  $appointment_detail->appointment_status !="On-Process"):?> <a class="btn btn-primary btn-sm btn-flat" href="<?php echo site_url();?>pet_management/print_prescription/<?php echo $id?>" target="_blank">Print Priscription </a> <?php endif;?>  -->
                                           </div>
-                                        </div>
+                                        </div> 
                                         <!-- /.modal-content -->
                                       </div>
                                       <!-- /.modal-dialog -->

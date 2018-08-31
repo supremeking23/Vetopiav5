@@ -297,7 +297,7 @@
                          
                               <?php 
 
-                              echo form_label('Posta ID', 'postalID','class="control-label"');
+                              echo form_label('Postal ID', 'postalID','class="control-label"');
                               ?>
 
 

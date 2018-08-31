@@ -2,7 +2,7 @@
 
   $skin_color = $t_color->theme_color;
   $settings_id =$t_color->settings_id;
-
+  $max_product_count = $t_color->max_product_count;
 }?>
 
 <!DOCTYPE html>
@@ -81,8 +81,16 @@
 
                           <li class="list-group-item">
                            <b> Supply Count</b> <a class="pull-right"><?php echo $m_detail->productInStore?>
+
+                            <?php 
+                       $remaining_supply = $m_detail->productInStore;
+                       $get_decimal = $remaining_supply / $max_product_count;
+
+                        $percentage = $get_decimal * 100;
+                   ?>
+                  
                            
-                           <?php if($m_detail->productInStore <100):?>  
+                           <?php  if($percentage <50 ):?>  
                             <span class="fa fa-exclamation-circle text-danger" data-tooltip="tooltip" data-title="product count is critical"></span>
                            <?php endif?>
 

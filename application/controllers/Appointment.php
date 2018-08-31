@@ -197,7 +197,13 @@ class Appointment extends CI_Controller {
 	public function set_veterinarian(){
 		echo $vet_table_id = $this->input->post('veterinarian');
 		echo $appointment_table_id =  $this->input->post('appointment_table_id');
-
+		echo $customer_id =  $this->input->post('customer_id');
+		//get customer detail by customer user id
+		$customer_detail = $this->customer_management->get_customer_by_customer_id($customer_id);
+		foreach($customer_detail as $c){
+			$customer_email =   $c->email;
+			$customer_name = $c->firstname .' '. $c->middlename .' '. $c->lastname;
+		}
 		//table_id
 		$find_vet = $this->veterinarian_management->get_veterinarian_by_id($vet_table_id);
 		foreach($find_vet as $vet){
@@ -207,14 +213,16 @@ class Appointment extends CI_Controller {
 
 		echo $vet_name;
 
+
+
 		$data = array(
 			'vet_in_charge' => $vet_name,
 			'vet_id' => $vet_id,
 			'appointment_status' => "Confirmed",
 		);
 
-		/*$this->appointment_management->update_appointment_detail($appointment_table_id,$data);
-
+		//$this->appointment_management->update_appointment_detail($appointment_table_id,$data);
+		/*
 		//get customer id by appointment table id 
 		$customer_id = $this->appointment_management->search_appointment_by_id($appointment_table_id);
 
@@ -226,8 +234,8 @@ class Appointment extends CI_Controller {
 		//search customer by user id;*/
 
 
-		 /*
 
+	   /*
         //for email
         $config = array(
             'protocol' => 'smtp',
@@ -249,10 +257,10 @@ class Appointment extends CI_Controller {
         $this->load->library('email',$config);
         $this->email->set_newline("\r\n");
         $this->email->from('vetopiaC@gmail.com');
-        $this->email->to($this->input->post('email'));
-        $this->email->subject('Subject: test subject');
+        $this->email->to($customer_email);
+        $this->email->subject('Subject: Appointment Request has been Approved');
 
-        $message = "Hi " . $this->input->post('first_name') . '! <br /> here is your username and password   '.$username.' : '.$password.' ';
+        $message = "Hi " . $customer_name . '! Your appointment request has been approved . please check your vetopia account for more details';
 
         $this->email->message($message);
 
@@ -504,6 +512,13 @@ class Appointment extends CI_Controller {
 	public function set_veterinarian_for_staff(){
 		echo $vet_table_id = $this->input->post('veterinarian');
 		echo $appointment_table_id =  $this->input->post('appointment_table_id');
+		echo $customer_id =  $this->input->post('customer_id');
+		//get customer detail by customer user id
+		$customer_detail = $this->customer_management->get_customer_by_customer_id($customer_id);
+		foreach($customer_detail as $c){
+			$customer_email =   $c->email;
+			$customer_name = $c->firstname .' '. $c->middlename .' '. $c->lastname;
+		}
 
 		//table_id
 		$find_vet = $this->veterinarian_management->get_veterinarian_by_id($vet_table_id);
@@ -523,9 +538,7 @@ class Appointment extends CI_Controller {
 		$this->appointment_management->update_appointment_detail($appointment_table_id,$data);
 
 
-		//email
-		 /*
-
+			   /*
         //for email
         $config = array(
             'protocol' => 'smtp',
@@ -547,10 +560,10 @@ class Appointment extends CI_Controller {
         $this->load->library('email',$config);
         $this->email->set_newline("\r\n");
         $this->email->from('vetopiaC@gmail.com');
-        $this->email->to($this->input->post('email'));
-        $this->email->subject('Subject: test subject');
+        $this->email->to($customer_email);
+        $this->email->subject('Subject: Appointment Request has been Approved');
 
-        $message = "Hi " . $this->input->post('first_name') . '! <br /> here is your username and password   '.$username.' : '.$password.' ';
+        $message = "Hi " . $customer_name . '! Your appointment request has been approved . please check your vetopia account for more details';
 
         $this->email->message($message);
 
@@ -561,7 +574,6 @@ class Appointment extends CI_Controller {
         }
 
         */
-
 		$this->session->set_flashdata('assigned_vet','A veterinarian has been assigned to this appointment');
 		redirect('staff/appointments');
 		//assign vet

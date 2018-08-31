@@ -144,7 +144,7 @@
         html += '<span id="row'+count+'"><div class="row">';
         var counts = count + 1;
         html += '<div class="col-md-11">';
-        html += '<textarea style="height: 200px" required="" name="content[]" id="content'+count+'" class="form-control text" placeholder= "Content Section ">';
+        html += '<textarea style="height: 200px" required="" name="content[]" id="content'+count+'" class="form-control text" placeholder= "Content Section '+counts+'">';
         html += '</textarea>';
         html += '</div>';
        

@@ -43,6 +43,8 @@
       foreach($clinic_detail as $clinic_d){
          $clinic_address =  $clinic_d->clinic_home_address .' '.$clinic_d->clinic_barangay_address .' '. $clinic_d->clinic_city_address.', '.$clinic_d->clinic_postal_id;
          $clinic_email = $clinic_d->clinic_email_address;
+         $clinic_name = $clinic_d->store_name;
+         $telephone = $clinic_d->telephone;
       }
   ?>
 
@@ -50,9 +52,9 @@
     <div class="col-md-6">
       <center>  
               <b><span style="font-size:24px"></span></b><br>
-              <b><span style="font-size:36px">Animal Ark Clinic</span></b><br>
+              <b><span style="font-size:36px"><?php echo $clinic_name;?></span></b><br>
               <i><?php echo $clinic_address;?></i><br>
-              <i>Tel. No.:865-8400</i><br>
+              <i>Tel. No.:<?php echo $telephone?></i><br>
               <i>Email: <?php echo $clinic_email;?></i><br>
               
               </center>

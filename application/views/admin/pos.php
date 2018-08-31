@@ -181,7 +181,7 @@
 
 
 
-                                                      <input type="text" name="cash" id="cash" class="form-control" value="">
+                                                      <input type="text" name="cash" id="cash" class="form-control"  value="">
                                                  </div>   
                                   </div>
                             </td>

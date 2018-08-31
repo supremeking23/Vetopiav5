@@ -57,7 +57,7 @@
     <section class="content">
         <div class="row">
           <div class="col-md-12">
-            <img width="503" height="171" style="margin: 5px auto; display: block;" src="<?php echo site_url()?>assets/images/library/<?php echo $image?>" >
+            <img width="503" height="" style="margin: 5px auto; display: block;" src="<?php echo site_url()?>assets/images/library/<?php echo $image?>" >
             <button type="button" class="btn btn-success btn-sm btn-flat" data-toggle="modal" data-target="#changeImage">Change Article Image</button>
 
               <div class="modal fade" id="changeImage">

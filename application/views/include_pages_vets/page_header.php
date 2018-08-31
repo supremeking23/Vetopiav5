@@ -155,6 +155,14 @@
   }
 
 
+
+
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background: #00bfff;
+}
+
+
   </style>
 
 

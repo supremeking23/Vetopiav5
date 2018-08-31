@@ -285,13 +285,14 @@
                           <div class="modal-body">
                             <select name="veterinarian" class="form-control select2" style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;">
                               <?php foreach($all_vets as $vets):?>
-                              <option value="<?php echo $vets->veterinarian_table_id?>"><?php echo $vets->firstname .''. $vets->middlename .' '. $vets->lastname;?></option>
+                              <option value="<?php echo $vets->veterinarian_table_id?>"><?php echo $vets->firstname .' '. $vets->middlename .' '. $vets->lastname;?></option>
                             <?php endforeach?>
                             </select>
                           </div>
                           <div class="modal-footer">
 
                             <input type="hidden" name="appointment_table_id" value="<?php echo $a_appointment->appointment_table_id;?>">
+                            <input type="text" name="customer_id" value="<?php echo $a_appointment->customer_id;?>">
                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                             <input type="Submit" name="submit" value="Submit" class="btn btn-primary btn-sm btn-flat">
                           </div>
@@ -572,7 +573,7 @@
                       //document.getElementById("reloaded").contentDocument.location.reload(true);
                       //$("#reloaded").load();
                       //location.reload();
-                     alert('tapos na')
+                     //alert('tapos na')
 
                       $('.hide-after-checkout').css('display','none');
                       $('.btn-receipt').css('display','block');
