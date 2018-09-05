@@ -132,7 +132,7 @@
                     <td><?php echo $customers->contact;?></td>
                    
                     <td>
-                    <a href="<?php echo site_url()?>staff/customer_details/<?php echo $customers->customer_table_id;?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info">View Full Detail</a>
+                    <a href="<?php echo site_url()?>Staff/Customer_details/<?php echo $customers->customer_table_id;?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info">View Full Detail</a>
                       
                     </td>
                </tr>

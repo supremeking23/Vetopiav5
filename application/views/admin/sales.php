@@ -41,7 +41,58 @@
 
     <!-- Main content -->
     <section class="content">
+
+
+      <div class="row">
+        <div class="col-md-12">
+          <button class="btn btn-sm btn-flat btn-info" data-target="#print_report" data-toggle="modal">Print Report</button>
+
+
+          <div class="modal fade" id="print_report">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">Filter By Date</h4>
+                </div>
+
+                <?php echo form_open_multipart('','id="filterData"');?>
+                <div class="modal-body">
+                    <table width="100%" class="table table-striped table-bordered table-hover">
+                      <tbody>
+                        <tr>
+                          <td><b>From:</b></td>
+                          <td><input type="date" name="from" id="from" class="form-control"></td>
+                        </tr>
+                        <tr>
+                          <td><b>To:</b></td>
+                          <td><input type="date" name="to" id="to" class="form-control"></td>
+                        </tr>
+                      
+                      </tbody>
+                             
+                    </table>                  
+                </div>
+                <div class="modal-footer">
+                  <div class="hide-primary-buttons"><button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal">Close</button>
+                  <input  type="submit" class="btn btn-primary filter btn-sm btn-flat" value="Filter" id="filter">
+                  </div>
+                </form> 
+
+                <a href="<?php echo site_url()?>/Inventory/Print_report" target="_blank" class="btn btn-success btn-flat btn-sm btn-block print" style="display: none">Print</a>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- /.modal -->          
+        </div>
+      </div>
      
+      <br />
+
       <div class="row">
         <div class="col-md-12">
 
@@ -162,7 +213,7 @@
 
                                   </div>
                                   <div class="modal-footer">
-                                    <a  class="btn btn-default pull-left" target="_blanck" href=""><i class="fa fa-print"></i>Print</a>
+                                    <!--<a  class="btn btn-default pull-left" target="_blanck" href=""><i class="fa fa-print"></i>Print</a> -->
                                    
                                   </div>
                                 </div>
@@ -240,7 +291,39 @@
 <!-- page script -->
 <script>
 
-  
+  $(function(){
+
+    $('.print').click(function(){
+        $('.hide-primary-buttons').css('display','none');
+        $('#print_report').modal('hide');
+    });
+
+
+    $(document).on('submit', '#filterData', function(event){
+      
+      event.preventDefault();
+      //$('#action').attr('disabled', 'disabled');
+      var form_data = new FormData(this);
+      $.ajax({
+        method:"POST",
+        url:'<?php echo site_url()?>Inventory/Filter_report',
+        data:form_data,
+        //dataType: 'json',
+        contentType: false,
+        cache: false,
+        processData:false,
+        success:function(data){
+            $('#filterData')[0].reset();
+            $('.hide-primary-buttons').css('display','none');
+            $('.print').css('display','block');
+        }
+
+      });
+    });
+
+
+
+  });
 
 
      

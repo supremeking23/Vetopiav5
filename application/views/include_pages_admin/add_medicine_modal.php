@@ -101,7 +101,7 @@
 
 
 
-                           <textarea class="form-control" name="meddescription"></textarea>
+                           <textarea class="form-control textareas" name="meddescription"></textarea>
                          </div>   
                     </div>
 
@@ -120,7 +120,7 @@
 
                              <input type="file" name="medImage" class="form-control" onchange="document.getElementById('med_Image').src = window.URL.createObjectURL(this.files[0])" >
 
-                             <img  id="med_Image" class="img-rounded" alt="" width="100%" height="200" src="" />
+                             <!--<img  id="med_Image" class="img-rounded" alt="" width="100%" height="200" src="" /> -->
                          </div>   
                     </div>
 
@@ -155,7 +155,7 @@
                               echo form_label('Enter Product Unit', 'product_unit','class="control-label"');
                               ?>
                                 <div class="input-group">
-                                    <input type="text" name="product_unit_number" id="product_unit_number" class="form-control" required pattern="[+-]?([0-9]*[.])?[0-9]+" /> 
+                                    <input type="number" name="product_unit_number" id="product_unit_number" class="form-control" required pattern="[+-]?([0-9]*[.])?[0-9]+" /> 
                                     <span class="input-group-addon">
                                       <select name="product_unit" id="product_unit">
                                             <option value="">Select Unit</option>
@@ -256,14 +256,14 @@
 
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default pull-left" data-dismiss="modal" >Close</button>
+                  <button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal" >Close</button>
                   <?php 
 
                       $data = array(
                         'name' => 'submit',
                         'value' => 'Add',
                         'id' => 'add_med_btn',
-                        'class' => 'btn btn-primary',
+                        'class' => 'btn btn-primary btn-sm btn-flat',
                       );
 
                     echo form_submit($data);?>

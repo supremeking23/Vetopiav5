@@ -42,7 +42,7 @@
       <div class="row">
         <div class="col-md-12">
             <!-- Search form (start) -->
-          <form method='post' action="<?= site_url() ?>customer/load_library" >
+          <form method='post' action="<?= site_url() ?>Customer/Load_library" >
             <div class="col-md-3">
               <input type='text' class="form-control" placeholder="Search for Keywords" name='search' value='<?= $search ?>'>
             </div>

@@ -30,7 +30,7 @@
                       </div>
 
 
-                       <div class="form-group">
+                      <!-- <div class="form-group">
                         <label for="forwhatpet" class="col-sm-2 control-label">Food For</label>
 
                         <div class="col-sm-10">
@@ -40,14 +40,14 @@
                                 <?php endforeach;?>
                              </select>
                         </div>
-                      </div>
+                      </div>  -->
 
 
                       <div class="form-group">
                         <label for="fooddescription" class="col-sm-2 control-label">Food Description</label>
 
                         <div class="col-sm-10">
-                         <textarea class="form-control" name="fooddescription"><?php echo $f_details->fooddescription;?></textarea>
+                         <textarea class="form-control textareas" name="fooddescription"><?php echo $f_details->fooddescription;?></textarea>
                         </div>
                       </div>
                       <div class="form-group">
@@ -61,7 +61,7 @@
                       <div class="form-group">
                               <?php 
 
-                              echo form_label('Enter Product Unit', 'product_unit','class="control-label col-sm-2"');
+                              echo form_label('Product Unit', 'product_unit','class="control-label col-sm-2"');
                               ?>
                                <div class="col-sm-10">
                                   <div class="input-group">

@@ -62,7 +62,7 @@ class Pet_Management extends CI_Controller {
         $this->pet_management_model->insert_new_pet($data);
 
         $this->session->set_flashdata('add_pet_success','New Pet has been added');
-        redirect('admin/pets');
+        redirect('Admin/Pets');
     }
 
     public function add_new_pet_staff_action(){
@@ -103,7 +103,7 @@ class Pet_Management extends CI_Controller {
         $this->pet_management_model->insert_new_pet($data);
 
         $this->session->set_flashdata('add_pet_success','New Pet has been added');
-        redirect('staff/pets');
+        redirect('Staff/Pets');
     }
 
 
@@ -429,7 +429,7 @@ class Pet_Management extends CI_Controller {
         $this->pet_management_model->update_pet($user_id_update,$data);
 
         $this->session->set_flashdata('update_pet_success','Pet information has been updated successfully');
-        redirect('admin/pet_details/'.$user_id_update);
+        redirect('Admin/Pet_details/'.$user_id_update);
 
         
     }
@@ -505,12 +505,12 @@ class Pet_Management extends CI_Controller {
         $this->pet_management_model->update_pet($pet_id_update,$data);
 
         $this->session->set_flashdata('update_pet_success','Pet information has been updated successfully');
-        redirect('staff/pet_details/'.$pet_id_update);
+        redirect('Staff/Pet_details/'.$pet_id_update);
         
     }
 
 
-        public function update_profile_pet_staff_action(){
+     public function update_profile_pet_staff_action(){
 
 
       $user_id_update =  $this->input->post('user_id_update');
@@ -570,44 +570,13 @@ class Pet_Management extends CI_Controller {
         $this->pet_management_model->update_pet($user_id_update,$data);
 
         $this->session->set_flashdata('update_pet_success','Pet information has been updated successfully');
-        redirect('staff/pet_details/'.$user_id_update);
+        redirect('Staff/Pet_details/'.$user_id_update);
 
         
     }
 
 
-    //gago
-    public function update_state_pet_staff_action(){
 
-
-            $change_state_user = $this->input->post('change_state_user');
-            
-            $current_state =  $this->input->post('current_state');
-
-            if($current_state == "Active"){
-
-                $new_state = "Not Active";
-            }else{
-
-                $new_state =  "Active";
-            }
-
-            //echo $change_state_user ;
-
-            $state_data = array(
-                'is_active' => $new_state,
-            );
-
-
-            var_dump($state_data);
-
-
-            $this->admin_management->change_state_admin($change_state_user,$state_data);
-
-            $this->session->set_flashdata('change_state_admin_success','Admin State has been successfully updated');
-            redirect('staff/pets');
-            
-    }
 
 
 
@@ -1512,7 +1481,7 @@ class Pet_Management extends CI_Controller {
 
 
 
-        redirect('veterinarian/appointments');
+        redirect('Veterinarian/Appointments');
 
         //var_dump($data);
     }//end code block
@@ -1701,31 +1670,5 @@ class Pet_Management extends CI_Controller {
 
 
 
-    public function service_lang(){
 
-          $nagastos_nababayaran = 0;
-          for($count =0;$count<count($this->input->post("service_id"));$count++){
-             echo $this->input->post("service_id")[$count];
-          }//end coun
-
-
-          for($count =0;$count<count($this->input->post("content"));$count++){
-             echo $this->input->post("content")[$count];
-          }//end coun
-    }
-
-
-
-
-    public function add_service_to_pet(){
-        echo "hi servoce";
-
-        $checkBoxs = implode(',', $_POST['services']);
-    }
-
-
-
-    public function print_prescription(){
-
-    }
 }

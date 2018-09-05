@@ -46,9 +46,10 @@
             $article_title = $fla->title;
             $image  = $fla->article_image;
             $library_id = $fla->library_id;
+            $created_by = $fla->created_by;
       }?>
       <h1>
-          Pet Health Care Library <small><?php echo  $article_title;?></small>
+          <?php echo  $article_title;?> <br /><small> By: <i><?php echo $created_by;?> </i></small>
       </h1>
       
     </section>
@@ -56,60 +57,52 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-          <div class="col-md-12">
-            <img width="503" height="171" style="margin: 5px auto; display: block;" src="<?php echo site_url()?>assets/images/library/<?php echo $image?>" >
+          <div class="col-md-9">    
+              <div class="box box-default">
+                <div class="box-body">
+                   <?php foreach($find_article_contents as $fac):?>
+                   <p><?php echo $fac->article_contents?></p>
+                   <?php endforeach;?>
+                </div>
+              </div>                
+          </div>
 
 
+          <div class="col-md-3">
 
+              <div class="box box-default">
+                <div class="box-body">
+                  <img width="503" height="100" class="img-responsive img-rounded" style="margin: 5px auto; display: block;" src="<?php echo site_url()?>assets/images/library/<?php echo $image?>" >
 
+                  <hr >
+
+                  <h3 class="text-center">Related Article</h3>
+                     <ul class="list-unstyled">
+                        <?php foreach($find_related_article as $related):?>
+                         <li><a href="<?php echo site_url()?>Customer/Library_article_detail/<?php echo $related->related_library_id;?>" target="_blank" style="text-decoration: underline;"><?php echo $related->title;?></a></li>
+                        
+                       <?php endforeach;?>
+                      </ul>
+                </div>
+               
+              </div>  
           </div>
         </div>
 
-        <br />
-
-
-
-        <br/>
-
-        <?php foreach($find_article_contents as $fac):?>
+        
           <div class="row">
-            <div class="col-md-12">
-              <p><?php echo $fac->article_contents?></p>
-            </div>
-          </div>
-
-
-
-
-
-
-          <?php //$this->load->view('include_pages_admin/modify_article_content');?>
-        <?php endforeach;?>
-
-
-
-        <hr style="">
-        <div class="row">
-          <div class="col-md-12">
-            <h3>Want to read more ? Visit these link(s) below</h3>
-          </div>
-        </div>
-
-
-
-
-
-
-        <?php foreach($find_article_links as $fal):?>
-          <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-9">
+              <h3>Want to read more ? Visit these link(s) below</h3>
+              <?php foreach($find_article_links as $fal):?>
               <p><a href="<?php echo $fal->web_link?>"><?php echo $fal->web_link?></a></p>
+              <?php endforeach;?>
             </div>
+
           </div>
 
 
 
-        <?php endforeach;?>
+        
 
 
 

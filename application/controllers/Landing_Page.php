@@ -453,7 +453,7 @@ class Landing_Page extends CI_Controller {
 					$this->admin_management->insert_new_log($data);
 
 					
-					redirect("admin/dashboard");
+					redirect("Admin/Dashboard");
 					echo "tama poass";
 				}else{
 
@@ -510,7 +510,7 @@ class Landing_Page extends CI_Controller {
 					$this->customer_management->insert_new_log($data);
 
 					
-					redirect("customer/request_appointment");
+					redirect("Customer/Request_appointment");
 					echo "tama poass";
 				}else{
 
@@ -573,7 +573,7 @@ class Landing_Page extends CI_Controller {
 					$this->customer_management->insert_new_log($data);
 
 					
-					redirect("veterinarian/appointments");
+					redirect("Veterinarian/Appointments");
 					echo "tama poass";
 				}else{
 
@@ -631,7 +631,7 @@ class Landing_Page extends CI_Controller {
 					$this->customer_management->insert_new_log($data);
 
 					
-					redirect("staff/pos");
+					redirect("Staff/Pos");
 					echo "tama poass";
 				}else{
 

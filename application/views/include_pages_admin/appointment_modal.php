@@ -8,7 +8,7 @@
             <h4 class="modal-title">Schedule an Appointment</h4>
           </div>
 
-          <?php echo form_open_multipart('appointment/set_appointment');?>
+          <?php echo form_open_multipart('Appointment/Set_appointment');?>
               <div class="modal-body">
                  <div class="form-group">
                   <label for="customerName">Customer Name</label>
@@ -62,14 +62,14 @@
 
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal">Close</button>
                  <?php 
 
                       $data = array(
                         'name' => 'submit',
                         'value' => 'Submit',
                         'id' => 'add_appointment',
-                        'class' => 'btn btn-primary',
+                        'class' => 'btn btn-primary btn-sm btn-flat',
                       );
 
                     echo form_submit($data);?>

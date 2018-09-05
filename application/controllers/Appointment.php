@@ -34,7 +34,7 @@ class Appointment extends CI_Controller {
 
 
 	//email try
-	public function emailtry(){
+	/*public function emailtry(){
 		$config = array(
 			'protocol' => 'smtp',
 			'smtp_host' => 'ssl://smtp.googlemail.com',
@@ -62,10 +62,10 @@ class Appointment extends CI_Controller {
 		}
 
 		         
-	}
+	}*/
 
 
-
+	//customer action only
 	public function send_appointment_request(){
 
 
@@ -188,12 +188,12 @@ class Appointment extends CI_Controller {
 
 
 		$this->session->set_flashdata('send_request_success','Appointment Request has been sent');
-		redirect("customer/request_appointment");
+		redirect("Customer/Request_appointment");
 
 	}
 
 
-	//confirmed
+	//confirmed admin action
 	public function set_veterinarian(){
 		echo $vet_table_id = $this->input->post('veterinarian');
 		echo $appointment_table_id =  $this->input->post('appointment_table_id');
@@ -221,7 +221,7 @@ class Appointment extends CI_Controller {
 			'appointment_status' => "Confirmed",
 		);
 
-		//$this->appointment_management->update_appointment_detail($appointment_table_id,$data);
+		$this->appointment_management->update_appointment_detail($appointment_table_id,$data);
 		/*
 		//get customer id by appointment table id 
 		$customer_id = $this->appointment_management->search_appointment_by_id($appointment_table_id);
@@ -235,7 +235,7 @@ class Appointment extends CI_Controller {
 
 
 
-	   /*
+	   /* i oopen lang pag may internet
         //for email
         $config = array(
             'protocol' => 'smtp',
@@ -275,11 +275,11 @@ class Appointment extends CI_Controller {
 
 		$this->session->set_flashdata('assigned_vet','A veterinarian has been assigned to this appointment');
 
-		redirect('admin/appointments');
+		redirect('Admin/Appointments');
 		//assign vet
 	}
 
-
+	//admin action
 	public function cancel_appointment(){
 		$cancel_reason = $this->input->post('cancel_reason');
 		$appointment_table_id = $this->input->post('appointment_table_id');
@@ -296,11 +296,11 @@ class Appointment extends CI_Controller {
 
 		$this->session->set_flashdata('cancel_appointment','An appointment has been cancelled');
 
-		redirect('admin/appointments');
+		redirect('Admin/Appointments');
 	}
 
 
-
+	//admin action
 	public function done_appointment(){
 
 		$appointment_table_id = $this->input->post('appointment_table_id');
@@ -315,11 +315,11 @@ class Appointment extends CI_Controller {
 
 		//$this->session->set_flashdata('schedule_appointment','');
 
-		redirect('admin/appointments');
+		redirect('Admin/Appointments');
 
 	}
 
-	//admin
+	//admin action
 	public function set_appointment(){
 		//var_dump($this->input->post());
 
@@ -341,6 +341,8 @@ class Appointment extends CI_Controller {
 		foreach ($customer_details as $c_detail) {
 			echo	$customer_name = $c_detail->firstname.' '.$c_detail->middlename.' '. $c_detail->lastname;
 			echo	$customer_id = $c_detail->customer_id;
+			$customer_email  = $c_detail->email;
+
 
 		}
 
@@ -433,10 +435,10 @@ class Appointment extends CI_Controller {
 		$this->appointment_management->add_appointment($data);
 
 
- /*
+ 
 
         //for email
-        $config = array(
+      /*  $config = array(
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
             'smtp_port' => 465,
@@ -456,10 +458,10 @@ class Appointment extends CI_Controller {
         $this->load->library('email',$config);
         $this->email->set_newline("\r\n");
         $this->email->from('vetopiaC@gmail.com');
-        $this->email->to($this->input->post('email'));
-        $this->email->subject('Subject: test subject');
+        $this->email->to($customer_email);
+        $this->email->subject('Appointment');
 
-        $message = "Hi " . $this->input->post('first_name') . '! <br /> here is your username and password   '.$username.' : '.$password.' ';
+        $message = "Hi, Your appointment request has been approved " ;
 
         $this->email->message($message);
 
@@ -467,14 +469,14 @@ class Appointment extends CI_Controller {
             echo "email sent.";
         }else{
             show_error($this->email->print_debugger());
-        }
+        }*/
 
-        */
+        
 
 
 		$this->session->set_flashdata('schedule_appointment','Appointment has been scheduled');
 
-		redirect("admin/appointments");
+		redirect("Admin/Appointments");
 	}
 
 
@@ -508,7 +510,6 @@ class Appointment extends CI_Controller {
 
 
 	// for staff
-
 	public function set_veterinarian_for_staff(){
 		echo $vet_table_id = $this->input->post('veterinarian');
 		echo $appointment_table_id =  $this->input->post('appointment_table_id');
@@ -538,7 +539,7 @@ class Appointment extends CI_Controller {
 		$this->appointment_management->update_appointment_detail($appointment_table_id,$data);
 
 
-			   /*
+		/* Ioopen lang pag may internet
         //for email
         $config = array(
             'protocol' => 'smtp',
@@ -574,12 +575,16 @@ class Appointment extends CI_Controller {
         }
 
         */
+
+       
 		$this->session->set_flashdata('assigned_vet','A veterinarian has been assigned to this appointment');
-		redirect('staff/appointments');
+		redirect('Staff/Appointments');
 		//assign vet
 	}
 
 
+
+	//staff action
 	public function cancel_appointment_for_staff(){
 		$cancel_reason = $this->input->post('cancel_reason');
 		$appointment_table_id = $this->input->post('appointment_table_id');
@@ -595,11 +600,11 @@ class Appointment extends CI_Controller {
 		$this->appointment_management->update_appointment_detail($appointment_table_id,$data);
 
 		$this->session->set_flashdata('cancel_appointment','An appointment has been cancelled');
-		redirect('staff/appointments');
+		redirect('Staff/Appointments');
 	}
 
 
-
+	//staff action
 	public function set_appointment_staff_action(){
 		$customer_table_id = $this->input->post('customerName');
 		$pet_table_id = $this->input->post('pets');
@@ -619,6 +624,7 @@ class Appointment extends CI_Controller {
 		foreach ($customer_details as $c_detail) {
 			echo	$customer_name = $c_detail->firstname.' '.$c_detail->middlename.' '. $c_detail->lastname;
 			echo	$customer_id = $c_detail->customer_id;
+					$customer_email = $c_detail->email;
 
 		}
 
@@ -752,11 +758,11 @@ class Appointment extends CI_Controller {
         */
 		$this->session->set_flashdata('schedule_appointment','Appointment has been scheduled');
 
-		redirect("staff/appointments");
+		redirect("Staff/Appointments");
 	}
 
 
-
+	//staff action
 	public function done_appointment_for_staff(){
 
 		$appointment_table_id = $this->input->post('appointment_table_id');
@@ -769,7 +775,7 @@ class Appointment extends CI_Controller {
 		$this->appointment_management->update_appointment_detail($appointment_table_id,$data);
 
 
-		redirect('staff/appointments');
+		redirect('Staff/Appointments');
 
 	}
 

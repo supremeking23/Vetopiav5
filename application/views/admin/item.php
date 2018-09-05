@@ -151,13 +151,13 @@
                             $percentage = $get_decimal * 100;
 
 
-                       if($percentage < 50):
+                       if($percentage < 25):
                     ?>
                       <span class="badge label-danger"><i class="fa fa-exclamation-circle"></i></span>
                      <?php endif;?>
                     </td>
                     <td>
-                    <a href="<?php echo site_url()?>admin/item_details/<?php echo $items->item_table_id;?>"  class="btn btn-sm btn-fat btn-info"  data-tooltip="tooltip" data-title="View Detail"><span class="fa fa-file-o"></span></a>
+                    <a href="<?php echo site_url()?>Admin/Item_details/<?php echo $items->item_table_id;?>"  class="btn btn-sm btn-fat btn-info"  data-tooltip="tooltip" data-title="View Detail"><span class="fa fa-file-o"></span></a>
 
                     <button type="button" class="btn btn-sm btn-warning btn-flat" data-tooltip="tooltip" data-title="Add Supply" data-toggle="modal" data-target="#addSupply<?php echo $items->item_table_id;?>">
                <span class="fa fa-plus"></span>
@@ -202,14 +202,14 @@
 
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-default pull-left btn-flat btn-sm" data-dismiss="modal">Close</button>
                              <?php 
 
                                 $data = array(
                                   'name' => 'submit',
                                   'value' => 'Add',
                                   'id' => 'add_item_btn',
-                                  'class' => 'btn btn-primary',
+                                  'class' => 'btn btn-primary btn-flat btn-sm',
                                 );
 
                               echo form_submit($data);?>
@@ -280,32 +280,7 @@
 <!-- page script -->
 <script>
 
-      $(function(){
 
-        //all are not use
-
-        var check_status = document.querySelector('#check_status').addEventListener('click',function(){
-        // alert('ivan');
-        //alert(check_status.val());
-    });
-      
-
-        function removeSuccessMessage() {
-          setTimeout(function(){ 
-
-          $(".display-success").fadeOut("slow");
-          location.reload();
-           }, 2000);
-         }
-
-
-          //removeSuccessMessage();
-
-
-         //passwordChecker();
-
-         //addAdmin();
-      });
 
 </script>
 

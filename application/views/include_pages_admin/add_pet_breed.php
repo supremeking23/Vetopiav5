@@ -93,14 +93,14 @@
            
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal">Close</button>
               <?php 
 
                       $data = array(
                         'name' => 'submit',
                         'value' => 'Add',
                         'id' => 'add_pet_btn',
-                        'class' => 'btn btn-primary',
+                        'class' => 'btn btn-primary btn-sm btn-flat',
                       );
 
                     echo form_submit($data);?>
@@ -145,7 +145,7 @@
         processData:false,
         success:function(data){
         
-
+            $('#addPetBreed')[0].reset();
             $(".display-success").css("display","block");
             $(".success-message").html("<p>New Pet Breed has been added successfully </p>");
             reload();
@@ -153,6 +153,9 @@
 
       });
     });
+
+
+
 
 
   });

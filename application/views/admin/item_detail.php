@@ -66,7 +66,7 @@
                              <img class="profile-user-img img-responsive img-circle" src="<?php echo site_url()?>assets/images/profiles/guest2.jpg" alt="User profile picture">
 
                           <?php }else{ ?>
-                                <img class="profile-user-img img-responsive img-circle" src="<?php echo site_url()?>assets/images/products/<?php echo $i_detail->itemImage; ?>" alt="Picture">
+                                <img class="profile-user-img img-responsive img-rounded" src="<?php echo site_url()?>assets/images/products/<?php echo $i_detail->itemImage; ?>" alt="<?php echo $i_detail->itemname; ?>" >
                           <?php } ?>
                       </a>
 
@@ -89,7 +89,7 @@
                                 $percentage = $get_decimal * 100;
                            ?>
                            
-                           <?php if($percentage < 50):?>  
+                           <?php if($percentage < 25):?>  
                             <span class="fa fa-exclamation-circle text-danger" data-tooltip="tooltip" data-title="product count is critical"></span>
                            <?php endif?>
 

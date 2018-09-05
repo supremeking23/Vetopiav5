@@ -105,7 +105,7 @@
     //for tables
     $('.datatables').DataTable({
 
-      "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+      "lengthMenu": [[5,10, 25, 50, -1], [5,10, 25, 50, "All"]],
       'paging'      : true,
       //'lengthChange': false,
       //'searching'   : false,

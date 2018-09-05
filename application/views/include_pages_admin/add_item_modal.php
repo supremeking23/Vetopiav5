@@ -77,7 +77,7 @@
 
 
 
-                           <textarea class="form-control" name="itemdescription"></textarea>
+                           <textarea class="form-control textareas" name="itemdescription"></textarea>
                          </div>   
                     </div>
 
@@ -96,7 +96,7 @@
 
                              <input type="file" name="itemImage" class="form-control" onchange="document.getElementById('item_Image').src = window.URL.createObjectURL(this.files[0])" >
 
-                             <img  id="item_Image" class="img-rounded" alt="" width="100%" height="200" src="" />
+                             <!--<img  id="item_Image" class="img-rounded" alt="" width="100%" height="200" src="" /> -->
                          </div>   
                     </div>
 
@@ -180,14 +180,14 @@
 
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default pull-left" data-dismiss="modal" >Close</button>
+                  <button type="button" class="btn btn-default pull-left btn-flat btn-sm" data-dismiss="modal" >Close</button>
                   <?php 
 
                       $data = array(
                         'name' => 'submit',
                         'value' => 'Add',
                         'id' => 'add_item_btn',
-                        'class' => 'btn btn-primary',
+                        'class' => 'btn btn-primary btn-flat btn-sm',
                       );
 
                     echo form_submit($data);?>

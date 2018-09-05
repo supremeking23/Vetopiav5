@@ -78,7 +78,7 @@
               </div>
               <div class="box-body">
 
-                <form class="form-horizontal" action="<?php echo site_url()?>appointment/send_appointment_request" method="POST">
+                <form class="form-horizontal" action="<?php echo site_url()?>Appointment/Send_appointment_request" method="POST">
                   <div class="form-group">
                     <label for="preferredDate" class="col-sm-2 control-label">Date</label>
 
@@ -112,7 +112,7 @@
                     <label for="complaints" class="col-sm-2 control-label">Description / Complaints</label>
 
                     <div class="col-sm-10">
-                      <textarea class="form-control" id="complaints" name="complaints" placeholder=""></textarea>
+                      <textarea class="form-control textareas" id="complaints" name="complaints" placeholder=""></textarea>
                     </div>
                   </div>
                 
@@ -188,6 +188,8 @@
                                   $label_type = "warning";
                           }else if($c_appointment->appointment_status == "Confirmed"){
                                   $label_type = "info";
+                          }else if($c_appointment->appointment_status == "On-Process"){
+                                  $label_type = "primary";
                           }else if($c_appointment->appointment_status == "Cancelled"){
                                   $label_type = "danger";
                           }else if($c_appointment->appointment_status == "Done"){
@@ -267,9 +269,31 @@
 <!-- page script -->
 <script>
 
-    $("#print_close").click(function(){
-      $("#close_print_slip").hide();
-    });
+$("#print_close").click(function(){
+  $("#close_print_slip").hide();
+});
+
+
+var dtToday = new Date();
+    
+var month = dtToday.getMonth() + 1;
+var day = dtToday.getDate();
+var year = dtToday.getFullYear();
+if(month < 10)
+    month = '0' + month.toString();
+if(day < 10)
+    day = '0' + day.toString();
+
+var minDate= year + '-' + month + '-' + day;
+
+
+console.log("todays date: " + dtToday);
+console.log("todays month: " + month);
+console.log("todays day: " + day);
+console.log("todays year: " + year);
+console.log("min date: " + minDate);
+
+$('#preferredDate').attr('min', minDate); 
 
 
      

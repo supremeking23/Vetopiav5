@@ -103,7 +103,7 @@ class User_Management extends CI_Controller {
             $this->admin_management->insert_new_log($data2);           
 
             $this->session->set_flashdata('add_admin_success','New Admin has been added');
-            redirect('admin/admins');
+            redirect('Admin/Admins');
 
 	}
 
@@ -155,7 +155,7 @@ class User_Management extends CI_Controller {
         $this->admin_management->update_credentials($user_id,$data_credentials);
 
         $this->session->set_flashdata('update_admin_success','Admin information has been updated successfully');
-        redirect('admin/admin_details/'.$user_id_update);
+        redirect('Admin/Admin_details/'.$user_id_update);
 
     }
 
@@ -220,7 +220,7 @@ class User_Management extends CI_Controller {
             $this->admin_management->update_admin($user_id_update,$data);
 
             $this->session->set_flashdata('update_admin_success','Admin information has been updated successfully');
-            //redirect('admin/admin_details/'.$user_id_update);
+            redirect('Admin/Admin_details/'.$user_id_update);
 
     }
 
@@ -345,7 +345,7 @@ class User_Management extends CI_Controller {
         */
 
         $this->session->set_flashdata('add_customer_success','New Customer has been added');
-        redirect('admin/customers');
+        redirect('Admin/Customers');
     }
 
     public function add_new_customer_staff_action(){
@@ -463,7 +463,7 @@ class User_Management extends CI_Controller {
             */                    
 
             $this->session->set_flashdata('add_customer_success','New Customer has been added');
-            redirect('staff/customers');
+            redirect('Staff/Customers');
     }
 
 
@@ -530,7 +530,7 @@ class User_Management extends CI_Controller {
                 $this->customer_management->update_customer($user_id_update,$data);
 
                 $this->session->set_flashdata('update_customer_success','Customer information has been updated successfully');
-                redirect('staff/customer_details/'.$user_id_update);
+                redirect('Staff/Customer_details/'.$user_id_update);
     }
 
 
@@ -583,7 +583,7 @@ class User_Management extends CI_Controller {
         $this->customer_management->update_customer($user_id_update,$data);
 
         $this->session->set_flashdata('update_customer_success','Customer information has been updated successfully');
-        redirect('admin/customer_details/'.$user_id_update);
+        redirect('Admin/Customer_details/'.$user_id_update);
 
     }
 
@@ -635,7 +635,7 @@ class User_Management extends CI_Controller {
         $this->customer_management->update_customer($user_id_update,$data);
 
         $this->session->set_flashdata('update_customer_success','Customer information has been updated successfully');
-        redirect('staff/customer_details/'.$user_id_update);
+        redirect('Staff/Customer_details/'.$user_id_update);
 
     }
 
@@ -701,7 +701,7 @@ class User_Management extends CI_Controller {
             $this->customer_management->update_customer($user_id_update,$data);
 
             $this->session->set_flashdata('update_customer_success','Customer information has been updated successfully');
-            redirect('admin/customer_details/'.$user_id_update);
+            redirect('Admin/Customer_details/'.$user_id_update);
 
     }
 
@@ -744,7 +744,7 @@ class User_Management extends CI_Controller {
 
 
 
-        redirect('customer/change_password');     
+        redirect('Customer/Change_password');     
     }
 
 
@@ -824,7 +824,7 @@ class User_Management extends CI_Controller {
             $this->admin_management->insert_new_log($data2); 
 
             $this->session->set_flashdata('add_vet_success','New Veterinarian has been added');
-            redirect('admin/veterinarians');
+            redirect('Admin/Veterinarians');
     }
 
 
@@ -877,7 +877,7 @@ class User_Management extends CI_Controller {
         $this->veterinarian_management->update_veterinarian($user_id_update,$data);
 
         $this->session->set_flashdata('update_vet_success','Veterinarian information has been updated successfully');
-        redirect('admin/vet_details/'.$user_id_update);
+        redirect('Admin/Vet_details/'.$user_id_update);
 
     }
 
@@ -944,7 +944,7 @@ class User_Management extends CI_Controller {
             $this->veterinarian_management->update_veterinarian($user_id_update,$data);
 
             $this->session->set_flashdata('update_vet_success','Veterinarian information has been updated successfully');
-            redirect('admin/vet_details/'.$user_id_update);
+            redirect('Admin/Vet_details/'.$user_id_update);
 
     }
 
@@ -989,7 +989,7 @@ class User_Management extends CI_Controller {
 
 
 
-        redirect('staff/change_password');
+        redirect('Staff/Change_password');
 
     }
 
@@ -1067,7 +1067,7 @@ class User_Management extends CI_Controller {
             $this->admin_management->insert_new_log($data2); 
 
             $this->session->set_flashdata('add_staff_success','New Staff has been added');
-            redirect('admin/staffs');
+            redirect('Admin/staffs');
     }
 
 
@@ -1122,7 +1122,7 @@ class User_Management extends CI_Controller {
         $this->staff_management->update_staff($user_id_update,$data);
 
         $this->session->set_flashdata('update_staff_success','Staff information has been updated successfully');
-        redirect('admin/staff_details/'.$user_id_update);
+        redirect('Admin/Staff_details/'.$user_id_update);
 
     }
 
@@ -1187,7 +1187,7 @@ class User_Management extends CI_Controller {
             $this->staff_management->update_staff($user_id_update,$data);
 
             $this->session->set_flashdata('update_staff_success','Staff information has been updated successfully');
-            redirect('admin/staff_details/'.$user_id_update);
+            redirect('Admin/Staff_details/'.$user_id_update);
 
     }
 
@@ -1232,7 +1232,7 @@ class User_Management extends CI_Controller {
 
 
 
-        redirect('staff/change_password');
+        redirect('Staff/Change_password');
 
     }
 

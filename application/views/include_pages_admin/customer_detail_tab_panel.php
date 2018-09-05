@@ -9,7 +9,7 @@
                 <div class="tab-content">
 
                   <div class="active tab-pane" id="settings">
-                    <form class="form-horizontal" action="<?php echo site_url()?>user_management/update_customer_details" method="POST">
+                    <form class="form-horizontal" action="<?php echo site_url()?>user_management/update_customer_details_staff_action" method="POST">
 
 
                     <?php foreach($customer_details as $c_details):?>
@@ -171,12 +171,12 @@
 
 
 
-                  <div class="tab-pane" id="pets">
+                  <div class="tab-pane table-responsive" id="pets">
 
                     <button style="margin-bottom: 15px" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#addPetAjax">Add Pet</button>
-                    <br >
+          
 
-                        <table class="datatablecustomerpet table table-bordered table-striped">
+                        <table class="datatables table table-bordered table-striped">
                             <thead>
                             <tr>
                               
@@ -202,8 +202,8 @@
                                   <td><?php echo $cus_pet->pet_breed?></td>
                                  
                                   <td>
-                                  <a href="<?php echo site_url()?>admin/pet_details/<?php echo $cus_pet->pet_table_id?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-warning"><span class="fa fa-paw"></span></a>
-                                    
+                                 <!-- <a href="<?php echo site_url()?>staff/pet_details/<?php echo $cus_pet->pet_table_id?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-warning"><span class="fa fa-paw"></span></a> -->
+                                     <a href="<?php echo site_url()?>Admin/Pet_details/<?php echo $cus_pet->pet_table_id?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info">View Full Detail</a>
                                   </td>
                                </tr>
 

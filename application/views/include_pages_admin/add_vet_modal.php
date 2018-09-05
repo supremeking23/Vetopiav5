@@ -297,7 +297,7 @@
                          
                               <?php 
 
-                              echo form_label('Posta ID', 'postalID','class="control-label"');
+                              echo form_label('Postal ID', 'postalID','class="control-label"');
                               ?>
 
 
@@ -342,14 +342,14 @@
 
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default pull-left" data-dismiss="modal" >Close</button>
+                  <button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal" >Close</button>
                   <?php 
 
                       $data = array(
                         'name' => 'submit',
                         'value' => 'Add',
                         'id' => 'add_veterinarian_btn',
-                        'class' => 'btn btn-primary',
+                        'class' => 'btn btn-primary btn-sm btn-flat',
                       );
 
                     echo form_submit($data);?>

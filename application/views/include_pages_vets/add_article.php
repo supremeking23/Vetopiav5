@@ -219,7 +219,7 @@
       var form_data = new FormData(this);
       $.ajax({
         method:"POST",
-        url:'<?php echo site_url()?>article_controller/add_article',
+        url:'<?php echo site_url()?>Article_controller/Add_article',
         data:form_data,
         //dataType: 'json',
         contentType: false,

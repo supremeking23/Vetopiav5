@@ -68,7 +68,7 @@
 
                      <br />
                   
-                    <div class="row">
+                 <!--   <div class="row">
                           <div class="col-md-12">
                          
                               <?php 
@@ -79,12 +79,13 @@
 
 
                               <select name="forwhatpet" class="form-control" id="forwhatpet">
+                                 <option value="all">Appropriate for all</option>
                                 <?php foreach($all_pets as $ap):?>
                                   <option value="<?php echo $ap->pettype_code?>"><?php echo $ap->pettype?></option>
                                 <?php endforeach;?>
                              </select>
                          </div>   
-                    </div>
+                    </div> -->
 
 
 
@@ -101,7 +102,7 @@
 
 
 
-                           <textarea class="form-control" name="fooddescription"></textarea>
+                           <textarea class="form-control textareas" name="fooddescription"></textarea>
                          </div>   
                     </div>
 
@@ -120,7 +121,7 @@
 
                              <input type="file" name="foodImage" class="form-control" onchange="document.getElementById('food_Image').src = window.URL.createObjectURL(this.files[0])" >
 
-                             <img  id="food_Image" class="img-rounded" alt="" width="100%" height="200" src="" />
+                             <!--<img  id="food_Image" class="img-rounded" alt="" width="100%" height="200" src="" /> -->
                          </div>   
                     </div>
 
@@ -156,7 +157,7 @@
                       echo form_label('Enter Product Unit', 'product_unit','class="control-label"');
                       ?>
                         <div class="input-group">
-                            <input type="text" name="product_unit_number" id="product_unit_number" class="form-control" required pattern="[+-]?([0-9]*[.])?[0-9]+" /> 
+                            <input type="number" name="product_unit_number" id="product_unit_number" class="form-control" required pattern="[+-]?([0-9]*[.])?[0-9]+" /> 
                             <span class="input-group-addon">
                               <select name="product_unit" id="product_unit">
                                     <option value="">Select Unit</option>
@@ -195,7 +196,7 @@
                               echo form_label('Expiration Date', 'exp_date','class="control-label"');
                               ?>
 
-                              <input type="date" class="form-control"  value="" name="exp_date" id="exp_date" required="">
+                              <input type="date" class="form-control exp_date"  value="" name="exp_date" id="" required="">
 
                           
                          </div>   
@@ -258,14 +259,14 @@
 
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default pull-left" data-dismiss="modal" >Close</button>
+                  <button type="button" class="btn btn-default pull-left btn-flat btn-sm" data-dismiss="modal" >Close</button>
                   <?php 
 
                       $data = array(
                         'name' => 'submit',
                         'value' => 'Add',
                         'id' => 'add_food_btn',
-                        'class' => 'btn btn-primary',
+                        'class' => 'btn btn-primary btn-flat btn-sm',
                       );
 
                     echo form_submit($data);?>
@@ -304,7 +305,7 @@
     console.log("todays year: " + year);
     console.log("min date: " + minDate);
     
-    $('#exp_date').attr('min', minDate);  
+    $('.exp_date').attr('min', minDate);  
     var food_id = document.getElementById("food_id");
     food_id = "<?= '#Food'.date("ymdhis") . abs(rand('0','9'));  ?>";
     $('#food_id').val(food_id);

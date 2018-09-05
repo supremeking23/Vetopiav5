@@ -16,13 +16,15 @@
 
 
 }?>
+
 <!DOCTYPE html>
 <html>
 
 <?php $this->load->view('include_pages_staff/page_header');?>
 
-<body class="hold-transition <?php echo $skin_color;?> sidebar-mini sidebar-collapse" id="pos">
+<body class="hold-transition <?php echo $skin_color;?> sidebar-mini sidebar-collapse" id="pos" >
 <div class="wrapper">
+
 
 
   <?php $this->load->view('include_pages_staff/document_header');?>
@@ -39,7 +41,7 @@
     
     </section>
 
-        <!-- Main content -->
+    <!-- Main content -->
     <section class="content">
 
          <div class="row">
@@ -154,9 +156,9 @@
                                   <div class="row">
                                                   <div class="col-md-12" id="reloaded">
                                                  
-                                                      <?php 
+                                                    <?php 
 
-                                                      echo form_label('Total Amount', 'total_amount','class="control-label"');
+                                                      echo form_label('Total Amount: ₱', 'total_amount','class="control-label"');
                                                       ?>
 
 
@@ -174,12 +176,12 @@
                                                  
                                                       <?php 
 
-                                                      echo form_label('Cash', 'cash','class="control-label"');
+                                                      echo form_label('Cash: ₱', 'cash','class="control-label"');
                                                       ?>
 
 
 
-                                                      <input type="text" name="cash" id="cash" class="form-control" value="">
+                                                      <input type="text" name="cash" id="cash" class="form-control"  value="">
                                                  </div>   
                                   </div>
                             </td>
@@ -192,7 +194,7 @@
                                                  
                                                       <?php 
 
-                                                      echo form_label('change', 'change','class="control-label"');
+                                                      echo form_label('Change: ₱', 'change','class="control-label"');
                                                       ?>
 
 
@@ -205,7 +207,7 @@
 
 
                           <tr>
-                            <td><button type="button" id="computeChange" class="btn btn-default btn-block">Compute</button>
+                            <td><!--<button type="button" id="computeChange" class="btn btn-default btn-block">Compute</button> -->
                             <button type="submit" class="btn btn-primary btn-block" disabled="" id="checkout">Checkout</button></td>
                           </tr>
 
@@ -244,10 +246,10 @@
                   <?php foreach($all_product as $products):?>
                     
                       <div  class="product-item col-md-4" >
-                         <div class="thumbnail">
-                          <img class="product-image" src="<?php echo site_url()?>assets/images/products/<?php echo $products->productImage?>" width="100px"  />
+                         <div class="thumbnail" style="height: /*370px*/">
+                          <img class="product-image img-rounded" src="<?php echo site_url()?>assets/images/products/<?php echo $products->productImage?>" width="100px"  />
                           <div class="caption">
-                            <h4  data-type="<?php echo $products->productType;?>"><?php echo $products->product_name;?><br /><small><?php echo $products->product_unit;?></small></h4> 
+                            <h5  data-type="<?php echo $products->productType;?>"><?php echo $products->product_name;?><br /><small><?php //echo $products->product_unit;?></small></h5> 
 
                             <div class="row">
                                       <div class="col-md-7">
@@ -301,7 +303,7 @@
 
 
 <!--modals -->
-<?php $this->load->view('include_pages_staff/modals');?>
+<?php //$this->load->view('include_pages_admin/modals');?>
 
 <!--page scripts -->
 
@@ -309,12 +311,28 @@
 <!-- footer scripts -->
 
 <script src="<?php echo site_url();?>assets/dist/js/generalscripts.js"></script>
+
 <!-- page script -->
 <script>
 
 
 
   $(document).ready(function() {
+
+
+
+    function format_number(x) {
+      return Number.parseFloat(x).toFixed(2);
+    }
+
+    console.log(format_number(123.456));
+    // expected output: "123.46"
+
+    console.log(format_number(0.004));
+    // expected output: "0.00"
+
+    console.log(format_number('1.23e+5'));
+    // expected output: "123000.00"
 
 
     $('#for_member').hide();
@@ -388,7 +406,7 @@
     //prod id is the product id of all products
 
     $('.add_cart').click(function(){
-            $('#detail_cart').load("<?php echo site_url('pos_controller/load_cart');?>");
+           // $('#detail_cart').load("<?php echo site_url('pos_controller/load_cart');?>");
             var product_id    = $(this).data("productid");
             var prod_id = $(this).data("prod_id");
             var product_name  = $(this).data("productname");
@@ -428,7 +446,7 @@
 
 
 
-    $('#computeChange').click(function(){
+    /*$('#computeChange').click(function(){
 
       //alert('as');
       $("#checkout").attr("disabled",false);
@@ -440,9 +458,29 @@
       var cash = $('#cash').val();
 
       var change = cash - total_amount;
-      $("#change").val(change);
+      $("#change").val(format_number(change));
       //alert(total_amount);
-    });
+    });*/
+
+    //JAVASCRIPT FUNCTION
+    document.getElementById("cash").oninput = function() {myFunction()};
+
+    function myFunction() {
+
+      var  cash = $('#cash').val();
+      var total_amount = $('#total_amount').val();
+      var change;
+      if(cash.length != 0){
+        $("#checkout").attr("disabled",false);
+        
+       change = cash - total_amount;
+        $("#change").val(format_number(change));
+      }else{
+        $("#checkout").attr("disabled",true);
+        $("#change").val("");
+      }
+      //alert(total_amount);
+    }
 
 
 

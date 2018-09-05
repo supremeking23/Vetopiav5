@@ -7,7 +7,7 @@
                 <h4 class="modal-title">Add Pet</h4>
               </div>
 
-              <?php echo form_open_multipart('pet_management/add_pet_ajax','id="formAddPetAjax"');?>
+              <?php echo form_open_multipart('','id="formAddPetAjax"');?>
                 <div class="modal-body">
 
                 <div class="alert alert-success display-success" style="display: none">
@@ -68,7 +68,7 @@
                               echo form_label('Pet Type', 'pet_type','class="control-label"');
                               ?>
 
-                               <select name="pet_type" class="form-control" required="" >
+                               <select name="pet_type" class="form-control" id="pet_type" required="" >
                                       <option value="">Pet Type</option>
                                       <?php foreach($all_pettype as $pettype):?>
                                         
@@ -89,7 +89,7 @@
                               echo form_label('Pet Breed', 'breed','class="control-label"');
                               ?>
 
-                               <select name="breed" class="form-control select2" required="" style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;">
+                               <select name="breed" class="form-control select2" id="breed" required="" style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;">
                                       
                                     
                                 </select>
@@ -108,7 +108,7 @@
 
 
 
-                                 <select name="gender" class="form-control">
+                                 <select name="gender" id="gender" class="form-control">
                                    <option value="Male">Male</option>
                                    <option value="Female">Female</option>
                                  </select>
@@ -123,7 +123,7 @@
                                 echo form_label('Birth Date', 'birthDate','class="control-label"');
                                 ?>
 
-                                <input type="date" class="form-control"  value="" name="birthdate" required="">
+                                <input type="date" class="form-control" id="birthdate"  value="" name="birthdate" required="">
 
                             
                            </div>   
@@ -139,21 +139,21 @@
                                   echo form_label('Pet Image', 'upload_image','class="control-label"');
                                   ?>
 
-                                  <input type="file" class="form-control"  value="" name="upload_image" required="">
+                                  <input type="file" class="form-control" id="upload_image" value="" name="upload_image" required="">
 
                                   <input type="hidden" name="customer_table_id" id="customer_table_id" value="<?php echo $_SESSION['customer_table_id']?>">
                              </div>   
                     </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-default pull-left btn-flat btn-sm" data-dismiss="modal">Close</button>
                    <?php 
 
                       $data = array(
                         'name' => 'submit',
                         'value' => 'Add',
                         'id' => 'add_pet_btn',
-                        'class' => 'btn btn-primary',
+                        'class' => 'btn btn-primary btn-flat btn-sm',
                       );
 
                     echo form_submit($data);?>
@@ -240,7 +240,7 @@
             processData:false,
             success:function(data){
             
-
+                $('#formAddPetAjax')[0].reset();
                 $(".display-success").css("display","block");
                 $(".success-message").html("<p>New Pet has been Added successfully</p>");
                 reload();
@@ -251,7 +251,20 @@
 
 
     //modal test
-     
+
+  var dtToday = new Date();
+    
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+    
+    var maxDate = year + '-' + month + '-' + day;
+     //alert(maxDate);
+    $('#birthdate').attr('max', maxDate);
 
      });      
 </script>

@@ -158,7 +158,7 @@
                                                  
                                                       <?php 
 
-                                                      echo form_label('Total Amount', 'total_amount','class="control-label"');
+                                                      echo form_label('Total Amount: ₱', 'total_amount','class="control-label"');
                                                       ?>
 
 
@@ -176,7 +176,7 @@
                                                  
                                                       <?php 
 
-                                                      echo form_label('Cash', 'cash','class="control-label"');
+                                                      echo form_label('Cash: ₱', 'cash','class="control-label"');
                                                       ?>
 
 
@@ -194,7 +194,7 @@
                                                  
                                                       <?php 
 
-                                                      echo form_label('change', 'change','class="control-label"');
+                                                      echo form_label('change: ₱', 'change','class="control-label"');
                                                       ?>
 
 
@@ -207,7 +207,7 @@
 
 
                           <tr>
-                            <td><button type="button" id="computeChange" class="btn btn-default btn-block">Compute</button>
+                            <td><!--<button type="button" id="computeChange" class="btn btn-default btn-block">Compute</button> -->
                             <button type="submit" class="btn btn-primary btn-block" disabled="" id="checkout">Checkout</button></td>
                           </tr>
 
@@ -246,10 +246,10 @@
                   <?php foreach($all_product as $products):?>
                     
                       <div  class="product-item col-md-4" >
-                         <div class="thumbnail" style="height: 370px">
-                          <img class="product-image" src="<?php echo site_url()?>assets/images/products/<?php echo $products->productImage?>" width="100px"  />
+                         <div class="thumbnail" style="height: /*370px*/">
+                          <img class="product-image img-rounded" src="<?php echo site_url()?>assets/images/products/<?php echo $products->productImage?>" width="100px"  />
                           <div class="caption">
-                            <h4  data-type="<?php echo $products->productType;?>"><?php echo $products->product_name;?><br /><small><?php echo $products->product_unit;?></small></h4> 
+                            <h5  data-type="<?php echo $products->productType;?>"><?php echo $products->product_name;?><br /><small><?php //echo $products->product_unit;?></small></h5> 
 
                             <div class="row">
                                       <div class="col-md-7">
@@ -320,6 +320,20 @@
   $(document).ready(function() {
 
 
+  function format_number(x) {
+    return Number.parseFloat(x).toFixed(2);
+  }
+
+  console.log(format_number(123.456));
+  // expected output: "123.46"
+
+  console.log(format_number(0.004));
+  // expected output: "0.00"
+
+  console.log(format_number('1.23e+5'));
+  // expected output: "123000.00"
+
+
     $('#for_member').hide();
 
     $('#is_walkin').change(function(){
@@ -344,14 +358,17 @@
 
     document.querySelector('#cbItems').addEventListener('change',function (evt) {
                 updateProductView("Item", evt.target.checked);
+                //alert('item');
     });
 
     document.querySelector('#cbFoods').addEventListener('change',function (evt) {
                 updateProductView("Food", evt.target.checked);
+                //alert('food');
     });
 
     document.querySelector('#cbMedicines').addEventListener('change',function (evt) {
                 updateProductView("Medicine", evt.target.checked);
+                //alert('item');
     });
 
 
@@ -361,14 +378,15 @@
             var dataSelectorVal = "";
             switch (categoryName) {
             case "Item":
-                dataSelectorVal = "h4[data-type='Item']";
+                dataSelectorVal = "h5[data-type='Item']";
+                alert('item');
                 //alert(3);
                 break;
             case "Food":
-                dataSelectorVal = "h4[data-type='Food']";
+                dataSelectorVal = "h5[data-type='Food']";
                 break;
             case "Medicine":
-                dataSelectorVal = "h4[data-type='Medicine']";
+                dataSelectorVal = "h5[data-type='Medicine']";
                 break;
             }
             // use the has() function to select the li tags that are product items
@@ -431,7 +449,7 @@
 
 
 
-    $('#computeChange').click(function(){
+   /* $('#computeChange').click(function(){
 
       //alert('as');
       $("#checkout").attr("disabled",false);
@@ -443,9 +461,29 @@
       var cash = $('#cash').val();
 
       var change = cash - total_amount;
-      $("#change").val(change);
+      $("#change").val(format_number(change));
       //alert(total_amount);
-    });
+    });*/
+
+    //JAVASCRIPT FUNCTION
+    document.getElementById("cash").oninput = function() {myFunction()};
+
+    function myFunction() {
+
+      var  cash = $('#cash').val();
+      var total_amount = $('#total_amount').val();
+      var change;
+      if(cash.length != 0){
+        $("#checkout").attr("disabled",false);
+        
+       change = cash - total_amount;
+        $("#change").val(format_number(change));
+      }else{
+        $("#checkout").attr("disabled",true);
+        $("#change").val("");
+      }
+      //alert(total_amount);
+    }
 
 
 

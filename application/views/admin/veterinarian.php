@@ -139,7 +139,7 @@
                     <td><?php echo $vets->contact;?></td>
                    
                     <td>
-                    <a href="<?php echo site_url()?>admin/vet_details/<?php echo $vets->veterinarian_table_id;?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info">View Full Detail</a>
+                    <a href="<?php echo site_url()?>Admin/Vet_details/<?php echo $vets->veterinarian_table_id;?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info">View Full Detail</a>
                       
                     </td>
                </tr>

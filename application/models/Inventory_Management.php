@@ -171,7 +171,7 @@ class Inventory_Management extends CI_Model {
 
 
    public function get_all_food_with_number_of_supply(){
-        $this->db->select('a.food_table_id,a.food_id,a.foodname,a.foodImage,a.price,a.forwhatpet,a.fooddescription,b.productInStore,b.product_table_id,b.product_id,b.product_relation_id,b.store_price');
+        $this->db->select('a.food_table_id,a.food_id,a.product_unit,a.foodname,a.foodImage,a.price,a.forwhatpet,a.fooddescription,b.productInStore,b.product_table_id,b.product_id,b.product_relation_id,b.store_price');
         $this->db->from('tbl_productfoods a');
         $this->db->join('tbl_products b','a.food_id = b.product_id');
        
@@ -261,7 +261,7 @@ class Inventory_Management extends CI_Model {
   }
 
  public function get_all_medicine_with_number_of_supply(){
-        $this->db->select('a.med_table_id,a.med_id,a.medname,a.medType,a.medImage,a.meddescription,a.price,b.productInStore,b.store_price,b.product_name,b.product_table_id,b.product_id,b.product_relation_id,b.store_price');
+        $this->db->select('a.med_table_id,a.med_id,a.medname,a.product_unit,a.medType,a.medImage,a.meddescription,a.price,b.productInStore,b.store_price,b.product_name,b.product_table_id,b.product_id,b.product_relation_id,b.store_price');
         $this->db->from('tbl_productmedicines a');
         $this->db->join('tbl_products b','a.med_id = b.product_id');
        
@@ -442,6 +442,27 @@ class Inventory_Management extends CI_Model {
   public function get_count_lower_product_food(){
        $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_products  WHERE productInStore < 150   AND  productType = "Food"');
             return $result_set->result();
+  }
+
+
+
+
+
+
+  /// fiter sale report
+
+  public function get_report_from_to($from,$to){
+
+        $this->db->select('*');
+        $this->db->from('tbl_sales');
+        $this->db->where('sales_date >=',$from);
+        $this->db->where('sales_date <=',$to);
+        $this->db->order_by('sales_id', 'DESC');
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+        return $result_set;
   }
 
 

@@ -88,11 +88,26 @@ class Appointment_Management extends CI_Model
    }
 
 
-   //
+   // todays appointmet
    public function get_appointment_by_vet_id_and_today($vet_id,$now){
       $this->db->select('*');
       $this->db->from('tbl_appointments');
       $this->db->where('preferredDate',$now);
+      //$this->db->order_by('appointment_id',"desc");
+      $this->db->where('vet_id',$vet_id);
+      $this->db->where('cancel_date',"0000-00-00 00:00:00");
+      $query = $this->db->get();
+
+      $result_set = $query->result();
+
+        return $result_set;
+   }
+
+
+   public function get_appointment_by_vet_id_and_incoming($vet_id,$now){
+      $this->db->select('*');
+      $this->db->from('tbl_appointments');
+      $this->db->where('preferredDate >',$now);
       $this->db->where('vet_id',$vet_id);
       $this->db->where('cancel_date',"0000-00-00 00:00:00");
       $query = $this->db->get();
@@ -106,8 +121,9 @@ class Appointment_Management extends CI_Model
    public function get_all_appointment(){
         $this->db->select('*');
         $this->db->from('tbl_appointments');
-        $this->db->order_by('appointment_table_id',"desc");
-       // $this->db->order_by('preferredDate',"desc");
+       // $this->db->order_by('appointment_table_id',"desc");
+        $this->db->order_by('preferredDate',"desc");
+        $this->db->order_by('appointment_id',"desc");
         $query = $this->db->get();
 
         $result_set = $query->result();

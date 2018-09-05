@@ -46,7 +46,7 @@
   $("body").css("overflow", "auto");
 </script>
 </head>
-<body onload="">
+<body onload="window.print()">
 <div class="wrapper">
   <!-- Main content -->
   <section class="invoice">
@@ -85,7 +85,7 @@
           $total_payment = $appointment_detail->total_payment;
       ?>
         <div class="col-sm-4 invoice-col">
-          <b>Appointment Number: <?php echo $appointment_detail->appointment_id;?> </b><br>
+          <b>Invoice Number: <?php echo $appointment_detail->appointment_table_id;?> </b><br>
           <br>
           <b>Pet Name: <?php echo $appointment_detail->pet_name;?></b>
            <br>

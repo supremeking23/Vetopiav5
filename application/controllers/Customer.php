@@ -76,7 +76,7 @@ class Customer extends CI_Controller {
 		$this->customer_management->insert_new_log($data2);
 
 		$data['title'] = "Vetopia";
-		$this->load->view('customer/my_pet',$data);
+		$this->load->view('Customer/My_pet',$data);
 		//echo "admin/index";
 	}
 
@@ -84,7 +84,7 @@ class Customer extends CI_Controller {
 	public function pet_health_library(){
 
 
-			redirect('customer/load_library');
+			redirect('Customer/Load_library');
 	}
 
 
@@ -152,7 +152,8 @@ class Customer extends CI_Controller {
 
 		 $data['find_library_article'] = $this->article_model->find_article_from_library_by_library_id($id);
 		 $data['find_article_contents'] = $this->article_model->find_article_content_by_library_id($id);
-		 $data['find_article_links'] =$this->article_model->find_library_link_by_librarru_id($id);
+		 $data['find_article_links'] =$this->article_model->find_library_link_by_library_id($id);
+		  $data['find_related_article'] = $this->article_model->find_related_article_by_library_id($id);
 
 
 		$name = $this->session->userdata('complete_name');

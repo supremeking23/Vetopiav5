@@ -53,7 +53,7 @@ class Staff extends CI_Controller {
 		);
 
 		$data['title'] = "Vetopia";
-		$this->load->view('staff/change_password',$data);
+		$this->load->view('Staff/Change_password',$data);
     }
 
 	
@@ -90,7 +90,7 @@ class Staff extends CI_Controller {
 		$data['all_customer'] = $this->customer_management->get_all_customer();
 
 		$data['title'] = "Vetopia";
-		$this->load->view('staff/pos',$data);
+		$this->load->view('Staff/Pos',$data);
 		//echo "admin/index";
 	}
 
@@ -128,7 +128,7 @@ class Staff extends CI_Controller {
 		$data['time'] = $this->appointment_management->getScheduleTime();
 		
 		$data['title'] = "Vetopia";
-		$this->load->view('staff/appointment',$data);
+		$this->load->view('Staff/Appointment',$data);
 	}
 
 
@@ -162,7 +162,7 @@ class Staff extends CI_Controller {
 
 		$this->admin_management->insert_new_log($data2);
 
-		$this->load->view('staff/customer',$data);
+		$this->load->view('Staff/Customer',$data);
 
 	}
 
@@ -198,7 +198,7 @@ class Staff extends CI_Controller {
 
 		$this->admin_management->insert_new_log($data2);
 
-		$this->load->view('staff/pet',$data);
+		$this->load->view('Staff/Pet',$data);
 	}
 
 	public function reports(){
@@ -263,7 +263,7 @@ class Staff extends CI_Controller {
 				$data['user_logs'] = $this->admin_management->get_all_logs_by_id($customer_id);
 
 				$data['customers_pet'] = $this->pet_management_model->get_all_pet_details_by_customer_id($id);
-				$this->load->view('staff/customer_detail',$data);
+				$this->load->view('Staff/Customer_detail',$data);
 	}
 
 
@@ -304,7 +304,7 @@ class Staff extends CI_Controller {
 
 		$this->admin_management->insert_new_log($data2);
 
-		$this->load->view('staff/pet_detail',$data);
+		$this->load->view('Staff/Pet_detail',$data);
 	}
 
 

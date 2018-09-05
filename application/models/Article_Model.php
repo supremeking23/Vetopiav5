@@ -10,6 +10,10 @@ class Article_Model extends CI_Model {
         $this->db->insert('tbl_pet_library',$data);
     }
 
+    public function add_related_article($data){
+        $this->db->insert('tbl_related_article',$data);
+    }
+
 
     public function add_content($data){
         $this->db->insert('tbl_pet_library_content',$data);
@@ -73,7 +77,7 @@ class Article_Model extends CI_Model {
 
 
 
-    public function find_library_link_by_librarru_id($library_id){
+    public function find_library_link_by_library_id($library_id){
         $this->db->select('*');
         $this->db->from('tbl_pet_library_links');
         $this->db->where('library_id',$library_id);
@@ -82,6 +86,32 @@ class Article_Model extends CI_Model {
         $result_set = $query->result();
 
         return $result_set;
+    }
+
+
+
+    public function find_related_article_by_library_id($library_id){
+        $this->db->select('*');
+        $this->db->from('tbl_related_article');
+        $this->db->where('library_id',$library_id);
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+
+       /* $this->db->select('a.title,a.library_id,b.related_library_id');
+        $this->db->from('tbl_pet_library a');
+        $this->db->join('tbl_related_article b','a.library_id = b.library_id');
+        
+        
+
+        $this->db->where('b.library_id',$library_id);
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;*/
     }
 
 

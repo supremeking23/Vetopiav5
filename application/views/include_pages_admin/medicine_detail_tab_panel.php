@@ -49,10 +49,10 @@
 
 
                       <div class="form-group">
-                        <label for="meddescription" class="col-sm-2 control-label">Medicine Description</label>
+                        <label for="meddescription" class="col-sm-2 control-label ">Medicine Description</label>
 
                         <div class="col-sm-10">
-                         <textarea class="form-control" name="meddescription"><?php echo $m_details->meddescription;?></textarea>
+                         <textarea class="form-control textareas" name="meddescription"><?php echo $m_details->meddescription;?></textarea>
                         </div>
                       </div>
                       <div class="form-group">
@@ -66,7 +66,7 @@
                       <div class="form-group">
                               <?php 
 
-                              echo form_label('Enter Product Unit', 'product_unit','class="control-label col-sm-2"');
+                              echo form_label('Product Unit', 'product_unit','class="control-label col-sm-2"');
                               ?>
                                <div class="col-sm-10">
                                   <div class="input-group">

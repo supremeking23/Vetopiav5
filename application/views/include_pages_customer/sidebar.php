@@ -27,14 +27,14 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li><a href="<?php echo site_url()?>customer/request_appointment"><i class="fa fa-calendar"></i> <span>Request Appointment</span></a></li>
-        <li><a href="<?php echo site_url()?>customer/my_pets"><i class="fa fa-dashboard"></i> <span>My Pets</span></a></li>
-        <li><a href="<?php echo site_url()?>customer/pet_health_library"><i class="fa fa-book"></i> <span>Pet Health Library</span></a></li>
+        <li><a href="<?php echo site_url()?>Customer/Request_appointment"><i class="fa fa-calendar"></i> <span>Request Appointment</span></a></li>
+        <li><a href="<?php echo site_url()?>Customer/My_pets"><i class="fa fa-dashboard"></i> <span>My Pets</span></a></li>
+        <li><a href="<?php echo site_url()?>Customer/Pet_health_library"><i class="fa fa-book"></i> <span>Pet Health Library</span></a></li>
 
         
         
        
-        <li><a href="<?php echo site_url()?>customer/purchase_history"><i class="fa  fa-opencart"></i> <span>Purchase History</span></a></li>
+        <li><a href="<?php echo site_url()?>Customer/Purchase_history"><i class="fa  fa-opencart"></i> <span>Purchase History</span></a></li>
 
        
       </ul>

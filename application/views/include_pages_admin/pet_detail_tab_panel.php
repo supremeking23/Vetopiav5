@@ -46,110 +46,120 @@
                                   <td><?php  $date =date_create($appointment_detail->preferredDate);
                                     echo  $preferred_date= date_format($date,"F d, Y");?></td>
                                   <td><?php echo $appointment_detail->preferredtime;?></td>
-                                  <td><?php echo $appointment_detail->vet_in_charge;?></td>
-                                  <td><button type="button" class="btn btn-flat btn-sm btn-info" data-toggle="modal" data-target="#detailAppointment<?php echo $appointment_detail->appointment_table_id?>">View Details</button></td>
+                                  <td><?php echo $appointment_detail->vet_in_charge; //echo $appointment_detail->appointment_table_id;?> </td>
+                                  <td><?php if($appointment_detail->appointment_status != "Pending"):?>
+                                      <button type="button" class="btn btn-flat btn-sm btn-info" data-toggle="modal" data-target="#detailAppointment<?php echo $appointment_detail->appointment_table_id?>">View Details</button>
+                                    <?php endif;?>
 
-                                  
+                                        <div class="modal fade" id="detailAppointment<?php echo $appointment_detail->appointment_table_id?>">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span></button>
+                                                  <h4 class="modal-title">Appointment Detail </h4>
+                                                </div>
+                                                <div class="modal-body">
 
-                                  <div class="modal fade" id="detailAppointment<?php echo $appointment_detail->appointment_table_id?>">
-                                      <div class="modal-dialog">
-                                        <div class="modal-content">
-                                          <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                              <span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title">Appointment Detail </h4>
-                                          </div>
-                                          <div class="modal-body">
-
-                                            <?php //checkup details
-                                              $checkup_detail = $this->pet_management_model->get_prescription_by_appointment_table_id($appointment_detail->appointment_table_id);
-
-
-                                              foreach($checkup_detail as $c_detail){
-                                                 $complaints = $c_detail->complaints;
-                                                 $treatment = $c_detail->treatment;
-                                                 $prescription = $c_detail->prescription;
-                                                 /*$service_get = $c_detail->service_name;
-                                                 $service_fee = $c_detail->service_fee;*/
-                                              }
-
-                                            ?>
+                                                  <?php //checkup details
+                                                    $checkup_detail = $this->pet_management_model->get_prescription_by_appointment_table_id($appointment_detail->appointment_table_id);
 
 
-                                           
+                                                    foreach($checkup_detail as $c_detail){
+                                                       $complaints = $c_detail->complaints;
+                                                       $treatment = $c_detail->treatment;
+                                                       $prescription = $c_detail->prescription;
+                                                       /*$service_get = $c_detail->service_name;
+                                                       $service_fee = $c_detail->service_fee;*/
+                                                    }
 
-                                             <?php if($appointment_detail->appointment_status != "Cancelled" AND $appointment_detail->appointment_status !="Confirmed" AND  $appointment_detail->appointment_status !="On-Process"):?>
-                                               <dl class="dl-horizontal">
-                                                <?php //$checkup_detail = 1;?>
-
-                                                  <dt>Reason/Complaint</dt>
-                                                  <dd><?php echo $complaints;?></dd>
-                                                  <dt>Treatment</dt>
-                                                  <dd><?php echo $treatment;?></dd>
-                                                   <dt>Prescription</dt>
-                                                  <dd><?php echo $prescription;?></dd>
-                                                  <dt>Services</dt>
-
-                                                  <?php $services = $this->pet_management_model->get_services_by_checkup_id($c_detail->checkup_id);
-
-                                                        $service_fee = 0;
-                                                        foreach($services as $s):
-                                                        
                                                   ?>
 
-                                                  <dd ><?php echo $s->service_name;?> = ₱<?php echo $s->service_fees;?></dd>
-                                                  <?php 
-                                                  $service_format = $service_fee + $s->service_fees;
-                                                  $service_fee = number_format($service_format,2);
-                                                endforeach; //end service?>
+
+                                                
+
+                                                   
+                                                            <table width="100%" class="table table-striped table-bordered table-hover">
+                                                              <tbody>
+
+                                                                <?php if($appointment_detail->appointment_status != "Cancelled" AND $appointment_detail->appointment_status !="Confirmed" AND  $appointment_detail->appointment_status !="On-Process"):?>
+                                                                <tr>
+                                                                  <td><b>Customer Name</b></td>
+                                                                  <td><?php echo $appointment_detail->customer_name ?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                  <td><b>Reason/Complaints:</b></td>
+                                                                  <td><?php echo $complaints?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                  <td><b>Treatments:</b></td>
+                                                                  <td><?php echo $treatment;?></td>
+                                                                </tr> 
+                                                                <tr>
+                                                                  <td><b>Prescriptions:</b></td>
+                                                                  <td><?php echo $prescription;?></td>
+                                                                </tr> 
+
+                                                                <?php endif;?>
+
+
+                                                                <?php if($appointment_detail->appointment_status == "Cancelled"):?>
+                                                                  <tr>
+                                                                    <td><b>Date Cancelled:</b></td>
+                                                                    <td><?php  $date =date_create($appointment_detail->cancel_date);
+                                                                         echo  $cancel_date= date_format($date,"F d, Y h:i:s a");?></td>
+                                                                  </tr>
+                                                                  <tr>
+                                                                    <td><b>Cancel Reason</b></td>
+                                                                    <td><?php echo $appointment_detail->cancel_reason;?></td>
+                                                                  </tr>
+                                                               
+                                                               <?php endif;?>
+                                                              </tbody>
+                                                                     
+                                                            </table>  
+
+                                                      
+                                                  <!-- 
+
+                                                     <?php if($appointment_detail->is_finished == 1){?>
+                                                   <?php }else{ ?>
+
+                                                     <dl class="dl-horizontal">
+                                                        <dt>Reason/Complaint</dt>
+                                                        <dd>N/A</dd>
+                                                        <dt>Treatment</dt>
+                                                        <dd>N/A</dd>
+                                                        <dt>Prescription</dt>
+                                                        <dd>N/A</dd>
+                                                     </dl>
+
+                                                   <?php }?> -->
+
+
+
+                                                   
+
+
+
+                                                 
+                                                </div>
+                                                <div class="modal-footer">
+                                                 <!-- <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                                                 <?php if($appointment_detail->appointment_status != "Cancelled" AND $appointment_detail->appointment_status !="Confirmed" AND  $appointment_detail->appointment_status !="On-Process"):?> <a class="btn btn-primary btn-sm btn-flat" href="<?php echo site_url();?>pet_management/print_prescription" target="_blank">Print Priscription khkj</a> <?php endif;?> -->
+                                                </div>
+                                              </div> 
+                                              <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                         </div>
+                                          <!-- /.modal -->
+                                  </td>
+
                                   
-                                                 <dt>Total Fee</dt>
-                                                 <dd>₱<?php echo $service_fee;?><dd/>
-                                              </dl>
-                                             <?php endif;?>
-
-                                            <!-- 
-
-                                               <?php if($appointment_detail->is_finished == 1){?>
-                                             <?php }else{ ?>
-
-                                               <dl class="dl-horizontal">
-                                                  <dt>Reason/Complaint</dt>
-                                                  <dd>N/A</dd>
-                                                  <dt>Treatment</dt>
-                                                  <dd>N/A</dd>
-                                                  <dt>Prescription</dt>
-                                                  <dd>N/A</dd>
-                                               </dl>
-
-                                             <?php }?> -->
-
-                                              <?php if($appointment_detail->appointment_status == "Cancelled"):?>
-                                                <hr>
-                                                  <dl class="dl-horizontal">
-                                                    <dt>Date Cancelled</dt>
-                                                    <dd><?php  $date =date_create($appointment_detail->cancel_date);
-                                                  echo  $cancel_date= date_format($date,"F d, Y h:i:s a");?></dd>
-                                                    <dt>Cancel Reason</dt>
-                                                    <dd><?php echo $appointment_detail->cancel_reason;?></dd>
-                                                 </dl>
-
-                                              <?php endif;?>
 
 
-
-                                           
-                                          </div>
-                                          <div class="modal-footer">
-                                           <!-- <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                           <?php if($appointment_detail->appointment_status != "Cancelled" AND $appointment_detail->appointment_status !="Confirmed" AND  $appointment_detail->appointment_status !="On-Process"):?> <a class="btn btn-primary btn-sm btn-flat" href="<?php echo site_url();?>pet_management/print_prescription/<?php echo $id?>" target="_blank">Print Priscription </a> <?php endif;?>  -->
-                                          </div>
-                                        </div> 
-                                        <!-- /.modal-content -->
-                                      </div>
-                                      <!-- /.modal-dialog -->
-                                   </div>
-                                    <!-- /.modal -->
+                                  
 
                                 </tr>
 

@@ -151,7 +151,7 @@
                     <td><?php echo $admins->contact;?></td>
                    
                     <td>
-                    <a href="<?php echo site_url()?>admin/admin_details/<?php echo $admins->admin_table_id;?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info">View Full Detail</a>
+                    <a href="<?php echo site_url()?>Admin/Admin_details/<?php echo $admins->admin_table_id;?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info">View Full Detail</a>
                       
                     </td>
                </tr>

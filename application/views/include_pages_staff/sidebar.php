@@ -28,12 +28,12 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
        
-        <li><a href="<?php echo site_url()?>staff/pos"><i class="fa fa-dashboard"></i> <span>POS</span></a></li>
-       <li><a href="<?php echo site_url()?>staff/appointments"><i class="fa fa-calendar"></i> <span>Appointment</span></a></li>
+        <li><a href="<?php echo site_url()?>Staff/Pos"><i class="fa fa-dashboard"></i> <span>POS</span></a></li>
+       <li><a href="<?php echo site_url()?>Staff/Appointments"><i class="fa fa-calendar"></i> <span>Appointment</span></a></li>
 
-        <li><a href="<?php echo site_url()?>staff/customers"><i class="fa fa-user"></i> <span>Customer</span></a></li>
+        <li><a href="<?php echo site_url()?>Staff/Customers"><i class="fa fa-user"></i> <span>Customer</span></a></li>
 
-        <li><a href="<?php echo site_url()?>staff/pets"><i class="fa fa-firefox"></i> <span>Pet</span></a></li>
+        <li><a href="<?php echo site_url()?>Staff/Pets"><i class="fa fa-firefox"></i> <span>Pet</span></a></li>
         
        
         

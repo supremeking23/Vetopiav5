@@ -29,6 +29,7 @@ class Inventory extends CI_Controller {
 
         //for tax na 12%
         $this->load->model('settings_model');
+        $this->load->library('image_lib');
 
     }
 
@@ -36,6 +37,29 @@ class Inventory extends CI_Controller {
 
 
 	/****************** PRODUCTS ****************************/
+
+
+	// Resize Manipulation.
+	public function resize($image_data) {
+		//$img = substr($image_data['full_path'], 51);
+		$img = $image_data['full_path'];
+		$config['image_library'] = 'gd2';
+		$config['source_image'] = $image_data['full_path'];
+		//$config['new_image'] = './assets/images/products/new_product_' . $img;
+		$config['new_image'] = $img;
+		$config['width'] = 400;
+		$config['height'] =400;
+
+		//send config array to image_lib's  initialize function
+		$this->image_lib->initialize($config);
+		$src = $config['new_image'];
+		$data['new_image'] = substr($src, 2);
+		$data['img_src'] = base_url() . $data['new_image'];
+		// Call resize function in image library.
+		$this->image_lib->resize();
+		// Return new image contains above properties and also store in "upload" folder.
+		return $data;
+	}
 
 	public function add_new_item(){
 		 $now = date('Y-m-d H:i:s');
@@ -181,7 +205,7 @@ class Inventory extends CI_Controller {
 			//insert inventory action
 			$this->session->set_flashdata('add_product_success','New Product has been added');
 
-            redirect('admin/items');
+            redirect('Admin/Items');
 
 	}
 
@@ -253,7 +277,7 @@ class Inventory extends CI_Controller {
 		//insert inventory action
 		$this->session->set_flashdata('add_product_supply','New Product Supply has been added');
 
-        redirect('admin/items');
+        redirect('Admin/Items');
 		//
 
 		/*$data = array(
@@ -332,7 +356,7 @@ class Inventory extends CI_Controller {
             $this->inventory_management->update_item_details($item_table_id,$data);
 
             $this->session->set_flashdata('update_product_success','Product information has been updated successfully');
-            redirect('admin/item_details/'.$item_table_id);
+            redirect('Admin/Item_details/'.$item_table_id);
 	}
 
 
@@ -389,7 +413,7 @@ class Inventory extends CI_Controller {
 		
 
         $this->session->set_flashdata('update_product_success','Product information has been updated successfully');
-        redirect('admin/item_details/'.$item_table_id);
+        redirect('Admin/Item_details/'.$item_table_id);
 	}
 
 
@@ -487,7 +511,7 @@ class Inventory extends CI_Controller {
            
             'foodname' => $this->input->post('foodname'),
             'fooddescription' => $this->input->post('fooddescription'),
-            'forwhatpet' => $this->input->post('forwhatpet'),
+            //'forwhatpet' => $this->input->post('forwhatpet'),
             
             'foodImage' => $image,
             'price' => $this->input->post('price'),
@@ -560,7 +584,7 @@ class Inventory extends CI_Controller {
 			//insert inventory action
 			$this->session->set_flashdata('add_product_success','New Product has been added');
 
-            redirect('admin/foods');
+            redirect('Admin/Foods');
 
 			
 
@@ -634,7 +658,7 @@ class Inventory extends CI_Controller {
 		//insert inventory action
 		$this->session->set_flashdata('add_product_supply','New Product Supply has been added');
 
-        redirect('admin/foods');
+        redirect('Admin/Foods');
 		//
 
 		/*$data = array(
@@ -714,7 +738,7 @@ class Inventory extends CI_Controller {
             $this->inventory_management->update_food_details($food_table_id,$data);
 
             $this->session->set_flashdata('update_product_success','Product information has been updated successfully');
-            redirect('admin/food_details/'.$food_table_id);
+            redirect('Admin/Food_details/'.$food_table_id);
 	}
 
 
@@ -776,7 +800,7 @@ class Inventory extends CI_Controller {
         $this->inventory_management->update_food_details_from_tblproducts($food_id,$data2);
 
         $this->session->set_flashdata('update_product_success','Product information has been updated successfully');
-        redirect('admin/food_details/'.$food_table_id);
+        redirect('Admin/Food_details/'.$food_table_id);
 	}
 
 
@@ -939,7 +963,7 @@ class Inventory extends CI_Controller {
 			//insert inventory action
 			$this->session->set_flashdata('add_product_success','New Product has been added');
 
-            redirect('admin/medicines');
+            redirect('Admin/Medicines');
 	}
 
 
@@ -1010,7 +1034,7 @@ class Inventory extends CI_Controller {
 		//insert inventory action
 		$this->session->set_flashdata('add_product_supply','New Product Supply has been added');
 
-        redirect('admin/medicines');
+        redirect('Admin/Medicines');
 		//
 
 		/*$data = array(
@@ -1089,7 +1113,7 @@ class Inventory extends CI_Controller {
             $this->inventory_management->update_medicine_details($med_table_id,$data);
 
             $this->session->set_flashdata('update_product_success','Product information has been updated successfully');
-            redirect('admin/medicine_details/'.$med_table_id);
+            redirect('Admin/Medicine_details/'.$med_table_id);
 	}
 
 
@@ -1144,7 +1168,7 @@ class Inventory extends CI_Controller {
         $this->inventory_management->update_medicine_details_from_tblproducts($med_id,$data2);
 
         $this->session->set_flashdata('update_product_success','Product information has been updated successfully');
-        redirect('admin/medicine_details/'.$med_table_id);
+        redirect('Admin/Medicine_details/'.$med_table_id);
 	}
 
 
@@ -1245,13 +1269,54 @@ class Inventory extends CI_Controller {
 
 		$this->session->set_flashdata('pull_out_med','Pull out 1 product ('.$med_name.')');
 		$this->veterinarian_management->insert_new_log($data2);
-		redirect("veterinarian/medicines");
+		redirect("Veterinarian/Medicines");
 
 		
 	}
 
 
 
+
+
+//FOr filter reports
+
+
+
+	public function filter_report(){
+
+
+		 $from = $this->input->post('from');
+		 $to = $this->input->post('to');
+
+		 $filter = $this->inventory_management->get_report_from_to($from,$to);
+
+		 foreach($filter as $f){
+		 	echo $f->sales_date .'<br />';
+		 }
+
+
+
+		 $_SESSION['from'] = $from;
+		 $_SESSION['to'] = $to;
+
+
+
+
+	}
+
+
+
+	public function print_report(){
+
+		$settings_id = 1;
+		
+        $data['clinic_detail'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
+       // $data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
+
+        $data['title'] = "Vetopia";
+		//echo $_SESSION['from'];
+		$this->load->view('admin/print_report',$data);
+	}
 
 
 

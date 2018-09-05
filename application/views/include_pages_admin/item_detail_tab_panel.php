@@ -34,7 +34,7 @@
                         <label for="itemdescription" class="col-sm-2 control-label">Item Description</label>
 
                         <div class="col-sm-10">
-                         <textarea class="form-control" name="itemdescription"><?php echo $i_details->itemdescription;?></textarea>
+                         <textarea class="form-control textareas" name="itemdescription"><?php echo $i_details->itemdescription;?></textarea>
                         </div>
                       </div>
                       <div class="form-group">

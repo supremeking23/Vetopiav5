@@ -71,6 +71,10 @@ class Veterinarian extends CI_Controller {
 			$today_now = date('Y-m-d');
 			$data['my_appointment_this_day'] = $this->appointment_management->get_appointment_by_vet_id_and_today($log_userID ,$today_now);
 
+
+			//incoming appointment for this veterinarian
+			$data['my_incoming_appointment'] = $this->appointment_management->get_appointment_by_vet_id_and_incoming($log_userID ,$today_now);
+
 			/*foreach ($my_appointment_this_day as $m_d) {
 				echo $m_d->pet_name;
 			}*/
@@ -327,9 +331,13 @@ class Veterinarian extends CI_Controller {
 
 		 $id = $this->uri->segment(3);
 
+
+		 $data['articles'] = $this->article_model->get_all_articles();
+
 		 $data['find_library_article'] = $this->article_model->find_article_from_library_by_library_id($id);
 		 $data['find_article_contents'] = $this->article_model->find_article_content_by_library_id($id);
-		 $data['find_article_links'] =$this->article_model->find_library_link_by_librarru_id($id);
+		 $data['find_article_links'] =$this->article_model->find_library_link_by_library_id($id);
+		 $data['find_related_article'] = $this->article_model->find_related_article_by_library_id($id);
 
 
 		$name = $this->session->userdata('complete_name');

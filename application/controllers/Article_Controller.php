@@ -128,6 +128,9 @@ class Article_Controller extends CI_Controller {
 		$name = $this->session->userdata('complete_name');
 		$log_usertype =  $this->session->userdata('account_type');
 		$log_userID = $this->session->userdata("user_id");
+        $user_type = $this->session->userdata("account_type");
+        $user_table_id = $this->session->userdata("user_table_id");
+        $user_id = $this->session->userdata("user_id");
 		$log_action = "Add article in Pet Health Care Library";
 		
 		$now = date('Y-m-d H:i:s');
@@ -156,6 +159,9 @@ class Article_Controller extends CI_Controller {
     		'article_image' => $image,
     		'article_status' => "Active",
     		'created_by' => $name, 
+            'user_type' => $user_type,
+            'user_id' => $user_id,
+            'user_table_id' => $user_table_id, 
     	);
 
     	$this->article_model->add_article($array_insert_library);
@@ -210,6 +216,52 @@ class Article_Controller extends CI_Controller {
     		
     	}
     }*/
+
+
+
+
+    public function add_related_article(){
+        
+
+        $all_contents ="";
+        $article_title = $this->input->post("article_title");
+        for($count =0;$count<count($this->input->post("related_library_id"));$count++){
+            //$this->input->post("content")[$count];
+
+            //search mo muna ung name bago i add
+            $article_detail = $this->article_model->find_article_from_library_by_library_id($this->input->post("related_library_id")[$count]);
+            foreach($article_detail as $article){
+                $title = $article->title;
+            }
+
+            $array_insert_related_article = array(
+                'library_id' => $this->input->post("library_id"),
+                'related_library_id' =>$this->input->post("related_library_id")[$count],
+                'title' => $title,
+            );
+
+            $this->article_model->add_related_article($array_insert_related_article);
+           
+            $name = $this->session->userdata('complete_name');
+            $log_usertype =  $this->session->userdata('account_type');
+            $log_userID = $this->session->userdata("user_id");
+            $log_action = "Add Related article for  " . $article_title;
+            
+            $now = date('Y-m-d H:i:s');
+            $logs = array(
+                "log_user" => $name,
+                "log_usertype" => $log_usertype,
+                "log_userID" => $log_userID,
+                "log_action" => $log_action,
+                "log_date" => $now,
+            );
+
+
+
+
+          $this->admin_management->insert_new_log($logs);
+        }        
+    }
 
 
 
@@ -417,6 +469,44 @@ class Article_Controller extends CI_Controller {
         echo json_encode(['code'=>200, 'msg'=>$msg]);
 
     }
+
+
+    /*public function add_related_article(){
+
+        $library_id = $this->input->post("library_id");
+        
+        $article_title = $this->input->post("article_title");
+
+
+        $add_article_content = array(
+            'library_id' => $library_id,
+            'article_contents' =>$article_content,
+        );
+
+        $this->article_model->add_content($add_article_content);
+
+        $name = $this->session->userdata('complete_name');
+        $log_usertype =  $this->session->userdata('account_type');
+        $log_userID = $this->session->userdata("user_id");
+        $log_action = "Add Content of  article " . $article_title;
+        
+        $now = date('Y-m-d H:i:s');
+        $logs = array(
+            "log_user" => $name,
+            "log_usertype" => $log_usertype,
+            "log_userID" => $log_userID,
+            "log_action" => $log_action,
+            "log_date" => $now,
+        );
+
+
+
+
+        $this->admin_management->insert_new_log($logs);
+
+        $msg = "Article content has been added";
+        echo json_encode(['code'=>200, 'msg'=>$msg]);
+    }*/
 
 
     public function add_article_link(){

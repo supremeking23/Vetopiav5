@@ -25,8 +25,8 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
        
-        <li><a href="<?php echo site_url()?>veterinarian/appointments"><i class="fa fa-calendar"></i> <span>Appointments</span></a></li>
-        <li><a href="<?php echo site_url()?>veterinarian/pets"><i class="fa fa-firefox"></i> <span>Pets</span></a></li> 
+        <li><a href="<?php echo site_url()?>Veterinarian/Appointments"><i class="fa fa-calendar"></i> <span>Appointments</span></a></li>
+        <li><a href="<?php echo site_url()?>Veterinarian/Pets"><i class="fa fa-firefox"></i> <span>Pets</span></a></li> 
       
       <!--  <li class="treeview">
           <a href="#">
@@ -46,8 +46,8 @@
     -->
 
 
-      <li><a href="<?php echo site_url()?>veterinarian/medicines"><i class="fa fa-server"></i> <span>Medicines</span></a></li>
-            <li><a href="<?php echo site_url()?>veterinarian/pet_health_care_library"><i class="fa fa-book"></i> <span>Health Care Library</span></a></li>
+      <li><a href="<?php echo site_url()?>Veterinarian/Medicines"><i class="fa fa-server"></i> <span>Medicines</span></a></li>
+            <li><a href="<?php echo site_url()?>Veterinarian/Pet_health_care_library"><i class="fa fa-book"></i> <span>Health Care Library</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->

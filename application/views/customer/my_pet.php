@@ -61,12 +61,12 @@
                               <?php if(empty($c_pets->pet_profile)){?>
 
 
-                                <img src="<?php echo site_url()?>assets/images/pets/stock-vector-paw-print-205756207.jpg" class="img-responsive">
+                                <img src="<?php echo site_url()?>assets/images/pets/stock-vector-paw-print-205756207.jpg" class="img-responsive" >
 
                               <?php }else{ ?>
 
 
-                                <img src="<?php echo site_url()?>assets/images/pets/<?php echo $c_pets->pet_profile;?>" class="img-responsive">
+                                <img src="<?php echo site_url()?>assets/images/pets/<?php echo $c_pets->pet_profile;?>" class="img-responsive" width="400px" height="100px">
 
                               <?php }?>
                             </div>

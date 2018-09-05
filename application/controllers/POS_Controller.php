@@ -107,9 +107,9 @@ class POS_Controller extends CI_Controller {
                         <tr>
                             <td>'.$items['name'] .'<br><small>'.$items['product_unit'].'</small>' .'</td>
                             <td>'.$items['product_type'].'</td>
-                            <td>₱'.number_format($items['price']).'</td>
+                            <td>₱'.$items['price'].'</td>
                             <td>'.$items['qty'].'</td>
-                            <td>₱'.number_format($items['subtotal']).'</td>
+                            <td>₱'.$items['subtotal'].'</td>
                             <td><button type="button" id="'.$items['rowid'].'" class="romove_cart btn btn-flat btn-danger btn-sm">Cancel</button></td>
                         </tr>
                     ';
@@ -260,7 +260,7 @@ class POS_Controller extends CI_Controller {
         $customer_type = "";
         if($is_walkin == "walkin"){
             $customer_id =0;
-            $customer_type = "Walking";
+            $customer_type = "Walkin";
             $name = $this->input->post('walk_customer_name');
         }else{
            $customer_id =$this->input->post("customer_id"); 
@@ -402,7 +402,7 @@ class POS_Controller extends CI_Controller {
             $this->admin_management->insert_new_log($data_log);
             $this->session->set_flashdata('print_receipt_message','Please print your receipt');
 
-            redirect("admin/pos");
+            redirect("Admin/Pos");
 
     }
 
@@ -428,7 +428,7 @@ class POS_Controller extends CI_Controller {
         $customer_type = "";
         if($is_walkin == "walkin"){
             $customer_id =0;
-            $customer_type = "Walking";
+            $customer_type = "Walkin";
             $name = $this->input->post('walk_customer_name');
         }else{
            $customer_id =$this->input->post("customer_id"); 
@@ -570,7 +570,7 @@ class POS_Controller extends CI_Controller {
             $this->admin_management->insert_new_log($data_log);
             $this->session->set_flashdata('print_receipt_message','Please print your receipt');
 
-            redirect("staff/pos");
+            redirect("Staff/Pos");
 
     }
 
@@ -743,183 +743,7 @@ class POS_Controller extends CI_Controller {
     }*/
 
 
-    public function checkout(){
 
-        if(empty(number_format($this->cart->total()))){
-
-            $this->session->set_flashdata('cart_empty_error','Cart is empty');
-
-            redirect('staff/pos');
-        }
-
-        echo $sales_total = $this->cart->total();
-        echo "<br />";
-        echo $customer_id = $this->input->post('customer_id');
-
-        $name = "";
-        $customer_type ="";
-        if(empty($customer_id)){
-            $customer_id ="0";
-            $customer_type = "Walkin";
-            echo "walkin";
-            $name = $this->input->post('walk_customer_name');
-        }else{
-            $customer_type = "Member";
-            $find_customer = $this->customer_management->get_customer_by_customer_id($customer_id);
-            foreach($find_customer as $c){
-                $name = $c->firstname .' '. $c->middlename .' '. $c->lastname;
-                echo "meron";
-            }
-        }
-
-        $invoice_number ='#'.date("ymdhis") . abs(rand('0','9'));
-
-        $staff_in_charge = $this->session->userdata('complete_name');
-        $staff_id = $this->session->userdata('user_id');
-
-        $now = date('Y-m-d H:i:s');
-        $data_sales = array(
-            'invoice_number' => $invoice_number,
-            'customer_type' => $customer_type,
-            'customer_name' => $name,
-            'customer_id' =>  $customer_id,
-            'total_amount' => $sales_total,
-            'sales_date' =>$now,
-            'staff' => $staff_in_charge,
-            'staff_user_id' => $staff_id,
-        );
-
-
-        $this->pos_management->insert_new_pos_record($data_sales);
-        $sales_id = $this->db->insert_id();
-
-
-
-
-
-        $_SESSION['sales_id'] = $sales_id;
-
-
-        /*bawas*/
-       /* $update1 = "SELECT * FROM tbl_salesdetails WHERE sales_id = '$sales_id'";
-        $run_update1 = mysqli_query($connection,$update1);
-
-            while($row1 = mysqli_fetch_assoc($run_update1)){
-
-                    $product_id = $row1['product_id'];
-                    $quantity = $row1['sales_quantity'];
-
-
-
-                    $update2 = "SELECT * FROM tbl_products WHERE product_id = '$product_id'";
-                    $run_update2 = mysqli_query($connection,$update2);
-                    $row2 = mysqli_fetch_assoc($run_update2);
-
-                    $stock_quantity = $row2['product_quantity'];
-
-                    $update3 = "UPDATE tbl_products SET product_quantity = product_quantity- $quantity WHERE product_id = '$product_id' AND product_quantity = $stock_quantity";
-
-
-                    $run_update3 = mysqli_query($connection,$update3);
-
-
-            }*/
-
-        /**/
-
-        foreach ($this->cart->contents() as $items) {
-                    "product_table_id" . $product_id       = $items['id'];
-                    "product_id" . $prod_id       = $items['prod_id'];
-                    $product_name =  $items['name'];
-                    $product_type = $items['product_type'];
-                    $price_per_product =  number_format($items['price']);
-                    $sales_quantity = $items['qty'] ;
-                    $total_per_product =  $items['subtotal'];
-                    //insert in tbl_salesdetails
-                    $data_sales_detail = array(
-                        'sales_id' => $sales_id,
-                        'product_id' => $prod_id,
-                        'product_type' => $product_type,
-                        'product_name' => $product_name,
-                        'price_per_product' => $price_per_product,
-                        'sales_quantity' => $sales_quantity,
-                        'total_per_product' => $total_per_product,
-                     );
-                     $this->pos_management->insert_new_sales_detail_record($data_sales_detail);
-
-                    //insert inventory report
-                    $action = "Purchased Product";
-                    //use session for this... this is temp
-                    $user_type="Customer(" . $customer_type. ")";
-                    //use session for this... this is temp
-                    $data =array(
-                        'product_rel_id' => $product_id,
-                        'product_id' => $prod_id,
-                        'productType' => $product_type,
-                        'product_name' =>$product_name,
-                        'action' => $action ,
-                        'user_name' => $name,
-                        'user_type' => $user_type,
-                        'inventory_date' =>$now,
-                        'quantity' => $sales_quantity,
-                    );
-                    $this->inventory_management->insert_new_inventory_action($data);
-                    $remove_all = array(
-                    'rowid' => $items['rowid'], 
-                    'qty' => 0, 
-                    );
-                    
-                    //$this->cart->update($remove_all);
-                    $this->cart->destroy();
-        }
-
-
-        //update stock inventory
-
-        $get_product = $this->pos_management->find_sales_detail_by_sales_id($sales_id);
-
-
-        foreach($get_product as $gp){
-            $product_id = $gp->product_id;
-            $quantity = $gp->sales_quantity;
-
-            $get_product_detail = $this->pos_management->get_product_by_product_id($product_id);
-
-
-            foreach($get_product_detail as $product_detail){
-                $stock_quantity = $product_detail->productInStore;
-
-            }
-
-
-            $update_query = $this->db->query("UPDATE tbl_products SET productInStore = productInStore - $quantity WHERE product_id = '" . $product_id."'");
-
-        }
-
-            //insert log report
-           /* $log_name = $this->session->userdata('complete_name');
-            $log_usertype =  $this->session->userdata('account_type');
-            $log_userID = $this->session->userdata("user_id");
-            $data_log = array(
-            "log_user" => $log_name,
-            "log_usertype" => $log_usertype,
-            "log_userID" => $log_userID,
-            "log_action" => "Handle POS",
-            "log_date" => $now,
-            );
-
-
-            $this->admin_management->insert_new_log($data_log);*/
-            $this->session->set_flashdata('print_receipt_message','Please print your receipt');
-
-            redirect("staff/pos");
-
-            //unset($this->cart->contents());
-
-        //var_dump($data);
-
-    
-    }
 
 
     public function print(){

@@ -137,7 +137,7 @@
                     <td><?php echo $staffs->contact;?></td>
                    
                     <td>
-                    <a href="<?php echo site_url()?>admin/staff_details/<?php echo $staffs->staff_table_id;?>"   class="btn btn-sm btn-flat btn-info">View Full Detail</a>
+                    <a href="<?php echo site_url()?>Admin/Staff_details/<?php echo $staffs->staff_table_id;?>"   class="btn btn-sm btn-flat btn-info">View Full Detail</a>
                       
                     </td>
                </tr>

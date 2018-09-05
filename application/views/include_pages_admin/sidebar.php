@@ -59,11 +59,11 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
        
-        <li><a href="<?php echo site_url()?>admin/dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+        <li><a href="<?php echo site_url()?>Admin/Dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
 
-         <li><a href="<?php echo site_url()?>admin/pos"><i class="fa fa-shopping-cart"></i> <span>POS</span></a></li>
+         <li><a href="<?php echo site_url()?>Admin/Pos"><i class="fa fa-shopping-cart"></i> <span>POS</span></a></li>
 
-        <li><a href="<?php echo site_url()?>admin/appointments"><i class="fa fa-calendar"></i> <span>Appointment</span>
+        <li><a href="<?php echo site_url()?>Admin/Appointments"><i class="fa fa-calendar"></i> <span>Appointment</span>
                  <?php if($cap == 0){  //echo $cap;?>     
                     <?php  }else{ ?>
                     <span class="badge label-danger">
@@ -81,16 +81,16 @@
             </span>
           </a>
           <ul class="treeview-menu">      
-            <li><a href="<?php echo site_url()?>admin/admins"><i class="fa fa-circle-o"></i> Admin</a></li>
-            <li><a href="<?php echo site_url()?>admin/veterinarians"><i class="fa fa-circle-o"></i> Veterinarian</a></li>
-            <li><a href="<?php echo site_url()?>admin/staffs"><i class="fa fa-circle-o"></i> Staff</a></li>
-            <li><a href="<?php echo site_url()?>admin/customers"><i class="fa fa-circle-o"></i> Customer</a></li>
+            <li><a href="<?php echo site_url()?>Admin/Admins"><i class="fa fa-circle-o"></i> Admin</a></li>
+            <li><a href="<?php echo site_url()?>Admin/Veterinarians"><i class="fa fa-circle-o"></i> Veterinarian</a></li>
+            <li><a href="<?php echo site_url()?>Admin/Staffs"><i class="fa fa-circle-o"></i> Staff</a></li>
+            <li><a href="<?php echo site_url()?>Admin/Customers"><i class="fa fa-circle-o"></i> Customer</a></li>
           </ul>
         </li>
 
-        <li><a href="<?php echo site_url()?>admin/pets"><i class="fa fa-firefox"></i> <span>Pets</span></a></li>
+        <li><a href="<?php echo site_url()?>Admin/Pets"><i class="fa fa-firefox"></i> <span>Pets</span></a></li>
 
-        <li><a href="<?php echo site_url()?>admin/services"><i class="fa fa-server"></i> <span>Services</span></a></li>
+        <li><a href="<?php echo site_url()?>Admin/Services"><i class="fa fa-server"></i> <span>Services</span></a></li>
 
         <li class="treeview">
           <a href="#">
@@ -110,7 +110,7 @@
             </span>
           </a>
           <ul class="treeview-menu">      
-            <li><a href="<?php echo site_url()?>admin/items"><i class="fa fa-circle-o"></i> Items
+            <li><a href="<?php echo site_url()?>Admin/Items"><i class="fa fa-circle-o"></i> Items
                 <?php if($gclci == 0){
                       //echo $cap;
                       }else{ ?>
@@ -119,7 +119,7 @@
                       </span>  
                   <?php  } ?>   
             </a></li>
-            <li><a href="<?php echo site_url()?>admin/foods"><i class="fa fa-circle-o"></i> Foods
+            <li><a href="<?php echo site_url()?>Admin/Foods"><i class="fa fa-circle-o"></i> Foods
                    <?php if($gclcf == 0){
                       //echo $cap;
                       }else{ ?>
@@ -128,7 +128,7 @@
                       </span>  
                    <?php  } ?>   
             </a></li>
-            <li><a href="<?php echo site_url()?>admin/medicines"><i class="fa fa-circle-o"></i> Medicines
+            <li><a href="<?php echo site_url()?>Admin/Medicines"><i class="fa fa-circle-o"></i> Medicines
               <?php if($gclcm == 0){
                       //echo $cap;
                       }else{ ?>
@@ -151,21 +151,21 @@
             </span>
           </a>
           <ul class="treeview-menu">      
-            <li><a href="<?php echo site_url()?>admin/sales"><i class="fa fa-circle-o"></i> Sales</a></li>
-            <li><a href="<?php echo site_url()?>admin/inventory"><i class="fa fa-circle-o"></i> Inventory</a></li>
+            <li><a href="<?php echo site_url()?>Admin/Sales"><i class="fa fa-circle-o"></i> Sales</a></li>
+            <li><a href="<?php echo site_url()?>Admin/Inventory"><i class="fa fa-circle-o"></i> Inventory</a></li>
             
           </ul>
         </li>
 
         
-         <li><a href="<?php echo site_url()?>admin/pet_health_care_library"><i class="fa fa-book"></i> <span>Health Care Library</span></a></li>
+         <li><a href="<?php echo site_url()?>Admin/Pet_health_care_library"><i class="fa fa-book"></i> <span>Health Care Library</span></a></li>
 
         <?php if($this->session->userdata('account_type') == "Super Admin"):?>
 
 
-        <li><a href="<?php echo site_url()?>admin/logs"><i class="fa  fa-sticky-note-o"></i> <span>Logs</span></a></li>
+        <li><a href="<?php echo site_url()?>Admin/Logs"><i class="fa fa-sticky-note-o"></i> <span>Logs</span></a></li>
 
-        <li><a href="<?php echo site_url()?>admin/settings"><i class="fa  fa-gear"></i> <span>Settings</span></a></li>
+        <li><a href="<?php echo site_url()?>Admin/Settings"><i class="fa  fa-gear"></i> <span>Settings</span></a></li>
 
 
       <?php endif;?>

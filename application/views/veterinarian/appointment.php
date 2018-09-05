@@ -89,7 +89,7 @@
         </div> -->
        
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-9">
           <div class="box <?php echo $box_color;?> box-solid">
               <div class="box-header with-border">
                 <h3 class="box-title text-center">Today's Appointment</h3>
@@ -123,14 +123,6 @@
                     </td>
                     <td><?php if($vets_appointment_today->is_finished == 0){ ?>
                     <button type="button" data-toggle="modal" data-target="#checkup<?php echo $vets_appointment_today->appointment_table_id?>" class="btn btn-sm btn-flat btn-primary add-record-modal">Add Record</button>
-                    
-                    <?php }else{ ?>  
-                      <!--<label class="label label-success"> Done</label> -->
-
-                      <!--<a href="<?php echo site_url()?>veterinarian/pet_details/<?php echo $vets_appointment_today->pet_table_id;?>" class="btn btn-info btn-sm btn-flat">View Pet Detail</a> -->
-                      <button type="button" data-toggle="modal" class="btn btn-info btn-sm btn-flat" data-target="#viewprescription<?php echo $vets_appointment_today->appointment_table_id?>">View Prescription</button>
-                    <?php }?>
-                    </td>
                         <div class="modal fade"  id="checkup<?php echo $vets_appointment_today->appointment_table_id?>">
                             <div class="modal-dialog">
                               <div class="modal-content">
@@ -145,74 +137,80 @@
                                 <?php echo form_open_multipart('pet_management/add_diagnosis_record_vet_action','id=""');?>
                                   <div class="modal-body">
                                    
-                                  <div class="alert alert-success display-success_add_record" style="display: none">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                     <div class="success-message_add_record"></div> 
-                                  </div>
-
-                                    <div class="row">
-                                          <div class="col-md-9 offset-md-3">
+                                    <table width="100%" class="table table-striped table-bordered table-hover">
+                                      <tr>
+                                        <td><b>Pet ID:</b></td>
+                                        <td><input type="hidden" class="form-control" id="pet_data_id" name="pet_data_id" value="<?php echo $vets_appointment_today->pet_id;?>" readonly="true" style="border-radius: 6px;" /> <?php echo $vets_appointment_today->pet_id;?>   </td>
+                                      </tr>
+                                      <tr>
+                                        <td><b>Pet Name:</b></td>
+                                        <td><input type="hidden" class="form-control" id="pet_name" name="pet_name" value="<?php echo $vets_appointment_today->pet_name;?>" readonly="true" style="border-radius: 6px;" /> <?php echo $vets_appointment_today->pet_name;?>   </td>
+                                      </tr>
+                                      <tr >
+                                        <td colspan="2">
                                             <div class="row">
-                                              <div class="col-md-4">
-                                                <b>Pet ID:</b>
+                                              <div class="col-md-12 ">
+                                                <!-- Custom Tabs -->
+                                                <div class="nav-tabs-custom">
+                                                  <ul class="nav nav-tabs">
+                                                    <li class="active"><a href="#tab_1<?php echo $vets_appointment_today->appointment_table_id;?>" data-toggle="tab">Subjective</a></li>
+                                                    <li><a href="#tab_2<?php echo $vets_appointment_today->appointment_table_id;?>" data-toggle="tab">Objective and Assessment</a></li>
+                                                    <li><a href="#tab_3<?php echo $vets_appointment_today->appointment_table_id;?>" data-toggle="tab">Plan</a></li>
+                                                    
+                                                  </ul>
+                                                  <div class="tab-content">
+                                                    <div class="tab-pane active" id="tab_1<?php echo $vets_appointment_today->appointment_table_id;?>">
+                                                      <label>Customer Complaint/ Description : </label> 
+                                                      <div style="margin-bottom: 25px;"></div>
+
+                                                    <div class="row">
+                                                      <div class="col-md-12">
+                                                        
+                                                        <div class="form-group">
+                                                        <textarea name="complaints" id="complaints" class="form-control textareas" style="height:300px;width: 100%" placeholder="Input Owner Statement" required=""><?php echo $vets_appointment_today->complaints;?></textarea>
+                                                        </div>
+                                                      </div>
+                                                    </div>                                             
+                                                    </div>
+                                                    <!-- /.tab-pane -->
+                                                    <div class="tab-pane" id="tab_2<?php echo $vets_appointment_today->appointment_table_id;?>">
+                                                      <label>Treatment : </label> 
+                                                      <div style="margin-bottom: 25px;"></div>
+                                                      <div class="row">
+                                                        <div class="col-md-12">
+                                                          
+                                                          <div class="form-group">
+                                                          <textarea name="treatment" id="treatment" class="form-control textareas" style="height:300px;width: 100%" placeholder="Input Veterinarian Statement/ Observation / Treatment" required="" placeholder="Input Veterinarian Statement/ Observation / Treatment"></textarea>
+                                                          </div>
+                                                        </div>
+                                                      </div>                                           
+                                                    </div>
+                                                    <!-- /.tab-pane -->
+                                                    <div class="tab-pane" id="tab_3<?php echo $vets_appointment_today->appointment_table_id;?>">
+                                                      <label> Prescription: </label> 
+                                                      <div style="margin-bottom: 25px;"></div>
+                                                      <div class="row">
+                                                        <div class="col-md-12">
+                                                          
+                                                          <div class="form-group">
+                                                          <textarea name="prescription" id="prescription" class="form-control textareas" style="height:300px;width: 100%" placeholder="Prescriptions / Medicines / Doctors Comments and Recomendation" required="">
+                                                              
+                                                          </textarea>
+                                                          </div>
+                                                        </div>
+                                                      </div>                                            
+                                                    </div>
+                                                    <!-- /.tab-pane -->
+                                                  </div>
+                                                  <!-- /.tab-content -->
+                                                </div>
+                                                <!-- nav-tabs-custom -->             
                                               </div>
-                                              <div class="col-md-8">
-                                                <div class="form-group">
-                                                  <input type="text" class="form-control" id="pet_data_id" name="pet_data_id" value="<?php echo $vets_appointment_today->pet_id;?>" readonly="true" style="border-radius: 6px;" />  
-                                                </div>  
-                                              </div>
-                                            </div>  
-                                          </div>
-                                    </div> 
-
-
-                                    <div class="row">
-                                          <div class="col-md-9 offset-md-3">
-                                            <div class="row">
-                                              <div class="col-md-4">
-                                                <b>Pet Name:</b>
-                                              </div>
-                                              <div class="col-md-8">
-                                                <div class="form-group">
-                                                  <input type="text" class="form-control" id="pet_name" name="pet_name" value="<?php echo $vets_appointment_today->pet_name;?>" readonly="true" style="border-radius: 6px;" />  
-                                                </div>  
-                                              </div>
-                                            </div>  
-                                          </div>
-                                    </div>        
-
-                                    <div class="row">
-                                      <div class="col-md-12">
-                                        <label>Customer Description/Complaints : </label> 
-                                        <div class="form-group">
-                                        <textarea name="complaints" id="complaints" class="form-control textareas" style="height:100px" placeholder="Input Owner Statement" required=""><?php echo $vets_appointment_today->complaints;?></textarea>
-                                        </div>
-                                      </div>
-                                    </div>
-
-
-                                    <div class="row">
-                                      <div class="col-md-12">
-                                        <label>Treatment : </label> 
-                                        <div class="form-group">
-                                        <textarea name="treatment" id="treatment" class="form-control textareas" style="height:100px" placeholder="Input Owner Statement" required="" placeholder="Input Veterinarian Statement/ Observation / Treatment">Input Veterinarian Statement/ Observation / Treatment</textarea>
-                                        </div>
-                                      </div>
-                                    </div>
-
-                                    <div class="row">
-                                      <div class="col-md-12">
-                                        <label> Prescription: </label> 
-                                        <div class="form-group">
-                                        <textarea name="prescription" id="prescription" class="form-control textareas" style="height:100px" placeholder="Prescrition / " required="">
-                                            Prescriptions / Medicines / Doctors Comments and Recomendation
-                                        </textarea>
-                                        </div>
-                                      </div>
-                                    </div>
-
-                                
-                                 
+                                            </div>                                          
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
                                  <?php //other data?>
                                  <input type="hidden" name="date" id="date" value="<?php echo $vets_appointment_today->preferredDate;?>">
                                  <input type="hidden" name="time" id="time"  value="<?php echo $vets_appointment_today->preferredtime;?>">
@@ -229,13 +227,10 @@
                                  <input type="hidden" name="pet_name" id="pet_name"  value="<?php echo $vets_appointment_today->pet_name;?>">
 
                                 <input type="hidden" name="age" id="age"  value="<?php echo $vets_appointment_today->age;?>">
-
-
-
-                                <div class="row">
-                                  <div class="col-md-12">
-                                        <label> Pet Services: </label> 
-                                           <?php 
+                                <label> Pet Services: </label> 
+                                        </td>
+                                        <td>
+                                <?php 
                                       $pettype = $vets_appointment_today->pettype;
                                     $pettype_ulit = strtolower($pettype);
                                       $is_adult = $vets_appointment_today->is_adult;
@@ -257,11 +252,7 @@
                                        // echo "puppies"; 
 
                                      $services =  $this->pet_management_model->get_all_services_for_specific_pet_age_and_active($pettype_ulit,$age);
-                                      ?>
-
-                                          <style type="text/css">
-                                             
-                                          </style>
+                                ?>
                                           <div class="col-md-12">
                                               <select name="service_id[]" id="service_id" class="form-control select2" multiple required style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto; ">
                                               <option value="0" class="blacks">General Checkup</option>
@@ -270,23 +261,15 @@
                                               <?php endforeach;?>
                                              </select>
                                          </div>
+
+                                         <input type="hidden" name="pettype" id="pettype"  value="<?php echo $pettype;?>">
+                                         <input type="hidden" name="is_adult" id="is_adult"  value="<?php echo $is_adult;?>">
+                                        </td>
+                                      </tr>
+
+                                    </table>
+
                                    
-
-                                    </div>
-                                    
-
-
-                                </div>
-                                       
-
-                                   
-
-                                 
-                                 <input type="hidden" name="pettype" id="pettype"  value="<?php echo $pettype;?>">
-                                 <input type="hidden" name="is_adult" id="is_adult"  value="<?php echo $is_adult;?>">
-
-
-                                  
 
                                   </div>
                                   <div class="modal-footer">
@@ -301,36 +284,124 @@
                             <!-- /.modal-dialog -->
                         </div>
                         <!-- /.modal -->  
+                    
+                    <?php }else{ ?>  
+                      <!--<label class="label label-success"> Done</label> -->
 
+                      <!--<a href="<?php echo site_url()?>veterinarian/pet_details/<?php echo $vets_appointment_today->pet_table_id;?>" class="btn btn-info btn-sm btn-flat">View Pet Detail</a> -->
+                      <button type="button" data-toggle="modal" class="btn btn-info btn-sm btn-flat" data-target="#viewprescription<?php echo $vets_appointment_today->appointment_table_id?>">View Summary</button>
 
                       <div class="modal fade" id="viewprescription<?php echo $vets_appointment_today->appointment_table_id?>">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span></button>
-                              <h4 class="modal-title">Prescription</h4>
-                            </div>
-                            <div class="modal-body">
-                              <?php 
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span></button>
+                                              <h4 class="modal-title">Summary</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                              <div class="container-fluid">
+                                              
+                                                <div style="height:10px;"></div>
 
-                                 $prescription = $this->pet_management_model->get_prescription_by_appointment_table_id($vets_appointment_today->appointment_table_id);
+                                                <div class="row">
+                                                  <div class="col-lg-12">
+                                                    <table width="100%" class="table table-striped table-bordered table-hover">
+                                                      <tbody>
+                                                        <?php 
+                                                        //appointment session is done..... this is for viewing of appointment summary
+                                                        $record_detail = $this->pet_management_model->get_prescription_by_appointment_table_id($vets_appointment_today->appointment_table_id);
 
-                                foreach($prescription as $p){
-                                  echo $p->prescription;
-                                }
-                              ?>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                              
-                            </div>
-                          </div>
-                          <!-- /.modal-content -->
-                        </div>
-                        <!-- /.modal-dialog -->
+                                                          foreach($record_detail as $rd){
+                                                             $subjective = $rd->complaints;
+                                                             $objective_and_assessment = $rd->treatment;
+                                                             $plan = $rd->prescription;
+                                                        }?>  
+
+                                                        <tr>
+                                                          <td colspan="2">
+                                                            <div class="row">
+                                                              <div class="col-md-12 ">
+                                                                <!-- Custom Tabs -->
+                                                                <div class="nav-tabs-custom">
+                                                                  <ul class="nav nav-tabs">
+                                                                    <li class="active"><a href="#tab_1<?php echo $vets_appointment_today->appointment_table_id;?>" data-toggle="tab">Subjective</a></li>
+                                                                    <li><a href="#tab_2<?php echo $vets_appointment_today->appointment_table_id;?>" data-toggle="tab">Objective and Assessment</a></li>
+                                                                    <li><a href="#tab_3<?php echo $vets_appointment_today->appointment_table_id;?>" data-toggle="tab">Plan</a></li>
+                                                                    
+                                                                  </ul>
+                                                                  <div class="tab-content">
+                                                                    <div class="tab-pane active" id="tab_1<?php echo $vets_appointment_today->appointment_table_id;?>">
+                                                                      <label>Customer Complaint/ Description : </label> 
+                                                                      <div style="margin-bottom: 25px;"></div>
+
+                                                                    <div class="row">
+                                                                      <div class="col-md-12">
+                                                                        
+                                                                        <div class="form-group">
+                                                                          <p><?php echo $subjective;?></p>
+                                                                        </div>
+                                                                      </div>
+                                                                    </div>                                             
+                                                                    </div>
+                                                                    <!-- /.tab-pane -->
+                                                                    <div class="tab-pane" id="tab_2<?php echo $vets_appointment_today->appointment_table_id;?>">
+                                                                      <label>Treatment : </label> 
+                                                                      <div style="margin-bottom: 25px;"></div>
+                                                                      <div class="row">
+                                                                        <div class="col-md-12">
+                                                                          
+                                                                          <div class="form-group">
+                                                                            <p><?php echo $objective_and_assessment;?></p>
+                                                                          </div>
+                                                                        </div>
+                                                                      </div>                                           
+                                                                    </div>
+                                                                    <!-- /.tab-pane -->
+                                                                    <div class="tab-pane" id="tab_3<?php echo $vets_appointment_today->appointment_table_id;?>">
+                                                                      <label> Prescription: </label> 
+                                                                      <div style="margin-bottom: 25px;"></div>
+                                                                      <div class="row">
+                                                                        <div class="col-md-12">
+                                                                          
+                                                                          <div class="form-group">
+                                                                              <p><?php echo $plan;?></p>
+                                                                          </div>
+                                                                        </div>
+                                                                      </div>                                            
+                                                                    </div>
+                                                                    <!-- /.tab-pane -->
+                                                                  </div>
+                                                                  <!-- /.tab-content -->
+                                                                </div>
+                                                                <!-- nav-tabs-custom -->             
+                                                              </div>
+                                                            </div>   
+                                                          </td>
+                                                        </tr>
+                                                      </tbody>
+                                                             
+                                                    </table>
+                                                  </div>
+                                                </div>
+
+                                              </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                             
+                                            </div>
+                                          </div>
+                                          <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
                       </div>
                       <!-- /.modal -->
+                    <?php }?>
+                    </td>
+
+
+
+
 
 
 
@@ -354,6 +425,63 @@
               <!-- /.box-footer-->
           </div>
 
+        </div>
+
+
+
+        <div class="col-md-3">
+           <div class="box <?php echo $box_color;?> box-solid">
+              <div class="box-header with-border">
+                <h3 class="box-title text-center">Incoming Appointment</h3>
+
+              </div>
+              <div class="box-body">
+                <?php foreach($my_incoming_appointment as $incoming):?>
+                <button class="btn btn-sm btn-info btn-flat btn-block" data-toggle="modal" data-target="#incoming<?php echo $incoming->appointment_table_id?>"><?php echo $incoming->customer_name;?></button>
+                  <div class="modal fade" id="incoming<?php echo $incoming->appointment_table_id?>">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title">Appointment Detail</h4>
+                        </div>
+                        <div class="modal-body">
+                          <table width="100%" class="table table-striped table-bordered table-hover">
+                            <tr>
+                              <td><b>Customer Name: </b></td>
+                              <td><?php echo $incoming->customer_name;?></td>
+                            </tr>
+                            <tr>
+                              <td><b>Pet Name: </b></td>
+                              <td><?php echo $incoming->pet_name;?></td>
+                            </tr>
+                            <tr>
+                              <td><b>Date: </b></td>
+                              <td><?php 
+                                  $date =date_create($incoming->preferredDate);
+                                   echo  $preferred_date= date_format($date,"F d, Y");
+                                  ?>, <?php echo $incoming->preferredtime;?></td>
+                            </tr>
+                            <tr>
+                              <td><b>Complaint/Reason: </b></td>
+                              <td><p><?php echo $incoming->complaints;?></p></td>
+                            </tr>
+                          </table>
+                        </div>
+                        <div class="modal-footer">
+                          
+                        </div>
+                      </div>
+                      <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                  </div>
+                  <!-- /.modal -->
+              <?php endforeach;?>
+              </div>
+              <div class="box-footer"></div>
+            </div>
         </div>
       </div>
      

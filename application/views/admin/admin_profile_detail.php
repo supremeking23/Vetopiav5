@@ -1,5 +1,7 @@
 <?php foreach($theme_color as $t_color){
 
+//not use
+
     $skin_color = $t_color->theme_color;
     $settings_id =$t_color->settings_id;
 

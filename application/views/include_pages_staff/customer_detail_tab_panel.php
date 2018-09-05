@@ -203,7 +203,7 @@
                                  
                                   <td>
                                  <!-- <a href="<?php echo site_url()?>staff/pet_details/<?php echo $cus_pet->pet_table_id?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-warning"><span class="fa fa-paw"></span></a> -->
-                                     <a href="<?php echo site_url()?>staff/pet_details/<?php echo $cus_pet->pet_table_id?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info">View Full Detail</a>
+                                     <a href="<?php echo site_url()?>Staff/Pet_details/<?php echo $cus_pet->pet_table_id?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info">View Full Detail</a>
                                   </td>
                                </tr>
 

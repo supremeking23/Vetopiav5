@@ -140,6 +140,8 @@
                   <tr>
                      <td>
                     <?php echo $meds->medname;?>
+                    <br />
+                    <?php echo $meds->product_unit;?>
                     </td>
                     <td><?php echo $meds->medType;?></td>
                     <td>₱<?php echo $meds->store_price;?></td>
@@ -154,12 +156,12 @@
                         $percentage = $get_decimal * 100;
                 
                    ?>
-                   <?php if($percentage <50 ):?>   
+                   <?php if($percentage <25 ):?>   
                       <span class="badge label-danger"><i class="fa fa-exclamation-circle"></i></span>
                      <?php endif;?>
                     </td>
                     <td>
-                    <a href="<?php echo site_url()?>admin/medicine_details/<?php echo $meds->med_table_id;?>"  class="btn btn-sm btn-fat btn-info"  data-tooltip="tooltip" data-title="View Detail"><span class="fa fa-file-o"></span></a>
+                    <a href="<?php echo site_url()?>Admin/Medicine_details/<?php echo $meds->med_table_id;?>"  class="btn btn-sm btn-fat btn-info"  data-tooltip="tooltip" data-title="View Detail"><span class="fa fa-file-o"></span></a>
 
                     <button type="button" class="btn btn-sm btn-warning btn-flat" data-tooltip="tooltip" data-title="Add Supply" data-toggle="modal" data-target="#addSupply<?php echo $meds->med_table_id;?>">
                <span class="fa fa-plus"></span>
@@ -205,7 +207,7 @@
                                           echo form_label('Expiration Date', 'exp_date','class="control-label"');
                                           ?>
 
-                                          <input type="date" class="form-control"  value="" name="exp_date" required="">
+                                          <input type="date" class="form-control exp_date"  value="" name="exp_date" required="">
 
                                       
                                      </div>   
@@ -219,14 +221,14 @@
 
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-default pull-left btn-flat btn-sm" data-dismiss="modal">Close</button>
                              <?php 
 
                                 $data = array(
                                   'name' => 'submit',
                                   'value' => 'Add',
                                   'id' => 'add_med_btn',
-                                  'class' => 'btn btn-primary',
+                                  'class' => 'btn btn-primary btn-flat btn-sm',
                                 );
 
                               echo form_submit($data);?>
@@ -297,32 +299,26 @@
 <!-- page script -->
 <script>
 
-      $(function(){
-
-        //all are not use
-
-        var check_status = document.querySelector('#check_status').addEventListener('click',function(){
-        // alert('ivan');
-        //alert(check_status.val());
-    });
-      
-
-        function removeSuccessMessage() {
-          setTimeout(function(){ 
-
-          $(".display-success").fadeOut("slow");
-          location.reload();
-           }, 2000);
-         }
+    var dtToday = new Date();
+    
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+    
+    var minDate= year + '-' + month + '-' + day;
 
 
-          //removeSuccessMessage();
-
-
-         //passwordChecker();
-
-         //addAdmin();
-      });
+    console.log("todays date: " + dtToday);
+    console.log("todays month: " + month);
+    console.log("todays day: " + day);
+    console.log("todays year: " + year);
+    console.log("min date: " + minDate);
+    
+    $('.exp_date').attr('min', minDate);  
 
 </script>
 

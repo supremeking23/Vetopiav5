@@ -134,7 +134,8 @@
 
                   <tr>
                      <td>
-                    <?php echo $foods->foodname;?>
+                    <?php echo $foods->foodname;?><br />
+                    <?php echo $foods->product_unit;?>
                     </td>
                     <td>₱<?php echo $foods->store_price;?></td>
                     <td>
@@ -146,13 +147,13 @@
 
                         $percentage = $get_decimal * 100;
                    ?>
-                   <?php  if($percentage <50 ):
+                   <?php  if($percentage <25 ):
                     ?>
                       <span class="badge label-danger"><i class="fa fa-exclamation-circle"></i></span>
                      <?php endif;?>
                     </td>
                     <td>
-                    <a href="<?php echo site_url()?>admin/food_details/<?php echo $foods->food_table_id;?>"  class="btn btn-sm btn-fat btn-info"  data-tooltip="tooltip" data-title="View Detail"><span class="fa fa-file-o"></span></a>
+                    <a href="<?php echo site_url()?>Admin/Food_details/<?php echo $foods->food_table_id;?>"  class="btn btn-sm btn-fat btn-info"  data-tooltip="tooltip" data-title="View Detail"><span class="fa fa-file-o"></span></a>
 
                     <button type="button" class="btn btn-sm btn-warning btn-flat" data-toggle="modal" data-target="#addSupply<?php echo $foods->food_table_id;?>">
                <span class="fa fa-plus"></span>
@@ -201,7 +202,7 @@
                                         echo form_label('Expiration Date', 'exp_date','class="control-label"');
                                         ?>
 
-                                        <input type="date" class="form-control"  value="" name="exp_date" id="exp_date" required="">
+                                        <input type="date" class="form-control exp_date"  value="" name="exp_date" id="" required="">
 
                                     
                                    </div>   
@@ -215,14 +216,14 @@
 
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-default pull-left btn-flat btn-sm" data-dismiss="modal">Close</button>
                              <?php 
 
                                 $data = array(
                                   'name' => 'submit',
                                   'value' => 'Add',
                                   'id' => 'add_food_btn',
-                                  'class' => 'btn btn-primary',
+                                  'class' => 'btn btn-primary btn-flat btn-sm',
                                 );
 
                               echo form_submit($data);?>
@@ -313,34 +314,9 @@
     console.log("todays year: " + year);
     console.log("min date: " + minDate);
     
-    $('#exp_date').attr('min', minDate);  
-
-      $(function(){
-
-        //all are not use
-
-        var check_status = document.querySelector('#check_status').addEventListener('click',function(){
-        // alert('ivan');
-        //alert(check_status.val());
-    });
-      
-
-        function removeSuccessMessage() {
-          setTimeout(function(){ 
-
-          $(".display-success").fadeOut("slow");
-          location.reload();
-           }, 2000);
-         }
+    $('.exp_date').attr('min', minDate);  
 
 
-          //removeSuccessMessage();
-
-
-         //passwordChecker();
-
-         //addAdmin();
-      });
 
 </script>
 

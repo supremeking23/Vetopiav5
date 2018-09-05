@@ -46,9 +46,10 @@
             $article_title = $fla->title;
             $image  = $fla->article_image;
             $library_id = $fla->library_id;
+            $created_by = $fla->created_by;
       }?>
       <h1>
-          Pet Health Care Library <small><?php echo  $article_title;?></small>
+           <?php echo  $article_title;?> <br /><small> By: <i><?php echo $created_by;?> </i></small>
       </h1>
       
     </section>
@@ -56,74 +57,255 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-          <div class="col-md-12">
-            <img width="503" height="" style="margin: 5px auto; display: block;" src="<?php echo site_url()?>assets/images/library/<?php echo $image?>" >
-            <button type="button" class="btn btn-success btn-sm btn-flat" data-toggle="modal" data-target="#changeImage">Change Article Image</button>
-
-              <div class="modal fade" id="changeImage">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title">Change Article Image</h4>
+          <div class="col-md-8">    
+              <div class="box box-default">
+                <div class="box-header">
+                   
+                    <h3 class="box-title"></h3>
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+                     <button type="button" class="btn btn-default btn-sm btn-flat" data-toggle="modal" data-target="#addContent">
+                    <i class="fa fa-plus"></i></button>
                     </div>
-                    
-                    <?php echo form_open_multipart('','id="changeImageArticle"');?>
-                      <div class="modal-body">
-
-                          <div class="alert alert-success display-success_update_image" style="display: none">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                             <div class="success-success_update_image"></div> 
-                          </div>
-
-                           <div class="row">
-                                      <div class="col-md-12">
-                                     
-                                          <?php 
-
-                                          echo form_label('Article Image', 'article_image','class="control-label"');
-                                          ?>
-
-
-
-                                          <input type="file" id="article_image" name="article_image" class="form-control" onchange="document.getElementById('article_Image').src = window.URL.createObjectURL(this.files[0])" required="">
-
-                                         <div id="image_viewer"><img  id="article_Image"  class="img-rounded" alt="" width="100%" height="200" src="" /></div>
-                                     </div>   
-                          </div>
-
-                          <br/>
-                        
-                      </div>
-                      <div class="modal-footer">
-
-                          
-                          <input type="hidden" id="library_id" name="library_id" value="<?php echo $library_id?>">
-                          <input type="hidden" name="article_title" id="article_title" value="<?php echo $article_title?>">
-                         
-                          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                           <?php 
-
-                                          $data = array(
-                                            'name' => 'submit',
-                                            'value' => 'Save',
-                                            'id' => 'save_update_image',
-                                            'class' => 'btn btn-primary btn-sm btn-flat',
-                                          );
-
-                                        echo form_submit($data);?>
-                      </div>
-                  </form>
-                  </div>
-                  <!-- /.modal-content -->
+                <!-- /. tools -->
                 </div>
-                <!-- /.modal-dialog -->
-              </div>
-              <!-- /.modal -->
+                <div class="box-body">
+                   <?php foreach($find_article_contents as $fac):?>
+                   <p><?php echo $fac->article_contents?>
+                     <button type="button" class="btn btn-success btn-sm btn-flat" data-toggle="modal" data-target="#changeContent<?php echo $fac->content_id?>" data-tooltip="tooltip" data-title="Change Content"><i class="fa fa-pencil"></i></button>|<button type="button" class="btn btn-danger btn-sm btn-flat" data-toggle="modal" data-tooltip="tooltip" data-title="Delete Content" data-target="#remove_content<?php echo $fac->content_id;?>"><i class="fa fa-trash"></i></button>
+                   </p>
+
+                  <div class="modal fade" id="changeContent<?php echo $fac->content_id?>">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title">Change Article Content</h4>
+                        </div>
+                       
+                        <?php echo form_open_multipart('','id="changeContentArticle"');?>
+
+                        <div class="modal-body">
 
 
+                            <div class="alert alert-success display-success_article" style="display: none">
+                              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                               <div class="success-message_article"></div> 
+                            </div>
+
+                            <div class="row">
+                                    <div class="col-md-12">
+                                   
+                                        <?php 
+
+                                        echo form_label('', 'article_content','class="control-label"');
+                                        ?>
+
+
+
+                                       <textarea class="form-control textareas" id="article_content_update" name="article_content"><?php echo $fac->article_contents?></textarea>
+                                   </div>   
+                           </div>
+
+                            <input type="hidden" id="content_id" name="content_id" value="<?php echo $fac->content_id?>">
+                            <input type="hidden" name="article_title" id="article_title" value="<?php echo $article_title?>">
+                             
+                        </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal">Close</button>
+                                <?php 
+
+                                        $data = array(
+                                          'name' => 'submit',
+                                          'value' => 'Save',
+                                          'id' => 'save_content',
+                                          'class' => 'btn btn-primary btn-sm btn-flat',
+                                        );
+
+                                      echo form_submit($data);?>
+                              </div>
+
+                        </form>
+
+                      </div>
+                      <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                  </div>
+
+                  <div class="modal fade" id="remove_content<?php echo $fac->content_id;?>">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title">Are you sure?</h4>
+                        </div>
+                        <div class="modal-body">
+
+                          <div class="row">
+                            <div class="col-md-12">
+                                          <!-- ajax bae -->
+                                <div class="alert alert-success display-success_remove_article_content" style="display: none">
+                                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                   <div class="success-success_remove_article_content"></div> 
+                                </div>
+                            </div>
+                          </div>
+                          <div class="confirmation_content"><p>Do you want to delete this content ?</p></div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-danger btn-sm btn-flat remove-content" id="<?php echo $fac->content_id?>" data-articletitle="<?php echo  $article_title;?>">Remove Content</button>
+                        </div>
+                      </div>
+                      <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                  </div>
+                  <!-- /.modal -->
+                   <?php endforeach;?>
+                </div>
+              </div>                
           </div>
+
+            <div class="col-md-4">
+
+                <div class="box box-default">
+                  <div class="box-body">
+                   
+                   <a href="" data-target="#changeImage" data-toggle="modal" data-tooltip="tooltip" data-title="Change Article Image">
+                    <img width="503" height="100" class="img-responsive img-rounded" style="margin: 5px auto; display: block;" src="<?php echo site_url()?>assets/images/library/<?php echo $image?>" >
+                    </a>
+
+                    <div class="modal fade" id="changeImage">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Change Article Image</h4>
+                          </div>
+                          
+                          <?php echo form_open_multipart('','id="changeImageArticle"');?>
+                            <div class="modal-body">
+
+                                <div class="alert alert-success display-success_update_image" style="display: none">
+                                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                   <div class="success-success_update_image"></div> 
+                                </div>
+
+                                 <div class="row">
+                                            <div class="col-md-12">
+                                           
+                                                <?php 
+
+                                                echo form_label('Article Image', 'article_image','class="control-label"');
+                                                ?>
+
+
+
+                                                <input type="file" id="article_image" name="article_image" class="form-control" onchange="document.getElementById('article_Image').src = window.URL.createObjectURL(this.files[0])" required="">
+
+                                               <div id="image_viewer"><img  id="article_Image"  class="img-rounded" alt="" width="100%" height="200" src="" /></div>
+                                           </div>   
+                                </div>
+
+                                <br/>
+                              
+                            </div>
+                            <div class="modal-footer">
+
+                                
+                                <input type="hidden" id="library_id" name="library_id" value="<?php echo $library_id?>">
+                                <input type="hidden" name="article_title" id="article_title" value="<?php echo $article_title?>">
+                               
+                                <button type="button" class="btn btn-default btn-flat btn-sm pull-left" data-dismiss="modal">Close</button>
+                                 <?php 
+
+                                                $data = array(
+                                                  'name' => 'submit',
+                                                  'value' => 'Save',
+                                                  'id' => 'save_update_image',
+                                                  'class' => 'btn btn-primary btn-sm btn-flat',
+                                                );
+
+                                              echo form_submit($data);?>
+                            </div>
+                        </form>
+                        </div>
+                        <!-- /.modal-content -->
+                      </div>
+                      <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
+                    <hr >
+
+                    <h3 class="text-center">Related Article <button type="button" class="btn btn-sm btn-flat btn-default" data-tooltip="tooltip" data-title="Add Related Article" data-toggle="modal" data-target="#addRelatedArticle"><i class="fa fa-plus"></i></button></h3>
+
+                            <div class="modal fade" id="addRelatedArticle">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">Add Related Article</h4>
+                                  </div>
+
+                                  <?php echo form_open_multipart('','id="addRelatedArticleForm"');?>
+
+                                  <div class="modal-body">
+
+
+                                      <div class="alert alert-success display-success_add_related_article" style="display: none">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                         <div class="success-success_add_related_article"></div> 
+                                      </div>                                      
+                                            
+                                            <select name="related_library_id[]" id="related_library_id" class="form-control select2" multiple required style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto; ">
+                                              
+                                              <?php foreach($articles as $a):?>
+                                                <option class="blacks" value="<?php echo $a->library_id?>"><?php echo $a->title;?></option>
+                                              <?php endforeach;?>
+                                             </select>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <input type="hidden" id="library_id" name="library_id" value="<?php echo $library_id?>">
+                                    <input type="hidden" name="article_title" id="article_title" value="<?php echo $article_title?>">
+                                   
+                                    <button type="button" class="btn btn-default btn-flat btn-sm pull-left" data-dismiss="modal">Close</button>
+                                     <?php 
+
+                                                    $data = array(
+                                                      'name' => 'submit',
+                                                      'value' => 'Add',
+                                                      'id' => 'add_related_article',
+                                                      'class' => 'btn btn-primary btn-sm btn-flat',
+                                                    );
+
+                                                  echo form_submit($data);?>                                   
+                                  </div>
+
+                                </form>
+                                </div>
+                                <!-- /.modal-content -->
+                              </div>
+                              <!-- /.modal-dialog -->
+                            </div>
+                            <!-- /.modal -->
+
+                     <ul class="list-unstyled">
+                        <?php foreach($find_related_article as $related):?>
+                         <li><a href="<?php echo site_url()?>Admin/Library_article_detail/<?php echo $related->related_library_id;?>" target="_blank" style="text-decoration: underline;"><?php echo $related->title;?></a></li>
+                        
+                       <?php endforeach;?>
+                      </ul>
+                  </div>
+                 
+                 
+                </div>  
+            </div>
         </div>
 
         <br />
@@ -132,112 +314,11 @@
 
         <br/>
 
-        <?php foreach($find_article_contents as $fac):?>
-          <div class="row">
-            <div class="col-md-12">
-              <p><?php echo $fac->article_contents?><button type="button" class="btn btn-success btn-sm btn-flat" data-toggle="modal" data-target="#changeContent<?php echo $fac->content_id?>">Change Content</button>|<button type="button" class="btn btn-danger btn-sm btn-flat" data-toggle="modal" data-target="#remove_content<?php echo $fac->content_id;?>">Remove Content</button></p>
-            </div>
-          </div>
-
-
-          <div class="modal fade" id="changeContent<?php echo $fac->content_id?>">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title">Change Article Content</h4>
-                </div>
-               
-                <?php echo form_open_multipart('','id="changeContentArticle"');?>
-
-                <div class="modal-body">
-
-
-                    <div class="alert alert-success display-success_article" style="display: none">
-                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                       <div class="success-message_article"></div> 
-                    </div>
-
-                    <div class="row">
-                            <div class="col-md-12">
-                           
-                                <?php 
-
-                                echo form_label('', 'article_content','class="control-label"');
-                                ?>
-
-
-
-                               <textarea class="form-control textareas" id="article_content_update" name="article_content"><?php echo $fac->article_contents?></textarea>
-                           </div>   
-                   </div>
-
-                    <input type="hidden" id="content_id" name="content_id" value="<?php echo $fac->content_id?>">
-                    <input type="hidden" name="article_title" id="article_title" value="<?php echo $article_title?>">
-                     
-                </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                        <?php 
-
-                                $data = array(
-                                  'name' => 'submit',
-                                  'value' => 'Save',
-                                  'id' => 'save_content',
-                                  'class' => 'btn btn-primary btn-sm btn-flat',
-                                );
-
-                              echo form_submit($data);?>
-                      </div>
-
-                </form>
-
-              </div>
-              <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-          </div>
-
-          <div class="modal fade" id="remove_content<?php echo $fac->content_id;?>">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title">Are you sure?</h4>
-                </div>
-                <div class="modal-body">
-
-                  <div class="row">
-                    <div class="col-md-12">
-                                  <!-- ajax bae -->
-                        <div class="alert alert-success display-success_remove_article_content" style="display: none">
-                          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                           <div class="success-success_remove_article_content"></div> 
-                        </div>
-                    </div>
-                  </div>
-                  <div class="confirmation_content"><p>Do you want to delete this content ?</p></div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-danger btn-sm btn-flat remove-content" id="<?php echo $fac->content_id?>" data-articletitle="<?php echo  $article_title;?>">Remove Content</button>
-                </div>
-              </div>
-              <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-          </div>
-          <!-- /.modal -->
-
-          <?php //$this->load->view('include_pages_admin/modify_article_content');?>
-        <?php endforeach;?>
 
 
         <div class="row">
           <div class="col-md-12">
-            <button type="button" class="btn btn-warning btn-sm btn-flat" data-toggle="modal" data-target="#addContent">Add Content</button>
+          
 
                 <div class="modal fade" id="addContent">
                   <div class="modal-dialog">
@@ -277,7 +358,7 @@
                            <input type="hidden" name="article_title" id="article_title" value="<?php echo $article_title?>">
                       </div>
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-default pull-left btn-flat btn-sm" data-dismiss="modal">Close</button>
                               <?php 
 
                                       $data = array(
@@ -305,65 +386,71 @@
 
         <hr style="">
         <div class="row">
-          <div class="col-md-12">
-            <h3>Want to read more ? Visit these link(s) below</h3>
+          <div class="col-md-8">
+
+             <div class="box box-default">
+                <div class="box-header">
+                   
+                    <h3 class="box-title">Want to read more ? Visit these link(s) below</h3>
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+                     <button type="button" class="btn btn-default btn-sm btn-flat" data-toggle="modal" data-target="#addLink" data-tooltip="tooltip" data-title="Add Link">
+                    <i class="fa fa-plus"></i></button>
+                    </div>
+                    <!-- /. tools -->
+                </div>
+                <div class="box-body">
+                  <?php foreach($find_article_links as $fal):?>
+                      <p><a href="<?php echo $fal->web_link?>"><?php echo $fal->web_link?></a><button type="button" class="btn btn-danger btn-sm btn-flat " data-toggle="modal" data-target="#remove_link<?php echo $fal->links_id?>"><i class="fa fa-trash"></i></button></p>
+
+
+                        <div class="modal fade" id="remove_link<?php echo $fal->links_id?>">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Are you sure?</h4>
+                              </div>
+                              <div class="modal-body">
+
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <div class="row">
+                                      <div class="col-md-12">
+                                                    <!-- ajax bae -->
+                                          <div class="alert alert-success display-success_remove_article_link" style="display: none">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                             <div class="success-success_remove_article_link"></div> 
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="confirmation_content"><p>Do you want to delete this link ?</p></div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default pull-left btn-flat btn-sm" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger btn-sm btn-flat remove-link" id="<?php echo $fal->links_id?>" data-articletitle="<?php echo  $article_title;?>">Remove Links</button>
+                              </div>
+                            </div>
+                            <!-- /.modal-content -->
+                          </div>
+                          <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+
+
+                  <?php endforeach;?>
+                </div>
+            </div>
           </div>
         </div>
 
 
-
-
-
-
-        <?php foreach($find_article_links as $fal):?>
-          <div class="row">
-            <div class="col-md-12">
-              <p><a href="<?php echo $fal->web_link?>"><?php echo $fal->web_link?></a><button type="button" class="btn btn-danger btn-sm btn-flat " data-toggle="modal" data-target="#remove_link<?php echo $fal->links_id?>">Remove Links</button></p>
-            </div>
-          </div>
-
-
-          <div class="modal fade" id="remove_link<?php echo $fal->links_id?>">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title">Are you sure?</h4>
-                </div>
-                <div class="modal-body">
-
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="row">
-                        <div class="col-md-12">
-                                      <!-- ajax bae -->
-                            <div class="alert alert-success display-success_remove_article_link" style="display: none">
-                              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                               <div class="success-success_remove_article_link"></div> 
-                            </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="confirmation_content"><p>Do you want to delete this article ?</p></div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-danger btn-sm btn-flat remove-link" id="<?php echo $fal->links_id?>" data-articletitle="<?php echo  $article_title;?>">Remove Links</button>
-                </div>
-              </div>
-              <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-          </div>
-          <!-- /.modal -->
-        <?php endforeach;?>
-
-
         <div class="row">
           <div class="col-md-12">
-              <button type="button" class="btn btn-warning btn-sm btn-flat" data-toggle="modal" data-target="#addLink">Add Link</button>
+              
               
               <div class="modal fade" id="addLink">
                 <div class="modal-dialog">
@@ -404,14 +491,14 @@
                           <input type="hidden" id="library_id" name="library_id" value="<?php echo $library_id?>">
                           <input type="hidden" name="article_title" id="article_title" value="<?php echo $article_title?>">
                          
-                          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal">Close</button>
                            <?php 
 
                                           $data = array(
                                             'name' => 'submit',
                                             'value' => 'Save',
                                             'id' => 'save',
-                                            'class' => 'btn btn-primary',
+                                            'class' => 'btn btn-primary btn-sm btn-flat',
                                           );
 
                                         echo form_submit($data);?>
@@ -482,7 +569,7 @@
       var form_data = new FormData(this);
       $.ajax({
         method:"POST",
-        url:'<?php echo site_url()?>article_controller/update_article_content',
+        url:'<?php echo site_url()?>Article_controller/Update_article_content',
         data:form_data,
         //dataType: 'json',
         contentType: false,
@@ -515,7 +602,7 @@
       //alert(form_data);
       $.ajax({
         method:"POST",
-        url:'<?php echo site_url()?>article_controller/add_article_content',
+        url:'<?php echo site_url()?>Article_controller/Add_article_content',
         data:form_data,
         //dataType: 'json',
         contentType: false,
@@ -532,6 +619,33 @@
       });
     });
 
+    $(document).on('submit', '#addRelatedArticleForm', function(event){
+      
+      event.preventDefault();
+      //$('#action').attr('disabled', 'disabled');
+      var form_data = new FormData(this);
+      //alert(form_data);
+      $.ajax({
+        method:"POST",
+        url:'<?php echo site_url()?>Article_controller/Add_related_article',
+        data:form_data,
+        //dataType: 'json',
+        contentType: false,
+        cache: false,
+        processData:false,
+        success:function(data){
+            $(".display-success_add_related_article").css("display","block");
+            $('#add_related_article').attr("disabled",true);
+            $('#addArticleContent')[0].reset();
+            $(".success-success_add_related_article").html("<p>Related Article has been added successfully</p>");
+            reload();
+        }
+
+      });
+    });
+
+    
+
 
     $(document).on('submit', '#changeImageArticle', function(event){
       
@@ -541,7 +655,7 @@
       //alert(form_data);
       $.ajax({
         method:"POST",
-        url:'<?php echo site_url()?>article_controller/update_article_image',
+        url:'<?php echo site_url()?>Article_controller/Update_article_image',
         data:form_data,
         //dataType: 'json',
         contentType: false,
@@ -572,7 +686,7 @@
       var form_data = new FormData(this);
       $.ajax({
         method:"POST",
-        url:'<?php echo site_url()?>article_controller/add_article_link',
+        url:'<?php echo site_url()?>Article_controller/Add_article_link',
         data:form_data,
         //dataType: 'json',
         contentType: false,
@@ -580,7 +694,7 @@
         processData:false,
         success:function(data){
         
-
+            $('#addArticleLink')[0].reset();
             $(".display-success_add_article_link").css("display","block");
             $(".success-success_add_article_link").html("<p>Article link has been added successfully</p>");
             reload();
@@ -641,7 +755,7 @@
           buttons: ["Oh noez!", true],
         });*/
       $.ajax({
-          url:"<?php echo site_url()?>article_controller/remove_content",
+          url:"<?php echo site_url()?>Article_controller/Remove_content",
           method:"POST",
           data:{content_id:content_id,article_title:article_title},
           success:function(data)
@@ -678,7 +792,7 @@
 
 
          $.ajax({
-          url:"<?php echo site_url()?>article_controller/remove_link",
+          url:"<?php echo site_url()?>Article_controller/Remove_link",
           method:"POST",
           data:{link_id:link_id,article_title:article_title},
           success:function(data)

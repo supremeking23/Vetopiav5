@@ -294,9 +294,11 @@
 
                             $percentage = $get_decimal * 100;
 
-                            if($percentage < 50){
-                              $progress_bar_status = "progress-bar-red";
-                              $data_tooltip_message = "Product count is critical";
+                            if($percentage <= 50){
+                              $progress_bar_status = "progress-bar-warning";
+                              $data_tooltip_message = "";
+                            }else if($percentage <= 25){
+                              $progress_bar_status = "progress-bar-danger";
                             }else{
                                $progress_bar_status = "progress-bar-aqua";
                                $data_tooltip_message = "";
@@ -335,31 +337,75 @@
 
       <!-- /.box -->
 
+
+
       <div class="row">
-              <div class="col-md-12">
-          <!-- LINE CHART -->
+        <div class="col-md-12">
+                    <!-- BAR CHART -->
           <div class="box box-solid <?php echo $box_color?>">
             <div class="box-header with-border">
-              <h3 class="box-title">Sales Chart</h3>
+              <h3 class="box-title">Sales Chart (Sales By Day)</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
-               
+                
               </div>
             </div>
-              <div class="box-body chart-responsive">
-              <div class="chart" id="line-chart" style="height: 300px;"></div>
+            <div class="box-body chart-responsive">
+              <div class="chart" id="bar-chart-day" style="height: 300px;"></div>
             </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
-
-
+        </div>
       </div>
-        <!-- /.col (RIGHT) -->
+
+      <div class="row">
+        <div class="col-md-12">
+                    <!-- BAR CHART -->
+          <div class="box box-solid <?php echo $box_color?>">
+            <div class="box-header with-border">
+              <h3 class="box-title">Sales Chart (Sales By Month)</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                
+              </div>
+            </div>
+            <div class="box-body chart-responsive">
+              <div class="chart" id="bar-chart-month" style="height: 300px;"></div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
       </div>
-   
+
+ 
+
+      <div class="row">
+        <div class="col-md-12">
+                    <!-- BAR CHART -->
+          <div class="box box-solid <?php echo $box_color?>">
+            <div class="box-header with-border">
+              <h3 class="box-title">Sales Chart (Sales By Year)</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                
+              </div>
+            </div>
+            <div class="box-body chart-responsive">
+              <div class="chart" id="bar-chart-year" style="height: 300px;"></div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
 
     </section>
     <!-- /.content -->
@@ -414,13 +460,73 @@ echo $sales = json_encode($chart_data);
 $sales = array();
 foreach($result as $r){
   $datas = array();
-  $datas['x'] = $r['sales_D'];
-  $datas['item1'] = $r['total_am'];
+  $datas['y'] = $r['sales_D'];
+  $datas['a'] = $r['total_am'];
 
 
   //merget the vent array into the return array
   array_push($sales, $datas);
 }
+
+
+
+/// by month
+
+$connect = mysqli_connect("localhost", "root", "", "vetopia_db");
+$query2 = "SELECT MONTHNAME(sales_date) as sales_M,SUM(total_amount) AS 'total_am' FROM tbl_sales group by MONTH(sales_date);";
+$result2 = mysqli_query($connect, $query2);
+
+
+$sales2 = array();
+foreach($result2 as $r2){
+  $datas = array();
+  $datas['y'] = $r2['sales_M'];
+  $datas['a'] = $r2['total_am'];
+
+
+  //merget the vent array into the return array
+  array_push($sales2, $datas);
+}
+
+
+
+
+// By Year
+
+/*$connect = mysqli_connect("localhost", "root", "", "vetopia_db");
+$query3 = "SELECT date(sales_date) as sales_Y,SUM(total_amount) AS 'total_am' FROM tbl_sales group by YEAR(sales_date);";
+$result3 = mysqli_query($connect, $query3);
+
+
+$sales3 = array();
+foreach($result3 as $r3){
+  $datas = array();
+  $datas['x'] = $r3['sales_Y'];
+  $datas['item1'] = $r3['total_am'];
+
+
+  //merget the vent array into the return array
+  array_push($sales3, $datas);
+}*/
+
+
+
+$connect = mysqli_connect("localhost", "root", "", "vetopia_db");
+$query3 = "SELECT YEAR(sales_date) as sales_Y,SUM(total_amount) AS 'total_am' FROM tbl_sales group by YEAR(sales_date);";
+$result3 = mysqli_query($connect, $query3);
+
+
+$sales3 = array();
+foreach($result3 as $r3){
+  $datas = array();
+  $datas['y'] = $r3['sales_Y'];
+  $datas['a'] = $r3['total_am'];
+
+
+  //merget the vent array into the return array
+  array_push($sales3, $datas);
+}
+
 
 //echo json_encode($sales);
 
@@ -443,15 +549,19 @@ foreach ($result as $row) {
 
 
 $datas = json_encode($data);*/
+
+
+
+
 ?>
 
 
 <!-- page script -->
 <script>
 
-    // LINE CHART
-   var line = new Morris.Line({
-      element: 'line-chart',
+    // LINE CHART   Tago muna... try natin  ung bar graph lang
+  /* var line = new Morris.Line({
+      element: 'line-chart-sales-day',
       resize: true,
       data: 
         <?php echo json_encode($sales);?>
@@ -464,8 +574,82 @@ $datas = json_encode($data);*/
     });
 
 
+    // LINE CHART
+   var line2 = new Morris.Line({
+      element: 'line-chart-sales-month',
+      resize: true,
+      data: 
+        <?php echo json_encode($sales2);?>
+      ,
+      xkey: 'x',
+      ykeys: ['item1'],
+      labels: ['Sales'],
+      lineColors: ['#3c8dbc'],
+      hideHover: 'auto'
+    });
+
+    // LINE CHART
+   var line3 = new Morris.Line({
+      element: 'line-chart-sales-year',
+      resize: true,
+      data: 
+        <?php echo json_encode($sales3);?>
+      ,
+      xkey: 'x',
+      ykeys: ['item1'],
+      labels: ['Sales'],
+      lineColors: ['#3c8dbc'],
+      hideHover: 'auto'
+    });*/
 
 
+
+    //BAR CHART
+
+    /*
+     [
+        {y: '2006', a: 100, b: 90},
+        {y: '2007', a: 75, b: 65},
+        {y: '2008', a: 50, b: 40},
+        {y: '2009', a: 75, b: 65},
+        {y: '2010', a: 50, b: 40},
+        {y: '2011', a: 75, b: 65},
+        {y: '2012', a: 100, b: 90}
+      ],*/
+
+    var bar1 = new Morris.Bar({
+      element: 'bar-chart-day',
+      resize: true,
+      data:<?php echo json_encode($sales);?>,
+      barColors: ['#00a65a'],
+      xkey: 'y',
+      ykeys: ['a'],
+      labels: ['Total sales for this day'],
+      hideHover: 'auto'
+    });
+
+    var bar2 = new Morris.Bar({
+      element: 'bar-chart-month',
+      resize: true,
+      data:<?php echo json_encode($sales2);?>,
+      barColors: ['#00a65a'],
+      xkey: 'y',
+      ykeys: ['a'],
+      labels: ['Total sales for this month'],
+      hideHover: 'auto'
+    });
+
+
+    var bar3 = new Morris.Bar({
+      element: 'bar-chart-year',
+      resize: true,
+      data:<?php echo json_encode($sales3);?>,
+      barColors: ['#00a65a'],
+      xkey: 'y',
+      ykeys: ['a'],
+      labels: ['Total sales for this year'],
+      hideHover: 'auto'
+    });
 
 
 

@@ -150,7 +150,7 @@
                         <td> <?php echo $pets->firstname .' '. $pets->middlename .' '. $pets->lastname;?></td>
                        
                         <td>
-                        <a href="<?php echo site_url()?>admin/pet_details/<?php echo $pets->pet_table_id;?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info">View Full Detail</a>
+                        <a href="<?php echo site_url()?>Admin/Pet_details/<?php echo $pets->pet_table_id;?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info">View Full Detail</a>
                           
                         </td>
                      </tr>

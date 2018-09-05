@@ -103,7 +103,7 @@
                       <td><?php echo $article->title;?></td>
                       <td><?php echo substr($article->content ,0, 100)." ...";?></td>
                       <td><?php echo $article->created_by;?></td>
-                      <td><a href="<?php echo site_url()?>veterinarian/library_article_detail/<?php echo $article->library_id?>" class="btn btn-info btn-sm btn-flat">Read Article</a></td>
+                      <td><a href="<?php echo site_url()?>Veterinarian/Library_article_detail/<?php echo $article->library_id?>" class="btn btn-info btn-sm btn-flat">Read Article</a></td>
                     </tr>
                   <?php endforeach;?>
                 </tbody>
