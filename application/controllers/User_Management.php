@@ -308,7 +308,7 @@ class User_Management extends CI_Controller {
          
         
         //for email  uncomment if you are connected to the internet
-        /*$config = array(
+        $config = array(
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
             'smtp_port' => 465,
@@ -342,7 +342,7 @@ class User_Management extends CI_Controller {
         }
         
     
-        */
+        
 
         $this->session->set_flashdata('add_customer_success','New Customer has been added');
         redirect('Admin/Customers');

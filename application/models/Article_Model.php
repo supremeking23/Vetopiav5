@@ -8,7 +8,7 @@ class Article_Model extends CI_Model {
 
 
     public function add_symptoms($data){
-        $this->db->insert('tbl_possible_ symptoms',$data);
+        $this->db->insert('tbl_possible_symptoms',$data);
     }
 
     public function add_article($data){

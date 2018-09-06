@@ -172,10 +172,12 @@ class Article_Controller extends CI_Controller {
 
 
         //insert it on the list of possible symttomps
-        $array_symptoms_data = array(
-            
+       /* $array_symptoms_data = array(
+            'symptoms' => $title,
+            'symptoms_status' => 'Active',
         );
-        $this->article_model->add_symptoms($array_symptoms_data);
+
+        $this->article_model->add_symptoms($array_symptoms_data);*/
 
     	//insert tbl_library_content
     	$all_contents ="";

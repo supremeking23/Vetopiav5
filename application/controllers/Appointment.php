@@ -235,8 +235,8 @@ class Appointment extends CI_Controller {
 
 
 
-	   /* i oopen lang pag may internet
-        //for email
+	  
+        //for email i oopen lang pag may internet
         $config = array(
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
@@ -270,7 +270,7 @@ class Appointment extends CI_Controller {
             show_error($this->email->print_debugger());
         }
 
-        */
+        
 
 
 		$this->session->set_flashdata('assigned_vet','A veterinarian has been assigned to this appointment');
@@ -539,8 +539,8 @@ class Appointment extends CI_Controller {
 		$this->appointment_management->update_appointment_detail($appointment_table_id,$data);
 
 
-		/* Ioopen lang pag may internet
-        //for email
+
+        //for email Ioopen lang pag may internet
         $config = array(
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
@@ -574,7 +574,7 @@ class Appointment extends CI_Controller {
             show_error($this->email->print_debugger());
         }
 
-        */
+        
 
        
 		$this->session->set_flashdata('assigned_vet','A veterinarian has been assigned to this appointment');
