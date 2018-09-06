@@ -77,11 +77,17 @@
       <div class="row">
           <div class="col-md-12">
 
-         
+               <div class="alert alert-success display-success_change_status" style="display: none">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                   <div class="success-message_change_status"></div> 
+                </div> 
             
 
           </div>
       </div>
+
+
+
      
       <div class="row">
         <div class="col-md-12">
@@ -97,6 +103,7 @@
               <table  class="datatable_view_pettype table table-bordered table-striped">
                 <thead>
                 <tr>
+                  <th>Pet Type Status</th>
                   <th>Pet Type</th>
                   <th>Number of Pet Breed</th>
                   <th>Number of Pets</th>
@@ -106,6 +113,21 @@
                    
                    <?php foreach($pettype_list as $pl):?>
                     <tr>
+                      <td>
+                           <div class="row">
+                              <div class="form-group">
+                                  <div class="col-sm-6">
+                                    <div class="checkbox">
+                                      <label class="switch">
+
+                                        <input type="checkbox" class="status_changer" data-pettype_id="<?php echo $pl->pettype_id;?>" data-status="<?php echo $pl->pettype_status?>" data-pettype="<?php echo $pl->pettype;?>" <?php echo ($pl->pettype_status == "Active") ?  "checked": ""; ?> > 
+                                        <span class="slider round"></span>
+                                      </label>
+                                    </div>
+                                  </div>    
+                              </div>
+                            </div>
+                      </td>
                       <td><?php echo $pl->pettype;?></td>
 
 
@@ -242,6 +264,48 @@ $(function(){
                 ]
             } );
 
+
+
+
+
+ //refresh after 2 seconds
+    function reload(){
+     
+      setTimeout(function(){ 
+
+          $(".display-success").fadeOut("fast");
+          location.reload();
+           }, 2000);
+    }
+
+
+
+
+     $('.status_changer').on("change",function(){
+     
+      var status    = $(this).data("status");
+      var pettype_id = $(this).data("pettype_id");
+      var pettype = $(this).data("pettype");
+
+      var new_status = "";
+      if(status == "Active"){
+          new_status = "Inactive";
+      }else{
+          new_status = "Active";
+      }
+      //alert('status is ' + libraryid);
+      $.ajax({
+          url : "<?php echo site_url('Pet_management/Change_status_pettype');?>",
+          method : "POST",
+
+          data : {pettype_id: pettype_id,status:new_status,pettype:pettype},
+          success: function(data){
+             $(".display-success_change_status").css("display","block");
+             $(".success-message_change_status").html("<p> " +pettype + " status has been updated to "+ new_status  +"</p>");
+             reload();
+          }
+      });
+    })
 
 });
    

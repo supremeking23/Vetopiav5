@@ -125,9 +125,29 @@ class Pet_Management_Model extends CI_Model {
         return $result_set;
     }
 
+    public function get_all_pettype_active(){
+        $this->db->select('*');
+        $this->db->from('tbl_pettype');
+        
+        $this->db->where('pettype_status','Active');
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;        
+    }
+
+
+
+    public function update_pettype_status($pettype_id,$data){
+      $this->db->where('pettype_id', $pettype_id);
+      $this->db->update('tbl_pettype', $data);
+    }
+
 
     //get all active pettype
-    public function get_all_active_pettype(){
+    /*public function get_all_active_pettype(){
 
         $active = "Active";
         $this->db->select('*');
@@ -140,7 +160,7 @@ class Pet_Management_Model extends CI_Model {
         $result_set = $query->result();
 
         return $result_set;
-    }    
+    }    */
 
 
     public function count_pets_by_pettype($pettype_id){

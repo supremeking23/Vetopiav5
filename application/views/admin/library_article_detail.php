@@ -47,11 +47,15 @@
             $image  = $fla->article_image;
             $library_id = $fla->library_id;
             $created_by = $fla->created_by;
-      }?>
-      <h1>
-           <?php echo  $article_title;?> <br /><small> By: <i><?php echo $created_by;?> </i></small>
-      </h1>
-      
+            $date_created = $fla->date_created;
+      }
+        $date =date_create($date_created);
+        $date_created_format = date_format($date,"F d, Y ");
+
+      ?>
+      <h1><?php echo $article_title;?></h1>
+      <h3><small>By: <i><?php echo $created_by;?> </i></small></h3>
+      <h4><small>Date Published: <i><?php echo $date_created_format;?></i></small></h4>
     </section>
 
     <!-- Main content -->

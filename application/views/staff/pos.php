@@ -376,14 +376,14 @@
             var dataSelectorVal = "";
             switch (categoryName) {
             case "Item":
-                dataSelectorVal = "h4[data-type='Item']";
+                dataSelectorVal = "h5[data-type='Item']";
                 //alert(3);
                 break;
             case "Food":
-                dataSelectorVal = "h4[data-type='Food']";
+                dataSelectorVal = "h5[data-type='Food']";
                 break;
             case "Medicine":
-                dataSelectorVal = "h4[data-type='Medicine']";
+                dataSelectorVal = "h5[data-type='Medicine']";
                 break;
             }
             // use the has() function to select the li tags that are product items

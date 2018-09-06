@@ -358,7 +358,7 @@ class Admin extends CI_Controller {
 		$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
 
 		$data['all_pets'] = $this->pet_management_model->get_all_pet();	
-		$data['all_pettype'] = $this->pet_management_model->get_all_pettype();
+		$data['all_pettype'] = $this->pet_management_model->get_all_pettype_active();  //get_all_pettype_active  get_all_pettype
 		$data['all_customers'] = $this->customer_management->get_all_customer();
 
 		$name = $this->session->userdata('complete_name');
@@ -734,7 +734,9 @@ class Admin extends CI_Controller {
 
 				$data['numberofpets'] = $this->pet_management_model->count_pet_of_customer($id);
 				$data['customer_details'] = $this->customer_management->get_customer_by_id($id);
-				$data['all_pettype'] = $this->pet_management_model->get_all_pettype();
+				//$data['all_pettype'] = $this->pet_management_model->get_all_pettype();
+
+				$data['all_pettype'] = $this->pet_management_model->get_all_pettype_active(); 
 				//retrieve pets of this customer
 
 				$name = $this->session->userdata('complete_name');

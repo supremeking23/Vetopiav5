@@ -211,6 +211,46 @@ class Pet_Management extends CI_Controller {
         echo json_encode(['code'=>200, 'msg'=>$msg]);
     }
 
+
+
+    public function Change_status_pettype(){
+        echo $status = $this->input->post("status");
+        echo $pettype_id = $this->input->post("pettype_id");
+       echo $pettype = $this->input->post("pettype");
+
+
+        $data = array(
+            'pettype_status' => $status,
+
+        );
+
+        $this->pet_management_model->update_pettype_status($pettype_id,$data);
+
+
+
+        $name = $this->session->userdata('complete_name');
+        $log_usertype =  $this->session->userdata('account_type');
+        $log_userID = $this->session->userdata("user_id");
+        $log_action = "Change Status of  Pet type  " . $pettype . " to " . $status;
+        
+        $now = date('Y-m-d H:i:s');
+        $logs = array(
+            "log_user" => $name,
+            "log_usertype" => $log_usertype,
+            "log_userID" => $log_userID,
+            "log_action" => $log_action,
+            "log_date" => $now,
+        );
+
+
+
+        $this->admin_management->insert_new_log($logs);
+
+
+        $msg = "Pet type status has been updated";
+        echo json_encode(['code'=>200, 'msg'=>$msg]);
+    }
+
    /* public function add_pet_breed(){
         //var_dump($this->input->post());
 

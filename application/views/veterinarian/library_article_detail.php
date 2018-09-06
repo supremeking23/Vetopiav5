@@ -49,7 +49,11 @@
               $created_by = $fla->created_by;
               $user_type = $fla->user_type;
               $user_id = $fla->user_id;
+              $date_created = $fla->date_created;
             }
+        $date =date_create($date_created);
+        $date_created_format = date_format($date,"F d, Y ");
+
 
             $session_user_id =$this->session->userdata('user_id');
             if($session_user_id  == $user_id){
@@ -58,10 +62,10 @@
               $is_editable = 0;
             }
       ?>
-      <h1>
-          <?php echo  $article_title;?> <br /><small> By: <i><?php echo $created_by;?> </i></small>
-          <input type="hidden" name="is_editable" id="is_editable" value="<?php echo $is_editable;?>">
-      </h1>
+
+      <h1><?php echo $article_title;?><input type="hidden" name="is_editable" id="is_editable" value="<?php echo $is_editable;?>"></h1>
+      <h3><small>By: <i><?php echo $created_by;?> </i></small></h3>
+      <h4><small>Date Published: <i><?php echo $date_created_format;?></i></small></h4>
       
     </section>
 

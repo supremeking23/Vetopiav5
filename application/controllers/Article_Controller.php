@@ -153,6 +153,8 @@ class Article_Controller extends CI_Controller {
     	echo $image = $image;
     	echo "<br />";
 
+        $now = date('Y-m-d H:i:s');
+
     	//insert muna sa tbl_pet_library
     	$array_insert_library = array(
     		'title' => $title,
@@ -162,10 +164,18 @@ class Article_Controller extends CI_Controller {
             'user_type' => $user_type,
             'user_id' => $user_id,
             'user_table_id' => $user_table_id, 
+            'date_created' => $now,
     	);
 
     	$this->article_model->add_article($array_insert_library);
     	$library_id_last = $this->db->insert_id();
+
+
+        //insert it on the list of possible symttomps
+        $array_symptoms_data = array(
+            
+        );
+        $this->article_model->add_symptoms($array_symptoms_data);
 
     	//insert tbl_library_content
     	$all_contents ="";

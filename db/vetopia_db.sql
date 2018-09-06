@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2018 at 09:31 PM
+-- Generation Time: Sep 06, 2018 at 11:51 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -124,7 +124,8 @@ INSERT INTO `tbl_appointments` (`appointment_table_id`, `appointment_id`, `custo
 (82, '#1809041152159', 'C1808260134527', 17, 'Carl Vincent Lorenzo Echanez', '2018-09-05', '9:00 am - 10:00 am', 'ivan', 'P1808260139232', 'Dog', 'Chihuahua', '16 Years old', 1, 'Done', '2018-09-04 23:52:15', 'V1808211104490', 'Carlos Almonds Valdez', '<p>hi</p>', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '2.00', '3000.00', '0.00'),
 (83, '#1809041157433', 'C1808260210291', 28, 'Sandra Abdul Dela Cruz', '2018-09-05', '1: 00pm - 2:00 pm', 'Brock', 'P1809031155058', 'Cat', 'Ragdoll', '2 Years old', 1, 'Cancelled', '2018-09-04 23:57:43', 'V1808211104221', 'Recardo Lebron  James', '<p>follow up checkup</p>', '<p>icancel ko nalang</p>', '2018-09-04 23:58:00', 0, '0000-00-00 00:00:00', '0.00', '0.00', '0.00'),
 (84, '#1809041158396', 'C1808260210291', 28, 'Sandra Abdul Dela Cruz', '2018-09-05', '12:00 nn - 1:00 pm', 'Brock', 'P1809031155058', 'Cat', 'Ragdoll', '2 Years old', 1, 'Done', '2018-09-04 23:58:39', 'V1808211104490', 'Carlos Almonds Valdez', '<p>follow up checkup</p>', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '111.00', '200.00', '89.00'),
-(85, '#1809051202118', 'C1808211035448', 20, 'Lee Min Horse', '2018-09-06', '9:00 am - 10:00 am', 'Helen', 'P1809020130356', 'Cat', 'Maine Coon', '-1 Years old', 0, 'On-Process', '2018-09-05 00:02:11', 'V1808211104490', 'Carlos Almonds Valdez', '<p>hahhaahha</p>', '', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '0.00', '0.00', '0.00');
+(85, '#1809051202118', 'C1808211035448', 20, 'Lee Min Horse', '2018-09-06', '9:00 am - 10:00 am', 'Helen', 'P1809020130356', 'Cat', 'Maine Coon', '-1 Years old', 0, 'Done', '2018-09-05 00:02:11', 'V1808211104490', 'Carlos Almonds Valdez', '<p>hahhaahha</p>', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '268.00', '300.00', '32.00'),
+(86, '#1809060211501', 'C1808211035448', 13, 'Lee Min Horse', '2018-09-10', '11:00 am - 12: 00 nn', 'Arnelsz', 'P1808221021292', 'Cat', 'Ragdoll', '3 Years old', 1, 'On-Process', '2018-09-06 14:11:50', 'V1808211104490', 'Carlos Almonds Valdez', '<p>fdfdfxxcvc</p>', '', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '0.00', '0.00', '0.00');
 
 -- --------------------------------------------------------
 
@@ -192,7 +193,8 @@ INSERT INTO `tbl_checkupdetails` (`checkup_id`, `assessment_date`, `appointment_
 (73, '2018-09-04 17:28:09', 78, '#1809040211069', '2018-09-04', '4: 00 pm - 5: 00pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1809031155058', 'Brock', '2 Years old', '<p>sdsdassasd</p>', '<p></p><p>Treatment includes:<br></p><p></p><ol><li>Deworming</li><li>aesthetics</li><li>singleton</li><li>abbreviation</li><li>teraforming&nbsp;</li></ol><p></p><p></p>', '<p>bring brock for fallow up check up in <b><u>2 weeks</u></b> time</p><p>buy the following medicine for home medication</p><p></p><ol><li>asperin</li><li>cleve&nbsp;</li><li>byfost</li><li>stormbreaker</li></ol><p></p>'),
 (74, '2018-09-04 23:19:19', 80, '#1809040707044', '2018-09-04', '4: 00 pm - 5: 00pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808310205079', 'Ken', '9 Years old', '<p>si ken ken</p>', '<p>ken is physically healthy but i have observe that he is pale</p><p>and weak... must be the side effect of the atibiotics that we use to him</p><p><br></p>', '<p>patient must be lock on his room for several days to avoid infection</p>'),
 (75, '2018-09-05 23:53:35', 82, '#1809041152159', '2018-09-05', '9:00 am - 10:00 am', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808260139232', 'ivan', '16 Years old', '<p>hi</p>', '<p>oo na</p>', '<p>edi wow</p>'),
-(76, '2018-09-05 23:54:04', 84, '#1809041158396', '2018-09-05', '12:00 nn - 1:00 pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1809031155058', 'Brock', '2 Years old', '<p>follow up checkup</p>', '<p>progressive enchantment</p>', '<p>like we use to do</p>');
+(76, '2018-09-05 23:54:04', 84, '#1809041158396', '2018-09-05', '12:00 nn - 1:00 pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1809031155058', 'Brock', '2 Years old', '<p>follow up checkup</p>', '<p>progressive enchantment</p>', '<p>like we use to do</p>'),
+(77, '2018-09-06 14:20:00', 85, '#1809051202118', '2018-09-06', '9:00 am - 10:00 am', 'Carlos Almonds Valdez', 'V1808211104490', 'P1809020130356', 'Helen', '-1 Years old', '<p>hahhaahha</p>', '<p>expensive</p>', '<p>onwsasd</p>');
 
 -- --------------------------------------------------------
 
@@ -367,7 +369,247 @@ INSERT INTO `tbl_logs` (`log_id`, `log_user`, `log_usertype`, `log_userID`, `log
 (4420, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Sales Report', '2018-09-06 03:22:19'),
 (4421, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Sales Report', '2018-09-06 03:22:41'),
 (4422, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Sales Report', '2018-09-06 03:27:11'),
-(4423, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Sales Report', '2018-09-06 03:28:23');
+(4423, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Sales Report', '2018-09-06 03:28:23'),
+(4424, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-09-06 14:07:10'),
+(4425, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-06 14:07:10'),
+(4426, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Sales Report', '2018-09-06 14:07:37'),
+(4427, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Sales Report', '2018-09-06 14:09:30'),
+(4428, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-06 14:10:02'),
+(4429, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'User Login', '2018-09-06 14:11:19'),
+(4430, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-06 14:11:19'),
+(4431, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-06 14:11:50'),
+(4432, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-06 14:11:59'),
+(4433, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet Health Care Library', '2018-09-06 14:16:30'),
+(4434, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Products List (Medicines)', '2018-09-06 14:16:58'),
+(4435, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-06 14:18:39'),
+(4436, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-06 14:19:31'),
+(4437, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-06 14:20:00'),
+(4438, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Logout', '2018-09-06 14:20:14'),
+(4439, 'Lee Min Horse', 'Customer', 'C1808211035448', 'User Login', '2018-09-06 14:20:41'),
+(4440, 'Lee Min Horse', 'Customer', 'C1808211035448', 'View My Pets Section', '2018-09-06 14:20:44'),
+(4441, 'Lee Min Horse', 'Customer', 'C1808211035448', 'View Pet details', '2018-09-06 14:21:09'),
+(4442, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-09-06 14:21:43'),
+(4443, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-06 14:21:43'),
+(4444, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-06 14:21:47'),
+(4445, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-06 14:21:51'),
+(4446, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Print Appointment Detail', '2018-09-06 14:22:39'),
+(4447, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Print Appointment Detail', '2018-09-06 14:22:39'),
+(4448, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-06 14:22:41'),
+(4449, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Print Appointment Detail', '2018-09-06 14:22:43'),
+(4450, 'Lee Min Horse', 'Customer', 'C1808211035448', 'User Logout', '2018-09-06 14:23:33'),
+(4451, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-09-06 14:23:38'),
+(4452, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-06 14:23:38'),
+(4453, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 14:54:46'),
+(4454, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-09-06 14:54:48'),
+(4455, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-09-06 14:55:34'),
+(4456, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-09-06 14:55:42'),
+(4457, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-09-06 14:55:58'),
+(4458, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-09-06 14:56:06'),
+(4459, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-09-06 14:56:07'),
+(4460, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-09-06 14:56:24'),
+(4461, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-09-06 14:56:55'),
+(4462, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-09-06 14:56:57'),
+(4463, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-09-06 14:57:14'),
+(4464, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-09-06 14:57:34'),
+(4465, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet Health Care Library', '2018-09-06 14:57:49'),
+(4466, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Inventory', '2018-09-06 14:57:51'),
+(4467, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-09-06 14:59:01'),
+(4468, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer list', '2018-09-06 15:09:36'),
+(4469, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-09-06 15:09:38'),
+(4470, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet Health Care Library', '2018-09-06 15:12:01'),
+(4471, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'Add article in Pet Health Care Library', '2018-09-06 15:13:58'),
+(4472, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet Health Care Library', '2018-09-06 15:14:00'),
+(4473, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Inventory', '2018-09-06 15:14:03'),
+(4474, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'Add Content of  article Kennel Cough', '2018-09-06 15:14:19'),
+(4475, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Inventory', '2018-09-06 15:14:21'),
+(4476, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'User Logout', '2018-09-06 15:14:32'),
+(4477, 'Lee Min Horse', 'Customer', 'C1808211035448', 'User Login', '2018-09-06 15:14:38'),
+(4478, 'Lee Min Horse', 'Customer', 'C1808211035448', 'Read Article', '2018-09-06 15:14:46'),
+(4479, 'Lee Min Horse', 'Customer', 'C1808211035448', 'Read Article', '2018-09-06 15:15:07'),
+(4480, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 15:15:59'),
+(4481, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-09-06 15:16:01'),
+(4482, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-09-06 15:17:14'),
+(4483, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-06 15:18:22'),
+(4484, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer list', '2018-09-06 15:18:26'),
+(4485, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Sales Report', '2018-09-06 15:19:30'),
+(4486, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View logs', '2018-09-06 15:20:32'),
+(4487, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Sales Report', '2018-09-06 15:20:40'),
+(4488, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-09-06 15:21:28'),
+(4489, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Sales Report', '2018-09-06 15:21:31'),
+(4490, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-09-06 15:21:35'),
+(4491, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-06 15:22:06'),
+(4492, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 15:24:35'),
+(4493, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-09-06 15:24:41'),
+(4494, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 15:24:43'),
+(4495, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-09-06 15:24:46'),
+(4496, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 15:24:48'),
+(4497, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 15:25:48'),
+(4498, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-09-06 15:25:51'),
+(4499, 'Lee Min Horse', 'Customer', 'C1808211035448', 'Read Article', '2018-09-06 15:26:08'),
+(4500, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Logout', '2018-09-06 15:26:17'),
+(4501, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'User Login', '2018-09-06 15:26:34'),
+(4502, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-06 15:26:35'),
+(4503, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet Health Care Library', '2018-09-06 15:26:38'),
+(4504, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Inventory', '2018-09-06 15:26:39'),
+(4505, 'Lee Min Horse', 'Customer', 'C1808211035448', 'Read Article', '2018-09-06 15:27:00'),
+(4506, 'Lee Min Horse', 'Customer', 'C1808211035448', 'Read Article', '2018-09-06 15:27:48'),
+(4507, 'Lee Min Horse', 'Customer', 'C1808211035448', 'Read Article', '2018-09-06 15:28:17'),
+(4508, 'Lee Min Horse', 'Customer', 'C1808211035448', 'Read Article', '2018-09-06 15:29:18'),
+(4509, 'Lee Min Horse', 'Customer', 'C1808211035448', 'Read Article', '2018-09-06 15:29:31'),
+(4510, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Inventory', '2018-09-06 15:29:50'),
+(4511, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'Add Content of  article Kennel Cough', '2018-09-06 15:30:16'),
+(4512, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Inventory', '2018-09-06 15:30:18'),
+(4513, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'User Login', '2018-09-06 15:31:31'),
+(4514, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-06 15:31:31'),
+(4515, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet Health Care Library', '2018-09-06 15:31:37'),
+(4516, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Inventory', '2018-09-06 15:31:47'),
+(4517, 'Lee Min Horse', 'Customer', 'C1808211035448', 'Read Article', '2018-09-06 15:32:37'),
+(4518, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'Update Image of  article Kennel Cough', '2018-09-06 15:35:09'),
+(4519, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Inventory', '2018-09-06 15:35:11'),
+(4520, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Products List (Medicines)', '2018-09-06 15:35:28'),
+(4521, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'Add Content of  article Kennel Cough', '2018-09-06 15:37:01'),
+(4522, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Inventory', '2018-09-06 15:37:03'),
+(4523, 'Lee Min Horse', 'Customer', 'C1808211035448', 'Read Article', '2018-09-06 15:37:09'),
+(4524, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'Add Content of  article Kennel Cough', '2018-09-06 15:38:07'),
+(4525, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Inventory', '2018-09-06 15:38:09'),
+(4526, 'Lee Min Horse', 'Customer', 'C1808211035448', 'Read Article', '2018-09-06 15:38:14'),
+(4527, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-09-06 15:38:37'),
+(4528, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Inventory', '2018-09-06 15:38:51'),
+(4529, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Inventory', '2018-09-06 15:40:01'),
+(4530, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'Add Website Link of  article Kennel Cough', '2018-09-06 15:40:31'),
+(4531, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Inventory', '2018-09-06 15:40:33'),
+(4532, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet Health Care Library', '2018-09-06 15:41:12'),
+(4533, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'Add article in Pet Health Care Library', '2018-09-06 15:43:21'),
+(4534, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet Health Care Library', '2018-09-06 15:43:24'),
+(4535, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Inventory', '2018-09-06 15:43:27'),
+(4536, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'Add Content of  article Anaplasmosis', '2018-09-06 15:43:44'),
+(4537, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Inventory', '2018-09-06 15:43:46'),
+(4538, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'Add Content of  article Anaplasmosis', '2018-09-06 15:43:56'),
+(4539, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Inventory', '2018-09-06 15:43:59'),
+(4540, 'Lee Min Horse', 'Customer', 'C1808211035448', 'Read Article', '2018-09-06 15:44:12'),
+(4541, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 15:46:29'),
+(4542, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add article in Pet Health Care Library', '2018-09-06 15:47:14'),
+(4543, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 15:47:17'),
+(4544, 'Lee Min Horse', 'Customer', 'C1808211035448', 'Read Article', '2018-09-06 15:47:20'),
+(4545, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of  article Ehrlichia  to Inactive', '2018-09-06 15:50:16'),
+(4546, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 15:50:18'),
+(4547, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of  article Ehrlichia  to Active', '2018-09-06 15:50:24'),
+(4548, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 15:50:26'),
+(4549, 'Lee Min Horse', 'Customer', 'C1808211035448', 'User Logout', '2018-09-06 15:51:37'),
+(4550, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'User Login', '2018-09-06 15:51:42'),
+(4551, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-09-06 15:51:42'),
+(4552, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-09-06 15:54:36'),
+(4553, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-09-06 15:54:38'),
+(4554, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-09-06 15:54:42'),
+(4555, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-09-06 15:54:45'),
+(4556, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-09-06 15:54:50'),
+(4557, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-09-06 15:54:51'),
+(4558, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-09-06 15:54:52'),
+(4559, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-09-06 15:54:54'),
+(4560, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-09-06 15:54:55'),
+(4561, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-09-06 15:55:19'),
+(4562, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-09-06 15:55:24'),
+(4563, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Breed List', '2018-09-06 15:55:38'),
+(4564, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-09-06 15:56:10'),
+(4565, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-09-06 15:56:59'),
+(4566, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-09-06 15:58:00'),
+(4567, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-09-06 15:59:41'),
+(4568, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-09-06 15:59:43'),
+(4569, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-09-06 15:59:53'),
+(4570, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-09-06 15:59:58'),
+(4571, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-09-06 16:07:08'),
+(4572, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Services', '2018-09-06 16:09:25'),
+(4573, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-09-06 16:18:23'),
+(4574, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-09-06 16:18:40'),
+(4575, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-09-06 16:18:49'),
+(4576, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-09-06 16:18:54'),
+(4577, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-09-06 16:18:55'),
+(4578, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-09-06 16:18:58'),
+(4579, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-09-06 16:19:00'),
+(4580, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-09-06 16:20:25'),
+(4581, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-09-06 16:22:05'),
+(4582, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-09-06 16:22:07'),
+(4583, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-09-06 16:22:08'),
+(4584, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-09-06 16:27:38'),
+(4585, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-09-06 16:27:42'),
+(4586, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-09-06 16:27:47'),
+(4587, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-09-06 16:30:54'),
+(4588, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-09-06 16:31:02'),
+(4589, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-09-06 16:32:57'),
+(4590, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-09-06 16:32:59'),
+(4591, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-06 16:33:20'),
+(4592, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-09-06 16:33:48'),
+(4593, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Handle POS', '2018-09-06 16:34:05'),
+(4594, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-09-06 16:34:06'),
+(4595, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-06 16:34:09'),
+(4596, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-06 16:34:47'),
+(4597, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-06 16:35:05'),
+(4598, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-06 16:35:25'),
+(4599, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-06 16:35:54'),
+(4600, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-06 16:36:28'),
+(4601, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-09-06 16:36:54'),
+(4602, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-06 16:36:56'),
+(4603, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-06 16:37:45'),
+(4604, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-09-06 16:37:55'),
+(4605, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Handle POS', '2018-09-06 16:38:02'),
+(4606, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-09-06 16:38:03'),
+(4607, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-06 16:38:07'),
+(4608, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-09-06 16:38:16'),
+(4609, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Handle POS', '2018-09-06 16:38:24'),
+(4610, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-09-06 16:38:24'),
+(4611, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-06 16:38:26'),
+(4612, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-06 16:38:59'),
+(4613, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-06 16:39:30'),
+(4614, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-06 16:39:31'),
+(4615, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-06 16:40:08'),
+(4616, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-06 16:40:14'),
+(4617, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-09-06 16:41:45'),
+(4618, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-09-06 16:45:02'),
+(4619, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-09-06 16:45:07'),
+(4620, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-09-06 16:45:08'),
+(4621, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-09-06 16:45:10'),
+(4622, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-09-06 16:45:13'),
+(4623, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-09-06 16:45:16'),
+(4624, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-09-06 16:47:49'),
+(4625, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-09-06 16:47:57'),
+(4626, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'User Logout', '2018-09-06 16:48:39'),
+(4627, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'User Login', '2018-09-06 16:48:45'),
+(4628, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-09-06 16:48:45'),
+(4629, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-09-06 16:48:49'),
+(4630, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-09-06 16:48:50'),
+(4631, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-09-06 16:49:53'),
+(4632, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-09-06 16:50:06'),
+(4633, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-09-06 16:55:10'),
+(4634, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-09-06 16:55:15'),
+(4635, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-09-06 16:56:35'),
+(4636, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-09-06 16:56:45'),
+(4637, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-09-06 17:02:24'),
+(4638, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-09-06 17:03:02'),
+(4639, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-09-06 17:08:53'),
+(4640, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-09-06 17:08:55'),
+(4641, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-09-06 17:09:16'),
+(4642, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-09-06 17:16:39'),
+(4643, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-09-06 17:17:35'),
+(4644, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of  Pet type  Dinosaur to Inactive', '2018-09-06 17:17:38'),
+(4645, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-09-06 17:17:40'),
+(4646, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of  Pet type  Dinosaur to Inactive', '2018-09-06 17:17:45'),
+(4647, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-09-06 17:17:47'),
+(4648, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-09-06 17:17:52'),
+(4649, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of  Pet type  Dinosaur to Inactive', '2018-09-06 17:17:53'),
+(4650, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-09-06 17:17:55'),
+(4651, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-09-06 17:18:15'),
+(4652, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of  Pet type  Birds to Inactive', '2018-09-06 17:18:17'),
+(4653, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-09-06 17:19:05'),
+(4654, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of  Pet type  Horse to Inactive', '2018-09-06 17:19:07'),
+(4655, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-09-06 17:19:58'),
+(4656, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Change Status of  Pet type  Horse to Inactive', '2018-09-06 17:20:00'),
+(4657, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Type List', '2018-09-06 17:20:04'),
+(4658, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-09-06 17:20:20'),
+(4659, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-09-06 17:21:13'),
+(4660, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-06 17:21:15'),
+(4661, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer list', '2018-09-06 17:21:19'),
+(4662, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-09-06 17:21:21'),
+(4663, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 17:25:52');
 
 -- --------------------------------------------------------
 
@@ -467,7 +709,7 @@ INSERT INTO `tbl_pettype` (`pettype_id`, `pettype_code`, `pettype`, `pettype_sta
 (1, 'dog', 'Dog', 'Active'),
 (2, 'cat', 'Cat', 'Active'),
 (3, 'dinosaur', 'Dinosaur', 'Active'),
-(4, 'horse', 'Horse', 'Active'),
+(4, 'horse', 'Horse', 'Inactive'),
 (5, 'birds', 'Birds', 'Active');
 
 -- --------------------------------------------------------
@@ -485,24 +727,18 @@ CREATE TABLE `tbl_pet_library` (
   `created_by` text NOT NULL,
   `user_type` varchar(45) NOT NULL,
   `user_id` text NOT NULL,
-  `user_table_id` int(11) NOT NULL
+  `user_table_id` int(11) NOT NULL,
+  `date_created` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_pet_library`
 --
 
-INSERT INTO `tbl_pet_library` (`library_id`, `title`, `content`, `article_image`, `article_status`, `created_by`, `user_type`, `user_id`, `user_table_id`) VALUES
-(48, 'Colitis', 'In brief, colitis is the term for inflammatio', 'German_shephard1111.jpg', 'Active', 'Ivan Christian Jay Echanes Funcion', '', '', 0),
-(49, 'uBO', 'DASDSADS ', 'blog1.jpg', 'Active', 'Ivan Christian Jay Echanes Funcion', '', '', 0),
-(50, 'Allergies: Atopic Dermatitis (Airborne)', 'very one knows someone with hay fever. Airbor', 'carousel-lifestyle.jpg', 'Active', 'Ivan Christian Jay Echanes Funcion', '', '', 0),
-(51, 'Abscesses from Bite Wounds', 'An abscess forms when an infected bite wound ', 'carousel-fish.jpg', 'Active', 'Carlos Almonds Valdez', '', '', 0),
-(52, 'ivan', 'dsdaddsadsad sdsdsds ', 'carousel-fish1.jpg', 'Active', 'Ivan Christian Jay Echanes Funcion', '', '', 0),
-(53, 'Groot', 'Grootomg ', 'AdSlots468_HI_Q3_201811.jpg', 'Active', 'Carlos Almonds Valdez', '', '', 0),
-(54, 'Goodspeed', 'Goodspeed ', 'Godspeed13.jpg', 'Active', 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 0),
-(55, 'dasdasd', 'dsdasdsdsdasdsa ', 'Godspeed14.jpg', 'Active', 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 0),
-(56, 'sdasd', 'ssdsdsa ', 'Godspeed15.jpg', 'Active', 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 8),
-(57, 'trial 1', '    The colon is another term for the large o', 'AdSlots468_HI_Q3_2018111.jpg', 'Active', 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 8);
+INSERT INTO `tbl_pet_library` (`library_id`, `title`, `content`, `article_image`, `article_status`, `created_by`, `user_type`, `user_id`, `user_table_id`, `date_created`) VALUES
+(58, 'Kennel Cough', '      A dog with kennel cough. Graphic by Mar', 'kennel.gif', 'Active', 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 8, '2018-09-06 15:13:58'),
+(59, 'Anaplasmosis', 'A dog can have both infections at the same ti', 'anaplasmosis.jpg', 'Active', 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 8, '2018-09-06 15:43:21'),
+(60, 'Ehrlichia ', 'Ehrlichia, named for the Dr. Ehrlich who firs', 'German_shephard11141.jpg', 'Active', 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 1, '2018-09-06 15:47:14');
 
 -- --------------------------------------------------------
 
@@ -521,26 +757,13 @@ CREATE TABLE `tbl_pet_library_content` (
 --
 
 INSERT INTO `tbl_pet_library_content` (`content_id`, `library_id`, `article_contents`) VALUES
-(33, 48, '&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; In brief, colitis is the term for inflammation of the colon. The chief feature of colitis is a gooey, frequently splattery diarrhea featuring mucus, fresh blood, or both. The stool may start normal then finish soft or may seem gooey throughout. There is often accompanying cramping, gas, and a sense of immediate urgency (the sudden need to run for a bathroom). Vomiting can be a feature of this condition though the characteristic diarrhea is the hallmark. Colitis may be acute (lasting only a few days) or chronic (lasting weeks or months on end). Even in chronic cases, weight loss is usually not a feature of this condition.'),
-(34, 48, '&nbsp; &nbsp; &nbsp; &nbsp;The colon is another term for the large or lower intestine. For those who do not know the lower intestine from the upper intestine, the colon/lower intestine is basically the last segment of the digestive tract. Before reaching the colon, food has been extensively processed. First, food is chewed up in the mouth, moved to the stomach via the esophagus where it undergoes acid treatment and extensive digestion with enzymes breaking down nutrients in to smaller molecular structures. Digestion continues early in the small intestine, but most of the small intestine (the segment immediately after the stomach) is about absorbing&nbsp; nutrients. By the time the food has passed through the small intestine, all the digestible nutrients have been broken down and absorbed, leaving only water and undigestible nutrients to enter the colon.'),
-(35, 48, '&nbsp; &nbsp; &nbsp;But the digestive tract is not through with the food remnants quite yet and this is the where the business of the colon comes in. The colon has three functions: absorbing water, storing stool, and further digesting unabsorbed nutrients. The bacterial population in the colon is about 10 times more dense than that of the small intestine. These bacteria, often referred to as&nbsp; good or helpful bacteria, take fibers that were undigestible to the host and actually process them into biochemicals that provide nourishment to the colon cells. The bacteria that live in the colon not only feed the cells of the colon, but they also control the pH of the colon environment so that excreted toxins are trapped in the stool and will be pooped away rather than be reabsorbed back into the body. They also produce flatulent gases and the pigments that lead to the ultimate color of stool. The relationship we have with our colon bacteria is mutually beneficial and is an excellent example of symbiosis'),
-(36, 49, 'DASDSADS'),
-(37, 50, 'very one knows someone with hay fever. Airborne pollens, molds, dust particles, etc. are inhaled and soon the sneezing and sniffling begins. A simple way to think of atopy for pets would be simply saying that the airborne allergen is inhaled but instead of sneezing and sniffling, the pet gets itchy skin. In fact, this was what we thought was happening for many years but the situation turns out to be more complicated. Airborne pollens, molds, dust particles etc. gain entry to the skin through a defective skin barrier, and from there their proteins are presented to the immune system. Cells of inflammation migrate back to the skin and soon the itching and scratching begins. The allergens come from the air but the itch is manifested in the skin.'),
-(38, 50, '<p>\r\n\r\n</p><p><strong>Features of Atopy</strong></p><p>There are many reasons for pets to itch: parasites, allergy to flea bites, food allergy, secondary infection and the list goes on.</p><p>The following are findings in the history and examination of the patient that might lead to a diagnosis of atopy. In fact, meeting five criteria from this list yields an 85 percent accuracy for the diagnosis of atopic dermatitis, at least for dogs:</p><ul><li><em>Young age of onset</em><br>Seasonal itchiness due to atopy tends to begin early in a pet\'s life (between ages 1 and 3 years in 70 percent of dogs diagnosed with atopy). <a target=\"_blank\" rel=\"nofollow\" href=\"http://www.veterinarypartner.com/Content.plx?P=A&amp;S=0&amp;C=0&amp;A=652\">Food allerg</a>y tends to begin later (more like age 5 or 6 years in dogs) or earlier (less than 6 months of age). Age at which itching first manifests is not as reliable a sign in cats as in dogs.</li><li><em>Mostly indoor lifestyle</em><br>It is indoors where many airborne allergens concentrated; however, it is important to note that allergens in the air are in the air for miles so it is not easy to escape allergens by simply going outdoors nor by simply going indoors.</li><li><em>Good response to steroids</em><br>Whether the patient is a dog or cat, itchiness due to atopy responds rapidly to cortisone-type medications (prednisone, depomedrol, dexamethasone, etc.) as does itching due to insect bite allergy. Food allergy is more variable in its response; it may or may not respond well.</li><li><em>Chronic or recurring yeast infections in the skin</em><br>Yeast (<em>Malassezia pachydermatis</em>) live on the surface of the skin normally but with all the changes allergy causes to the skin\'s microenvironment, yeast will proliferate and create a stinky, thickened, pigmented skin that resembles elephant skin or even tree bark. Environmental allergy is a strong predisposing factor in developing yeast dermatitis.</li><li><em>Front feet involved</em></li><li><em>Ear flaps involved</em><br>There is a lesion distribution that is common in inhalant allergy. It is, unfortunately, very similar to that of <a target=\"_blank\" rel=\"nofollow\" href=\"http://www.veterinarypartner.com/Content.plx?P=A&amp;S=0&amp;C=0&amp;A=616\">sarcoptic mange</a>&nbsp;and overlaps greatly with the lesion distribution of flea bite allergy.</li><li><em>Ear margins not involved</em><br>Ear margin involvement is suggestive of sarcoptic mange and would lead one away from airborne allergies.</li><li><em>Lower back area not involved</em><br>The lower back is the flea bite zone. There are few conditions other than flea bite allergy that cause itching in this area, so if this area is involved, make sure <a target=\"_blank\" rel=\"nofollow\" href=\"http://www.veterinarypartner.com/Content.plx?P=A&amp;A=2858&amp;S=4&amp;SourceID=61\">flea control</a>&nbsp;is achieved before further evaluating the skin.</li></ul>\r\n\r\n<br><p></p>'),
-(39, 51, 'An abscess forms when an infected bite wound heals over on the surface, sealing the infection inside. Fever is generated as the infection incubates. Diseased tissue and the inflammatory cells liquefy into pus. The pus breaks through the overlying surface skin and drains, leading to foul odor, pain, and discharge. The area may or may not heal on its own.'),
-(40, 52, 'dsdaddsadsad'),
-(41, 52, '<div>This article is about the type of website. For other uses, see <a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Wiki_(disambiguation)\">Wiki (disambiguation)</a>.</div><div>\"WikiNode\" redirects here. For WikiNode of Wikipedia, see <a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Wikipedia:WikiNode\">Wikipedia:WikiNode</a>. For the app for the Apple iPad, see <a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/WikiNodes\">WikiNodes</a>.</div><div><div><div><img alt=\"FileWard Cunningham Inventor of the Wikiwebm\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Ward_Cunningham%2C_Inventor_of_the_Wiki.webm/220px--Ward_Cunningham%2C_Inventor_of_the_Wiki.webm.jpg\"><a target=\"_blank\" rel=\"nofollow\" href=\"https://upload.wikimedia.org/wikipedia/commons/3/31/Ward_Cunningham%2C_Inventor_of_the_Wiki.webm\"></a></div><div><div><a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/File:Ward_Cunningham,_Inventor_of_the_Wiki.webm\"></a></div>Interview with <a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Ward_Cunningham\">Ward Cunningham</a>, inventor of the wiki</div></div></div><p>A <b>wiki</b>&nbsp;(<a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Help:IPA/English\">/?w?ki/</a><small>&nbsp;(<a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/File:En-us-wiki.ogg\"><img width=\"11\" alt=\"About this sound\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Loudspeaker.svg/11px-Loudspeaker.svg.png\" height=\"11\"></a>&nbsp;<a target=\"_blank\" rel=\"nofollow\" href=\"https://upload.wikimedia.org/wikipedia/commons/4/46/En-us-wiki.ogg\">listen</a>)</small>&nbsp;<a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Help:Pronunciation_respelling_key\"><i>WIK-ee</i></a>) is a <a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Website\">website</a>&nbsp;on which users <a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Collaborative_software\">collaboratively</a>&nbsp;modify content and structure directly from the <a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Web_browser\">web browser</a>. In a typical wiki, text is written using a simplified <a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Markup_language\">markup language</a>&nbsp;and often edited with the help of a <a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Online_rich-text_editor\">rich-text editor</a>.<a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Wiki#cite_note-Britannica-1\">[1]</a></p><p>A wiki is run using <a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Wiki_software\">wiki software</a>, otherwise known as a wiki engine. A wiki engine is a type of <a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Content_management_system\">content management system</a>, but it differs from most other such systems, including <a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Blog_software\">blog software</a>, in that the content is created without any defined owner or leader, and wikis have little inherent structure, allowing structure to emerge according to the needs of the users.<a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Wiki#cite_note-Easy_Wiki_Hosting-2\">[2]</a>&nbsp;There are dozens of different wiki engines in use, both standalone and part of other software, such as <a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Bug_tracking_system\">bug tracking systems</a>. Some wiki engines are <a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Open_source\">open source</a>, whereas others are <a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Proprietary_software\">proprietary</a>. Some permit control over different functions (levels of access); for example, editing rights may permit changing, adding, or removing material. Others may permit access without enforcing access control. Other rules may be imposed to organize content.</p><p>The online encyclopedia project <a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Wikipedia\">Wikipedia</a>&nbsp;is by far the most popular wiki-based website, and is one of the most widely viewed sites of any kind in the world, having been ranked in the top ten since 2007.<a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Wiki#cite_note-Alexa_Top_Sites-3\">[3]</a>&nbsp;Wikipedia is not a single wiki but rather a collection of hundreds of wikis, one for each language. There are tens of thousands of other wikis in use, both public and private, including wikis functioning as <a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Knowledge_management\">knowledge management</a>&nbsp;resources, <a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Notetaking_software\">notetaking</a>&nbsp;tools, <a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Web_community\">community websites</a>, and <a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Intranet\">intranets</a>. The English-language Wikipedia has the largest collection of articles; as of September 2016, it had over five million articles. <a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Ward_Cunningham\">Ward Cunningham</a>, the developer of the first wiki software, <a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/WikiWikiWeb\">WikiWikiWeb</a>, originally described it as \"the simplest online database that could possibly work\".<a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Wiki#cite_note-4\">[4]</a>&nbsp;\"<a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wiktionary.org/wiki/wiki#Hawaiian\">Wiki</a>\" (pronounced <small></small><a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Help:IPA/Hawaiian\">[?wiki]</a><a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Wiki#cite_note-5\">[note 1]</a>) is a <a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Hawaiian_language\">Hawaiian</a>&nbsp;word meaning \"quick\".<a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Wiki#cite_note-6\">[5]</a><a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Wiki#cite_note-7\">[6]</a><a target=\"_blank\" rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Wiki#cite_note-8\">[7]</a></p>'),
-(42, 53, 'Grootomg'),
-(43, 54, 'Goodspeed'),
-(44, 55, 'dsdasdsdsdasdsa'),
-(45, 56, '&nbsp; &nbsp; &nbsp; &nbsp; The colon is another term for the large or lower intestine. For those who do not know the lower intestine from the upper intestine, the colon/lower intestine is basically the last segment of the digestive tract. Before reaching the colon, food has been extensively processed. First, food is chewed up in the mouth, moved to the stomach via the esophagus where it undergoes acid treatment and extensive digestion with enzymes breaking down nutrients in to smaller molecular structures. Digestion continues early in the small intestine, but most of the small intestine (the segment immediately after the stomach) is about absorbing  nutrients. By the time the food has passed through the small intestine, all the digestible nutrients have been broken down and absorbed, leaving only water and undigestible nutrients to enter the colon.'),
-(46, 56, '<p>ivan the greats</p>'),
-(47, 54, '<p>ivansdssasds</p>'),
-(48, 56, '<p>\r\n\r\n&nbsp;  The colon is another term for the large or lower intestine. For those who do not know the lower intestine from the upper intestine, the colon/lower intestine is basically the last segment of the digestive tract. Before reaching the colon, food has been extensively processed. First, food is chewed up in the mouth, moved to the stomach via the esophagus where it undergoes acid treatment and extensive digestion with enzymes breaking down nutrients in to smaller molecular structures. Digestion continues early in the small intestine, but most of the small intestine (the segment immediately after the stomach) is about absorbing nutrients. By the time the food has passed through the small intestine, all the digestible nutrients have been broken down and absorbed, leaving only water and undigestible nutrients to enter the colon.\r\n\r\n<br></p>'),
-(49, 55, '<p>ivansds</p>'),
-(50, 57, '    The colon is another term for the large or lower intestine. For those who do not know the lower intestine from the upper intestine, the colon/lower intestine is basically the last segment of the digestive tract. Before reaching the colon, food has been extensively processed. First, food is chewed up in the mouth, moved to the stomach via the esophagus where it undergoes acid treatment and extensive digestion with enzymes breaking down nutrients in to smaller molecular structures. Digestion continues early in the small intestine, but most of the small intestine (the segment immediately after the stomach) is about absorbing  nutrients. By the time the food has passed through the small intestine, all the digestible nutrients have been broken down and absorbed, leaving only water and undigestible nutrients to enter the colon.'),
-(51, 57, '    The colon is another term for the large or lower intestine. For those who do not know the lower intestine from the upper intestine, the colon/lower intestine is basically the last segment of the digestive tract. Before reaching the colon, food has been extensively processed. First, food is chewed up in the mouth, moved to the stomach via the esophagus where it undergoes acid treatment and extensive digestion with enzymes breaking down nutrients in to smaller molecular structures. Digestion continues early in the small intestine, but most of the small intestine (the segment immediately after the stomach) is about absorbing  nutrients. By the time the food has passed through the small intestine, all the digestible nutrients have been broken down and absorbed, leaving only water and undigestible nutrients to enter the colon.'),
-(52, 57, '    The colon is another term for the large or lower intestine. For those who do not know the lower intestine from the upper intestine, the colon/lower intestine is basically the last segment of the digestive tract. Before reaching the colon, food has been extensively processed. First, food is chewed up in the mouth, moved to the stomach via the esophagus where it undergoes acid treatment and extensive digestion with enzymes breaking down nutrients in to smaller molecular structures. Digestion continues early in the small intestine, but most of the small intestine (the segment immediately after the stomach) is about absorbing  nutrients. By the time the food has passed through the small intestine, all the digestible nutrients have been broken down and absorbed, leaving only water and undigestible nutrients to enter the colon.');
+(56, 58, '<p>\r\n\r\n<a href=\"https://veterinarypartner.vin.com/vetzinsight/default.aspx?pid=756&amp;catId=5860&amp;Id=8115910\" target=\"_blank\" rel=\"nofollow\">Kennel cough</a>&nbsp;is an infectious bronchitis of dogs characterized by a harsh, hacking cough that most people describe as sounding like “something stuck in my dog’s throat.” This bronchitis may be of brief duration and mild enough to warrant no treatment at all or it may progress all the way to a life-threatening pneumonia depending on which infectious agents are involved and the immunological strength of the patient. An uncomplicated kennel cough runs a course of a week or two and entails frequent fits of coughing in a patient who otherwise feels active and normal. Uncomplicated cases do not involve fever or listlessness, just lots of coughing.\r\n\r\n<br></p>'),
+(57, 58, '<p>\r\n\r\nNumerous organisms may be involved in a case of kennel cough; it would be unusual for only one agent to be involved. Infections with the following organisms frequently occur concurrently to create a case of kennel cough:&nbsp;</p><p>\r\n\r\n</p><ul><li><em>Bordetella bronchiseptica</em>&nbsp;(bacteria)<a target=\"_blank\" rel=\"nofollow\" href=\"http://www.veterinarypartner.com/Content.plx?P=A&amp;S=0&amp;C=0&amp;A=1758\"></a></li><li>Parainfluenza virus</li><li>Adenovirus type 2</li><li>Canine distemper virus</li><li>Canine influenza virus</li><li>Canine herpesvirus (very young puppies)</li><li><em>Mycoplasma canis</em>&nbsp;(a single-cell organism that is neither virus nor bacterium)</li><li>Canine reovirus</li><li>Canine respiratory coronavirus.</li></ul>\r\n\r\n<br><p></p>'),
+(58, 58, '<p>\r\n\r\n</p><p>How is Diagnosis Made?</p><p>A coughing dog that has a poor appetite, fever, and/or listlessness should be evaluated for pneumonia.</p><p>Usually the history of exposure to a crowd of dogs within the proper time frame, plus typical examination findings (coughing dog that otherwise feels well) is adequate to make the diagnosis. Radiographs show bronchitis and are particularly helpful in determining if there is a complicating pneumonia.</p><p>Recently, PCR (polymerase chain reaction) panels have become available in many reference laboratories. Using technology to amplify the presence of DNA in a swab, the lab is able to test for most of the kennel cough infectious agents listed. This knowledge is helpful in guiding therapy and understanding expectations.</p>\r\n\r\n<br><p></p>'),
+(59, 59, 'A dog can have both infections at the same time. Granulocytic anaplasmosis is more common. Anaplasmosis is a tick-borne disease. Two forms of anaplasmosis are known: granulocytic anaplasmosis and infectious cyclic thrombocytopenia.\r\n\r\nTransmission is via a tick vector (a vector is an organism that can passively carry and transmit disease). A tick needs to be attached for a minimum of 24 hours to transmit the organism. Incubation time is about 1 to 2 weeks. Reservoir hosts (a source of infection and possible reinfection that sustains a parasite) are usually small rodents, deer, etc.'),
+(60, 59, '<p>\r\n\r\n</p><p><strong>Diagnosis</strong></p><p>Blood tests and a urinalysis are the main diagnostic tools for anaplasmosis. The blood tests usually include a complete blood count, blood smear evaluation, biochemistry panel, serology to look for antibodies, and polymerase chain reaction (PCR) assays. If the dog is lame, radiographs and analysis of joint fluid are usually included.</p>\r\n\r\n<br><p></p>'),
+(61, 59, '<p>\r\n\r\n</p><p><strong>Treatment</strong></p><p>Treatment includes antibiotics, pain relievers, and anti-inflammatory drugs.</p><p><a target=\"_blank\" rel=\"nofollow\" href=\"http://www.veterinarypartner.com/Content.plx?P=A&amp;S=0&amp;C=0&amp;A=642\">Doxycycline</a>&nbsp;is the most commonly used antibiotic. Most dogs respond within one to two days after they first take doxycycline. Other antibiotic options are tetracycline or minocycline.</p><p>Analgesia and anti-inflammatory drugs may be needed for joint pain. Let your veterinarian choose the anti-inflammatory, rather than choosing and dosing it yourself, because dogs metabolize these medicines differently than humans do. Your veterinarian will have the most appropriate medication.</p>\r\n\r\n<br><p></p>'),
+(62, 60, 'Ehrlichia, named for the Dr. Ehrlich who first described them, are a type of bacteria that infect and live within the white blood cells of their hosts. Different types of Ehrlichia live in different types of white blood cells. Hosts can be human, pet, or wild animals. Ehrlichia are spread from host to host by tick bites and their intracellular location makes them difficult to remove as most antibiotics do not penetrate to the inside of cells.');
 
 -- --------------------------------------------------------
 
@@ -559,20 +782,22 @@ CREATE TABLE `tbl_pet_library_links` (
 --
 
 INSERT INTO `tbl_pet_library_links` (`links_id`, `library_id`, `web_link`) VALUES
-(17, 48, 'https://veterinarypartner.vin.com/doc/?id=4951414&amp;pid=19239'),
-(18, 49, 'https://google.com'),
-(19, 50, 'https://veterinarypartner.vin.com/default.aspx?pid=19239&catId=102899&id=4951475'),
-(20, 51, 'https://veterinarypartner.vin.com/default.aspx?pid=19239&catId=102903&id=4951430'),
-(21, 52, 'https://google.com'),
-(22, 52, 'https://google.com'),
-(23, 50, 'https://veterinarypartner.vin.com/default.aspx?pid=19239&catId=102899&id=4951475'),
-(24, 53, 'https://google.com'),
-(25, 54, 'https://google.com'),
-(26, 55, 'https://google.com'),
-(27, 56, 'https://google.com'),
-(29, 57, 'google.com'),
-(30, 57, 'https://google.com'),
-(31, 57, 'retrica.com');
+(33, 58, 'https://veterinarypartner.vin.com/default.aspx?pid=19239&id=4951478'),
+(34, 59, 'https://veterinarypartner.vin.com/default.aspx?pid=19239&catId=102899&id=6191808&ind=11&objTypeID=1007'),
+(35, 60, 'https://veterinarypartner.vin.com/default.aspx?pid=19239&id=4952341');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_possible_ symptoms`
+--
+
+CREATE TABLE `tbl_possible_ symptoms` (
+  `possible_symptoms_id` int(11) NOT NULL,
+  ` symptoms` varchar(45) NOT NULL,
+  `number_of_cases` int(11) NOT NULL,
+  `symptoms_status` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -601,13 +826,8 @@ CREATE TABLE `tbl_productfoods` (
 --
 
 INSERT INTO `tbl_productfoods` (`food_table_id`, `food_id`, `foodname`, `forwhatpet`, `fooddescription`, `foodImage`, `price`, `supplier`, `exp_date`, `store_price`, `product_unit`, `product_unit_number`, `product_unit_measure`) VALUES
-(11, '#Food1808200141256', 'Dino Flakes', 'dinosaur', 'Dino Flakes Serials', 'AdSlots468_HI_Q3_2018111.jpg', '100.00', 'Dino Corp', '2018-09-21', '112.00', '5 (Kg) ', '5', 'Kg'),
-(12, '#Food1808310109572', 'Kingler Flakes', 'cat', 'sdsdsdasd', 'AdSlots468_HI_Q3_2018119.jpg', '88.00', 'Dino Corp', '2018-08-30', '98.56', '4.5 (Kg) ', '4.5', 'Kg'),
-(13, '#Food1809021205164', 'Dog Food with extra rice', 'dog', 'ibsnd fdsdfd', 'AdSlots468_HI_Q3_20181110.jpg', '90.00', 'Dino Corp', '2018-09-28', '100.80', '55 (Gallon) ', '55', 'Gallon'),
-(14, '#Food1809021216354', 'Andys food', 'all', 'dsdasds', 'AdSlots468_HI_Q3_20181111.jpg', '90.00', '121', '2018-10-11', '100.80', '22 (Gallon) ', '22', 'Gallon'),
-(15, '#Food1809021235256', 'Spider food', '', 'food for spider', 'AdSlots468_HI_Q3_20181112.jpg', '90.00', 'Cars', '2018-09-28', '100.80', '3 (Gallon) ', '3', 'Gallon'),
-(16, '#Food1809040943116', 'Nido', '', 'Nido for DOgs', 'AdSlots468_HI_Q3_20181113.jpg', '90.00', 'Dino Corp', '2018-10-27', '100.80', '3 (Liters) ', '3', 'Liters'),
-(17, '#Food1809051118317', 'ivan', '', '<p>ivan for three... bang</p>', 'nancy.jpg', '88.00', 'Dino Corp', '2018-09-28', '98.56', '3 (Inch) ', '3', 'Inch');
+(18, '#Food1809060441458', 'Whiska ', '', '<p>Whiskas for Cats</p>', 'whiskas_2kg.jpg', '90.00', 'Royal Canin', '2018-09-29', '100.80', '2 (Kg) ', '2', 'Kg'),
+(19, '#Food1809060445024', 'Meow Mix', '', '<p>for cats</p>', 'meow_mix.jpg', '122.00', 'Royal Canin', '2018-10-19', '136.64', '5 (Grams) ', '5', 'Grams');
 
 -- --------------------------------------------------------
 
@@ -824,7 +1044,17 @@ INSERT INTO `tbl_productinventories` (`inv_table_id`, `product_rel_id`, `product
 (310, 46, '#Item1809011121300', 'sasss', 'Item', 'Purchased Product', 'Customer(Walkin)', 'ivan f', '2018-09-04 23:06:15', 1, '0000-00-00'),
 (311, 40, '#Med1808200154179', 'Dino Capsule Evolution', 'Medicine', 'Purchased Product', 'Customer(Walkin)', 'ivan f', '2018-09-04 23:06:15', 1, '0000-00-00'),
 (312, 45, '#Item1809011120454', 'sass', 'Item', 'Purchased Product', 'Customer(Walkin)', 'rizal', '2018-09-04 23:07:25', 1, '0000-00-00'),
-(313, 17, '#Food1809051118317', 'ivan', 'Food', 'Add new Product', 'Super Admin', 'Ivan Christian Jay Echanes Funcion', '2018-09-05 23:18:57', 33, '2018-09-28');
+(313, 17, '#Food1809051118317', 'ivan', 'Food', 'Add new Product', 'Super Admin', 'Ivan Christian Jay Echanes Funcion', '2018-09-05 23:18:57', 33, '2018-09-28'),
+(314, 14, '#Med1809060418233', 'dasds', 'Medicine', 'Add new Product', 'Super Admin', 'Ivan Christian Jay Echanes Funcion', '2018-09-06 16:18:40', 33, '2018-09-20'),
+(315, 15, '#Med1809060427477', 'Filine Edopathic ', 'Medicine', 'Add new Product', 'Super Admin', 'Ivan Christian Jay Echanes Funcion', '2018-09-06 16:30:54', 33, '2018-10-06'),
+(316, 16, '#Med1809060430540', 'Dentasticks', 'Medicine', 'Add new Product', 'Super Admin', 'Ivan Christian Jay Echanes Funcion', '2018-09-06 16:32:56', 100, '2018-09-29'),
+(317, 53, '#Med1809060427477', 'Filine Edopathic ', 'Medicine', 'Purchased Product', 'Customer(Walkin)', 'ivan', '2018-09-06 16:34:05', 30, '0000-00-00'),
+(318, 15, '#Med1809060427477', 'Filine Edopathic ', 'Medicine', 'Add Supply', 'Super Admin', 'Ivan Christian Jay Echanes Funcion', '2018-09-06 16:36:54', 200, '2018-09-29'),
+(319, 54, '#Med1809060430540', 'Dentasticks', 'Medicine', 'Purchased Product', 'Customer(Walkin)', '', '2018-09-06 16:38:02', 20, '0000-00-00'),
+(320, 54, '#Med1809060430540', 'Dentasticks', 'Medicine', 'Purchased Product', 'Customer(Walkin)', 'ss', '2018-09-06 16:38:24', 60, '0000-00-00'),
+(321, 18, '#Food1809060441458', 'Whiska ', 'Food', 'Add new Product', 'Super Admin', 'Ivan Christian Jay Echanes Funcion', '2018-09-06 16:45:02', 200, '2018-09-29'),
+(322, 19, '#Food1809060445024', 'Meow Mix', 'Food', 'Add new Product', 'Super Admin', 'Ivan Christian Jay Echanes Funcion', '2018-09-06 16:47:49', 120, '2018-10-19'),
+(323, 24, '#Item1809060450060', 'Bone Toy for Dogs', 'Item', 'Add new Product', 'Super Admin', 'Ivan Christian Jay Echanes Funcion', '2018-09-06 16:55:09', 122, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -848,12 +1078,7 @@ CREATE TABLE `tbl_productitems` (
 --
 
 INSERT INTO `tbl_productitems` (`item_table_id`, `item_id`, `itemname`, `itemdescription`, `itemImage`, `price`, `supplier`, `store_price`) VALUES
-(18, '#Item1808200149209', 'Cat Shampoo', 'Cat Shampoo', 'German_shephard1114.jpg', '100.00', 'Cat Corp', '112.00'),
-(19, '#Item1808270316449', 'Dog mat', 'dog mat dog', '200x400.jpg', '90.00', 'Qualifoam', '100.80'),
-(20, '#Item1809011118248', 'Cat Shampoos', 'dasdsdsdd', 'AdSlots468_HI_Q3_201811.jpg', '88.00', 'Cars', '98.56'),
-(21, '#Item1809011120158', 'sas', 'sdasds', '350x600.jpg', '88.00', '121', '98.56'),
-(22, '#Item1809011120454', 'sass', 'sdasds', 'AdSlots468_HI_Q3_2018115.jpg', '88.00', '121', '98.56'),
-(23, '#Item1809011121300', 'sasss', 'sdasds', 'AdSlots468_HI_Q3_2018116.jpg', '88.00', '121', '98.56');
+(24, '#Item1809060450060', 'Bone Toy for Dogs', '<p>Bone Toy for Dogs<br></p>', 'bone_2.jpg', '88.00', 'Royal Canin', '98.56');
 
 -- --------------------------------------------------------
 
@@ -883,7 +1108,8 @@ CREATE TABLE `tbl_productmedicines` (
 --
 
 INSERT INTO `tbl_productmedicines` (`med_table_id`, `med_id`, `medType`, `medname`, `meddescription`, `medImage`, `dateAdded`, `price`, `supplier`, `exp_date`, `store_price`, `product_unit`, `product_unit_number`, `product_unit_measure`) VALUES
-(13, '#Med1808200154179', 'Vitamins', 'Dino Capsule Evolution', 'Evolve your Tyranitar to Quek', 'AdSlots468_HI_Q3_2018118.jpg', '0000-00-00 00:00:00', '1111.00', 'Dino Corp', '2018-08-31', '1244.32', '3 (Liters) ', '3', 'Liters');
+(15, '#Med1809060427477', 'Antibiotics', 'Filine Edopathic ', '<p>\r\n\r\n<b>Feline idiopathic cystitis</b>&nbsp;(FIC) <b>Feline</b>&nbsp;lower urinary tract disease (FLUTD) is a term describing conditions that can affect the urinary bladder and/or urethra (the lower urinary tract) of <b>cats</b>.\r\n\r\n<br></p>', 'AdSlots468_HI_Q3_2018112.jpg', '0000-00-00 00:00:00', '55.00', 'Royal Canin', '2018-10-06', '61.60', '1 (MilliLiters) ', '1', 'MilliLiters'),
+(16, '#Med1809060430540', 'Vaccine', 'Dentasticks', '<p>\r\n\r\nLittle guys love the tasty <b>DENTASTIX</b>&nbsp;flavor, and these treats have a softer texture for young mouths to start off your <b>Puppy\'s</b>&nbsp;oral health routine in a delicious way. ...<b>Feed puppy</b>&nbsp;dogs (5 + lbs/2.27 + kg) 1 treat a day. Not suitable for <b>puppies</b>&nbsp;and dogs under 6 months of age and 5 lbs (2.27 kg).\r\n\r\n<br></p>', 'b76ead09f9fa333e22c4c3282a9c6103_jpg_2200x2200q80.jpg', '0000-00-00 00:00:00', '88.00', 'Royal Canin', '2018-09-29', '98.56', '3 (Kg) ', '3', 'Kg');
 
 -- --------------------------------------------------------
 
@@ -910,20 +1136,11 @@ CREATE TABLE `tbl_products` (
 --
 
 INSERT INTO `tbl_products` (`product_table_id`, `product_relation_id`, `product_name`, `product_unit`, `productType`, `product_id`, `productInStore`, `dateAdded`, `productImage`, `product_price`, `store_price`) VALUES
-(38, 11, 'Dino Flakes', '5 (Kg) ', 'Food', '#Food1808200141256', 177, '2018-08-20 01:42:34', 'AdSlots468_HI_Q3_2018111.jpg', '100.00', '112.00'),
-(39, 18, 'Cat Shampoo', '', 'Item', '#Item1808200149209', 177, '2018-08-20 01:50:18', 'German_shephard1114.jpg', '100.00', '112.00'),
-(40, 13, 'Dino Capsule Evolution', '3 (Liters) ', 'Medicine', '#Med1808200154179', 225, '2018-08-20 01:55:20', 'AdSlots468_HI_Q3_2018118.jpg', '1111.00', '1244.32'),
-(41, 19, 'Dog mat', '', 'Item', '#Item1808270316449', 150, '2018-08-27 15:17:38', '200x400.jpg', '90.00', '100.80'),
-(42, 12, 'Kingler Flakes', '4.5 (Kg) ', 'Food', '#Food1808310109572', 199, '2018-08-31 01:11:06', 'AdSlots468_HI_Q3_2018119.jpg', '88.00', '98.56'),
-(43, 20, 'Cat Shampoos', '', 'Item', '#Item1809011118248', 42, '2018-09-01 23:18:29', 'AdSlots468_HI_Q3_201811.jpg', '88.00', '98.56'),
-(44, 21, 'sas', '', 'Item', '#Item1809011120158', 144, '2018-09-01 23:20:31', '350x600.jpg', '88.00', '98.56'),
-(45, 22, 'sass', '', 'Item', '#Item1809011120454', 42, '2018-09-01 23:20:50', 'AdSlots468_HI_Q3_2018115.jpg', '88.00', '98.56'),
-(46, 23, 'sasss', '', 'Item', '#Item1809011121300', 37, '2018-09-01 23:21:33', 'AdSlots468_HI_Q3_2018116.jpg', '88.00', '98.56'),
-(47, 13, 'Dog Food with extra rice', '55 (Gallon) ', 'Food', '#Food1809021205164', 123, '2018-09-02 00:06:21', 'AdSlots468_HI_Q3_20181110.jpg', '90.00', '100.80'),
-(48, 14, 'Andys food', '22 (Gallon) ', 'Food', '#Food1809021216354', 44, '2018-09-02 00:17:25', 'AdSlots468_HI_Q3_20181111.jpg', '90.00', '100.80'),
-(49, 15, 'Spider food', '3 (Gallon) ', 'Food', '#Food1809021235256', 33, '2018-09-02 00:35:53', 'AdSlots468_HI_Q3_20181112.jpg', '90.00', '100.80'),
-(50, 16, 'Nido', '3 (Liters) ', 'Food', '#Food1809040943116', 200, '2018-09-04 21:44:35', 'AdSlots468_HI_Q3_20181113.jpg', '90.00', '100.80'),
-(51, 17, 'ivan', '3 (Inch) ', 'Food', '#Food1809051118317', 33, '2018-09-05 23:18:57', 'nancy.jpg', '88.00', '98.56');
+(53, 15, 'Filine Edopathic ', '1 (MilliLiters) ', 'Medicine', '#Med1809060427477', 203, '2018-09-06 16:30:54', 'AdSlots468_HI_Q3_2018112.jpg', '55.00', '61.60'),
+(54, 16, 'Dentasticks', '3 (Kg) ', 'Medicine', '#Med1809060430540', 20, '2018-09-06 16:32:56', 'b76ead09f9fa333e22c4c3282a9c6103_jpg_2200x2200q80.jpg', '88.00', '98.56'),
+(55, 18, 'Whiska ', '2 (Kg) ', 'Food', '#Food1809060441458', 200, '2018-09-06 16:45:02', 'whiskas_2kg.jpg', '90.00', '100.80'),
+(56, 19, 'Meow Mix', '5 (Grams) ', 'Food', '#Food1809060445024', 120, '2018-09-06 16:47:49', 'meow_mix.jpg', '122.00', '136.64'),
+(57, 24, 'Bone Toy for Dogs', '', 'Item', '#Item1809060450060', 122, '2018-09-06 16:55:09', 'bone_2.jpg', '88.00', '98.56');
 
 -- --------------------------------------------------------
 
@@ -1030,7 +1247,10 @@ INSERT INTO `tbl_sales` (`sales_id`, `invoice_number`, `customer_type`, `custome
 (142, '#1809031202387', 'Walking', '0', 'napadaan', '2018-09-03 12:02:38', 'kirra May Ballesteros', 'S1808221221365', '1342.88', '2000.00', '657.12'),
 (143, '#1809041038477', 'Walking', '0', '', '2018-09-04 22:38:47', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '1737.12', '2000.00', '262.88'),
 (144, '#1809041106151', 'Walkin', '0', 'ivan f', '2018-09-04 23:06:15', 'kirra May Ballesteros', 'S1808221221365', '1342.88', '1500.00', '157.12'),
-(145, '#1809041107259', 'Walkin', '0', 'rizal', '2018-09-04 23:07:25', 'kirra May Ballesteros', 'S1808221221365', '98.56', '100.00', '1.44');
+(145, '#1809041107259', 'Walkin', '0', 'rizal', '2018-09-04 23:07:25', 'kirra May Ballesteros', 'S1808221221365', '98.56', '100.00', '1.44'),
+(146, '#1809060434057', 'Walkin', '0', 'ivan', '2018-09-06 16:34:05', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '1848.00', '2000.00', '152.00'),
+(147, '#1809060438024', 'Walkin', '0', '', '2018-09-06 16:38:02', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '1971.20', '2000.00', '28.80'),
+(148, '#1809060438244', 'Walkin', '0', 'ss', '2018-09-06 16:38:24', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '5913.60', '6000.00', '86.40');
 
 -- --------------------------------------------------------
 
@@ -1117,7 +1337,10 @@ INSERT INTO `tbl_salesdetails` (`salesdetail_id`, `sales_id`, `product_id`, `pro
 (168, 143, '#Item1809011121300', 'Item', 'sasss', '88.00', 5, '492.80', '0.12', '59.14', '551.94'),
 (169, 144, '#Item1809011121300', 'Item', 'sasss', '88.00', 1, '98.56', '0.12', '11.83', '110.39'),
 (170, 144, '#Med1808200154179', 'Medicine', 'Dino Capsule Evolution', '1111.00', 1, '1244.32', '0.12', '149.32', '1393.64'),
-(171, 145, '#Item1809011120454', 'Item', 'sass', '88.00', 1, '98.56', '0.12', '11.83', '110.39');
+(171, 145, '#Item1809011120454', 'Item', 'sass', '88.00', 1, '98.56', '0.12', '11.83', '110.39'),
+(172, 146, '#Med1809060427477', 'Medicine', 'Filine Edopathic ', '55.00', 30, '1848.00', '0.12', '221.76', '2069.76'),
+(173, 147, '#Med1809060430540', 'Medicine', 'Dentasticks', '88.00', 20, '1971.20', '0.12', '236.54', '2207.74'),
+(174, 148, '#Med1809060430540', 'Medicine', 'Dentasticks', '88.00', 60, '5913.60', '0.12', '709.63', '6623.23');
 
 -- --------------------------------------------------------
 
@@ -1197,7 +1420,9 @@ INSERT INTO `tbl_service_rendered` (`service_rendered_id`, `checkup_id`, `servic
 (71, 74, 0, 'General Checkup', '111.00', 80),
 (72, 74, 8, 'Deworming', '300.00', 80),
 (73, 75, 7, 'Vaccination', '2222.00', 82),
-(74, 76, 0, 'General Checkup', '111.00', 84);
+(74, 76, 0, 'General Checkup', '111.00', 84),
+(75, 77, 0, 'General Checkup', '111.00', 85),
+(76, 77, 9, 'Deworming for Kittens', '157.00', 85);
 
 -- --------------------------------------------------------
 
@@ -1441,6 +1666,12 @@ ALTER TABLE `tbl_pet_library_links`
   ADD PRIMARY KEY (`links_id`);
 
 --
+-- Indexes for table `tbl_possible_ symptoms`
+--
+ALTER TABLE `tbl_possible_ symptoms`
+  ADD PRIMARY KEY (`possible_symptoms_id`);
+
+--
 -- Indexes for table `tbl_productfoods`
 --
 ALTER TABLE `tbl_productfoods`
@@ -1549,7 +1780,7 @@ ALTER TABLE `tbl_admins`
 -- AUTO_INCREMENT for table `tbl_appointments`
 --
 ALTER TABLE `tbl_appointments`
-  MODIFY `appointment_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `appointment_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 --
 -- AUTO_INCREMENT for table `tbl_bannerimages`
 --
@@ -1559,7 +1790,7 @@ ALTER TABLE `tbl_bannerimages`
 -- AUTO_INCREMENT for table `tbl_checkupdetails`
 --
 ALTER TABLE `tbl_checkupdetails`
-  MODIFY `checkup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `checkup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 --
 -- AUTO_INCREMENT for table `tbl_customers`
 --
@@ -1569,7 +1800,7 @@ ALTER TABLE `tbl_customers`
 -- AUTO_INCREMENT for table `tbl_logs`
 --
 ALTER TABLE `tbl_logs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4424;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4664;
 --
 -- AUTO_INCREMENT for table `tbl_petbreeds`
 --
@@ -1589,42 +1820,47 @@ ALTER TABLE `tbl_pettype`
 -- AUTO_INCREMENT for table `tbl_pet_library`
 --
 ALTER TABLE `tbl_pet_library`
-  MODIFY `library_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `library_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 --
 -- AUTO_INCREMENT for table `tbl_pet_library_content`
 --
 ALTER TABLE `tbl_pet_library_content`
-  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 --
 -- AUTO_INCREMENT for table `tbl_pet_library_links`
 --
 ALTER TABLE `tbl_pet_library_links`
-  MODIFY `links_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `links_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+--
+-- AUTO_INCREMENT for table `tbl_possible_ symptoms`
+--
+ALTER TABLE `tbl_possible_ symptoms`
+  MODIFY `possible_symptoms_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_productfoods`
 --
 ALTER TABLE `tbl_productfoods`
-  MODIFY `food_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `food_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `tbl_productinventories`
 --
 ALTER TABLE `tbl_productinventories`
-  MODIFY `inv_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=314;
+  MODIFY `inv_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=324;
 --
 -- AUTO_INCREMENT for table `tbl_productitems`
 --
 ALTER TABLE `tbl_productitems`
-  MODIFY `item_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `item_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `tbl_productmedicines`
 --
 ALTER TABLE `tbl_productmedicines`
-  MODIFY `med_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `med_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `tbl_products`
 --
 ALTER TABLE `tbl_products`
-  MODIFY `product_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `product_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 --
 -- AUTO_INCREMENT for table `tbl_pullouts`
 --
@@ -1639,12 +1875,12 @@ ALTER TABLE `tbl_related_article`
 -- AUTO_INCREMENT for table `tbl_sales`
 --
 ALTER TABLE `tbl_sales`
-  MODIFY `sales_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
+  MODIFY `sales_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
 --
 -- AUTO_INCREMENT for table `tbl_salesdetails`
 --
 ALTER TABLE `tbl_salesdetails`
-  MODIFY `salesdetail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
+  MODIFY `salesdetail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
 --
 -- AUTO_INCREMENT for table `tbl_services`
 --
@@ -1654,7 +1890,7 @@ ALTER TABLE `tbl_services`
 -- AUTO_INCREMENT for table `tbl_service_rendered`
 --
 ALTER TABLE `tbl_service_rendered`
-  MODIFY `service_rendered_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `service_rendered_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 --
 -- AUTO_INCREMENT for table `tbl_settings`
 --

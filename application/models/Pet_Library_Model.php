@@ -12,6 +12,7 @@ Class Pet_Library_Model extends CI_Model {
 			
 		$this->db->select('*');
 		$this->db->from('tbl_pet_library');
+		$this->db->where('article_status','Active');
 
 		if($search != ''){
         	$this->db->like('title', $search);

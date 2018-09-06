@@ -47,17 +47,22 @@
             $image  = $fla->article_image;
             $library_id = $fla->library_id;
             $created_by = $fla->created_by;
-      }?>
-      <h1>
-          <?php echo  $article_title;?> <br /><small> By: <i><?php echo $created_by;?> </i></small>
-      </h1>
+            $date_created = $fla->date_created;
+      }
+
+            $date =date_create($date_created);
+            $date_created_format = date_format($date,"F d, Y ");
+      ?>
+      <h1><?php echo $article_title;?></h1>
+      <h3><small>By: <i><?php echo $created_by;?> </i></small></h3>
+      <h4><small>Date Published: <i><?php echo $date_created_format;?></i></small></h4>
       
     </section>
 
     <!-- Main content -->
     <section class="content">
         <div class="row">
-          <div class="col-md-9">    
+          <div class="col-md-8">    
               <div class="box box-default">
                 <div class="box-body">
                    <?php foreach($find_article_contents as $fac):?>
@@ -68,7 +73,7 @@
           </div>
 
 
-          <div class="col-md-3">
+          <div class="col-md-4">
 
               <div class="box box-default">
                 <div class="box-body">
@@ -90,7 +95,7 @@
         </div>
 
         
-          <div class="row">
+        <!--  <div class="row">
             <div class="col-md-9">
               <h3>Want to read more ? Visit these link(s) below</h3>
               <?php foreach($find_article_links as $fal):?>
@@ -98,8 +103,33 @@
               <?php endforeach;?>
             </div>
 
-          </div>
+          </div> -->
 
+        <hr style="">
+        <div class="row">
+          <div class="col-md-8">
+
+             <div class="box box-default">
+                <div class="box-header">
+                   
+                    <h3 class="box-title">Want to read more ? Visit these link(s) below</h3>
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+                     
+                    </div>
+                    <!-- /. tools -->
+                </div>
+                <div class="box-body">
+                  <?php foreach($find_article_links as $fal):?>
+                      <p><a href="<?php echo $fal->web_link?>"><?php echo $fal->web_link?></a></p>
+
+
+
+                  <?php endforeach;?>
+                </div>
+            </div>
+          </div>
+        </div>
 
 
         

@@ -379,7 +379,7 @@
             switch (categoryName) {
             case "Item":
                 dataSelectorVal = "h5[data-type='Item']";
-                alert('item');
+               // alert('item');
                 //alert(3);
                 break;
             case "Food":

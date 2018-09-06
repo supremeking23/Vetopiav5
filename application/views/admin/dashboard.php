@@ -294,11 +294,12 @@
 
                             $percentage = $get_decimal * 100;
 
-                            if($percentage <= 50){
+                            if($percentage < 50 AND $percentage > 26){
                               $progress_bar_status = "progress-bar-warning";
                               $data_tooltip_message = "";
-                            }else if($percentage <= 25){
+                            }else if($percentage < 25){
                               $progress_bar_status = "progress-bar-danger";
+                              $data_tooltip_message = "Product Count is Critical";
                             }else{
                                $progress_bar_status = "progress-bar-aqua";
                                $data_tooltip_message = "";
@@ -306,9 +307,10 @@
 
                           ?>
 
-                          <div class="progress-bar <?php echo $progress_bar_status?>" style="width: <?php echo $percentage;?>%" data-tooltip="tooltip" data-title="<?php echo $data_tooltip_message?>"></div>
+                          <div class="progress-bar <?php echo $progress_bar_status?>" style="width: <?php echo $percentage;?>%" data-tooltip="tooltip" data-title="<?php echo $data_tooltip_message;?>"></div>
                         </div>
                       </div>
+                      <?php //echo $percentage;?>
                   </td>
                   
                 </tr>

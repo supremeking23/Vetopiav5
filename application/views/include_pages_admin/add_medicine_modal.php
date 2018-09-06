@@ -84,7 +84,8 @@
                              <select name="medType" class="form-control">
                                <option value="Antibiotics">Antibiotics</option>
                                <option value="Vitamins">Vitamins</option>
-                               <option value="Vaccine">Vaccine</option>
+                               <option value="Vaccine">Vaccines</option>
+                               <option value="Vaccine">Antiparasitics</option>
                              </select>
                          </div>   
                     </div>
