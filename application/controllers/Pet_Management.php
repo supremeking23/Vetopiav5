@@ -19,6 +19,7 @@ class Pet_Management extends CI_Controller {
         $this->load->model('pet_management_model');
         $this->load->model('appointment_management');
         $this->load->model('settings_model');
+        $this->load->model('article_model');
         //echo 1;
     }
 
@@ -1394,134 +1395,163 @@ class Pet_Management extends CI_Controller {
     public function add_diagnosis_record_vet_action(){
 
 
-          echo $this->input->post("date");
-          echo "<br />";
-          echo $this->input->post("time");
-          echo "<br />";
-          echo $this->input->post("appointment_id");
-          echo "<br />";
-          echo $this->input->post("veterinarian");
-          echo "<br />";
-          echo $this->input->post("vet_id");
-          echo "<br />";
-          echo $this->input->post("pet_id");
-          echo "<br />";
-          echo $this->input->post("age");
-          echo "<br />";
-          echo $this->input->post("pettype");
-          echo "<br />";
-          echo $this->input->post("is_adult");
-          echo "<br />";
-          //echo $this->input->post("pet_name");
-          echo $this->input->post('pet_data_id');
-          //var_dump($this->input->post());
-          echo "<br />";
-          echo $this->input->post("pet_name");
-          echo "<br />";
-          echo $this->input->post("complaints");
-          echo "<br />";
-          echo $this->input->post("treatment");
+        $possible_option = $this->input->post('possible_option');
+        $write_possible = $this->input->post('write_possible');
 
-          echo "<br />";
-          echo $this->input->post("prescription");
-
-
-
-          $now = date('Y-m-d H:i:s');
-
-          $assessment_date = $now;
-
-          $date = $this->input->post("date");
-          $time = $this->input->post("time");
-          $appointment_id = $this->input->post("appointment_id");
-          $veterinarian = $this->input->post("veterinarian");
-          $vet_id = $this->input->post("vet_id");
-          $pet_id = $this->input->post("pet_id");
-          $pet_name = $this->input->post("pet_name");
-          $age = $this->input->post("age");
-          $complaints = $this->input->post("complaints");
-          $treatment = $this->input->post("treatment");
-          $prescription = $this->input->post("prescription"); 
-          $pettype = $this->input->post("pettype");
-          $is_adult = $this->input->post("is_adult");
-          $appointment_table_id = $this->input->post("appointment_table_id");
-
-
-
-          $checkup_data = array(
-                'assessment_date' => $assessment_date,
-                'date' => $date,
-                'time' => $time,
-                'appointment_id' => $appointment_id,
-                'appointment_table_id' => $appointment_table_id,
-                'veterinarian' => $veterinarian,
-                'vet_id' => $vet_id,
-                'pet_id' => $pet_id,
-                'petname' => $pet_name,
-                'age' => $age,
-                'complaints' => $complaints,
-                'treatment' => $treatment,
-                'prescription' => $prescription,
-               
-          );
-
-
-        $this->pet_management_model->add_checkup_detail($checkup_data);
-
-
-        $checkup_id = $this->db->insert_id();
-
-        $service = $this->input->post('service_id');
-
-        $veterinary_fee = $this->settings_model->get_all_settings_detail_by_settings_id(1);
-          foreach($veterinary_fee as $vet_fee){
-            $v_fee = $vet_fee->vet_fee;
+        if(empty($possible_option)){
+          //  echo "wala laman ung dropdown";
+            $library_id = 0;
+            $title = $write_possible;
+            $is_known = 'Unknown';
         }
 
-        $services = "";
-        for($count = 0; $count<count($_POST["service_id"]); $count++)
-        {
-            //echo $_POST["service_id"][$count] .'<br />';
+        if(empty($write_possible)){
+          //   echo "wala laman ung textbox";
+             $library_id = $possible_option;
 
-            if($_POST["service_id"][$count] != 0){
-                $service_detail = $this->pet_management_model->get_all_pet_services_by_service_id($_POST["service_id"][$count]);
-                foreach($service_detail as $s){
-                    $services = $s->service_name;
-                    $service_fee = $s->service_fee;
-                }
-            }else{
-                $services = "General Checkup";
-                $service_fee = $v_fee;
+             $possible = $this->article_model->find_article_from_library_by_library_id($library_id);
+             foreach($possible as $p){
+                $ptitle = $p->title;
+             }
+             $title = $ptitle;
+             $is_known = 'Known';
+        }
+        echo $library_id . '<br />' . $title;
+
+
+
+      echo $this->input->post("date");
+      echo "<br />";
+      echo $this->input->post("time");
+      echo "<br />";
+      echo $this->input->post("appointment_id");
+      echo "<br />";
+      echo $this->input->post("veterinarian");
+      echo "<br />";
+      echo $this->input->post("vet_id");
+      echo "<br />";
+      echo $this->input->post("pet_id");
+      echo "<br />";
+      echo $this->input->post("age");
+      echo "<br />";
+      echo $this->input->post("pettype");
+      echo "<br />";
+      echo $this->input->post("is_adult");
+      echo "<br />";
+      //echo $this->input->post("pet_name");
+      echo $this->input->post('pet_data_id');
+      //var_dump($this->input->post());
+      echo "<br />";
+      echo $this->input->post("pet_name");
+      echo "<br />";
+      echo $this->input->post("complaints");
+      echo "<br />";
+      echo $this->input->post("treatment");
+
+      echo "<br />";
+      echo $this->input->post("prescription");
+
+
+
+      $now = date('Y-m-d H:i:s');
+
+      $assessment_date = $now;
+
+      $date = $this->input->post("date");
+      $time = $this->input->post("time");
+      $appointment_id = $this->input->post("appointment_id");
+      $veterinarian = $this->input->post("veterinarian");
+      $vet_id = $this->input->post("vet_id");
+      $pet_id = $this->input->post("pet_id");
+      $pet_name = $this->input->post("pet_name");
+      $age = $this->input->post("age");
+      $complaints = $this->input->post("complaints");
+      $treatment = $this->input->post("treatment");
+      $prescription = $this->input->post("prescription"); 
+      $pettype = $this->input->post("pettype");
+      $is_adult = $this->input->post("is_adult");
+      $appointment_table_id = $this->input->post("appointment_table_id");
+
+      
+
+
+      $checkup_data = array(
+            'assessment_date' => $assessment_date,
+            'date' => $date,
+            'time' => $time,
+            'appointment_id' => $appointment_id,
+            'appointment_table_id' => $appointment_table_id,
+            'veterinarian' => $veterinarian,
+            'vet_id' => $vet_id,
+            'pet_id' => $pet_id,
+            'petname' => $pet_name,
+            'age' => $age,
+            'complaints' => $complaints,
+            'treatment' => $treatment,
+            'prescription' => $prescription,
+            'possible_cause' =>$title,
+            'library_id' => $library_id,
+            'is_known' => $is_known,
+           
+      );
+
+
+    $this->pet_management_model->add_checkup_detail($checkup_data);
+
+
+    $checkup_id = $this->db->insert_id();
+
+    $service = $this->input->post('service_id');
+
+    $veterinary_fee = $this->settings_model->get_all_settings_detail_by_settings_id(1);
+      foreach($veterinary_fee as $vet_fee){
+        $v_fee = $vet_fee->vet_fee;
+    }
+
+    $services = "";
+    for($count = 0; $count<count($_POST["service_id"]); $count++)
+    {
+        //echo $_POST["service_id"][$count] .'<br />';
+
+        if($_POST["service_id"][$count] != 0){
+            $service_detail = $this->pet_management_model->get_all_pet_services_by_service_id($_POST["service_id"][$count]);
+            foreach($service_detail as $s){
+                $services = $s->service_name;
+                $service_fee = $s->service_fee;
             }
-
-            $data_insert_services = array(
-                'checkup_id' => $checkup_id,
-                'service_id' => $_POST["service_id"][$count],
-                'service_name' => $services,
-                'service_fees' => $service_fee,
-                'appointment_table_id' => $appointment_table_id,
-            );
-
-            echo $services;
-
-            $this->pet_management_model->add_service_rendered_data($data_insert_services);
+        }else{
+            $services = "General Checkup";
+            $service_fee = $v_fee;
         }
 
-
-
-
-
-        //is finished will be 1 na
-
-        $update_finish = array(
-            'is_finished' => 1,
+        $data_insert_services = array(
+            'checkup_id' => $checkup_id,
+            'service_id' => $_POST["service_id"][$count],
+            'service_name' => $services,
+            'service_fees' => $service_fee,
+            'appointment_table_id' => $appointment_table_id,
         );
 
-        $this->appointment_management->update_appointment_detail($appointment_table_id,$update_finish);
+        echo $services;
+
+        $this->pet_management_model->add_service_rendered_data($data_insert_services);
+    }
 
 
 
-        redirect('Veterinarian/Appointments');
+
+
+    //is finished will be 1 na
+
+    $update_finish = array(
+        'is_finished' => 1,
+    );
+
+    $this->appointment_management->update_appointment_detail($appointment_table_id,$update_finish);
+
+
+    $this->session->set_flashdata('new_record_added','New record has been added successfully');
+    redirect('Veterinarian/Appointments');
 
         //var_dump($data);
     }//end code block

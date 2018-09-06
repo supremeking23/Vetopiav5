@@ -247,6 +247,68 @@
       </div>
 
       <br />
+
+
+      <div class="row">
+
+        <div class="col-md-8">
+          <!-- DONUT CHART -->
+          <div class="box box-solid <?php echo $box_color;?>">
+            <div class="box-header with-border">
+              <h6 class="box-title">Data Statistics for Pet Diagnosis(Table View)</h6>
+
+
+            </div>
+            <div class="box-body">
+              <table  class="datatables table table-bordered table-striped">
+                <thead>
+                <tr>
+
+
+                  <th>Disease Name</th>
+                  <th>Unknown / Known</th>
+                  <th>Total Number of cases</th>
+                 
+                </tr>
+                </thead>
+                <tbody>
+                  <?php foreach($data_stat_pet_daignosis as $data):?>
+                  <tr>
+                    <td><?php echo ucfirst( $data->possible_cause);?></td>
+                    <td><?php echo ucfirst( $data->is_known);?></td>
+                    <td><?php echo $data->counts;?></td>
+                  
+                  </tr>
+                <?php endforeach;?>
+
+                </tbody>
+               
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+
+        <div class="col-md-4">
+          <!-- DONUT CHART -->
+          <div class="box box-solid <?php echo $box_color;?>">
+            <div class="box-header with-border">
+              <h6 class="box-title">Data Statistics for Pet Diagnosis(Pie graph view)</h6>
+
+
+            </div>
+            <div class="box-body">
+              <canvas id="pieChart" style="height:50px"></canvas>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+     
+      </div>
+
+      <br />
      
       <div class="row">
         <div class="col-md-12">
@@ -409,6 +471,18 @@
         </div>
       </div>
 
+<?php 
+  
+ 
+
+
+
+
+ 
+//var_dump($rgbColor);
+?>
+
+
     </section>
     <!-- /.content -->
   </div>
@@ -530,10 +604,53 @@ foreach($result3 as $r3){
 }
 
 
+
+
+$connect = mysqli_connect("localhost", "root", "", "vetopia_db");
+$query4 = "SELECT is_known,color,COUNT(*) as 'counts' FROM tbl_checkupdetails group by is_known";
+$result4 = mysqli_query($connect, $query4);
+
+
+$pet_stat = array();
+foreach($result4 as $r4){
+  if($r4['is_known'] == 'Unknown'){
+    $color = "rgb(229, 134, 39)";
+  }else{
+    $color = "rgb(127, 204, 51)";
+  }
+
+  $datas = array();
+  $datas['value'] = $r4['counts'];
+  $datas['color'] = $color;
+  $datas['label'] = $r4['is_known'];
+  $datas['highlight'] = $color;
+
+  //merget the vent array into the return array
+  array_push($pet_stat, $datas);
+}
+
+
+$connect = mysqli_connect("localhost", "root", "", "vetopia_db");
+$query5 = "SELECT distinct(possible_cause) as 'possible_cause',count(possible_cause) as 'counts', color FROM tbl_checkupdetails WHERE is_known = 'Unknown' group by possible_cause";
+$result5 = mysqli_query($connect, $query5);
+
+
+$pet_stat2 = array();
+foreach($result5 as $r5){
+  $datas = array();
+  $datas['value'] = $r5['counts'];
+  $datas['color'] = $r5['color'];
+  $datas['label'] = $r5['possible_cause'];
+  $datas['highlight'] = $r5['color'];
+
+  //merget the vent array into the return array
+  array_push($pet_stat2, $datas);
+}
+
 //echo json_encode($sales);
 
 
-
+//SELECT distinct(possible_cause),count(possible_cause) as 'counts' FROM vetopia_db.tbl_checkupdetails WHERE is_known = 'Unknown' ;
 //for labels 
 
 
@@ -551,7 +668,6 @@ foreach ($result as $row) {
 
 
 $datas = json_encode($data);*/
-
 
 
 
@@ -655,6 +771,149 @@ $datas = json_encode($data);*/
 
 
 
+    //-------------
+    //- PIE CHART -
+   /*  [
+      {
+        value    : 700,
+        color    : '#f56954',
+        highlight: '#f56954',
+        label    : 'Chrome'
+      },
+      {
+        value    : 500,
+        color    : '#00a65a',
+        highlight: '#00a65a',
+        label    : 'IE'
+      },
+     <?php echo json_encode($pet_stat);?>
+    ]*/
+    //-------------
+    // Get context with jQuery - using jQuery's .get() method.  
+    var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+    var pieChart       = new Chart(pieChartCanvas)
+    var PieData        = <?php echo json_encode($pet_stat);?>
+
+    var pieOptions     = {
+      //Boolean - Whether we should show a stroke on each segment
+      segmentShowStroke    : true,
+      //String - The colour of each segment stroke
+      segmentStrokeColor   : '#fff',
+      //Number - The width of each segment stroke
+      segmentStrokeWidth   : 2,
+      //Number - The percentage of the chart that we cut out of the middle
+      percentageInnerCutout: 50, // This is 0 for Pie charts
+      //Number - Amount of animation steps
+      animationSteps       : 100,
+      //String - Animation easing effect
+      animationEasing      : 'easeOutBounce',
+      //Boolean - Whether we animate the rotation of the Doughnut
+      animateRotate        : true,
+      //Boolean - Whether we animate scaling the Doughnut from the centre
+      animateScale         : false,
+      //Boolean - whether to make the chart responsive to window resizing
+      responsive           : true,
+      // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+      maintainAspectRatio  : true,
+      //String - A legend template
+      legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+    }
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    pieChart.Doughnut(PieData, pieOptions)
+
+
+    //pie2
+        //-------------
+    //- PIE CHART -
+    //-------------
+    // Get context with jQuery - using jQuery's .get() method.
+    var pieChartCanvas2 = $('#pieChart2').get(0).getContext('2d')
+    var pieChart2       = new Chart(pieChartCanvas2)
+    var PieData2        = <?php echo json_encode($pet_stat2);?>
+
+    var pieOptions2     = {
+      //Boolean - Whether we should show a stroke on each segment
+      segmentShowStroke    : true,
+      //String - The colour of each segment stroke
+      segmentStrokeColor   : '#fff',
+      //Number - The width of each segment stroke
+      segmentStrokeWidth   : 2,
+      //Number - The percentage of the chart that we cut out of the middle
+      percentageInnerCutout: 50, // This is 0 for Pie charts
+      //Number - Amount of animation steps
+      animationSteps       : 100,
+      //String - Animation easing effect
+      animationEasing      : 'easeOutBounce',
+      //Boolean - Whether we animate the rotation of the Doughnut
+      animateRotate        : true,
+      //Boolean - Whether we animate scaling the Doughnut from the centre
+      animateScale         : false,
+      //Boolean - whether to make the chart responsive to window resizing
+      responsive           : true,
+      // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+      maintainAspectRatio  : true,
+      //String - A legend template
+      legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+    }
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    pieChart2.Doughnut(PieData2, pieOptions2)
+
+
+
+
+
+    //pie3
+        //-------------
+    //- PIE CHART -
+    //-------------
+    // Get context with jQuery - using jQuery's .get() method.
+    var pieChartCanvas3 = $('#pieChart3').get(0).getContext('2d')
+    var pieChart3       = new Chart(pieChartCanvas3)
+    var PieData3        = [
+      {
+        value    : 700,
+        color    : 'rgb(233,22,221)',
+        highlight: 'rgb(233,22,221)',
+        label    : 'Ivan'
+      },
+      {
+        value    : 500,
+        color    : '#00a65a',
+        highlight: '#00a65a',
+        label    : 'Ivan'
+      },
+     
+    ]
+
+    var pieOptions3     = {
+      //Boolean - Whether we should show a stroke on each segment
+      segmentShowStroke    : true,
+      //String - The colour of each segment stroke
+      segmentStrokeColor   : '#fff',
+      //Number - The width of each segment stroke
+      segmentStrokeWidth   : 2,
+      //Number - The percentage of the chart that we cut out of the middle
+      percentageInnerCutout: 50, // This is 0 for Pie charts
+      //Number - Amount of animation steps
+      animationSteps       : 100,
+      //String - Animation easing effect
+      animationEasing      : 'easeOutBounce',
+      //Boolean - Whether we animate the rotation of the Doughnut
+      animateRotate        : true,
+      //Boolean - Whether we animate scaling the Doughnut from the centre
+      animateScale         : false,
+      //Boolean - whether to make the chart responsive to window resizing
+      responsive           : true,
+      // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+      maintainAspectRatio  : true,
+      //String - A legend template
+      legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+    }
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    pieChart3.Doughnut(PieData3, pieOptions3)
 
 </script>
 <!-- footer scripts -->

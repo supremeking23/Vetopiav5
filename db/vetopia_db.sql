@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 06, 2018 at 11:51 AM
+-- Generation Time: Sep 06, 2018 at 10:53 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -120,12 +120,19 @@ INSERT INTO `tbl_appointments` (`appointment_table_id`, `appointment_id`, `custo
 (78, '#1809040211069', 'C1808260210291', 28, 'Sandra Abdul Dela Cruz', '2018-09-04', '4: 00 pm - 5: 00pm', 'Brock', 'P1809031155058', 'Cat', 'Ragdoll', '2 Years old', 1, 'Done', '2018-09-04 14:11:06', 'V1808211104490', 'Carlos Almonds Valdez', '<p>sdsdassasd</p>', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '300.00', '500.00', '200.00'),
 (79, '#1809040557525', 'C1808260210291', 28, 'Sandra Abdul Dela Cruz', '2018-09-05', '12:00 nn - 1:00 pm', 'Brock', 'P1809031155058', 'Cat', 'Ragdoll', '2 Years old', 1, 'Cancelled', '2018-09-04 17:57:52', 'V1808211106539', 'Renato Ren Anto', '<p>appointment number 1</p>', '<p>cancel by me</p>', '2018-09-05 23:55:55', 0, '0000-00-00 00:00:00', '0.00', '0.00', '0.00'),
 (80, '#1809040707044', 'C1808260134527', 19, 'Carl Vincent Lorenzo Echanez', '2018-09-04', '4: 00 pm - 5: 00pm', 'Ken', 'P1808310205079', 'Cat', 'British Shorthair', '9 Years old', 1, 'Done', '2018-09-04 19:07:04', 'V1808211104490', 'Carlos Almonds Valdez', '<p>si ken ken</p>', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '411.00', '500.00', '89.00'),
-(81, '#1809040732202', 'C1808211035448', 0, 'Lee Min Horse', '2018-09-12', '2:00 pm - 3:00 pm', 'Aninags', 'P1808221121554', 'Cat', 'British Shorthair', '2 Years old', 1, 'Pending', '2018-09-04 19:32:20', '', '', 'aninags checkup', '', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '0.00', '0.00', '0.00'),
+(81, '#1809040732202', 'C1808211035448', 0, 'Lee Min Horse', '2018-09-12', '2:00 pm - 3:00 pm', 'Aninags', 'P1808221121554', 'Cat', 'British Shorthair', '2 Years old', 1, 'On-Process', '2018-09-04 19:32:20', 'V1808211104490', 'Carlos Almonds Valdez', 'aninags checkup', '', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '0.00', '0.00', '0.00'),
 (82, '#1809041152159', 'C1808260134527', 17, 'Carl Vincent Lorenzo Echanez', '2018-09-05', '9:00 am - 10:00 am', 'ivan', 'P1808260139232', 'Dog', 'Chihuahua', '16 Years old', 1, 'Done', '2018-09-04 23:52:15', 'V1808211104490', 'Carlos Almonds Valdez', '<p>hi</p>', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '2.00', '3000.00', '0.00'),
 (83, '#1809041157433', 'C1808260210291', 28, 'Sandra Abdul Dela Cruz', '2018-09-05', '1: 00pm - 2:00 pm', 'Brock', 'P1809031155058', 'Cat', 'Ragdoll', '2 Years old', 1, 'Cancelled', '2018-09-04 23:57:43', 'V1808211104221', 'Recardo Lebron  James', '<p>follow up checkup</p>', '<p>icancel ko nalang</p>', '2018-09-04 23:58:00', 0, '0000-00-00 00:00:00', '0.00', '0.00', '0.00'),
 (84, '#1809041158396', 'C1808260210291', 28, 'Sandra Abdul Dela Cruz', '2018-09-05', '12:00 nn - 1:00 pm', 'Brock', 'P1809031155058', 'Cat', 'Ragdoll', '2 Years old', 1, 'Done', '2018-09-04 23:58:39', 'V1808211104490', 'Carlos Almonds Valdez', '<p>follow up checkup</p>', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '111.00', '200.00', '89.00'),
 (85, '#1809051202118', 'C1808211035448', 20, 'Lee Min Horse', '2018-09-06', '9:00 am - 10:00 am', 'Helen', 'P1809020130356', 'Cat', 'Maine Coon', '-1 Years old', 0, 'Done', '2018-09-05 00:02:11', 'V1808211104490', 'Carlos Almonds Valdez', '<p>hahhaahha</p>', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '268.00', '300.00', '32.00'),
-(86, '#1809060211501', 'C1808211035448', 13, 'Lee Min Horse', '2018-09-10', '11:00 am - 12: 00 nn', 'Arnelsz', 'P1808221021292', 'Cat', 'Ragdoll', '3 Years old', 1, 'On-Process', '2018-09-06 14:11:50', 'V1808211104490', 'Carlos Almonds Valdez', '<p>fdfdfxxcvc</p>', '', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '0.00', '0.00', '0.00');
+(86, '#1809060211501', 'C1808211035448', 13, 'Lee Min Horse', '2018-09-10', '11:00 am - 12: 00 nn', 'Arnelsz', 'P1808221021292', 'Cat', 'Ragdoll', '3 Years old', 1, 'On-Process', '2018-09-06 14:11:50', 'V1808211104490', 'Carlos Almonds Valdez', '<p>fdfdfxxcvc</p>', '', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '0.00', '0.00', '0.00'),
+(88, '#1809070140071', 'C1808260134527', 17, 'Carl Vincent Lorenzo Echanez', '2018-09-07', '9:00 am - 10:00 am', 'ivan', 'P1808260139232', 'Dog', 'Chihuahua', '16 Years old', 1, 'Done', '2018-09-07 01:40:07', 'V1808211104490', 'Carlos Almonds Valdez', '<p>ivan is sick</p>', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '111.00', '200.00', '89.00'),
+(89, '#1809070234565', 'C1808260210291', 28, 'Sandra Abdul Dela Cruz', '2018-09-07', '10:00 am - 11:00 am', 'Brock', 'P1809031155058', 'Cat', 'Ragdoll', '2 Years old', 1, 'Done', '2018-09-07 02:34:56', 'V1808211104490', 'Carlos Almonds Valdez', '<p>brocks</p>', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '111.00', '200.00', '89.00'),
+(90, '#1809070239442', 'C1808290453032', 18, 'Kim Patrick V Verde', '2018-09-07', '11:00 am - 12: 00 nn', 'phelp', 'P1808290457450', 'Dinosaur', 'Viloso Raptor', '10 Years old', 1, 'Done', '2018-09-07 02:39:44', 'V1808211104490', 'Carlos Almonds Valdez', '<p>ivansds</p>', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '111.00', '120.00', '9.00'),
+(91, '#1809070251560', 'C1808260134527', 17, 'Carl Vincent Lorenzo Echanez', '2018-09-07', '2:00 pm - 3:00 pm', 'ivan', 'P1808260139232', 'Dog', 'Chihuahua', '16 Years old', 1, 'Done', '2018-09-07 02:51:56', 'V1808211104490', 'Carlos Almonds Valdez', '<p>ivnasdss</p>', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '2.00', '3000.00', '0.00'),
+(92, '#1809070350498', 'C1808260134527', 19, 'Carl Vincent Lorenzo Echanez', '2018-09-07', '2:00 pm - 3:00 pm', 'Ken', 'P1808310205079', 'Cat', 'British Shorthair', '9 Years old', 1, 'Done', '2018-09-07 03:50:49', 'V1808211104490', 'Carlos Almonds Valdez', '<p>grere</p>', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '411.00', '500.00', '89.00'),
+(93, '#1809070436559', 'C1808260134527', 19, 'Carl Vincent Lorenzo Echanez', '2018-09-07', '12:00 nn - 1:00 pm', 'Ken', 'P1808310205079', 'Cat', 'British Shorthair', '9 Years old', 1, 'On-Process', '2018-09-07 04:36:55', 'V1808211104490', 'Carlos Almonds Valdez', '<p>suffer&nbsp;</p>', '', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '0.00', '0.00', '0.00'),
+(94, '#1809070438558', 'C1808260134527', 17, 'Carl Vincent Lorenzo Echanez', '2018-09-07', '2:00 pm - 3:00 pm', 'ivan', 'P1808260139232', 'Dog', 'Chihuahua', '16 Years old', 1, 'On-Process', '2018-09-07 04:38:55', 'V1809011155197', 'Ivan  Stranger Strange', '<p>dadsdsdsds</p>', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '0.00', '0.00', '0.00');
 
 -- --------------------------------------------------------
 
@@ -170,31 +177,41 @@ CREATE TABLE `tbl_checkupdetails` (
   `age` varchar(45) NOT NULL,
   `complaints` text NOT NULL,
   `treatment` text NOT NULL,
-  `prescription` text NOT NULL
+  `prescription` text NOT NULL,
+  `possible_cause` varchar(45) NOT NULL,
+  `library_id` int(11) NOT NULL,
+  `is_known` varchar(45) NOT NULL,
+  `color` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_checkupdetails`
 --
 
-INSERT INTO `tbl_checkupdetails` (`checkup_id`, `assessment_date`, `appointment_table_id`, `appointment_id`, `date`, `time`, `veterinarian`, `vet_id`, `pet_id`, `petname`, `age`, `complaints`, `treatment`, `prescription`) VALUES
-(61, '2018-08-24 10:14:39', 56, '#1808241011211', '2018-08-24', '11:00 am - 12: 00 nn', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221046418', 'LenTik', '6 Months old', 'oo ma', 'Input Veterinarian Statement/ Observation / Treatment', '<p>Bilhin mo tong mga to ah.. ahha</p><p></p><ol><li>bili ka nito</li><li>ito</li><li>sama mo na rin to ..</li><li>bilhin mo to lahat ah</li></ol><p></p>'),
-(62, '2018-08-24 11:20:38', 57, '#1808241120106', '2018-08-24', '2:00 pm - 3:00 pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221021292', 'Arnelsz', '3 Years old', 'ivansdsa', 'Input Veterinarian Statement/ Observation / Treatment', 'Prescriptions / Medicines / Doctors Comments and Recomendation\r\n                                        <div><p></p><ol><li>ivan<br></li><li>christian</li><li>jay</li><li>funcion</li><li>ako</li></ol><p></p></div>'),
-(63, '2018-08-26 04:47:28', 60, '#1808260444092', '2018-08-26', '9:00 am - 10:00 am', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221048598', 'cole', '1 Years old', '<p>tahol daw ng tahol</p>', 'Tinanggalan ng Voice box', '<p>wala.. kasi baka tumaholulit</p><p>nag deworming narin para tanggal bituka</p>'),
-(64, '2018-08-29 17:39:33', 64, '#1808290532591', '2018-08-29', '4: 00 pm - 5: 00pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221046418', 'LenTik', '6 Months old', 'hshdsads', 'Input Veterinarian Statement/ Observation / Treatment', 'Prescriptions / Medicines / Doctors Comments and Recomendation'),
-(65, '2018-08-30 22:21:31', 65, '#1808301018485', '2018-08-30', '4: 00 pm - 5: 00pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221046418', 'LenTik', '6 Months old', '<p>dasdsdssssssssss</p>', 'Input Veterinarian Statement/ Observation / Treatment', 'Prescriptions / Medicines / Doctors Comments and Recomendation'),
-(66, '2018-08-30 23:20:42', 63, '#1808290151275', '2018-08-30', '9:00 am - 10:00 am', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221046418', 'LenTik', '6 Months old', 'hahahahahahah', 'Input Veterinarian Statement/ Observation / Treatment', 'Prescriptions / Medicines / Doctors Comments and Recomendation'),
-(67, '2018-08-30 23:20:48', 66, '#1808301059464', '2018-08-30', '4: 00 pm - 5: 00pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221046418', 'LenTik', '6 Months old', '<p>dssdasd ivansdsdassdasdd</p>', 'Input Veterinarian Statement/ Observation / Treatment', 'Prescriptions / Medicines / Doctors Comments and Recomendation'),
-(68, '2018-08-31 14:18:30', 71, '#1808311156354', '2018-08-31', '9:00 am - 10:00 am', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221021292', 'Arnelsz', '3 Years old', 'sadsdsdd', 'Input Veterinarian Statement/ Observation / Treatment<div><br></div><div><br></div>', 'Prescriptions / Medicines / Doctors Comments and Recomendation\r\n                                        <div><br></div><div><br></div><div>sdsasd</div>'),
-(69, '2018-09-01 01:09:23', 72, '#1809010108444', '2018-09-01', '9:00 am - 10:00 am', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221021292', 'Arnelsz', '3 Years old', '<p>ivansdasdsd</p>', 'Input Veterinarian Statement/ Observation / Treatment', 'Prescriptions / Medicines / Doctors Comments and Recomendation'),
-(70, '2018-09-03 13:54:28', 75, '#1809031138147', '2018-09-03', '2:00 pm - 3:00 pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221121554', 'Aninags', '2 Years old', 'focus on work', 'Input Veterinarian Statement/ Observation / Treatment<div><ol><li>injected a serum</li><li>injected a powder&nbsp;</li><li>get blood sugar</li><li>get body weight</li></ol></div><div><br></div><div><br></div>', 'Prescriptions / Medicines / Doctors Comments and Recomendation\r\n                                                  <div><br></div><div>Drink 8 to 10 glasses of water every day</div>'),
-(71, '2018-09-04 13:50:54', 77, '#1809040144230', '2018-09-04', '2:00 pm - 3:00 pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221121554', 'Aninags', '2 Years old', 'ivansdsss', 'Input Veterinarian Statement/ Observation / Treatment', 'Prescriptions / Medicines / Doctors Comments and Recomendation'),
-(72, '2018-09-04 14:20:56', 76, '#1809030254545', '2018-09-04', '9:00 am - 10:00 am', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808310205079', 'Ken', '9 Years old', '<p>nag set na ng maaga</p>', '<p>nice one</p>', '<p>ok</p>'),
-(73, '2018-09-04 17:28:09', 78, '#1809040211069', '2018-09-04', '4: 00 pm - 5: 00pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1809031155058', 'Brock', '2 Years old', '<p>sdsdassasd</p>', '<p></p><p>Treatment includes:<br></p><p></p><ol><li>Deworming</li><li>aesthetics</li><li>singleton</li><li>abbreviation</li><li>teraforming&nbsp;</li></ol><p></p><p></p>', '<p>bring brock for fallow up check up in <b><u>2 weeks</u></b> time</p><p>buy the following medicine for home medication</p><p></p><ol><li>asperin</li><li>cleve&nbsp;</li><li>byfost</li><li>stormbreaker</li></ol><p></p>'),
-(74, '2018-09-04 23:19:19', 80, '#1809040707044', '2018-09-04', '4: 00 pm - 5: 00pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808310205079', 'Ken', '9 Years old', '<p>si ken ken</p>', '<p>ken is physically healthy but i have observe that he is pale</p><p>and weak... must be the side effect of the atibiotics that we use to him</p><p><br></p>', '<p>patient must be lock on his room for several days to avoid infection</p>'),
-(75, '2018-09-05 23:53:35', 82, '#1809041152159', '2018-09-05', '9:00 am - 10:00 am', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808260139232', 'ivan', '16 Years old', '<p>hi</p>', '<p>oo na</p>', '<p>edi wow</p>'),
-(76, '2018-09-05 23:54:04', 84, '#1809041158396', '2018-09-05', '12:00 nn - 1:00 pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1809031155058', 'Brock', '2 Years old', '<p>follow up checkup</p>', '<p>progressive enchantment</p>', '<p>like we use to do</p>'),
-(77, '2018-09-06 14:20:00', 85, '#1809051202118', '2018-09-06', '9:00 am - 10:00 am', 'Carlos Almonds Valdez', 'V1808211104490', 'P1809020130356', 'Helen', '-1 Years old', '<p>hahhaahha</p>', '<p>expensive</p>', '<p>onwsasd</p>');
+INSERT INTO `tbl_checkupdetails` (`checkup_id`, `assessment_date`, `appointment_table_id`, `appointment_id`, `date`, `time`, `veterinarian`, `vet_id`, `pet_id`, `petname`, `age`, `complaints`, `treatment`, `prescription`, `possible_cause`, `library_id`, `is_known`, `color`) VALUES
+(61, '2018-08-24 10:14:39', 56, '#1808241011211', '2018-08-24', '11:00 am - 12: 00 nn', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221046418', 'LenTik', '6 Months old', 'oo ma', 'Input Veterinarian Statement/ Observation / Treatment', '<p>Bilhin mo tong mga to ah.. ahha</p><p></p><ol><li>bili ka nito</li><li>ito</li><li>sama mo na rin to ..</li><li>bilhin mo to lahat ah</li></ol><p></p>', 'cancer', 0, 'Unknown', '#f56954'),
+(62, '2018-08-24 11:20:38', 57, '#1808241120106', '2018-08-24', '2:00 pm - 3:00 pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221021292', 'Arnelsz', '3 Years old', 'ivansdsa', 'Input Veterinarian Statement/ Observation / Treatment', 'Prescriptions / Medicines / Doctors Comments and Recomendation\r\n                                        <div><p></p><ol><li>ivan<br></li><li>christian</li><li>jay</li><li>funcion</li><li>ako</li></ol><p></p></div>', 'cancer', 0, 'Unknown', '#f56954'),
+(63, '2018-08-26 04:47:28', 60, '#1808260444092', '2018-08-26', '9:00 am - 10:00 am', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221048598', 'cole', '1 Years old', '<p>tahol daw ng tahol</p>', 'Tinanggalan ng Voice box', '<p>wala.. kasi baka tumaholulit</p><p>nag deworming narin para tanggal bituka</p>', 'cancer', 0, 'Unknown', '#f56954'),
+(64, '2018-08-29 17:39:33', 64, '#1808290532591', '2018-08-29', '4: 00 pm - 5: 00pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221046418', 'LenTik', '6 Months old', 'hshdsads', 'Input Veterinarian Statement/ Observation / Treatment', 'Prescriptions / Medicines / Doctors Comments and Recomendation', 'cancer', 0, 'Unknown', '#f56954'),
+(65, '2018-08-30 22:21:31', 65, '#1808301018485', '2018-08-30', '4: 00 pm - 5: 00pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221046418', 'LenTik', '6 Months old', '<p>dasdsdssssssssss</p>', 'Input Veterinarian Statement/ Observation / Treatment', 'Prescriptions / Medicines / Doctors Comments and Recomendation', 'cancer', 0, 'Unknown', '#f56954'),
+(66, '2018-08-30 23:20:42', 63, '#1808290151275', '2018-08-30', '9:00 am - 10:00 am', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221046418', 'LenTik', '6 Months old', 'hahahahahahah', 'Input Veterinarian Statement/ Observation / Treatment', 'Prescriptions / Medicines / Doctors Comments and Recomendation', 'syndrome', 0, 'Unknown', '#f56954'),
+(67, '2018-08-30 23:20:48', 66, '#1808301059464', '2018-08-30', '4: 00 pm - 5: 00pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221046418', 'LenTik', '6 Months old', '<p>dssdasd ivansdsdassdasdd</p>', 'Input Veterinarian Statement/ Observation / Treatment', 'Prescriptions / Medicines / Doctors Comments and Recomendation', 'syndrome', 0, 'Unknown', '#f56954'),
+(68, '2018-08-31 14:18:30', 71, '#1808311156354', '2018-08-31', '9:00 am - 10:00 am', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221021292', 'Arnelsz', '3 Years old', 'sadsdsdd', 'Input Veterinarian Statement/ Observation / Treatment<div><br></div><div><br></div>', 'Prescriptions / Medicines / Doctors Comments and Recomendation\r\n                                        <div><br></div><div><br></div><div>sdsasd</div>', 'cancer', 0, 'Unknown', '#f56954'),
+(69, '2018-09-01 01:09:23', 72, '#1809010108444', '2018-09-01', '9:00 am - 10:00 am', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221021292', 'Arnelsz', '3 Years old', '<p>ivansdasdsd</p>', 'Input Veterinarian Statement/ Observation / Treatment', 'Prescriptions / Medicines / Doctors Comments and Recomendation', 'syndrome', 0, 'Unknown', '#f56954'),
+(70, '2018-09-03 13:54:28', 75, '#1809031138147', '2018-09-03', '2:00 pm - 3:00 pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221121554', 'Aninags', '2 Years old', 'focus on work', 'Input Veterinarian Statement/ Observation / Treatment<div><ol><li>injected a serum</li><li>injected a powder&nbsp;</li><li>get blood sugar</li><li>get body weight</li></ol></div><div><br></div><div><br></div>', 'Prescriptions / Medicines / Doctors Comments and Recomendation\r\n                                                  <div><br></div><div>Drink 8 to 10 glasses of water every day</div>', 'cancer', 0, 'Unknown', '#f56954'),
+(71, '2018-09-04 13:50:54', 77, '#1809040144230', '2018-09-04', '2:00 pm - 3:00 pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221121554', 'Aninags', '2 Years old', 'ivansdsss', 'Input Veterinarian Statement/ Observation / Treatment', 'Prescriptions / Medicines / Doctors Comments and Recomendation', 'syndrome', 0, 'Unknown', '#f56954'),
+(72, '2018-09-04 14:20:56', 76, '#1809030254545', '2018-09-04', '9:00 am - 10:00 am', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808310205079', 'Ken', '9 Years old', '<p>nag set na ng maaga</p>', '<p>nice one</p>', '<p>ok</p>', 'cancer', 0, 'Unknown', '#f56954'),
+(73, '2018-09-04 17:28:09', 78, '#1809040211069', '2018-09-04', '4: 00 pm - 5: 00pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1809031155058', 'Brock', '2 Years old', '<p>sdsdassasd</p>', '<p></p><p>Treatment includes:<br></p><p></p><ol><li>Deworming</li><li>aesthetics</li><li>singleton</li><li>abbreviation</li><li>teraforming&nbsp;</li></ol><p></p><p></p>', '<p>bring brock for fallow up check up in <b><u>2 weeks</u></b> time</p><p>buy the following medicine for home medication</p><p></p><ol><li>asperin</li><li>cleve&nbsp;</li><li>byfost</li><li>stormbreaker</li></ol><p></p>', 'syndrome', 0, 'Unknown', '#f56954'),
+(74, '2018-09-04 23:19:19', 80, '#1809040707044', '2018-09-04', '4: 00 pm - 5: 00pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808310205079', 'Ken', '9 Years old', '<p>si ken ken</p>', '<p>ken is physically healthy but i have observe that he is pale</p><p>and weak... must be the side effect of the atibiotics that we use to him</p><p><br></p>', '<p>patient must be lock on his room for several days to avoid infection</p>', 'tumor', 0, 'Unknown', '#00a65a'),
+(75, '2018-09-05 23:53:35', 82, '#1809041152159', '2018-09-05', '9:00 am - 10:00 am', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808260139232', 'ivan', '16 Years old', '<p>hi</p>', '<p>oo na</p>', '<p>edi wow</p>', 'tumor', 0, 'Unknown', '#00a65a'),
+(76, '2018-09-05 23:54:04', 84, '#1809041158396', '2018-09-05', '12:00 nn - 1:00 pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1809031155058', 'Brock', '2 Years old', '<p>follow up checkup</p>', '<p>progressive enchantment</p>', '<p>like we use to do</p>', 'tumor', 0, 'Unknown', '#00a65a'),
+(77, '2018-09-06 14:20:00', 85, '#1809051202118', '2018-09-06', '9:00 am - 10:00 am', 'Carlos Almonds Valdez', 'V1808211104490', 'P1809020130356', 'Helen', '-1 Years old', '<p>hahhaahha</p>', '<p>expensive</p>', '<p>onwsasd</p>', 'tumor', 0, 'Unknown', '#00a65a'),
+(78, '2018-09-07 02:29:15', 88, '#1809070140071', '2018-09-07', '9:00 am - 10:00 am', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808260139232', 'ivan', '16 Years old', '<p>ivan is sick</p>', '<p>paient is suffering from an unknown illness</p>', '<p>need to do this procedure</p>', 'gingivitis', 0, 'Unknown', '#00a65a'),
+(79, '2018-09-07 02:35:19', 89, '#1809070234565', '2018-09-07', '10:00 am - 11:00 am', 'Carlos Almonds Valdez', 'V1808211104490', 'P1809031155058', 'Brock', '2 Years old', '<p>brocks</p>', '<p>scissor&nbsp;</p>', '<p>plan</p>', 'gingivitis', 0, 'Unknown', '#00a65a'),
+(80, '2018-09-07 02:40:30', 90, '#1809070239442', '2018-09-07', '11:00 am - 12: 00 nn', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808290457450', 'phelp', '10 Years old', '<p>ivansds</p>', '<p>sam</p>', '<p>ple</p>', 'Anaplasmosis', 59, 'Known', '#00a65a'),
+(81, '2018-09-07 02:52:31', 91, '#1809070251560', '2018-09-07', '2:00 pm - 3:00 pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808260139232', 'ivan', '16 Years old', '<p>ivnasdss</p>', '<p>ss</p>', '<p>ivans</p>', 'Colitis', 61, 'Known', '#00a65a'),
+(82, '2018-09-07 03:51:11', 92, '#1809070350498', '2018-09-07', '2:00 pm - 3:00 pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808310205079', 'Ken', '9 Years old', '<p>grere</p>', '<p>sasds</p>', '<p>dasdad</p>', 'green lantern', 0, 'Unknown', ''),
+(83, '2018-09-07 04:39:56', 94, '#1809070438558', '2018-09-07', '2:00 pm - 3:00 pm', 'Ivan  Stranger Strange', 'V1809011155197', 'P1808260139232', 'ivan', '16 Years old', '<p>suffer sereyna</p>', '<p>sasds</p>', '<p>sdsd</p>', 'Anaplasmosis', 59, 'Known', '');
 
 -- --------------------------------------------------------
 
@@ -235,7 +252,8 @@ INSERT INTO `tbl_customers` (`customer_table_id`, `customer_id`, `firstname`, `m
 (11, 'C1808280158054', 'Ely Jireh', 'M', 'Mojares', '1958-05-20', '#3333', 'ivn street', 'makati city', '1111', '2018-08-28 13:59:08', '', '', 'Active', '', '09021232212', 'Male', 'sky.winter30@gmail.com'),
 (12, 'C1808280159141', ' Almira', 'Incarnation', 'Layola', '2000-06-20', '#3333', 'ivn street', 'makati city', '1111', '2018-08-28 14:07:23', '', '', 'Active', '', '09021232212', 'Female', 'sky.winter30@gmail.com'),
 (13, 'C1808290453032', 'Kim Patrick', 'V', 'Verde', '1990-06-27', 'makati', 'makati', 'makati', '221', '2018-08-29 16:54:41', '', '', 'Active', '', '09021232212', 'Male', 'rayvincentphillip.villaver@gmail.com'),
-(14, 'C1808310120124', 'Steve', 'Carlson', 'Nash', '1981-05-20', '#3333', 'ivn street', 'makati city', '1111', '2018-08-31 01:21:01', '', '', 'Active', '', '09021232212', 'Male', 'icjfuncion@gmail.com');
+(14, 'C1808310120124', 'Steve', 'Carlson', 'Nash', '1981-05-20', '#3333', 'ivn street', 'makati city', '1111', '2018-08-31 01:21:01', '', '', 'Active', '', '09021232212', 'Male', 'icjfuncion@gmail.com'),
+(15, 'C1809060648155', 'Bessy Bes', 'Bess ', 'Bestes', '1991-06-11', '#3333', 'ivn street', 'makati city', '1111', '2018-09-06 18:50:29', '', '', 'Active', '', '09021232212', 'Male', 'dominic.nanz0526@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -609,7 +627,216 @@ INSERT INTO `tbl_logs` (`log_id`, `log_user`, `log_usertype`, `log_userID`, `log
 (4660, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-06 17:21:15'),
 (4661, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer list', '2018-09-06 17:21:19'),
 (4662, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-09-06 17:21:21'),
-(4663, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 17:25:52');
+(4663, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 17:25:52'),
+(4664, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 18:08:11'),
+(4665, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add article in Pet Health Care Library', '2018-09-06 18:08:35'),
+(4666, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add article in Pet Health Care Library', '2018-09-06 18:08:43'),
+(4667, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 18:09:19'),
+(4668, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 18:09:31'),
+(4669, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-09-06 18:09:39'),
+(4670, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 18:09:41'),
+(4671, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-09-06 18:09:47'),
+(4672, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 18:10:36'),
+(4673, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add article in Pet Health Care Library', '2018-09-06 18:10:49'),
+(4674, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 18:12:59'),
+(4675, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add article in Pet Health Care Library', '2018-09-06 18:13:08'),
+(4676, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 18:13:25'),
+(4677, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add article in Pet Health Care Library', '2018-09-06 18:13:36'),
+(4678, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 18:14:08'),
+(4679, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add article in Pet Health Care Library', '2018-09-06 18:14:19'),
+(4680, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 18:15:20'),
+(4681, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add article in Pet Health Care Library', '2018-09-06 18:15:30'),
+(4682, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 18:15:33'),
+(4683, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'User Logout', '2018-09-06 18:42:41'),
+(4684, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-06 18:48:10'),
+(4685, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer list', '2018-09-06 18:48:15'),
+(4686, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add new Customer', '2018-09-06 18:50:29'),
+(4687, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer list', '2018-09-06 18:50:35'),
+(4688, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-09-06 18:53:21'),
+(4689, 'Bessy Bes Bess  Bestes', 'Customer', 'C1809060648155', 'User Login', '2018-09-06 18:54:03'),
+(4690, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-09-06 18:54:10'),
+(4691, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-09-06 18:54:12'),
+(4692, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Add New Pet', '2018-09-06 18:55:31'),
+(4693, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Customer details', '2018-09-06 18:55:33'),
+(4694, 'Bessy Bes Bess  Bestes', 'Customer', 'C1809060648155', 'Send Appointment Request', '2018-09-06 18:55:41'),
+(4695, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-06 18:55:44'),
+(4696, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-06 18:55:59'),
+(4697, 'Bessy Bes Bess  Bestes', 'Customer', 'C1809060648155', 'User Logout', '2018-09-06 19:01:07'),
+(4698, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-09-06 19:01:20'),
+(4699, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-06 19:01:20'),
+(4700, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian list', '2018-09-06 19:01:28'),
+(4701, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-09-06 19:01:33'),
+(4702, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian list', '2018-09-06 19:01:46'),
+(4703, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-09-06 19:01:48'),
+(4704, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-09-06 19:02:15'),
+(4705, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-09-06 19:02:33'),
+(4706, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-09-06 19:03:03'),
+(4707, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet details', '2018-09-06 19:03:05'),
+(4708, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-09-06 19:03:34'),
+(4709, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Sales Report', '2018-09-06 19:04:00'),
+(4710, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet Health Care Library', '2018-09-06 19:04:05'),
+(4711, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-09-06 19:04:16'),
+(4712, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-09-06 19:04:50'),
+(4713, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-09-07 01:39:25'),
+(4714, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 01:39:25'),
+(4715, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 01:39:28'),
+(4716, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 01:40:08'),
+(4717, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'User Login', '2018-09-07 01:40:21'),
+(4718, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 01:40:21'),
+(4719, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 01:41:54'),
+(4720, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 01:42:00'),
+(4721, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 01:51:59'),
+(4722, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 01:53:09'),
+(4723, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 01:53:26'),
+(4724, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 01:54:30'),
+(4725, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 01:56:36'),
+(4726, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 01:57:16'),
+(4727, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 01:57:29');
+INSERT INTO `tbl_logs` (`log_id`, `log_user`, `log_usertype`, `log_userID`, `log_action`, `log_date`) VALUES
+(4728, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 01:57:40'),
+(4729, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 01:57:54'),
+(4730, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 02:01:43'),
+(4731, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:01:46'),
+(4732, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:04:02'),
+(4733, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:04:51'),
+(4734, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:05:50'),
+(4735, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:06:12'),
+(4736, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:11:25'),
+(4737, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:12:09'),
+(4738, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:12:28'),
+(4739, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:17:41'),
+(4740, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:18:51'),
+(4741, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:19:08'),
+(4742, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:19:23'),
+(4743, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:19:31'),
+(4744, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:19:53'),
+(4745, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:20:07'),
+(4746, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:20:17'),
+(4747, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:20:35'),
+(4748, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:20:51'),
+(4749, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:20:58'),
+(4750, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:23:09'),
+(4751, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:23:10'),
+(4752, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:23:32'),
+(4753, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:23:57'),
+(4754, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:25:19'),
+(4755, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:25:55'),
+(4756, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:28:10'),
+(4757, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:28:13'),
+(4758, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:29:04'),
+(4759, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:29:16'),
+(4760, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 02:33:58'),
+(4761, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 02:34:11'),
+(4762, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Print Appointment Detail', '2018-09-07 02:34:19'),
+(4763, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Print Appointment Detail', '2018-09-07 02:34:19'),
+(4764, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 02:34:22'),
+(4765, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 02:34:56'),
+(4766, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:35:02'),
+(4767, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:35:19'),
+(4768, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 02:39:05'),
+(4769, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 02:39:08'),
+(4770, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Print Appointment Detail', '2018-09-07 02:39:15'),
+(4771, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Print Appointment Detail', '2018-09-07 02:39:15'),
+(4772, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 02:39:22'),
+(4773, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 02:39:44'),
+(4774, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:39:48'),
+(4775, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:40:23'),
+(4776, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:40:30'),
+(4777, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 02:49:51'),
+(4778, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Print Appointment Detail', '2018-09-07 02:50:01'),
+(4779, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Print Appointment Detail', '2018-09-07 02:50:01'),
+(4780, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 02:50:07'),
+(4781, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 02:50:25'),
+(4782, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 02:50:45'),
+(4783, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 02:51:40'),
+(4784, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 02:51:56'),
+(4785, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 02:52:01'),
+(4786, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:52:06'),
+(4787, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 02:52:32'),
+(4788, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 02:57:07'),
+(4789, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 02:57:45'),
+(4790, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 02:58:27'),
+(4791, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 02:59:06'),
+(4792, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 02:59:33'),
+(4793, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:00:25'),
+(4794, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:00:43'),
+(4795, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:02:10'),
+(4796, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:04:38'),
+(4797, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:05:33'),
+(4798, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:06:02'),
+(4799, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:06:14'),
+(4800, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:06:57'),
+(4801, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:07:18'),
+(4802, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:10:11'),
+(4803, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:10:28'),
+(4804, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:10:47'),
+(4805, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:12:51'),
+(4806, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:12:59'),
+(4807, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:14:53'),
+(4808, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:33:00'),
+(4809, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:33:32'),
+(4810, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:33:54'),
+(4811, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:34:17'),
+(4812, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:34:21'),
+(4813, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:34:41'),
+(4814, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:35:32'),
+(4815, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:36:06'),
+(4816, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:36:28'),
+(4817, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:36:36'),
+(4818, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:46:46'),
+(4819, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:47:29'),
+(4820, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:49:03'),
+(4821, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 03:50:33'),
+(4822, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 03:50:49'),
+(4823, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 03:50:51'),
+(4824, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 03:50:53'),
+(4825, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 03:51:11'),
+(4826, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 03:51:19'),
+(4827, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Print Appointment Detail', '2018-09-07 03:51:35'),
+(4828, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Print Appointment Detail', '2018-09-07 03:51:35'),
+(4829, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 03:51:38'),
+(4830, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Print Appointment Detail', '2018-09-07 03:51:48'),
+(4831, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Print Appointment Detail', '2018-09-07 03:51:48'),
+(4832, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 03:51:51'),
+(4833, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 03:52:14'),
+(4834, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 04:05:42'),
+(4835, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 04:06:14'),
+(4836, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 04:06:17'),
+(4837, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 04:06:18'),
+(4838, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 04:08:29'),
+(4839, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 04:08:43'),
+(4840, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 04:15:35'),
+(4841, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 04:15:40'),
+(4842, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 04:18:12'),
+(4843, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 04:18:15'),
+(4844, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 04:18:49'),
+(4845, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 04:23:32'),
+(4846, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 04:27:41'),
+(4847, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 04:29:11'),
+(4848, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 04:32:44'),
+(4849, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 04:36:25'),
+(4850, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 04:36:35'),
+(4851, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 04:36:55'),
+(4852, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 04:36:57'),
+(4853, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 04:37:02'),
+(4854, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-07 04:37:34'),
+(4855, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian list', '2018-09-07 04:37:46'),
+(4856, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-09-07 04:37:51'),
+(4857, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian details', '2018-09-07 04:38:13'),
+(4858, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'User Logout', '2018-09-07 04:38:19'),
+(4859, 'Ivan  Stranger Strange', 'Veterinarian', 'V1809011155197', 'User Login', '2018-09-07 04:38:24'),
+(4860, 'Ivan  Stranger Strange', 'Veterinarian', 'V1809011155197', 'View Appointments', '2018-09-07 04:38:24'),
+(4861, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 04:38:36'),
+(4862, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 04:38:56'),
+(4863, 'Ivan  Stranger Strange', 'Veterinarian', 'V1809011155197', 'View Appointments', '2018-09-07 04:38:58'),
+(4864, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-07 04:39:00'),
+(4865, 'Ivan  Stranger Strange', 'Veterinarian', 'V1809011155197', 'View Appointments', '2018-09-07 04:39:02'),
+(4866, 'Ivan  Stranger Strange', 'Veterinarian', 'V1809011155197', 'View Appointments', '2018-09-07 04:39:51'),
+(4867, 'Ivan  Stranger Strange', 'Veterinarian', 'V1809011155197', 'View Appointments', '2018-09-07 04:39:56'),
+(4868, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 04:47:18'),
+(4869, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 04:48:26'),
+(4870, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 04:49:51'),
+(4871, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-07 04:52:39');
 
 -- --------------------------------------------------------
 
@@ -686,7 +913,8 @@ INSERT INTO `tbl_pets` (`pet_table_id`, `pet_id`, `petname`, `customer_table_id`
 (26, 'P1809020142016', 'ikaws', 7, 3, 24, '2012-07-26', '2018-09-02 01:42:19', 'Female', 'German_shephard112.jpg'),
 (27, 'P1809020142219', 'Charlie', 7, 3, 23, '2007-11-23', '2018-09-02 01:42:47', 'Male', 'German_shephard113.jpg'),
 (28, 'P1809031155058', 'Brock', 10, 2, 15, '2016-06-29', '2018-09-03 11:55:24', 'Male', 'German_shephard11142.jpg'),
-(29, 'P1809040802237', 'Ignacio', 7, 2, 13, '2009-06-24', '2018-09-04 20:02:42', 'Male', 'German_shephard11143.jpg');
+(29, 'P1809040802237', 'Ignacio', 7, 2, 13, '2009-06-24', '2018-09-04 20:02:42', 'Male', 'German_shephard11143.jpg'),
+(30, 'P1809060654125', 'Wers', 15, 1, 19, '2000-06-19', '2018-09-06 18:55:31', 'Female', 'German_shephard11141.jpg');
 
 -- --------------------------------------------------------
 
@@ -738,7 +966,8 @@ CREATE TABLE `tbl_pet_library` (
 INSERT INTO `tbl_pet_library` (`library_id`, `title`, `content`, `article_image`, `article_status`, `created_by`, `user_type`, `user_id`, `user_table_id`, `date_created`) VALUES
 (58, 'Kennel Cough', '      A dog with kennel cough. Graphic by Mar', 'kennel.gif', 'Active', 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 8, '2018-09-06 15:13:58'),
 (59, 'Anaplasmosis', 'A dog can have both infections at the same ti', 'anaplasmosis.jpg', 'Active', 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 8, '2018-09-06 15:43:21'),
-(60, 'Ehrlichia ', 'Ehrlichia, named for the Dr. Ehrlich who firs', 'German_shephard11141.jpg', 'Active', 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 1, '2018-09-06 15:47:14');
+(60, 'Ehrlichia ', 'Ehrlichia, named for the Dr. Ehrlich who firs', 'German_shephard11141.jpg', 'Active', 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 1, '2018-09-06 15:47:14'),
+(61, 'Colitis', '', 'pusa.jpg', 'Active', 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 1, '2018-09-06 18:08:35');
 
 -- --------------------------------------------------------
 
@@ -763,7 +992,8 @@ INSERT INTO `tbl_pet_library_content` (`content_id`, `library_id`, `article_cont
 (59, 59, 'A dog can have both infections at the same time. Granulocytic anaplasmosis is more common. Anaplasmosis is a tick-borne disease. Two forms of anaplasmosis are known: granulocytic anaplasmosis and infectious cyclic thrombocytopenia.\r\n\r\nTransmission is via a tick vector (a vector is an organism that can passively carry and transmit disease). A tick needs to be attached for a minimum of 24 hours to transmit the organism. Incubation time is about 1 to 2 weeks. Reservoir hosts (a source of infection and possible reinfection that sustains a parasite) are usually small rodents, deer, etc.'),
 (60, 59, '<p>\r\n\r\n</p><p><strong>Diagnosis</strong></p><p>Blood tests and a urinalysis are the main diagnostic tools for anaplasmosis. The blood tests usually include a complete blood count, blood smear evaluation, biochemistry panel, serology to look for antibodies, and polymerase chain reaction (PCR) assays. If the dog is lame, radiographs and analysis of joint fluid are usually included.</p>\r\n\r\n<br><p></p>'),
 (61, 59, '<p>\r\n\r\n</p><p><strong>Treatment</strong></p><p>Treatment includes antibiotics, pain relievers, and anti-inflammatory drugs.</p><p><a target=\"_blank\" rel=\"nofollow\" href=\"http://www.veterinarypartner.com/Content.plx?P=A&amp;S=0&amp;C=0&amp;A=642\">Doxycycline</a>&nbsp;is the most commonly used antibiotic. Most dogs respond within one to two days after they first take doxycycline. Other antibiotic options are tetracycline or minocycline.</p><p>Analgesia and anti-inflammatory drugs may be needed for joint pain. Let your veterinarian choose the anti-inflammatory, rather than choosing and dosing it yourself, because dogs metabolize these medicines differently than humans do. Your veterinarian will have the most appropriate medication.</p>\r\n\r\n<br><p></p>'),
-(62, 60, 'Ehrlichia, named for the Dr. Ehrlich who first described them, are a type of bacteria that infect and live within the white blood cells of their hosts. Different types of Ehrlichia live in different types of white blood cells. Hosts can be human, pet, or wild animals. Ehrlichia are spread from host to host by tick bites and their intracellular location makes them difficult to remove as most antibiotics do not penetrate to the inside of cells.');
+(62, 60, 'Ehrlichia, named for the Dr. Ehrlich who first described them, are a type of bacteria that infect and live within the white blood cells of their hosts. Different types of Ehrlichia live in different types of white blood cells. Hosts can be human, pet, or wild animals. Ehrlichia are spread from host to host by tick bites and their intracellular location makes them difficult to remove as most antibiotics do not penetrate to the inside of cells.'),
+(63, 66, 'dasdasd');
 
 -- --------------------------------------------------------
 
@@ -784,20 +1014,8 @@ CREATE TABLE `tbl_pet_library_links` (
 INSERT INTO `tbl_pet_library_links` (`links_id`, `library_id`, `web_link`) VALUES
 (33, 58, 'https://veterinarypartner.vin.com/default.aspx?pid=19239&id=4951478'),
 (34, 59, 'https://veterinarypartner.vin.com/default.aspx?pid=19239&catId=102899&id=6191808&ind=11&objTypeID=1007'),
-(35, 60, 'https://veterinarypartner.vin.com/default.aspx?pid=19239&id=4952341');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_possible_ symptoms`
---
-
-CREATE TABLE `tbl_possible_ symptoms` (
-  `possible_symptoms_id` int(11) NOT NULL,
-  ` symptoms` varchar(45) NOT NULL,
-  `number_of_cases` int(11) NOT NULL,
-  `symptoms_status` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(35, 60, 'https://veterinarypartner.vin.com/default.aspx?pid=19239&id=4952341'),
+(36, 66, 'dasd');
 
 -- --------------------------------------------------------
 
@@ -1422,7 +1640,16 @@ INSERT INTO `tbl_service_rendered` (`service_rendered_id`, `checkup_id`, `servic
 (73, 75, 7, 'Vaccination', '2222.00', 82),
 (74, 76, 0, 'General Checkup', '111.00', 84),
 (75, 77, 0, 'General Checkup', '111.00', 85),
-(76, 77, 9, 'Deworming for Kittens', '157.00', 85);
+(76, 77, 9, 'Deworming for Kittens', '157.00', 85),
+(77, 78, 0, 'General Checkup', '111.00', 88),
+(78, 79, 0, 'General Checkup', '111.00', 89),
+(79, 80, 0, 'General Checkup', '111.00', 90),
+(80, 81, 0, 'General Checkup', '111.00', 91),
+(81, 81, 7, 'Vaccination', '2222.00', 91),
+(82, 82, 0, 'General Checkup', '111.00', 92),
+(83, 82, 8, 'Deworming', '300.00', 92),
+(84, 83, 0, 'General Checkup', '111.00', 94),
+(85, 83, 7, 'Vaccination', '2222.00', 94);
 
 -- --------------------------------------------------------
 
@@ -1549,7 +1776,8 @@ INSERT INTO `tbl_users` (`tbluser_id`, `user_type`, `user_id`, `username`, `pass
 (15, 'Customer', 'C1808280159141', ' Layola', 'C1808280159141', '$2y$10$ssNRTHiPP.roAeyeHpAkrO2ibuoxnK5McVyQzy', '2018-08-28 14:07:23'),
 (16, 'Customer', 'C1808290453032', 'KVerde', 'C1808290453032', '$2y$10$inhowWSiWxsVfg5RP/WQs.njqHbJDZgmFPKjWO', '2018-08-29 16:54:41'),
 (17, 'Customer', 'C1808310120124', 'SNash', 'C1808310120124', '$2y$10$zBaJjr7Vl5/T2ntS46chOO48CrBoaLuQkbxSd6', '2018-08-31 01:21:01'),
-(18, 'Veterinarian', 'V1809011155197', 'dsdasdsadsa', 'V1809011155197', '$2y$10$COcJTJC5z57LFq5MxhSBGeuECLUioq1oEvrWs/', '2018-09-01 23:56:32');
+(18, 'Veterinarian', 'V1809011155197', 'ivanstrange', 'ivanstrange', '$2y$10$DZ5WkvT8DneZQJuOCu.DIe4AXK9huo/uV1Zpks', '2018-09-07 04:38:13'),
+(19, 'Customer', 'C1809060648155', 'BBestes', 'C1809060648155', '$2y$10$LzanV0lUZ3JVvQZzDSam0uGZAmx4PcJhAWdsm9', '2018-09-06 18:50:29');
 
 -- --------------------------------------------------------
 
@@ -1587,7 +1815,7 @@ INSERT INTO `tbl_veterinarians` (`veterinarian_table_id`, `veterinarian_id`, `fi
 (1, 'V1808211104221', 'Recardo', 'Lebron ', 'James', '1976-05-12', '#3333', 'sdsd', 'asdsd', 'sdadsa', '2018-08-21 23:04:49', '', '', 'Active', '<p>wala ako dito</p>', 'team12.png', 'Male', '09021232212', 'rj@gmail.com'),
 (8, 'V1808211104490', 'Carlos', 'Almonds', 'Valdez', '1985-02-12', '#3333', 'dsassd', 'sdasd', '1111', '2018-08-21 23:06:10', 'CValdez', 'carlos', 'Active', '<p>vibe 20</p>', 'doctor-winthrop1.jpg', 'Male', '09021232212', 'carlosvaldex10@gmail.com'),
 (9, 'V1808211106539', 'Renato', 'Ren', 'Anto', '1984-05-21', 'sdsd', 'sads', 'sdsd', 'asdsd', '2018-08-21 23:07:31', '', '', 'Active', '<p>sssasdsad</p>', 'doctor-winthrop.jpg', 'Male', '09021232212', 'rj@gmail.com'),
-(10, 'V1809011155197', 'dsdass', 'sdasdsa', 'sdasdsadsa', '2018-09-01', 'sdsd', '234', '4343', '33', '2018-09-01 23:56:21', 'dsdasdsadsa', 'V1809011155197', 'Active', '<p>ivnasdsdasd</p>', '', 'Male', '3424243', 'icjfuncion@gmail.com');
+(10, 'V1809011155197', 'Ivan ', 'Stranger', 'Strange', '1995-05-23', 'sdsd', '234', '4343', '33', '2018-09-01 23:56:21', 'ivanstrange', 'ivanstrange', 'Active', '<p>ivnasdsdasd</p>', '40273333_282582862342145_6573329536790822912_n.jpg', 'Male', '3424243', 'icjfuncion@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -1664,12 +1892,6 @@ ALTER TABLE `tbl_pet_library_content`
 --
 ALTER TABLE `tbl_pet_library_links`
   ADD PRIMARY KEY (`links_id`);
-
---
--- Indexes for table `tbl_possible_ symptoms`
---
-ALTER TABLE `tbl_possible_ symptoms`
-  ADD PRIMARY KEY (`possible_symptoms_id`);
 
 --
 -- Indexes for table `tbl_productfoods`
@@ -1780,7 +2002,7 @@ ALTER TABLE `tbl_admins`
 -- AUTO_INCREMENT for table `tbl_appointments`
 --
 ALTER TABLE `tbl_appointments`
-  MODIFY `appointment_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `appointment_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 --
 -- AUTO_INCREMENT for table `tbl_bannerimages`
 --
@@ -1790,17 +2012,17 @@ ALTER TABLE `tbl_bannerimages`
 -- AUTO_INCREMENT for table `tbl_checkupdetails`
 --
 ALTER TABLE `tbl_checkupdetails`
-  MODIFY `checkup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `checkup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 --
 -- AUTO_INCREMENT for table `tbl_customers`
 --
 ALTER TABLE `tbl_customers`
-  MODIFY `customer_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `customer_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `tbl_logs`
 --
 ALTER TABLE `tbl_logs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4664;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4872;
 --
 -- AUTO_INCREMENT for table `tbl_petbreeds`
 --
@@ -1810,7 +2032,7 @@ ALTER TABLE `tbl_petbreeds`
 -- AUTO_INCREMENT for table `tbl_pets`
 --
 ALTER TABLE `tbl_pets`
-  MODIFY `pet_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `pet_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `tbl_pettype`
 --
@@ -1820,22 +2042,17 @@ ALTER TABLE `tbl_pettype`
 -- AUTO_INCREMENT for table `tbl_pet_library`
 --
 ALTER TABLE `tbl_pet_library`
-  MODIFY `library_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `library_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 --
 -- AUTO_INCREMENT for table `tbl_pet_library_content`
 --
 ALTER TABLE `tbl_pet_library_content`
-  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 --
 -- AUTO_INCREMENT for table `tbl_pet_library_links`
 --
 ALTER TABLE `tbl_pet_library_links`
-  MODIFY `links_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
---
--- AUTO_INCREMENT for table `tbl_possible_ symptoms`
---
-ALTER TABLE `tbl_possible_ symptoms`
-  MODIFY `possible_symptoms_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `links_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT for table `tbl_productfoods`
 --
@@ -1890,7 +2107,7 @@ ALTER TABLE `tbl_services`
 -- AUTO_INCREMENT for table `tbl_service_rendered`
 --
 ALTER TABLE `tbl_service_rendered`
-  MODIFY `service_rendered_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `service_rendered_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 --
 -- AUTO_INCREMENT for table `tbl_settings`
 --
@@ -1910,7 +2127,7 @@ ALTER TABLE `tbl_timeschedule`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `tbluser_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `tbluser_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `tbl_veterinarians`
 --

@@ -437,7 +437,14 @@ class Pet_Management_Model extends CI_Model {
         return $result_set;
     }
 
-
+    public function data_stat_pet_daignosis(){
+        $this->db->select("possible_cause,Count(*) as 'counts',is_known");
+        $this->db->from('tbl_checkupdetails');
+        $this->db->group_by('possible_cause');
+        $query = $this->db->get();
+        $result_set = $query->result();
+        return $result_set;
+    }
     
 
 

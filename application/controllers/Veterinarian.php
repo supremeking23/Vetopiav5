@@ -75,6 +75,8 @@ class Veterinarian extends CI_Controller {
 			//incoming appointment for this veterinarian
 			$data['my_incoming_appointment'] = $this->appointment_management->get_appointment_by_vet_id_and_incoming($log_userID ,$today_now);
 
+			$data['get_all_articles'] = $this->article_model->get_all_articles();
+
 			/*foreach ($my_appointment_this_day as $m_d) {
 				echo $m_d->pet_name;
 			}*/

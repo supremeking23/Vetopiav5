@@ -7,9 +7,7 @@ class Article_Model extends CI_Model {
     }
 
 
-    public function add_symptoms($data){
-        $this->db->insert('tbl_possible_symptoms',$data);
-    }
+
 
     public function add_article($data){
         $this->db->insert('tbl_pet_library',$data);
@@ -39,6 +37,24 @@ class Article_Model extends CI_Model {
 
         return $result_set;
     }
+
+
+   /* public function get_all_article_active($rowno,$rowperpage,$search="") {
+            
+        $this->db->select('*');
+        $this->db->from('tbl_pet_library');
+        $this->db->where('article_status','Active');
+
+        if($search != ''){
+            $this->db->like('title', $search);
+            $this->db->or_like('content', $search);
+        }
+
+        $this->db->limit($rowperpage, $rowno);  
+        $query = $this->db->get();
+        
+        return $query->result_array();
+    }*/
 
     public function update_article_library($library_id,$data){
         $this->db->where('library_id', $library_id);

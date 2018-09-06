@@ -126,6 +126,9 @@ class Admin extends CI_Controller {
 		$data['count_products'] = $this->inventory_management->get_count_all_products();
 
 
+		$data['data_stat_pet_daignosis'] = $this->pet_management_model->data_stat_pet_daignosis();
+
+
 
 		$name = $this->session->userdata('complete_name');
 		$log_usertype =  $this->session->userdata('account_type');

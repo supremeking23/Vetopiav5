@@ -53,19 +53,21 @@
        
        <br />
 
-        <!--<div class="row">
+        <div class="row">
             <div class="col-md-12">
 
 
 
-                 <?php if ($this->session->flashdata('schedule_appointment')) { ?>
+                 <?php if ($this->session->flashdata('new_record_added')) { ?>
 
                     <div class="alert alert-success display-success alert-dismissible" id="">
                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        <p> <?php echo $this->session->flashdata('schedule_appointment'); ?> </p>
+                        <p> <?php echo $this->session->flashdata('new_record_added'); ?> </p>
                     </div>
 
                 <?php }?>
+
+                <!--
 
                  <?php if ($this->session->flashdata('assigned_vet')) { ?>
 
@@ -83,10 +85,10 @@
                         <p> <?php echo $this->session->flashdata('cancel_appointment'); ?> </p>
                     </div>
 
-                <?php }?>
+                <?php }?>  -->
               
             </div>
-        </div> -->
+        </div>
        
       <div class="row">
         <div class="col-md-9">
@@ -207,6 +209,28 @@
                                                 <!-- nav-tabs-custom -->             
                                               </div>
                                             </div>                                          
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td><b>Possible Cause:</b></td>
+                                        <td>
+                                          <select id="possible-option" name="possible-option" class="form-control">
+                                            <option value="select-existing">Select Possible Cause Below</option>
+                                            <option value="write-down">Write down the possible cause</option>
+                                          </select>
+
+                                          <div class="existing-view" style="margin-top: 10px">
+                                            <select id="possible_option" name="possible_option" class="form-control select2"   style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto; ">
+                                              <option value=""></option>
+                                              <?php foreach($get_all_articles as $a):?>
+                                                <option value="<?php echo $a->library_id;?>"><?php echo $a->title;?></option>
+                                              <?php endforeach;?>
+                                            </select>
+                                          </div>
+
+                                          <div class="write-view" style="margin-top: 10px;display: none">
+                                            <input type="text" name="write_possible" id="write_possible" class="form-control" style="width: 100%; ">
+                                          </div>
                                         </td>
                                       </tr>
                                       <tr>
@@ -437,7 +461,7 @@
               </div>
               <div class="box-body">
                 <?php foreach($my_incoming_appointment as $incoming):?>
-                <button class="btn btn-sm btn-info btn-flat btn-block" data-toggle="modal" data-target="#incoming<?php echo $incoming->appointment_table_id?>"><?php echo $incoming->customer_name;?></button>
+                 <button class="btn btn-sm btn-info btn-flat btn-block" data-toggle="modal" data-target="#incoming<?php echo $incoming->appointment_table_id?>" style="margin-bottom: 8px"><?php echo $incoming->customer_name;?></button>
                   <div class="modal fade" id="incoming<?php echo $incoming->appointment_table_id?>">
                     <div class="modal-dialog">
                       <div class="modal-content">
@@ -537,6 +561,22 @@ $(function(){
 
 
 //get_all_pet_services
+
+    $('#possible-option').change(function(){
+      var value = $('#possible-option').val();
+      if(value == "select-existing"){
+        //alert(value);
+        $('.write-view').css('display','none');
+        $('.existing-view').css('display','block');
+
+
+      }else{
+         //alert(value);
+         $('.write-view').css('display','block');
+         $('.existing-view').css('display','none');
+      }
+
+    })
 
 
 
