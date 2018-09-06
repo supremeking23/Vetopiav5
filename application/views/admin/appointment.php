@@ -462,7 +462,7 @@
                                                           </ul>
                                                           <?php 
                                                           $service_format = $service_fee + $s->service_fees;
-                                                          $service_fee = number_format($service_format,2);
+                                                          $service_fee = $service_format;
                                                           endforeach; //end service?></td>
                                                         </tr>
                                                         <tr>
