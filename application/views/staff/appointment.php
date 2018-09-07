@@ -100,7 +100,7 @@
               </div>
               <div class="box-body table-responsive">
 
-              <table  class="datatables table table-bordered table-striped">
+              <table  class="datatablesappointment table table-bordered table-striped">
                 <thead>
                 <tr>
                   
@@ -160,6 +160,7 @@
                         | <button type="button" class="btn btn-flat btn-sm btn-danger" data-toggle="modal" data-target="#cancelAppointment<?php echo $a_appointment->appointment_table_id?>">Cancel Appointment</button>
                          |
                       <button type="button" class="btn btn-flat btn-sm btn-info" data-toggle="modal" data-target="#detailAppointment<?php echo $a_appointment->appointment_table_id?>">View Details</button>
+
                             <div class="modal fade" id="detailAppointment<?php echo $a_appointment->appointment_table_id?>">
                               <div class="modal-dialog">
                                 <div class="modal-content">
@@ -210,11 +211,12 @@
                               </div>
                               <!-- /.modal-dialog -->
                            </div>
-                            <!-- /.modal -
+                            <!-- /.modal -->
 
                         <?php }else if($a_appointment->appointment_status == "Confirmed"){ ?>
 
                            <button type="button" class="btn btn-flat btn-sm btn-info" data-toggle="modal" data-target="#detailAppointment<?php echo $a_appointment->appointment_table_id?>">View Details</button>
+
                             <div class="modal fade" id="detailAppointment<?php echo $a_appointment->appointment_table_id?>">
                               <div class="modal-dialog">
                                 <div class="modal-content">
@@ -433,23 +435,23 @@
                                                     <table width="100%" class="table table-striped table-bordered table-hover">
                                                       <tbody>
                                                         <tr>
-                                                          <td><b>Pet Name</b></td>
+                                                          <td><b>Pet Name:</b></td>
                                                           <td><?php echo $cd->petname;?></td>
                                                         </tr>
                                                         <tr>
-                                                          <td><b>Reason/Complaint</b></td>
+                                                          <td><b>Reason/Complaints:</b></td>
                                                           <td><?php echo $cd->complaints;?></td>
                                                         </tr>
                                                         <tr>
-                                                          <td><b>Treatment</b></td>
+                                                          <td><b>Treatments:</b></td>
                                                           <td><?php echo $cd->treatment;?></td>
                                                         </tr> 
                                                         <tr>
-                                                          <td><b>Prescription</b></td>
+                                                          <td><b>Prescriptions:</b></td>
                                                           <td><?php echo $cd->prescription;?></td>
                                                         </tr>
                                                         <tr>
-                                                          <td><b>Services</b></td>
+                                                          <td><b>Services:</b></td>
                                                           <td><?php $services = $this->pet_management_model->get_services_by_checkup_id($cd->checkup_id);
                                                           $service_fee = 0;
                                                           foreach($services as $s):?>
@@ -460,20 +462,24 @@
                                                           </ul>
                                                           <?php 
                                                           $service_format = $service_fee + $s->service_fees;
-                                                          $service_fee = number_format($service_format,2);
+                                                          $service_fee = $service_format;
                                                           endforeach; //end service?></td>
                                                         </tr>
                                                         <tr>
                                                           <td><b>Total Fee: ₱<b></td>
-                                                          <td><input type="" name="" id="total_fee" width="100%" size="55" value="<?php echo $service_fee;?>" class="form-control"></td>
+                                                          <td><input type="text" name="total_fee" id="total_fee" style="width: 100%"  value="<?php echo $service_fee;?>" class="form-control"></td>
                                                         </tr>
                                                         <tr>
                                                           <td><b>Cash: ₱</b></td>
-                                                          <td><input type="" name="" size="55" id="cash" class="form-control" value=""></td>
+                                                          <td><input type="text" name="cash" id="cash" style="width: 100%" class="form-control" value="">
+
+                                                          </td>
                                                         </tr>
                                                         <tr>
                                                           <td><b>Change: ₱</b></td>
-                                                          <td><input type="" name="" id="change" size="55" class="form-control" value="" readonly=""></td>
+                                                          <td><input type="text" name="change" id="change"  style="width: 100%" class="form-control" value="" readonly="">
+                                                            <?php //echo $a_appointment->appointment_table_id;?>
+                                                          </td>
                                                         </tr>                                                      
                                                       </tbody>
                                                              
@@ -485,7 +491,7 @@
                                     </div>
                                     <div class="modal-footer">
                                      <div class="hide-after-checkout">
-                                        <button type="button" class="btn btn-default btn-sm btn-flat pull-left" id="computeChange">Compute</button>
+                                        <!--<button type="button" class="btn btn-default btn-sm btn-flat pull-left" id="computeChange">Compute</button> -->
                                         <button type="button" class="btn btn-primary btn-sm btn-flat btn-checkout" data-appointmenttableid="<?php echo $a_appointment->appointment_table_id;?>" disabled="" id="checkout">Checkout</button>
                                       </div>
                                       <a href="<?php echo site_url()?>appointment/print_appointment_receipt/<?php echo $a_appointment->appointment_table_id;?>" target="_blank" class="btn btn-sm btn-info btn-flat btn-block btn-receipt" style="display: none">Print</a>
@@ -516,7 +522,7 @@
                           </div>
 
                           
-                           <?php echo form_open_multipart('Appointment/Set_veterinarian_for_staff');?>
+                           <?php echo form_open_multipart('Appointment/set_veterinarian_for_staff');?>
                           <div class="modal-body">
                             <select name="veterinarian" class="form-control select2" style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;">
                               <?php foreach($all_vets as $vets):?>
@@ -553,7 +559,7 @@
                             <h4 class="modal-title">Cancel Reason</h4>
                           </div>
 
-                          <?php echo form_open_multipart('appointment/cancel_appointment');?>
+                          <?php echo form_open_multipart('appointment/cancel_appointment_for_staff');?>
                           <div class="modal-body">
                             <textarea class="form-control textareas" name="cancel_reason" required="">
                               
@@ -674,7 +680,7 @@
             var appointment_status = "On-Process";
 
             $.ajax({
-                url : "<?php echo site_url('appointment/change_to_onprocess');?>",
+                url : "<?php echo site_url('Appointment/Change_to_onprocess');?>",
                 method : "POST",
                 data : {appointment_table_id: appointment_table_id,appointment_status:appointment_status},
                 success: function(data){
@@ -690,7 +696,7 @@
 
 
 
-        $('#computeChange').click(function(){
+      /*  $('#computeChange').click(function(){
 
             //alert('as');
             $("#checkout").attr("disabled",false);
@@ -704,7 +710,30 @@
 
 
             //alert(total_amount);
-          });
+          });*/
+
+    //JAVASCRIPT FUNCTION
+    document.getElementById("cash").oninput = function() {myFunction()};
+
+    function myFunction() {
+
+      var  cash = $('#cash').val();
+      var total_fee = $('#total_fee').val();
+      var change;
+      if(cash.length != 0){
+        $("#checkout").attr("disabled",false);
+        
+       change = cash - total_fee;
+       console.log('totalfee: ' + total_fee);
+       console.log('cash: ' + cash);
+       console.log('change: ' + change);
+        $("#change").val(format_number(change));
+      }else{
+        $("#checkout").attr("disabled",true);
+        $("#change").val("");
+      }
+      //alert(total_amount);
+    }
 
 
         $('.btn-checkout').click(function(){
@@ -715,7 +744,7 @@
               var appointment_status = "Done";
 
               $.ajax({
-                  url : "<?php echo site_url('Appointment/Appointment_receipt');?>",
+                  url : "<?php echo site_url('appointment/appointment_receipt');?>",
                   method : "POST",
                   data : {appointment_table_id: appointment_table_id,total_fee:total_fee,cash:cash,change:change,appointment_status:appointment_status},
                   success: function(data){

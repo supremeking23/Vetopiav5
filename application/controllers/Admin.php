@@ -538,8 +538,8 @@ class Admin extends CI_Controller {
 		$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
 		
 		//$data['all_vets'] = $this->veterinarian_management->get_all_veterinarian();
-		$data['all_pettype'] = $this->pet_management_model->get_all_active_pettype();
-
+		//$data['all_pettype'] = $this->pet_management_model->get_all_active_pettype();
+		$data['all_pettype'] = $this->pet_management_model->get_all_pettype_active();
 		$name = $this->session->userdata('complete_name');
 		$log_usertype =  $this->session->userdata('account_type');
 		$log_userID = $this->session->userdata("user_id");

@@ -35,9 +35,11 @@
 
                           <?php echo form_label('Banner Caption', 'banner_caption','class="control-label"');?>
 
-                          <input type="text" id="banner_caption" name="banner_caption" class="form-control" value="">
-
-
+                         <!-- <input type="text" id="banner_caption" name="banner_caption" class="form-control" value=""> -->
+                         <textarea class="form-control textareas" id="banner_caption" name="banner_caption">
+                           
+                         </textarea>
+  
 
 
                           <br />

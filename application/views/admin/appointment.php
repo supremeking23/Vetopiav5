@@ -100,7 +100,7 @@
               </div>
               <div class="box-body table-responsive">
 
-              <table  class="datatables table table-bordered table-striped">
+              <table  class="datatablesappointment table table-bordered table-striped">
                 <thead>
                 <tr>
                   

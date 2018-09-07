@@ -41,7 +41,17 @@
 <?php $this->load->view('include_pages_admin/page_header');?>
 
 <style type="text/css">
-  
+/* Top left text */
+.top-left {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    background-color: rgba(255,255,255,0.5);
+    color: black;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 530px
+}
 </style>
 
 <body class="hold-transition <?php echo $skin_color;?> sidebar-mini" id="settings">
@@ -354,9 +364,14 @@
                     </div>
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body table-responsive">
+                <div class="box-body ">
 
-                  <div class="row banner-data">
+         <div class="alert alert-success display-success-delete-banner" style="display: none">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+             <div class="success-message-delete-banner"></div> 
+          </div>
+
+                  <div class="row banner-data" >
                       <div class="col-xs-12 col-md-12 col-lg-12">
 
                         <?php
@@ -406,16 +421,17 @@
                               }
                               else
                               {
-                               $output .= '<div class="item">';
+                               $output .= '<div class="item" >';
                               }
                               $output .= '
 
 
                                <img src= "'.site_url().'assets/images/site_images/'.$row["banner_image"].'" alt="'.$row["banner_caption_heading"].'" />
-                               <div class="carousel-caption" style="background: rgba(0,0,0,0.2);">
+                               <div class="top-left" >
                                 <h2>'.$row["banner_caption_heading"].'</h2>
-                                <h3>'.$row["banner_caption"].'</h3>
-                              <button type="button" class="btn btn-outline-light btn-lg btn-banner-remove" id="'.$row["bannerimage_id"].'">Delete Banner</button>
+                                '.$row["banner_caption"].'
+                                <br />
+                              <button type="button" class="btn btn-outline-light btn-lg btn-banner-remove pull-right" id="'.$row["bannerimage_id"].'" style="margin-top:10px;margin-bottom:15px">Delete Banner</button>
 
                               
                                   <!-- /.modal -->
@@ -426,7 +442,8 @@
                              }
                              return $output;
                             }
-
+                            //  <h2>'.$row["banner_caption_heading"].'</h2>
+                            //    <h3>'.$row["banner_caption"].'</h3>
                             ?>
                           
 
@@ -676,7 +693,9 @@
             $(".display-success_remove_banner").css("display","block");
             $(".success-success_remove_banner").html("<p>Banner Image has been removed</p>");
             $('.remove-banner').attr('disabled',true);*/
-
+             $(".display-success-delete-banner").css("display","block");
+                
+             $(".success-message-delete-banner").html("<p>Banner has been deleted successfully </p>");
             //alert('delete na');
             reload();
           }

@@ -607,7 +607,7 @@ foreach($result3 as $r3){
 
 
 $connect = mysqli_connect("localhost", "root", "", "vetopia_db");
-$query4 = "SELECT is_known,color,COUNT(*) as 'counts' FROM tbl_checkupdetails group by is_known";
+$query4 = "SELECT is_known,color,COUNT(*) as 'counts' FROM tbl_checkupdetails WHERE possible_cause !='none' group by is_known  ";
 $result4 = mysqli_query($connect, $query4);
 
 

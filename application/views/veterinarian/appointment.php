@@ -99,7 +99,7 @@
               </div>
               <div class="box-body">
 
-              <table  class="datatables table table-bordered table-striped">
+              <table  class="datatablesvets table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>Time</th>

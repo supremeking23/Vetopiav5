@@ -441,6 +441,7 @@ class Pet_Management_Model extends CI_Model {
         $this->db->select("possible_cause,Count(*) as 'counts',is_known");
         $this->db->from('tbl_checkupdetails');
         $this->db->group_by('possible_cause');
+        $this->db->where('possible_cause !=','none');
         $query = $this->db->get();
         $result_set = $query->result();
         return $result_set;

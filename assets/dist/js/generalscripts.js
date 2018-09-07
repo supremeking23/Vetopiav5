@@ -114,6 +114,30 @@
       //'autoWidth'   : false,      
     });
 
+    //for tables
+    $('.datatablesvets').DataTable({
+
+      "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+      'paging'      : true,
+      //'lengthChange': false,
+      //'searching'   : false,
+      'ordering'    : false,
+      'info'        : true,
+      //'autoWidth'   : false,      
+    });
+
+
+    //datatables for appointment
+    $('.datatablesappointment').DataTable({
+
+      "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+      'paging'      : true,
+      //'lengthChange': false,
+      //'searching'   : false,
+      'ordering'    : false,
+      'info'        : true,
+      //'autoWidth'   : false,      
+    });
 
     $('.datatableexta').DataTable( {
         'ordering'    : false,

@@ -4,8 +4,16 @@
 		$service = $contents->service_content;
 		$clinic_email = $contents->clinic_email_address;
 		$clinic_address = $contents->clinic_home_address .' '. $contents->clinic_barangay_address .' '. $contents->clinic_city_address;
+
+		$home = $contents->clinic_home_address;
+		$barangay = $contents->clinic_barangay_address;
+		$city = $contents->clinic_city_address;
+
+		$email = $contents->clinic_email_address;
+
 		$postal_id = $contents->clinic_postal_id;
 		$telephone =  $contents->telephone;
+		$store_name = $contents->store_name;
 	}
 
 ?>
@@ -26,13 +34,41 @@
 	<link href="<?php echo site_url()?>assets/dist/css/font-awesome.min.css" rel="stylesheet">
 	<link href="<?php echo site_url()?>assets/dist/css/style.css" rel="stylesheet">
 	  <link rel="shortcut icon" href="<?php echo site_url(); ?>assets/site_images/logo3.png">
+
+
+<style type="text/css">
+	.text-block {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(255,255,255,0.5);
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 550px;
+}
+
+
+
+/* Top left text */
+.top-left {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    background-color: rgba(255,255,255,0.5);
+    color: black;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 530px
+}
+</style>
 </head>
 <body>
 
 <!-- Navigation -->
 	<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top" style="">
 		<div class="container-fluid">
-				<a class="navbar-brand" data-section href="#!slides">Vetopia</a>
+				<a class="navbar-brand" data-section href="#!slides"><?php echo $store_name?></a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -114,14 +150,13 @@ function make_slides($connect)
   }
   else
   {
-   $output .= '<div class="carousel-item">';
+   $output .= '<div class="carousel-item ">';
   }
   $output .= '
   						<img src= "'.site_url().'assets/images/site_images/'.$row["banner_image"].'" alt="'.$row["banner_caption_heading"].'" />
-						<div class="carousel-caption">
-							<h1 class="display-2">'.$row["banner_caption_heading"].'</h1>
-							<h3>'.$row["banner_caption"].'</h3>
-							
+						<div class="top-left ">
+							<h2 class="">'.$row["banner_caption_heading"].'</h2>
+							'.$row["banner_caption"].'
 						</div>
   </div>
   ';
@@ -130,10 +165,13 @@ function make_slides($connect)
  return $output;
 }
 
+//<h3 class="display-2 text-center">'.$row["banner_caption_heading"].'</h>
+							//<h3>'.$row["banner_caption"].'</h3>
+
 ?>
 
 <!--- Image Slider -->
-	<div id="slides" class="carousel slide" data-ride="carousel" >
+	<div id="slides" class="carousel slide" data-ride="carousel" style="">
             <ul class="carousel-indicators" style="color: black">
                 <?php echo make_slide_indicators($connect); ?>
             </ul>
@@ -224,14 +262,7 @@ function make_slides($connect)
 <footer>
 		<div class="container-fluid padding">
 				<div class="row text-center">
-						<div class="col-md-4">
-								<h1>Vetopia</h1>
-								<hr class="light">
-								<p><?php echo $telephone;?></p>
-								<p><?php echo $clinic_address?>, <?php echo $postal_id;?></p>
-								
-								
-						</div>
+
 						<div class="col-md-4">
 								<hr class="light">
 								<h5>The Staffs</h5>
@@ -242,10 +273,21 @@ function make_slides($connect)
 							<?php endforeach;?>
 						</div>
 						<div class="col-md-4">
+								<h1><?php echo ucfirst($store_name);?></h1>
 								<hr class="light">
-								<h5>Service Area</h5>
+								<p><?php echo $home?> <br /><?php echo $barangay?>
+								<?php echo $city?> ,<?php echo $postal_id;?> 
+								</p>
+
+								
+								
+						</div>						
+						<div class="col-md-4">
 								<hr class="light">
-								<p><?php echo $clinic_address?>, <?php echo $postal_id;?></p>
+								<h5>Contact Information</h5>
+								<hr class="light">
+								<p>Tel: <?php echo $telephone;?></p>
+								<p>Email: <?php echo $email?></p>
 						</div>
 						<div class="col-12">
 							<hr class="light-100">

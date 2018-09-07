@@ -94,9 +94,9 @@
       $format_to= date_format($date_to,"F d, Y ");
     ?>
 
-      <div class="row">
+   <!--<div class="row">
         <div class="col-md-12">
-                    <!-- BAR CHART -->
+                    
           <div class="box box-solid <?php echo $box_color;?>">
             <div class="box-header with-border">
               <h3 class="box-title ">Sales Chart (<?php echo $format_from.' - '. $format_to;?>)</h3>
@@ -106,19 +106,14 @@
               </div>
             </div>
             <div class="box-body chart-responsive">
-              <div class="chart" id="bar-chart-day" style="height: 300px;"></div>
+              <div class="chart" id="line-chart-day" style="height: 300px;"></div>
             </div>
-            <!-- /.box-body -->
+        
           </div>
-          <!-- /.box -->
+       
         </div>
-      </div>
-
-    <!-- /.row -->
-  </section>
-  <!-- /.content -->
-</div>
-<!-- ./wrapper -->
+      </div> -->
+      <br />
 
 
 <?php 
@@ -137,26 +132,76 @@
 
 
   }
-
+  //"SELECT date(sales_date) as sales_D,SUM(total_amount) AS 'total_am' FROM tbl_sales  WHERE sales_date BETWEEN '$from'  AND '$to' group by date(sales_date)";
   echo $sales = json_encode($chart_data);
    $sample = "{ label:'ivan'}";
    $sm = json_encode($chart_labels);
   */
 
-  $sales = array();
+ /* $sales = array();
   foreach($result as $r){
     $datas = array();
     $datas['y'] = $r['sales_D'];
-    $datas['a'] = $r['total_am'];
+    $datas['item1'] = $r['total_am'];
 
 
     //merget the vent array into the return array
-   echo array_push($sales, $datas);
-  }
+    array_push($sales, $datas);
+  }*/
+
+  // json_encode($sales);
 ?>
 
+      <div class="row">
+        <div class="col-md-12">
+               
+          <div class="box box-solid <?php echo $box_color;?>">
+            <div class="box-header with-border">
+              <h3 class="box-title ">Sales Chart (<?php echo $format_from.' - '. $format_to;?>)</h3>
+
+              <div class="box-tools pull-right">
+                
+              </div>
+            </div>
+            <div class="box-body ">
+              <table class="table table-hover table-stripes">
+                <thead>
+                 <tr>
+                  <th>Date</th>
+                  <th>Total Sales</th>
+                 </tr>
+                </thead>
+                <tbody>
+                  <?php foreach($result as $r):?>
+                  <tr>
+                    <td><?php  
+                          $date =date_create($r['sales_D']);
+                          $format_date= date_format($date,"F d, Y ");
+                          echo $format_date;
+                     ;?></td>
+                    <td>₱ <?php echo number_format($r['total_am'],2); ?></td>
+                  </tr>
+                  <?php endforeach;?>
+                </tbody>
+              </table>
+            </div>
+        
+          </div>
+       
+        </div>
+      </div>
+
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- ./wrapper -->
+
+
+
+
 <script>
-    var bar1 = new Morris.Bar({
+   /* var bar1 = new Morris.Bar({
       element: 'bar-chart-day',
       resize: true,
       data:<?php echo json_encode($sales);?>,
@@ -164,6 +209,19 @@
       xkey: 'y',
       ykeys: ['a'],
       labels: ['Total sales for this day'],
+      hideHover: 'auto'
+    });*/ //17 6 55 54 
+
+
+    // LINE CHART
+    var line = new Morris.Line({
+      element: 'line-chart-day',
+      resize: true,
+      data: <?php echo json_encode($sales); ?>,
+      xkey: 'y',
+      ykeys: ['item1'],
+      labels: ['Total sales for this day'],
+      lineColors: ['#3c8dbc'],
       hideHover: 'auto'
     });
 

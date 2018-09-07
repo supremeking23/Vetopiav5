@@ -33,7 +33,7 @@
     /*on page style*/
 
     body {
-     background: url('<?php echo site_url();?>assets/site_images/carousel-stateoftheart.jpg');
+     background: url('<?php echo site_url();?>assets/images/site_images/part2.jpg');
      background-repeat: no-repeat;
      background-attachment: fixed;
      background-position: center;
