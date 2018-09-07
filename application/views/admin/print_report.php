@@ -40,7 +40,7 @@
   <script src="<?php echo site_url()?>assets/bower_components/raphael/raphael.min.js"></script>
   <script src="<?php echo site_url()?>assets/bower_components/morris.js/morris.min.js"></script>
 </head>
-<body onload="//window.print()">
+<body onload="window.print()">
 <div class="wrapper">
   <!-- Main content -->
   <section class="invoice">
