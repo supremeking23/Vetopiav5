@@ -127,7 +127,11 @@ class Settings extends CI_Controller {
 			$max_product_count = $this->input->post("max_product_count");
 		}
 		
-
+		if(empty($this->input->post("checkup_fee"))){
+			$errorMessage .= "<li>Checkup fee cannot be blank </li>";
+		}else{
+			$checkup_fee = $this->input->post("checkup_fee");
+		}
 		
 		$settings_id = $this->input->post("settings_id");
 		
@@ -145,6 +149,7 @@ class Settings extends CI_Controller {
 				'vet_fee' => $vet_fee,
 				'telephone' =>$telephone,
 				'max_product_count' => $max_product_count,
+				'checkup_fee' => $checkup_fee,
 			);
 
 

@@ -85,7 +85,7 @@
           $total_payment = $appointment_detail->total_payment;
       ?>
         <div class="col-sm-4 invoice-col">
-          <b>Invoice Number: <?php echo $appointment_detail->appointment_table_id;?> </b><br>
+          <!-- <b>Invoice Number: <?php echo $appointment_detail->appointment_table_id;?> </b><br> -->
           <br>
           <b>Pet Name: <?php echo $appointment_detail->pet_name;?></b>
            <br>
@@ -141,6 +141,7 @@
             <div class="col-md-12">
               <label>Services : </label> 
               <div class="form-group">
+                Profession Fee <br />
                 <?php foreach($get_services_by_appointment_table_id as $services):?>
                 <?php echo $services->service_name;?> <br />
                  <?php endforeach;?>

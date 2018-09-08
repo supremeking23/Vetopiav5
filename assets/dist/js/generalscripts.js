@@ -78,7 +78,7 @@
     //vets
     $("#appointment a:contains('Appointment)").parent().addClass('active');
     $("#pets a:contains('Pet')").parent().addClass('active');
-    $("#medicine a:contains('Medicine')").parent().addClass('active');
+    $("#medicine a:contains('For Medication')").parent().addClass('active');
 
 
     $("#library a:contains('Health Care Library')").parent().addClass('active');
@@ -105,7 +105,7 @@
     //for tables
     $('.datatables').DataTable({
 
-      "lengthMenu": [[5,10, 25, 50, -1], [5,10, 25, 50, "All"]],
+      "lengthMenu": [[ 50, 70, -1], [ 50,70, "All"]],
       'paging'      : true,
       //'lengthChange': false,
       //'searching'   : false,
@@ -117,7 +117,7 @@
     //for tables
     $('.datatablesvets').DataTable({
 
-      "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+      "lengthMenu": [[50, 25, 50, -1], [10, 25, 50, "All"]],
       'paging'      : true,
       //'lengthChange': false,
       //'searching'   : false,
@@ -130,7 +130,7 @@
     //datatables for appointment
     $('.datatablesappointment').DataTable({
 
-      "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+      "lengthMenu": [[50, 25, 50, -1], [50, 25, 50, "All"]],
       'paging'      : true,
       //'lengthChange': false,
       //'searching'   : false,

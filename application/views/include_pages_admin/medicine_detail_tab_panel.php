@@ -40,6 +40,9 @@
                               'Antibiotics' => 'Antibiotics',
                               'Vitamins' => 'Vitamins',
                               'Vaccines' => 'Vaccines',
+                              'Antiparasitics' => 'Antiparasitics',
+                              'Supplements' => 'Supplements',
+                              
                             );
                           ?>
 

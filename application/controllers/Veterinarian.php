@@ -139,6 +139,44 @@ class Veterinarian extends CI_Controller {
 	}
 
 
+
+	public function services(){
+
+
+			$settings_id = 1;
+			$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
+
+
+			$name = $this->session->userdata('complete_name');
+			$log_usertype =  $this->session->userdata('account_type');
+			$log_userID = $this->session->userdata("user_id");
+			$log_action = "View Clinic Services";
+			
+
+
+			$now = date('Y-m-d H:i:s');
+			$data2 = array(
+				"log_user" => $name,
+				"log_usertype" => $log_usertype,
+				"log_userID" => $log_userID,
+				"log_action" => $log_action,
+				"log_date" => $now,
+			);
+
+
+
+			$this->admin_management->insert_new_log($data2);
+
+
+			//$data['all_pets'] = $this->pet_management_model->get_all_pet();
+			
+			$data['get_all_pet_services_active'] = $this->pet_management_model->get_all_pet_services_active();
+			$data['title'] = "Vetopia";
+			$this->load->view('veterinarian/services',$data);
+
+	}
+
+
 	public function pet_details(){
 
 		$settings_id = 1;
@@ -367,11 +405,11 @@ class Veterinarian extends CI_Controller {
 
 
 
-	public function services(){
+	/*public function services(){
 
 			$data['title'] = "Vetopia";
 			$this->load->view('veterinarian/products',$data);
-	}
+	}*/
 
 	
 	

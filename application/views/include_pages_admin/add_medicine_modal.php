@@ -85,7 +85,8 @@
                                <option value="Antibiotics">Antibiotics</option>
                                <option value="Vitamins">Vitamins</option>
                                <option value="Vaccine">Vaccines</option>
-                               <option value="Vaccine">Antiparasitics</option>
+                               <option value="Antiparasitics">Antiparasitics</option>
+                               <option value="Supplements">Supplements</option>
                              </select>
                          </div>   
                     </div>

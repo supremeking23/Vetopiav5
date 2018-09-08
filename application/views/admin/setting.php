@@ -19,6 +19,7 @@
 
   $telephone = $t_color->telephone;
   $max_product_count = $t_color->max_product_count;
+  $checkup_fee = $t_color->checkup_fee;
 
 
    $box_color = "";
@@ -245,6 +246,14 @@
                         <?php echo form_label('Veterinary Service Fee', 'vet_fee','class="control-label"');?>
 
                         <input type="number" id="vet_fee" name="vet_fee" class="form-control" value="<?php echo $vet_fee;?>">
+
+
+                        <br >
+
+
+                        <?php echo form_label('Checkup Fee', 'checkup_fee','class="control-label"');?>
+
+                        <input type="number" id="checkup_fee" name="checkup_fee" class="form-control" value="<?php echo $checkup_fee;?>">
 
 
                         <br >

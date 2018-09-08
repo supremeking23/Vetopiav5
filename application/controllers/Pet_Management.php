@@ -1506,6 +1506,7 @@ class Pet_Management extends CI_Controller {
     $veterinary_fee = $this->settings_model->get_all_settings_detail_by_settings_id(1);
       foreach($veterinary_fee as $vet_fee){
         $v_fee = $vet_fee->vet_fee;
+        $c_fee = $vet_fee->checkup_fee;
     }
 
     $services = "";
@@ -1521,7 +1522,7 @@ class Pet_Management extends CI_Controller {
             }
         }else{
             $services = "General Checkup";
-            $service_fee = $v_fee;
+            $service_fee = $c_fee;
         }
 
         $data_insert_services = array(
@@ -1550,6 +1551,23 @@ class Pet_Management extends CI_Controller {
     $this->appointment_management->update_appointment_detail($appointment_table_id,$update_finish);
 
 
+    $name = $this->session->userdata('complete_name');
+    $log_usertype =  $this->session->userdata('account_type');
+    $log_userID = $this->session->userdata("user_id");
+    $log_action = "Assess ". $pet_name;
+    
+
+
+    $now = date('Y-m-d H:i:s');
+    $data2 = array(
+        "log_user" => $name,
+        "log_usertype" => $log_usertype,
+        "log_userID" => $log_userID,
+        "log_action" => $log_action,
+        "log_date" => $now,
+    );
+
+    $this->veterinarian_management->insert_new_log($data2);
     $this->session->set_flashdata('new_record_added','New record has been added successfully');
     redirect('Veterinarian/Appointments');
 

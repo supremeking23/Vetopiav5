@@ -212,7 +212,7 @@
     }  
 
     $('.status_changer').on("change",function(){
-     
+      //alert('click');
       var status    = $(this).data("status");
       var customer_table_id = $(this).data("customertableid");
       var customer_name = $(this).data("customername");

@@ -15,7 +15,7 @@
       $box_color = "box-warning";
     }
 
-
+    $vet_fee = $t_color->vet_fee;
   }
 
 ?>
@@ -313,16 +313,20 @@
                                                           <td><b>Services</b></td>
                                                           <td><?php $services = $this->pet_management_model->get_services_by_checkup_id($cd->checkup_id);
                                                           $service_fee = 0;
-                                                          foreach($services as $s):?>
+                                                         ?>
 
                                                           <ul>
+                                                            <li>Professional Fee  = ₱<?php echo $vet_fee;?></li>
+                                                          <?php  foreach($services as $s):?>
+                                                            
                                                             <li><?php echo $s->service_name;?> = ₱<?php echo $s->service_fees;?>
                                                           </li>
-                                                          </ul>
-                                                          <?php 
-                                                          $service_format = $service_fee + $s->service_fees;
+                                                           <?php 
+                                                          $service_format = $service_fee + $s->service_fees + $vet_fee;
                                                           $service_fee = number_format($service_format,2);
-                                                          endforeach; //end service?></td>
+                                                          endforeach; //end service?>
+                                                          </ul>
+                                                         </td>
                                                         </tr>
                                                         <tr>
                                                           <td><b>Total Payment: <b></td>
@@ -451,23 +455,31 @@
                                                           <td><?php echo $cd->prescription;?></td>
                                                         </tr>
                                                         <tr>
-                                                          <td><b>Services:</b></td>
+                                                          <td><b>Services</b></td>
                                                           <td><?php $services = $this->pet_management_model->get_services_by_checkup_id($cd->checkup_id);
                                                           $service_fee = 0;
-                                                          foreach($services as $s):?>
+                                                         ?>
 
                                                           <ul>
+                                                            <li>Professional Fee  = ₱<?php echo $vet_fee;?></li>
+                                                          <?php  foreach($services as $s):?>
+                                                            
                                                             <li><?php echo $s->service_name;?> = ₱<?php echo $s->service_fees;?>
                                                           </li>
-                                                          </ul>
-                                                          <?php 
+                                                           <?php 
                                                           $service_format = $service_fee + $s->service_fees;
                                                           $service_fee = $service_format;
-                                                          endforeach; //end service?></td>
+                                                          endforeach; //end service?>
+
+                                                          <?php 
+                                                          $total_fee = $service_fee + $vet_fee;
+                                                          ?>
+                                                          </ul>
+                                                         </td>
                                                         </tr>
                                                         <tr>
                                                           <td><b>Total Fee: ₱<b></td>
-                                                          <td><input type="text" name="total_fee" id="total_fee" style="width: 100%"  value="<?php echo $service_fee;?>" class="form-control"></td>
+                                                          <td><input type="text" name="total_fee" id="total_fee" style="width: 100%"  value="<?php echo $total_fee;?>" class="form-control"></td>
                                                         </tr>
                                                         <tr>
                                                           <td><b>Cash: ₱</b></td>

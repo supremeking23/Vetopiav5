@@ -116,6 +116,10 @@
                         </li>
 
                         <li class="list-group-item">
+                          <b> Gender </b> <a class="pull-right"><?php echo $p_detail->gender?></a>
+                        </li>
+
+                        <li class="list-group-item">
                           <b> Owner</b> <a class="pull-right"><?php echo $p_detail->firstname .' '. $p_detail->middlename .' '. $p_detail->lastname ?></a>
                         </li>
                                  <?php 
@@ -131,6 +135,31 @@
                               //echo $pettype_id;
 
                            ?>
+
+
+                        <li class="list-group-item"> 
+                            <button type="button" class="btn btn-info btn-sm btn-flat btn-block" data-toggle="modal" data-target="#viewBreedDescription">Breed Detail</button>
+                                    <div class="modal fade" id="viewBreedDescription">
+                                      <div class="modal-dialog">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title">Breed Description</h4>
+                                          </div>
+                                          <div class="modal-body">
+                                           <p text-indent="5"><?php echo $p_detail->breed_description?></p>
+                                          </div>
+                                          <div class="modal-footer">
+                                            
+                                          </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                      </div>
+                                      <!-- /.modal-dialog -->
+                                    </div>
+                                    <!-- /.modal -->
+                        </li>
 
                       </ul>
 

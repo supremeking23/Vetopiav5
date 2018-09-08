@@ -27,7 +27,7 @@ class Pet_Management_Model extends CI_Model {
 
 
     public function get_pet_by_id($id){
-        $this->db->select('a.pet_id,a.pet_table_id,a.petname,a.birthdate,a.gender,a.pet_profile,b.pettype,b.pettype_id,c.pet_breed,c.breed_id,d.firstname,d.middlename,d.lastname,d.customer_id,d.customer_table_id');
+        $this->db->select('a.pet_id,a.pet_table_id,a.petname,a.birthdate,a.gender,a.pet_profile,b.pettype,b.pettype_id,c.pet_breed,c.breed_id,c.breed_description,d.firstname,d.middlename,d.lastname,d.customer_id,d.customer_table_id');
         $this->db->from('tbl_pets a');
         $this->db->join('tbl_pettype b','a.pettype = b.pettype_id');
         $this->db->join('tbl_petbreeds c','a.breed = c.breed_id');
@@ -333,6 +333,7 @@ class Pet_Management_Model extends CI_Model {
         $this->db->from('tbl_services');
         $this->db->where('for_what_pet',$pettype);
         $this->db->where('for_pet_ages',$age);
+        $this->db->where('service_status','Active');
         $this->db->order_by('service_id', 'DESC');
 
         $query = $this->db->get();
