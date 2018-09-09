@@ -57,7 +57,7 @@
                                                 <div class="modal-header">
                                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span></button>
-                                                  <h4 class="modal-title">Appointment Detail </h4>
+                                                  <h4 class="modal-title">Checkup Detail </h4>
                                                 </div>
                                                 <div class="modal-body">
 
@@ -71,7 +71,10 @@
                                                        $prescription = $c_detail->prescription;
                                                        /*$service_get = $c_detail->service_name;
                                                        $service_fee = $c_detail->service_fee;*/
+                                                       $checkup_id = $c_detail->checkup_id;
                                                     }
+
+
 
                                                   ?>
 
@@ -99,6 +102,25 @@
                                                                   <td><b>Prescriptions:</b></td>
                                                                   <td><?php echo $prescription;?></td>
                                                                 </tr> 
+                                                                <tr>
+                                                                  <td><b>Services</b></td>
+                                                                  <td><?php $services = $this->pet_management_model->get_services_by_checkup_id($checkup_id);
+                                                                  $service_fee = 0;
+                                                                 ?>
+
+                                                                  <ul>
+                                                                    
+                                                                  <?php  foreach($services as $s):?>
+                                                                    
+                                                                    <li><?php echo $s->service_name;?>
+                                                                  </li>
+                                                                   <?php 
+                                                                
+                                                                  endforeach; //end service?>
+                                                                  </ul>
+                                                                 </td>
+                                                                </tr>
+
 
                                                                 <?php endif;?>
 

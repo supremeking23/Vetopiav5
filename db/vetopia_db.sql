@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 08, 2018 at 06:29 PM
+-- Generation Time: Sep 09, 2018 at 07:11 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -140,7 +140,7 @@ INSERT INTO `tbl_appointments` (`appointment_table_id`, `appointment_id`, `custo
 (103, '#1809080616349', 'C1808211035448', 13, 'Lee Min Horse', '2018-09-08', '4: 00 pm - 5: 00pm', 'Arnelsz', 'P1808221021292', 'Cat', 'Ragdoll', '3 Years old', 1, 'Done', '2018-09-08 18:16:34', 'V1808211104490', 'Carlos Almonds Valdez', '<p>sdasdsdas</p>', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '611.00', '700.00', '89.00'),
 (104, '#1809080624323', 'C1808211035448', 14, 'Lee Min Horse', '2018-09-08', '2:00 pm - 3:00 pm', 'LenTik', 'P1808221046418', 'Cat', 'British Shorthair', '6 Months old', 0, 'Done', '2018-09-08 18:24:32', 'V1808211104490', 'Carlos Almonds Valdez', '<p>sdasdsssda</p>', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '868.00', '1000.00', '132.00'),
 (105, '#1809080814045', 'C1808211035448', 31, 'Chester Min King', '2018-09-08', '4: 00 pm - 5: 00pm', 'Helen', 'P1809080643234', 'Dog', 'German Shepherd', '1 Years old', 1, 'Done', '2018-09-08 20:14:04', 'V1808211104490', 'Carlos Almonds Valdez', '<p>sdsdsdad</p>', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '311.00', '400.00', '89.00'),
-(106, '#1809080851046', 'C1808211035448', 31, 'Chester Min King', '2018-09-08', '1: 00pm - 2:00 pm', 'Helen', 'P1809080643234', 'Dog', 'German Shepherd', '1 Years old', 1, 'On-Process', '2018-09-08 20:51:04', 'V1808211104490', 'Carlos Almonds Valdez', '<p>ssdasss</p>', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '0.00', '0.00', '0.00');
+(107, '#1809101256050', 'C1808211035448', 31, 'Chester Min King', '2018-09-10', '9:00 am - 10:00 am', 'Helen', 'P1809080643234', 'Dog', 'German Shepherd', '1 Years old', 1, 'Done', '2018-09-10 00:56:05', 'V1808211104490', 'Carlos Almonds Valdez', '<p>Helen\'s Second Day of Checkup</p>', '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '333.00', '500.00', '167.00');
 
 -- --------------------------------------------------------
 
@@ -228,7 +228,8 @@ INSERT INTO `tbl_checkupdetails` (`checkup_id`, `assessment_date`, `appointment_
 (90, '2018-09-08 18:21:38', 103, '#1809080616349', '2018-09-08', '4: 00 pm - 5: 00pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221021292', 'Arnelsz', '3 Years old', '<p>sdasdsdas</p>', '<p>sdsd</p>', '<p>asssdsd</p>', 'Colitis', 61, 'Known', ''),
 (91, '2018-09-08 18:24:54', 104, '#1809080624323', '2018-09-08', '2:00 pm - 3:00 pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1808221046418', 'LenTik', '6 Months old', '<p>sdasdsssda</p>', '<p>sdsd</p>', '<p>asdsdas</p>', 'Colitis', 61, 'Known', ''),
 (92, '2018-09-08 20:28:15', 105, '#1809080814045', '2018-09-08', '4: 00 pm - 5: 00pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1809080643234', 'Helen', '1 Years old', '<p>sdsdsdad</p>', '<p>Patient shows dulling</p><p>right eye is infected</p><p>left eye is fine</p>', '<p>bring your dog after 3weeks for final evaluation</p>', 'Kennel Cough', 58, 'Known', ''),
-(93, '2018-09-08 20:51:31', 106, '#1809080851046', '2018-09-08', '1: 00pm - 2:00 pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1809080643234', 'Helen', '1 Years old', '<p>ssdasss</p>', '<p>sdsdasds</p>', '<p>sdssasds</p>', 'none', 0, 'Unknown', '');
+(93, '2018-09-08 20:51:31', 106, '#1809080851046', '2018-09-08', '1: 00pm - 2:00 pm', 'Carlos Almonds Valdez', 'V1808211104490', 'P1809080643234', 'Helen', '1 Years old', '<p>ssdasss</p>', '<p>sdsdasds</p>', '<p>sdssasds</p>', 'none', 0, 'Unknown', ''),
+(94, '2018-09-10 00:57:46', 107, '#1809101256050', '2018-09-10', '9:00 am - 10:00 am', 'Carlos Almonds Valdez', 'V1808211104490', 'P1809080643234', 'Helen', '1 Years old', '<p>Helen\'s Second Day of Checkup</p>', '<p>Helen Will be enjected with the T virus</p>', '<p>Helen is showing signs of improvement</p><p>important note</p><ol><li>?please bring helen in 2 weeks time for 3rd vaccination<br></li></ol>', 'none', 0, 'Unknown', '');
 
 -- --------------------------------------------------------
 
@@ -1408,7 +1409,93 @@ INSERT INTO `tbl_logs` (`log_id`, `log_user`, `log_usertype`, `log_userID`, `log
 (5425, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'User Login', '2018-09-08 21:19:47'),
 (5426, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-09-08 21:19:48'),
 (5427, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View Pet List', '2018-09-08 21:20:28'),
-(5428, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View Pet details', '2018-09-08 21:20:29');
+(5428, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View Pet details', '2018-09-08 21:20:29'),
+(5429, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-09-09 01:34:55'),
+(5430, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-09 01:34:55'),
+(5431, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-09-09 01:34:58'),
+(5432, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet details', '2018-09-09 01:35:00'),
+(5433, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Logout', '2018-09-09 01:35:05'),
+(5434, 'Chester Min King', 'Customer', 'C1808211035448', 'User Login', '2018-09-09 01:35:18'),
+(5435, 'Chester Min King', 'Customer', 'C1808211035448', 'View My Pets Section', '2018-09-09 01:35:19'),
+(5436, 'Chester Min King', 'Customer', 'C1808211035448', 'View Pet details', '2018-09-09 01:35:21'),
+(5437, 'Chester Min King', 'Customer', 'C1808211035448', 'User Logout', '2018-09-09 01:35:24'),
+(5438, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'User Login', '2018-09-09 01:35:29'),
+(5439, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-09-09 01:35:30'),
+(5440, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View Pet List', '2018-09-09 01:35:31'),
+(5441, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View Pet details', '2018-09-09 01:35:33'),
+(5442, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View Pet details', '2018-09-09 01:37:45'),
+(5443, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'User Logout', '2018-09-09 01:37:53'),
+(5444, 'Chester Min King', 'Customer', 'C1808211035448', 'User Login', '2018-09-09 23:15:29'),
+(5445, 'Chester Min King', 'Customer', 'C1808211035448', 'View My Pets Section', '2018-09-09 23:15:31'),
+(5446, 'Chester Min King', 'Customer', 'C1808211035448', 'View Pet details', '2018-09-09 23:15:32'),
+(5447, 'Chester Min King', 'Customer', 'C1808211035448', 'View My Pets Section', '2018-09-09 23:17:24'),
+(5448, 'Chester Min King', 'Customer', 'C1808211035448', 'View Pet details', '2018-09-09 23:17:25'),
+(5449, 'Chester Min King', 'Customer', 'C1808211035448', 'View My Pets Section', '2018-09-09 23:51:45'),
+(5450, 'Chester Min King', 'Customer', 'C1808211035448', 'View Pet details', '2018-09-09 23:51:46'),
+(5451, 'Chester Min King', 'Customer', 'C1808211035448', 'View Pet details', '2018-09-09 23:54:15'),
+(5452, 'Chester Min King', 'Customer', 'C1808211035448', 'View Pet details', '2018-09-09 23:57:52'),
+(5453, 'Chester Min King', 'Customer', 'C1808211035448', 'User Logout', '2018-09-09 23:59:59'),
+(5454, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-09-10 00:00:07'),
+(5455, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-09-10 00:00:08'),
+(5456, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Todays Appointment', '2018-09-10 00:00:33'),
+(5457, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-09-10 00:02:06'),
+(5458, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet details', '2018-09-10 00:02:08'),
+(5459, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'User Login', '2018-09-10 00:02:31'),
+(5460, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-09-10 00:02:32'),
+(5461, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View Pet List', '2018-09-10 00:02:33'),
+(5462, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View Pet details', '2018-09-10 00:02:35'),
+(5463, 'Chester Min King', 'Customer', 'C1808211035448', 'User Login', '2018-09-10 00:03:20'),
+(5464, 'Chester Min King', 'Customer', 'C1808211035448', 'View My Pets Section', '2018-09-10 00:03:22'),
+(5465, 'Chester Min King', 'Customer', 'C1808211035448', 'View Pet details', '2018-09-10 00:03:23'),
+(5466, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View Pet details', '2018-09-10 00:43:59'),
+(5467, 'Chester Min King', 'Customer', 'C1808211035448', 'View Pet details', '2018-09-10 00:44:19'),
+(5468, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet details', '2018-09-10 00:47:32'),
+(5469, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet details', '2018-09-10 00:48:01'),
+(5470, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View Pet details', '2018-09-10 00:49:14'),
+(5471, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View Pet details', '2018-09-10 00:49:29'),
+(5472, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View Pet details', '2018-09-10 00:50:27'),
+(5473, 'Chester Min King', 'Customer', 'C1808211035448', 'User Logout', '2018-09-10 00:50:44'),
+(5474, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'User Login', '2018-09-10 00:51:06'),
+(5475, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-10 00:51:06'),
+(5476, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-10 00:51:08'),
+(5477, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet details', '2018-09-10 00:51:10'),
+(5478, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View Pet details', '2018-09-10 00:53:04'),
+(5479, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet details', '2018-09-10 00:53:11'),
+(5480, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet details', '2018-09-10 00:53:58'),
+(5481, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet details', '2018-09-10 00:54:10'),
+(5482, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-09-10 00:54:15'),
+(5483, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-09-10 00:55:38'),
+(5484, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-09-10 00:56:06'),
+(5485, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-09-10 00:56:09'),
+(5486, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-10 00:56:15'),
+(5487, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'Assess Helen', '2018-09-10 00:57:46'),
+(5488, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-10 00:57:46'),
+(5489, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Appointments', '2018-09-10 00:57:54'),
+(5490, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet details', '2018-09-10 00:57:56'),
+(5491, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-09-10 00:58:09'),
+(5492, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'Print Appointment Detail', '2018-09-10 00:58:27'),
+(5493, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'Print Appointment Detail', '2018-09-10 00:58:27'),
+(5494, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-09-10 00:58:38'),
+(5495, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet details', '2018-09-10 00:58:43'),
+(5496, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet details', '2018-09-10 01:04:57'),
+(5497, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-09-10 01:04:59'),
+(5498, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet details', '2018-09-10 01:05:00'),
+(5499, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View POS', '2018-09-10 01:05:10'),
+(5500, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View Pet List', '2018-09-10 01:05:12'),
+(5501, 'kirra May Ballesteros', 'Staff', 'S1808221221365', 'View Pet details', '2018-09-10 01:05:14'),
+(5502, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet details', '2018-09-10 01:05:21'),
+(5503, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'View Pet details', '2018-09-10 01:05:44'),
+(5504, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Admin profile', '2018-09-10 01:06:20'),
+(5505, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-09-10 01:06:26'),
+(5506, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-09-10 01:06:30'),
+(5507, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Inventory', '2018-09-10 01:07:05'),
+(5508, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Settings', '2018-09-10 01:07:19'),
+(5509, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'User Logout', '2018-09-10 01:07:45'),
+(5510, 'Chester Min King', 'Customer', 'C1808211035448', 'User Login', '2018-09-10 01:07:52'),
+(5511, 'Chester Min King', 'Customer', 'C1808211035448', 'View My Pets Section', '2018-09-10 01:07:54'),
+(5512, 'Chester Min King', 'Customer', 'C1808211035448', 'View Pet details', '2018-09-10 01:07:55'),
+(5513, 'Chester Min King', 'Customer', 'C1808211035448', 'User Logout', '2018-09-10 01:08:15'),
+(5514, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Logout', '2018-09-10 01:09:07');
 
 -- --------------------------------------------------------
 
@@ -2227,7 +2314,8 @@ INSERT INTO `tbl_service_rendered` (`service_rendered_id`, `checkup_id`, `servic
 (99, 91, 9, 'Deworming for Kittens', '157.00', 104),
 (100, 91, 4, 'Vaccination for Kittens', '400.00', 104),
 (101, 92, 0, 'General Checkup', '200.00', 105),
-(102, 93, 13, 'Grooming (Nail Cutting)', '100.00', 106);
+(102, 93, 13, 'Grooming (Nail Cutting)', '100.00', 106),
+(103, 94, 5, 'Deworming ', '222.00', 107);
 
 -- --------------------------------------------------------
 
@@ -2578,7 +2666,7 @@ ALTER TABLE `tbl_admins`
 -- AUTO_INCREMENT for table `tbl_appointments`
 --
 ALTER TABLE `tbl_appointments`
-  MODIFY `appointment_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `appointment_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 --
 -- AUTO_INCREMENT for table `tbl_bannerimages`
 --
@@ -2588,7 +2676,7 @@ ALTER TABLE `tbl_bannerimages`
 -- AUTO_INCREMENT for table `tbl_checkupdetails`
 --
 ALTER TABLE `tbl_checkupdetails`
-  MODIFY `checkup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `checkup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 --
 -- AUTO_INCREMENT for table `tbl_customers`
 --
@@ -2598,12 +2686,12 @@ ALTER TABLE `tbl_customers`
 -- AUTO_INCREMENT for table `tbl_logs`
 --
 ALTER TABLE `tbl_logs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5429;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5515;
 --
 -- AUTO_INCREMENT for table `tbl_petbreeds`
 --
 ALTER TABLE `tbl_petbreeds`
-  MODIFY `breed_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `breed_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `tbl_pets`
 --
@@ -2683,7 +2771,7 @@ ALTER TABLE `tbl_services`
 -- AUTO_INCREMENT for table `tbl_service_rendered`
 --
 ALTER TABLE `tbl_service_rendered`
-  MODIFY `service_rendered_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `service_rendered_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 --
 -- AUTO_INCREMENT for table `tbl_settings`
 --

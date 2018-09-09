@@ -32,7 +32,7 @@
                  <label for="veterinarian">Veterinarian</label>
                   <select name="veterinarian" class="form-control select2" style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;">
                               <?php foreach($all_vets as $vets):?>
-                              <option value="<?php echo $vets->veterinarian_table_id?>"><?php echo $vets->firstname .''. $vets->middlename .' '. $vets->lastname;?></option>
+                              <option value="<?php echo $vets->veterinarian_table_id?>"><?php echo $vets->firstname .' '. $vets->middlename .' '. $vets->lastname;?></option>
                             <?php endforeach?>
                    </select>
                </div>

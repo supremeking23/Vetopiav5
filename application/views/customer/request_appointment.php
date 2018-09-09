@@ -4,6 +4,8 @@
   $settings_id =$t_color->settings_id;
   $box_color = "";
 
+  $vet_fee = $t_color->vet_fee;
+
     if($skin_color == "skin-green"){
       $box_color = "box-success";
     }else if($skin_color == "skin-blue"){
@@ -205,6 +207,139 @@
 
                                <a href="<?php echo site_url()?>appointment/print_appointment_slip/<?php echo $c_appointment->appointment_table_id;?>"  class="btn btn-sm btn-info"  target="_blank">Print <span class="fa fa-print"></span></a>
                         <?php endif;?>
+
+
+                        <?php if($c_appointment->appointment_status == "Done"):?>
+
+                              <button type="button" data-toggle="modal" class="btn btn-sm btn-flat btn-info" data-target="#detailAppointment_done<?php echo $c_appointment->appointment_table_id?>">View Details</button>
+
+                              <div class="modal fade" id="detailAppointment_done<?php echo $c_appointment->appointment_table_id?>">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button>
+                                      <h4 class="modal-title">Appointment Summary </h4>
+                                    </div>
+                                    <div class="modal-body">
+                                         <?php $checkup_detail = $this->pet_management_model->get_prescription_by_appointment_table_id($c_appointment->appointment_table_id);
+                                                foreach($checkup_detail as $cd):
+                                               ?>
+                                                  <table width="100%" class="table table-striped table-bordered table-hover">
+                                                        <tbody>
+                                                          <tr>
+                                                            <td><b>Pet Name</b></td>
+                                                            <td><?php echo $cd->petname;?></td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td><b>Reason/Complaint</b></td>
+                                                            <td><?php echo $cd->complaints;?></td>
+                                                          </tr>
+                                                         
+                                                          <tr>
+                                                            <td><b>Prescription</b></td>
+                                                            <td><?php echo $cd->prescription;?></td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td><b>Services</b></td>
+                                                            <td><?php $services = $this->pet_management_model->get_services_by_checkup_id($cd->checkup_id);
+                                                            $service_fee = 0;
+                                                           ?>
+
+                                                            <ul>
+                                                              <li>Professional Fee  = ₱<?php echo $vet_fee;?></li>
+                                                            <?php  foreach($services as $s):?>
+                                                              
+                                                              <li><?php echo $s->service_name;?> = ₱<?php echo $s->service_fees;?>
+                                                            </li>
+                                                             <?php 
+                                                            $service_format = $service_fee + $s->service_fees + $vet_fee;
+                                                            $service_fee = number_format($service_format,2);
+                                                            endforeach; //end service?>
+                                                            </ul>
+                                                           </td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td><b>Total Payment: <b></td>
+                                                            <td>₱<?php echo $service_fee ?></td>
+                                                          </tr>
+                                                        
+                                                                                                        
+                                                        </tbody>
+                                                               
+                                                  </table>      
+                                               <?php endforeach;
+                                                  ?>
+                                                <hr>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                                     
+                                    </div>
+                                  </div>
+                                  <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                             </div>
+                              <!-- /.modal -->
+                        <?php endif;?>
+
+                        <?php if($c_appointment->appointment_status == "Cancelled"):?>
+                            <button type="button" class="btn btn-flat btn-sm btn-info" data-toggle="modal" data-target="#detailAppointmentCancelled<?php echo $c_appointment->appointment_table_id?>">View Details</button>
+
+                            <div class="modal fade" id="detailAppointmentCancelled<?php echo $c_appointment->appointment_table_id?>">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">Appointment Detail </h4>
+                                  </div>
+                                  <div class="modal-body">
+                                        <table width="100%" class="table table-striped table-bordered table-hover">
+                                          <tbody>
+                                            <tr>
+                                              <td><b>Customer Name</b></td>
+                                              <td><?php echo $c_appointment->customer_name;?></td>
+                                            </tr>
+                                            <tr>
+                                              <td><b>Pet Name</b></td>
+                                              <td><?php echo $c_appointment->pet_name;?></td>
+                                            </tr>
+                                            <tr>
+                                              <td><b>Reason/Complaint</b></td>
+                                              <td><?php echo $c_appointment->complaints;?></td>
+                                            </tr> 
+                                           
+                                          <?php if($c_appointment->appointment_status == "Cancelled"):?>
+                                            <tr>
+                                              <td><b>Date Cancelled</b></td>
+                                              <td><?php  $date =date_create($c_appointment->cancel_date);
+                                                 echo  $cancel_date= date_format($date,"F d, Y h:i:s a");?></td>
+                                            </tr>
+                                            <tr>
+                                              <td><b>Cancel Reason</b></td>
+                                              <td><?php echo $c_appointment->cancel_reason;?></td>
+                                            </tr>
+                                        <?php endif;?>                         
+                                          </tbody>
+                                                 
+                                        </table>      
+
+
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                                   
+                                  </div>
+                                </div>
+                                <!-- /.modal-content -->
+                              </div>
+                              <!-- /.modal-dialog -->
+                            </div>
+                            <!-- /.modal -->                           
+                        <?php endif;?>
+
                     </td>
                   </tr>
 
