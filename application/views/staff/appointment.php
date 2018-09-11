@@ -47,6 +47,25 @@
       <section class="content">
 
 
+        <div class="row">
+              <div class="col-md-4  col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-aqua"><i class="fa fa-calendar"></i></span>
+
+                  <div class="info-box-content" >
+                    <span class="info-box-text">Today's appointment</span>
+                     <?php foreach($count_todays_appointment as $todays_appointment_count):?>
+                    <span class="info-box-number"><?php echo $todays_appointment_count->count_all?></span>
+                    <?php endforeach;?>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+              <!-- /.col -->
+        </div>
+
+
          <div class="row">
           <div class="col-md-12">
             <button class="btn btn-flat btn-info btn-sm" data-toggle="modal" data-target="#addAppointment">Set An Appointment</button>

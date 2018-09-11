@@ -186,7 +186,6 @@
 
 
 
-
     
 
 
@@ -196,7 +195,7 @@
 
     //for tooltip
     $('[data-tooltip="tooltip"]').tooltip();
-
+    $('[data-popover="popover"]').popover();
 
     //date picker jquery-ui
     //$('#birthDate').datepicker();

@@ -14,6 +14,10 @@
 		$postal_id = $contents->clinic_postal_id;
 		$telephone =  $contents->telephone;
 		$store_name = $contents->store_name;
+
+
+		$about_us_picture = $contents->about_us_picture;
+		$service_picture = $contents->service_picture;
 	}
 
 ?>
@@ -197,7 +201,7 @@ function make_slides($connect)
 		<!--<a href="#" class="btn btn-primary">Learn More</a> -->
 		</div>
 		<div class="col-lg-6">
-			<img src="<?php echo site_url()?>assets/images/site_images/carousel-stateoftheart.jpg" class="img-fluid">
+			<img src="<?php echo site_url()?>assets/images/site_images/<?php echo $about_us_picture?>" class="img-fluid">
 		</div>
 	</div>
 </div>
@@ -245,7 +249,7 @@ function make_slides($connect)
 <div class="container-fluid padding" id="services">
 	<div class="row padding">
 		<div class="col-lg-3">
-			<img src="<?php echo site_url()?>assets/images/site_images/vs.png" class="img-fluid">
+			<img src="<?php echo site_url()?>assets/images/site_images/<?php echo $service_picture?>" class="img-fluid">
 		</div>
 		<div class="col-lg-9">
 				<h1>Our Services</h1>

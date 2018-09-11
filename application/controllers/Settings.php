@@ -263,6 +263,47 @@ class Settings extends CI_Controller {
 		}
 
 
+		//image upload
+		$config['upload_path']          = './assets/images/site_images';
+        $config['allowed_types']        = 'gif|jpg|png';
+        //$config['max_size']             = 100;
+       // $config['max_width']            = 1024;
+       // $config['max_height']           = 768;
+
+        $this->load->library('upload', $config);
+
+        if ( ! $this->upload->do_upload('about_image'))
+        {		//failed to upload
+                $error = array('error' => $this->upload->display_errors());
+
+                //$this->load->view('file_view', $error);
+        }
+        else
+        {
+
+
+
+               $uploadData = $this->upload->data();
+               $image1 = $uploadData['file_name'];
+        }
+
+		 if ( ! $this->upload->do_upload('service_image'))
+        {		//failed to upload
+                $error = array('error' => $this->upload->display_errors());
+
+                //$this->load->view('file_view', $error);
+        }
+        else
+        {
+
+
+
+               $uploadData = $this->upload->data();
+               $image2 = $uploadData['file_name'];
+        }
+
+
+
 		if (empty($errorMessage)) {
 
 
@@ -270,7 +311,9 @@ class Settings extends CI_Controller {
 			//echo $this->input->post('theme_color');
 			$data = array(
 				'aboutus_content' => $this->input->post('aboutus_content'),	
-				'service_content' => $this->input->post('service_content'),			
+				'service_content' => $this->input->post('service_content'),	
+				'about_us_picture' => $image1,
+				'service_picture' => $image2,		
 			);
 
 			//var_dump($this->input->post());

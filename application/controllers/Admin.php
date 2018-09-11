@@ -128,6 +128,9 @@ class Admin extends CI_Controller {
 
 		$data['data_stat_pet_daignosis'] = $this->pet_management_model->data_stat_pet_daignosis();
 
+		
+		$data['count_todays_appointment'] = $this->appointment_management->count_appointment_for_today();
+
 
 
 		$name = $this->session->userdata('complete_name');
@@ -1335,7 +1338,7 @@ class Admin extends CI_Controller {
 
 
 		$data['all_sales'] = $this->pos_management->get_all_sales();
-
+		$data['sum_total_sales'] =  $this->pos_management->sum_total_sales();
 
 		$this->admin_management->insert_new_log($data2);
 		$this->load->view('admin/sales',$data);

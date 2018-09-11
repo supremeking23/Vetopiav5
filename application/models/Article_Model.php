@@ -38,6 +38,33 @@ class Article_Model extends CI_Model {
         return $result_set;
     }
 
+   /* public function get_all_articles_distinct(){
+       /* $this->db->select('*');
+        $this->db->from('tbl_pet_library');
+        //$this->db->where('is_active',$active);
+        $this->db->order_by('library_id', 'DESC');
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        $result_set = $this->db->query('SELECT DISTINCT(title) AS "articles" FROM  tbl_pet_library');
+        return $result_set->result();   
+
+      
+    }*/
+
+    public function get_all_articles_group(){
+        $this->db->select('*');
+        $this->db->from('tbl_pet_library');
+        //$this->db->where('is_active',$active);
+        $this->db->group_by('title');
+        $this->db->order_by('library_id', 'DESC');
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+    }
 
    /* public function get_all_article_active($rowno,$rowperpage,$search="") {
             

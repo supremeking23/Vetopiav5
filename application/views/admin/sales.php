@@ -42,6 +42,23 @@
     <!-- Main content -->
     <section class="content">
 
+      <div class="row">
+        <div class="col-md-4  col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-orange"><i class="fa fa-money"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Total sales</span>
+               <?php foreach($sum_total_sales as $sum_sales):?>
+              <span class="info-box-number">₱<?php echo number_format($sum_sales->total_sales,2);?></span>
+              <?php endforeach;?>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+      </div>
 
       <div class="row">
         <div class="col-md-12">
@@ -54,7 +71,7 @@
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title">Filter By Date</h4>
+                  <h4 class="modal-title">Filter Option</h4>
                 </div>
 
                 <?php echo form_open_multipart('','id="filterData"');?>
@@ -63,11 +80,11 @@
                       <tbody>
                         <tr>
                           <td><b>From:</b></td>
-                          <td><input type="date" name="from" id="from" class="form-control"></td>
+                          <td><input type="date" name="from" id="from" class="form-control" required=""></td>
                         </tr>
                         <tr>
                           <td><b>To:</b></td>
-                          <td><input type="date" name="to" id="to" class="form-control"></td>
+                          <td><input type="date" name="to" id="to" class="form-control" required=""></td>
                         </tr>
                       
                       </tbody>
@@ -90,6 +107,8 @@
           <!-- /.modal -->          
         </div>
       </div>
+
+
      
       <br />
 

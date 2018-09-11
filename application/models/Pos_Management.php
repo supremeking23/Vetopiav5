@@ -74,6 +74,13 @@ class Pos_Management extends CI_Model {
     }
 
 
+    public function sum_total_sales(){
+       // $now = date('Y-m-d');
+        $result_set = $this->db->query('SELECT SUM(total_amount) AS "total_sales" FROM tbl_sales;');
+        return $result_set->result();   
+   }
+
+
     //customer user id
     public function get_all_sales_by_customer_id($customer_id){
         $this->db->select('*');

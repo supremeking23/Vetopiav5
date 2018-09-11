@@ -81,7 +81,42 @@
 
                             <td><?php echo $pet_services->service_name;?></td>
                             <td><?php echo ucfirst( $pet_services->for_what_pet);?> <br /> <?php echo ucfirst($pet_services->for_pet_ages);?></td>
-                            <td><?php echo $pet_services->service_description;?></td>
+                            <td><?php //echo $pet_services->service_description;?>
+                             <!-- <a role="button" tabindex="0" class="btn btn-info btn-sm btn-flat"
+                              data-popover="popover"
+                              data-container="body"
+                              data-placement="bottom"
+                              data-title="<?php echo $pet_services->service_name;?>"
+                              data-content="<?php echo htmlentities($pet_services->service_description);?>"
+                              >View Details</a> -->
+
+                              <button type="button" data-toggle="modal" data-target="#serviceDetail<?php echo $pet_services->service_id;?>" class="btn btn-sm btn-flat btn-info">View Detail</button>
+                             
+                              <div class="modal fade" id="serviceDetail<?php echo $pet_services->service_id;?>">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button>
+                                      <h4 class="modal-title"><?php echo ucfirst($pet_services->service_name);?></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                      <div class="row">
+                                        <div class="col-md-12">
+                                          <?php echo $pet_services->service_description;?>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                     
+                                    </div>
+                                  </div>
+                                  <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                              </div>
+                              <!-- /.modal -->                              
+                            </td>
                             <td>₱ <?php echo $pet_services->service_fee;?></td>
 
 

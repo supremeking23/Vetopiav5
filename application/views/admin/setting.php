@@ -34,6 +34,10 @@
       $box_color = "box-warning";
     }
 
+
+    $about_us_picture = $t_color->about_us_picture;
+    $service_picture = $t_color->service_picture;
+
 }?>
 
 <!DOCTYPE html>
@@ -299,7 +303,7 @@
           </div>
 
 
-          <div class="row">
+          <div class="row" >
             <div class="col-lg-12 col-xs-12">
               <div class="box box-solid <?php echo $box_color;?>">
                 <div class="box-header with-border">
@@ -311,33 +315,56 @@
                     </div>
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body table-responsive">
+                <div class="box-body ">
 
 
 
 
                   <form method="POST" id="formContentSection" enctype="multipart/form-data">
-                     
-                      <?php echo form_label('About Section', 'aboutus_content','class="control-label"');?>
+
+
+                  <div class="row">
+                    <div class="col-md-7">
+                          <?php echo form_label('About Section', 'aboutus_content','class="control-label"');?>
 
                          <textarea class="form-control textareas" id ="aboutus_content" name="aboutus_content" cols="6" rows="8"><?php echo $aboutus_content;?></textarea>
+                    </div>
+
+                    <div class="col-md-5">
+                      <input type="file" name="about_image" id="about_image" class="form-control"><br />
+                      <img src="<?php echo site_url()?>assets/images/site_images/<?php echo $about_us_picture ?>" width="450px" class="img-fluid">                      
+                    </div>
+                  </div>
+                     
+
                  
 
 
                  <hr>
 
+
+                 <div class="row">
+                   <div class="col-md-7">
                   <?php echo form_label('Service Section', 'service_content','class="control-label"');?>
 
                          <textarea class="form-control textareas" id ="service_content" name="service_content" cols="6" rows="8"><?php echo $service_content;?></textarea>
                  
                        
 
-                          <input type="hidden" name="settings_id" value="1" id="settings_id">
+                                            
+                   </div>
+                    <div class="col-md-5">
+                      <input type="file" name="service_image" id="service_image" class="form-control"><br />
+                      <img src="<?php echo site_url()?>assets/images/site_images/<?php echo $service_picture ?>" width="450px" class="img-fluid">
+                    </div>
+                 </div>
 
-                          <br />
 
 
+                    <br />
 
+
+                     <input type="hidden" name="settings_id" value="1" id="settings_id">  
                      <input type="submit" name="save_about_us" id="save_about_us" value="Save" class="btn btn-sm btn-flat btn-primary pull-right">
 
                          

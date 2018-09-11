@@ -147,7 +147,7 @@
             <span class="info-box-icon bg-aqua"><i class="fa fa-archive"></i></span>
 
             <div class="info-box-content" >
-              <span class="info-box-text">Total number of Products</span>
+              <span class="info-box-text">Total number of Products left</span>
                <?php foreach($count_products as $product_count):?>
               <span class="info-box-number"><?php echo $product_count->count_all?></span>
               <?php endforeach;?>
@@ -157,7 +157,27 @@
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
+
+
+        <div class="col-md-4  col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="fa fa-calendar"></i></span>
+
+            <div class="info-box-content" >
+              <span class="info-box-text">Today's appointment</span>
+               <?php foreach($count_todays_appointment as $todays_appointment_count):?>
+              <span class="info-box-number"><?php echo $todays_appointment_count->count_all?></span>
+              <?php endforeach;?>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+
       </div>
+
+
 
 
       <div class="row">
@@ -260,13 +280,13 @@
 
             </div>
             <div class="box-body">
-              <table  class="datatables table table-bordered table-striped">
+              <table  class="datatablestats table table-bordered table-striped">
                 <thead>
                 <tr>
 
-
+                  <th>Date</th>
                   <th>Disease Name</th>
-                  <th>Unknown / Known</th>
+                 
                   <th>Total Number of cases</th>
                  
                 </tr>
@@ -274,8 +294,13 @@
                 <tbody>
                   <?php foreach($data_stat_pet_daignosis as $data):?>
                   <tr>
+                    <td><?php 
+
+                     $date =date_create($data->date);
+                       echo  $format_date= date_format($date,"F d, Y");
+                    ?></td>
                     <td><?php echo ucfirst( $data->possible_cause);?></td>
-                    <td><?php echo ucfirst( $data->is_known);?></td>
+                    
                     <td><?php echo $data->counts;?></td>
                   
                   </tr>
@@ -676,6 +701,62 @@ $datas = json_encode($data);*/
 
 <!-- page script -->
 <script>
+
+    $('.datatablestats').DataTable( {
+        'ordering'    : false,
+        "lengthMenu": [[5, 25, 50, -1], [5, 25, 50, "All"]],
+        'paging'      : true,
+        'info'        : true,
+        dom: 'Bfrtip',
+        /*buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],*/
+
+        buttons: [
+            {
+              extend: 'pdfHtml5',
+              title: 'Data Statistics for Pet Diagnosis',
+              message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+              customize: function(doc) {
+                //setHeader2();
+                doc.styles.title = {
+                  color: '',
+                  fontSize: '40',
+                  background: '',
+                  alignment: 'center'
+                }   
+              }  
+            },
+
+             {
+               extend: 'excelHtml5',
+               title: 'Data Statistics for Pet Diagnosis',
+               message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+  
+            },
+
+            {
+               extend: 'csvHtml5',
+               title: 'Data Statistics for Pet Diagnosis',
+               message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+               
+            },
+
+                ]
+    } );
+
 
     // LINE CHART   Tago muna... try natin  ung bar graph lang
   /* var line = new Morris.Line({

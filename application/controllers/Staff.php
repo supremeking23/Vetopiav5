@@ -119,6 +119,8 @@ class Staff extends CI_Controller {
 
 
 
+		$data['count_todays_appointment'] = $this->appointment_management->count_appointment_for_today();
+
 		$this->staff_management->insert_new_log($data2);
 
 		$today_now = date('Y-m-d');
