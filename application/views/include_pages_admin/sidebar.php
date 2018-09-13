@@ -66,7 +66,7 @@
         <li><a href="<?php echo site_url()?>Admin/Appointments"><i class="fa fa-calendar"></i> <span>Appointment</span>
                  <?php if($cap == 0){  //echo $cap;?>     
                     <?php  }else{ ?>
-                    <span class="badge label-danger">
+                    <span class="badge label-danger" data-tooltip="tooltip" title="You have <?php echo $cap?> pending appointment request" >
                      <?php echo $cap; ?>
                       </span>  
                    <?php }?>    

@@ -88,7 +88,7 @@
                 </div>
               </div>
               <div class="box-body table-responsive">
-                    <table  class="datatables table table-bordered table-striped">
+                    <table  class="datatablesservices table table-bordered table-striped">
                           <thead>
                           <tr>
                             <th>Service Status</th>

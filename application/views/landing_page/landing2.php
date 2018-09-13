@@ -79,17 +79,17 @@
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 						<ul class="navbar-nav ml-auto">
 							<li class="nav-item active">
-								<a class="nav-link" data-section href="#!slides">Home</a>
+								<a class="nav-link" data-section href="#!slides" data-anchor="slides">Home</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" data-section href="#!about">About</a>
+								<a class="nav-link" data-section href="#!about" data-anchor="about">About</a>
 							</li>
 							
 							<li class="nav-item">
-								<a class="nav-link" data-section href="#!team">Team</a>
+								<a class="nav-link" data-section href="#!team" data-anchor="team">Team</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" data-section href="#!services">Services</a>
+								<a class="nav-link" data-section href="#!services" data-anchor="services">Services</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="<?php echo site_url()?>login">Sign In</a>
@@ -309,6 +309,28 @@ function make_slides($connect)
 			//href.css('background','red');
 			
 		});
+
+$(window).scroll(function() {
+
+    if ($(this).scrollTop() < $('section[data-anchor="slides"]').offset().top) {
+       $('nav a').removeClass('active');
+    }
+
+    if ($(this).scrollTop() >= $('section[data-anchor="about"]').offset().top) {
+      $('nav a').removeClass('active');
+      $('nav a:eq(0)').addClass('active');
+    }
+    if ($(this).scrollTop() >= $('section[data-anchor="team"]').offset().top) {
+      $('nav a').removeClass('active');
+      $('nav a:eq(1)').addClass('active');
+    }
+    if ($(this).scrollTop() >= $('section[data-anchor="services"]').offset().top) {
+      $('nav a').removeClass('active');
+      $('nav a:eq(2)').addClass('active');
+    }
+   
+
+});
 </script>
 </body>
 </html>

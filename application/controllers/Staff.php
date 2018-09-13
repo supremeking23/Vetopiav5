@@ -177,7 +177,7 @@ class Staff extends CI_Controller {
 		$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
 
 		$data['all_pets'] = $this->pet_management_model->get_all_pet();	
-		$data['all_pettype'] = $this->pet_management_model->get_all_pettype();
+		$data['all_pettype'] = $this->pet_management_model->get_all_pettype_active();//$this->pet_management_model->get_all_pettype();
 		$data['all_customers'] = $this->customer_management->get_all_customer();
 
 		$name = $this->session->userdata('complete_name');

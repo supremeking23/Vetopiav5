@@ -453,7 +453,7 @@ class Admin extends CI_Controller {
 		);
 
 
-		$data['all_pettype'] = $this->pet_management_model->get_all_pettype();
+		$data['all_pettype'] = $this->pet_management_model->get_all_pettype_active();//$this->pet_management_model->get_all_pettype();
 		$data['breed_list'] = $this->pet_management_model->get_all_breed();
 		$this->admin_management->insert_new_log($data2);
 

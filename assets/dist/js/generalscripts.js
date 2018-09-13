@@ -102,7 +102,7 @@
         } 
     }); 
 
-    //for tables
+    //for tables regular datatable
     $('.datatables').DataTable({
 
       "lengthMenu": [[ 50, 70, -1], [ 50,70, "All"]],
@@ -114,10 +114,23 @@
       //'autoWidth'   : false,      
     });
 
+    $('.datatablesservices').DataTable({
+
+      "lengthMenu": [[ 10,50, 70, -1], [ 10,50,70, "All"]],
+      'paging'      : true,
+      //'lengthChange': false,
+      //'searching'   : false,
+      'ordering'    : false,
+      'info'        : true,
+      //'autoWidth'   : false,      
+    });
+
+
+
     //for tables
     $('.datatablesvets').DataTable({
 
-      "lengthMenu": [[50, 25, 50, -1], [10, 25, 50, "All"]],
+      "lengthMenu": [[25, 50, -1], [ 25, 50, "All"]],
       'paging'      : true,
       //'lengthChange': false,
       //'searching'   : false,

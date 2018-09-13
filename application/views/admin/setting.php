@@ -332,7 +332,7 @@
 
                     <div class="col-md-5">
                       <input type="file" name="about_image" id="about_image" class="form-control"><br />
-                      <img src="<?php echo site_url()?>assets/images/site_images/<?php echo $about_us_picture ?>" width="450px" class="img-fluid">                      
+                      <img src="<?php echo site_url()?>assets/images/site_images/<?php echo $about_us_picture ?>" width="450px" class="img-responsive">                      
                     </div>
                   </div>
                      
@@ -355,7 +355,7 @@
                    </div>
                     <div class="col-md-5">
                       <input type="file" name="service_image" id="service_image" class="form-control"><br />
-                      <img src="<?php echo site_url()?>assets/images/site_images/<?php echo $service_picture ?>" width="450px" class="img-fluid">
+                      <img src="<?php echo site_url()?>assets/images/site_images/<?php echo $service_picture ?>" width="450px" class="img-responsive">
                     </div>
                  </div>
 

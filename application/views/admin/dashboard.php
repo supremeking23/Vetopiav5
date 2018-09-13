@@ -200,7 +200,7 @@
                             <?php if($cap->count_all == 0){
                             }else{ ?>
 
-                              <span class="badge label-danger" data-tooltip="tooltip" title="You have <?php echo $cap->count_all; ?> new appointment request" >
+                              <span class="badge label-danger" data-tooltip="tooltip" data-placement="right" title="You have <?php echo $cap->count_all; ?> new appointment request" >
                               <?php  echo $cap->count_all; ?>
                               </span>
                            <?php  }?>
@@ -349,7 +349,7 @@
             <!-- /.box-header -->
             <div class="box-body table-responsive">
 
-              <table  class="datatables table table-bordered table-striped">
+              <table  class="datatablesproductcount table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>Product Name</th>
@@ -746,6 +746,62 @@ $datas = json_encode($data);*/
             {
                extend: 'csvHtml5',
                title: 'Data Statistics for Pet Diagnosis',
+               message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+               
+            },
+
+                ]
+    } );
+
+
+    $('.datatablesproductcount').DataTable( {
+        'ordering'    : false,
+        "lengthMenu": [[5, 25, 50, -1], [5, 25, 50, "All"]],
+        'paging'      : true,
+        'info'        : true,
+        dom: 'Bfrtip',
+        /*buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],*/
+
+        buttons: [
+            {
+              extend: 'pdfHtml5',
+              title: 'Product Count Report',
+              message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+              customize: function(doc) {
+                //setHeader2();
+                doc.styles.title = {
+                  color: '',
+                  fontSize: '40',
+                  background: '',
+                  alignment: 'center'
+                }   
+              }  
+            },
+
+             {
+               extend: 'excelHtml5',
+               title: 'Product Count Report',
+               message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+  
+            },
+
+            {
+               extend: 'csvHtml5',
+               title: 'Product Count Report',
                message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
                 $now = date('Y-m-d H:i:s');
                  $date =date_create($now);
