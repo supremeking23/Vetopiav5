@@ -120,7 +120,7 @@
           <p style="margin-left: 50px;font-size: 18px">
           <i>*Note<br>
             <span style="margin-left: 20px">1.  Please be there 30 minutes before your appointment time.</span><br>
-            <span style="margin-left: 20px">2.  Present this appointment slip to the RMC staff.</span><br>
+            <span style="margin-left: 20px">2.  Present this appointment slip to the <?php echo $clinic_name;?> staff.</span><br>
             <span style="margin-left: 20px">3.  Don't forget your Pet ;).</span>
           
           </i>

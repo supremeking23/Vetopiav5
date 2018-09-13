@@ -314,7 +314,7 @@ class User_Management extends CI_Controller {
             'smtp_port' => 465,
             'smtp_user' => 'vetopiaC@gmail.com',
             'smtp_pass' => 'vetopiaC123',
-            //'mailtype' => 'html',
+            'mailtype' => 'html',
             'charset' => 'iso-8859-1',
             'wordwrap' => TRUE
 
@@ -331,7 +331,9 @@ class User_Management extends CI_Controller {
         $this->email->to($this->input->post('email'));
         $this->email->subject('Subject: Customer Registration');
 
-        $message = "Hi " . $this->input->post('first_name') . "!  here is your username and password   ".$username." : ".$password." ";
+        //$message = "Hi " . $this->input->post('first_name') . "!  here is your username and password   ".$username." : ".$password." ";
+        $message = "Hi " . $this->input->post('first_name') . '! <br /> here is your username and password. <br /> ';
+        $message .= 'Username: '.$username . ' <br /> Password: ' . $password;
 
         $this->email->message($message);
 
@@ -424,7 +426,7 @@ class User_Management extends CI_Controller {
             $this->admin_management->insert_new_log($data2); 
 
 
-             /*
+             
 
             //for email uncomment if you are connected to the internet
             $config = array(
@@ -433,7 +435,7 @@ class User_Management extends CI_Controller {
                 'smtp_port' => 465,
                 'smtp_user' => 'vetopiaC@gmail.com',
                 'smtp_pass' => 'vetopiaC123',
-                //'mailtype' => 'html',
+                'mailtype' => 'html',
                 'charset' => 'iso-8859-1',
                 'wordwrap' => TRUE
 
@@ -450,7 +452,10 @@ class User_Management extends CI_Controller {
             $this->email->to($this->input->post('email'));
             $this->email->subject('Subject: Customer Registration');
 
-            $message = "Hi " . $this->input->post('first_name') . '! <br /> here is your username and password   '.$username.' : '.$password.' ';
+            //$message = "Hi " . $this->input->post('first_name') . '! <br /> here is your username and password   '.$username.' : '.$password.' ';
+
+            $message = "Hi " . $this->input->post('first_name') . '! <br /> here is your username and password. <br /> ';
+            $message .= 'Username: '.$username . ' <br /> Password: ' . $password;
 
             $this->email->message($message);
 
@@ -460,7 +465,7 @@ class User_Management extends CI_Controller {
                 show_error($this->email->print_debugger());
             }
 
-            */                    
+                               
 
             $this->session->set_flashdata('add_customer_success','New Customer has been added');
             redirect('Staff/Customers');

@@ -1,3 +1,10 @@
+<?php 
+  $count_appointment_pending = $this->appointment_management->count_appointment_pending();
+  foreach ($count_appointment_pending as $cap) {
+        $cap = $cap->count_all;
+  }
+?>
+
  <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -29,7 +36,14 @@
         <li class="header">MAIN NAVIGATION</li>
        
         <li><a href="<?php echo site_url()?>Staff/Pos"><i class="fa fa-dashboard"></i> <span>POS</span></a></li>
-       <li><a href="<?php echo site_url()?>Staff/Appointments"><i class="fa fa-calendar"></i> <span>Appointment</span></a></li>
+       <li><a href="<?php echo site_url()?>Staff/Appointments"><i class="fa fa-calendar"></i> <span>Appointment</span>
+                 <?php if($cap == 0){  //echo $cap;?>     
+                    <?php  }else{ ?>
+                    <span class="badge label-danger">
+                     <?php echo $cap; ?>
+                      </span>  
+                   <?php }?>  
+       </a></li>
 
         <li><a href="<?php echo site_url()?>Staff/Customers"><i class="fa fa-user"></i> <span>Customer</span></a></li>
 

@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //http://localhost/Vetopia/
-$config['base_url'] = 'http://localhost/Vetopia/';
+$config['base_url'] = 'http://1a1f5c51.ngrok.io/Vetopia/';
 
 /*
 |--------------------------------------------------------------------------
