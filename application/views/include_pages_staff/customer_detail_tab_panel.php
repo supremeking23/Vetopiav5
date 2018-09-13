@@ -115,10 +115,10 @@
 
 
                        <div class="form-group">
-                        <label for="postalID" class="col-sm-2 control-label">Postal ID</label>
+                        <label for="postalID" class="col-sm-2 control-label">Zip Code</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" value="<?php echo $c_details->postalID;?>" name="postalID" placeholder="Postal ID">
+                          <input type="text" class="form-control" value="<?php echo $c_details->postalID;?>" name="postalID" placeholder="Zip Code">
                         </div>
                       </div>
 

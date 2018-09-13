@@ -225,7 +225,7 @@
                     
                         <br>
 
-                        <?php echo form_label('Postal ID', 'clinic_postal_id','class="control-label"');?>
+                        <?php echo form_label('Zip Code', 'clinic_postal_id','class="control-label"');?>
 
                         <input type="text" name="clinic_postal_id" id="clinic_postal_id" class="form-control" value="<?php echo $clinic_postal_id;?>">
                     
