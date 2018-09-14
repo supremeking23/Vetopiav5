@@ -498,11 +498,11 @@
                                                         </tr>
                                                         <tr>
                                                           <td><b>Total Fee: ₱<b></td>
-                                                          <td><input type="text" name="total_fee" id="total_fee" style="width: 100%"  value="<?php echo $total_fee;?>" class="form-control"></td>
+                                                          <td><input type="text" name="total_fee" id="total_fee" style="width: 100%"  value="<?php echo number_format($total_fee,2);?>" class="form-control" readonly=""></td>
                                                         </tr>
                                                         <tr>
                                                           <td><b>Cash: ₱</b></td>
-                                                          <td><input type="text" name="cash" id="cash" style="width: 100%" class="form-control" value="">
+                                                          <td><input type="number" name="cash" id="cash" style="width: 100%" class="form-control" value="">
 
                                                           </td>
                                                         </tr>
@@ -744,9 +744,9 @@
           });*/
 
     //JAVASCRIPT FUNCTION
-    document.getElementById("cash").oninput = function() {myFunction()};
+    document.getElementById("cash").oninput = function() {computeChange()};
 
-    function myFunction() {
+    function computeChange() {
 
       var  cash = $('#cash').val();
       var total_fee = $('#total_fee').val();
@@ -758,6 +758,13 @@
        console.log('totalfee: ' + total_fee);
        console.log('cash: ' + cash);
        console.log('change: ' + change);
+
+        if(change >= 0){
+          //alert('ivan');
+          $("#checkout").attr("disabled",false);
+        }else{
+          $("#checkout").attr("disabled",true);
+        }
         $("#change").val(format_number(change));
       }else{
         $("#checkout").attr("disabled",true);

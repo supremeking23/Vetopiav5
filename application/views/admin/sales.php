@@ -310,11 +310,24 @@
 <!-- page script -->
 <script>
 
+ //refresh after 2 seconds
+  function reload(){
+   
+    setTimeout(function(){ 
+
+        $(".display-success").fadeOut("fast");
+        location.reload();
+         }, 2000);
+  }
+
   $(function(){
+
+
 
     $('.print').click(function(){
         $('.hide-primary-buttons').css('display','none');
         $('#print_report').modal('hide');
+        reload();
     });
 
 

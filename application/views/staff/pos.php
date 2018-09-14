@@ -80,7 +80,7 @@
        <div class="row">
              <div class="col-md-5">
                   <div class="box" style="">
-                    <div class="box-body table-responsive no-padding">
+                    <div class="box-body  no-padding">
 
                       <table id="example1" class="table table-bordered table-striped">
                          
@@ -181,7 +181,7 @@
 
 
 
-                                                      <input type="text" name="cash" id="cash" class="form-control"  value="">
+                                                      <input type="number" name="cash" id="cash" class="form-control"  value="">
                                                  </div>   
                                   </div>
                             </td>
@@ -463,17 +463,23 @@
     });*/
 
     //JAVASCRIPT FUNCTION
-    document.getElementById("cash").oninput = function() {myFunction()};
+    document.getElementById("cash").oninput = function() {computeChange()};
 
-    function myFunction() {
+    function computeChange() {
 
       var  cash = $('#cash').val();
       var total_amount = $('#total_amount').val();
       var change;
       if(cash.length != 0){
-        $("#checkout").attr("disabled",false);
         
-       change = cash - total_amount;
+        
+        change = cash - total_amount;
+        if(change >= 0){
+          //alert('ivan');
+          $("#checkout").attr("disabled",false);
+        }else{
+          $("#checkout").attr("disabled",true);
+        }
         $("#change").val(format_number(change));
       }else{
         $("#checkout").attr("disabled",true);

@@ -105,7 +105,7 @@
     //for tables regular datatable
     $('.datatables').DataTable({
 
-      "lengthMenu": [[ 50, 70, -1], [ 50,70, "All"]],
+      "lengthMenu": [[ 20,30,50, 70, -1], [ 20,30,50,70, "All"]],
       'paging'      : true,
       //'lengthChange': false,
       //'searching'   : false,
@@ -143,7 +143,7 @@
     //datatables for appointment
     $('.datatablesappointment').DataTable({
 
-      "lengthMenu": [[50, 25, 50, -1], [50, 25, 50, "All"]],
+      "lengthMenu": [[30, 45, 50, -1], [30, 45, 50, "All"]],
       'paging'      : true,
       //'lengthChange': false,
       //'searching'   : false,
