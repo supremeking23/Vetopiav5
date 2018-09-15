@@ -65,9 +65,20 @@
     padding-right: 20px;
     width: 530px
 }
+
+.navbar-expand-md .navbar-collapse .navbar-nav .active a {
+  font-weight: 700;
+  color: #EEC856;
+  background: transparent;
+  border-bottom: 4px solid #EEC856;
+  text-shadow: none;
+}
+
+
+
 </style>
 </head>
-<body>
+<body >
 
 <!-- Navigation -->
 	<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top" style="">

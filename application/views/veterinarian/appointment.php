@@ -155,28 +155,28 @@
                                                 <!-- Custom Tabs -->
                                                 <div class="nav-tabs-custom">
                                                   <ul class="nav nav-tabs">
-                                                    <li class="active"><a href="#tab_1<?php echo $vets_appointment_today->appointment_table_id;?>" data-toggle="tab">Subjective</a></li>
-                                                    <li><a href="#tab_2<?php echo $vets_appointment_today->appointment_table_id;?>" data-toggle="tab">Objective and Assessment</a></li>
-                                                    <li><a href="#tab_3<?php echo $vets_appointment_today->appointment_table_id;?>" data-toggle="tab">Plan</a></li>
+                                                    <li class="active"><a href="#tab_1<?php echo $vets_appointment_today->appointment_table_id;?>" data-toggle="tab">Customer Complaint/ Description :</a></li>
+                                                    <li><a href="#tab_2<?php echo $vets_appointment_today->appointment_table_id;?>" data-toggle="tab">Treatment : </a></li>
+                                                    <li><a href="#tab_3<?php echo $vets_appointment_today->appointment_table_id;?>" data-toggle="tab"> Prescription: </a></li>
                                                     
                                                   </ul>
                                                   <div class="tab-content">
                                                     <div class="tab-pane active" id="tab_1<?php echo $vets_appointment_today->appointment_table_id;?>">
-                                                      <label>Customer Complaint/ Description : </label> 
+                                                      <label>Subjective and Objective</label> 
                                                       <div style="margin-bottom: 25px;"></div>
 
                                                     <div class="row">
                                                       <div class="col-md-12">
                                                         
                                                         <div class="form-group">
-                                                        <textarea name="complaints" id="complaints" class="form-control textareas" style="height:300px;width: 100%" placeholder="Input Owner Statement" required=""><?php echo $vets_appointment_today->complaints;?></textarea>
+                                                        <textarea name="complaints" id="complaints" class="form-control textareas" style="height:300px;width: 100%" placeholder="Input Owner Statement/Input Veterinarian's Observation" required=""><?php echo $vets_appointment_today->complaints;?></textarea>
                                                         </div>
                                                       </div>
                                                     </div>                                             
                                                     </div>
                                                     <!-- /.tab-pane -->
                                                     <div class="tab-pane" id="tab_2<?php echo $vets_appointment_today->appointment_table_id;?>">
-                                                      <label>Treatment : </label> 
+                                                      <label>Assessment and Plan</label> 
                                                       <div style="margin-bottom: 25px;"></div>
                                                       <div class="row">
                                                         <div class="col-md-12">
@@ -189,7 +189,7 @@
                                                     </div>
                                                     <!-- /.tab-pane -->
                                                     <div class="tab-pane" id="tab_3<?php echo $vets_appointment_today->appointment_table_id;?>">
-                                                      <label> Prescription: </label> 
+                                                      <label></label> 
                                                       <div style="margin-bottom: 25px;"></div>
                                                       <div class="row">
                                                         <div class="col-md-12">
@@ -349,14 +349,14 @@
                                                                 <!-- Custom Tabs -->
                                                                 <div class="nav-tabs-custom">
                                                                   <ul class="nav nav-tabs">
-                                                                    <li class="active"><a href="#tab_1<?php echo $vets_appointment_today->appointment_table_id;?>" data-toggle="tab">Subjective</a></li>
-                                                                    <li><a href="#tab_2<?php echo $vets_appointment_today->appointment_table_id;?>" data-toggle="tab">Objective and Assessment</a></li>
-                                                                    <li><a href="#tab_3<?php echo $vets_appointment_today->appointment_table_id;?>" data-toggle="tab">Plan</a></li>
+                                                                    <li class="active"><a href="#tab_1<?php echo $vets_appointment_today->appointment_table_id;?>" data-toggle="tab">Customer Complaint/ Description </a></li>
+                                                                    <li><a href="#tab_2<?php echo $vets_appointment_today->appointment_table_id;?>" data-toggle="tab">Treatment</a></li>
+                                                                    <li><a href="#tab_3<?php echo $vets_appointment_today->appointment_table_id;?>" data-toggle="tab">Prescription</a></li>
                                                                     
                                                                   </ul>
                                                                   <div class="tab-content">
                                                                     <div class="tab-pane active" id="tab_1<?php echo $vets_appointment_today->appointment_table_id;?>">
-                                                                      <label>Customer Complaint/ Description : </label> 
+                                                                      <label>Subjective and Objective : </label> 
                                                                       <div style="margin-bottom: 25px;"></div>
 
                                                                     <div class="row">
@@ -370,7 +370,7 @@
                                                                     </div>
                                                                     <!-- /.tab-pane -->
                                                                     <div class="tab-pane" id="tab_2<?php echo $vets_appointment_today->appointment_table_id;?>">
-                                                                      <label>Treatment : </label> 
+                                                                      <label>Assessment and Plan: </label> 
                                                                       <div style="margin-bottom: 25px;"></div>
                                                                       <div class="row">
                                                                         <div class="col-md-12">
