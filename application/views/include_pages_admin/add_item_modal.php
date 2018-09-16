@@ -94,7 +94,7 @@
 
 
 
-                             <input type="file" name="itemImage" class="form-control" onchange="document.getElementById('item_Image').src = window.URL.createObjectURL(this.files[0])" >
+                             <input type="file" name="itemImage" class="form-control" onchange="document.getElementById('item_Image').src = window.URL.createObjectURL(this.files[0])" required="">
 
                              <!--<img  id="item_Image" class="img-rounded" alt="" width="100%" height="200" src="" /> -->
                          </div>   

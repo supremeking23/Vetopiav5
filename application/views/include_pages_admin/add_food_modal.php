@@ -119,7 +119,7 @@
 
 
 
-                             <input type="file" name="foodImage" class="form-control" onchange="document.getElementById('food_Image').src = window.URL.createObjectURL(this.files[0])" >
+                             <input type="file" name="foodImage" class="form-control" onchange="document.getElementById('food_Image').src = window.URL.createObjectURL(this.files[0])" required="">
 
                              <!--<img  id="food_Image" class="img-rounded" alt="" width="100%" height="200" src="" /> -->
                          </div>   
@@ -159,7 +159,7 @@
                         <div class="input-group">
                             <input type="number" name="product_unit_number" id="product_unit_number" class="form-control" required pattern="[+-]?([0-9]*[.])?[0-9]+" /> 
                             <span class="input-group-addon">
-                              <select name="product_unit" id="product_unit">
+                              <select name="product_unit" id="product_unit" required="">
                                     <option value="">Select Unit</option>
                                     <option value="MilliGrams">MilliGrams</option>
                                     <option value="MilliLiters">MilliLiters</option>

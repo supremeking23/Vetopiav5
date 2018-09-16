@@ -238,7 +238,11 @@ function make_slides($connect)
 	<?php foreach($veterinarians as $vets):?>
 		<div class="col-md-4">
 			<div class="card">
-					<img class="card-img-top" src="<?php echo site_url()?>assets/images/profiles/<?php echo $vets->profile?>">
+					<?php if(empty($vets->profile)){?>
+					<img class="card-img-top" src="<?php echo site_url()?>assets/images/profiles/guest2landing.jpg">
+					<?php }else{ ?>
+						<img class="card-img-top" src="<?php echo site_url()?>assets/images/profiles/<?php echo $vets->profile?>">
+					<?php }?>
 					<div class="card-body">
 						<h4 class="card-title">Dr. <?php echo $vets->firstname .' '.  $vets->lastname;?></h4>
 						<p class="card-text">
