@@ -38,6 +38,29 @@ class Article_Model extends CI_Model {
         return $result_set;
     }
 
+
+    public function insert_unknown($data){
+      $this->db->insert('tbl_unknowndiesase',$data);
+    }
+
+    public function get_all_unknown(){
+        $this->db->select('*');
+        $this->db->from('tbl_unknowndiesase');
+        $this->db->where('unknown_status','Unknown');
+        $this->db->where('unknown_name !=','none');
+        $this->db->order_by('unknowndiesase_id', 'DESC');
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;        
+    }
+
+    public function update_unknown($unkown_name,$data){
+        $this->db->where('unknown_name', $unkown_name);
+        $this->db->update('tbl_unknowndiesase', $data);
+    }
+
    /* public function get_all_articles_distinct(){
        /* $this->db->select('*');
         $this->db->from('tbl_pet_library');

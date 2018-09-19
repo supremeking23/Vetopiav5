@@ -148,10 +148,18 @@ class Article_Controller extends CI_Controller {
 		
 
 
-    	echo $title =  $this->input->post("title");
+    	echo $title =  ucfirst($this->input->post("title"));
     	echo "<br />";
     	echo $image = $image;
     	echo "<br />";
+
+        //will change the status to known if it match
+        $change_unknown = array(
+            'unknown_name' => $title,
+            'unknown_status' => 'Known',
+        );
+
+        $this->article_model->update_unknown($title,$change_unknown);
 
         $now = date('Y-m-d H:i:s');
 

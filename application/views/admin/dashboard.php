@@ -271,11 +271,11 @@
 
       <div class="row">
 
-        <div class="col-md-8">
+        <div class="col-md-12">
           <!-- DONUT CHART -->
           <div class="box box-solid <?php echo $box_color;?>">
             <div class="box-header with-border">
-              <h6 class="box-title">Data Statistics for Pet Diagnosis(Table View)</h6>
+              <h6 class="box-title">Data Statistics for Pet Diagnosis</h6>
 
 
             </div>
@@ -315,8 +315,8 @@
           <!-- /.box -->
         </div>
 
-        <div class="col-md-4">
-          <!-- DONUT CHART -->
+      <!--<div class="col-md-4">
+          
           <div class="box box-solid <?php echo $box_color;?>">
             <div class="box-header with-border">
               <h6 class="box-title">Data Statistics for Pet Diagnosis(Pie graph view)</h6>
@@ -326,10 +326,10 @@
             <div class="box-body">
               <canvas id="pieChart" style="height:50px"></canvas>
             </div>
-            <!-- /.box-body -->
+           
           </div>
-          <!-- /.box -->
-        </div>
+        
+        </div> -->
      
       </div>
 

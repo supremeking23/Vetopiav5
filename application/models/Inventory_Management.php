@@ -346,7 +346,6 @@ class Inventory_Management extends CI_Model {
 
     //explicitly for tbl_products
 
-
    public function get_all_products(){
 
         $this->db->select('*');
@@ -360,6 +359,18 @@ class Inventory_Management extends CI_Model {
 
         $result_set = $query->result();
         return $result_set;
+   }
+
+   public function get_all_products_for_pos(){
+        $this->db->select('*');
+        $this->db->from('tbl_products');
+        $this->db->where('productInStore !=', 0);
+        $this->db->order_by('product_id', 'DESC');
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+        return $result_set;    
    }
 
 

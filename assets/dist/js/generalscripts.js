@@ -114,9 +114,22 @@
       //'autoWidth'   : false,      
     });
 
+    //datatables for health care library
+
+    $('.datatableshealthcare').DataTable({
+
+      "lengthMenu": [[ 50, 70, -1], [ 50,70, "All"]],
+      'paging'      : true,
+      //'lengthChange': false,
+      //'searching'   : false,
+      'ordering'    : false,
+      'info'        : true,
+      //'autoWidth'   : false,      
+    });
+
     $('.datatablesservices').DataTable({
 
-      "lengthMenu": [[ 10,50, 70, -1], [ 10,50,70, "All"]],
+      "lengthMenu": [[ 50, 70, -1], [ 50,70, "All"]],
       'paging'      : true,
       //'lengthChange': false,
       //'searching'   : false,

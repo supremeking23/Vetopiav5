@@ -801,7 +801,7 @@ class Appointment extends CI_Controller {
 
 	public function appointment_receipt(){
 
-	echo 	$appointment_table_id = $this->input->post('appointment_table_id');
+		echo 	$appointment_table_id = $this->input->post('appointment_table_id');
 
 		$total_fee = $this->input->post('total_fee');
 
@@ -824,7 +824,7 @@ class Appointment extends CI_Controller {
 
 
 
-	public function print_appointment_receipt(){
+	/*public function print_appointment_receipt(){
 		$data['title'] = "Vetopia";
 
 		$settings_id = 1;
@@ -881,7 +881,66 @@ class Appointment extends CI_Controller {
 
 		$this->load->view('staff/print_appointment_slip',$data);
 	}
+*/
 
+
+public function print_appointment_summary(){
+		$data['title'] = "Vetopia";
+
+		$settings_id = 1;
+		$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
+
+		//$data['all_customers'] = $this->customer_management->get_all_customer();
+
+
+
+		$name = $this->session->userdata('complete_name');
+		$log_usertype =  $this->session->userdata('account_type');
+		$log_userID = $this->session->userdata("user_id");
+		$log_action = "Print Appointment Detail";
+		
+
+
+		$now = date('Y-m-d H:i:s');
+		$data2 = array(
+			"log_user" => $name,
+			"log_usertype" => $log_usertype,
+			"log_userID" => $log_userID,
+			"log_action" => $log_action,
+			"log_date" => $now,
+		);
+
+
+
+		$this->admin_management->insert_new_log($data2);
+
+
+	     $settings_id = 1;
+        $data['clinic_detail'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
+       // $data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
+
+        $data['title'] = "Vetopia";
+        $appointment_table_id = $this->uri->segment(3);
+        $data['id'] = $appointment_table_id;
+
+        $data['get_appointment_detail_by_appointment_data_id'] = $this->appointment_management->search_appointment_by_id($appointment_table_id);
+        //echo $sales_id;
+
+        $data['get_prescription_by_appointment_table_id'] = $this->pet_management_model->get_prescription_by_appointment_table_id($appointment_table_id);
+
+        $data['get_services_by_appointment_table_id'] = $this->appointment_management->get_services_by_appointment_table_id($appointment_table_id);
+  
+
+        //for the products that has been purchased
+       
+
+        //tbl_sales
+
+        //sales details
+
+
+		$this->load->view('staff/print_appointment_slip',$data);
+	}	
 
 	
 }

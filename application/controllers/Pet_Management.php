@@ -1403,6 +1403,13 @@ class Pet_Management extends CI_Controller {
             $library_id = 0;
             $title = $write_possible;
             $is_known = 'Unknown';
+
+            $insert_to_unknown = array(
+                'unknown_name' => ucfirst($write_possible),
+                'unknown_status' =>$is_known,
+            );
+
+            $this->article_model->insert_unknown($insert_to_unknown);
         }
 
         if(empty($write_possible)){

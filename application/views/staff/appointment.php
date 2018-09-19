@@ -349,7 +349,7 @@
                                                         </tr>
                                                         <tr>
                                                           <td><b>Total Payment: <b></td>
-                                                          <td>₱<?php echo $service_fee ?></td>
+                                                          <td>₱<?php echo $a_appointment->total_payment?></td>
                                                         </tr>
                                                       
                                                                                                       
@@ -525,7 +525,7 @@
                                         <!--<button type="button" class="btn btn-default btn-sm btn-flat pull-left" id="computeChange">Compute</button> -->
                                         <button type="button" class="btn btn-primary btn-sm btn-flat btn-checkout" data-appointmenttableid="<?php echo $a_appointment->appointment_table_id;?>" disabled="" id="checkout">Checkout</button>
                                       </div>
-                                      <a href="<?php echo site_url()?>appointment/print_appointment_receipt/<?php echo $a_appointment->appointment_table_id;?>" target="_blank" class="btn btn-sm btn-info btn-flat btn-block btn-receipt" style="display: none">Print</a>
+                                      <a href="<?php echo site_url()?>appointment/print_appointment_summary/<?php echo $a_appointment->appointment_table_id;?>" target="_blank" class="btn btn-sm btn-info btn-flat btn-block btn-receipt" style="display: none">Print</a>
                                     </div>
                                   </div>
                                   <!-- /.modal-content -->

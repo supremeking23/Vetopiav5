@@ -124,6 +124,7 @@
               <table  class="datatables table table-bordered table-striped">
                 <thead>
                 <tr>
+                  <th>Produc Id</th>
                   <th>Product Name</th>
                   <th>Medicine Type</th>
                   <th>Store Price</th>
@@ -138,6 +139,7 @@
                   <?php foreach($all_meds as $meds):?>
 
                   <tr>
+                      <td><?php echo $meds->product_id;?></td>
                      <td>
                     <?php echo $meds->medname;?>
                     <br />

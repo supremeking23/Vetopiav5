@@ -125,6 +125,7 @@
               <table  class="datatables table table-bordered table-striped">
                 <thead>
                 <tr>
+                  <th>Product ID</th>
                   <th>Product Name</th>
                   <th>Store Price</th>
                   <th>Number of Supply Left</th>
@@ -138,6 +139,7 @@
                   <?php foreach($all_items as $items):?>
 
                   <tr>
+                      <td><?php echo $items->product_id;?></td>
                      <td>
                     <?php echo $items->itemname;?>
                     </td>

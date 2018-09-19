@@ -79,13 +79,17 @@
           <div class="box box-solid <?php echo $box_color;?>">
             <div class="box-header with-border">
               <h3 class="box-title">Article List</h3>
-
+              <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="">
+                    <i class="fa fa-minus"></i></button>
+                  
+              </div>
 
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive">
 
-              <table id="" class="datatables table table-bordered table-striped">
+              <table id="" class="datatableshealthcare table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>Status</th>
@@ -139,7 +143,52 @@
       </div>
       <!-- /.row -->
 
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box box-solid <?php echo $box_color;?>">
+            <div class="box-header with-border">
+              <h3 class="box-title">List of Unknown disease in the Pet Health Care Library</h3>
+              <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="">
+                    <i class="fa fa-minus"></i></button>
+                  
+              </div>
 
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive">
+
+              <table id="" class="datatableshealthcare table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <?php foreach($unknown as $un):?>
+                    <tr>
+                      <td><?php echo $un->unknown_name;?></td>
+                      <td><?php echo $un->unknown_status;?></td>
+                    </tr>
+                  <?php endforeach;?>
+                </tbody>
+               
+              </table>
+
+
+            </div>
+            <!-- ./box-body -->
+            <div class="box-footer">
+            
+            </div>
+            <!-- /.box-footer -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
     </section>
     <!-- /.content -->
   </div>

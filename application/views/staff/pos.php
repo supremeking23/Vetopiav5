@@ -14,7 +14,7 @@
       $box_color = "box-warning";
     }
 
-
+  $max_product_count = $t_color->max_product_count;
 }?>
 
 <!DOCTYPE html>
@@ -229,7 +229,7 @@
 
                 <div id="productControls">
                   <form>
-                      <div>
+                      <div class="col-md-8">
                           <span>Show: </span>
                           <input id="cbItems" type="checkbox" checked="checked" />
                           <label for="cbItems">Items </label>
@@ -237,6 +237,11 @@
                           <label for="cbFoods">Foods </label>
                           <input id="cbMedicines" type="checkbox" checked="checked" />
                           <label for="cbMedicines">Medicines </label>
+                      </div>
+
+                      <div class="col-md-4">
+                        <input type="text" class="search form-control center-block" placeholder="Search here...." style="border-radius: 15px">
+                        <br />
                       </div>
                   </form>
                 </div>
@@ -260,7 +265,8 @@
                                       </div>
                             </div>
 
-                            <button class="add_cart btn btn-success btn-block" data-productid="<?php echo $products->product_table_id;?>" data-prod_id ="<?php echo $products->product_id;?>"  data-productname="<?php echo $products->product_name;?>" data-productunit="<?php echo $products->product_unit;?>" data-producttype="<?php echo $products->productType;?>" data-productprice="<?php echo $products->product_price;?>" data-storeprice="<?php echo $products->store_price;?>">Add To Cart</button>
+                            <button class="add_cart btn btn-success btn-sm btn-flat btn-block" data-productid="<?php echo $products->product_table_id;?>" data-prod_id ="<?php echo $products->product_id;?>"  data-productname="<?php echo $products->product_name;?>" data-productunit="<?php echo $products->product_unit;?>" data-producttype="<?php echo $products->productType;?>" data-productprice="<?php echo $products->product_price;?>" data-storeprice="<?php echo $products->store_price;?>" style="border-radius: 15px">Add To Cart</button>
+                           <!-- <span style="margin-left: 70px"><?php echo $products->productInStore;?>/<?php echo $max_product_count;?></span> -->
                           </div>
                         </div>
                       </div> 
@@ -320,6 +326,18 @@
   $(document).ready(function() {
 
 
+
+  $('.search').on('keyup',function(){
+    var searchTerm = $(this).val().toLowerCase();
+    $('.product-list .product-item').each(function(){
+      var lineStr = $(this).text().toLowerCase();
+      if(lineStr.indexOf(searchTerm) === -1){
+        $(this).hide();
+      }else{
+        $(this).show();
+      }
+    });
+  });
 
     function format_number(x) {
       return Number.parseFloat(x).toFixed(2);

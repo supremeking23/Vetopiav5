@@ -194,8 +194,8 @@ class Admin extends CI_Controller {
 
 		$this->staff_management->insert_new_log($data2);
 
-
-		$data['all_product'] = $this->inventory_management->get_all_products();
+		//when product count becomes 0, it will not show in the pos
+		$data['all_product'] = $this->inventory_management->get_all_products_for_pos();
 
 		$data['all_customer'] = $this->customer_management->get_all_customer();
 
@@ -1409,6 +1409,7 @@ class Admin extends CI_Controller {
 
 
 		$data['articles'] = $this->article_model->get_all_articles();
+		$data['unknown'] = $this->article_model->get_all_unknown();
 
 		$this->load->view('admin/pet_health_care_library',$data);
 

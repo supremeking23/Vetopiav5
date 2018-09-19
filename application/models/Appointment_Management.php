@@ -186,7 +186,7 @@ class Appointment_Management extends CI_Model
 
    public function count_appointment_for_today(){
        // $now = date('Y-m-d');
-        $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_appointments  WHERE DATE(preferredDate) = curdate()');
+        $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_appointments  WHERE DATE(preferredDate) = curdate() AND appointment_status ="Confirmed"');
         return $result_set->result();   
    }
 
