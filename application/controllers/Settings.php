@@ -275,7 +275,7 @@ class Settings extends CI_Controller {
         if ( ! $this->upload->do_upload('about_image'))
         {		//failed to upload
                 $error = array('error' => $this->upload->display_errors());
-
+                $image1 = $this->input->post("hidden_image1");
                 //$this->load->view('file_view', $error);
         }
         else
@@ -290,7 +290,7 @@ class Settings extends CI_Controller {
 		 if ( ! $this->upload->do_upload('service_image'))
         {		//failed to upload
                 $error = array('error' => $this->upload->display_errors());
-
+                $image2 = $this->input->post("hidden_image2");
                 //$this->load->view('file_view', $error);
         }
         else

@@ -103,6 +103,9 @@
 								<a class="nav-link" data-section href="#!services" data-anchor="services">Services</a>
 							</li>
 							<li class="nav-item">
+								<a class="nav-link" data-section href="#!article" data-anchor="article">Pet Health Care Library</a>
+							</li>							
+							<li class="nav-item">
 								<a class="nav-link" href="<?php echo site_url()?>login">Sign In</a>
 							</li>
 						</ul>
@@ -275,6 +278,88 @@ function make_slides($connect)
 		
 	</div>
 
+</div>
+
+
+
+
+
+
+<hr class="my-4">
+<!--- Connect -->
+<div class="container-fluid padding" id="article">
+	<div class="row welcome text-center">
+		<div class="col-12">
+			<h1 class="display-4">Pet Health Care Library</h1>
+		</div>
+		<hr>
+	</div>
+
+</div>
+
+
+<!--- Cards -->
+<div class="container-fluid padding">
+	<div class="row padding">
+		
+
+	<?php foreach($articles as $article):?>
+		<div class="col-md-4">
+			<div class="card">
+					
+						<img class="card-img-top" height="500" widht="300" src="<?php echo site_url()?>assets/images/library/<?php echo $article->article_image;?>">
+			
+					<div class="card-body">
+						<h4 class="card-title"><?php echo $article->title;?> <br /><small>By: Dr. <?php echo $article->created_by;?></small></h4>
+						<p class="card-text">
+						</p>
+						<button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#readArticle<?php echo $article->library_id;?>">Read More</button> 
+				     
+
+				        <div class="modal fade" id="readArticle<?php echo $article->library_id;?>">
+				          <div class="modal-dialog modal-lg">
+				            <div class="modal-content ">
+				              <div class="modal-header">
+				                
+				                <h4 class="modal-title"><?php echo $article->title;?> </h4>
+				              </div>
+				              <div class="modal-body">
+				                <div class="row">
+				                	<div class="col-md-12">
+				                		<img class="card-img-top " height="500" widht="300" src="<?php echo site_url()?>assets/images/library/<?php echo $article->article_image;?>">
+				                		
+				                	</div>
+
+				                	<div class="col-md-12">
+				                		<p class="">
+				                			<?php $find_article_content_by_library_id = $this->article_model->find_article_content_by_library_id($article->library_id);
+
+				                			foreach($find_article_content_by_library_id as $content){
+				                				echo $content->article_contents;
+				                			}
+				                			?>
+
+				                		</p>
+				                	</div>
+				                	
+				                </div>
+				              </div>
+				              <div class="modal-footer">
+				                <button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal">Close</button>
+				               
+				              </div>
+				            </div>
+				            <!-- /.modal-content -->
+				          </div>
+				          <!-- /.modal-dialog -->
+				        </div>
+				        <!-- /.modal -->						
+					</div>
+			</div>
+		</div>
+
+	<?php endforeach;?>
+	</div>
 </div>
 
 <!--- Footer -->

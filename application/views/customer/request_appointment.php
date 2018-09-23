@@ -253,15 +253,15 @@
                                                               <li><?php echo $s->service_name;?> = ₱<?php echo $s->service_fees;?>
                                                             </li>
                                                              <?php 
-                                                            $service_format = $service_fee + $s->service_fees + $vet_fee;
-                                                            $service_fee = number_format($service_format,2);
+                                                           /* $service_format = $service_fee + $s->service_fees + $vet_fee;
+                                                            $service_fee = number_format($service_format,2);*/
                                                             endforeach; //end service?>
                                                             </ul>
                                                            </td>
                                                           </tr>
                                                           <tr>
                                                             <td><b>Total Payment: <b></td>
-                                                            <td>₱<?php echo $service_fee ?></td>
+                                                            <td>₱<?php echo number_format($c_appointment->total_payment,2) ?></td>
                                                           </tr>
                                                         
                                                                                                         

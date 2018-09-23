@@ -460,6 +460,37 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/view_petbreed',$data);
 	}
 
+	public function view_petmedicalrecords(){
+		$data['title'] = "Vetopia";
+
+		$settings_id = 1;
+		$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);	
+
+
+		$name = $this->session->userdata('complete_name');
+		$log_usertype =  $this->session->userdata('account_type');
+		$log_userID = $this->session->userdata("user_id");
+		$log_action = "View Pet Medical Records";
+		
+
+
+		$now = date('Y-m-d H:i:s');
+		$data2 = array(
+			"log_user" => $name,
+			"log_usertype" => $log_usertype,
+			"log_userID" => $log_userID,
+			"log_action" => $log_action,
+			"log_date" => $now,
+		);
+
+
+		//$data['all_pettype'] = $this->pet_management_model->get_all_pettype_active();//$this->pet_management_model->get_all_pettype();
+		$data['pet_medicalrecords'] = $this->pet_management_model->data_pet_medical_records();
+		$this->admin_management->insert_new_log($data2);
+
+		$this->load->view('admin/view_petmedicalrecords',$data);
+	}
+
 
 
 

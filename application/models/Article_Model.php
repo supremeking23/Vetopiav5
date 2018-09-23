@@ -39,6 +39,12 @@ class Article_Model extends CI_Model {
     }
 
 
+    public function get_article_random(){
+        $result_set = $this->db->query("SELECT * FROM tbl_pet_library WHERE article_status = 'Active'  ORDER BY RAND() LIMIT 0,3");
+        return $result_set->result();
+    }
+ 
+
     public function insert_unknown($data){
       $this->db->insert('tbl_unknowndiesase',$data);
     }

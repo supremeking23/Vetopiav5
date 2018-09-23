@@ -34,7 +34,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Pet Section
+        Pet Medical Records
         
       </h1>
     
@@ -46,7 +46,7 @@
 
       <div class="row">
         <div class="col-md-12">
-          <button class="btn btn-flat btn-info btn-sm" data-toggle="modal" data-target="#addPet">Add New Pet</button>
+           <a href="<?php echo site_url()?>admin/pets" class="btn btn-info btn-flat btn-sm">View Pet List</a>
            <a href="<?php echo site_url()?>admin/view_pettype" class="btn btn-warning btn-flat btn-sm">View Pet Type</a>
            <a href="<?php echo site_url()?>admin/view_petbreed" class="btn btn-success btn-flat btn-sm">View Pet Breed</a>
            <a href="<?php echo site_url()?>admin/view_petmedicalrecords" class="btn btn-primary btn-flat btn-sm">View Pet Medical Records</a>
@@ -65,97 +65,41 @@
       <br>
 
 
-      <div class="row">
-          <div class="col-md-12">
 
-            
-
-             
-             <?php if ($this->session->flashdata('add_pet_success')) { ?>
-
-            <div class="alert alert-success display-success">
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <p> <?php echo $this->session->flashdata('add_pet_success'); ?> </p>
-            </div>
-
-          <?php }?>
-
-
-
-          <!--not use -->
-            <?php if ($this->session->flashdata('add_pettype_success')) { ?>
-
-            <div class="alert alert-success display-success">
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <p> <?php echo $this->session->flashdata('add_pettype_success'); ?> </p>
-            </div>
-
-          <?php }?>
-
-          <!--not use -->
-          
-
-          <!--not use -->
-           <?php if ($this->session->flashdata('change_state_pet_success')) { ?>
-
-            <div class="alert alert-success display-success">
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <p> <?php echo $this->session->flashdata('change_state_admin_success'); ?> </p>
-            </div>
-
-          <?php }?>
-          <!--not use -->
-
-
-          </div>
-      </div>
      
       <div class="row">
         <div class="col-md-12">
           <div class="box box-solid <?php echo $box_color;?>">
             <div class="box-header with-border">
-              <h3 class="box-title">Pet List</h3>
+              <h3 class="box-title"></h3>
 
 
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive">
 
-              <table  class="datatables table table-bordered table-striped">
+              <table  class="datatablemedicalrecord table table-bordered table-striped">
                 <thead>
                 <tr>
                   
-                  <th>Pet ID</th>
+                  <th>Date</th>
                   <th>Pet Name</th>
-                  <th>Pet Type</th>
-                  <th>Pet Breed</th>
-                  <th>Owner's Name</th>
-                  <th>Action</th>
+                  <th>Possible Cause/Illness</th>
+                  
                 </tr>
+                
                 </thead>
                 <tbody>
-                      
-                  <?php foreach($all_pets as $pets):?>
+                    <?php foreach($pet_medicalrecords as $pet_md):?>
                       <tr>
-                         <td>
-                          <?php echo $pets->pet_id;?>
-                        </td>
-                        <td><?php echo $pets->petname;?></td>
-                        <td>
-                          <?php echo $pets->pettype;?>
-                        </td>
-                         <td>
-                          <?php echo $pets->pet_breed;?>
-                        </td>
-                        <td> <?php echo $pets->firstname .' '. $pets->middlename .' '. $pets->lastname;?></td>
-                       
-                        <td>
-                        <a href="<?php echo site_url()?>Admin/Pet_details/<?php echo $pets->pet_table_id;?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info">View Full Detail</a>
-                          
-                        </td>
-                     </tr>
-
-                  <?php endforeach;?>
+                        <td><?php  $pet_md->date;
+                        $date =date_create($pet_md->date);
+                        echo  $format_date= date_format($date,"F d, Y");
+                        ?></td>
+                        <td><?php echo $pet_md->petname;?></td>
+                       <td><?php echo $pet_md->possible_cause;?></td>
+                      </tr>
+                    <?php endforeach;?>
 
                 </tbody>
                
@@ -174,7 +118,7 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
-
+   
 
     </section>
     <!-- /.content -->
@@ -199,9 +143,7 @@
 
 
 <!--modals -->
-<?php $this->load->view('include_pages_admin/add_pet_modal');?>
-<?php $this->load->view('include_pages_admin/add_pet_breed');?>
-<?php $this->load->view('include_pages_admin/view_pet_breed');?>
+
 
 <!--page scripts -->
 
@@ -212,6 +154,60 @@
 
 <!-- page script -->
 <script>
+    $('.datatablemedicalrecord').DataTable( {
+        'ordering'    : false,
+        "lengthMenu": [[5, 25, 50, -1], [5, 25, 50, "All"]],
+        'paging'      : true,
+        'info'        : true,
+        dom: 'Bfrtip',
+        /*buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],*/
+
+        buttons: [
+            {
+              extend: 'pdfHtml5',
+              title: 'Medical Records of Pet Illness',
+              message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+              customize: function(doc) {
+                //setHeader2();
+                doc.styles.title = {
+                  color: '',
+                  fontSize: '40',
+                  background: '',
+                  alignment: 'center'
+                }   
+              }  
+            },
+
+             {
+               extend: 'excelHtml5',
+               title: 'Medical Records of Pet Illness',
+               message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+  
+            },
+
+            {
+               extend: 'csvHtml5',
+               title: 'Medical Records of Pet Illness',
+               message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+               
+            },
+
+                ]
+    } );
 
    
      

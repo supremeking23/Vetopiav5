@@ -296,7 +296,7 @@
                   <tr>
                     <td><?php 
 
-                     $date =date_create($data->date);
+                       $date =date_create($data->date);
                        echo  $format_date= date_format($date,"F d, Y");
                     ?></td>
                     <td><?php echo ucfirst( $data->possible_cause);?></td>
@@ -371,7 +371,7 @@
                   <td>
                       <div class="progress-group">
                         <span class="progress-text">&nbsp;</span>
-                        <span class="progress-number"><b><?php echo $a_products->productInStore;?></b>/<?php echo   $max_product_count;?></span>
+                        <span class="progress-number"><b><?php echo $a_products->productInStore;?></b>/<?php echo   $max_product_count;?> </span>
 
                         <div class="progress sm">
 
@@ -382,14 +382,14 @@
                             $percentage = $get_decimal * 100;
 
                             if($percentage < 50 AND $percentage > 26){
-                              $progress_bar_status = "progress-bar-warning";
-                              $data_tooltip_message = "";
+                              $progress_bar_status = "progress-bar-warning ". $percentage;
+                              $data_tooltip_message = "Product Count is Below half of the maximum product count ". $percentage;
                             }else if($percentage < 25){
                               $progress_bar_status = "progress-bar-danger";
                               $data_tooltip_message = "Product Count is Critical";
                             }else{
                                $progress_bar_status = "progress-bar-aqua";
-                               $data_tooltip_message = "";
+                               $data_tooltip_message = " ".$percentage;
                             }
 
                           ?>

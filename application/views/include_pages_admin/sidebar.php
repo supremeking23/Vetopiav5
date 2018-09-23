@@ -6,24 +6,33 @@
   }
 
 
-  $get_count_lower_product_count =  $this->inventory_management->get_count_lower_product_count();
+  // echo   $max_product_count;//
+
+  foreach($theme_color as $t_color){
+    $max_product_count = $t_color->max_product_count;
+  }
+
+
+  $half = $max_product_count/2;
+
+  $get_count_lower_product_count =  $this->inventory_management->get_count_lower_product_count($half);
   foreach ($get_count_lower_product_count as $gclc) {
           $gclc = $gclc->count_all;
   }
 
 
-  $get_count_lower_product_medicine = $this->inventory_management->get_count_lower_product_medicine();
+  $get_count_lower_product_medicine = $this->inventory_management->get_count_lower_product_medicine($half);
   foreach ($get_count_lower_product_medicine as $gclcm) {
           $gclcm = $gclcm->count_all;
   }
 
 
-  $get_count_lower_product_item = $this->inventory_management->get_count_lower_product_item();
+  $get_count_lower_product_item = $this->inventory_management->get_count_lower_product_item($half);
   foreach ($get_count_lower_product_item as $gclci) {
           $gclci = $gclci->count_all;
   }
 
-  $get_count_lower_product_food = $this->inventory_management->get_count_lower_product_food();
+  $get_count_lower_product_food = $this->inventory_management->get_count_lower_product_food($half);
   foreach ($get_count_lower_product_food as $gclcf) {
           $gclcf = $gclcf->count_all;
   }
@@ -99,7 +108,7 @@
              <?php if($gclc == 0){
                       //echo $cap;
                       }else{ ?>
-                      <span class="badge label-danger" data-tooltip="tooltip" title="You have <?php echo $gclc?> product(s) that is in critical count" >
+                      <span class="badge label-danger" data-tooltip="tooltip" title="You have <?php echo $gclc?> product(s) that is in below half of the maximum product count" >
                        <?php  echo $gclc;?>
                       </span>  
                    <?php  }?>   

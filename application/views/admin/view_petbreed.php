@@ -55,9 +55,8 @@
 
           <a href="<?php echo site_url()?>admin/pets" class="btn btn-info btn-flat btn-sm">View Pet List</a>
           <a href="<?php echo site_url()?>admin/view_pettype" class="btn btn-warning btn-flat btn-sm">View Pet Type</a>
-
-           <button class="btn btn-flat btn-success btn-sm" data-toggle="modal" data-target="#addpetbreed">Add Pet Breed </button>
-           
+          <button class="btn btn-flat btn-success btn-sm" data-toggle="modal" data-target="#addpetbreed">Add Pet Breed </button>
+          <a href="<?php echo site_url()?>admin/view_petmedicalrecords" class="btn btn-primary btn-flat btn-sm">View Pet Medical Records</a>
 
   
 

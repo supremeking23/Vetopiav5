@@ -148,11 +148,14 @@
                        $get_decimal = $remaining_supply / $max_product_count;
 
                         $percentage = $get_decimal * 100;
-                   ?>
-                   <?php  if($percentage <25 ):
-                    ?>
+                   
+                     if($percentage < 25){
+                        ?>
                       <span class="badge label-danger"><i class="fa fa-exclamation-circle"></i></span>
-                     <?php endif;?>
+                     <?php }else if ($percentage < 50){ ?>
+                      <span class="badge label-warning"><i class="fa fa-exclamation-circle"></i></span>
+                     <?php }?>
+
                     </td>
                     <td>
                     <a href="<?php echo site_url()?>Admin/Food_details/<?php echo $foods->food_table_id;?>"  class="btn btn-sm btn-fat btn-info"  data-tooltip="tooltip" data-title="View Detail"><span class="fa fa-file-o"></span></a>

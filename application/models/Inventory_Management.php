@@ -374,6 +374,20 @@ class Inventory_Management extends CI_Model {
    }
 
 
+   /*public function get_all_product_for_pos_advanced(){
+        $this->db->select('a.product_name,a.product_unit,a.productType,a.product_id,a.productInStore,a.dateAdded,a.productImage,a.product_price,a.store_price,b.fooddescription,c.itemdescription,d.meddescription');
+        $this->db->from('tbl_products a');
+        $this->db->join('tbl_productfoods b','a.product_id = b.food_id');
+        $this->db->join('tbl_productitems c','a.product_id = c.item_id');
+        $this->db->join('tbl_productmedicines d','a.product_id = d.med_id');
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+        return $result_set; 
+   }*/
+
+
   //sum of all products
   public function get_count_all_products(){
       $result_set = $this->db->query('SELECT SUM(productInStore) AS "count_all" FROM tbl_products');
@@ -433,25 +447,25 @@ class Inventory_Management extends CI_Model {
 
   ///for notification
 
-  public function get_count_lower_product_count(){
-       $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_products  WHERE productInStore < 150 ');
+  public function get_count_lower_product_count($half){
+       $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_products  WHERE productInStore < '.$half);
             return $result_set->result();
   }
 
 
-  public function get_count_lower_product_medicine(){
-       $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_products  WHERE productInStore < 150   AND  productType = "Medicine"');
+  public function get_count_lower_product_medicine($half){
+       $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_products  WHERE productInStore < '.$half.'  AND  productType = "Medicine"');
             return $result_set->result();
   }
 
 
-  public function get_count_lower_product_item(){
-       $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_products  WHERE productInStore < 150   AND  productType = "Item"');
+  public function get_count_lower_product_item($half){
+       $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_products  WHERE productInStore < '.$half.'   AND  productType = "Item"');
             return $result_set->result();
   }
 
-  public function get_count_lower_product_food(){
-       $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_products  WHERE productInStore < 150   AND  productType = "Food"');
+  public function get_count_lower_product_food($half){
+       $result_set = $this->db->query('SELECT COUNT(*) AS "count_all" FROM tbl_products  WHERE productInStore < '.$half.'   AND  productType = "Food"');
             return $result_set->result();
   }
 

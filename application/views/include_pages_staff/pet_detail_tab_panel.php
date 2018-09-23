@@ -72,6 +72,7 @@
                                                        /*$service_get = $c_detail->service_name;
                                                        $service_fee = $c_detail->service_fee;*/
                                                        $checkup_id = $c_detail->checkup_id;
+                                                       $possible_cause = $c_detail->possible_cause;
                                                     }
 
                                                   ?>
@@ -100,6 +101,10 @@
                                                                   <td><b>Prescriptions:</b></td>
                                                                   <td><?php echo $prescription;?></td>
                                                                 </tr> 
+                                                                <tr>
+                                                                  <td><b>Possible Cause:</b></td>
+                                                                  <td><?php echo $possible_cause;?></td>
+                                                                </tr>                                                                
                                                                 <tr>
                                                                   <td><b>Services</b></td>
                                                                   <td><?php $services = $this->pet_management_model->get_services_by_checkup_id($checkup_id);

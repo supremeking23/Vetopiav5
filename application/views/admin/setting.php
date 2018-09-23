@@ -332,7 +332,8 @@
 
                     <div class="col-md-5">
                       <input type="file" name="about_image" id="about_image" class="form-control"><br />
-                      <img src="<?php echo site_url()?>assets/images/site_images/<?php echo $about_us_picture ?>" width="450px" class="img-responsive">                      
+                      <img src="<?php echo site_url()?>assets/images/site_images/<?php echo $about_us_picture ?>" width="450px" class="img-responsive"> 
+                      <input type="hidden" name="hidden_image1" id="hidden_image1" value="<?php echo $about_us_picture ?>">                     
                     </div>
                   </div>
                      
@@ -356,6 +357,7 @@
                     <div class="col-md-5">
                       <input type="file" name="service_image" id="service_image" class="form-control"><br />
                       <img src="<?php echo site_url()?>assets/images/site_images/<?php echo $service_picture ?>" width="450px" class="img-responsive">
+                      <input type="hidden" name="hidden_image2" id="hidden_image2" value="<?php echo $service_picture ?>"> 
                     </div>
                  </div>
 

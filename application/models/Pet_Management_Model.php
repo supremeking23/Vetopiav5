@@ -458,6 +458,16 @@ class Pet_Management_Model extends CI_Model {
         $result_set = $query->result();
         return $result_set;
     }
+
+    public function data_pet_medical_records(){
+        $this->db->select("*");
+        $this->db->from('tbl_checkupdetails');
+        $this->db->where('possible_cause !=','none');
+        $this->db->order_by('date','DESC');
+        $query = $this->db->get();
+        $result_set = $query->result();
+        return $result_set;      
+    }
     
 
 

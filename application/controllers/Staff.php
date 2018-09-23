@@ -85,7 +85,7 @@ class Staff extends CI_Controller {
 		$this->staff_management->insert_new_log($data2);
 
 		//when product count becomes 0, it will not show in the pos
-		$data['all_product'] = $this->inventory_management->get_all_products_for_pos();
+		$data['all_product'] = $this->inventory_management->get_all_products_for_pos();//get_all_products_for_pos();
 
 		$data['all_customer'] = $this->customer_management->get_all_customer();
 
