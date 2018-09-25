@@ -456,7 +456,7 @@
         <div class="col-md-3">
            <div class="box <?php echo $box_color;?> box-solid">
               <div class="box-header with-border">
-                <h3 class="box-title text-center">Incoming Appointment</h3>
+                <h3 class="box-title text-center">Upcoming Appointment</h3>
 
               </div>
               <div class="box-body">
