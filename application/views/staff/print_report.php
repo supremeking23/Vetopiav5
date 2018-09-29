@@ -45,6 +45,7 @@
          $clinic_address =  $clinic_d->clinic_home_address .' '.$clinic_d->clinic_barangay_address .' '. $clinic_d->clinic_city_address.', '.$clinic_d->clinic_postal_id;
          $clinic_email = $clinic_d->clinic_email_address;
          $clinic_name = $clinic_d->store_name;
+         
       }
   ?>
           <img src="<?php echo site_url()?>assets/site_images/logo3.png" width="50"> <?php echo $title;?>

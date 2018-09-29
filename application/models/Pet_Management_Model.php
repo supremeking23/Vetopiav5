@@ -145,7 +145,10 @@ class Pet_Management_Model extends CI_Model {
       $this->db->update('tbl_pettype', $data);
     }
 
-
+    public function update_breed_description($breed_id,$data){
+      $this->db->where('breed_id', $breed_id);
+      $this->db->update('tbl_petbreeds', $data);
+    }
     //get all active pettype
     /*public function get_all_active_pettype(){
 

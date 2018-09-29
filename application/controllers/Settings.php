@@ -115,6 +115,13 @@ class Settings extends CI_Controller {
 		}
 
 
+		if(empty($this->input->post("cellphone"))){
+			$errorMessage .= "<li>Cellphone number cannot be blank </li>";
+		}else{
+			$cellphone = $this->input->post("cellphone");
+		}
+
+
 		if(empty($this->input->post("vet_fee"))){
 			$errorMessage .= "<li>Vet fee cannot be blank </li>";
 		}else{
@@ -150,6 +157,7 @@ class Settings extends CI_Controller {
 				'telephone' =>$telephone,
 				'max_product_count' => $max_product_count,
 				'checkup_fee' => $checkup_fee,
+				'cellphone' => $cellphone,
 			);
 
 

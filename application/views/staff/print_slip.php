@@ -45,6 +45,8 @@
          $clinic_address =  $clinic_d->clinic_home_address .' '.$clinic_d->clinic_barangay_address .' '. $clinic_d->clinic_city_address.', '.$clinic_d->clinic_postal_id;
          $clinic_email = $clinic_d->clinic_email_address;
          $clinic_name = $clinic_d->store_name;
+         $telephone = $clinic_d->telephone;
+         $cellphone =  $clinic_d->cellphone;
       }
   ?>
           <img src="<?php echo site_url()?>assets/site_images/logo3.png" width="50"> <?php echo $title;?>
@@ -53,8 +55,8 @@
               <b><span style="font-size:24px"></span></b><br>
               <b><span style="font-size:36px"><?php echo $clinic_name;?></span></b><br>
               <i><?php echo $clinic_address;?></i><br>
-              <i>Tel. No.:865-8400</i><br>
-              <i>Email: <?php echo $clinic_email;?></i><br>
+              <i>Tel. No.:<?php echo $telephone;?></i><br>
+              <i>Cel. No.: <?php echo $cellphone;?></i><br>
               
           </center>
         </h2>
@@ -126,8 +128,10 @@
               <td>₱<?php echo $data_from_sales_detail->price_per_product;?></td> 
               <td>₱<?php $actual_amt = $data_from_sales_detail->price_per_product * $data_from_sales_detail->sales_quantity; echo number_format($actual_amt, 2)?></td>
               <td><?php echo 100 * $data_from_sales_detail->tax;?>%</td>
-            <td align="right"><?php echo $tax_nadagdag =  $actual_amt *  $data_from_sales_detail->tax;?></td>
-            <td align="right"><?php echo $actual_amt + $tax_nadagdag;?></td>
+            <td align="right">₱<?php  $tax_nadagdag =  $actual_amt *  $data_from_sales_detail->tax;
+                        echo  number_format($tax_nadagdag, 2)
+            ?></td>
+            <td align="right">₱<?php echo  number_format($actual_amt + $tax_nadagdag, 2) ;?></td>
             </tr>
           
           <?php endforeach;?>
@@ -151,15 +155,15 @@
           <table class="table">
             <tr>
               <th style="width:50%">Total Amount:</th>
-              <td>₱<?php echo $total_amount;?></td>
+              <td>₱<?php echo number_format($total_amount, 2);?></td>
             </tr>
             <tr>
               <th style="width:50%">Cash:</th>
-              <td>₱<?php echo $cash;?></td>
+              <td>₱<?php echo number_format($cash, 2);?></td>
             </tr>
             <tr>
               <th style="width:50%">Change:</th>
-              <td>₱<?php echo $change;?></td>
+              <td>₱<?php echo number_format($change, 2);?></td>
             </tr>
            
           </table>

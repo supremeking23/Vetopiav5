@@ -45,6 +45,7 @@
          $clinic_email = $clinic_d->clinic_email_address;
          $clinic_name = $clinic_d->store_name;
          $telephone = $clinic_d->telephone;
+         $cellphone = $clinic_d->cellphone;
       }
   ?>
 
@@ -55,7 +56,8 @@
               <b><span style="font-size:36px"><?php echo $clinic_name;?></span></b><br>
               <i><?php echo $clinic_address;?></i><br>
               <i>Tel. No.:<?php echo $telephone?></i><br>
-              <i>Email: <?php echo $clinic_email;?></i><br>
+             <!-- <i>Email: <?php echo $clinic_email;?></i><br> -->
+             <i>Cel. No.:<?php echo $cellphone;?></i>
               
               </center>
     </div>

@@ -340,6 +340,41 @@ class Pet_Management extends CI_Controller {
     }
 
 
+    public function edit_breed_description(){
+        $breed_id = $this->input->post("breed_id");
+        $breed_description = $this->input->post("breed_description");
+
+        $breed_edit = array(
+            'breed_description' => $breed_description,
+        );
+
+        $this->pet_management_model->update_breed_description($breed_id,$breed_edit);
+
+        $name = $this->session->userdata('complete_name');
+        $log_usertype =  $this->session->userdata('account_type');
+        $log_userID = $this->session->userdata("user_id");
+        $log_action = "Edit pet Breed description";
+        
+        $now = date('Y-m-d H:i:s');
+        $data2 = array(
+            "log_user" => $name,
+            "log_usertype" => $log_usertype,
+            "log_userID" => $log_userID,
+            "log_action" => $log_action,
+            "log_date" => $now,
+        );
+
+
+
+        $this->admin_management->insert_new_log($data2);
+
+        $msg = "Pet Breed has been updated successfully";
+
+        echo json_encode(['code'=>200, 'msg'=>$msg]);
+        
+    }
+
+
     //ajax load ... i  think this will not be use???
     function show_breeds(){
         $output ='';

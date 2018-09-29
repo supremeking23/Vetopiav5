@@ -193,7 +193,7 @@
 
                     <div class="row">
                         <div class=" col-md-6 col-xs-12">
-                          <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>admin/appointments">
+                          <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>Admin/Appointments">
                             <i class="fa fa-calendar"></i> View appointment records
 
                             <?php foreach($count_appointment_pending as $cap):?>
@@ -208,7 +208,7 @@
                           </a>
                         </div>
                         <div class=" col-md-6  col-xs-12">
-                          <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>admin/pos">
+                          <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>Admin/Pos">
                             <i class="fa fa-shopping-cart"></i> Start a new sale
                           </a>
                         </div>
@@ -219,14 +219,14 @@
                     <div class="row">
 
                            <div class="col-md-6  col-xs-12">
-                              <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>admin/inventory">
+                              <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>Admin/Inventory">
                                 <i class="fa fa-sticky-note"></i> View Inventory Report
                               </a>
                           </div>
 
 
                           <div class="col-md-6  col-xs-12">
-                              <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>admin/sales">
+                              <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>Admin/Sales">
                                 <i class="fa fa-cart-arrow-down"></i> View Sales Report
                               </a>
                             </div>
@@ -241,14 +241,14 @@
                     <div class="row">
 
                            <div class="col-md-6  col-xs-12">
-                              <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>admin/logs">
+                              <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>Admin/Logs">
                                 <i class="fa fa-sticky-note-o"></i> View Log Report
                               </a>
                           </div>
 
 
                           <div class="col-md-6  col-xs-12">
-                              <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>admin/settings">
+                              <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>Admin/Settings">
                                 <i class="fa fa-gear"></i> View Store Setting
                               </a>
                             </div>
@@ -348,6 +348,26 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive">
+              <div>
+                
+                <style>
+                  ul.legend {
+                        list-style-type: none;
+                        margin: 0;
+                        padding: 0;
+                        overflow: hidden;
+                    }
+
+                    ul.legend li {
+                        float: left;
+                    }
+                </style>
+                <ul class="legend">
+                  <li style="height: 20px;width: 20px;background: #00c0ef;margin:10px 10px 10px 0" data-tooltip="tooltip" data-title="product count is sufficient"></li>
+                  <li style="height: 20px;width: 20px;background: #f39c12;margin:10px 10px 10px 0" data-tooltip="tooltip" data-title="product count is below of half of the maximum product count"></li>
+                  <li style="height: 20px;width: 20px;background: red;margin:10px 10px 10px 0" data-tooltip="tooltip" data-title="product count is critical"></li>
+                </ul>
+              </div>
 
               <table  class="datatablesproductcount table table-bordered table-striped">
                 <thead>
@@ -394,7 +414,7 @@
 
                           ?>
 
-                          <div class="progress-bar <?php echo $progress_bar_status?>" style="width: <?php echo $percentage;?>%" data-tooltip="tooltip" data-title="<?php echo $data_tooltip_message;?>"></div>
+                          <div class="progress-bar <?php echo $progress_bar_status?>" style="width: <?php echo $percentage;?>%" data-tooltip="tooltip" data-title="<?php //echo $data_tooltip_message;?>"></div>
                         </div>
                       </div>
                       <?php //echo $percentage;?>

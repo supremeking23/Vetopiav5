@@ -265,7 +265,7 @@
                                                       echo form_label('Service Description', 'service_description','class="control-label"');
                                                       ?>
 
-                                                     <textarea class="form-control textareas" name="service_description"><?php echo $pet_services->service_description;?></textarea>
+                                                     <textarea class="form-control textareas" id="service_description" name="service_description"><?php echo $pet_services->service_description;?></textarea>
 
 
                                                  </div>   

@@ -59,6 +59,8 @@
          $clinic_address =  $clinic_d->clinic_home_address .' '.$clinic_d->clinic_barangay_address .' '. $clinic_d->clinic_city_address.', '.$clinic_d->clinic_postal_id;
          $clinic_email = $clinic_d->clinic_email_address;
          $clinic_name = $clinic_d->store_name;
+         $telephone =  $clinic_d->telephone;
+        $cellphone =  $clinic_d->cellphone;
       }
   ?>
           <img src="<?php echo site_url()?>assets/site_images/logo3.png" width="50"> <?php echo $title;?>
@@ -67,8 +69,9 @@
               <b><span style="font-size:24px"></span></b><br>
               <b><span style="font-size:36px"><?php echo $clinic_name;?></span></b><br>
               <i><?php echo $clinic_address;?></i><br>
-              <i>Tel. No.:865-8400</i><br>
-              <i>Email: <?php echo $clinic_email;?></i><br>
+              <i>Tel. No.:<?php echo $telephone;?></i><br>
+              <i>Cel. No.:<?php echo $cellphone;?></i><br>
+              <!--<i>Email: <?php echo $clinic_email;?></i><br> --?
               
           </center>
         </h2>
@@ -84,20 +87,21 @@
 
           $total_payment = $appointment_detail->total_payment;
       ?>
+
         <div class="col-sm-4 invoice-col">
           <!-- <b>Invoice Number: <?php echo $appointment_detail->appointment_table_id;?> </b><br> -->
           <br>
-          <b>Pet Name: <?php echo $appointment_detail->pet_name;?></b>
+          <b style="margin-left: 15px">Pet Name: <?php echo $appointment_detail->pet_name;?></b>
            <br>
-          <b>Owner Name: <?php echo $appointment_detail->customer_name  ?></b>
+          <b style="margin-left: 15px">Owner Name: <?php echo $appointment_detail->customer_name  ?></b>
           <br /> <br />
            <?php
                                 $date =date_create($appointment_detail->preferredDate);
                                 $diagnosis_date = date_format($date,"F j, Y,");
                         ?>
-          <b>Assess By: <?php echo $appointment_detail->vet_in_charge ; ?></b>
+          <b style="margin-left: 15px">Assess By: <?php echo $appointment_detail->vet_in_charge ; ?></b>
           <br/>
-          <b> Assessment Date:</b> <?php echo $diagnosis_date?><br>
+          <b style="margin-left: 15px"> Assessment Date:</b> <?php echo $diagnosis_date?><br>
 
         </div>
         <!-- /.col -->
@@ -105,7 +109,7 @@
 
         <div class="col-md-offset-4 col-sm-4 invoice-col">
 
-          <b > Date Issued:</b> <?php echo date("F j, Y, g:i a");?><br>
+          <b style="margin-left: 15px"> Date Issued:</b> <?php echo date("F j, Y, g:i a");?><br>
         </div>
 
 
@@ -123,9 +127,9 @@
         <?php foreach($get_prescription_by_appointment_table_id as $prescription):?>
           <div class="row">
             <div class="col-md-12">
-              <label>Prescription : </label> 
+              <label style="margin-left: 15px">Prescription : </label> 
               <div class="form-group">
-               <div><?php echo $prescription->prescription; ?></div>
+               <div style="margin-left: 15px"><?php echo $prescription->prescription; ?></div>
               </div>
             </div>
           </div>
@@ -139,8 +143,8 @@
         
           <div class="row">
             <div class="col-md-12">
-              <label>Services : </label> 
-              <div class="form-group">
+              <label style="margin-left: 15px">Services : </label> 
+              <div class="form-group" style="margin-left: 15px">
                 Profession Fee <br />
                 <?php foreach($get_services_by_appointment_table_id as $services):?>
                 <?php echo $services->service_name;?> <br />
@@ -154,8 +158,8 @@
 
           <div class="row">
             <div class="col-md-12">
-              <label>Total Payment : </label> 
-              <div class="form-group">
+              <label style="margin-left: 15px">Total Payment : </label> 
+              <div class="form-group" style="margin-left: 15px">
               ₱ <?php echo $total_payment;?>
               </div>
             </div>

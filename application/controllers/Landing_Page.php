@@ -19,6 +19,7 @@ class Landing_Page extends CI_Controller {
         $this->load->model('staff_management');
        	$this->load->model('article_model');
         $this->load->model('settings_model');
+        $this->load->model('pet_management_model');
 
         //$this->load->model('user_logs_model');
     }
@@ -36,6 +37,7 @@ class Landing_Page extends CI_Controller {
 		$data['staffs'] = $this->staff_management->get_all_staff_active();
 		$data['veterinarians'] = $this->veterinarian_management->get_all_veterinarian_active();
 		$data['articles'] = $this->article_model->get_article_random();
+		$data['get_all_pet_services_active'] = $this->pet_management_model->get_all_pet_services_active();
 		$this->load->view('landing_page/landing2',$data);
 	}
 

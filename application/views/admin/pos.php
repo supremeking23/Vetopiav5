@@ -57,7 +57,7 @@
                       
 
 
-                      <a href="<?php echo site_url()?>pos_controller/print/<?php echo $_SESSION['sales_id'];?>" id="print_close" class="btn btn-sm btn-info"  target="_blank">Print <span class="fa fa-print"></span></a>
+                      <a href="<?php echo site_url()?>Pos_controller/Print/<?php echo $_SESSION['sales_id'];?>" id="print_close" class="btn btn-sm btn-info"  target="_blank">Print <span class="fa fa-print"></span></a>
                    </div>
 
               <?php } ?>

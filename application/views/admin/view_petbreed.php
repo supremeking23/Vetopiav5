@@ -100,6 +100,7 @@
                   <th>Breed</th>
                   <th>Breed Description</th>
                   <th>Number of Pets</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -121,6 +122,49 @@
                            }
                         ?>
                       </td>
+                      <td>
+                        <button type="button" class="btn btn-info btn-sm btn-flat" data-toggle="modal" data-target="#editDetail<?php echo $bl->breed_id;?>">Edit Detail</button>
+                      
+                      </td>
+                        <div class="modal fade" id="editDetail<?php echo $bl->breed_id;?>">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Edit  Description for Breed: <?php echo ucfirst($bl->pet_breed);?></h4>
+                              </div>
+                              <form method="POST" id="formEditBreed" enctype="multipart/form-data">
+                                  <div class="modal-body">
+
+                                    <div class="alert alert-success display-success_edit_breed_description" style="display: none">
+                                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                       <div class="success-message_edit_breed_description"></div> 
+                                    </div> 
+                                   
+                                      <textarea class="form-control textareas" id ="breed_description" name="breed_description" > <?php echo ($bl->breed_description);?></textarea>
+                                      <input type="hidden" name="breed_id" id="breed_id" value="<?php echo $bl->breed_id;?>">
+                                  
+                                  </div>
+                                  <div class="modal-footer">
+                                          <button type="button" class="btn btn-default pull-left btn-flat btn-sm" data-dismiss="modal" >Close</button>
+                                          <?php 
+
+                                             $data = array(
+                                              'name' => 'submit',
+                                              'value' => 'Save',
+                                              'id' => 'edit_breed_btn edit',
+                                              'class' => 'btn btn-primary edit btn-flat btn-sm',
+                                            );
+                                            echo form_submit($data);?>                                    
+                                  </div>
+                               </form>
+                            </div>
+                            <!-- /.modal-content -->
+                          </div>
+                          <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->  
                     </tr>
 
                   <?php endforeach;?>
@@ -234,7 +278,43 @@ $(function(){
             },
 
                 ]
-            } );
+    } );
+
+
+ //refresh after 2 seconds
+    function reload(){
+     
+      setTimeout(function(){ 
+
+          $(".display-success").fadeOut("fast");
+          location.reload();
+           }, 2000);
+    } 
+
+
+    $(document).on('submit', '#formEditBreed', function(event){
+      event.preventDefault();
+
+      var formData = new FormData(this);
+      console.log(formData);
+      $.ajax({
+        method : 'POST',
+        url: '<?php echo site_url()?>pet_management/edit_breed_description',
+        data: formData,
+        //dataType: 'json',
+        contentType: false,
+        cache: false,
+        processData:false,
+        success:function(data){
+            $('#formEditBreed')[0].reset();
+            $('.edit').attr('disabled', true);
+            $(".display-success_edit_breed_description").css("display","block");
+            $(".success-message_edit_breed_description").html("<p>Pet Breed Description has been updated successfully</p>");
+            reload();
+        },
+      });
+      
+    });
 
 
 });

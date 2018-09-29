@@ -279,7 +279,7 @@
                                 ?>
                                           <div class="col-md-12">
                                               <select name="service_id[]" id="service_id" class="form-control select2" multiple required style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto; ">
-                                              <option value="0" class="blacks">General Checkup</option>
+                                              <!--<option value="0" class="blacks">General Checkup</option> -->
                                               <?php foreach($services as $s):?>
                                                 <option class="blacks" value="<?php echo $s->service_id?>"><?php echo $s->service_name;?></option>
                                               <?php endforeach;?>

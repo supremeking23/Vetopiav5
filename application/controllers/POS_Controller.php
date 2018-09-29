@@ -309,6 +309,7 @@ class POS_Controller extends CI_Controller {
                     "product_table_id" . $product_id   = $items['id'];
                     "product_id" . $prod_id  = $items['prod_id'];
                     $product_name =  $items['name'];
+                    $product_unit =  $items['product_unit'];
                     $product_type = $items['product_type'];
                     $price_per_product =  $items['price'];
                     $sales_quantity = $items['qty'] ;
@@ -323,7 +324,7 @@ class POS_Controller extends CI_Controller {
                         'sales_id' => $sales_id,
                         'product_id' => $prod_id,
                         'product_type' => $product_type,
-                        'product_name' => $product_name,
+                        'product_name' => $product_name .' ('.$product_unit.')',
                         'price_per_product' => $base_price,
                         'sales_quantity' => $sales_quantity,
                         'total_per_product' => $total_per_product,
@@ -477,6 +478,7 @@ class POS_Controller extends CI_Controller {
                     "product_table_id" . $product_id   = $items['id'];
                     "product_id" . $prod_id  = $items['prod_id'];
                     $product_name =  $items['name'];
+                    $product_unit = $items['product_unit'];
                     $product_type = $items['product_type'];
                     $price_per_product =  $items['price'];
                     $sales_quantity = $items['qty'] ;
@@ -491,7 +493,7 @@ class POS_Controller extends CI_Controller {
                         'sales_id' => $sales_id,
                         'product_id' => $prod_id,
                         'product_type' => $product_type,
-                        'product_name' => $product_name,
+                        'product_name' => $product_name .' ('.$product_unit.')',
                         'price_per_product' => $base_price,
                         'sales_quantity' => $sales_quantity,
                         'total_per_product' => $total_per_product,
@@ -773,7 +775,7 @@ class POS_Controller extends CI_Controller {
 
         //sales details
 
-
+        //ito ang gamit
         $this->load->view('staff/print_slip',$data);
     }
 }

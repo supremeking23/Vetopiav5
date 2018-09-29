@@ -13,11 +13,13 @@
 
 		$postal_id = $contents->clinic_postal_id;
 		$telephone =  $contents->telephone;
+		$cellphone =  $contents->cellphone;
 		$store_name = $contents->store_name;
 
 
 		$about_us_picture = $contents->about_us_picture;
 		$service_picture = $contents->service_picture;
+		$clinic_name = $contents->store_name;
 	}
 
 ?>
@@ -66,22 +68,37 @@
     width: 530px
 }
 
-.navbar-expand-md .navbar-collapse .navbar-nav .active a {
+.navbar-expand-md .navbar-collapse .navbar-nav .active {
   font-weight: 700;
   color: #EEC856;
   background: transparent;
   border-bottom: 4px solid #EEC856;
   text-shadow: none;
+  /*sticky-top*/
+}
+
+.nav-link .active{
+  font-weight: 700;
+  color: #EEC856;
+  background: transparent;
+  border-bottom: 4px solid #EEC856;
+  text-shadow: none;	
 }
 
 
 
 </style>
 </head>
-<body >
+<body data-spy="scroll" data-target="#navbar-site" data-offset="120">
+	<style>
+		body{
+			position: relative;
+			padding-top:70px;
+		}
+	</style>
 
 <!-- Navigation -->
-	<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top" style="">
+	<nav id="navbar-site" class="navbar navbar-expand-md navbar-light bg-light fixed-top" style="">
 		<div class="container-fluid">
 				<a class="navbar-brand" data-section href="#!slides"><?php echo $store_name?></a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
@@ -89,21 +106,21 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 						<ul class="navbar-nav ml-auto">
-							<li class="nav-item active">
-								<a class="nav-link" data-section href="#!slides" data-anchor="slides">Home</a>
+							<li class="nav-item">
+								<a class="nav-link"   href="#slides" >Home</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" data-section href="#!about" data-anchor="about">About</a>
+								<a class="nav-link"  href="#about" >About</a>
 							</li>
 							
 							<li class="nav-item">
-								<a class="nav-link" data-section href="#!team" data-anchor="team">Team</a>
+								<a class="nav-link"  href="#team" >Team</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" data-section href="#!services" data-anchor="services">Services</a>
+								<a class="nav-link"  href="#services" data-anchor="services">Services</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" data-section href="#!article" data-anchor="article">Pet Health Care Library</a>
+								<a class="nav-link"  href="#article" >Pet Health Care Library</a>
 							</li>							
 							<li class="nav-item">
 								<a class="nav-link" href="<?php echo site_url()?>login">Sign In</a>
@@ -172,7 +189,7 @@ function make_slides($connect)
   }
   $output .= '
   						<img src= "'.site_url().'assets/images/site_images/'.$row["banner_image"].'" alt="'.$row["banner_caption_heading"].'" />
-						<div class="top-left ">
+						<div class="top-left d-none d-md-block">
 							<h2 class="">'.$row["banner_caption_heading"].'</h2>
 							'.$row["banner_caption"].'
 						</div>
@@ -242,9 +259,9 @@ function make_slides($connect)
 		<div class="col-md-4">
 			<div class="card">
 					<?php if(empty($vets->profile)){?>
-					<img class="card-img-top" src="<?php echo site_url()?>assets/images/profiles/guest2landing.jpg">
+					<img class="card-img" src="<?php echo site_url()?>assets/images/profiles/guest2landing.jpg">
 					<?php }else{ ?>
-						<img class="card-img-top" src="<?php echo site_url()?>assets/images/profiles/<?php echo $vets->profile?>">
+						<img class="card-img" src="<?php echo site_url()?>assets/images/profiles/<?php echo $vets->profile?>">
 					<?php }?>
 					<div class="card-body">
 						<h4 class="card-title">Dr. <?php echo $vets->firstname .' '.  $vets->lastname;?></h4>
@@ -274,6 +291,12 @@ function make_slides($connect)
 				<?php echo $service;?>
 		<br>
 		<!--<a href="#" class="btn btn-primary">Learn More</a> -->
+		<p>The following are the veterinary pet services offered at the <?php echo $clinic_name?></p>
+		<ul>
+			<?php foreach($get_all_pet_services_active as $services):?>
+				<li><?php echo $services->service_name;?></li>
+			<?php endforeach;?>
+		</ul>
 		</div>
 		
 	</div>
@@ -307,7 +330,7 @@ function make_slides($connect)
 		<div class="col-md-4">
 			<div class="card">
 					
-						<img class="card-img-top" height="500" widht="300" src="<?php echo site_url()?>assets/images/library/<?php echo $article->article_image;?>">
+						<img class="card-img" height="500" widht="300" src="<?php echo site_url()?>assets/images/library/<?php echo $article->article_image;?>">
 			
 					<div class="card-body">
 						<h4 class="card-title"><?php echo $article->title;?> <br /><small>By: Dr. <?php echo $article->created_by;?></small></h4>
@@ -322,6 +345,7 @@ function make_slides($connect)
 				              <div class="modal-header">
 				                
 				                <h4 class="modal-title"><?php echo $article->title;?> </h4>
+				                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				              </div>
 				              <div class="modal-body">
 				                <div class="row">
@@ -390,8 +414,9 @@ function make_slides($connect)
 								<hr class="light">
 								<h5>Contact Information</h5>
 								<hr class="light">
-								<p>Tel: <?php echo $telephone;?></p>
-								<p>Email: <?php echo $email?></p>
+								<p>Telephone No. : <?php echo $telephone;?></p>
+								<!--<p>Email: <?php echo $email?></p> -->
+								<p>Cellphone No. : <?php echo $cellphone?></p>
 						</div>
 						<div class="col-12">
 							<hr class="light-100">
@@ -410,27 +435,7 @@ function make_slides($connect)
 			
 		});
 
-$(window).scroll(function() {
 
-    if ($(this).scrollTop() < $('section[data-anchor="slides"]').offset().top) {
-       $('nav a').removeClass('active');
-    }
-
-    if ($(this).scrollTop() >= $('section[data-anchor="about"]').offset().top) {
-      $('nav a').removeClass('active');
-      $('nav a:eq(0)').addClass('active');
-    }
-    if ($(this).scrollTop() >= $('section[data-anchor="team"]').offset().top) {
-      $('nav a').removeClass('active');
-      $('nav a:eq(1)').addClass('active');
-    }
-    if ($(this).scrollTop() >= $('section[data-anchor="services"]').offset().top) {
-      $('nav a').removeClass('active');
-      $('nav a:eq(2)').addClass('active');
-    }
-   
-
-});
 </script>
 </body>
 </html>

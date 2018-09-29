@@ -18,6 +18,7 @@
   $vet_fee = $t_color->vet_fee;
 
   $telephone = $t_color->telephone;
+  $cellphone = $t_color->cellphone;
   $max_product_count = $t_color->max_product_count;
   $checkup_fee = $t_color->checkup_fee;
 
@@ -232,11 +233,11 @@
                         <br>
 
 
-                        <?php echo form_label('Email Address', 'clinic_email_address','class="control-label"');?>
+                        <?php //echo form_label('Email Address', 'clinic_email_address','class="control-label"');?>
 
-                        <input type="email" name="clinic_email_address" id="clinic_email_address" class="form-control" value="<?php echo $clinic_email_address;?>">
+                        <input type="hidden" name="clinic_email_address" id="clinic_email_address" class="form-control" value="<?php echo $clinic_email_address;?>">
 
-                        <br />
+                        
 
 
                         <?php echo form_label('Telephone Number', 'telephone','class="control-label"');?>
@@ -247,17 +248,25 @@
 
 
 
+                        <?php echo form_label('Cellphone Number', 'cellphone','class="control-label"');?>
+
+                        <input type="text" name="cellphone" id="cellphone" class="form-control" value="<?php echo $cellphone;?>">
+
+                        <br />
+
+
+
                         <?php echo form_label('Veterinary Service Fee', 'vet_fee','class="control-label"');?>
 
                         <input type="number" id="vet_fee" name="vet_fee" class="form-control" value="<?php echo $vet_fee;?>">
 
 
-                        <br >
+                      
 
 
-                        <?php echo form_label('Checkup Fee', 'checkup_fee','class="control-label"');?>
+                        <?php //echo form_label('Checkup Fee', 'checkup_fee','class="control-label"');?>
 
-                        <input type="number" id="checkup_fee" name="checkup_fee" class="form-control" value="<?php echo $checkup_fee;?>">
+                        <input type="hidden" id="checkup_fee" name="checkup_fee" class="form-control" value="<?php echo $checkup_fee;?>">
 
 
                         <br >
@@ -469,7 +478,7 @@
                                 <h2>'.$row["banner_caption_heading"].'</h2>
                                 '.$row["banner_caption"].'
                                 <br />
-                              <button type="button" class="btn btn-outline-light btn-lg btn-banner-remove pull-right" id="'.$row["bannerimage_id"].'" style="margin-top:10px;margin-bottom:15px">Delete Banner</button>
+                                 <button type="button" class="btn btn-outline-light btn-sm btn-flat btn-banner-remove pull-right" id="'.$row["bannerimage_id"].'" style="margin-top:10px;margin-bottom:15px">Delete Banner</button>
 
                               
                                   <!-- /.modal -->
