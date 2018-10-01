@@ -54,6 +54,8 @@
          $clinic_email = $clinic_d->clinic_email_address;
          $clinic_name = $clinic_d->store_name;
           $skin_color = $clinic_d->theme_color;
+          $telephone = $clinic_d->telephone;
+          $cellphone = $clinic_d->cellphone;
       }
 
     if($skin_color == "skin-green"){
@@ -72,8 +74,9 @@
               <b><span style="font-size:24px"></span></b><br>
               <b><span style="font-size:36px"><?php echo $clinic_name;?></span></b><br>
               <i><?php echo $clinic_address;?></i><br>
-              <i>Tel. No.:865-8400</i><br>
-              <i>Email: <?php echo $clinic_email;?></i><br>
+              <i>Tel. No.:<?php echo $telephone?></i><br>
+              <i>Cel. No.:<?php echo $cellphone?></i><br>
+             <!-- <i>Email: <?php echo $clinic_email;?></i><br> -->
               
           </center>
         </h2>

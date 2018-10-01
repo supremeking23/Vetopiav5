@@ -9,7 +9,7 @@
                 <div class="tab-content">
 
                   <div class="active tab-pane" id="settings">
-                    <form class="form-horizontal" action="<?php echo site_url()?>user_management/update_customer_details_staff_action" method="POST">
+                    <form class="form-horizontal" action="<?php echo site_url()?>user_management/update_customer_details" method="POST">
 
 
                     <?php foreach($customer_details as $c_details):?>

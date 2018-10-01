@@ -97,7 +97,7 @@
                   </div>
                 </form> 
 
-                <a href="<?php echo site_url()?>/Inventory/Print_report" target="_blank" class="btn btn-success btn-flat btn-sm btn-block print" style="display: none">Print</a>
+                <a href="<?php echo site_url()?>Inventory/Print_report" target="_blank" class="btn btn-success btn-flat btn-sm btn-block print" style="display: none">Print</a>
                 </div>
               </div>
               <!-- /.modal-content -->

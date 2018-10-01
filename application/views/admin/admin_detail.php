@@ -183,7 +183,7 @@
 
     if(admin_type == "Admin"){
        // $("input[type='text'],select[name='gender'],input[type='date'],input[type='password']").attr("readonly",true);
-        $("input[type='text'],select[name='gender'],input[type='date'],input[type='password'],input[type='file'],button[type='submit'],input[type='submit']").attr("disabled",true);
+        $("input[type='text'],select[name='gender'],input[type='date'],input[type='password'],input[type='file'],input[type='email'],button[type='submit'],button[id='showPass'],input[type='submit']").attr("disabled",true);
     }
 
 
