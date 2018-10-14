@@ -1,6 +1,6 @@
       <div class="modal fade" id="addpetbreed">
         <div class="modal-dialog">
-          <div class="modal-content">
+          <div class="modal-content" style="border-radius: 15px">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span></button>
@@ -26,7 +26,7 @@
                           echo form_label('Pet Type', 'pet_type','class="control-label"');
                           ?>
 
-                           <select id="pet_type" name="pet_type" class="form-control" required="" >
+                           <select id="pet_type" name="pet_type" class="form-control" required="" style="border-radius: 15px">
                                   <option value="">Pet Type</option>
                                   <?php foreach($all_pettype as $pettype):?>
                                     
@@ -62,6 +62,7 @@
                                         'size'          => '',
                                         'required'      => 'required',
                                         'class'         => 'form-control',
+                                        'style'         => 'border-radius:15px',
                                         
                                 );
 
@@ -83,7 +84,7 @@
 
 
 
-                           <textarea class="form-control textareas" id="breed_description" name="breed_description"></textarea>
+                           <textarea class="form-control textareas" id="breed_description" name="breed_description" style="border-radius: 15px"></textarea>
                        </div>   
               </div>
 
@@ -93,7 +94,7 @@
            
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default pull-left btn-sm btn-flat" style="border-radius: 15px" data-dismiss="modal">Close</button>
               <?php 
 
                       $data = array(
@@ -101,6 +102,7 @@
                         'value' => 'Add',
                         'id' => 'add_pet_btn',
                         'class' => 'btn btn-primary btn-sm btn-flat',
+                        'style' => 'border-radius:15px',
                       );
 
                     echo form_submit($data);?>

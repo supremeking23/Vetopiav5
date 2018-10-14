@@ -2,7 +2,7 @@
 
     $skin_color = $t_color->theme_color;
     $settings_id =$t_color->settings_id;
-    $max_product_count = $t_color->max_product_count;
+    //$max_product_count = $t_color->max_product_count;
     $box_color = "";
 
     if($skin_color == "skin-green"){
@@ -52,260 +52,90 @@
     <!-- Main content -->
     <section class="content">
 
-      <div class="row">
-
-        <div class="col-md-4 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-blue"><i class="fa fa-user-secret"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Total number of admins</span>
-               <?php foreach($count_admins as $admin_count):?>
-              <span class="info-box-number"><?php echo $admin_count->count_all;?></span>
-              <?php endforeach;?>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-
-        <div class="col-md-4 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa fa-users"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Total number of veterinarians</span>
-               <?php foreach($count_vets as $vet_count):?>
-              <span class="info-box-number"><?php echo $vet_count->count_all;?></span>
-              <?php endforeach;?>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-
-
-        <div class="col-md-4 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-green"><i class="fa fa-users"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Total number of staff</span>
-               <?php foreach($count_staffs as $staff_count):?>
-              <span class="info-box-number"><?php echo $staff_count->count_all;?></span>
-              <?php endforeach;?>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-
-
-      </div>
-
-      <div class="row">
-
-
-        <div class="col-md-4 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="fa fa-users"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Total number of customer</span>
-               <?php foreach($count_customers as $customer_count):?>
-              <span class="info-box-number"><?php echo $customer_count->count_all;?></span>
-              <?php endforeach;?>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        
-      
-        <div class="col-md-4  col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-orange"><i class="fa fa-paw"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Total number of pets</span>
-               <?php foreach($count_pets as $pet_count):?>
-              <span class="info-box-number"><?php echo $pet_count->count_all;?></span>
-              <?php endforeach;?>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-
-        <div class="col-md-4  col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-aqua"><i class="fa fa-archive"></i></span>
-
-            <div class="info-box-content" >
-              <span class="info-box-text">Total number of Products left</span>
-               <?php foreach($count_products as $product_count):?>
-              <span class="info-box-number"><?php echo $product_count->count_all?></span>
-              <?php endforeach;?>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-
-
-        <div class="col-md-4  col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-aqua"><i class="fa fa-calendar"></i></span>
-
-            <div class="info-box-content" >
-              <span class="info-box-text">Today's appointment</span>
-               <?php foreach($count_todays_appointment as $todays_appointment_count):?>
-              <span class="info-box-number"><?php echo $todays_appointment_count->count_all?></span>
-              <?php endforeach;?>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-
-      </div>
 
 
 
 
-      <div class="row">
-       
-          <div class="col-md-12">
-             <div class="callout callout-default">
-                <h4 class="text-center">Welcome to Vetopia, Please choose a common task below to get started!</h4>
-              </div>
 
-              <div class="row">
-                  <div class="col-md-12">
-                    
-
-                    <div class="row">
-                        <div class=" col-md-6 col-xs-12">
-                          <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>Admin/Appointments">
-                            <i class="fa fa-calendar"></i> View appointment records
-
-                            <?php foreach($count_appointment_pending as $cap):?>
-                            <?php if($cap->count_all == 0){
-                            }else{ ?>
-
-                              <span class="badge label-danger" data-tooltip="tooltip" data-placement="right" title="You have <?php echo $cap->count_all; ?> new appointment request" >
-                              <?php  echo $cap->count_all; ?>
-                              </span>
-                           <?php  }?>
-                          <?php endforeach;?>
-                          </a>
-                        </div>
-                        <div class=" col-md-6  col-xs-12">
-                          <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>Admin/Pos">
-                            <i class="fa fa-shopping-cart"></i> Start a new sale
-                          </a>
-                        </div>
-
-                       
-                    </div>
-
-                    <div class="row">
-
-                           <div class="col-md-6  col-xs-12">
-                              <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>Admin/Inventory">
-                                <i class="fa fa-sticky-note"></i> View Inventory Report
-                              </a>
-                          </div>
-
-
-                          <div class="col-md-6  col-xs-12">
-                              <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>Admin/Sales">
-                                <i class="fa fa-cart-arrow-down"></i> View Sales Report
-                              </a>
-                            </div>
-
-                    </div>  
-
-                    <?php 
-                      if($this->session->userdata('account_type') == "Super Admin"):
-                      
-                      ?>        
-
-                    <div class="row">
-
-                           <div class="col-md-6  col-xs-12">
-                              <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>Admin/Logs">
-                                <i class="fa fa-sticky-note-o"></i> View Log Report
-                              </a>
-                          </div>
-
-
-                          <div class="col-md-6  col-xs-12">
-                              <a class="btn btn-block btn-social btn-default common-task" href="<?php echo site_url()?>Admin/Settings">
-                                <i class="fa fa-gear"></i> View Store Setting
-                              </a>
-                            </div>
-
-                    </div>
-
-                  <?php endif;?>
-                    
-
-                   
-
-                  </div>
-              </div>
-          </div>
-
-      </div>
 
       <br />
 
 
+
+      <!-- /.row -->
+
+
+      <!-- /.box -->
+
       <div class="row">
-
         <div class="col-md-12">
-          <!-- DONUT CHART -->
-          <div class="box box-solid <?php echo $box_color;?>">
+                    <!-- BAR CHART -->
+          <div class="box box-solid <?php echo $box_color?>">
             <div class="box-header with-border">
-              <h6 class="box-title">Data Statistics for Pet Diagnosis</h6>
+              <h3 class="box-title">Slow and Fast moving Products</h3>
 
-
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                
+              </div>
             </div>
-            <div class="box-body">
-              <table  class="datatablestats table table-bordered table-striped">
+            <div class="box-body ">
+              <table  class="datatablesfastslow table table-bordered table-striped">
                 <thead>
                 <tr>
-
-                  <th>Date</th>
-                  <th>Disease Name</th>
-                 
-                  <th>Total Number of cases</th>
-                 
+                  <th>Product Name</th>
+                  <th>Product ID </th>
+                  <th>Product Type</th>
+                  <th>Inventory Turnover Ratio</th>
                 </tr>
                 </thead>
                 <tbody>
-                  <?php foreach($data_stat_pet_daignosis as $data):?>
-                  <tr>
-                    <td><?php 
-
-                       $date =date_create($data->date);
-                       echo  $format_date= date_format($date,"F d, Y");
-                    ?></td>
-                    <td><?php echo ucfirst( $data->possible_cause);?></td>
-                    
-                    <td><?php echo $data->counts;?></td>
+               
+                <?php foreach($slow_fast as $sf):
                   
-                  </tr>
-                <?php endforeach;?>
+                  ?>
 
+                <tr>
+
+                  <td><?php echo $sf->product_name;?></td>
+                  <td><?php echo $sf->product_id;?></td>
+                  <td><?php echo $sf->productType;?></td>
+                
+                  <td><?php 
+
+                      //first compute for the beginning inventory
+                      //beginning inventory = (cost of goods sold + ending inventory) - amount of inventory purchased
+                      //get cost of good sold cogs
+                      $product_detail_in_salesdetail = $this->inventory_management->get_sum_total_quantity_sales_detail_by_product_table_id($sf->product_table_id);
+                      foreach($product_detail_in_salesdetail as $pds){
+                             $cogs = $pds->sales_quantity * $sf->product_price;
+                      }
+
+
+                      $ending_inventory = $sf->productInstore;
+
+                      $new_inventory = $this->inventory_management->new_inventory_detail($sf->product_id);
+                      foreach($new_inventory as $ni){
+                         $new_inventory = $ni->quantity;
+                      }
+
+                      $beginning_inventory = ($cogs + $ending_inventory) - $new_inventory;
+
+                      //compute for the inventory turonver ration(one way of knowing if a product is a slow/fast mover in the inventory)
+
+                      //$inventory_turnover_ratio = cost of goods sold/(beginning_inventory + end_inventory)/2;
+                      $inventory_turnover_ratio = $cogs/($beginning_inventory + $ending_inventory)/2;
+                      echo  $inventory_turnover_ratio .'%';
+                     //echo number_format($inventory_turnover_ratio,2);
+
+                  ?></td>
+                  
+                </tr>
+
+
+              <?php endforeach;?>
+                
                 </tbody>
                
               </table>
@@ -314,27 +144,101 @@
           </div>
           <!-- /.box -->
         </div>
-
-      <!--<div class="col-md-4">
-          
-          <div class="box box-solid <?php echo $box_color;?>">
-            <div class="box-header with-border">
-              <h6 class="box-title">Data Statistics for Pet Diagnosis(Pie graph view)</h6>
-
-
-            </div>
-            <div class="box-body">
-              <canvas id="pieChart" style="height:50px"></canvas>
-            </div>
-           
-          </div>
-        
-        </div> -->
-     
       </div>
 
-      <br />
-     
+      <div class="row">
+        <div class="col-md-12">
+                    <!-- BAR CHART -->
+          <div class="box box-solid <?php echo $box_color?>">
+            <div class="box-header with-border">
+              <h3 class="box-title">Economic Order Quantity</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                
+              </div>
+            </div>
+            <div class="box-body ">
+              <table  class="datatableseoq table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Product Name</th>
+                  <th>Product ID </th>
+                  <th>Product Type</th>
+                  <th>Optimal Order Size</th>
+                </tr>
+                </thead>
+                <tbody>
+               
+                <?php foreach($slow_fast as $sf):
+                  
+                  ?>
+
+                <tr>
+
+                  <td><?php echo $sf->product_name;?></td>
+                  <td><?php echo $sf->product_id;?></td>
+                  <td><?php echo $sf->productType;?></td>
+                
+                  <td><?php 
+
+                      $product_detail_in_salesdetail = $this->inventory_management->get_sum_total_quantity_sales_detail_by_product_table_id($sf->product_table_id);
+                      foreach($product_detail_in_salesdetail as $pds){
+                             $demand = $pds->sales_quantity;
+                      }
+
+                     // echo "<br />";
+
+                      $order_cost = $sf->product_price;
+                      $carrying_host = 100;
+
+                      /*
+                        EOQ - econimic order quantity
+
+                        little - stockout
+                        too much - spoilage storage
+
+                        total cost = purchase_cost + (ordering cost + carrying cost)-> balance these costs find optimal order size
+
+                        Q* = optimal order
+                        R = Order Cost  
+                        H = carrying cost
+                        D = Annual/Units demand
+
+                        Q* - 2RD/H root sa labas
+
+                        ex: D 200 milks 15
+                            R 50 +  80
+                            H 2 +  100
+
+
+                        use EoQ to solve for the optimal ordering size
+                      */
+
+
+                      $optimal_order= sqrt((2*$order_cost)*$demand/$carrying_host);
+
+                      echo round($optimal_order);
+
+                  ?></td>
+                  
+                </tr>
+
+
+              <?php endforeach;?>
+                
+                </tbody>
+               
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+
+
       <div class="row">
         <div class="col-md-12">
           <div class="box box-solid <?php echo $box_color;?>">
@@ -369,26 +273,49 @@
                 </ul>
               </div>
 
+
               <table  class="datatablesproductcount table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>Product Name</th>
+                  <th>Product Id</th>
                   <th>Product Type</th>
-                  
-                  <th>Product Count</th>
                  
+                  <th>Product Count in the Inventory</th>
+                  <th>Status</th>
                 </tr>
                 </thead>
                 <tbody>
                
-                <?php foreach($all_products as $a_products):?>
+                <?php foreach($all_products as $a_products):
+                   $max_product_count = $a_products->max_product_count;
+                  ?>
 
                 <tr>
 
                   <td><?php echo $a_products->product_name;?></td>
+                  <td><?php echo $a_products->product_id;?></td>
                   <td><?php echo $a_products->productType;?></td>
-                
+                  
+                  
                   <td>
+
+
+                    <?php $two_months = $this->inventory_management->get_two_months_in_inventory($a_products->product_id);
+                        $safety_stock = 0;
+                        foreach($two_months as $two){
+                          $safety_stock =   $two->quantity - $safety_stock;
+                        }
+
+                       $abs_safety_stock = abs($safety_stock);
+
+                      $monthly_order_quantity = $this->inventory_management->get_avg_total_quantity_in_inventory($a_products->product_id);
+                      foreach($monthly_order_quantity as $average){
+                         $monthly_average = $average->average;
+                      }
+
+                      $critical_stock_boundary = ($monthly_average + $abs_safety_stock) / 2;
+                    ?>
                       <div class="progress-group">
                         <span class="progress-text">&nbsp;</span>
                         <span class="progress-number"><b><?php echo $a_products->productInStore;?></b>/<?php echo   $max_product_count;?> </span>
@@ -397,11 +324,12 @@
 
                           <?php 
                             $remaining_supply = $a_products->productInStore;
+
                             $get_decimal = $remaining_supply / $max_product_count;
 
                             $percentage = $get_decimal * 100;
 
-                            if($percentage < 50 AND $percentage > 26){
+                          /*  if($percentage < 50 AND $percentage > 26){
                               $progress_bar_status = "progress-bar-warning ". $percentage;
                               $data_tooltip_message = "Product Count is Below half of the maximum product count ". $percentage;
                             }else if($percentage < 25){
@@ -410,7 +338,18 @@
                             }else{
                                $progress_bar_status = "progress-bar-aqua";
                                $data_tooltip_message = " ".$percentage;
-                            }
+                            }*/
+
+                            $status = "";
+                          if($remaining_supply > $critical_stock_boundary ){
+                              $progress_bar_status = "progress-bar-aqua";
+                               $data_tooltip_message = " ".$percentage;
+                               $status = "Normal";
+                             }else{
+                               $progress_bar_status = "progress-bar-danger ". $percentage;
+                              $data_tooltip_message = "Product Count is Below half of the maximum product count ". $percentage;
+                              $status="Need to reorder";
+                             }
 
                           ?>
 
@@ -419,6 +358,8 @@
                       </div>
                       <?php //echo $percentage;?>
                   </td>
+
+                  <td><?php echo $status;?></td>
                   
                 </tr>
 
@@ -441,12 +382,6 @@
         </div>
         <!-- /.col -->
       </div>
-      <!-- /.row -->
-
-
-      <!-- /.box -->
-
-
 
       <div class="row">
         <div class="col-md-12">
@@ -516,15 +451,63 @@
         </div>
       </div>
 
+
+
+
+     
+
+
+      <div class="row">
+
+        <div class="col-md-12">
+          <!-- DONUT CHART -->
+          <div class="box box-solid <?php echo $box_color;?>">
+            <div class="box-header with-border">
+              <h6 class="box-title">Data Statistics for Pet Diagnosis</h6>
+
+
+            </div>
+            <div class="box-body">
+              <table  class="datatablestats table table-bordered table-striped">
+                <thead>
+                <tr>
+
+                  <th>Date</th>
+                  <th>Disease Name</th>
+                 
+                  <th>Total Number of cases</th>
+                 
+                </tr>
+                </thead>
+                <tbody>
+                  <?php foreach($data_stat_pet_daignosis as $data):?>
+                  <tr>
+                    <td><?php 
+
+                       $date =date_create($data->date);
+                       echo  $format_date= date_format($date,"F d, Y");
+                    ?></td>
+                    <td><?php echo ucfirst( $data->possible_cause);?></td>
+                    
+                    <td><?php echo $data->counts;?></td>
+                  
+                  </tr>
+                <?php endforeach;?>
+
+                </tbody>
+               
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+     
+      </div>
+
 <?php 
   
  
-
-
-
-
- 
-//var_dump($rgbColor);
 ?>
 
 
@@ -766,6 +749,123 @@ $datas = json_encode($data);*/
             {
                extend: 'csvHtml5',
                title: 'Data Statistics for Pet Diagnosis',
+               message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+               
+            },
+
+                ]
+    } );
+
+
+
+
+
+
+    $('.datatablesfastslow').DataTable( {
+        'ordering'    : false,
+        "lengthMenu": [[5, 25, 50, -1], [5, 25, 50, "All"]],
+        'paging'      : true,
+        'info'        : true,
+        dom: 'Bfrtip',
+        /*buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],*/
+
+        buttons: [
+            {
+              extend: 'pdfHtml5',
+              title: 'Fast and Slow Moving Products in the Inventory',
+              message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+              customize: function(doc) {
+                //setHeader2();
+                doc.styles.title = {
+                  color: '',
+                  fontSize: '40',
+                  background: '',
+                  alignment: 'center'
+                }   
+              }  
+            },
+
+             {
+               extend: 'excelHtml5',
+                title: 'Fast and Slow Moving Products in the Inventory',
+               message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+  
+            },
+
+            {
+               extend: 'csvHtml5',
+                title: 'Fast and Slow Moving Products in the Inventory',
+               message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+               
+            },
+
+                ]
+    } );
+
+
+
+    $('.datatableseoq').DataTable( {
+        'ordering'    : false,
+        "lengthMenu": [[5, 25, 50, -1], [5, 25, 50, "All"]],
+        'paging'      : true,
+        'info'        : true,
+        dom: 'Bfrtip',
+        /*buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],*/
+
+        buttons: [
+            {
+              extend: 'pdfHtml5',
+              title: 'Economic Order Quantity',
+              message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+              customize: function(doc) {
+                //setHeader2();
+                doc.styles.title = {
+                  color: '',
+                  fontSize: '40',
+                  background: '',
+                  alignment: 'center'
+                }   
+              }  
+            },
+
+             {
+               extend: 'excelHtml5',
+               title: 'Economic Order Quantity',
+               message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
+                $now = date('Y-m-d H:i:s');
+                 $date =date_create($now);
+                echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                ?>',
+  
+            },
+
+            {
+               extend: 'csvHtml5',
+               title: 'Economic Order Quantity',
                message: 'Issued by <?php echo $this->session->userdata('complete_name');?> Date: <?php  
                 $now = date('Y-m-d H:i:s');
                  $date =date_create($now);

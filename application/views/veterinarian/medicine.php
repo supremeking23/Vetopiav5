@@ -117,7 +117,7 @@
                     
                     <td>
                       <form action="<?php echo site_url()?>inventory/pull_out_med" method="POST">
-                        <input type="submit" name="submit" value="pull-out" class="btn btn-primary btn-flat btn-sm">
+                        <input type="submit" name="submit" value="pull-out" class="btn btn-primary btn-flat btn-sm" style="border-radius: 15px">
                         <input type="hidden" name="med_table_id" value="<?php echo $meds->med_table_id;?>">
                         <input type="hidden" name="product_table_id" value="<?php echo $meds->product_table_id;?>">
                       </form>

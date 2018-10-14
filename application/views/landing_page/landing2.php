@@ -30,7 +30,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Vetopia</title>
+	<title><?php echo $clinic_name ;?></title>
 	<link rel="stylesheet" href="<?php echo site_url()?>assets/dist/css/bootstrap.min.css">
 	<script src="<?php echo site_url()?>assets/dist/js/jquery-3.2.1.min.js"></script>
 	<script src="<?php echo site_url()?>assets/dist/js/popper.min.js"></script>

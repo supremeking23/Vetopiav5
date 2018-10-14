@@ -1,7 +1,7 @@
   <!-- add appointment -->
     <div class="modal fade" id="addAppointment">
       <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="border-radius: 15px">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span></button>
@@ -12,7 +12,7 @@
               <div class="modal-body">
                  <div class="form-group">
                   <label for="customerName">Customer Name</label>
-                  <select name="customerName" id="customerName" required="" class="form-control select2" style="width: 100%;">
+                  <select name="customerName" id="customerName" required="" class="form-control select2" style="width: 100%;border-radius: 15px">
                    <option value="">Customer Name</option>
                    <?php foreach($all_customers as $customers):?>
                       <option value="<?php echo $customers->customer_table_id;?>"><?php echo $customers->firstname .' '. $customers->middlename .' '. $customers->lastname;?></option>
@@ -39,7 +39,7 @@
 
                   <div class="form-group">
                     <label for="scheduleDate">Date</label>
-                    <input type="date" required="" class="form-control" id="scheduleDate"  name="scheduleDate">
+                    <input type="date" required="" class="form-control" id="scheduleDate"  name="scheduleDate" style="border-radius: 15px">
                   </div>
 
                   <div class="form-group">
@@ -56,7 +56,7 @@
                   <label for="complaints" class="">Description / Complaints</label>
 
                   
-                    <textarea required=""  class="form-control textareas" id="complaints" name="complaints" placeholder=""></textarea>
+                    <textarea required="" style="border-radius: 15px"  class="form-control textareas" id="complaints" name="complaints" placeholder=""></textarea>
                   
                 </div>
 

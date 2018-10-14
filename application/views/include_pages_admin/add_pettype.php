@@ -1,6 +1,6 @@
             <div class="modal fade" id="addpettype">
               <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content" style="border-radius: 15px">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span></button>
@@ -26,13 +26,13 @@
 
 
 
-                                          <input type="text" name="pettype" id="pettype" class="form-control" >
+                                          <input type="text" name="pettype" id="pettype" class="form-control" style="border-radius: 15px">
                                      </div>   
                           </div>                    
 
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal" style="border-radius: 15px">Close</button>
                         <?php 
 
                           $data = array(
@@ -40,6 +40,7 @@
                             'value' => 'Add',
                             'id' => 'add',
                             'class' => 'btn btn-primary btn-sm btn-flat',
+                            'style' => 'border-radius:15px',
                           );
 
                         echo form_submit($data);?>

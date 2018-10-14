@@ -105,13 +105,7 @@
           <a href="#">
             <i class="fa fa-th"></i>
             <span>Product</span>
-             <?php if($gclc == 0){
-                      //echo $cap;
-                      }else{ ?>
-                      <span class="badge label-danger" data-tooltip="tooltip" title="You have <?php echo $gclc?> product(s) that is in below half of the maximum product count" >
-                       <?php  echo $gclc;?>
-                      </span>  
-                   <?php  }?>   
+           
        
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -120,31 +114,13 @@
           </a>
           <ul class="treeview-menu">      
             <li><a href="<?php echo site_url()?>Admin/Items"><i class="fa fa-circle-o"></i> Items
-                <?php if($gclci == 0){
-                      //echo $cap;
-                      }else{ ?>
-                      <span class="badge label-danger"  >
-                       <?php  echo $gclci;?>
-                      </span>  
-                  <?php  } ?>   
+             
             </a></li>
             <li><a href="<?php echo site_url()?>Admin/Foods"><i class="fa fa-circle-o"></i> Foods
-                   <?php if($gclcf == 0){
-                      //echo $cap;
-                      }else{ ?>
-                      <span class="badge label-danger"  >
-                       <?php  echo $gclcf;?>
-                      </span>  
-                   <?php  } ?>   
+                
             </a></li>
             <li><a href="<?php echo site_url()?>Admin/Medicines"><i class="fa fa-circle-o"></i> Medicines
-              <?php if($gclcm == 0){
-                      //echo $cap;
-                      }else{ ?>
-                      <span class="badge label-danger"  >
-                       <?php  echo $gclcm;?>
-                      </span>  
-                   <?php  } ?>   
+             
             </a></li>
           </ul>
         </li>

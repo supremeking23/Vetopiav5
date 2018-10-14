@@ -2,7 +2,7 @@
 
   $skin_color = $t_color->theme_color;
   $settings_id =$t_color->settings_id;
-  $max_product_count = $t_color->max_product_count;
+  //$max_product_count = $t_color->max_product_count;
 
    $box_color = "";
 
@@ -48,7 +48,7 @@
       <div class="row">
         <div class="col-md-12">
           <?php if($this->session->userdata('account_type') == "Super Admin"):?>
-          <button class="btn btn-flat btn-info btn-sm" data-toggle="modal" data-target="#addProduct">Add New Product</button>
+          <button class="btn btn-flat btn-info btn-sm" data-toggle="modal" data-target="#addProduct" style="border-radius: 15px">Add New Product</button>
         <?php endif;?>
         </div>
         <!-- /.col -->
@@ -97,8 +97,18 @@
           <?php }?>
 
 
-          
-        
+          <?php if ($this->session->flashdata('add_product_supply_failed')) { ?>
+
+            <div class="alert alert-danger display-success">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              <h4>
+                <i class="fa fa-exclamation-circle"></i>
+                Error !
+              </h4>
+                <p> <?php echo $this->session->flashdata('add_product_supply_failed'); ?> </p>
+            </div>
+
+          <?php }?>
 
 
 
@@ -141,10 +151,11 @@
                     </td>
                     <td>₱<?php echo $foods->store_price;?></td>
                     <td>
-                    <?php echo $foods->productInStore;  ?>
+                    <?php echo $foods->productInStore  .'/'. $foods->max_product_count; ?>
 
                      <?php 
                        $remaining_supply = $foods->productInStore;
+                       $max_product_count =  $foods->max_product_count;
                        $get_decimal = $remaining_supply / $max_product_count;
 
                         $percentage = $get_decimal * 100;
@@ -158,9 +169,9 @@
 
                     </td>
                     <td>
-                    <a href="<?php echo site_url()?>Admin/Food_details/<?php echo $foods->food_table_id;?>"  class="btn btn-sm btn-fat btn-info"  data-tooltip="tooltip" data-title="View Detail"><span class="fa fa-file-o"></span></a>
+                    <a href="<?php echo site_url()?>Admin/Food_details/<?php echo $foods->food_table_id;?>"  class="btn btn-sm btn-fat btn-info"  data-tooltip="tooltip" data-title="View Detail" style="border-radius: 15px"><span class="fa fa-file-o"></span></a>
 
-                    <button type="button" class="btn btn-sm btn-warning btn-flat" data-toggle="modal" data-target="#addSupply<?php echo $foods->food_table_id;?>">
+                    <button type="button" class="btn btn-sm btn-warning btn-flat" data-toggle="modal" data-target="#addSupply<?php echo $foods->food_table_id;?>" style="border-radius: 15px" data-tooltip="tooltip" data-title="Add supply count">
                <span class="fa fa-plus"></span>
               </button>
                     </td>
@@ -171,7 +182,7 @@
 
                   <div class="modal fade" id="addSupply<?php echo $foods->food_table_id;?>">
                       <div class="modal-dialog">
-                        <div class="modal-content">
+                        <div class="modal-content" style="border-radius: 15px">
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span></button>
@@ -191,8 +202,8 @@
 
 
                                         <?php  $needed_product =$max_product_count - $remaining_supply;?>
-                                        <input type="number" name="supplycount" min="0" max="<?php echo   $needed_product ?>" class="form-control" required="">
-
+                                        <input type="number" name="supplycount" min="0" max="<?php echo $needed_product;?>" class="form-control" required="" style="border-radius: 15px">
+                                        <input type="hidden" name="needed_product" id=needed_product" value="<?php echo $needed_product?>">
 
                                    </div>   
                               </div>
@@ -207,7 +218,7 @@
                                         echo form_label('Expiration Date', 'exp_date','class="control-label"');
                                         ?>
 
-                                        <input type="date" class="form-control exp_date"  value="" name="exp_date" id="" required="">
+                                        <input type="date" class="form-control exp_date"  value="" name="exp_date" id="" required="" style="border-radius: 15px">
 
                                     
                                    </div>   
@@ -221,14 +232,15 @@
 
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-default pull-left btn-flat btn-sm" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-default pull-left btn-flat btn-sm" style="border-radius: 15px" data-dismiss="modal">Close</button>
                              <?php 
 
                                 $data = array(
                                   'name' => 'submit',
                                   'value' => 'Add',
-                                  'id' => 'add_food_btn',
+                                  'id' => 'add_food__supply_btn',
                                   'class' => 'btn btn-primary btn-flat btn-sm',
+                                  'style' =>'border-radius:15px',
                                 );
 
                               echo form_submit($data);?>

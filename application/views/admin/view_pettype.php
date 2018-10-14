@@ -53,10 +53,10 @@
            <button class="btn btn-flat btn-success btn-sm" data-toggle="modal" data-target="#petbreed">View Pet Breed</button> -->
 
 
-          <a href="<?php echo site_url()?>admin/pets" class="btn btn-info btn-flat btn-sm">View Pet List</a>
-          <a href="<?php echo site_url()?>admin/view_petbreed" class="btn btn-success btn-flat btn-sm">View Pet Breed</a>
-          <button class="btn btn-flat btn-warning btn-sm" data-toggle="modal" data-target="#addpettype">Add Pet Type </button>
-          <a href="<?php echo site_url()?>admin/view_petmedicalrecords" class="btn btn-primary btn-flat btn-sm">View Pet Medical Records</a>
+          <a href="<?php echo site_url()?>admin/pets" class="btn btn-info btn-flat btn-sm" style="border-radius: 15px">View Pet List</a>
+          <a href="<?php echo site_url()?>admin/view_petbreed" class="btn btn-success btn-flat btn-sm" style="border-radius: 15px">View Pet Breed</a>
+          <button class="btn btn-flat btn-warning btn-sm" data-toggle="modal" data-target="#addpettype" style="border-radius: 15px">Add Pet Type </button>
+          <a href="<?php echo site_url()?>admin/view_petmedicalrecords" class="btn btn-primary btn-flat btn-sm" style="border-radius: 15px">View Pet Medical Records</a>
 
   
 

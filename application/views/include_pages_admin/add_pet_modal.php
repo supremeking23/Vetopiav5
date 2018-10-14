@@ -1,6 +1,6 @@
       <div class="modal fade" id="addPet">
         <div class="modal-dialog">
-          <div class="modal-content">
+          <div class="modal-content" style="border-radius: 15px">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span></button>
@@ -22,7 +22,7 @@
 
 
 
-                              <input type="text" name="pet_id" id="pet_id" class="form-control" readonly="">
+                              <input type="text" name="pet_id" id="pet_id" class="form-control" readonly="" style="border-radius: 15px">
                          </div>   
               </div>
               
@@ -35,7 +35,7 @@
                           echo form_label('Customer Name', 'customer_id','class="control-label"');
                           ?>
 
-                           <select name="customer_id" class="form-control select2" required="" style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;">
+                           <select name="customer_id" class="form-control select2" required="" style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;border-radius: 15px">
                                   
                                   <?php foreach($all_customers as $customers):?>
                                     
@@ -69,6 +69,7 @@
                                         'size'          => '',
                                         'required'      => 'required',
                                         'class'         => 'form-control',
+                                        'style'         => 'border-radius:15px',
                                         
                                 );
 
@@ -90,7 +91,7 @@
                           echo form_label('Pet Type', 'pet_type','class="control-label"');
                           ?>
 
-                           <select name="pet_type" class="form-control" required="" >
+                           <select name="pet_type" class="form-control" required="" style="border-radius: 15px">
                                   <option value="">Pet Type</option>
                                   <?php foreach($all_pettype as $pettype):?>
                                     
@@ -113,7 +114,7 @@
                           echo form_label('Pet Breed', 'breed','class="control-label"');
                           ?>
 
-                           <select name="breed" class="form-control select2" required="" style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;">
+                           <select name="breed" class="form-control select2" required="" style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;border-radius: 15px">
                                   
                                 
                             </select>
@@ -135,7 +136,7 @@
 
 
 
-                             <select name="gender" class="form-control">
+                             <select name="gender" class="form-control" style="border-radius: 15px">
                                <option value="Male">Male</option>
                                <option value="Female">Female</option>
                              </select>
@@ -153,7 +154,7 @@
                               echo form_label('Birth Date', 'birthDate','class="control-label"');
                               ?>
 
-                              <input type="date" class="form-control"  value="" name="birthdate" required="">
+                              <input type="date" class="form-control"  value="" name="birthdate" required="" style="border-radius: 15px">
 
                           
                          </div>   
@@ -169,7 +170,7 @@
                               echo form_label('Pet Image', 'upload_image','class="control-label"');
                               ?>
 
-                              <input type="file" class="form-control"  value="" name="upload_image" required="">
+                              <input type="file" class="form-control"  value="" name="upload_image" required="" style="border-radius: 15px">
 
                           
                          </div>   
@@ -183,7 +184,7 @@
            
             </div>
             <div class="modal-footer"> 
-              <button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal" style="border-radius: 15px">Close</button>
               <?php 
 
                       $data = array(
@@ -191,6 +192,7 @@
                         'value' => 'Add',
                         'id' => 'add_pet_btn',
                         'class' => 'btn btn-primary btn-sm btn-flat',
+                        'style' => 'border-radius:15px',
                       );
 
                     echo form_submit($data);?>

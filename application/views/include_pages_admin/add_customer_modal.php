@@ -1,6 +1,6 @@
 <div class="modal fade" id="addCustomer">
         <div class="modal-dialog">
-          <div class="modal-content">
+          <div class="modal-content" style="border-radius: 15px">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span></button>
@@ -22,7 +22,7 @@
 
 
 
-                              <input type="text" name="customer_id" id="customer_id" class="form-control" readonly="">
+                              <input type="text" name="customer_id" id="customer_id" class="form-control" readonly="" style="border-radius: 15px">
                          </div>   
                     </div>
 
@@ -47,6 +47,7 @@
                                         'size'          => '',
                                         'required'      => 'required',
                                         'class'         => 'form-control',
+                                        'style'         => 'border-radius:15px',
                                         
                                 );
 
@@ -76,6 +77,7 @@
                                         'size'          => '',
                                         'required'      => 'required',
                                         'class'         => 'form-control',
+                                        'style'         => 'border-radius:15px',
                                         
                                 );
 
@@ -106,6 +108,7 @@
                                         'size'          => '',
                                         'required'      => 'required',
                                         'class'         => 'form-control',
+                                        'style'         => 'border-radius:15px',
                                         
                                 );
 
@@ -127,7 +130,7 @@
 
 
 
-                             <select name="gender" class="form-control">
+                             <select name="gender" class="form-control" style="border-radius: 15px">
                                <option value="Male">Male</option>
                                <option value="Female">Female</option>
                              </select>
@@ -144,7 +147,7 @@
                               echo form_label('Birth Date', 'birthDate','class="control-label"');
                               ?>
 
-                              <input type="date" id="max_date" class="form-control"  value="" name="birthdate" required="">
+                              <input type="date" id="max_date" class="form-control"  value="" name="birthdate" required="" style="border-radius: 15px">
 
                           
                          </div>   
@@ -172,6 +175,7 @@
                                         'size'          => '',
                                         'required'      => 'required',
                                         'class'         => 'form-control',
+                                        'style'         => 'border-radius:15px',
                                         
                                 );
 
@@ -192,7 +196,7 @@
 
 
                             
-                             <input type="email" name="email" id="email" class="form-control">  
+                             <input type="email" name="email" id="email" class="form-control" style="border-radius: 15px">  
                          </div>   
                     </div>
 
@@ -218,6 +222,7 @@
                                         'size'          => '',
                                         'required'      => 'required',
                                         'class'         => 'form-control',
+                                        'style'         => 'border-radius:15px',
                                         
                                 );
 
@@ -249,6 +254,7 @@
                                         'size'          => '',
                                         'required'      => 'required',
                                         'class'         => 'form-control',
+                                        'style'         => 'border-radius:15px',
                                         
                                 );
 
@@ -280,6 +286,7 @@
                                         'size'          => '',
                                         'required'      => 'required',
                                         'class'         => 'form-control',
+                                        'style'         => 'border-radius:15px',
                                         
                                 );
 
@@ -311,6 +318,7 @@
                                         'size'          => '',
                                         'required'      => 'required',
                                         'class'         => 'form-control',
+                                        'style'         => 'border-radius:15px',
                                         
                                 );
 
@@ -325,7 +333,7 @@
 
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal" >Close</button>
+                  <button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal" style="border-radius: 15px">Close</button>
                   <?php 
 
                       $data = array(
@@ -333,6 +341,7 @@
                         'value' => 'Add',
                         'id' => 'add_admin_btn',
                         'class' => 'btn btn-primary btn-sm btn-flat',
+                        'style'         => 'border-radius:15px',
                       );
 
                     echo form_submit($data);?>

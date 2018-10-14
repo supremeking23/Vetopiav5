@@ -72,7 +72,7 @@
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
-                              <a href="<?php echo site_url()?>customer/pet_details/<?php echo $c_pets->pet_table_id;?>" class="btn btn-flat btn-sm btn-primary btn-block">View Details</a>
+                              <a href="<?php echo site_url()?>customer/pet_details/<?php echo $c_pets->pet_table_id;?>" class="btn btn-flat btn-sm btn-primary btn-block" style="border-radius: 15px;">View Details</a>
                             </div>
                             <!-- /.box-footer-->
                       </div>

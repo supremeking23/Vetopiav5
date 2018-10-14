@@ -18,7 +18,7 @@ class Customer extends CI_Controller {
         //for reading.. retrieving
         $this->load->model('admin_management');
         $this->load->model('customer_management');
-        //$this->load->model('veterinarian_management');
+        $this->load->model('veterinarian_management');
         //$this->load->model('staff_management');
         $this->load->model('appointment_management');
 
@@ -308,6 +308,7 @@ class Customer extends CI_Controller {
 
 
 			$data['time'] = $this->appointment_management->getScheduleTime();
+			$data['all_vets'] = $this->veterinarian_management->get_all_veterinarian_active();
 
 			 $id = $this->session->userdata('user_table_id');
 			 $user_id = $this->session->userdata('user_id');

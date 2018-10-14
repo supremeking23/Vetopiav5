@@ -1,6 +1,6 @@
  <div class="modal fade" id="addService">
         <div class="modal-dialog">
-          <div class="modal-content modal-md">
+          <div class="modal-content modal-md" style="border-radius: 15px">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span></button>
@@ -21,7 +21,7 @@
                               ?>
 
 
-                            <select class="form-control" name="program_for">
+                            <select class="form-control" name="program_for" style="border-radius: 15px">
                               <option value="Dogs">Dogs</option>
                               <option value="Cats">Cats</option>
                               <option value="Kittens">Kittens</option>
@@ -49,6 +49,7 @@
                                         'size'          => '',
                                         'required'      => 'required',
                                         'class'         => 'form-control',
+                                        'style'         => 'border-radius:15px',
                                         
                                 );
 
@@ -71,7 +72,7 @@
                               echo form_label('Program Description', 'program_description','class="control-label"');
                               ?>
 
-                             <textarea class="form-control textareas" name="program_description"></textarea>
+                             <textarea class="form-control textareas" name="program_description" style="border-radius: 15px"></textarea>
 
 
                          </div>   
@@ -89,7 +90,7 @@
                               echo form_label('Price', 'price','class="control-label"');
                               ?>
 
-                            <input type="number" name="price" value="" class="form-control">
+                            <input type="number" name="price" value="" class="form-control" style="border-radius: 15px">
 
 
                          </div>   
@@ -103,7 +104,7 @@
 
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default pull-left" data-dismiss="modal" >Close</button>
+                  <button type="button" class="btn btn-default pull-left btn-sm btn-flat" style="border-radius: 15px" data-dismiss="modal" >Close</button>
                   <?php 
 
                       $data = array(
@@ -111,6 +112,7 @@
                         'value' => 'Add',
                         'id' => 'add_service_btn',
                         'class' => 'btn btn-primary',
+                        'style' => 'border-radius:15px',
                       );
 
                     echo form_submit($data);?>

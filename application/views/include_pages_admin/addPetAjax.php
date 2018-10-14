@@ -1,6 +1,6 @@
         <div class="modal fade" id="addPetAjax">
           <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content" style="border-radius: 15px">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
@@ -27,7 +27,7 @@
 
 
 
-                              <input type="text" name="pet_id" id="pet_id_ajax" class="form-control" readonly="">
+                              <input type="text" name="pet_id" id="pet_id_ajax" class="form-control" readonly="" style="border-radius: 15px">
                          </div>   
                     </div>
                     
@@ -51,6 +51,7 @@
                                         'size'          => '',
                                         'required'      => 'required',
                                         'class'         => 'form-control',
+                                        'style'         => 'border-radius:15px',
                                         
                                 );
 
@@ -68,7 +69,7 @@
                               echo form_label('Pet Type', 'pet_type','class="control-label"');
                               ?>
 
-                               <select name="pet_type" class="form-control" id="pet_type" required="" >
+                               <select name="pet_type" class="form-control" id="pet_type" required="" style="border-radius: 15px">
                                       <option value="">Pet Type</option>
                                       <?php foreach($all_pettype as $pettype):?>
                                         
@@ -89,7 +90,7 @@
                               echo form_label('Pet Breed', 'breed','class="control-label"');
                               ?>
 
-                               <select name="breed" class="form-control select2" id="breed" required="" style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;">
+                               <select name="breed" class="form-control select2" id="breed" required="" style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;border-radius: 15px">
                                       
                                     
                                 </select>
@@ -108,7 +109,7 @@
 
 
 
-                                 <select name="gender" id="gender" class="form-control">
+                                 <select name="gender" id="gender" class="form-control" style="border-radius: 15px">
                                    <option value="Male">Male</option>
                                    <option value="Female">Female</option>
                                  </select>
@@ -123,7 +124,7 @@
                                 echo form_label('Birth Date', 'birthDate','class="control-label"');
                                 ?>
 
-                                <input type="date" class="form-control" id="birthdate"  value="" name="birthdate" required="">
+                                <input type="date" class="form-control" id="birthdate"  value="" name="birthdate" required="" style="border-radius: 15px">
 
                             
                            </div>   
@@ -139,14 +140,14 @@
                                   echo form_label('Pet Image', 'upload_image','class="control-label"');
                                   ?>
 
-                                  <input type="file" class="form-control" id="upload_image" value="" name="upload_image" required="">
+                                  <input type="file" class="form-control" id="upload_image" value="" name="upload_image" required="" style="border-radius: 15px">
 
                                   <input type="hidden" name="customer_table_id" id="customer_table_id" value="<?php echo $_SESSION['customer_table_id']?>">
                              </div>   
                     </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default pull-left btn-flat btn-sm" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-default pull-left btn-flat btn-sm" data-dismiss="modal" style="border-radius: 15px">Close</button>
                    <?php 
 
                       $data = array(
@@ -154,6 +155,7 @@
                         'value' => 'Add',
                         'id' => 'add_pet_btn',
                         'class' => 'btn btn-primary btn-flat btn-sm',
+                        'style' => 'border-radius:15px'
                       );
 
                     echo form_submit($data);?>

@@ -46,7 +46,7 @@
 
       <div class="row">
         <div class="col-md-12">
-          <button class="btn btn-flat btn-info btn-sm" data-toggle="modal" data-target="#addCustomer">Add New Customer</button>
+          <button class="btn btn-flat btn-info btn-sm" data-toggle="modal" data-target="#addCustomer" style="border-radius: 15px">Add New Customer</button>
         </div>
         <!-- /.col -->
       </div>
@@ -101,6 +101,7 @@
                   <th>User ID</th>
                   <th>Name</th>
                   <th>Contact Number</th>
+                  <th>Last Login</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -130,9 +131,14 @@
                       <?php echo $customers->firstname .' '. $customers->middlename .' '. $customers->lastname;?>
                     </td>
                     <td><?php echo $customers->contact;?></td>
-                   
+                    <td><?php $last_login = $this->admin_management->log_last_active($customers->customer_id);
+                        foreach($last_login as $last){
+                                 $date =date_create($last->log_date);
+                             echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                        }
+                    ?></td>
                     <td>
-                    <a href="<?php echo site_url()?>Admin/Customer_details/<?php echo $customers->customer_table_id;?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info">View Full Detail</a>
+                    <a href="<?php echo site_url()?>Admin/Customer_details/<?php echo $customers->customer_table_id;?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info" style="border-radius: 15px">View Full Detail</a>
                       
                     </td>
                </tr>

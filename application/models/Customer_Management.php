@@ -66,6 +66,20 @@ class Customer_Management extends CI_Model {
         return $result_set;
     }
 
+    public function get_all_customer_active(){
+
+        $this->db->select('*');
+        $this->db->from('tbl_customers');
+        
+        $this->db->where('customer_status','Active');
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+    }
+
 
 
     public function count_all_customers(){

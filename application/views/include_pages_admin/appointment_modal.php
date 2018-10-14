@@ -1,7 +1,7 @@
   <!-- add appointment -->
     <div class="modal fade" id="addAppointment">
       <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="border-radius: 15px">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span></button>
@@ -12,7 +12,7 @@
               <div class="modal-body">
                  <div class="form-group">
                   <label for="customerName">Customer Name</label>
-                  <select name="customerName" id="customerName" required="" class="form-control select2" style="width: 100%;">
+                  <select name="customerName" id="customerName" required="" class="form-control select2" style="width: 100%;border-radius: 15px">
                    <option value="">Customer Name</option>
                    <?php foreach($all_customers as $customers):?>
                       <option value="<?php echo $customers->customer_table_id;?>"><?php echo $customers->firstname .' '. $customers->middlename .' '. $customers->lastname;?></option>
@@ -23,14 +23,14 @@
 
                 <div class="form-group">
                   <label for="pets">Pet Name</label>
-                  <select name="pets" id="pets" class="form-control select2" style="width: 100%;">
+                  <select name="pets" id="pets" class="form-control select2" style="width: 100%;border-radius: 15px">
                   
                   </select>
                </div>
 
                <div class="form-group">
                  <label for="veterinarian">Veterinarian</label>
-                  <select name="veterinarian" class="form-control select2" style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;">
+                  <select name="veterinarian" class="form-control select2" style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;border-radius: 15px">
                               <?php foreach($all_vets as $vets):?>
                               <option value="<?php echo $vets->veterinarian_table_id?>"><?php echo $vets->firstname .' '. $vets->middlename .' '. $vets->lastname;?></option>
                             <?php endforeach?>
@@ -39,12 +39,12 @@
 
                   <div class="form-group">
                     <label for="scheduleDate">Date</label>
-                    <input type="date" required="" class="form-control"  name="scheduleDate" id="scheduleDate">
+                    <input type="date" required="" class="form-control"  name="scheduleDate" id="scheduleDate" style="border-radius: 15px">
                   </div>
 
                   <div class="form-group">
                     <label for="scheduleTime">Time</label>
-                   <select name="scheduleTime" required="" class="form-control" required="">
+                   <select name="scheduleTime" required="" class="form-control" required="" style="border-radius: 15px">
                         <?php foreach($time as $t):?>
                           <option value="<?php echo $t->time;?>"> <?php echo $t->time;?></option>
                       <?php endforeach;?>
@@ -56,20 +56,21 @@
                   <label for="complaints" class="">Description / Complaints</label>
 
                   
-                    <textarea required="" class="form-control textareas" id="complaints" name="complaints" placeholder=""></textarea>
+                    <textarea required="" class="form-control textareas" id="complaints" name="complaints" placeholder="" style="border-radius: 15px"></textarea>
                   
                 </div>
 
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal" style=" border-radius: 15px">Close</button>
                  <?php 
 
                       $data = array(
                         'name' => 'submit',
                         'value' => 'Submit',
                         'id' => 'add_appointment',
-                        'class' => 'btn btn-primary btn-sm btn-flat',
+                        'class' => 'btn btn-primary btn-sm btn-flat ',
+                        'style' => 'border-radius: 15px',
                       );
 
                     echo form_submit($data);?>

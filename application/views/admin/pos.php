@@ -256,7 +256,7 @@
                          <div class="thumbnail" style="height: /*370px*/">
                           <img class="product-image img-rounded" src="<?php echo site_url()?>assets/images/products/<?php echo $products->productImage?>" width="100px"  />
                           <div class="caption">
-                            <h5  data-type="<?php echo $products->productType;?>"><?php echo $products->product_name;?><br /><small><?php //echo $products->product_unit;?></small></h5> 
+                            <h2  data-type="<?php echo $products->productType;?>"><small style="color: black"><?php echo $products->product_name;?><br /><?php //echo $products->product_unit;?></small></h2> 
 
                             <div class="row">
                                       <div class="col-md-7">

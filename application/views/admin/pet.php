@@ -46,10 +46,10 @@
 
       <div class="row">
         <div class="col-md-12">
-          <button class="btn btn-flat btn-info btn-sm" data-toggle="modal" data-target="#addPet">Add New Pet</button>
-           <a href="<?php echo site_url()?>admin/view_pettype" class="btn btn-warning btn-flat btn-sm">View Pet Type</a>
-           <a href="<?php echo site_url()?>admin/view_petbreed" class="btn btn-success btn-flat btn-sm">View Pet Breed</a>
-           <a href="<?php echo site_url()?>admin/view_petmedicalrecords" class="btn btn-primary btn-flat btn-sm">View Pet Medical Records</a>
+          <button class="btn btn-flat btn-info btn-sm" data-toggle="modal" data-target="#addPet" style="border-radius: 15px">Add New Pet</button>
+           <a href="<?php echo site_url()?>admin/view_pettype" class="btn btn-warning btn-flat btn-sm" style="border-radius: 15px">View Pet Type</a>
+           <a href="<?php echo site_url()?>admin/view_petbreed" class="btn btn-success btn-flat btn-sm" style="border-radius: 15px">View Pet Breed</a>
+           <a href="<?php echo site_url()?>admin/view_petmedicalrecords" class="btn btn-primary btn-flat btn-sm" style="border-radius: 15px">View Pet Medical Records</a>
           <?php if($this->session->userdata('account_type') == "Super Admin"):?>
            <!--<button class="btn btn-flat btn-warning btn-sm" data-toggle="modal" data-target="#addpetbreed">Pet Breed</button>
            <button class="btn btn-flat btn-success btn-sm" data-toggle="modal" data-target="#petbreed">View Pet Breed</button> -->
@@ -150,7 +150,7 @@
                         <td> <?php echo $pets->firstname .' '. $pets->middlename .' '. $pets->lastname;?></td>
                        
                         <td>
-                        <a href="<?php echo site_url()?>Admin/Pet_details/<?php echo $pets->pet_table_id;?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info">View Full Detail</a>
+                        <a href="<?php echo site_url()?>Admin/Pet_details/<?php echo $pets->pet_table_id;?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info" style="border-radius: 15px">View Full Detail</a>
                           
                         </td>
                      </tr>

@@ -68,7 +68,7 @@
                     <h3 class="box-title"></h3>
                     <!-- tools box -->
                     <div class="pull-right box-tools">
-                     <button type="button" class="btn btn-default btn-sm btn-flat" data-toggle="modal" data-target="#addContent">
+                     <button type="button" class="btn btn-default btn-sm btn-flat" data-toggle="modal" data-target="#addContent" style="border-radius: 15px">
                     <i class="fa fa-plus"></i></button>
                     </div>
                 <!-- /. tools -->
@@ -76,12 +76,12 @@
                 <div class="box-body">
                    <?php foreach($find_article_contents as $fac):?>
                    <p><?php echo $fac->article_contents?>
-                     <button type="button" class="btn btn-success btn-sm btn-flat" data-toggle="modal" data-target="#changeContent<?php echo $fac->content_id?>" data-tooltip="tooltip" data-title="Change Content"><i class="fa fa-pencil"></i></button>|<button type="button" class="btn btn-danger btn-sm btn-flat" data-toggle="modal" data-tooltip="tooltip" data-title="Delete Content" data-target="#remove_content<?php echo $fac->content_id;?>"><i class="fa fa-trash"></i></button>
+                     <button type="button" class="btn btn-success btn-sm btn-flat" data-toggle="modal" data-target="#changeContent<?php echo $fac->content_id?>" data-tooltip="tooltip" data-title="Change Content" style="border-radius: 15px"><i class="fa fa-pencil"></i></button>|<button type="button" class="btn btn-danger btn-sm btn-flat" data-toggle="modal" data-tooltip="tooltip" data-title="Delete Content" data-target="#remove_content<?php echo $fac->content_id;?>" style="border-radius: 15px"><i class="fa fa-trash"></i></button>
                    </p>
 
                   <div class="modal fade" id="changeContent<?php echo $fac->content_id?>">
                     <div class="modal-dialog">
-                      <div class="modal-content">
+                      <div class="modal-content" style="border-radius: 15px">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span></button>
@@ -117,7 +117,7 @@
                              
                         </div>
                               <div class="modal-footer">
-                                <button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal" style="border-radius: 15px">Close</button>
                                 <?php 
 
                                         $data = array(
@@ -125,6 +125,7 @@
                                           'value' => 'Save',
                                           'id' => 'save_content',
                                           'class' => 'btn btn-primary btn-sm btn-flat',
+                                          'style' => 'border-radius:15px',
                                         );
 
                                       echo form_submit($data);?>
@@ -140,7 +141,7 @@
 
                   <div class="modal fade" id="remove_content<?php echo $fac->content_id;?>">
                     <div class="modal-dialog">
-                      <div class="modal-content">
+                      <div class="modal-content" style="border-radius: 15px">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span></button>
@@ -246,11 +247,11 @@
                     <!-- /.modal -->
                     <hr >
 
-                    <h3 class="text-center">Related Article <button type="button" class="btn btn-sm btn-flat btn-default" data-tooltip="tooltip" data-title="Add Related Article" data-toggle="modal" data-target="#addRelatedArticle"><i class="fa fa-plus"></i></button></h3>
+                    <h3 class="text-center">Related Article <button type="button" class="btn btn-sm btn-flat btn-default" data-tooltip="tooltip" data-title="Add Related Article" data-toggle="modal" data-target="#addRelatedArticle" style="border-radius: 15px"><i class="fa fa-plus"></i></button></h3>
 
                             <div class="modal fade" id="addRelatedArticle">
                               <div class="modal-dialog">
-                                <div class="modal-content">
+                                <div class="modal-content" style="border-radius: 15px">
                                   <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       <span aria-hidden="true">&times;</span></button>
@@ -267,7 +268,7 @@
                                          <div class="success-success_add_related_article"></div> 
                                       </div>                                      
                                             
-                                            <select name="related_library_id[]" id="related_library_id" class="form-control select2" multiple required style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto; ">
+                                            <select name="related_library_id[]" id="related_library_id" class="form-control select2" multiple required style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto; border-radius: 15px">
                                               
                                               <?php foreach($articles as $a):?>
                                                 <option class="blacks" value="<?php echo $a->library_id?>"><?php echo $a->title;?></option>
@@ -278,7 +279,7 @@
                                     <input type="hidden" id="library_id" name="library_id" value="<?php echo $library_id?>">
                                     <input type="hidden" name="article_title" id="article_title" value="<?php echo $article_title?>">
                                    
-                                    <button type="button" class="btn btn-default btn-flat btn-sm pull-left" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-default btn-flat btn-sm pull-left" data-dismiss="modal" style="border-radius: 15px">Close</button>
                                      <?php 
 
                                                     $data = array(
@@ -286,6 +287,7 @@
                                                       'value' => 'Add',
                                                       'id' => 'add_related_article',
                                                       'class' => 'btn btn-primary btn-sm btn-flat',
+                                                      'style' => 'border-radius:15px',
                                                     );
 
                                                   echo form_submit($data);?>                                   
@@ -326,7 +328,7 @@
 
                 <div class="modal fade" id="addContent">
                   <div class="modal-dialog">
-                    <div class="modal-content">
+                    <div class="modal-content" style="border-radius: 15px">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span></button>
@@ -398,19 +400,19 @@
                     <h3 class="box-title">Want to read more ? Visit these link(s) below</h3>
                     <!-- tools box -->
                     <div class="pull-right box-tools">
-                     <button type="button" class="btn btn-default btn-sm btn-flat" data-toggle="modal" data-target="#addLink" data-tooltip="tooltip" data-title="Add Link">
+                     <button type="button" class="btn btn-default btn-sm btn-flat" data-toggle="modal" data-target="#addLink" data-tooltip="tooltip" data-title="Add Link" style="border-radius: 15px">
                     <i class="fa fa-plus"></i></button>
                     </div>
                     <!-- /. tools -->
                 </div>
                 <div class="box-body">
                   <?php foreach($find_article_links as $fal):?>
-                      <p><a href="<?php echo $fal->web_link?>"><?php echo $fal->web_link?></a><button type="button" class="btn btn-danger btn-sm btn-flat " data-toggle="modal" data-target="#remove_link<?php echo $fal->links_id?>"><i class="fa fa-trash"></i></button></p>
+                      <p><a href="<?php echo $fal->web_link?>"><?php echo $fal->web_link?></a><button type="button" class="btn btn-danger btn-sm btn-flat " data-toggle="modal" data-target="#remove_link<?php echo $fal->links_id?>" style="border-radius: 15px"><i class="fa fa-trash"></i></button></p>
 
 
                         <div class="modal fade" id="remove_link<?php echo $fal->links_id?>">
                           <div class="modal-dialog">
-                            <div class="modal-content">
+                            <div class="modal-content" style="border-radius: 15px">
                               <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span></button>
@@ -434,8 +436,8 @@
                                 <div class="confirmation_content"><p>Do you want to delete this link ?</p></div>
                               </div>
                               <div class="modal-footer">
-                                <button type="button" class="btn btn-default pull-left btn-flat btn-sm" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-danger btn-sm btn-flat remove-link" id="<?php echo $fal->links_id?>" data-articletitle="<?php echo  $article_title;?>">Remove Links</button>
+                                <button type="button" class="btn btn-default pull-left btn-flat btn-sm" data-dismiss="modal" style="border-radius: 15px">Close</button>
+                                <button type="button" class="btn btn-danger btn-sm btn-flat remove-link" id="<?php echo $fal->links_id?>" data-articletitle="<?php echo  $article_title;?>" style="border-radius: 15px">Remove Links</button>
                               </div>
                             </div>
                             <!-- /.modal-content -->
@@ -458,7 +460,7 @@
               
               <div class="modal fade" id="addLink">
                 <div class="modal-dialog">
-                  <div class="modal-content">
+                  <div class="modal-content" style="border-radius: 15px">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
@@ -482,7 +484,7 @@
                                       echo form_label('Web Link', 'link','class="control-label"');
                                       ?>
 
-                                     <input type="text" name="link" id="link" class="form-control">
+                                     <input type="text" name="link" id="link" class="form-control" style="border-radius: 15px">
                                  </div>   
                          </div>
 
@@ -495,7 +497,7 @@
                           <input type="hidden" id="library_id" name="library_id" value="<?php echo $library_id?>">
                           <input type="hidden" name="article_title" id="article_title" value="<?php echo $article_title?>">
                          
-                          <button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-default pull-left btn-sm btn-flat" style="border-radius: 15px" data-dismiss="modal">Close</button>
                            <?php 
 
                                           $data = array(
@@ -503,6 +505,7 @@
                                             'value' => 'Save',
                                             'id' => 'save',
                                             'class' => 'btn btn-primary btn-sm btn-flat',
+                                            'style' => 'border-radius:15px',
                                           );
 
                                         echo form_submit($data);?>

@@ -17,7 +17,7 @@
                         <label for="adminID" class="col-sm-2 control-label">Admin ID</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" value="<?php echo $a_details->admin_id;?>" name="admin_id" placeholder="Admin ID" id="admin_id" readonly="">
+                          <input type="text" class="form-control" value="<?php echo $a_details->admin_id;?>" name="admin_id" placeholder="Admin ID" id="admin_id" readonly="" style="border-radius: 15px">
                         </div>
                       </div>
 
@@ -25,21 +25,21 @@
                         <label for="firstName" class="col-sm-2 control-label">First Name</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" value="<?php echo $a_details->firstname;?>" name="firstname" placeholder="First Name">
+                          <input type="text" class="form-control" value="<?php echo $a_details->firstname;?>" name="firstname" placeholder="First Name" style="border-radius: 15px">
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="middleName" class="col-sm-2 control-label">Middle Name</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" value="<?php echo $a_details->middlename;?>" name="middlename" placeholder="Middle Name">
+                          <input type="text" class="form-control" value="<?php echo $a_details->middlename;?>" name="middlename" placeholder="Middle Name" style="border-radius: 15px">
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="lastName" class="col-sm-2 control-label">Last Name</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" value="<?php echo $a_details->lastname;?>" name="lastname" placeholder="Last Name">
+                          <input type="text" class="form-control" value="<?php echo $a_details->lastname;?>" name="lastname" placeholder="Last Name" style="border-radius: 15px">
                         </div>
                       </div>
 
@@ -57,7 +57,7 @@
                             ?>
 
                       <?php //parameters(attribute name , options,selected option,added attibute ex:class,required)?>
-                             <?php echo form_dropdown('gender',$option,$a_details->gender,'class="form-control" required');?>
+                             <?php echo form_dropdown('gender',$option,$a_details->gender,'class="form-control" required style="border-radius:15px"');?>
                         </div>
                       </div>
                       
@@ -65,7 +65,7 @@
                         <label for="birthDate" class="col-sm-2 control-label">Birth Date</label>
 
                         <div class="col-sm-10">
-                          <input type="date" class="form-control" value="<?php echo $a_details->birthdate;?>" name="birthdate" >
+                          <input type="date" class="form-control" value="<?php echo $a_details->birthdate;?>" name="birthdate" style="border-radius: 15px">
                         </div>
                       </div>
 
@@ -74,7 +74,7 @@
                         <label for="contact" class="col-sm-2 control-label">Contact Number</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" value="<?php echo $a_details->contact;?>" name="contact" placeholder="Contact Number">
+                          <input type="text" class="form-control" value="<?php echo $a_details->contact;?>" name="contact" placeholder="Contact Number" style="border-radius: 15px">
                         </div>
                       </div>
 
@@ -82,7 +82,7 @@
                         <label for="email" class="col-sm-2 control-label">Email</label>
 
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" value="<?php echo $a_details->email;?>" name="email" placeholder="Email">
+                          <input type="email" class="form-control" value="<?php echo $a_details->email;?>" name="email" placeholder="Email" style="border-radius: 15px">
                         </div>
                       </div>                     
                       
@@ -90,7 +90,7 @@
                         <label for="homeAddress" class="col-sm-2 control-label">Home Address</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" value="<?php echo $a_details->homeAddress;?>" name="homeAddress" placeholder="Home Address">
+                          <input type="text" class="form-control" value="<?php echo $a_details->homeAddress;?>" name="homeAddress" placeholder="Home Address" style="border-radius: 15px">
                         </div>
                       </div>
 
@@ -100,7 +100,7 @@
                         <label for="barangayAddress" class="col-sm-2 control-label">Barangay Address</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" value="<?php echo $a_details->barangayAddress;?>" name="barangayAddress"  placeholder="Barangay Address">
+                          <input type="text" class="form-control" value="<?php echo $a_details->barangayAddress;?>" name="barangayAddress"  placeholder="Barangay Address" style="border-radius: 15px">
                         </div>
                       </div>
 
@@ -109,7 +109,7 @@
                         <label for="cityAddress" class="col-sm-2 control-label">City Address</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" value="<?php echo $a_details->cityAddress;?>" name="cityAddress" placeholder="City Address">
+                          <input type="text" class="form-control" value="<?php echo $a_details->cityAddress;?>" name="cityAddress" placeholder="City Address" style="border-radius: 15px">
                         </div>
                       </div>
 
@@ -118,7 +118,7 @@
                         <label for="postalID" class="col-sm-2 control-label">Zip Code</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" value="<?php echo $a_details->postalID;?>" name="postalID" placeholder="Zip Code">
+                          <input type="text" class="form-control" value="<?php echo $a_details->postalID;?>" name="postalID" placeholder="Zip Code"style="border-radius: 15px">
                         </div>
                       </div>
 
@@ -137,7 +137,7 @@
                         <label for="username" class="col-sm-2 control-label">Username</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" value="<?php echo $username;?>" name="username" placeholder="Username">
+                          <input type="text" class="form-control" value="<?php echo $username;?>" name="username" placeholder="Username" style="border-radius: 15px">
                         </div>
                       </div>
 
@@ -146,7 +146,7 @@
                         <label for="password" class="col-sm-2 control-label">Password</label>
 
                         <div class="col-sm-10">
-                          <input type="password" id="password" class="form-control " value="<?php echo $password;?>" name="password" placeholder="Password">
+                          <input type="password" id="password" class="form-control " value="<?php echo $password;?>" name="password" placeholder="Password" style="border-radius: 15px">
                           <br/>
                            <button class="btn btn-sm btn-warning btn-flat" id="showPass" type="button"><span id="maskMark"><b>show</b></span></button>
                         </div>

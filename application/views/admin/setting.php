@@ -21,7 +21,10 @@
   $cellphone = $t_color->cellphone;
   $max_product_count = $t_color->max_product_count;
   $checkup_fee = $t_color->checkup_fee;
-
+  $logo = $t_color->system_logo;
+  $tin_number = $t_color->tin_number;
+  $markup = $t_color->markup_percentage;
+  $markup_percentage = $markup * 100;
 
    $box_color = "";
 
@@ -110,7 +113,7 @@
 
 
         <div class="row">
-          <div class="col-lg-12 col-xs-12">
+          <div class="col-lg-9 col-xs-12">
             <div class="box box-solid <?php echo $box_color;?>">
               <div class="box-header with-border">
                 <h3 class="box-title">Theme Color Configuration</h3>
@@ -152,6 +155,62 @@
 
                        
                 </form>
+              
+
+              </div>
+              <!-- ./box-body -->
+              <div class="box-footer">
+              
+              </div>
+              <!-- /.box-footer -->
+            </div>
+            <!-- /.box -->
+          </div>
+          <div class="col-lg-3 col-xs-12">
+            <div class="box box-solid <?php echo $box_color;?>">
+              <div class="box-header with-border">
+                <h3 class="box-title">Clinic Logo</h3>
+                 <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="">
+                      <i class="fa fa-minus"></i></button>
+                    
+                  </div>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body ">
+                 <center><a href="#" role="button" data-toggle="modal" data-target="#changeLogo"><img src="<?php echo site_url()?>assets/site_images/<?php echo $logo;?>" class="img img-circle img-rounded" height="130" width="200"></a></center>
+                <div class="modal fade" id="changeLogo">
+                  <div class="modal-dialog">
+                    <div class="modal-content" style="border-radius: 15px">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title text-center">Chnange Logo</h4>
+                      </div>
+
+                      <form action="" method="POST" id="changeLogoForm">
+                        <div class="modal-body">
+
+                         <div class="alert alert-success display-success-logo" style="display: none">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                             <div class="success-message-logo"></div> 
+                          </div>                          
+
+                          <input type="file" name="logo" id="logo" value="" class="form-control" style="border-radius: 15px">
+                           <input type="hidden" name="settings_id" value="1" id="settings_id">
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default pull-left btn-flat btn-sm " style="border-radius: 15px" data-dismiss="modal">Close</button>
+                          <input type="submit" class="btn btn-primary btn-flat btn-sm" style="border-radius: 15px" name="submit" id="submit" value="Save changes">
+                        </div>
+                      </form>
+
+                    </div>
+                    <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->                
               
 
               </div>
@@ -260,9 +319,18 @@
 
                         <input type="number" id="vet_fee" name="vet_fee" class="form-control" value="<?php echo $vet_fee;?>">
 
+                        <br />
+                        <?php echo form_label('Tin Number', 'tin_number','class="control-label"');?>
 
+                        <input type="text" name="tin_number" id="tin_number" class="form-control" value="<?php echo $tin_number;?>">
+
+                        <br />
                       
+                        <?php echo form_label('Markup Percentage: %', 'markup_percentage','class="control-label"');?>
 
+                        <input type="text" name="markup_percentage" id="markup_percentage" class="form-control" value="<?php echo $markup_percentage;?>">
+
+                     
 
                         <?php //echo form_label('Checkup Fee', 'checkup_fee','class="control-label"');?>
 
@@ -271,9 +339,9 @@
 
                         <br >
 
-                        <?php echo form_label('Maximum Product Count', 'max_product_count','class="control-label"');?>
+                        <?php //echo form_label('Maximum Product Count', 'max_product_count','class="control-label"');?>
 
-                        <input type="number" id="max_product_count" name="max_product_count" class="form-control" value="<?php echo $max_product_count;?>">
+                        <input type="hidden" id="max_product_count" name="max_product_count" class="form-control" value="<?php echo $max_product_count;?>">
                        
 
                           <input type="hidden" name="settings_id" value="1" id="settings_id">
@@ -586,6 +654,29 @@
            }, 2000);
     }
 
+
+    $("#changeLogoForm").submit(function(event){
+      event.preventDefault();
+
+      var formData = new FormData(this);
+
+      $.ajax({
+        method : 'POST',
+        url: '<?php echo site_url()?>settings/change_logo',
+        data: formData,
+        //dataType: 'json',
+        contentType: false,
+        cache: false,
+        processData:false,
+        success:function(data){
+            $(".display-success-logo").css("display","block");
+           /// $(".display-error").css("display","none");
+            $(".success-message-logo").html("<p>Clinic logo has been updated successfully </p>");
+            reload();
+        },
+      });      
+
+    });
 
     $("#formStoreInformation").submit(function(event){
       event.preventDefault();

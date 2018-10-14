@@ -128,12 +128,17 @@ class Inventory extends CI_Controller {
 	        $get_vat = $this->settings_model->get_all_settings_detail_by_settings_id(1);
 	        foreach($get_vat as $g_vat){
 	        	$tax = $g_vat->vat;
+	        	$markup_percentage= $g_vat->markup_percentage;
+
 	        }
 
 	        //ito ung idadagdag sa price
-	        $vat =  $this->input->post('price') * $tax;
+	        /*$vat =  $this->input->post('price') * $tax;
+	        $store_price = $this->input->post('price') + $vat;*/
+	        $markup = $this->input->post('price') * $markup_percentage;
+	        $store_price =  $this->input->post('price') + $markup;
 
-	        $store_price = $this->input->post('price') + $vat;
+
 		 	//add to productitem table
             $data = array(
             'item_id' => $this->input->post('item_id'),
@@ -146,6 +151,7 @@ class Inventory extends CI_Controller {
 
             'supplier' => $this->input->post('supplier'),
             'store_price' => $store_price,
+            'max_product_count' => $this->input->post('max_product_count'),
             );
 
             $this->inventory_management->insert_new_item($data);
@@ -173,6 +179,7 @@ class Inventory extends CI_Controller {
             	'productImage' => $image,
             	'product_price' => $this->input->post('price'),
             	'store_price' => $store_price,
+            	'max_product_count' => $this->input->post('max_product_count'),
             );
 
 
@@ -224,6 +231,14 @@ class Inventory extends CI_Controller {
 		//echo "uri " . $product_table_id = $this->input->post('product_table_id');
 
 		echo "uri " . $item_table_id = $this->input->post('item_table_id');
+
+		$needed_product = $this->input->post('needed_product');
+
+		if($added_supply > $needed_product){
+			$this->session->set_flashdata('add_product_supply_failed','Added supply is higher than the needed supply');
+			redirect('Admin/Items');
+			exit;
+		}
 
 		//search for product in tbl_products product relation id
 		$productSupplyLeft = $this->inventory_management->get_product_count_by_product_id($product_table_id);
@@ -367,18 +382,28 @@ class Inventory extends CI_Controller {
 
 		$item_table_id =  $this->input->post('item_table_id');
 		$item_id = $this->input->post('item_id');
+		$max_product_count = $this->input->post('max_product_count');
 
 		$price = $this->input->post('price');
 
         $get_vat = $this->settings_model->get_all_settings_detail_by_settings_id(1);
         foreach($get_vat as $g_vat){
         	$tax = $g_vat->vat;
+        	$markup_percentage= $g_vat->markup_percentage;
+
         }
 
         //ito ung idadagdag sa price
-        $vat =  $this->input->post('price') * $tax;
+       /* $vat =  $this->input->post('price') * $tax;
+        $store_price = $this->input->post('price') + $vat;*/
+        $markup = $this->input->post('price') * $markup_percentage;
+        $store_price =  $this->input->post('price') + $markup;
+        $productInStore = $this->input->post('productInStore');
 
-        $store_price = $this->input->post('price') + $vat;
+        if($productInStore > $max_product_count){
+       	$this->session->set_flashdata('update_product_failed','Failed to update product Information');
+        redirect('Admin/Item_details/'.$item_table_id);
+        }
 
 
 		$data = array(
@@ -389,6 +414,7 @@ class Inventory extends CI_Controller {
             'price' => $this->input->post('price'),
             'supplier' => $this->input->post('supplier'),
     		'store_price' => $store_price,
+    		'max_product_count' => $max_product_count,
 
         );
 
@@ -402,6 +428,7 @@ class Inventory extends CI_Controller {
         	'product_name' =>$this->input->post('itemname'),
         	'product_price' => $this->input->post('price'),
         	'store_price' => $store_price,
+        	'max_product_count' => $max_product_count,
         );
 
 
@@ -491,12 +518,14 @@ class Inventory extends CI_Controller {
 	        $get_vat = $this->settings_model->get_all_settings_detail_by_settings_id(1);
 	        foreach($get_vat as $g_vat){
 	        	$tax = $g_vat->vat;
+	        	$markup_percentage = $g_vat->markup_percentage;
 	        }
 
 	        //ito ung idadagdag sa price
-	        $vat =  $this->input->post('price') * $tax;
-
-	        $store_price = $this->input->post('price') + $vat;
+	        /*$vat =  $this->input->post('price') * $tax;
+	        $store_price = $this->input->post('price') + $vat;*/
+	        $markup = $this->input->post('price') * $markup_percentage;
+            $store_price =  $this->input->post('price') + $markup;
 
 	        $product_unit = $this->input->post('product_unit');
 	        $product_unit_number = $this->input->post('product_unit_number');
@@ -523,6 +552,7 @@ class Inventory extends CI_Controller {
             'product_unit_number' => $product_unit_number,
             'product_unit_measure' => $product_unit,
             'store_price' => $store_price,
+            'max_product_count' => $this->input->post('max_product_count'),
             );
 
             $this->inventory_management->insert_new_food($data);
@@ -551,6 +581,7 @@ class Inventory extends CI_Controller {
             	'product_price' => $this->input->post('price'),
             	'product_unit' => $product_unit_with_number,
             	'store_price' => $store_price,
+            	'max_product_count' => $this->input->post('max_product_count'),
             );
 
 
@@ -605,6 +636,15 @@ class Inventory extends CI_Controller {
 		//echo "uri " . $product_table_id = $this->input->post('product_table_id');
 
 		echo "uri " . $item_table_id = $this->input->post('item_table_id');
+
+
+		$needed_product = $this->input->post('needed_product');
+
+		if($added_supply > $needed_product){
+			$this->session->set_flashdata('add_product_supply_failed','Added supply is higher than the needed supply');
+			redirect('Admin/Foods');
+			exit;
+		}
 
 		//search for product in tbl_products product relation id
 		$productSupplyLeft = $this->inventory_management->get_product_count_by_product_id_in_foods($product_table_id);
@@ -749,18 +789,25 @@ class Inventory extends CI_Controller {
 
 		$food_table_id =  $this->input->post('food_table_id');
 		$food_id =  $this->input->post('food_id');
+		$max_product_count =  $this->input->post('max_product_count');
 
 		 $price = $this->input->post('price');
 
 	    $get_vat = $this->settings_model->get_all_settings_detail_by_settings_id(1);
 	    foreach($get_vat as $g_vat){
 	        	$tax = $g_vat->vat;
+	        	$markup_percentage = $g_vat->markup_percentage;
 	    }
 
 			//ito ung idadagdag sa price
-	    $vat =  $this->input->post('price') * $tax;
+        $markup = $this->input->post('price') * $markup_percentage;
+        $store_price =  $this->input->post('price') + $markup;
+        $productInStore = $this->input->post('productInStore');
 
-	    $store_price = $this->input->post('price') + $vat;
+        if($productInStore > $max_product_count){
+       	$this->session->set_flashdata('update_product_failed','Failed to update product Information');
+        redirect('Admin/Food_details/'.$food_table_id);
+        }
 
 	    $product_unit = $this->input->post('product_unit');
 	    $product_unit_number = $this->input->post('product_unit_number');
@@ -780,6 +827,7 @@ class Inventory extends CI_Controller {
             'product_unit_number' => $product_unit_number,
             'product_unit_measure' => $product_unit,
             'store_price' => $store_price,
+            'max_product_count' => $max_product_count,
         );
 
 
@@ -794,6 +842,7 @@ class Inventory extends CI_Controller {
     	     'store_price' => $store_price,
         	 'product_name' =>$this->input->post('foodname'),
              'product_price' => $this->input->post('price'),
+             'max_product_count' => $max_product_count,
 
         );
 
@@ -873,12 +922,15 @@ class Inventory extends CI_Controller {
 	        $get_vat = $this->settings_model->get_all_settings_detail_by_settings_id(1);
 	        foreach($get_vat as $g_vat){
 	        	$tax = $g_vat->vat;
+	        	$markup_percentage = $g_vat->markup_percentage;
 	        }
 
-	        //ito ung idadagdag sa price
-	        $vat =  $this->input->post('price') * $tax;
+	       	$markup = $this->input->post('price') * $markup_percentage;
+            $store_price =  $this->input->post('price') + $markup;
 
-	        $store_price = $this->input->post('price') + $vat;
+	        //ito ung idadagdag sa price
+	        /*$vat =  $this->input->post('price') * $tax;
+	        $store_price = $this->input->post('price') + $vat;*/
 
 	        $product_unit = $this->input->post('product_unit');
 	        $product_unit_number = $this->input->post('product_unit_number');
@@ -901,6 +953,7 @@ class Inventory extends CI_Controller {
             'product_unit_number' => $product_unit_number,
             'product_unit_measure' => $product_unit,
             'product_unit' => $product_unit_with_number,
+            'max_product_count' =>$this->input->post('max_product_count'),
 
             );
 
@@ -930,6 +983,7 @@ class Inventory extends CI_Controller {
             	'product_price' => $this->input->post('price'),
             	'store_price' => $store_price,
             	'product_unit' => $product_unit_with_number,
+            	'max_product_count' =>$this->input->post('max_product_count'),
             );
 
 
@@ -981,6 +1035,15 @@ class Inventory extends CI_Controller {
 		//echo "uri " . $product_table_id = $this->input->post('product_table_id');
 
 		echo "uri " . $med_table_id = $this->input->post('med_table_id');
+
+
+		$needed_product = $this->input->post('needed_product');
+
+		if($added_supply > $needed_product){
+			$this->session->set_flashdata('add_product_supply_failed','Added supply is higher than the needed supply');
+			redirect('Admin/Medicines');
+			exit;
+		}
 
 		//search for product in tbl_products product relation id
 		$productSupplyLeft = $this->inventory_management->get_product_count_by_product_id_in_medicine($product_table_id);
@@ -1124,6 +1187,7 @@ class Inventory extends CI_Controller {
 
 		$med_table_id =  $this->input->post('med_table_id');
 		$med_id =  $this->input->post('med_id');
+		$max_product_count = $this->input->post('max_product_count');
 
 
 		$price = $this->input->post('price');
@@ -1131,12 +1195,30 @@ class Inventory extends CI_Controller {
         $get_vat = $this->settings_model->get_all_settings_detail_by_settings_id(1);
         foreach($get_vat as $g_vat){
         	$tax = $g_vat->vat;
+        	$markup_percentage = $g_vat->markup_percentage;
         }
 
         //ito ung idadagdag sa price
-        $vat =  $this->input->post('price') * $tax;
+        /*$vat =  $this->input->post('price') * $tax;
+        $store_price = $this->input->post('price') + $vat;*/
 
-        $store_price = $this->input->post('price') + $vat;
+
+        
+        $markup = $this->input->post('price') * $markup_percentage;
+        $store_price =  $this->input->post('price') + $markup;
+        $productInStore = $this->input->post('productInStore');
+
+        if($productInStore > $max_product_count){
+       	$this->session->set_flashdata('update_product_failed','Failed to update product Information');
+        redirect('Admin/Medicine_details/'.$med_table_id);
+        }
+
+	    $product_unit = $this->input->post('product_unit');
+	    $product_unit_number = $this->input->post('product_unit_number');
+	    $product_unit_with_number = $product_unit_number .' ('.$product_unit .') ';
+        
+
+
         $product_unit_with_number = $product_unit_number .' ('.$product_unit .') ';
 		$data = array(
 
@@ -1150,6 +1232,7 @@ class Inventory extends CI_Controller {
             'product_unit_number' => $product_unit_number,
             'product_unit_measure' => $product_unit,
             'product_unit' => $product_unit_with_number,
+            'max_product_count' => $max_product_count,
 
         );
 
@@ -1163,6 +1246,7 @@ class Inventory extends CI_Controller {
              'product_price' => $this->input->post('price'),
              'store_price' => $store_price,
              'product_unit' => $product_unit_with_number,
+             'max_product_count' => $max_product_count,
         );
 
         $this->inventory_management->update_medicine_details_from_tblproducts($med_id,$data2);

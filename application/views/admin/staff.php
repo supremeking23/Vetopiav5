@@ -46,7 +46,7 @@
       <div class="row">
         <div class="col-md-12">
          
-          <button class="btn btn-flat btn-info btn-sm" data-toggle="modal" data-target="#addStaff">Add New Staff</button>
+          <button class="btn btn-flat btn-info btn-sm" data-toggle="modal" data-target="#addStaff" style="border-radius: 15px">Add New Staff</button>
         </div>
         <!-- /.col -->
       </div>
@@ -106,6 +106,7 @@
                   <th>User ID</th>
                   <th>Name</th>
                   <th>Contact Number</th>
+                  <th>Last Login</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -135,9 +136,16 @@
                       <?php echo $staffs->firstname .' '. $staffs->middlename .' '. $staffs->lastname;?>
                     </td>
                     <td><?php echo $staffs->contact;?></td>
+
+                    <td><?php $last_login = $this->admin_management->log_last_active($staffs->staff_id);
+                        foreach($last_login as $last){
+                                 $date =date_create($last->log_date);
+                             echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                        }
+                    ?></td>
                    
                     <td>
-                    <a href="<?php echo site_url()?>Admin/Staff_details/<?php echo $staffs->staff_table_id;?>"   class="btn btn-sm btn-flat btn-info">View Full Detail</a>
+                    <a href="<?php echo site_url()?>Admin/Staff_details/<?php echo $staffs->staff_table_id;?>"   class="btn btn-sm btn-flat btn-info" style="border-radius: 15px">View Full Detail</a>
                       
                     </td>
                </tr>

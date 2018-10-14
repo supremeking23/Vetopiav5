@@ -17,7 +17,7 @@
                         <label for="customerID" class="col-sm-2 control-label">Product ID</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" value="<?php echo $f_details->food_id;?>" name="product_id" placeholder="Product ID" readonly="">
+                          <input type="text" class="form-control" value="<?php echo $f_details->food_id;?>" name="product_id" placeholder="Product ID" readonly="" style="border-radius: 15px">
                         </div>
                       </div>
 
@@ -25,7 +25,7 @@
                         <label for="foodname" class="col-sm-2 control-label">Food Name</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" value="<?php echo $f_details->foodname;?>" name="foodname" placeholder="Food Name">
+                          <input type="text" class="form-control" value="<?php echo $f_details->foodname;?>" name="foodname" placeholder="Food Name" style="border-radius: 15px">
                         </div>
                       </div>
 
@@ -47,16 +47,25 @@
                         <label for="fooddescription" class="col-sm-2 control-label">Food Description</label>
 
                         <div class="col-sm-10">
-                         <textarea class="form-control textareas" name="fooddescription"><?php echo $f_details->fooddescription;?></textarea>
+                         <textarea class="form-control textareas" name="fooddescription" style="border-radius: 15px"><?php echo $f_details->fooddescription;?></textarea>
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="price" class="col-sm-2 control-label">Product base price</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" value="<?php echo $f_details->price;?>" name="price" placeholder="Price">
+                          <input type="text" class="form-control" value="<?php echo $f_details->price;?>" name="price" placeholder="Price" style="border-radius: 15px">
                         </div>
                       </div>
+
+                      <div class="form-group">
+                        <label for="price" class="col-sm-2 control-label">Maximum Product Count</label>
+
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" value="<?php echo $f_details->max_product_count;?>" name="max_product_count" placeholder="max_product_count" style="border-radius: 15px">
+                          <input type="hidden" name="productInStore" value="<?php echo $f_details->productInStore;?>">
+                        </div>
+                      </div>   
 
                       <div class="form-group">
                               <?php 
@@ -65,9 +74,9 @@
                               ?>
                                <div class="col-sm-10">
                                   <div class="input-group">
-                                    <input type="text" name="product_unit_number" id="product_unit_number" value="<?php echo $f_details->product_unit_number;?>" class="form-control" required pattern="[+-]?([0-9]*[.])?[0-9]+" /> 
+                                    <input type="text" name="product_unit_number" id="product_unit_number" value="<?php echo $f_details->product_unit_number;?>" class="form-control" required pattern="[+-]?([0-9]*[.])?[0-9]+" style="border-radius: 15px" /> 
                                     <span class="input-group-addon">
-                                      <select name="product_unit" id="product_unit" required="">
+                                      <select name="product_unit" id="product_unit" required="" style="border-radius: 15px">
                                             <option value="">Select Unit</option>
                                             <option value="MilliGrams" <?php if($f_details->product_unit_measure == "MilliGrams"){echo "selected";} ?> >MilliGrams</option>
                                             <option value="MilliLiters" <?php if($f_details->product_unit_measure == "MilliLiters"){echo "selected";} ?>>MilliLiters</option>
@@ -97,7 +106,7 @@
                         <label for="supplier" class="col-sm-2 control-label">Supplier Name</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" value="<?php echo $f_details->supplier;?>" name="supplier" placeholder="Supplier Name">
+                          <input type="text" class="form-control" value="<?php echo $f_details->supplier;?>" name="supplier" placeholder="Supplier Name" style="border-radius: 15px">
                         </div>
                       </div>
 
@@ -113,7 +122,7 @@
                       <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
 
-                          <button type="submit" class="btn btn-danger">Submit</button>
+                          <button type="submit" class="btn btn-danger btn-sm  btn-flat" style="border-radius: 15px">Submit</button>
                         </div>
                       </div>
                     </form>

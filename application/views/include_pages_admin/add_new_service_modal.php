@@ -1,6 +1,6 @@
  <div class="modal fade" id="addService">
         <div class="modal-dialog">
-          <div class="modal-content modal-md">
+          <div class="modal-content modal-md" style="border-radius: 15px">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span></button>
@@ -28,7 +28,7 @@
                               ?>
 
 
-                            <select class="form-control" name="for_what_pet" id="for_what_pet" required="">
+                            <select class="form-control" name="for_what_pet" id="for_what_pet" required="" style="border-radius: 15px">
                               <?php foreach($all_pettype as $ap):?>
                                   <option value="<?php echo $ap->pettype_code;?>"><?php echo $ap->pettype;?></option>
                               <?php endforeach;?>
@@ -48,7 +48,7 @@
 
 
 
-                            <select class="form-control" name="for_pet_ages" id="for_pet_ages">
+                            <select class="form-control" name="for_pet_ages" id="for_pet_ages" style="border-radius: 15px">
                               <option value="adult (1 year old and above)">Adult (1 year old and above)</option>
                               <option value="young adult (11 months old and below)">Young Adult (11 months old and below)</option>
                             </select> 
@@ -76,6 +76,7 @@
                                         'size'          => '',
                                         'required'      => 'required',
                                         'class'         => 'form-control',
+                                        'style'         => 'border-radius:15px',
                                         
                                 );
 
@@ -98,7 +99,7 @@
                               echo form_label('Service Description', 'service_description','class="control-label"');
                               ?>
 
-                             <textarea class="form-control textareas" name="service_description" id="service_description" required=""></textarea>
+                             <textarea class="form-control textareas" name="service_description" id="service_description" required="" style="border-radius: 15px"></textarea>
 
 
                          </div>   
@@ -116,7 +117,7 @@
                               echo form_label('Service Fee', 'service_fee','class="control-label"');
                               ?>
 
-                            <input type="number" name="service_fee" id="service_fee" value="" class="form-control">
+                            <input type="number" name="service_fee" id="service_fee" value="" class="form-control" style="border-radius: 15px">
 
 
                          </div>   
@@ -130,14 +131,15 @@
 
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default pull-left" data-dismiss="modal" >Close</button>
+                  <button type="button" class="btn btn-default pull-left btn-flat btn-sm" data-dismiss="modal" >Close</button>
                   <?php 
 
                       $data = array(
                         'name' => 'submit',
                         'value' => 'Add',
                         'id' => 'add_service_btn',
-                        'class' => 'btn btn-primary',
+                        'class' => 'btn btn-primary btn-sm btn-flat',
+                        'style' => 'border-radius:15px',
                       );
 
                     echo form_submit($data);?>

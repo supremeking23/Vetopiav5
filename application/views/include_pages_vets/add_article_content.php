@@ -1,6 +1,6 @@
       <div class="modal fade" id="addContent">
         <div class="modal-dialog">
-          <div class="modal-content">
+          <div class="modal-content" style="border-radius: 15px">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span></button>

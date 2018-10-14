@@ -17,6 +17,7 @@
                               <tr>
                                 <th>Date</th>
                                 <th>Time</th>
+                                <th>Status</th>
                                 <th>Veterinarian</th>
                                
                                 <th>Action</th>
@@ -46,14 +47,13 @@
                                   <td><?php  $date =date_create($appointment_detail->preferredDate);
                                     echo  $preferred_date= date_format($date,"F d, Y");?></td>
                                   <td><?php echo $appointment_detail->preferredtime;?></td>
+                                  <td><?php echo $appointment_detail->appointment_status;?></td>
                                   <td><?php echo $appointment_detail->vet_in_charge; //echo $appointment_detail->appointment_table_id;?> </td>
-                                  <td><?php if($appointment_detail->appointment_status != "Pending"):?>
-                                      <button type="button" class="btn btn-flat btn-sm btn-info" data-toggle="modal" data-target="#detailAppointment<?php echo $appointment_detail->appointment_table_id?>">View Details</button>
-                                    <?php endif;?>
-
+                                  <td><?php if($appointment_detail->appointment_status != "Pending" AND $appointment_detail->appointment_status != "Confirmed"):?>
+                                      <button type="button" class="btn btn-flat btn-sm btn-info" data-toggle="modal" data-target="#detailAppointment<?php echo $appointment_detail->appointment_table_id?>" style="border-radius: 15px">View Details</button>
                                         <div class="modal fade" id="detailAppointment<?php echo $appointment_detail->appointment_table_id?>">
                                             <div class="modal-dialog">
-                                              <div class="modal-content">
+                                              <div class="modal-content" style="border-radius: 15px;">
                                                 <div class="modal-header">
                                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span></button>
@@ -66,8 +66,10 @@
 
 
                                                     foreach($checkup_detail as $c_detail){
-                                                       $complaints = $c_detail->complaints;
-                                                       $treatment = $c_detail->treatment;
+                                                       $subjective = $c_detail->subjective;
+                                                       $objective = $c_detail->objective;
+                                                       $plan = $c_detail->plan;
+                                                       $assessment = $c_detail->assessment;
                                                        $prescription = $c_detail->prescription;
                                                        /*$service_get = $c_detail->service_name;
                                                        $service_fee = $c_detail->service_fee;*/
@@ -79,10 +81,6 @@
 
                                                   ?>
 
-
-                                                
-
-                                                   
                                                             <table width="100%" class="table table-striped table-bordered table-hover">
                                                               <tbody>
 
@@ -92,13 +90,21 @@
                                                                   <td><?php echo $appointment_detail->customer_name ?></td>
                                                                 </tr>
                                                                 <tr>
-                                                                  <td><b>Reason/Complaints:</b></td>
-                                                                  <td><?php echo $complaints?></td>
+                                                                  <td><b>Subjective</b></td>
+                                                                  <td><?php echo $subjective;?></td>
                                                                 </tr>
                                                                 <tr>
-                                                                  <td><b>Treatments:</b></td>
-                                                                  <td><?php echo $treatment;?></td>
+                                                                  <td><b>Objective:</b></td>
+                                                                  <td><?php echo $objective;?></td>
                                                                 </tr> 
+                                                                <tr>
+                                                                  <td><b>Assessment</b></td>
+                                                                  <td><?php echo $assessment?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                  <td><b>Plan:</b></td>
+                                                                  <td><?php echo $plan;?></td>
+                                                                </tr>
                                                                 <tr>
                                                                   <td><b>Prescriptions:</b></td>
                                                                   <td><?php echo $prescription;?></td>
@@ -179,14 +185,16 @@
                                               <!-- /.modal-content -->
                                             </div>
                                             <!-- /.modal-dialog -->
-                                         </div>
+                                        </div>
                                           <!-- /.modal -->
+                                    <?php endif;?>
+                                    
+                                      <?php if($appointment_detail->appointment_status != "Pending" AND $appointment_detail->is_finished !=0):?>
+                                      |  <a href="<?php echo site_url()?>Pet_Management/print_medical_record/<?php echo $appointment_detail->appointment_table_id;?>" class="btn btn-flat btn-sm btn-info" target="_blank" style="border-radius: 15px">Print Detail</a>
+                                      <?php endif;?>
+
+
                                   </td>
-
-                                  
-
-
-                                  
 
                                 </tr>
 

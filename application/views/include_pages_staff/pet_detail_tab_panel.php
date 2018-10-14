@@ -47,10 +47,8 @@
                                     echo  $preferred_date= date_format($date,"F d, Y");?></td>
                                   <td><?php echo $appointment_detail->preferredtime;?></td>
                                   <td><?php echo $appointment_detail->vet_in_charge; //echo $appointment_detail->appointment_table_id;?> </td>
-                                  <td><?php if($appointment_detail->appointment_status != "Pending"):?>
-                                      <button type="button" class="btn btn-flat btn-sm btn-info" data-toggle="modal" data-target="#detailAppointment<?php echo $appointment_detail->appointment_table_id?>">View Details</button>
-                                    <?php endif;?>
-
+                                  <td><?php if($appointment_detail->appointment_status != "Pending" AND $appointment_detail->appointment_status != "Confirmed"):?>
+                                      <button type="button" class="btn btn-flat btn-sm btn-info" data-toggle="modal" data-target="#detailAppointment<?php echo $appointment_detail->appointment_table_id?>" style="border-radius: 15px">View Details</button>
                                         <div class="modal fade" id="detailAppointment<?php echo $appointment_detail->appointment_table_id?>">
                                             <div class="modal-dialog">
                                               <div class="modal-content">
@@ -177,7 +175,11 @@
                                             </div>
                                             <!-- /.modal-dialog -->
                                          </div>
-                                          <!-- /.modal -->
+                                    <?php endif;?>
+
+                                      <?php if($appointment_detail->appointment_status != "Pending" AND $appointment_detail->is_finished !=0):?>
+                                      |  <a href="<?php echo site_url()?>Pet_Management/print_medical_record/<?php echo $appointment_detail->appointment_table_id;?>" class="btn btn-flat btn-sm btn-info" target="_blank" style="border-radius: 15px">Print Detail</a>
+                                      <?php endif;?>                                          <!-- /.modal -->
                                   </td>
 
                                   

@@ -61,9 +61,13 @@
          $clinic_name = $clinic_d->store_name;
          $telephone =  $clinic_d->telephone;
         $cellphone =  $clinic_d->cellphone;
+        $tin_number = $clinic_d->tin_number;
+        $logo = $clinic_d->system_logo;
+
+        
       }
   ?>
-          <img src="<?php echo site_url()?>assets/site_images/logo3.png" width="50"> <?php echo $title;?>
+          <img src="<?php echo site_url()?>assets/site_images/<?php echo $logo;?>" width="50"> <?php echo $title;?>
           <small class="pull-right"></small>
            <center>  
               <b><span style="font-size:24px"></span></b><br>
@@ -71,8 +75,8 @@
               <i><?php echo $clinic_address;?></i><br>
               <i>Tel. No.:<?php echo $telephone;?></i><br>
               <i>Cel. No.:<?php echo $cellphone;?></i><br>
-              <!--<i>Email: <?php echo $clinic_email;?></i><br> --?
-              
+              <i>Tin. No.:<?php echo $tin_number;?></i><br>
+              <!--<i>Email: <?php echo $clinic_email;?></i><br> -->          
           </center>
         </h2>
       </div>

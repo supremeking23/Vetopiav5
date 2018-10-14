@@ -137,7 +137,7 @@
                            ?>
 
                         <li class="list-group-item"> 
-                            <button type="button" class="btn btn-info btn-sm btn-flat btn-block" data-toggle="modal" data-target="#viewBreedDescription">Breed Detail</button>
+                            <button type="button" class="btn btn-info btn-sm btn-flat btn-block" data-toggle="modal" data-target="#viewBreedDescription" style="border-radius: 15px">Breed Detail</button>
                                     <div class="modal fade" id="viewBreedDescription">
                                       <div class="modal-dialog">
                                         <div class="modal-content">
@@ -183,9 +183,9 @@
                         <input type="hidden" name="user_id_update" value="<?php echo $p_detail->pet_table_id?>">
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal" style="border-radius: 15px">Close</button>
                         
-                        <input type="submit" name="btnchangeProfile" class="btn btn-flat btn-sm btn-primary">
+                        <input type="submit" name="btnchangeProfile" class="btn btn-flat btn-sm btn-primary" style="border-radius: 15px">
                       </div>
                     </form>
                   </div>

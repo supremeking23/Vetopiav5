@@ -19,6 +19,77 @@ class Inventory_Management extends CI_Model {
    //insert supply in database
 
 
+   //for fast moving and slow moving
+   public function slow_fast_moving($sf_date){
+
+        $this->db->select('a.total_per_product,a.sales_date,b.product_table_id,b.product_name,b.product_price,b.productInstore,b.product_id,b.productType');
+        $this->db->from('tbl_salesdetails a');
+        $this->db->join('tbl_products b','a.product_table_id = b.product_table_id');
+        //$this->db->where('a.sales_date', 'YEAR(curdate())');
+        //$this->db->where('a.sales_date', $sf_date);
+        $this->db->group_by('b.product_name');
+        $this->db->order_by('b.product_table_id','DESC');
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+   }
+
+
+   // not use for now
+  /* public function get_sum_sales_detail_by_product_table_id($product_table_id){
+           $result_set = $this->db->query('SELECT SUM(total_per_product) AS "sum_total_per_product" FROM tbl_salesdetails  WHERE product_table_id = '.$product_table_id.' ');
+            return $result_set->result();
+   }*/
+
+
+   public function get_sum_total_quantity_sales_detail_by_product_table_id($product_table_id){
+           $result_set = $this->db->query('SELECT SUM(sales_quantity) AS "sales_quantity" FROM tbl_salesdetails  WHERE product_table_id = '.$product_table_id.' ');
+            return $result_set->result();
+   }
+
+
+
+   public function new_inventory_detail($product_id){
+        $this->db->select('*');
+        $this->db->from('tbl_productinventories');
+        $this->db->where('product_id', $product_id);
+        $this->db->where('action', 'Add Supply');
+        $this->db->order_by('inv_table_id','DESC');
+        $this->db->limit(1);
+        //$this->db->where('is_active',$active);
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+   }
+
+
+   public function get_two_months_in_inventory($product_id){
+        $this->db->select('*');
+        $this->db->from('tbl_productinventories');
+        $this->db->where('product_id', $product_id);
+        $this->db->where('action', 'Add Supply');
+        $this->db->order_by('inv_table_id','DESC');
+        $this->db->limit(2);
+        //$this->db->where('is_active',$active);
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+   }
+
+
+   public function get_avg_total_quantity_in_inventory($product_id){
+           $result_set = $this->db->query('SELECT AVG(quantity) AS "average" FROM vetopia_db.tbl_productinventories  WHERE product_id = "'.$product_id.'" AND action ="Add Supply"   order by inv_table_id desc ');
+            return $result_set->result();
+   }
+
 
    public function insert_new_inventory_action($data){
         $this->db->insert('tbl_productinventories',$data);
@@ -46,7 +117,7 @@ class Inventory_Management extends CI_Model {
   
 
 
-    public function get_all_items(){
+  public function get_all_items(){
 
         $this->db->select('*');
         $this->db->from('tbl_productitems');
@@ -78,7 +149,7 @@ class Inventory_Management extends CI_Model {
 
 
     public function get_item_detail_by_id($id){
-        $this->db->select('a.item_table_id,a.item_id,a.itemname,a.price,a.itemImage,a.itemdescription,a.supplier,b.productInStore,b.product_table_id,b.product_id,b.product_relation_id,b.productType,b.store_price');
+        $this->db->select('a.item_table_id,a.item_id,a.itemname,a.price,a.itemImage,a.itemdescription,a.supplier,a.max_product_count,b.productInStore,b.product_table_id,b.product_id,b.product_relation_id,b.productType,b.store_price');
         $this->db->from('tbl_productitems a');
         $this->db->join('tbl_products b','a.item_id = b.product_id');
         $this->db->where('item_table_id', $id);
@@ -132,7 +203,7 @@ class Inventory_Management extends CI_Model {
 
 
     public function get_all_items_with_number_of_supply(){
-        $this->db->select('a.item_table_id,a.item_id,a.itemname,a.price,b.productInStore,b.product_table_id,b.product_id,b.product_relation_id,b.store_price');
+        $this->db->select('a.item_table_id,a.item_id,a.itemname,a.price,b.productInStore,b.product_table_id,b.product_id,b.product_relation_id,b.store_price,a.max_product_count');
         $this->db->from('tbl_productitems a');
         $this->db->join('tbl_products b','a.item_id = b.product_id');
        
@@ -171,7 +242,7 @@ class Inventory_Management extends CI_Model {
 
 
    public function get_all_food_with_number_of_supply(){
-        $this->db->select('a.food_table_id,a.food_id,a.product_unit,a.foodname,a.foodImage,a.price,a.forwhatpet,a.fooddescription,b.productInStore,b.product_table_id,b.product_id,b.product_relation_id,b.store_price');
+        $this->db->select('a.food_table_id,a.food_id,a.product_unit,a.foodname,a.foodImage,a.price,a.forwhatpet,a.fooddescription,a.max_product_count,b.productInStore,b.product_table_id,b.product_id,b.product_relation_id,b.store_price');
         $this->db->from('tbl_productfoods a');
         $this->db->join('tbl_products b','a.food_id = b.product_id');
        
@@ -210,7 +281,7 @@ class Inventory_Management extends CI_Model {
 
 
     public function get_food_detail_by_id($id){
-        $this->db->select('a.food_table_id,a.food_id,a.foodname,a.price,a.foodImage,a.forwhatpet,a.fooddescription,a.supplier,a.product_unit,a.product_unit_number,a.product_unit_measure,b.productInStore,b.product_table_id,b.product_id,b.product_relation_id,b.productType,b.store_price');
+        $this->db->select('a.food_table_id,a.food_id,a.foodname,a.price,a.foodImage,a.forwhatpet,a.fooddescription,a.supplier,a.product_unit,a.product_unit_number,a.product_unit_measure,a.max_product_count,b.productInStore,b.product_table_id,b.product_id,b.product_relation_id,b.productType,b.store_price');
         $this->db->from('tbl_productfoods a');
         $this->db->join('tbl_products b','a.food_id = b.product_id');
         $this->db->where('food_table_id', $id);
@@ -261,7 +332,7 @@ class Inventory_Management extends CI_Model {
   }
 
  public function get_all_medicine_with_number_of_supply(){
-        $this->db->select('a.med_table_id,a.med_id,a.medname,a.product_unit,a.medType,a.medImage,a.meddescription,a.price,b.productInStore,b.store_price,b.product_name,b.product_table_id,b.product_id,b.product_relation_id,b.store_price');
+        $this->db->select('a.med_table_id,a.med_id,a.medname,a.max_product_count,a.product_unit,a.medType,a.medImage,a.meddescription,a.price,b.productInStore,b.store_price,b.product_name,b.product_table_id,b.product_id,b.product_relation_id,b.store_price');
         $this->db->from('tbl_productmedicines a');
         $this->db->join('tbl_products b','a.med_id = b.product_id');
        
@@ -299,7 +370,7 @@ class Inventory_Management extends CI_Model {
 
 
     public function get_medicine_detail_by_id($id){
-        $this->db->select('a.med_table_id,a.med_id,a.medname,a.price,a.medImage,a.medType,a.meddescription,a.supplier,a.product_unit,a.product_unit_number,a.product_unit_measure,b.productInStore,b.product_table_id,b.product_id,b.product_relation_id,b.productType,b.store_price');
+        $this->db->select('a.med_table_id,a.med_id,a.medname,a.price,a.medImage,a.medType,a.meddescription,a.supplier,a.product_unit,a.max_product_count,a.product_unit_number,a.product_unit_measure,b.productInStore,b.product_table_id,b.product_id,b.product_relation_id,b.productType,b.store_price');
         $this->db->from('tbl_productmedicines a');
         $this->db->join('tbl_products b','a.med_id = b.product_id');
         $this->db->where('med_table_id', $id);

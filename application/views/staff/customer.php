@@ -97,7 +97,7 @@
               <table  class="datatables table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Customer Status</th>
+                 
                   <th>User ID</th>
                   <th>Name</th>
                   <th>Contact Number</th>
@@ -110,21 +110,7 @@
                   <?php foreach($all_customers as $customers):?>
 
                   <tr>
-                     <td>
-                          <div class="row">
-                            <div class="form-group">
-                                <div class="col-sm-6">
-                                  <div class="checkbox">
-                                    <label class="switch">
 
-                                      <input type="checkbox" class="status_changer" data-customertableid="<?php echo $customers->customer_table_id;?>" data-customerid="<?php echo $customers->customer_id;?>"" data-status="<?php echo $customers->customer_status?>" data-customername=" <?php echo $customers->firstname .' '. $customers->middlename .' '. $customers->lastname;?>" <?php echo ($customers->customer_status == "Active") ?  "checked": ""; ?> > 
-                                      <span class="slider round"></span>
-                                    </label>
-                                  </div>
-                                </div>    
-                            </div>
-                          </div>                          
-                    </td>
                     <td><?php echo $customers->customer_id;?></td>
                     <td>
                       <?php echo $customers->firstname .' '. $customers->middlename .' '. $customers->lastname;?>

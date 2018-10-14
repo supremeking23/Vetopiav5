@@ -2,7 +2,7 @@
 
   $skin_color = $t_color->theme_color;
   $settings_id =$t_color->settings_id;
-  $max_product_count = $t_color->max_product_count;
+  //$max_product_count = $t_color->max_product_count;
 }?>
 
 <!DOCTYPE html>
@@ -47,6 +47,20 @@
 
             <?php }?>
 
+
+             <?php if ($this->session->flashdata('update_product_failed')) { ?>
+
+
+            <div class="alert alert-danger display-success">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              <h4>
+                <i class="fa fa-exclamation-circle"></i>
+                Error !
+              </h4>
+                <p> <?php echo $this->session->flashdata('update_product_failed'); ?> </p>
+            </div>
+
+            <?php }?>
             
 
           </div>
@@ -83,6 +97,7 @@
 
                             <?php 
                                $remaining_supply = $f_detail->productInStore;
+                               $max_product_count = $f_detail->max_product_count;
                                $get_decimal = $remaining_supply / $max_product_count;
 
                                 $percentage = $get_decimal * 100;

@@ -126,7 +126,7 @@ class Staff extends CI_Controller {
 		$today_now = date('Y-m-d');
 		$data['all_customers'] = $this->customer_management->get_all_customer();
 		$data['all_appointment'] = $this->appointment_management->get_all_appointment();
-		$data['all_vets'] = $this->veterinarian_management->get_all_veterinarian();
+		$data['all_vets'] = $this->veterinarian_management->get_all_veterinarian_active();
 		$data['time'] = $this->appointment_management->getScheduleTime();
 		
 		$data['title'] = "Vetopia";
@@ -140,7 +140,7 @@ class Staff extends CI_Controller {
 			$settings_id = 1;
 			$data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
 
-			$data['all_customers'] = $this->customer_management->get_all_customer();
+			$data['all_customers'] = $this->customer_management->get_all_customer_active();
 
 
 

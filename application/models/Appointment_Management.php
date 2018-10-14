@@ -23,6 +23,20 @@ class Appointment_Management extends CI_Model
 
 
 
+   public function search_schedule_time_by_schedule_time($preferredtime){
+        $this->db->select('*');
+        $this->db->from('tbl_timeschedule');
+        $this->db->where('time',$preferredtime);
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+   }
+
+
+
    public function add_appointment($data){
       $this->db->insert('tbl_appointments',$data);
    }

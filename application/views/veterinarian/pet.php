@@ -113,7 +113,7 @@
                         <td> <?php echo $pets->firstname .' '. $pets->middlename .' '. $pets->lastname;?></td>
                        
                         <td>
-                        <a href="<?php echo site_url()?>Veterinarian/Pet_details/<?php echo $pets->pet_table_id;?>" class="btn btn-sm btn-flat btn-info">View Details</a>
+                        <a href="<?php echo site_url()?>Veterinarian/Pet_details/<?php echo $pets->pet_table_id;?>" class="btn btn-sm btn-flat btn-info" style="border-radius: 15px">View Details</a>
                         
                         </td>
                      </tr>

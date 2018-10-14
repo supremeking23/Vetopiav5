@@ -29,6 +29,14 @@
 <html>
 
 <?php $this->load->view('include_pages_admin/page_header');?>
+<style type="text/css">
+  .fc-time{
+    display: none;
+  }
+  .btn-radius{
+    border-radius: 15px
+  }
+</style>
 
 <body class="hold-transition <?php echo $skin_color;?> sidebar-mini" id="appointment">
   <div class="wrapper">
@@ -53,7 +61,7 @@
 
          <div class="row">
           <div class="col-md-12">
-            <button class="btn btn-flat btn-info btn-sm" data-toggle="modal" data-target="#addAppointment">Set An Appointment</button>
+            <button class="btn btn-flat btn-info btn-sm btn-border" data-toggle="modal" data-target="#addAppointment" style="border-radius: 15px;">Set An Appointment</button>
           </div>
           <!-- /.col -->
         </div>
@@ -103,515 +111,8 @@
 
               </div>
               <div class="box-body table-responsive">
-
-              <table  class="datatablesappointment table table-bordered table-striped">
-                <thead>
-                <tr>
-                  
-                  <th>Appointment ID</th>
-                  <th>Customer Name</th>
-                  <th>Date</th>
-                  <th>Time</th>
-                  <th>Veterinarian in Charge</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                
-
-                <?php foreach($all_appointment as $a_appointment):?>
-
-                  <tr>
-                    
-                    <td><?php echo $a_appointment->appointment_id;?></td>
-                    <td><?php echo $a_appointment->customer_name;?></td>
-                    
-                    <td> <?php 
-
-                    $date =date_create($a_appointment->preferredDate);
-                       echo  $preferred_date= date_format($date,"F d, Y");
-                     ;?></td>
-
-                    <td><?php echo $a_appointment->preferredtime;?></td>
-                    <td><?php if(empty($a_appointment->vet_in_charge)){
-                      echo "None";
-                    }else{
-                      echo $a_appointment->vet_in_charge;
-                    }?></td>
-                    <td>
-                        
-                         <?php if($a_appointment->appointment_status == "Pending"){
-                                  $label_type = "warning";
-                          }else if($a_appointment->appointment_status == "Confirmed"){
-                                  $label_type = "info";
-                          }else if($a_appointment->appointment_status == "Cancelled"){
-                                  $label_type = "danger";
-                          }else if($a_appointment->appointment_status == "Done"){
-                             $label_type = "success";
-                          }else if($a_appointment->appointment_status == "On-Process"){
-                               $label_type = "primary";
-                          }?>
-                            
-                            
-                          <span class="label label-<?php echo $label_type;?>"><?php echo ucfirst($a_appointment->appointment_status)?></span>
-
-                    </td>
-                    <td>
-
-                      <?php if($a_appointment->appointment_status == "Pending"){?>
-                        <button type="button" data-toggle="modal" data-target="#assignVet<?php echo $a_appointment->appointment_table_id?>" class="btn btn-sm btn-primary btn-flat">Assign a veterinarian</button>
-                        | <button type="button" class="btn btn-flat btn-sm btn-danger" data-toggle="modal" data-target="#cancelAppointment<?php echo $a_appointment->appointment_table_id?>">Cancel Appointment</button>
-                         |
-                      <button type="button" class="btn btn-flat btn-sm btn-info" data-toggle="modal" data-target="#detailAppointment<?php echo $a_appointment->appointment_table_id?>">View Details</button>
-
-                            <div class="modal fade" id="detailAppointment<?php echo $a_appointment->appointment_table_id?>">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Appointment Detail </h4>
-                                  </div>
-                                  <div class="modal-body">
-                                        <table width="100%" class="table table-striped table-bordered table-hover">
-                                          <tbody>
-                                            <tr>
-                                              <td><b>Customer Name</b></td>
-                                              <td><?php echo $a_appointment->customer_name;?></td>
-                                            </tr>
-                                            <tr>
-                                              <td><b>Pet Name</b></td>
-                                              <td><?php echo $a_appointment->pet_name;?></td>
-                                            </tr>
-                                            <tr>
-                                              <td><b>Reason/Complaint</b></td>
-                                              <td><?php echo $a_appointment->complaints;?></td>
-                                            </tr> 
-                                           
-                                          <?php if($a_appointment->appointment_status == "Cancelled"):?>
-                                            <tr>
-                                              <td><b>Date Cancelled</b></td>
-                                              <td><?php  $date =date_create($a_appointment->cancel_date);
-                                                 echo  $cancel_date= date_format($date,"F d, Y h:i:s a");?></td>
-                                            </tr>
-                                            <tr>
-                                              <td><b>Cancel Reason</b></td>
-                                              <td><?php echo $a_appointment->cancel_reason;?></td>
-                                            </tr>
-                                        <?php endif;?>                         
-                                          </tbody>
-                                                 
-                                        </table>      
-
-
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                   
-                                  </div>
-                                </div>
-                                <!-- /.modal-content -->
-                              </div>
-                              <!-- /.modal-dialog -->
-                           </div>
-                            <!-- /.modal -->
-
-                        <?php }else if($a_appointment->appointment_status == "Confirmed"){ ?>
-
-                           <button type="button" class="btn btn-flat btn-sm btn-info" data-toggle="modal" data-target="#detailAppointment<?php echo $a_appointment->appointment_table_id?>">View Details</button>
-
-                            <div class="modal fade" id="detailAppointment<?php echo $a_appointment->appointment_table_id?>">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Appointment Detail </h4>
-                                  </div>
-                                  <div class="modal-body">
-                                        <table width="100%" class="table table-striped table-bordered table-hover">
-                                          <tbody>
-                                            <tr>
-                                              <td><b>Customer Name</b></td>
-                                              <td><?php echo $a_appointment->customer_name;?></td>
-                                            </tr>
-                                            <tr>
-                                              <td><b>Pet Name</b></td>
-                                              <td><?php echo $a_appointment->pet_name;?></td>
-                                            </tr>
-                                            <tr>
-                                              <td><b>Reason/Complaint</b></td>
-                                              <td><?php echo $a_appointment->complaints;?></td>
-                                            </tr> 
-                                           
-                                          <?php if($a_appointment->appointment_status == "Cancelled"):?>
-                                            <tr>
-                                              <td><b>Date Cancelled</b></td>
-                                              <td><?php  $date =date_create($a_appointment->cancel_date);
-                                                 echo  $cancel_date= date_format($date,"F d, Y h:i:s a");?></td>
-                                            </tr>
-                                            <tr>
-                                              <td><b>Cancel Reason</b></td>
-                                              <td><?php echo $a_appointment->cancel_reason;?></td>
-                                            </tr>
-                                        <?php endif;?>                         
-                                          </tbody>
-                                                 
-                                        </table>      
-
-
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                   
-                                  </div>
-                                </div>
-                                <!-- /.modal-content -->
-                              </div>
-                              <!-- /.modal-dialog -->
-                           </div>
-                            <!-- /.modal -->
-
-                          | <button type="button" class="btn btn-flat btn-sm btn-danger" data-toggle="modal" data-target="#cancelAppointment<?php echo $a_appointment->appointment_table_id?>">Cancel Appointment</button>
-                          | <button type="button" class="btn btn-flat btn-sm btn-primary onprocess" data-appointmenttableid="<?php echo $a_appointment->appointment_table_id?>">On Process</button>
-
-                          
-                          
-
-                        <?php }else if($a_appointment->appointment_status == "Done"){?>
-
-                            <button type="button" class="btn btn-flat btn-sm btn-info" data-toggle="modal" data-target="#detailAppointment_done<?php echo $a_appointment->appointment_table_id?>">View Details</button>
-
-                            <div class="modal fade" id="detailAppointment_done<?php echo $a_appointment->appointment_table_id?>">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Appointment Detail </h4>
-                                  </div>
-                                  <div class="modal-body">
-                                       <?php $checkup_detail = $this->pet_management_model->get_prescription_by_appointment_table_id($a_appointment->appointment_table_id);
-                                              foreach($checkup_detail as $cd):
-                                                //$possible_cause = $cd->possible_cause;
-                                             ?>
-                                                <table width="100%" class="table table-striped table-bordered table-hover">
-                                                      <tbody>
-                                                        <tr>
-                                                          <td><b>Pet Name</b></td>
-                                                          <td><?php echo $cd->petname;?></td>
-                                                        </tr>
-                                                        <tr>
-                                                          <td><b>Reason/Complaint</b></td>
-                                                          <td><?php echo $cd->complaints;?></td>
-                                                        </tr>
-                                                        <tr>
-                                                          <td><b>Treatment</b></td>
-                                                          <td><?php echo $cd->treatment;?></td>
-                                                        </tr> 
-                                                        <tr>
-                                                          <td><b>Prescription</b></td>
-                                                          <td><?php echo $cd->prescription;?></td>
-                                                        </tr>
-                                                        <tr>
-                                                          <td><b>Possible Cause:</b></td>
-                                                          <td><?php echo $cd->possible_cause;?></td>
-                                                        </tr>
-                                                        <tr>
-                                                          <td><b>Services</b></td>
-                                                          <td><?php $services = $this->pet_management_model->get_services_by_checkup_id($cd->checkup_id);
-                                                          $service_fee = 0;
-                                                         ?>
-
-                                                          <ul>
-                                                            <li>Professional Fee  = ₱<?php echo $vet_fee;?></li>
-                                                          <?php  foreach($services as $s):?>
-                                                            
-                                                            <li><?php echo $s->service_name;?> = ₱<?php echo $s->service_fees;?>
-                                                          </li>
-                                                           <?php 
-                                                          /*$service_format = $service_fee + $s->service_fees + $vet_fee;
-                                                          $service_fee = number_format($service_format,2);*/
-                                                          endforeach; //end service?>
-                                                          </ul>
-                                                         </td>
-                                                        </tr>
-                                                        <tr>
-                                                          <td><b>Total Payment: <b></td>
-                                                          <td>₱<?php echo number_format($a_appointment->total_payment,2)?></td>
-                                                        </tr>
-                                                      
-                                                                                                      
-                                                      </tbody>
-                                                             
-                                                </table>      
-                                             <?php endforeach;
-                                                ?>
-                                              <hr>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                   
-                                  </div>
-                                </div>
-                                <!-- /.modal-content -->
-                              </div>
-                              <!-- /.modal-dialog -->
-                           </div>
-                            <!-- /.modal -->
-
-
-
-
-
-                        <?php }else if($a_appointment->appointment_status == "Cancelled"){ ?>
-
-
-                            <button type="button" class="btn btn-flat btn-sm btn-info" data-toggle="modal" data-target="#detailAppointment<?php echo $a_appointment->appointment_table_id?>">View Details</button>
-
-                            <div class="modal fade" id="detailAppointment<?php echo $a_appointment->appointment_table_id?>">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Appointment Detail </h4>
-                                  </div>
-                                  <div class="modal-body">
-                                        <table width="100%" class="table table-striped table-bordered table-hover">
-                                          <tbody>
-                                            <tr>
-                                              <td><b>Customer Name</b></td>
-                                              <td><?php echo $a_appointment->customer_name;?></td>
-                                            </tr>
-                                            <tr>
-                                              <td><b>Pet Name</b></td>
-                                              <td><?php echo $a_appointment->pet_name;?></td>
-                                            </tr>
-                                            <tr>
-                                              <td><b>Reason/Complaint</b></td>
-                                              <td><?php echo $a_appointment->complaints;?></td>
-                                            </tr> 
-                                           
-                                          <?php if($a_appointment->appointment_status == "Cancelled"):?>
-                                            <tr>
-                                              <td><b>Date Cancelled</b></td>
-                                              <td><?php  $date =date_create($a_appointment->cancel_date);
-                                                 echo  $cancel_date= date_format($date,"F d, Y h:i:s a");?></td>
-                                            </tr>
-                                            <tr>
-                                              <td><b>Cancel Reason</b></td>
-                                              <td><?php echo $a_appointment->cancel_reason;?></td>
-                                            </tr>
-                                        <?php endif;?>                         
-                                          </tbody>
-                                                 
-                                        </table>      
-
-
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                   
-                                  </div>
-                                </div>
-                                <!-- /.modal-content -->
-                              </div>
-                              <!-- /.modal-dialog -->
-                           </div>
-                            <!-- /.modal -->
-
-
-                        <?php }else if($a_appointment->appointment_status == "On-Process"){ ?>
-
-                              <button type="button" class="btn btn-flat btn-sm btn-primary" disabled="" >On Process</button> |
-                     
-                                  <?php if($a_appointment->is_finished == 1):?>
-
-                              <button type="button" class="btn btn-flat btn-sm btn-success" data-toggle="modal" data-target="#payment<?php echo $a_appointment->appointment_table_id?>">Payment</button>
-
-
-                             <div class="modal fade" id="payment<?php echo $a_appointment->appointment_table_id?>">
-                                <div class="modal-dialog">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span></button>
-                                      <h4 class="modal-title">Appointment Summary</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                      
-                                     <?php $checkup_detail = $this->pet_management_model->get_prescription_by_appointment_table_id($a_appointment->appointment_table_id);
-                                      foreach($checkup_detail as $cd):
-                                     ?>
-                                                    <table width="100%" class="table table-striped table-bordered table-hover">
-                                                      <tbody>
-                                                        <tr>
-                                                          <td><b>Pet Name:</b></td>
-                                                          <td><?php echo $cd->petname;?></td>
-                                                        </tr>
-                                                        <tr>
-                                                          <td><b>Reason/Complaints:</b></td>
-                                                          <td><?php echo $cd->complaints;?></td>
-                                                        </tr>
-                                                        <tr>
-                                                          <td><b>Treatments:</b></td>
-                                                          <td><?php echo $cd->treatment;?></td>
-                                                        </tr> 
-                                                        <tr>
-                                                          <td><b>Prescriptions:</b></td>
-                                                          <td><?php echo $cd->prescription;?></td>
-                                                        </tr>
-                                                        <tr>
-                                                          <td><b>Possible Cause:</b></td>
-                                                          <td><?php echo $cd->possible_cause;?></td>
-                                                        </tr>
-                                                        <tr>
-                                                          <td><b>Services</b></td>
-                                                          <td><?php $services = $this->pet_management_model->get_services_by_checkup_id($cd->checkup_id);
-                                                          $service_fee = 0;
-                                                         ?>
-
-                                                          <ul>
-                                                            <li>Professional Fee  = ₱<?php echo $vet_fee;?></li>
-                                                          <?php  foreach($services as $s):?>
-                                                            
-                                                            <li><?php echo $s->service_name;?> = ₱<?php echo $s->service_fees;?>
-                                                          </li>
-                                                           <?php 
-                                                          $service_format = $service_fee + $s->service_fees;
-                                                          $service_fee = $service_format;
-                                                          endforeach; //end service?>
-
-                                                          <?php 
-                                                          $total_fee = $service_fee + $vet_fee;
-                                                          ?>
-                                                          </ul>
-                                                         </td>
-                                                        </tr>
-                                                        <tr>
-                                                          <td><b>Total Fee: ₱<b></td>
-                                                          <td><input type="text" name="total_fee" id="total_fee" style="width: 100%"  value="<?php echo $total_fee;?>" class="form-control" readonly=""></td>
-                                                        </tr>
-                                                        <tr>
-                                                          <td><b>Cash: ₱</b></td>
-                                                          <td><input type="number" name="cash" id="cash" style="width: 100%" class="form-control" value="">
-
-                                                          </td>
-                                                        </tr>
-                                                        <tr>
-                                                          <td><b>Change: ₱</b></td>
-                                                          <td><input type="text" name="change" id="change"  style="width: 100%" class="form-control" value="" readonly="">
-                                                            <?php //echo $a_appointment->appointment_table_id;?>
-                                                          </td>
-                                                        </tr>                                                      
-                                                      </tbody>
-                                                             
-                                                    </table>                                    
-
-
-                                      
-                                    <?php endforeach;?>
-                                    </div>
-                                    <div class="modal-footer">
-                                     <div class="hide-after-checkout">
-                                        <!--<button type="button" class="btn btn-default btn-sm btn-flat pull-left" id="computeChange">Compute</button> -->
-                                        <button type="button" class="btn btn-primary btn-sm btn-flat btn-checkout" data-appointmenttableid="<?php echo $a_appointment->appointment_table_id;?>" disabled="" id="checkout">Checkout</button>
-                                      </div>
-                                      <a href="<?php echo site_url()?>appointment/print_appointment_summary/<?php echo $a_appointment->appointment_table_id;?>" target="_blank" class="btn btn-sm btn-info btn-flat btn-block btn-receipt" style="display: none">Print</a>
-                                    </div>
-                                  </div>
-                                  <!-- /.modal-content -->
-                                </div>
-                                <!-- /.modal-dialog -->
-                              </div>
-                              <!-- /.modal -->
-
-                                  <?php endif;?>
-
-                        <?php }?>
-                     
-                    </td>
-                  </tr>
-
-
-
-                   <div class="modal fade" id="assignVet<?php echo $a_appointment->appointment_table_id?>">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">Veterinarians</h4>
-                          </div>
-
-                          
-                           <?php echo form_open_multipart('Appointment/Set_veterinarian');?>
-                          <div class="modal-body">
-                            <select name="veterinarian" class="form-control select2" style="width: 100%;min-height: 150px;max-height: 150px;overflow-y: auto;">
-                              <?php foreach($all_vets as $vets):?>
-                              <option value="<?php echo $vets->veterinarian_table_id?>"><?php echo $vets->firstname .' '. $vets->middlename .' '. $vets->lastname;?></option>
-                            <?php endforeach?>
-                            </select>
-                          </div>
-                          <div class="modal-footer">
-
-                            <input type="hidden" name="appointment_table_id" value="<?php echo $a_appointment->appointment_table_id;?>">
-                            <input type="hidden" name="customer_id" value="<?php echo $a_appointment->customer_id;?>">
-                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                            <input type="Submit" name="submit" value="Submit" class="btn btn-primary btn-sm btn-flat">
-                          </div>
-
-                          <?php echo form_close();?>
-                        </div>
-                        <!-- /.modal-content -->
-                      </div>
-                      <!-- /.modal-dialog -->
-                   </div>
-                    <!-- /.modal -->
-
-
-
-
-
-                    <div class="modal fade" id="cancelAppointment<?php echo $a_appointment->appointment_table_id?>">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">Cancel Reason</h4>
-                          </div>
-
-                          <?php echo form_open_multipart('appointment/cancel_appointment');?>
-                          <div class="modal-body">
-                            <textarea class="form-control textareas" name="cancel_reason" required="">
-                              
-                            </textarea>
-                          </div>
-                          <div class="modal-footer">
-                            <input type="hidden" name="appointment_table_id" value="<?php echo $a_appointment->appointment_table_id;?>">
-                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                             <input type="Submit" name="submit" value="Submit" class="btn btn-primary btn-sm btn-flat">
-                          </div>
-
-                          <?php echo form_close();?>
-                        </div>
-                        <!-- /.modal-content -->
-                      </div>
-                      <!-- /.modal-dialog -->
-                   </div>
-                    <!-- /.modal -->
-
-
-                  <?php endforeach;?>
-
-                </tbody>
-               
-              </table>
-
-                            
+              <!-- THE CALENDAR -->
+              <div id="calendar"></div>                
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
@@ -621,6 +122,261 @@
           </div>
 
         </div>
+      </div>
+
+
+      <div class="row">
+          <div id="calendarModal" class="modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content" style="border-radius: 15px">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Appointment Summary</h4>
+                </div>
+                <div id="" class="modal-body">
+
+                    <table width="100%" class="table table-striped table-bordered table-hover">
+                          <tbody>
+                            <tr>
+                              <td><b>Status:</b></td>
+                              <td><b><span id="appointment_status" class=""></span></b></td>
+                            </tr>
+                            <tr>
+                              <td><b>Appointment ID:</b></td>
+                              <td><b><span id="appointment_id"></span></b></td>
+                            </tr>
+                            <tr>
+                              <td><b>Customer Name: </b></td>
+                              <td><b><span id="customer_name"></span></b></td>
+                            </tr>
+                            <tr>
+                              <td><b>Date:</b></td>
+                              <td><b><span id="preferred_date"></span></b></td>
+                            </tr>
+                            <tr>
+                              <td><b>Time:</b></td>
+                              <td><b><span id="preferred_time"></span></b></td>
+                            </tr>
+                            <tr>
+                              <td><b>Pet Name:</b></td>
+                              <td><b><span id="pet_name"></span></b></td>
+                            </tr>
+                            <tr>
+                              <td><b>Veterinarian in Charge:</b></td>
+                              <td><b><span id="vet_in_charge"></span></b></td>
+                            </tr>                                                                          
+                          </tbody>
+                                 
+                    </table> 
+
+                    <!--display for cancelled appointment -->
+                    <div class="cancel_detail">
+                      <table width="100%" class="table table-striped table-bordered table-hover ">
+                            <tbody>
+                              <tr>
+                                <td><b>Reason for Cancellation:</b></td>
+                                <td><b><p id="cancel_reason"></p></b></td>
+                              </tr>
+                                                                                                       
+                            </tbody>
+                                   
+                      </table>                      
+                    </div>
+
+
+
+                    <div class="pendingbtnchoices">
+                      <table width="100%" class="table table-striped table-bordered table-hover ">
+                            <tbody>
+                              <tr>
+                                <td><b>Actions:</b></td>
+                                <td><button type="button" class="btn btn-flat btn-sm btn-info approved" id="approvedbtn" data-appointmenttableid="10" style="border-radius: 15px">Approve</button>| <button type="button" class="btn btn-flat btn-sm btn-danger btn-cancel"  style="border-radius: 15px">Cancel Appointment</button></td>
+                              </tr>
+                                                                                                       
+                            </tbody>
+                                   
+                      </table>
+                   </div>
+
+
+                    <div class="confirmed_detail">
+                      <table width="100%" class="table table-striped table-bordered table-hover ">
+                            <tbody>
+                              <tr>
+                                <td><b>Actions:</b></td>
+                                <td><button type="button" class="btn btn-flat btn-sm btn-primary onprocess" id="onprocessbtn" data-appointmenttableid="10" style="border-radius: 15px">On Process</button>| <button type="button" class="btn btn-flat btn-sm btn-danger btn-cancel"  style="border-radius: 15px">Cancel Appointment</button></td>
+                              </tr>
+                                                                                                       
+                            </tbody>
+                                   
+                      </table>
+                   </div>
+
+
+
+                    <div class="payment_detail">
+                      <table width="100%" class="table table-striped table-bordered table-hover ">
+                            <tbody>
+                              <tr>
+                                <td><b>Subjective:</b></td>
+                                <td><p id="pre_subjective"></p></td>
+                              </tr>
+                              <tr>
+                                <td><b>Objective:</b></td>
+                                <td><p id="pre_objective"></p></td>
+                              </tr>
+                              <tr>
+                                <td><b>Assessment:</b></td>
+                                <td><p id="pre_assessment"></p></td>
+                              </tr>
+                              <tr>
+                                <td><b>Plan:</b></td>
+                                <td><p id="pre_plan"></p></td>
+                              </tr>    
+                              <tr>
+                                <td><b>Possible Cause:</b></td>
+                                <td><b><span id="pre_possible_cause"></span></b></td>
+                              </tr>  
+                              <tr>
+                                <td><b>Services:</b><input type="hidden" name="checkup_id" id="checkup_id"></td>
+                                <td><b>
+                                  <ul class="service_list">
+                                    
+                                  </ul>
+                                </b></td>
+                              </tr> 
+                              <tr>
+                                <td><b>Total Amount:</b></td>
+                                <td><b>
+                                     ₱<span id="pre_total_payment"></span>
+                                     <input type="hidden" name="pre_total_payment_val" id="pre_total_payment_val" value="">
+                                </b></td>
+                              </tr>
+                              <tr>
+                                <td><b>Cash</b></td>
+                                <td><b>
+                                     ₱<input type="number" name="cash" id="cash" style="width: 100%" class="form-control" value="">
+                                </b></td>
+                              </tr>
+                              <tr>
+                                <td><b>Change:</b></td>
+                                <td><b>
+                                     ₱<input type="text" name="change" id="change"  style="width: 100%" class="form-control" value="" readonly="">
+                                </b></td>
+                              </tr>                                                                                                                  
+                            </tbody>
+                                   
+                      </table> 
+
+                       <div class="paymenbtndiv">
+                          <table width="100%" class="table table-striped table-bordered table-hover ">
+                                <tbody>
+                                  <tr>
+                                    <td colspan="2"><button type="button" class="btn btn-flat btn-sm btn-success  btn-block btn-checkout" id="checkout" data-appointmenttableid="" style="border-radius: 15px">Checkout</button></td>
+                                  </tr>
+                                                                                                           
+                                </tbody>
+                                       
+                          </table>
+                       </div>
+                       <div class="prescriptionbtndiv">
+                          <table width="100%" class="table table-striped table-bordered table-hover ">
+                                <tbody>
+                                  <tr>
+                                    <td colspan="2"><!--<button type="button" class="btn btn-flat btn-sm btn-info  btn-block " id="btn-prescription" data-appointmenttableid="" style="border-radius: 15px">Prescription</button>-->
+                                      
+                                      <a href="<?php echo site_url()?>appointment/print_appointment_summary/" target="_blank" class="btn btn-flat btn-sm btn-info  btn-block button-prescription" id="btn-prescription" data-appointmenttableid="" style="border-radius: 15px">Prescription</a>
+                                    </td>
+                                  </tr>
+                                                                                                           
+                                </tbody>
+                                       
+                          </table>
+                       </div>
+                   </div>
+
+
+                    <div class="cancel_description">
+                      <table width="100%" class="table table-striped table-bordered table-hover ">
+                            <tbody>
+                              <tr>
+                                <td colspan="2"><label><b >Reason for Cancellation:</b></label>
+                                  <div style="margin-bottom: 25px;"></div>
+                                  <div class="row">
+                                    <div class="col-md-12">
+                                     <?php echo form_open_multipart('appointment/cancel_appointment');?>
+                                      <textarea class="form-control textareas" name="cancel_reason" id="cancel_reason"  style="height:300px;width: 100%;border-radius: 15px"></textarea>
+                                      <div style="margin-bottom: 25px;"></div>
+                                      <input type="hidden" name="appointment_table_id" value="" id="appointment_table_id_cancel">
+                                      <input type="submit" class="btn btn pull-right btn-sm btn-flat btn-danger" style="border-radius: 15px" value="Cancel">
+                                    </form>
+                                    </div>
+                                  </div>
+                                </td>
+                             
+                              </tr>
+                                                                                                       
+                            </tbody>
+                                   
+                      </table> 
+                    </div>
+                 
+
+
+
+                  
+                    <div class="done_detail">
+                      <table width="100%" class="table table-striped table-bordered table-hover ">
+                            <tbody>
+                              <tr>
+                                <td><b>Subjective:</b></td>
+                                <td><p id="subjective"></p></td>
+                              </tr>
+                              <tr>
+                                <td><b>Objective:</b></td>
+                                <td><p id="objective"></p></td>
+                              </tr>
+                              <tr>
+                                <td><b>Assessment:</b></td>
+                                <td><p id="assessment"></p></td>
+                              </tr>
+                              <tr>
+                                <td><b>Plan:</b></td>
+                                <td><p id="plan"></p></td>
+                              </tr>    
+                              <tr>
+                                <td><b>Possible Cause:</b></td>
+                                <td><b><span id="possible_cause"></span></b></td>
+                              </tr>  
+                              <tr>
+                                <td><b>Services:</b><input type="hidden" name="checkup_id" id="checkup_id"></td>
+                                <td><b>
+                                  <ul class="service_list">
+                                    
+                                  </ul>
+                                </b></td>
+                              </tr> 
+                              <tr>
+                                <td><b>Total Amount:</b></td>
+                                <td><b>
+                                     ₱<span id="total_payment"></span>
+                                </b></td>
+                              </tr>                                                                                                            
+                            </tbody>
+                                   
+                      </table>                      
+                    </div>
+
+
+
+                </div>
+              
+                <div class="modal-footer">
+                
+                </div>
+              </div>
+            </div>
+          </div> 
       </div>
      
       </section>
@@ -633,6 +389,16 @@
       </div>
       <strong>Copyright &copy; <?php echo date('Y');?>  All rights
       reserved.
+      <?php /*$date = new DateTime('2017-03-14');
+      $time = new DateTime('13:37:42');
+
+      // Solution 1, merge objects to new object:
+      $merge = new DateTime($date->format('Y-m-d') .' ' .$time->format('H:i:s'));
+      echo $merge->format('Y-m-d H:i:s'); // Outputs '2017-03-14 13:37:42'
+      echo "<br />";
+      // Solution 2, update date object with time object:
+      $date->setTime($time->format('H'), $time->format('i'), $time->format('s'));
+      echo $date->format('Y-m-d H:i:s'); // Outputs '2017-03-14 13:37:42'*/ ?>
     </footer>
 
 
@@ -652,128 +418,306 @@
 <script src="<?php echo site_url();?>assets/dist/js/generalscripts.js"></script>
 <script src="<?php echo site_url();?>assets/dist/js/databasejson.json"></script>
 
-<script>
-      /*var xhttp = new XMLHttpRequest();
-
-      xhttp.onreadystatechange = function(){
-        if(this.readyState == 4 && this.status == 200){
-          console.log(xhttp.responseText);
-        }
-      };
-
-      xhttp.open("GET","<?php echo site_url()?>assets/dist/js/databasejson.json",true);
-      xhttp.send();
-      */
-</script>
-
-<!-- footer scripts -->
 
 <!--page scripts -->
 <script>
   $(function(){
 
-
-
     //for floating numbers
 
-          function format_number(x) {
-            return Number.parseFloat(x).toFixed(2);
-          }
-
-          console.log(format_number(123.456));
-          // expected output: "123.46"
-
-          console.log(format_number(0.004));
-          // expected output: "0.00"
-
-          console.log(format_number('1.23e+5'));
-          // expected output: "123000.00"
-
-
-
-
-
-
-
-
-
-
-
-          $('.onprocess').click(function(){
-
-            var appointment_table_id  = $(this).data("appointmenttableid");
-            var appointment_status = "On-Process";
-
-            $.ajax({
-                url : "<?php echo site_url('Appointment/Change_to_onprocess');?>",
-                method : "POST",
-                data : {appointment_table_id: appointment_table_id,appointment_status:appointment_status},
-                success: function(data){
-                    
-                    console.log("nadagdag na" + data.code);
-                    //document.getElementById("reloaded").contentDocument.location.reload(true);
-                    //$("#reloaded").load();
-                    location.reload();
-                    
-                }
-            });
-          });
-
-
-
-      /*  $('#computeChange').click(function(){
-
-            //alert('as');
-            $("#checkout").attr("disabled",false);
-            //$("#money_change").show();
-            //compute
-            var total_fee = $('#total_fee').val();
-            var cash = $('#cash').val();
-
-            var change = cash - total_fee;
-            $("#change").val(format_number(change));
-
-
-            //alert(total_amount);
-          });*/
-
-    //JAVASCRIPT FUNCTION
-    document.getElementById("cash").oninput = function() {computeChange()};
-
-    function computeChange() {
-
-      var  cash = $('#cash').val();
-      var total_fee = $('#total_fee').val();
-      var change;
-      if(cash.length != 0){
-        $("#checkout").attr("disabled",false);
-        
-       change = cash - total_fee;
-       console.log('totalfee: ' + total_fee);
-       console.log('cash: ' + cash);
-       console.log('change: ' + change);
-
-        if(change >= 0){
-          //alert('ivan');
-          $("#checkout").attr("disabled",false);
-        }else{
-          $("#checkout").attr("disabled",true);
-        }
-        $("#change").val(format_number(change));
-      }else{
-        $("#checkout").attr("disabled",true);
-        $("#change").val("");
-      }
-      //alert(total_amount);
+    function format_number(x) {
+      return Number.parseFloat(x).toFixed(2);
     }
 
+    console.log(format_number(123.456));
+    // expected output: "123.46"
+
+    console.log(format_number(0.004));
+    // expected output: "0.00"
+
+    console.log(format_number('1.23e+5'));
+    // expected output: "123000.00"
+
+
+
+
+    $('.cancel_description').css('display','none');
+    $('.payment_detail').css('display','none');
+    $('.prescriptionbtndiv').css('display','none');
+
+    $("#checkout").attr("disabled",true);
+
+    var date = new Date()
+    var d    = date.getDate(),
+        m    = date.getMonth(),
+        y    = date.getFullYear()
+
+    $('#calendar').fullCalendar({
+      header    : {
+        left  : 'prev,next today',
+        center: 'title',
+        right : 'month,agendaWeek,agendaDay'
+      },
+      eventLimit: true, 
+      buttonText: {
+        today: 'today',
+        month: 'month',
+        week : 'week',
+        day  : 'day'
+      },
+      //Random default events
+      events    :"<?php echo site_url()?>Appointment/get_all_appointments_for_calendar",
+      eventClick:  function(event, jsEvent, view) {  // when some one click on any event
+               // endtime = $.fullCalendar.moment(event.end).format('h:mm');
+                //start = $.fullCalendar.moment(event.start).format('dddd, MMMM Do YYYY');
+                
+                //var mywhen = start + "";
+                //$('#modalTitle').html(event.description);
+                /*$('#customer_name').html(event.customer_name);
+                
+                $('#appointment_date').html(start);
+                $('#preferred_time').html(event.preferred_time);
+                
+                $('#appointment_reason').html(event.appointment_reason);
+                
+                */
+
+               /*var status = event.status;
+
+                if(status == "Pending"){
+                  $('.label').addClass('label-warning');
+                }else if(status == "Confirmed"){
+                  $('.label').addClass('label-info');
+                }else if(status == "Cancelled"){
+                  $('.label').addClass('label-danger');
+                }else if(status == "Done"){
+                  $('.label').addClass('label-success');
+                }*/
+
+               var status = event.status;
+               var is_finished = event.is_finished;
+
+                if(status == "Pending"){
+                  $('.cancel_detail').css('display','none');
+                   $('.confirmed_detail').css('display','none');
+                   $('.done_detail').css('display','none');
+                   $('.pendingbtnchoices').css('display','block'); 
+                   $('.payment_detail').css('display','none');
+                   $('.paymenbtndiv').css('display','none');    
+                }else if(status == "Confirmed"){
+                   
+                   $('.done_detail').css('display','none'); 
+                   $('.cancel_detail').css('display','none');
+                   $('.confirmed_detail').css('display','block');
+                  // $('.cancel_description').css('display','none');
+                  $('.pendingbtnchoices').css('display','none'); 
+                  $('.payment_detail').css('display','none');
+                  $('.paymenbtndiv').css('display','none');
+                  $('.paymenbtndiv').css('display','none');
+                  
+                }else if(status == "Cancelled"){
+                  $('.cancel_detail').css('display','block');
+                   $('.done_detail').css('display','none');
+                  $('.confirmed_detail').css('display','none');
+                  $('.cancel_description').css('display','none'); 
+                  $('.pendingbtnchoices').css('display','none');  
+                  $('.payment_detail').css('display','none');
+                   $('.paymenbtndiv').css('display','none');
+                //$('.table').append(samp);
+                }else if(status == "Done"){
+                  $('.cancel_detail').css('display','none');
+                   $('.done_detail').css('display','block');
+                   $('.confirmed_detail').css('display','none'); 
+                   $('.cancel_description').css('display','none'); 
+                   $('.pendingbtnchoices').css('display','none'); 
+                   $('.payment_detail').css('display','none');
+                   $('.paymenbtndiv').css('display','none');
+                  //$('.cancel_detail').css('display',' ');
+                }else if(status == "On-Process"){
+                  $('.cancel_detail').css('display','none');
+                   $('.done_detail').css('display','none');
+                   $('.confirmed_detail').css('display','none'); 
+                   $('.pendingbtnchoices').css('display','none'); 
+                   //$('.payment_detail').css('display','none');
+
+                   if(is_finished == 1){
+                   // alert(1);
+                    
+                    $('.paymenbtndiv').css('display','block');
+                    $('.payment_detail').css('display','block');
+                   }
+                  //$('.cancel_detail').css('display',' ');
+                }
+
+                //span
+                
+
+
+                /*var cancellation_reason = event.cancellation_reason;
+
+                if(cancellation_reason == ""){
+                  $('#is_cancelled').hide();
+                }else{
+                  $('#is_cancelled').show();
+                }
+
+                $('#cancel_reason').html(event.cancellation_reason);
+
+                //alert(status);
+                //$('#startTime').html(mywhen);
+                $('#appointmentID').val(event.id);
+
+                */
+                //tbl_appointment
+              var z =   $('#appointment_id').html(event.appointment_id);
+               
+                $('#btn-prescription').attr('href',"<?php echo site_url()?>appointment/print_appointment_summary/"+event.id);
+               
+
+                $('#customer_name').html(event.title);
+                $('#preferred_date').html(event.preferredDate);
+                $('#preferred_time').html(event.preferredtime);
+                $('#appointment_status').html(event.status);
+                $('#pet_name').html(event.pet_name);
+                $('#vet_in_charge').html(event.vet_in_charge);
+                $('#cancel_reason').html(event.cancel_reason);  
+
+
+                //done
+                //tbl_checkup
+                $('#subjective').html(event.subjective);
+                $('#objective').html(event.objective);
+                $('#assessment').html(event.assessment);
+                $('#plan').html(event.plan);
+                $('#possible_cause').html(event.possible_cause);
+               /* $('#service_list').html(event.service_list);
+                $('#service_fee').html(event.service_fee);*/
+                $('#total_payment').html(event.total_payment);
+
+
+
+                //post payment soap
+                $('#pre_subjective').html(event.subjective);
+                $('#pre_objective').html(event.objective);
+                $('#pre_assessment').html(event.assessment);
+                $('#pre_plan').html(event.plan);
+                $('#pre_possible_cause').html(event.possible_cause);
+               /* $('#service_list').html(event.service_list);
+                $('#service_fee').html(event.service_fee);*/
+                var pre_total_payment_val = $('#pre_total_payment').html(event.total_payment);
+                $('#pre_total_payment_val').val(event.total_payment);
+
+
+
+
+
+               /* var a = $('#onprocessbtn').data('appointmenttableid');
+                alert(a);
+                //alert($('#onprocessbtn').data('appointmenttableid',event.appointment_id));
+                $('#onprocessbtn').data('appointmenttableid',event.id);
+                alert($('#onprocessbtn').data('appointmenttableid'));
+              */
+
+               $('#onprocessbtn').attr('data-appointmenttableid',event.id);
+               $('#approvedbtn').attr('data-appointmenttableid',event.id);
+
+               $('#checkout').attr('data-appointmenttableid',event.id);
+
+               $('#appointment_table_id_cancel').attr('value',event.id);
+                //$("data-appointmenttableid").data(event.appointment_id);
+
+                $('#checkup_id').val(event.checkup_id);
+                var checkup_id =  $('#checkup_id').val();
+                console.log('checkup_id ' + checkup_id);
+
+
+
+                $.ajax({
+
+                  url: '<?php echo base_url('appointment/get_services_for_calendar_view/')?>'+checkup_id,
+
+                  type: "GET",
+
+                  dataType: "json",
+
+                  success:function(data) {
+
+                      $('ul.service_list').empty();
+
+                      $('ul.service_list').append('<li >Professional Fee = ₱<?php echo $vet_fee;?></li>');
+
+                       $.each(data, function(key, value) {
+
+                          $('ul.service_list').append('<li >'+ value.service_name +' = ₱ '+ value.service_fees +'</li>');
+                          
+                          console.log(value.service_name);
+
+                      });
+
+                  }
+
+                });
+
+
+               /* $.ajax({
+
+                  url: '<?php echo base_url('appointment/get_services_with_fee/')?>'+checkup_id,
+
+                  type: "GET",
+
+                  dataType: "json",
+
+                  success:function(datas) {
+
+                    $('#total_fee').html(datas.total_fee);
+                    console.log('wala ' + datas.total_fee);
+                  }
+
+                });*/
+
+
+                $('#calendarModal').modal();
+            },
+
+    });
+
+
+
+
+
+        function reload(){
+       
+          setTimeout(function(){ 
+
+              $(".display-success").fadeOut("fast");
+              location.reload();
+               }, 2000);
+        }
+
+       /* $('.btn-receipt').click(function(){
+
+            reload();
+        });
+        */
+
+        $('.btn-cancel').click(function(){
+
+            $('.cancel_description').toggle();
+        });
+
+
+        $('.button-prescription').click(function(){
+
+            reload();
+        });
 
         $('.btn-checkout').click(function(){
-              var total_fee = $('#total_fee').val();
+              var total_fee = $('#pre_total_payment_val').val();
               var cash = $('#cash').val();
               var change =  $("#change").val();
               var appointment_table_id  = $(this).data("appointmenttableid");
               var appointment_status = "Done";
+              console.log(appointment_table_id);
 
               $.ajax({
                   url : "<?php echo site_url('appointment/appointment_receipt');?>",
@@ -787,26 +731,101 @@
                       //location.reload();
                      //alert('tapos na')
 
-                      $('.hide-after-checkout').css('display','none');
-                      $('.btn-receipt').css('display','block');
+                      $('.paymenbtndiv').css('display','none');
+                      $('.prescriptionbtndiv').css('display','block');
                   }
-              });    
-          });
+              });
 
+            //$('.cancel_description').toggle();
+        });
 
-        function reload(){
-       
-          setTimeout(function(){ 
+     /*   $('.paymenbtn').click(function(){
+            $('.cancel_description').css('display','none'); 
+            $('.payment_detail').toggle();
 
-              $(".display-success").fadeOut("fast");
-              location.reload();
-               }, 2000);
+        });*/
+
+      //JAVASCRIPT FUNCTION
+      document.getElementById("cash").oninput = function() {computeChange()};
+
+      function computeChange() {
+
+        var  cash = $('#cash').val();
+        var total_fee = $('#pre_total_payment_val').val();
+        var change;
+        if(cash.length != 0){
+          $("#checkout").attr("disabled",false);
+          
+         change = cash - total_fee;
+         console.log('totalfee: ' + total_fee);
+         console.log('cash: ' + cash);
+         console.log('change: ' + change);
+
+          if(change >= 0){
+            //alert('ivan');
+            $("#checkout").attr("disabled",false);
+          }else{
+            $("#checkout").attr("disabled",true);
+          }
+          $("#change").val(format_number(change));
+        }else{
+          $("#checkout").attr("disabled",true);
+          $("#change").val("");
         }
 
-        $('.btn-receipt').click(function(){
+      }
 
-            reload();
+        $('.onprocess').click(function(){
+
+          var appointment_table_id  = $(this).data("appointmenttableid");
+          var appointment_status = "On-Process";
+
+
+          //alert(appointment_table_id);
+
+         $.ajax({
+              url : "<?php echo site_url('Appointment/Change_to_onprocess');?>",
+              method : "POST",
+              data : {appointment_table_id: appointment_table_id,appointment_status:appointment_status},
+              success: function(data){
+                  
+                  console.log("nadagdag na" + data.code);
+                  //document.getElementById("reloaded").contentDocument.location.reload(true);
+                  //$("#reloaded").load();
+                  //alert('Appointment now is on going');
+                  reload();
+                  
+              }
+          });
         });
+    
+
+        $('.approved').click(function(){
+
+          var appointment_table_id  = $(this).data("appointmenttableid");
+          var appointment_status = "Confirmed";
+
+
+          //alert(appointment_table_id);
+
+         $.ajax({
+              url : "<?php echo site_url('Appointment/Change_to_onprocess');?>",
+              method : "POST",
+              data : {appointment_table_id: appointment_table_id,appointment_status:appointment_status},
+              success: function(data){
+                  
+                  console.log("nadagdag na" + data.code);
+                  //document.getElementById("reloaded").contentDocument.location.reload(true);
+                  //$("#reloaded").load();
+                  //alert('Appointment now is on going');
+                  reload();
+                  
+              }
+          });
+        });
+
+
+
   });
 </script>
 

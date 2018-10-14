@@ -46,10 +46,10 @@
 
       <div class="row">
         <div class="col-md-12">
-           <a href="<?php echo site_url()?>admin/pets" class="btn btn-info btn-flat btn-sm">View Pet List</a>
-           <a href="<?php echo site_url()?>admin/view_pettype" class="btn btn-warning btn-flat btn-sm">View Pet Type</a>
-           <a href="<?php echo site_url()?>admin/view_petbreed" class="btn btn-success btn-flat btn-sm">View Pet Breed</a>
-           <a href="<?php echo site_url()?>admin/view_petmedicalrecords" class="btn btn-primary btn-flat btn-sm">View Pet Medical Records</a>
+           <a href="<?php echo site_url()?>admin/pets" class="btn btn-info btn-flat btn-sm" style="border-radius: 15px">View Pet List</a>
+           <a href="<?php echo site_url()?>admin/view_pettype" class="btn btn-warning btn-flat btn-sm" style="border-radius: 15px">View Pet Type</a>
+           <a href="<?php echo site_url()?>admin/view_petbreed" class="btn btn-success btn-flat btn-sm" style="border-radius: 15px">View Pet Breed</a>
+           <a href="<?php echo site_url()?>admin/view_petmedicalrecords" class="btn btn-primary btn-flat btn-sm" style="border-radius: 15px">View Pet Medical Records</a>
           <?php if($this->session->userdata('account_type') == "Super Admin"):?>
            <!--<button class="btn btn-flat btn-warning btn-sm" data-toggle="modal" data-target="#addpetbreed">Pet Breed</button>
            <button class="btn btn-flat btn-success btn-sm" data-toggle="modal" data-target="#petbreed">View Pet Breed</button> -->

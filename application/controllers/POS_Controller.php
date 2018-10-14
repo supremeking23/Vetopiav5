@@ -135,7 +135,7 @@ class POS_Controller extends CI_Controller {
             }
             $output .= '
                 <tr>
-                    <td width="25%">Total Products</td>
+                    <th width="25%">Total Products</th>
                         <td class="text-right" style="padding-right:10px;"><span id="count">'.
                             count($this->cart->contents())
                         .'
@@ -280,6 +280,7 @@ class POS_Controller extends CI_Controller {
         $staff_id = $this->session->userdata('user_id');
 
         $now = date('Y-m-d H:i:s');
+        $date = date('Y-m-d');
         $data_sales = array(
             'invoice_number' => $invoice_number,
             'customer_type' => $customer_type,
@@ -325,12 +326,14 @@ class POS_Controller extends CI_Controller {
                         'product_id' => $prod_id,
                         'product_type' => $product_type,
                         'product_name' => $product_name .' ('.$product_unit.')',
-                        'price_per_product' => $base_price,
+                        'price_per_product' => $price_per_product,
                         'sales_quantity' => $sales_quantity,
                         'total_per_product' => $total_per_product,
                         'tax' => $tax,
                         'vat' => $vat,
                         'last_price' => $last_price,
+                        'sales_date' => $date,
+                        'product_table_id' => $product_id,
 
                      );
                      $this->pos_management->insert_new_sales_detail_record($data_sales_detail);
@@ -494,7 +497,7 @@ class POS_Controller extends CI_Controller {
                         'product_id' => $prod_id,
                         'product_type' => $product_type,
                         'product_name' => $product_name .' ('.$product_unit.')',
-                        'price_per_product' => $base_price,
+                        'price_per_product' => $price_per_product,
                         'sales_quantity' => $sales_quantity,
                         'total_per_product' => $total_per_product,
                         'tax' => $tax,

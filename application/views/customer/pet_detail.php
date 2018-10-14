@@ -130,13 +130,13 @@
 
                            ?>
                         <li class="list-group-item"> 
-                            <button type="button" class="btn btn-info btn-sm btn-flat btn-block" data-toggle="modal" data-target="#viewBreedDescription">Breed Detail</button>
+                            <button type="button" class="btn btn-info btn-sm btn-flat btn-block" data-toggle="modal" data-target="#viewBreedDescription"  style="border-radius: 15px">Breed Detail</button>
                                     <div class="modal fade" id="viewBreedDescription">
                                       <div class="modal-dialog">
-                                        <div class="modal-content">
+                                        <div class="modal-content" style="border-radius: 15px" >
                                           <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                              <span aria-hidden="true">&times;</span></button>
+                                              <span aria-hidden="true"  >&times;</span></button>
                                             <h4 class="modal-title">Breed Description</h4>
                                           </div>
                                           <div class="modal-body">

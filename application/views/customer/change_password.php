@@ -98,7 +98,7 @@
 
 
 
-                              <input type="password" name="old_password" id="old_password" class="form-control" required="">
+                              <input type="password" name="old_password" id="old_password" class="form-control" required="" style="border-radius: 15px">
                          </div>   
                     </div>
                     <br />
@@ -112,7 +112,7 @@
 
 
 
-                              <input type="password" name="new_password" id="new_password" class="form-control" required="">
+                              <input type="password" name="new_password" id="new_password" class="form-control" required="" style="border-radius: 15px">
                          </div>   
                     </div>
                     <br />
@@ -127,12 +127,12 @@
 
 
 
-                              <input type="password" name="confirm_password" id="confirm_password" class="form-control" required="">
+                              <input type="password" name="confirm_password" id="confirm_password" class="form-control" required="" style="border-radius: 15px">
                          </div>   
                     </div>
                     <br />
 
-                    <input type="submit" name="change_password" id="change_password" value="Save" class="pull-left btn btn-danger btn-sm btn-flat">
+                    <input type="submit" name="change_password" id="change_password" value="Save" class="pull-left btn btn-danger btn-sm btn-flat" style="border-radius: 15px">
              </form>
 
             </div>

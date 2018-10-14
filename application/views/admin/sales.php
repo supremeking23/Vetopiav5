@@ -62,12 +62,12 @@
 
       <div class="row">
         <div class="col-md-12">
-          <button class="btn btn-sm btn-flat btn-info" data-target="#print_report" data-toggle="modal">Print Report</button>
+          <button class="btn btn-sm btn-flat btn-info" data-target="#print_report" data-toggle="modal" style="border-radius: 15px">Print Report</button>
 
 
           <div class="modal fade" id="print_report">
             <div class="modal-dialog">
-              <div class="modal-content">
+              <div class="modal-content" style="border-radius: 15px">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
@@ -80,11 +80,11 @@
                       <tbody>
                         <tr>
                           <td><b>From:</b></td>
-                          <td><input type="date" name="from" id="from" class="form-control" required=""></td>
+                          <td><input type="date" name="from" id="from" class="form-control" required="" style="border-radius: 15px"></td>
                         </tr>
                         <tr>
                           <td><b>To:</b></td>
-                          <td><input type="date" name="to" id="to" class="form-control" required=""></td>
+                          <td><input type="date" name="to" id="to" class="form-control" required="" style="border-radius: 15px"></td>
                         </tr>
                       
                       </tbody>
@@ -92,12 +92,12 @@
                     </table>                  
                 </div>
                 <div class="modal-footer">
-                  <div class="hide-primary-buttons"><button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal">Close</button>
-                  <input  type="submit" class="btn btn-primary filter btn-sm btn-flat" value="Filter" id="filter">
+                  <div class="hide-primary-buttons"><button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal" style="border-radius: 15px">Close</button>
+                  <input  type="submit" class="btn btn-primary filter btn-sm btn-flat" value="Filter" id="filter" style="border-radius: 15px">
                   </div>
                 </form> 
 
-                <a href="<?php echo site_url()?>Inventory/Print_report" target="_blank" class="btn btn-success btn-flat btn-sm btn-block print" style="display: none">Print</a>
+                <a href="<?php echo site_url()?>Inventory/Print_report" target="_blank" class="btn btn-success btn-flat btn-sm btn-block print" style="display: none" style="border-radius: 15px">Print</a>
                 </div>
               </div>
               <!-- /.modal-content -->
@@ -149,12 +149,12 @@
                     <td><?php echo $sales->customer_name;?></td>
                     <td><?php echo $sales->customer_type;?></td>
                     <td>₱<?php echo $sales->total_amount ?> </td>
-                    <td> <a role="button"  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#sales_full_details<?php echo $sales->sales_id?>"><span class="glyphicon glyphicon-fullscreen"> </span>
+                    <td> <a role="button"  class="btn btn-primary btn-sm" data-toggle="modal" style="border-radius: 15px" data-target="#sales_full_details<?php echo $sales->sales_id?>"><span class="glyphicon glyphicon-fullscreen"> </span>
                             View Full Detail
                     </a>
                        <div class="modal fade" id="sales_full_details<?php echo $sales->sales_id?>">
                               <div class="modal-dialog">
-                                <div class="modal-content">
+                                <div class="modal-content" style="border-radius: 15px">
                                   <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       <span aria-hidden="true">&times;</span></button>

@@ -2,6 +2,7 @@
 
   
  $skin_color2 = $t_color->theme_color;
+ $logo = $t_color->system_logo;
 }
 
 
@@ -14,7 +15,7 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-  <link rel="shortcut icon" href="<?php echo site_url(); ?>assets/site_images/logo3.png">
+  <link rel="shortcut icon" href="<?php echo site_url(); ?>assets/site_images/<?php echo $logo;?>">
 
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="<?php echo site_url()?>assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -160,6 +161,10 @@
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
   background: #00bfff;
 }
+
+
+
+
   </style>
 
 

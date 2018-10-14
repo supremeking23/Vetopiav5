@@ -1,6 +1,6 @@
       <div class="modal fade" id="addArticle">
         <div class="modal-dialog">
-          <div class="modal-content">
+          <div class="modal-content" style="border-radius: 15px">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span></button>
@@ -28,7 +28,7 @@
 
 
 
-                              <input type="file" id="article_image" name="article_image" class="form-control" onchange="document.getElementById('article_Image').src = window.URL.createObjectURL(this.files[0])" required="">
+                              <input type="file" id="article_image" name="article_image" class="form-control" onchange="document.getElementById('article_Image').src = window.URL.createObjectURL(this.files[0])" required="" style="border-radius: 15px">
 
                               <div id="image_viewer"> <img  id="article_Image"  class="img-rounded" alt="" width="100%" height="200" src="" /></div>
                          </div>   
@@ -46,7 +46,7 @@
 
 
 
-                              <input type="text" name="title" required="" id="title" class="form-control" >
+                              <input type="text" name="title" required="" id="title" class="form-control" style="border-radius: 15px">
                          </div>   
               </div>
               
@@ -70,7 +70,7 @@
            
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default pull-left" style="border-radius: 15px" data-dismiss="modal">Close</button>
               <?php 
 
                       $data = array(
@@ -78,6 +78,7 @@
                         'value' => 'Add',
                         'id' => 'add_article_btn',
                         'class' => 'btn btn-primary btn-sm btn-flat',
+                        'style' => 'border-radius:15px',
                       );
 
                     echo form_submit($data);?>
@@ -144,7 +145,7 @@
         html += '<span id="row'+count+'"><div class="row">';
         var counts = count + 1;
         html += '<div class="col-md-11">';
-        html += '<textarea style="height: 200px" required="" name="content[]" id="content'+count+'" class="form-control text" placeholder= "Content Section ">';
+        html += '<textarea style="height: 200px;border-radius:15px;" required="" name="content[]" id="content'+count+'" class="form-control text" placeholder= "Content Section ">';
         html += '</textarea>';
         html += '</div>';
        
@@ -169,7 +170,7 @@
         html += '<span id="row'+count+'"><div class="row">';
         var counts = count + 1;
         html += '<div class="col-md-11">';
-        html += '<input type="text" required="" id="link'+count+'" name="link[]" class="form-control" placeholder="Website link "/>';
+        html += '<input type="text" required="" style="border-radius: 15px" id="link'+count+'" name="link[]" class="form-control" placeholder="Website link "/>';
         html += '</div>';
        
         html += '<div class="col-md-1">';

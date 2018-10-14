@@ -48,12 +48,12 @@
                                   <td><?php echo $appointment_detail->preferredtime;?></td>
                                   <td><?php echo $appointment_detail->vet_in_charge; //echo $appointment_detail->appointment_table_id;?> </td>
                                   <td><?php if($appointment_detail->appointment_status != "Pending"):?>
-                                      <button type="button" class="btn btn-flat btn-sm btn-info" data-toggle="modal" data-target="#detailAppointment<?php echo $appointment_detail->appointment_table_id?>">View Details</button>
+                                      <button type="button" class="btn btn-flat btn-sm btn-info" data-toggle="modal" data-target="#detailAppointment<?php echo $appointment_detail->appointment_table_id?>"  style="border-radius: 15px">View Details</button>
                                     <?php endif;?>
 
                                         <div class="modal fade" id="detailAppointment<?php echo $appointment_detail->appointment_table_id?>">
                                             <div class="modal-dialog">
-                                              <div class="modal-content">
+                                              <div class="modal-content" style="border-radius: 15px">
                                                 <div class="modal-header">
                                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span></button>
@@ -66,8 +66,8 @@
 
 
                                                     foreach($checkup_detail as $c_detail){
-                                                       $complaints = $c_detail->complaints;
-                                                       $treatment = $c_detail->treatment;
+                                                       $subjective = $c_detail->subjective;
+                                                       $objective = $c_detail->objective;
                                                        $prescription = $c_detail->prescription;
                                                        /*$service_get = $c_detail->service_name;
                                                        $service_fee = $c_detail->service_fee;*/
@@ -95,7 +95,7 @@
 
                                                                 <tr>
                                                                   <td><b>Complaints/Description:</b></td>
-                                                                  <td><?php echo $complaints;?></td>
+                                                                  <td><?php echo $subjective;?></td>
                                                                 </tr> 
                                                                 <tr>
                                                                   <td><b>Possible Cause:</b></td>

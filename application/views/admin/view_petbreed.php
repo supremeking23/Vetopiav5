@@ -53,10 +53,10 @@
            <button class="btn btn-flat btn-success btn-sm" data-toggle="modal" data-target="#petbreed">View Pet Breed</button> -->
 
 
-          <a href="<?php echo site_url()?>admin/pets" class="btn btn-info btn-flat btn-sm">View Pet List</a>
-          <a href="<?php echo site_url()?>admin/view_pettype" class="btn btn-warning btn-flat btn-sm">View Pet Type</a>
-          <button class="btn btn-flat btn-success btn-sm" data-toggle="modal" data-target="#addpetbreed">Add Pet Breed </button>
-          <a href="<?php echo site_url()?>admin/view_petmedicalrecords" class="btn btn-primary btn-flat btn-sm">View Pet Medical Records</a>
+          <a href="<?php echo site_url()?>admin/pets" class="btn btn-info btn-flat btn-sm" style="border-radius: 15px">View Pet List</a>
+          <a href="<?php echo site_url()?>admin/view_pettype" class="btn btn-warning btn-flat btn-sm" style="border-radius: 15px">View Pet Type</a>
+          <button class="btn btn-flat btn-success btn-sm" data-toggle="modal" data-target="#addpetbreed" style="border-radius: 15px">Add Pet Breed </button>
+          <a href="<?php echo site_url()?>admin/view_petmedicalrecords" class="btn btn-primary btn-flat btn-sm" style="border-radius: 15px" >View Pet Medical Records</a>
 
   
 
@@ -123,12 +123,12 @@
                         ?>
                       </td>
                       <td>
-                        <button type="button" class="btn btn-info btn-sm btn-flat" data-toggle="modal" data-target="#editDetail<?php echo $bl->breed_id;?>">Edit Detail</button>
+                        <button type="button" class="btn btn-info btn-sm btn-flat" data-toggle="modal" data-target="#editDetail<?php echo $bl->breed_id;?>" style="border-radius: 15px">Edit Detail</button>
                       
                       </td>
                         <div class="modal fade" id="editDetail<?php echo $bl->breed_id;?>">
                           <div class="modal-dialog">
-                            <div class="modal-content">
+                            <div class="modal-content" style="border-radius: 15px">
                               <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span></button>
@@ -142,12 +142,12 @@
                                        <div class="success-message_edit_breed_description"></div> 
                                     </div> 
                                    
-                                      <textarea class="form-control textareas" id ="breed_description" name="breed_description" > <?php echo ($bl->breed_description);?></textarea>
+                                      <textarea class="form-control textareas" id ="breed_description" name="breed_description" style="border-radius: 15px"> <?php echo ($bl->breed_description);?></textarea>
                                       <input type="hidden" name="breed_id" id="breed_id" value="<?php echo $bl->breed_id;?>">
                                   
                                   </div>
                                   <div class="modal-footer">
-                                          <button type="button" class="btn btn-default pull-left btn-flat btn-sm" data-dismiss="modal" >Close</button>
+                                          <button type="button" class="btn btn-default pull-left btn-flat btn-sm" data-dismiss="modal" style="border-radius: 15px">Close</button>
                                           <?php 
 
                                              $data = array(
@@ -155,6 +155,7 @@
                                               'value' => 'Save',
                                               'id' => 'edit_breed_btn edit',
                                               'class' => 'btn btn-primary edit btn-flat btn-sm',
+                                              'style' => 'border-radius:15px',
                                             );
                                             echo form_submit($data);?>                                    
                                   </div>

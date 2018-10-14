@@ -51,7 +51,7 @@
 
           <?php if($this->session->userdata('account_type') == "Super Admin"):?>
 
-          <button class="btn btn-flat btn-info btn-sm" data-toggle="modal" data-target="#addAdmin">Add New Admin</button>
+          <button class="btn btn-flat btn-info btn-sm" data-toggle="modal" data-target="#addAdmin" style="border-radius: 15px">Add New Admin</button>
 
         <?php endif;?>
         </div>
@@ -113,6 +113,7 @@
                   <th>User ID</th>
                   <th>Name</th>
                   <th>Contact Number</th>
+                  <th>Last Login</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -149,9 +150,14 @@
                       <?php echo $admins->firstname .' '. $admins->middlename .' '. $admins->lastname;?>
                     </td>
                     <td><?php echo $admins->contact;?></td>
-                   
+                    <td><?php $last_login = $this->admin_management->log_last_active($admins->admin_id);
+                        foreach($last_login as $last){
+                                 $date =date_create($last->log_date);
+                             echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                        }
+                    ?></td>
                     <td>
-                    <a href="<?php echo site_url()?>Admin/Admin_details/<?php echo $admins->admin_table_id;?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info">View Full Detail</a>
+                    <a href="<?php echo site_url()?>Admin/Admin_details/<?php echo $admins->admin_table_id;?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info" style="border-radius: 15px">View Full Detail</a>
                       
                     </td>
                </tr>

@@ -85,14 +85,14 @@
                     <label for="preferredDate" class="col-sm-2 control-label">Date</label>
 
                     <div class="col-sm-10">
-                      <input type="date" class="form-control" id="preferredDate" name="preferredDate" required="">
+                      <input type="date" class="form-control" id="preferredDate" name="preferredDate" required="" style="border-radius: 15px">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="preferredtime" class="col-sm-2 control-label">Time</label>
 
                     <div class="col-sm-10">
-                      <select name="preferredtime" class="form-control" required="">
+                      <select name="preferredtime" class="form-control" required="" style="border-radius: 15px">
                         <?php foreach($time as $t):?>
                           <option value="<?php echo $t->time;?>"> <?php echo $t->time;?></option>
                       <?php endforeach;?>
@@ -103,9 +103,20 @@
                     <label for="pet_name" class="col-sm-2 control-label">Pet Name</label>
 
                     <div class="col-sm-10">
-                        <select name="pet_id" class="form-control">
+                        <select name="pet_id" class="form-control" style="border-radius: 15px">
                         <?php foreach($my_petsdata as $my_pets):?>
                           <option value="<?php echo $my_pets->pet_id;?>"><?php echo $my_pets->petname;?></option>
+                      <?php endforeach;?>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="veterinarian" class="col-sm-2 control-label">Veterinarian</label>
+
+                    <div class="col-sm-10">
+                        <select name="veterinarian" class="form-control" style="border-radius: 15px">
+                        <?php foreach($all_vets as $vets):?>
+                          <option value="<?php echo $vets->veterinarian_table_id;?>"><?php echo $vets->firstname .' '. $vets->middlename .' '. $vets->lastname;?></option>
                       <?php endforeach;?>
                       </select>
                     </div>
@@ -114,13 +125,13 @@
                     <label for="complaints" class="col-sm-2 control-label">Description / Complaints</label>
 
                     <div class="col-sm-10">
-                      <textarea class="form-control textareas" id="complaints" name="complaints" placeholder=""></textarea>
+                      <textarea class="form-control textareas" id="complaints" name="complaints" placeholder="" style="border-radius: 15px"></textarea>
                     </div>
                   </div>
                 
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-danger">Submit</button>
+                      <button type="submit" class="btn btn-danger btn-sm btn-flat" style="border-radius: 15px">Submit</button>
                     </div>
                   </div>
                 </form>
@@ -215,7 +226,7 @@
 
                               <div class="modal fade" id="detailAppointment_done<?php echo $c_appointment->appointment_table_id?>">
                                 <div class="modal-dialog">
-                                  <div class="modal-content">
+                                  <div class="modal-content" style="border-radius: 15px">
                                     <div class="modal-header">
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span></button>
@@ -232,13 +243,20 @@
                                                             <td><?php echo $cd->petname;?></td>
                                                           </tr>
                                                           <tr>
-                                                            <td><b>Reason/Complaint</b></td>
-                                                            <td><?php echo $cd->complaints;?></td>
+                                                            <td><b>Reason/Complaint(Subjective Observation)</b></td>
+                                                            <td><?php echo $cd->subjective;?></td>
                                                           </tr>
-                                                         
+                                                           <tr>
+                                                            <td><b>Veterinarian's Observation(Objective Observation)</b></td>
+                                                            <td><?php echo $cd->objective;?></td>
+                                                          </tr>                                                        
                                                           <tr>
                                                             <td><b>Prescription</b></td>
                                                             <td><?php echo $cd->prescription;?></td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td><b>Possible Cause</b></td>
+                                                            <td><?php echo $cd->possible_cause;?></td>
                                                           </tr>
                                                           <tr>
                                                             <td><b>Services</b></td>

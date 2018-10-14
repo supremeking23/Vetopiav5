@@ -53,7 +53,7 @@
 
           <?php if($this->session->userdata('account_type') == "Super Admin"):?>
 
-          <button class="btn btn-flat btn-info btn-sm" data-toggle="modal" data-target="#addService">Add New Service</button>
+          <button class="btn btn-flat btn-info btn-sm" data-toggle="modal" data-target="#addService" style="border-radius: 15px">Add New Service</button>
 
         <?php endif;?>
       </div>
@@ -129,11 +129,11 @@
                               data-content="<?php echo htmlentities($pet_services->service_description);?>"
                               >View Details</a> -->
 
-                              <button type="button" data-toggle="modal" data-target="#serviceDetail<?php echo $pet_services->service_id;?>" class="btn btn-sm btn-flat btn-info">View Detail</button>
+                              <button type="button" data-toggle="modal" data-target="#serviceDetail<?php echo $pet_services->service_id;?>" class="btn btn-sm btn-flat btn-info" style="border-radius: 15px">View Detail</button>
                              
                               <div class="modal fade" id="serviceDetail<?php echo $pet_services->service_id;?>">
                                 <div class="modal-dialog">
-                                  <div class="modal-content">
+                                  <div class="modal-content" style="border-radius: 15px">
                                     <div class="modal-header">
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span></button>
@@ -157,11 +157,11 @@
                               <!-- /.modal -->                              
                             </td>
                             <td>₱ <?php echo $pet_services->service_fee;?></td>
-                            <td><button type="button" class="btn btn-flat btn-sm btn-primary" data-toggle="modal" data-target="#editServiceDetail<?php echo $pet_services->service_id;?>">Edit Detail</button></td>
+                            <td><button type="button" class="btn btn-flat btn-sm btn-primary" data-toggle="modal" data-target="#editServiceDetail<?php echo $pet_services->service_id;?>" style="border-radius: 15px">Edit Detail</button></td>
 
                             <div class="modal fade" id="editServiceDetail<?php echo $pet_services->service_id;?>">
                                 <div class="modal-dialog">
-                                  <div class="modal-content">
+                                  <div class="modal-content" style="border-radius: 15px">
                                     <div class="modal-header">
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span></button>
@@ -197,6 +197,7 @@
                                                                 'size'          => '',
                                                                 'required'      => 'required',
                                                                 'class'         => 'form-control',
+                                                                'style'         => 'border-radius:15px',
                                                                 
                                                         );
 
@@ -218,7 +219,7 @@
                                                       ?>
 
 
-                                                    <select class="form-control" name="for_what_pet" id="for_what_pet" required="">
+                                                    <select class="form-control" name="for_what_pet" id="for_what_pet" required="" style="border-radius: 15px">
                                                       <?php foreach($all_pettype as $ap):?>
                                                           <option value="<?php echo $ap->pettype_code;?>" <?php if($ap->pettype_code == $pet_services->for_what_pet){echo "selected";} ?>><?php echo $ap->pettype;?></option>
                                                       <?php endforeach;?>
@@ -248,7 +249,7 @@
                                                       );
                                                   ?>
 
-                                                  <?php echo form_dropdown('for_pet_ages',$option,$pet_services->for_pet_ages,'class="form-control" required id="for_pet_ages"');?>
+                                                  <?php echo form_dropdown('for_pet_ages',$option,$pet_services->for_pet_ages,'class="form-control" required id="for_pet_ages" style="border-radius: 15px"');?>
 
            
                                                  </div>   
@@ -265,7 +266,7 @@
                                                       echo form_label('Service Description', 'service_description','class="control-label"');
                                                       ?>
 
-                                                     <textarea class="form-control textareas" id="service_description" name="service_description"><?php echo $pet_services->service_description;?></textarea>
+                                                     <textarea class="form-control textareas" id="service_description" name="service_description" style="border-radius: 15px"><?php echo $pet_services->service_description;?></textarea>
 
 
                                                  </div>   
@@ -283,7 +284,7 @@
                                                       echo form_label('Service Fee', 'service_fee','class="control-label"');
                                                       ?>
 
-                                                    <input type="number" id="service_fee" name="service_fee" value="<?php echo $pet_services->service_fee;?>" class="form-control">
+                                                    <input type="number" id="service_fee" name="service_fee" value="<?php echo $pet_services->service_fee;?>" class="form-control" style="border-radius: 15px">
 
 
                                                  </div>   
@@ -297,14 +298,15 @@
 
                                         </div>
                                         <div class="modal-footer">
-                                          <button type="button" class="btn btn-default pull-left" data-dismiss="modal" >Close</button>
+                                          <button type="button" class="btn btn-default pull-left btn-sm btn-flat" data-dismiss="modal" style="border-radius: 15px">Close</button>
                                           <?php 
 
                                              $data = array(
                                               'name' => 'submit',
                                               'value' => 'Save',
                                               'id' => 'edit_service_btn',
-                                              'class' => 'btn btn-primary edit',
+                                              'class' => 'btn btn-primary edit btn-sm btn-flat',
+                                              'style' => 'border-radius:15px',
                                             );
                                             echo form_submit($data);?>
 

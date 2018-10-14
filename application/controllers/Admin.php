@@ -118,6 +118,10 @@ class Admin extends CI_Controller {
 		$data['count_customers'] = $this->customer_management->count_all_customers();
 
 
+		$sf_date = date('Y');
+		$data['slow_fast'] = $this->inventory_management->slow_fast_moving($sf_date);
+
+
 
 		$data['count_pets'] = $this->pet_management_model->count_all_pets();
 
@@ -242,7 +246,7 @@ class Admin extends CI_Controller {
 		$today_now = date('Y-m-d');
 		$data['all_customers'] = $this->customer_management->get_all_customer();
 		$data['all_appointment'] = $this->appointment_management->get_all_appointment();
-		$data['all_vets'] = $this->veterinarian_management->get_all_veterinarian();
+		$data['all_vets'] = $this->veterinarian_management->get_all_veterinarian_active();
 
 		$data['time'] = $this->appointment_management->getScheduleTime();
 		$this->load->view('admin/appointment',$data);

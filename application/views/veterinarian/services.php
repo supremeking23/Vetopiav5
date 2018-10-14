@@ -90,11 +90,11 @@
                               data-content="<?php echo htmlentities($pet_services->service_description);?>"
                               >View Details</a> -->
 
-                              <button type="button" data-toggle="modal" data-target="#serviceDetail<?php echo $pet_services->service_id;?>" class="btn btn-sm btn-flat btn-info">View Detail</button>
+                              <button type="button" data-toggle="modal" data-target="#serviceDetail<?php echo $pet_services->service_id;?>" class="btn btn-sm btn-flat btn-info" style="border-radius: 15px">View Detail</button>
                              
                               <div class="modal fade" id="serviceDetail<?php echo $pet_services->service_id;?>">
                                 <div class="modal-dialog">
-                                  <div class="modal-content">
+                                  <div class="modal-content" style="border-radius: 15px">
                                     <div class="modal-header">
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span></button>

@@ -47,17 +47,19 @@
          $clinic_name = $clinic_d->store_name;
          $telephone = $clinic_d->telephone;
          $cellphone =  $clinic_d->cellphone;
+         $logo  = $clinic_d->system_logo;
+         $tin_number = $clinic_d->tin_number;
       }
   ?>
-          <img src="<?php echo site_url()?>assets/site_images/logo3.png" width="50"> <?php echo $title;?>
+          <img src="<?php echo site_url()?>assets/site_images/<?php echo $logo;?>" width="50"> <?php echo $title;?>
           <small class="pull-right"></small>
            <center>  
               <b><span style="font-size:24px"></span></b><br>
               <b><span style="font-size:36px"><?php echo $clinic_name;?></span></b><br>
               <i><?php echo $clinic_address;?></i><br>
               <i>Tel. No.:<?php echo $telephone;?></i><br>
-              <i>Cel. No.: <?php echo $cellphone;?></i><br>
-              
+              <i>Cel. No.: <?php echo $cellphone;?></i><br />
+              <i>Tin. No.: <?php echo $tin_number;?></i><br>
           </center>
         </h2>
       </div>
@@ -107,13 +109,13 @@
               <th rowspan="2">Product Type</th>
               <th rowspan="2">Quantity</th>
               <th rowspan="2">Price</th>
-              <th rowspan="2">Actual Amt.</th>
-              <th colspan="2"><center>Tax (%)</center></th>
-              <th rowspan="2">Total</th>
+              <th rowspan="2">Subtotal</th>
+             <!-- <th colspan="2"><center>Tax (%)</center></th> -->
+             <!-- <th rowspan="2">Total</th> -->
             </tr>
-            <tr>
+          <!--  <tr>
               <th>Rate</th>
-              <th>Amt.</th>
+              <th>Amt.</th> -->
             </tr>
           </thead>
           <tbody>
@@ -127,11 +129,11 @@
               <td><?php echo $data_from_sales_detail->sales_quantity;?></td>
               <td>₱<?php echo $data_from_sales_detail->price_per_product;?></td> 
               <td>₱<?php $actual_amt = $data_from_sales_detail->price_per_product * $data_from_sales_detail->sales_quantity; echo number_format($actual_amt, 2)?></td>
-              <td><?php echo 100 * $data_from_sales_detail->tax;?>%</td>
+              <!--<td><?php echo 100 * $data_from_sales_detail->tax;?>%</td>
             <td align="right">₱<?php  $tax_nadagdag =  $actual_amt *  $data_from_sales_detail->tax;
                         echo  number_format($tax_nadagdag, 2)
             ?></td>
-            <td align="right">₱<?php echo  number_format($actual_amt + $tax_nadagdag, 2) ;?></td>
+            <td align="right">₱<?php echo  number_format($actual_amt + $tax_nadagdag, 2) ;?></td> -->
             </tr>
           
           <?php endforeach;?>
@@ -170,6 +172,42 @@
         </div>
       </div>
       <!-- /.col -->
+    </div>
+
+
+
+    <hr>
+    <div class="row">
+      
+      <div class="col-xs-6">
+       
+      </div>
+     
+      <div class="col-xs-6">
+        <p class="lead"></p>
+
+        <div class="table-responsive">
+          <table class="table">
+            <tr>
+              <th style="width:50%">Vatable Amount</th>
+              <td>₱<?php 
+
+               $vat = $total_amount * .12;
+               $vatable_amount = $total_amount - $vat;
+
+                echo number_format($vatable_amount,2);
+               ;?></td>
+            </tr>
+            <tr>
+              <th style="width:50%">Vat(12%):</th>
+              <td>₱<?php echo number_format($vat, 2);?></td>
+            </tr>
+            
+           
+          </table>
+        </div>
+      </div>
+     
     </div>
     <!-- /.row -->
   </section>

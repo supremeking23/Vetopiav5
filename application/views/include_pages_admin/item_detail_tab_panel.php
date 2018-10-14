@@ -17,7 +17,7 @@
                         <label for="customerID" class="col-sm-2 control-label">Product ID</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" value="<?php echo $i_details->item_id;?>" name="product_id" placeholder="Product ID" readonly="">
+                          <input type="text" class="form-control" value="<?php echo $i_details->item_id;?>" name="product_id" placeholder="Product ID" readonly="" style="border-radius: 15px">
                         </div>
                       </div>
 
@@ -25,7 +25,7 @@
                         <label for="itemname" class="col-sm-2 control-label">Item Name</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" value="<?php echo $i_details->itemname;?>" name="itemname" placeholder="Item Name">
+                          <input type="text" class="form-control" value="<?php echo $i_details->itemname;?>" name="itemname" placeholder="Item Name" style="border-radius: 15px">
                         </div>
                       </div>
 
@@ -34,25 +34,33 @@
                         <label for="itemdescription" class="col-sm-2 control-label">Item Description</label>
 
                         <div class="col-sm-10">
-                         <textarea class="form-control textareas" name="itemdescription"><?php echo $i_details->itemdescription;?></textarea>
+                         <textarea class="form-control textareas" name="itemdescription" style="border-radius: 15px"><?php echo $i_details->itemdescription;?></textarea>
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="price" class="col-sm-2 control-label">Product base price</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" value="<?php echo $i_details->price;?>" name="price" placeholder="Price">
+                          <input type="text" class="form-control" value="<?php echo $i_details->price;?>" name="price" placeholder="Price" style="border-radius: 15px">
                         </div>
                       </div>
 
-                     
+
+                      <div class="form-group">
+                        <label for="price" class="col-sm-2 control-label">Maximum Product Count</label>
+
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" value="<?php echo $i_details->max_product_count;?>" name="max_product_count" placeholder="max_product_count" style="border-radius: 15px">
+                          <input type="hidden" name="productInStore" value="<?php echo $i_details->productInStore;?>">
+                        </div>
+                      </div>               
                     
 
                        <div class="form-group">
                         <label for="supplier" class="col-sm-2 control-label">Supplier Name</label>
 
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" value="<?php echo $i_details->supplier;?>" name="supplier" placeholder="Supplier Name">
+                          <input type="text" class="form-control" value="<?php echo $i_details->supplier;?>" name="supplier" placeholder="Supplier Name" style="border-radius: 15px">
                         </div>
                       </div>
 
@@ -70,7 +78,7 @@
                       <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
 
-                          <button type="submit" class="btn btn-danger">Submit</button>
+                          <button type="submit" class="btn btn-danger btn-sm btn-flat" style="border-radius: 15px">Submit</button>
                         </div>
                       </div>
                     </form>

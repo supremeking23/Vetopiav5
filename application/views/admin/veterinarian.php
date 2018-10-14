@@ -46,7 +46,7 @@
 
       <div class="row">
         <div class="col-md-12">
-          <button class="btn btn-flat btn-info btn-sm" data-toggle="modal" data-target="#addVet">Add New Veterinarian</button>
+          <button class="btn btn-flat btn-info btn-sm" data-toggle="modal" data-target="#addVet" style="border-radius: 15px">Add New Veterinarian</button>
         
         </div>
         <!-- /.col -->
@@ -108,6 +108,7 @@
                   <th>User ID</th>
                   <th>Name</th>
                   <th>Contact Number</th>
+                  <th>Last Login</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -137,9 +138,17 @@
                       <?php echo $vets->firstname .' '. $vets->middlename .' '. $vets->lastname;?>
                     </td>
                     <td><?php echo $vets->contact;?></td>
+
+                    <td><?php $last_login = $this->admin_management->log_last_active($vets->veterinarian_id);
+                        foreach($last_login as $last){
+                                 $date =date_create($last->log_date);
+                             echo  $log_date_format= date_format($date,"F d, Y h:i:sa");
+                        }
+                    ?></td>
+
                    
                     <td>
-                    <a href="<?php echo site_url()?>Admin/Vet_details/<?php echo $vets->veterinarian_table_id;?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info">View Full Detail</a>
+                    <a href="<?php echo site_url()?>Admin/Vet_details/<?php echo $vets->veterinarian_table_id;?>" data-tooltip="tooltip" data-title="View Full Detail"  class="btn btn-sm btn-flat btn-info" style="border-radius: 15px">View Full Detail</a>
                       
                     </td>
                </tr>

@@ -37,32 +37,34 @@
   <!-- Main content -->
   <section class="invoice" style="background: ">
     
-  <div class="row">
-
-  <?php 
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 class="page-header">
+            <?php 
       foreach($clinic_detail as $clinic_d){
          $clinic_address =  $clinic_d->clinic_home_address .' '.$clinic_d->clinic_barangay_address .' '. $clinic_d->clinic_city_address.', '.$clinic_d->clinic_postal_id;
          $clinic_email = $clinic_d->clinic_email_address;
          $clinic_name = $clinic_d->store_name;
-         $telephone = $clinic_d->telephone;
-         $cellphone = $clinic_d->cellphone;
+         $telephone =  $clinic_d->telephone;
+        $cellphone =  $clinic_d->cellphone;
+        $logo = $clinic_d->system_logo;
       }
   ?>
-
-    <div class="col-md-3"><img src="<?php echo site_url()?>assets/site_images/logo3.png" id="logo" class="img-circle"></div>
-    <div class="col-md-6">
-      <center>  
+          <img src="<?php echo site_url()?>assets/site_images/<?php echo $logo;?>" width="50"> <?php echo $title;?>
+          <small class="pull-right"></small>
+           <center>  
               <b><span style="font-size:24px"></span></b><br>
               <b><span style="font-size:36px"><?php echo $clinic_name;?></span></b><br>
               <i><?php echo $clinic_address;?></i><br>
-              <i>Tel. No.:<?php echo $telephone?></i><br>
-             <!-- <i>Email: <?php echo $clinic_email;?></i><br> -->
-             <i>Cel. No.:<?php echo $cellphone;?></i>
+              <i>Tel. No.:<?php echo $telephone;?></i><br>
+              <i>Cel. No.:<?php echo $cellphone;?></i><br>
+              <!--<i>Email: <?php echo $clinic_email;?></i><br> -->
               
-              </center>
+          </center>
+        </h2>
+      </div>
+      <!-- /.col -->
     </div>
-    <div class="col-md-3"></div>
-  </div>
 
 
 
@@ -80,6 +82,7 @@
                     $customer_name = $s_appointment->customer_name;
                     $pet_name = $s_appointment->pet_name;
                     $temp_date =  date_create($s_appointment->preferredDate);
+                    $vet =  $s_appointment->vet_in_charge;
 
                     $appointment_date = date_format($temp_date,"F d Y");
 
@@ -115,6 +118,11 @@
             <td><b><span style="font-size: 18px">Time </span></b></td>
             <td><b><span style="font-size: 18px"> : </span></b></td>
             <td><span id="print_time" style="font-size: 18px"> <?php echo  $time ;?> </span></td>
+           </tr>
+           <tr>
+            <td><b><span style="font-size: 18px">Veterinarian </span></b></td>
+            <td><b><span style="font-size: 18px"> : </span></b></td>
+            <td><span id="print_time" style="font-size: 18px"> <?php echo  $vet ;?> </span></td>
            </tr>
         </table>
 

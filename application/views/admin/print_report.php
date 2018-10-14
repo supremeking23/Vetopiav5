@@ -33,12 +33,18 @@
       width: 200px;
       margin-left: 250px
     }
+    @media print{ .wrapper{ height:100%;overflow:visible;} } 
   </style>
 
   <script src="<?php echo site_url()?>assets/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Morris.js charts -->
   <script src="<?php echo site_url()?>assets/bower_components/raphael/raphael.min.js"></script>
   <script src="<?php echo site_url()?>assets/bower_components/morris.js/morris.min.js"></script>
+  <script>
+  
+  $("body").css("overflow", "hidden");
+  $("body").css("overflow", "auto");
+</script>
 </head>
 <body onload="window.print()">
 <div class="wrapper">
@@ -56,6 +62,8 @@
           $skin_color = $clinic_d->theme_color;
           $telephone = $clinic_d->telephone;
           $cellphone = $clinic_d->cellphone;
+          $logo = $clinic_d->cellphone;
+          $tin_number = $clinic_d->tin_number;
       }
 
     if($skin_color == "skin-green"){
@@ -68,7 +76,7 @@
       $box_color = "box-warning";
     }
   ?>
-          <img src="<?php echo site_url()?>assets/site_images/logo3.png" width="50"> <?php echo $title;?>
+          <img src="<?php echo site_url()?>assets/site_images/<?php echo $logo ?>" width="50"> <?php echo $title;?>
           <small class="pull-right"></small>
            <center>  
               <b><span style="font-size:24px"></span></b><br>
@@ -76,8 +84,9 @@
               <i><?php echo $clinic_address;?></i><br>
               <i>Tel. No.:<?php echo $telephone?></i><br>
               <i>Cel. No.:<?php echo $cellphone?></i><br>
+              <i>Tin. No.:<?php echo $tin_number?></i><br>
              <!-- <i>Email: <?php echo $clinic_email;?></i><br> -->
-              
+              <small></small>
           </center>
         </h2>
       </div>

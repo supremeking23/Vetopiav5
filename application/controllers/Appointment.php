@@ -32,6 +32,132 @@ class Appointment extends CI_Controller {
 	}
 
 
+	//fullcalendar js
+	public function get_all_appointments_for_calendar(){
+		$get_appointments = $this->appointment_management->get_all_appointment();
+		$appointments = array();
+
+		foreach($get_appointments as $data_appointments){
+			$datas = array();
+			$datass = array();
+
+			$datas['id'] = $data_appointments->appointment_table_id;
+			$datas['appointment_id'] = $data_appointments->appointment_id;
+			$datas['start'] = $data_appointments->preferredDate .' '. $data_appointments->time_start;
+			$datas['end'] = $data_appointments->preferredDate.' '. $data_appointments->time_end;
+			$datas['title'] =  $data_appointments->customer_name;
+
+
+			$datas['preferredtime'] = $data_appointments->preferredtime;
+			//formated
+			$date =date_create($data_appointments->preferredDate);
+	        $preferred_date= date_format($date,"F d, Y");
+			$datas['preferredDate'] =$preferred_date;
+			$datas['pet_name'] =  $data_appointments->pet_name;
+
+			if(empty($data_appointments->vet_in_charge)){
+				$vet_in_charge = "None";
+			}else{
+				 $vet_in_charge = $data_appointments->vet_in_charge;
+			}
+			$datas['vet_in_charge'] =   $vet_in_charge;
+
+			$datas['cancel_reason'] = $data_appointments->cancel_reason;
+
+			$datas['total_payment'] =  $data_appointments->total_payment;
+
+			$datas['is_finished'] = $data_appointments->is_finished;
+
+
+
+			$checkup_detail = $this->pet_management_model->get_prescription_by_appointment_table_id($data_appointments->appointment_table_id);
+
+			foreach($checkup_detail as $cd){
+				$datas['subjective'] = $cd->subjective;
+				$datas['objective'] = $cd->objective;
+				$datas['assessment'] =  $cd->assessment;
+				$datas['plan'] =   $cd->plan;
+				$datas['possible_cause'] =  $cd->possible_cause;
+				$datas['checkup_id'] = $cd->checkup_id;
+
+			}
+
+
+	        //status
+	        $status_color = "";
+	        if($data_appointments->appointment_status == "Pending"){
+	          $status_color = "#D88B24";
+	        }else if($data_appointments->appointment_status == "Approved"){
+	          $status_color = "#45A9FF";
+	        }else if($data_appointments->appointment_status == "Done"){
+	          $status_color = "#008B24";
+	        }else if($data_appointments->appointment_status == "Cancelled"){
+	          $status_color = "#FF1B00";
+	        }else if($data_appointments->appointment_status == "On-Process"){
+	          $status_color = "#3c8dbc";
+	        }else if($data_appointments->appointment_status == "Confirmed"){
+	          $status_color = "#00c0ef";
+	        }
+
+
+	        $datas['status'] = $data_appointments->appointment_status;
+
+	        $datas['backgroundColor'] = $status_color;
+            $datas['borderColor'] = $status_color;
+
+          //merget the vent array into the return array
+            array_push($appointments, $datas);
+		}
+
+		echo json_encode($appointments);
+
+	}
+
+
+
+	public function get_services_for_calendar_view($id){
+		$id = $id;
+        $result = $this->db->where("checkup_id",$id)->get("tbl_service_rendered")->result();
+        echo json_encode($result);
+	}
+
+
+
+
+
+	public function get_services_with_fee($id){
+		//checkup_id
+		$id = $id;
+
+		$settings_detail = $this->settings_model->get_all_settings_detail_by_settings_id(1);
+
+		foreach($settings_detail as $s_detail){
+			echo $vet_fee = $s_detail->vet_fee;
+		}
+
+		$services = $this->pet_management_model->get_services_by_checkup_id($id);
+
+		$post_service_fee =  0;
+		$post_service_fee_with_vet_fee = 0;
+
+		foreach($services as $service){
+			$service_fee = $service->service_fees;
+			$post_service_fee = $post_service_fee + $service->service_fees;
+		}
+
+
+		/*echo "post_service_fee " . $post_service_fee;
+		
+		echo "post_service_fee_with_vet_fee" . $post_service_fee_with_vet_fee;*/
+
+		$post_service_fee_with_vet_fee = $vet_fee + $post_service_fee; 
+
+		
+		echo json_encode(['total_fee'=>$post_service_fee_with_vet_fee]);
+
+	}
+
+
 
 	//email try
 	/*public function emailtry(){
@@ -73,6 +199,22 @@ class Appointment extends CI_Controller {
 		echo "<br />";
 		echo $preferredtime = $this->input->post('preferredtime');
 
+		$veterinarian = $this->input->post('veterinarian');
+
+		$search_vet = $this->veterinarian_management->get_veterinarian_by_id($veterinarian);
+		foreach($search_vet as $sv){
+			$vet_name = $sv->firstname .' '. $sv->middlename .' '. $sv->lastname;
+			$vet_id = $sv->veterinarian_id;
+		}
+
+		$find_time = $this->appointment_management->search_schedule_time_by_schedule_time($preferredtime);
+
+		foreach($find_time as $ft){
+			$time_start =  $ft->time_start;
+			$time_end =  $ft->time_end;
+
+		}
+
 		$complaints =  $this->input->post('complaints');
 
 		 $pet_id = $this->input->post('pet_id');
@@ -84,6 +226,7 @@ class Appointment extends CI_Controller {
 				echo $pettype = $a->pettype;
 				echo $petbreed = $a->breed;
 				$pet_birthdate = $a->birthdate;
+				$pet_table_id = $a->pet_table_id;
 		}
 
 
@@ -157,6 +300,7 @@ class Appointment extends CI_Controller {
 			'preferredtime' => $preferredtime,
 			'pet_name'  => $pet_name,
 			'pet_id' => $pet_id,
+			'pet_table_id' => $pet_table_id,
 			'pettype' => $pet_type,
 			'petbreed' => $pet_breed,
 			'appointment_status' => "Pending",
@@ -164,6 +308,10 @@ class Appointment extends CI_Controller {
 			'complaints' => $complaints,
 			'age' =>$age,
 			'is_adult' => $is_adult,
+			'time_start' => $time_start,
+			'time_end' => $time_end,
+			'vet_in_charge' => $vet_name,
+			'vet_id' => $vet_id,
 		);
 
 		$this->appointment_management->add_appointment($data);
@@ -329,6 +477,16 @@ class Appointment extends CI_Controller {
 
 		$preferredDate = $this->input->post('scheduleDate');
 		$preferredtime =  $this->input->post('scheduleTime');
+
+		$find_time = $this->appointment_management->search_schedule_time_by_schedule_time($preferredtime);
+
+		foreach($find_time as $ft){
+			$time_start =  $ft->time_start;
+			$time_end =  $ft->time_end;
+
+		}
+
+
 		$now = date('Y-m-d H:i:s');
 		$appointment_id = '#'.date("ymdhis") . abs(rand('0','9'));
 
@@ -429,6 +587,8 @@ class Appointment extends CI_Controller {
 			'age' =>$age,
 			'is_adult' => $is_adult,
 			'pet_table_id' => $pet_table_id,
+			'time_start' => $time_start,
+			'time_end' => $time_end,
 
 		);
 
@@ -784,6 +944,19 @@ class Appointment extends CI_Controller {
 
 	//for onprocess
 	public function change_to_onprocess(){
+		$appointment_table_id = $this->input->post('appointment_table_id');
+		$appointment_status = $this->input->post('appointment_status');
+
+
+		$change_appointment_status = array(
+			'appointment_status' => $appointment_status,
+		);
+
+
+		$this->appointment_management->update_appointment_detail($appointment_table_id,$change_appointment_status);
+	}
+
+	public function change_to_confirmed(){
 		$appointment_table_id = $this->input->post('appointment_table_id');
 		$appointment_status = $this->input->post('appointment_status');
 

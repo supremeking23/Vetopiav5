@@ -139,6 +139,22 @@ class Settings extends CI_Controller {
 		}else{
 			$checkup_fee = $this->input->post("checkup_fee");
 		}
+
+
+		if(empty($this->input->post("tin_number"))){
+			$errorMessage .= "<li>Tin number cannot be blank </li>";
+		}else{
+			$tin_number = $this->input->post("tin_number");
+		}
+
+
+		if(empty($this->input->post("markup_percentage"))){
+			$errorMessage .= "<li>Markup Percentage cannot be blank </li>";
+		}else{
+			$markup = $this->input->post("markup_percentage");
+
+			$markup_percentage = $markup / 100;
+		}
 		
 		$settings_id = $this->input->post("settings_id");
 		
@@ -158,6 +174,8 @@ class Settings extends CI_Controller {
 				'max_product_count' => $max_product_count,
 				'checkup_fee' => $checkup_fee,
 				'cellphone' => $cellphone,
+				'markup_percentage' => $markup_percentage,
+				'tin_number' => $tin_number,
 			);
 
 
@@ -195,6 +213,63 @@ class Settings extends CI_Controller {
 
 
 		//if(empty($))
+	}
+
+
+
+	public function change_logo(){
+
+        //config for upload image \assets\images\profiles
+        $config['upload_path']          = './assets/site_images/';
+        //$config['upload_path']          = './uploads/';
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
+        //$config['max_size']             = 100;
+        // $config['max_width']            = 1024;
+        // $config['max_height']           = 768;
+        $this->load->library('upload', $config);
+
+
+        if($this->upload->do_upload('logo')){
+                //get the file name of the uploaded file
+                $uploadData = $this->upload->data();
+                $image = $uploadData['file_name'];
+                //echo 1;
+                echo "ivan";
+        }
+
+		if(!empty($image)){
+			$logo = $image;
+
+			$settings_id = $this->input->post('settings_id');
+
+			$data = array(
+				'system_logo' => $logo,
+			);
+
+			$name = $this->session->userdata('complete_name');
+			$log_usertype =  $this->session->userdata('account_type');
+			$log_userID = $this->session->userdata("user_id");
+			$log_action = "Edit System Information";
+
+	        $now = date('Y-m-d H:i:s');
+			$data2 = array(
+				"log_user" => $name,
+				"log_usertype" => $log_usertype,
+				"log_userID" => $log_userID,
+				"log_action" => $log_action,
+				"log_date" => $now,
+			);
+
+
+			$this->settings_model->update_settings($settings_id,$data);
+			$this->admin_management->insert_new_log($data2);
+
+
+			$msg = "Clinic logo has been updated successfully";
+
+			echo json_encode(['code'=>200, 'msg'=>$msg]);
+
+		}
 	}
 
 

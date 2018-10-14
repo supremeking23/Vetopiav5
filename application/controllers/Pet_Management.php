@@ -1486,9 +1486,12 @@ class Pet_Management extends CI_Controller {
       echo "<br />";
       echo $this->input->post("pet_name");
       echo "<br />";
-      echo $this->input->post("complaints");
+      echo $this->input->post("subjective");
       echo "<br />";
-      echo $this->input->post("treatment");
+      echo $this->input->post("objective");
+      echo $this->input->post("assessment");
+      echo "<br />";
+      echo $this->input->post("plan");
 
       echo "<br />";
       echo $this->input->post("prescription");
@@ -1507,8 +1510,10 @@ class Pet_Management extends CI_Controller {
       $pet_id = $this->input->post("pet_id");
       $pet_name = $this->input->post("pet_name");
       $age = $this->input->post("age");
-      $complaints = $this->input->post("complaints");
-      $treatment = $this->input->post("treatment");
+      $subjective = $this->input->post("subjective");
+      $objective = $this->input->post("objective");
+      $plan = $this->input->post("plan");
+      $assessment = $this->input->post("assessment");
       $prescription = $this->input->post("prescription"); 
       $pettype = $this->input->post("pettype");
       $is_adult = $this->input->post("is_adult");
@@ -1528,8 +1533,10 @@ class Pet_Management extends CI_Controller {
             'pet_id' => $pet_id,
             'petname' => $pet_name,
             'age' => $age,
-            'complaints' => $complaints,
-            'treatment' => $treatment,
+            'subjective' => $subjective,
+            'objective' => $objective,
+            'assessment' => $assessment,
+            'plan' => $plan,
             'prescription' => $prescription,
             'possible_cause' =>$title,
             'library_id' => $library_id,
@@ -1538,83 +1545,141 @@ class Pet_Management extends CI_Controller {
       );
 
 
-    $this->pet_management_model->add_checkup_detail($checkup_data);
+        $this->pet_management_model->add_checkup_detail($checkup_data);
 
 
-    $checkup_id = $this->db->insert_id();
+        $checkup_id = $this->db->insert_id();
 
-    $service = $this->input->post('service_id');
+        $service = $this->input->post('service_id');
 
-    $veterinary_fee = $this->settings_model->get_all_settings_detail_by_settings_id(1);
-      foreach($veterinary_fee as $vet_fee){
-        $v_fee = $vet_fee->vet_fee;
-        $c_fee = $vet_fee->checkup_fee;
-    }
-
-    $services = "";
-    for($count = 0; $count<count($_POST["service_id"]); $count++)
-    {
-        //echo $_POST["service_id"][$count] .'<br />';
-
-        if($_POST["service_id"][$count] != 0){
-            $service_detail = $this->pet_management_model->get_all_pet_services_by_service_id($_POST["service_id"][$count]);
-            foreach($service_detail as $s){
-                $services = $s->service_name;
-                $service_fee = $s->service_fee;
-            }
-        }else{
-            $services = "General Checkup";
-            $service_fee = $c_fee;
+        $veterinary_fee = $this->settings_model->get_all_settings_detail_by_settings_id(1);
+          foreach($veterinary_fee as $vet_fee){
+            $v_fee = $vet_fee->vet_fee;
+            $c_fee = $vet_fee->checkup_fee;
         }
 
-        $data_insert_services = array(
-            'checkup_id' => $checkup_id,
-            'service_id' => $_POST["service_id"][$count],
-            'service_name' => $services,
-            'service_fees' => $service_fee,
-            'appointment_table_id' => $appointment_table_id,
+        $services = "";
+        $service_fees_total = 0;
+        for($count = 0; $count<count($_POST["service_id"]); $count++)
+        {
+            //echo $_POST["service_id"][$count] .'<br />';
+
+            if($_POST["service_id"][$count] != 0){
+                $service_detail = $this->pet_management_model->get_all_pet_services_by_service_id($_POST["service_id"][$count]);
+                foreach($service_detail as $s){
+                    $services = $s->service_name;
+                    $service_fee = $s->service_fee;
+
+                    $service_fees_total = $service_fees_total + $service_fee;
+                }
+            }else{
+                $services = "General Checkup";
+                $service_fee = $c_fee;
+            }
+
+            $data_insert_services = array(
+                'checkup_id' => $checkup_id,
+                'service_id' => $_POST["service_id"][$count],
+                'service_name' => $services,
+                'service_fees' => $service_fee,
+                'appointment_table_id' => $appointment_table_id,
+            );
+
+            echo $services;
+
+            $this->pet_management_model->add_service_rendered_data($data_insert_services);
+        }
+
+
+
+
+      $service_total_with_vet_fee =  $service_fees_total + $v_fee;
+
+
+
+        //is finished will be 1 na
+
+        $update_finish = array(
+            'is_finished' => 1,
+            'total_payment' =>$service_total_with_vet_fee,
         );
 
-        echo $services;
-
-        $this->pet_management_model->add_service_rendered_data($data_insert_services);
-    }
+        $this->appointment_management->update_appointment_detail($appointment_table_id,$update_finish);
 
 
+        $name = $this->session->userdata('complete_name');
+        $log_usertype =  $this->session->userdata('account_type');
+        $log_userID = $this->session->userdata("user_id");
+        $log_action = "Add medical record to Pet: ". $pet_name;
+        
 
 
+        $now = date('Y-m-d H:i:s');
+        $data2 = array(
+            "log_user" => $name,
+            "log_usertype" => $log_usertype,
+            "log_userID" => $log_userID,
+            "log_action" => $log_action,
+            "log_date" => $now,
+        );
 
-    //is finished will be 1 na
-
-    $update_finish = array(
-        'is_finished' => 1,
-    );
-
-    $this->appointment_management->update_appointment_detail($appointment_table_id,$update_finish);
-
-
-    $name = $this->session->userdata('complete_name');
-    $log_usertype =  $this->session->userdata('account_type');
-    $log_userID = $this->session->userdata("user_id");
-    $log_action = "Assess ". $pet_name;
-    
-
-
-    $now = date('Y-m-d H:i:s');
-    $data2 = array(
-        "log_user" => $name,
-        "log_usertype" => $log_usertype,
-        "log_userID" => $log_userID,
-        "log_action" => $log_action,
-        "log_date" => $now,
-    );
-
-    $this->veterinarian_management->insert_new_log($data2);
-    $this->session->set_flashdata('new_record_added','New record has been added successfully');
-    redirect('Veterinarian/Appointments');
+        $this->veterinarian_management->insert_new_log($data2);
+        $this->session->set_flashdata('new_record_added','New record has been added successfully');
+        redirect('Veterinarian/Appointments');
 
         //var_dump($data);
     }//end code block
+
+
+    public function print_medical_record(){
+        $data['title'] = "Vetopia";
+        $settings_id = 1;
+        $data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
+
+        //$data['all_customers'] = $this->customer_management->get_all_customer();
+        $name = $this->session->userdata('complete_name');
+        $log_usertype =  $this->session->userdata('account_type');
+        $log_userID = $this->session->userdata("user_id");
+        $log_action = "Print Appointment Detail";
+        
+
+
+        $now = date('Y-m-d H:i:s');
+        $data2 = array(
+            "log_user" => $name,
+            "log_usertype" => $log_usertype,
+            "log_userID" => $log_userID,
+            "log_action" => $log_action,
+            "log_date" => $now,
+        );
+
+
+
+        $this->admin_management->insert_new_log($data2);
+
+
+        $settings_id = 1;
+        $data['clinic_detail'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
+        // $data['theme_color'] = $this->settings_model->get_all_settings_detail_by_settings_id($settings_id);
+
+        $appointment_table_id = $this->uri->segment(3);
+        $data['id'] = $appointment_table_id;
+
+        $data['get_appointment_detail_by_appointment_data_id'] = $this->appointment_management->search_appointment_by_id($appointment_table_id);
+        //echo $sales_id;
+
+        $data['get_prescription_by_appointment_table_id'] = $this->pet_management_model->get_prescription_by_appointment_table_id($appointment_table_id);
+
+        $data['get_services_by_appointment_table_id'] = $this->appointment_management->get_services_by_appointment_table_id($appointment_table_id);
+
+        
+        $this->load->view('staff/print_medical_record',$data);
+    }
+
+
+
+
+
 
  /*  public function add_diagnosis_record_vet_action(){
 

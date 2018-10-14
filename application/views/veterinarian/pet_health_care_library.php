@@ -48,7 +48,7 @@
 
       <div class="row">
         <div class="col-md-12">
-          <button class="btn btn-flat btn-info btn-sm" data-toggle="modal" data-target="#addArticle" id="add-article-modal">Add New Article</button>
+          <button class="btn btn-flat btn-info btn-sm" data-toggle="modal" data-target="#addArticle" id="add-article-modal" style="border-radius: 15px">Add New Article</button>
 
           
            
@@ -103,7 +103,7 @@
                       <td><?php echo $article->title;?></td>
                       <td><?php echo substr($article->content ,0, 100)." ...";?></td>
                       <td><?php echo $article->created_by;?></td>
-                      <td><a href="<?php echo site_url()?>Veterinarian/Library_article_detail/<?php echo $article->library_id?>" class="btn btn-info btn-sm btn-flat">Read Article</a></td>
+                      <td><a href="<?php echo site_url()?>Veterinarian/Library_article_detail/<?php echo $article->library_id?>" class="btn btn-info btn-sm btn-flat" style="border-radius: 15px">Read Article</a></td>
                     </tr>
                   <?php endforeach;?>
                 </tbody>

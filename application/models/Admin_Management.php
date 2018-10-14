@@ -170,6 +170,24 @@ class Admin_Management extends CI_Model {
 
 
 
+    public function log_last_active($user_id){
+
+        $this->db->select('*');
+        $this->db->from('tbl_logs');
+        
+        $this->db->where('log_userID',$user_id);
+        $this->db->where('log_action','User Login');
+        $this->db->order_by('log_date', 'DESC');
+        $this->db->limit(1);
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+    }
+
+
+
 
     //inser username and password to tbl_users
     public function insert_username_password($data){
