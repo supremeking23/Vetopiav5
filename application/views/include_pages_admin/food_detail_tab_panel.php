@@ -5,6 +5,7 @@
                   
                   <li class="active"><a href="#settings" data-toggle="tab">Product Information</a></li>
                   <li ><a href="#inventoryDetail" data-toggle="tab">Inventory Detail</a></li>
+                  <li ><a href="#inventoryTurover" data-toggle="tab">Inventory Movement Detail</a></li>
                 </ul>
                 <div class="tab-content">
                   <div class="active tab-pane" id="settings">
@@ -182,6 +183,137 @@
 
                   </div>
                   <!-- /.tab-pane -->
+
+                   <div class=" tab-pane" id="inventoryTurover">
+                        
+
+                         
+
+                              <table  class="datatableexta table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                  <th>Date</th>
+                                  <th>Inventory Turnover Ratio</th>
+                                  <th>Econimic Order Quantity</th>
+                                  <th>Product Critical Level</th>
+                                  
+                                </tr>
+                                </thead>
+                                <tbody>
+                                
+                                <?php foreach($sales_detail_by_product_id as $datas):?>
+                                  <tr>
+                                    <td><?php //echo $med_inventory->inventory_date;
+                                        $date =date_create($datas->sales_date);
+                                        echo  $inventory_date= date_format($date,"F, Y");
+
+                                    ?>
+
+                                    </td>
+                                    <td><?php //echo $datas->numeric_month?>
+                                      
+                                      <?php   
+                                        //parameters for COGS
+                                      $param1 = $this->inventory_management->get_number_product_quantity_in_inventory_by_product_id($f_details->food_id,$datas->numeric_month);
+                                        foreach($param1 as $p1){
+                                          //echo $p1->quantity .'x' . 'cost: '. $m_details->price;
+                                          //echo '<br />';
+                                          //add supply to
+                                           $sum_quantity = $p1->sum_quantity;
+                                        }
+
+
+                                       $cogs = $sum_quantity * $f_details->price;
+                                        //$cogs;
+                                       ?>
+
+
+                                       <?php 
+
+                                        //for beginning inventory
+                                        //get the ending invntory first = add_supply - purchase supply
+                                       $get_end_inventory_data_purchased = $this->inventory_management->get_end_inventory_data_purchased($f_details->food_id,$datas->numeric_month);
+
+                                       foreach($get_end_inventory_data_purchased as $purchased_data){
+                                         $purchased = $purchased_data->sum_quantity_purchased;
+                                       }
+
+
+                                        $balance = $sum_quantity - $purchased;
+                                        $balance_abs = abs($balance);
+
+                                         $ending_inventory = $balance_abs * $f_details->price;
+
+                                        //new_inventory_latest na inadd 
+                                        $new_inventory_detail = $this->inventory_management->new_inventory_detail($f_details->food_id,$datas->numeric_month);
+                                        foreach ($new_inventory_detail as $new_inv_d) {
+                                          # code...
+                                          $new_inv_quantity = $new_inv_d->quantity;
+                                        }
+
+                                        $new_inventory = $new_inv_quantity * $f_details->price;
+
+                                        $beginning_inventory = ($cogs + $ending_inventory) - $new_inventory;
+                                        $ending_inventory;
+                                        
+
+                                        $inventory_turnover_ratio = $cogs/($beginning_inventory + $ending_inventory)/2;
+                                        echo  $inventory_turnover_ratio .'%';
+                                       ?>
+                                    </td>
+                                    <td>
+                                    <?php $get_sales_detail_by_month =  $this->inventory_management->get_sales_detail_by_month($f_details->product_id,$datas->numeric_month);
+                                              foreach($get_sales_detail_by_month as $sales_month){
+                                                 $sales_quantity_in_months = $sales_month->sales_in_month;
+                                              }
+
+
+                                          $demand = $sales_quantity_in_months;
+                                          $order_cost = $f_details->price;
+                                          $carrying_host = 100;
+
+                                         $optimal_order= sqrt((2*$order_cost)*$demand/$carrying_host);
+                                         echo round($optimal_order);
+                                    ?>
+                                    </td>
+
+                                    <td>
+                                      
+                                      <?php $get_avg_order_by_month = $this->inventory_management->get_avg_order_by_month($f_details->product_id,$datas->numeric_month);
+                                            foreach($get_avg_order_by_month as $avg_month){
+                                              $avg_month_orders =  $avg_month->quantity;
+                                            }
+
+                                            $get_max_order_by_month =  $this->inventory_management->get_max_order_by_month($f_details->product_id,$datas->numeric_month);
+                                            foreach($get_max_order_by_month as $max_order){            
+                                              $max_order =  $max_order->quantity_sum_max;
+                                            }
+
+                                            $get_min_order_by_month =  $this->inventory_management->get_min_order_by_month($f_details->product_id,$datas->numeric_month);
+                                            foreach($get_min_order_by_month as $min_order){            
+                                              $min_order =  $min_order->quantity_sum_min;
+                                            }   
+
+                                            $safety_stock = $max_order - $min_order;
+
+                                            $abs_safety_stock = abs($safety_stock);
+
+                                           echo $critical_stock_boundary = ($avg_month_orders + $abs_safety_stock) / 2;                                         
+                                      ?>
+                                    </td>
+                                  
+                                  </tr>
+                                 
+                                <?php endforeach;?>
+                                </tbody>
+                               
+                              </table>
+
+
+
+                  </div>
+
+
                 </div>
                 <!-- /.tab-content -->
   </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2018 at 10:33 PM
+-- Generation Time: Oct 18, 2018 at 05:48 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -6115,7 +6115,271 @@ INSERT INTO `tbl_logs` (`log_id`, `log_user`, `log_usertype`, `log_userID`, `log
 (10048, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Logout', '2018-10-15 04:33:05'),
 (10049, 'Chester Min King', 'Customer', 'C1808211035448', 'User Login', '2018-10-15 04:33:15'),
 (10050, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'Print Appointment Detail', '2018-10-15 04:33:29'),
-(10051, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'Print Appointment Detail', '2018-10-15 04:33:29');
+(10051, 'Carlos Almonds Valdez', 'Veterinarian', 'V1808211104490', 'Print Appointment Detail', '2018-10-15 04:33:29'),
+(10052, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-10-15 10:56:49'),
+(10053, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-15 10:56:49'),
+(10054, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-15 10:57:11'),
+(10055, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-15 10:57:30'),
+(10056, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Handle POS', '2018-10-15 10:57:37'),
+(10057, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-15 10:57:37'),
+(10058, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-15 10:57:39'),
+(10059, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-15 10:58:50'),
+(10060, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Handle POS', '2018-10-15 10:59:00'),
+(10061, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-15 10:59:00'),
+(10062, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-15 10:59:03'),
+(10063, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-15 11:10:38'),
+(10064, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-15 11:19:59'),
+(10065, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-15 11:20:32'),
+(10066, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet List', '2018-10-15 12:43:49'),
+(10067, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Pet details', '2018-10-15 12:43:52'),
+(10068, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Print Appointment Detail', '2018-10-15 12:43:58'),
+(10069, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Print Appointment Detail', '2018-10-15 12:43:58'),
+(10070, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Print Appointment Detail', '2018-10-15 12:46:23'),
+(10071, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Print Appointment Detail', '2018-10-15 12:46:24'),
+(10072, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Print Appointment Detail', '2018-10-15 12:46:44'),
+(10073, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Print Appointment Detail', '2018-10-15 12:46:44'),
+(10074, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Print Appointment Detail', '2018-10-15 12:46:55'),
+(10075, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Print Appointment Detail', '2018-10-15 12:46:55'),
+(10076, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Print Appointment Detail', '2018-10-15 12:47:23'),
+(10077, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Print Appointment Detail', '2018-10-15 12:47:23'),
+(10078, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-10-17 09:28:51'),
+(10079, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 09:28:51'),
+(10080, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 09:38:54'),
+(10081, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 10:14:07'),
+(10082, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 10:18:15'),
+(10083, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 10:18:43'),
+(10084, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 10:19:03'),
+(10085, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 10:19:18'),
+(10086, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 10:20:26'),
+(10087, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 10:21:12'),
+(10088, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 10:21:58'),
+(10089, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 10:23:04'),
+(10090, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-10-17 10:23:34'),
+(10091, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 10:23:34'),
+(10092, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Veterinarian list', '2018-10-17 10:23:49'),
+(10093, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 10:23:53'),
+(10094, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Appointments', '2018-10-17 10:24:11'),
+(10095, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Logout', '2018-10-17 10:24:15'),
+(10096, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-10-17 10:24:20'),
+(10097, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 10:24:20'),
+(10098, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 10:27:37'),
+(10099, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 10:28:41'),
+(10100, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 10:28:53'),
+(10101, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 10:30:48'),
+(10102, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 10:31:36'),
+(10103, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 10:32:27'),
+(10104, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 10:33:35'),
+(10105, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 10:41:02'),
+(10106, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 10:41:24'),
+(10107, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-17 10:58:18'),
+(10108, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-17 10:59:04'),
+(10109, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-17 10:59:44'),
+(10110, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-17 11:02:20'),
+(10111, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-17 11:05:56'),
+(10112, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 11:06:08'),
+(10113, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-10-17 22:15:41'),
+(10114, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 22:15:41'),
+(10115, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-17 22:28:22'),
+(10116, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 22:28:24'),
+(10117, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-17 22:28:37'),
+(10118, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-17 22:28:42'),
+(10119, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Handle POS', '2018-10-17 22:29:13'),
+(10120, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-17 22:29:14'),
+(10121, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 22:29:15'),
+(10122, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 22:35:45'),
+(10123, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 22:36:46'),
+(10124, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 22:41:00'),
+(10125, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 22:47:11'),
+(10126, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 22:47:12'),
+(10127, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 22:59:11'),
+(10128, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 23:01:27'),
+(10129, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 23:01:59'),
+(10130, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 23:02:00'),
+(10131, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 23:02:29'),
+(10132, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 23:03:38'),
+(10133, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 23:03:55'),
+(10134, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 23:04:22'),
+(10135, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 23:11:46'),
+(10136, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-17 23:21:31'),
+(10137, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 23:21:32'),
+(10138, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-17 23:21:59'),
+(10139, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-17 23:22:09'),
+(10140, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 23:22:11'),
+(10141, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 23:23:26'),
+(10142, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 23:23:40'),
+(10143, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 23:25:32'),
+(10144, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 23:25:43'),
+(10145, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 23:26:48'),
+(10146, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 23:47:18'),
+(10147, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 23:48:18'),
+(10148, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 23:55:31'),
+(10149, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-17 23:57:07'),
+(10150, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-17 23:57:21'),
+(10151, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 23:57:25'),
+(10152, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 23:57:48'),
+(10153, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 23:59:40'),
+(10154, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-17 23:59:56'),
+(10155, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 00:06:31'),
+(10156, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-18 00:11:03'),
+(10157, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-18 00:11:08'),
+(10158, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Handle POS', '2018-10-18 00:11:14'),
+(10159, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-18 00:11:15'),
+(10160, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-18 00:13:08'),
+(10161, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-18 00:13:19'),
+(10162, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 00:16:46'),
+(10163, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 00:17:16'),
+(10164, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 00:17:56'),
+(10165, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 00:18:14'),
+(10166, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 00:19:03'),
+(10167, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 00:20:28'),
+(10168, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 00:21:16'),
+(10169, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 00:21:52'),
+(10170, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 00:22:20');
+INSERT INTO `tbl_logs` (`log_id`, `log_user`, `log_usertype`, `log_userID`, `log_action`, `log_date`) VALUES
+(10171, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 00:22:39'),
+(10172, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 00:23:30'),
+(10173, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 00:24:55'),
+(10174, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 00:25:03'),
+(10175, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-18 00:25:20'),
+(10176, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-18 00:26:10'),
+(10177, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-18 00:26:13'),
+(10178, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-18 00:26:18'),
+(10179, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Handle POS', '2018-10-18 00:26:32'),
+(10180, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-18 00:26:32'),
+(10181, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 00:26:35'),
+(10182, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 00:46:32'),
+(10183, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 00:46:51'),
+(10184, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 00:47:14'),
+(10185, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 00:47:37'),
+(10186, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 00:47:55'),
+(10187, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 00:48:35'),
+(10188, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 00:48:58'),
+(10189, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 01:09:11'),
+(10190, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 01:12:11'),
+(10191, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 01:13:15'),
+(10192, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 01:31:46'),
+(10193, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 01:45:03'),
+(10194, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 01:45:16'),
+(10195, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 01:45:57'),
+(10196, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 01:46:14'),
+(10197, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 01:46:24'),
+(10198, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-18 01:46:42'),
+(10199, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Handle POS', '2018-10-18 01:46:51'),
+(10200, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-18 01:46:51'),
+(10201, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 01:46:53'),
+(10202, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 01:47:52'),
+(10203, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-18 01:48:22'),
+(10204, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 01:48:26'),
+(10205, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-18 01:48:46'),
+(10206, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Handle POS', '2018-10-18 01:48:54'),
+(10207, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-18 01:48:54'),
+(10208, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 01:48:56'),
+(10209, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-18 01:49:04'),
+(10210, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 01:49:10'),
+(10211, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 01:52:28'),
+(10212, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 01:53:20'),
+(10213, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 01:56:08'),
+(10214, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-10-18 02:05:49'),
+(10215, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-10-18 02:05:52'),
+(10216, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-10-18 02:06:22'),
+(10217, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-10-18 02:06:38'),
+(10218, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-10-18 02:08:22'),
+(10219, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-10-18 02:08:31'),
+(10220, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-10-18 02:08:36'),
+(10221, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-10-18 02:08:37'),
+(10222, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-10-18 02:09:37'),
+(10223, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-10-18 02:09:45'),
+(10224, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-10-18 02:09:47'),
+(10225, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-18 02:10:54'),
+(10226, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 02:10:59'),
+(10227, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-10-18 02:11:37'),
+(10228, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-10-18 02:11:39'),
+(10229, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-10-18 02:11:42'),
+(10230, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-10-18 02:11:52'),
+(10231, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-10-18 02:11:57'),
+(10232, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-10-18 02:12:06'),
+(10233, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-18 02:13:10'),
+(10234, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-10-18 02:16:14'),
+(10235, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-10-18 02:16:23'),
+(10236, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-10-18 02:16:25'),
+(10237, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-10-18 02:17:06'),
+(10238, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-10-18 02:17:12'),
+(10239, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-18 02:17:56'),
+(10240, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-18 02:18:19'),
+(10241, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'User Login', '2018-10-18 09:44:06'),
+(10242, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-18 09:44:07'),
+(10243, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-18 09:44:17'),
+(10244, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 09:44:21'),
+(10245, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-18 09:45:15'),
+(10246, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-18 09:45:25'),
+(10247, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Handle POS', '2018-10-18 09:45:40'),
+(10248, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-18 09:45:40'),
+(10249, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 09:45:44'),
+(10250, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-18 09:46:01'),
+(10251, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-18 09:46:20'),
+(10252, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 09:46:23'),
+(10253, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-18 09:52:06'),
+(10254, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 09:52:09'),
+(10255, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-18 09:52:18'),
+(10256, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-10-18 09:52:21'),
+(10257, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-10-18 09:52:24'),
+(10258, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-10-18 09:52:27'),
+(10259, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-10-18 09:52:29'),
+(10260, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-10-18 09:52:32'),
+(10261, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-10-18 09:52:35'),
+(10262, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-18 09:54:50'),
+(10263, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-18 09:55:09'),
+(10264, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-18 10:12:10'),
+(10265, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-18 10:12:36'),
+(10266, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 10:12:39'),
+(10267, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-18 10:12:40'),
+(10268, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 10:12:43'),
+(10269, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-18 10:14:50'),
+(10270, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-18 10:15:22'),
+(10271, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-18 10:16:10'),
+(10272, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-18 10:16:28'),
+(10273, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-18 10:16:47'),
+(10274, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-18 10:17:41'),
+(10275, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-18 10:20:44'),
+(10276, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 10:46:25'),
+(10277, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 10:50:19'),
+(10278, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-18 10:50:47'),
+(10279, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 10:50:50'),
+(10280, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 11:06:15'),
+(10281, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 11:07:38'),
+(10282, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 11:08:13'),
+(10283, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 11:10:18'),
+(10284, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-18 11:10:30'),
+(10285, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 11:10:33'),
+(10286, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 11:10:57'),
+(10287, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 11:11:04'),
+(10288, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 11:11:54'),
+(10289, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 11:12:10'),
+(10290, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 11:22:00'),
+(10291, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 11:22:12'),
+(10292, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-18 11:22:51'),
+(10293, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-18 11:23:01'),
+(10294, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'Handle POS', '2018-10-18 11:23:08'),
+(10295, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View POS', '2018-10-18 11:23:08'),
+(10296, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 11:23:10'),
+(10297, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-18 11:23:18'),
+(10298, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Medicines)', '2018-10-18 11:23:30'),
+(10299, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 11:23:32'),
+(10300, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Details (Medicine)', '2018-10-18 11:28:26'),
+(10301, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-18 11:28:28'),
+(10302, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-18 11:28:43'),
+(10303, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-18 11:29:54'),
+(10304, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-18 11:30:08'),
+(10305, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-10-18 11:33:52'),
+(10306, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-10-18 11:33:54'),
+(10307, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-10-18 11:34:01'),
+(10308, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-10-18 11:34:04'),
+(10309, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Product Details (Items)', '2018-10-18 11:41:51'),
+(10310, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Foods)', '2018-10-18 11:41:53'),
+(10311, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-10-18 11:41:54'),
+(10312, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products Detail (Food)', '2018-10-18 11:42:06'),
+(10313, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Products List (Items/Accessories)', '2018-10-18 11:42:10'),
+(10314, 'Ivan Christian Jay Echanes Funcion', 'Super Admin', 'A1806231044313', 'View Dashboard', '2018-10-18 11:42:56');
 
 -- --------------------------------------------------------
 
@@ -6806,7 +7070,23 @@ INSERT INTO `tbl_productinventories` (`inv_table_id`, `product_rel_id`, `product
 (475, 77, '#Med1810101137245', 'Medine 1', 'Medicine', 'Purchased Product', 'Customer(Walkin)', '', '2018-10-15 02:55:32', 40, '0000-00-00'),
 (476, 77, '#Med1810101137245', 'Medine 1', 'Medicine', 'Purchased Product', 'Customer(Walkin)', '', '2018-10-15 02:56:55', 1, '0000-00-00'),
 (477, 30, '#Item1810090857238', 'Bone Toy for Dogs', 'Item', 'Add Supply', 'Super Admin', 'Ivan Christian Jay Echanes Funcion', '2018-10-15 04:13:37', 90, '0000-00-00'),
-(478, 69, '#Item1810090857238', 'Bone Toy for Dogs', 'Item', 'Purchased Product', 'Customer(Walkin)', 'ivan', '2018-10-15 04:14:33', 9, '0000-00-00');
+(478, 69, '#Item1810090857238', 'Bone Toy for Dogs', 'Item', 'Purchased Product', 'Customer(Walkin)', 'ivan', '2018-10-15 04:14:33', 9, '0000-00-00'),
+(479, 69, '#Item1810090857238', 'Bone Toy for Dogs', 'Item', 'Purchased Product', 'Customer(Walkin)', 'xcx', '2018-10-15 10:57:37', 45, '0000-00-00'),
+(480, 71, '#Item1810101207389', 'Bone Toy for Puppies', 'Item', 'Purchased Product', 'Customer(Walkin)', 'ivan', '2018-10-15 10:59:00', 44, '0000-00-00'),
+(481, 2, '#Med1810171058189', 'Clavamox', 'Medicine', 'Add new Product', 'Super Admin', 'Ivan Christian Jay Echanes Funcion', '2018-10-17 10:59:04', 300, '2018-11-23'),
+(482, 3, '#Med1810171059441', 'Dino Capsule Evolution', 'Medicine', 'Add new Product', 'Super Admin', 'Ivan Christian Jay Echanes Funcion', '2018-10-17 11:02:20', 133, '2018-11-15'),
+(483, 78, '#Med1809141208272', 'Clavamox', 'Medicine', 'Purchased Product', 'Customer(Walkin)', 'ivan', '2018-10-17 22:29:13', 11, '0000-00-00'),
+(484, 2, '#Med1809141208272', 'Clavamox', 'Medicine', 'Add Supply', 'Super Admin', 'Ivan Christian Jay Echanes Funcion', '2018-10-17 23:22:09', 10, '2018-10-31'),
+(485, 2, '#Med1809141208272', 'Clavamox', 'Medicine', 'Add Supply', 'Super Admin', 'Ivan Christian Jay Echanes Funcion', '2018-10-17 23:57:21', 30, '2018-10-31'),
+(486, 78, '#Med1809141208272', 'Clavamox', 'Medicine', 'Purchased Product', 'Customer(Walkin)', 'sdsd', '2018-10-18 00:11:14', 2, '0000-00-00'),
+(487, 2, '#Med1809141208272', 'Clavamox', 'Medicine', 'Add Supply', 'Super Admin', 'Ivan Christian Jay Echanes Funcion', '2018-10-18 00:13:19', 20, '2018-10-31'),
+(488, 78, '#Med1809141208272', 'Clavamox', 'Medicine', 'Purchased Product', 'Customer(Walkin)', 'ivan', '2018-10-18 00:26:32', 3, '0000-00-00'),
+(489, 78, '#Med1809141208272', 'Clavamox', 'Medicine', 'Purchased Product', 'Customer(Walkin)', 'ivan', '2018-10-18 01:46:51', 40, '0000-00-00'),
+(490, 77, '#Med1810101137245', 'Medine 1', 'Medicine', 'Purchased Product', 'Customer(Walkin)', 'ivan', '2018-10-18 01:48:54', 160, '0000-00-00'),
+(491, 78, '#Med1809141208272', 'Clavamox', 'Medicine', 'Purchased Product', 'Customer(Walkin)', 'ivan', '2018-10-18 09:45:40', 300, '0000-00-00'),
+(492, 2, '#Med1809141208272', 'Clavamox', 'Medicine', 'Add Supply', 'Super Admin', 'Ivan Christian Jay Echanes Funcion', '2018-10-18 09:46:19', 300, '2018-10-31'),
+(493, 78, '#Med1809141208272', 'Clavamox', 'Medicine', 'Purchased Product', 'Customer(Walkin)', 's', '2018-10-18 11:23:08', 300, '0000-00-00'),
+(494, 2, '#Med1809141208272', 'Clavamox', 'Medicine', 'Add Supply', 'Super Admin', 'Ivan Christian Jay Echanes Funcion', '2018-10-18 11:23:30', 300, '2018-11-30');
 
 -- --------------------------------------------------------
 
@@ -6863,7 +7143,9 @@ CREATE TABLE `tbl_productmedicines` (
 --
 
 INSERT INTO `tbl_productmedicines` (`med_table_id`, `med_id`, `medType`, `medname`, `meddescription`, `medImage`, `dateAdded`, `price`, `supplier`, `exp_date`, `store_price`, `product_unit`, `product_unit_number`, `product_unit_measure`, `max_product_count`) VALUES
-(1, '#Med1810101137245', 'Antibiotics', 'Medine 1', '<p>Medicine 1</p>', 'AdSlots468_HI_Q3_20181181.jpg', '0000-00-00 00:00:00', '80.00', 'Royal Canin', '2018-11-21', '100.00', '1 (MilliGrams) ', '1', 'MilliGrams', 500);
+(1, '#Med1810101137245', 'Antibiotics', 'Medine 1', '<p>Medicine 1</p>', 'AdSlots468_HI_Q3_20181181.jpg', '0000-00-00 00:00:00', '80.00', 'Royal Canin', '2018-11-21', '100.00', '1 (MilliGrams) ', '1', 'MilliGrams', 500),
+(2, '#Med1809141208272', 'Antiparasitics', 'Clavamox', '<p>Clavamox</p>', 'Clavamox_2501.jpg', '0000-00-00 00:00:00', '80.00', 'Royal Canin', '2018-11-23', '100.00', '3 (Kg) ', '3', 'Kg', 400),
+(3, '#Med1808200154179', 'Antibiotics', 'Dino Capsule Evolution', '<p>dino capsule evolution</p>', 'AdSlots468_HI_Q3_20181113.jpg', '0000-00-00 00:00:00', '100.00', 'Royal Canin', '2018-11-15', '125.00', '1 (Gallon) ', '1', 'Gallon', 200);
 
 -- --------------------------------------------------------
 
@@ -6892,14 +7174,16 @@ CREATE TABLE `tbl_products` (
 --
 
 INSERT INTO `tbl_products` (`product_table_id`, `product_relation_id`, `product_name`, `product_unit`, `productType`, `product_id`, `productInStore`, `dateAdded`, `productImage`, `product_price`, `store_price`, `product_description`, `max_product_count`) VALUES
-(69, 30, 'Bone Toy for Dogs', '', 'Item', '#Item1810090857238', 131, '2018-10-09 21:00:51', 'bone_2111.jpg', '80.00', '100.00', '', 150),
-(71, 32, 'Bone Toy for Puppies', '', 'Item', '#Item1810101207389', 100, '2018-10-10 00:08:10', 'bone_211111.jpg', '145.00', '181.25', '', 200),
+(69, 30, 'Bone Toy for Dogs', '', 'Item', '#Item1810090857238', 86, '2018-10-09 21:00:51', 'bone_2111.jpg', '80.00', '100.00', '', 150),
+(71, 32, 'Bone Toy for Puppies', '', 'Item', '#Item1810101207389', 56, '2018-10-10 00:08:10', 'bone_211111.jpg', '145.00', '181.25', '', 200),
 (72, 1, 'Food 101', '300 (MilliGrams) ', 'Food', '#Food1810101024484', 122, '2018-10-10 10:26:27', 'meow_mix2.jpg', '80.00', '100.00', '', 222),
 (73, 2, 'Cat Food', '22 (MilliGrams) ', 'Food', '#Food1810101116571', 100, '2018-10-10 11:45:37', 'meow_mix3.jpg', '90.00', '112.50', '', 200),
 (74, 3, 'Cat Food 2', '22 (MilliGrams) ', 'Food', '#Food1810101145374', 100, '2018-10-10 11:47:09', 'meow_mix4.jpg', '90.00', '112.50', '', 200),
 (75, 4, 'Dog Food', '5 (MilliGrams) ', 'Food', '#Food1810101147093', 100, '2018-10-10 11:47:53', 'alpo_prime1.jpg', '88.00', '110.00', '', 200),
 (76, 5, 'Dog Food mini', '1 (Gallon) ', 'Food', '#Food1810101147539', 100, '2018-10-10 11:48:35', 'alpo_prime2.jpg', '55.00', '68.75', '', 200),
-(77, 1, 'Medine 1', '1 (MilliGrams) ', 'Medicine', '#Med1810101137245', 369, '2018-10-10 11:49:45', 'AdSlots468_HI_Q3_20181181.jpg', '80.00', '100.00', '', 500);
+(77, 1, 'Medine 1', '1 (MilliGrams) ', 'Medicine', '#Med1810101137245', 209, '2018-10-10 11:49:45', 'AdSlots468_HI_Q3_20181181.jpg', '80.00', '100.00', '', 500),
+(78, 2, 'Clavamox', '3 (Kg) ', 'Medicine', '#Med1809141208272', 304, '2018-10-17 10:59:04', 'Clavamox_2501.jpg', '80.00', '100.00', '', 400),
+(79, 3, 'Dino Capsule Evolution', '1 (Gallon) ', 'Medicine', '#Med1808200154179', 133, '2018-10-17 11:02:20', 'AdSlots468_HI_Q3_20181113.jpg', '100.00', '125.00', '', 200);
 
 -- --------------------------------------------------------
 
@@ -7076,7 +7360,16 @@ INSERT INTO `tbl_sales` (`sales_id`, `invoice_number`, `customer_type`, `custome
 (197, '#1810150254347', 'Walkin', '0', '', '2018-10-15 02:54:34', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '10000.00', '10000.00', '0.00'),
 (198, '#1810150255325', 'Walkin', '0', '', '2018-10-15 02:55:32', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '4000.00', '4000.00', '0.00'),
 (199, '#1810150256550', 'Walkin', '0', '', '2018-10-15 02:56:55', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '100.00', '100.00', '0.00'),
-(200, '#1810150414330', 'Walkin', '0', 'ivan', '2018-10-15 04:14:33', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '900.00', '1000.00', '100.00');
+(200, '#1810150414330', 'Walkin', '0', 'ivan', '2018-10-15 04:14:33', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '900.00', '1000.00', '100.00'),
+(201, '#1810151057373', 'Walkin', '0', 'xcx', '2018-10-15 10:57:37', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '4500.00', '5000.00', '500.00'),
+(202, '#1810151059008', 'Walkin', '0', 'ivan', '2018-10-15 10:59:00', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '7975.00', '8000.00', '25.00'),
+(203, '#1810171029139', 'Walkin', '0', 'ivan', '2018-10-17 22:29:13', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '1100.00', '1200.00', '100.00'),
+(204, '#1810181211145', 'Walkin', '0', 'sdsd', '2018-10-18 00:11:14', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '200.00', '200.00', '0.00'),
+(205, '#1810181226328', 'Walkin', '0', 'ivan', '2018-10-18 00:26:32', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '300.00', '300.00', '0.00'),
+(206, '#1810180146513', 'Walkin', '0', 'ivan', '2018-10-18 01:46:51', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '4000.00', '4000.00', '0.00'),
+(207, '#1810180148547', 'Walkin', '0', 'ivan', '2018-10-18 01:48:54', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '16000.00', '16000.00', '0.00'),
+(208, '#1810180945403', 'Walkin', '0', 'ivan', '2018-10-18 09:45:40', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '30000.00', '30000.00', '0.00'),
+(209, '#1810181123089', 'Walkin', '0', 's', '2018-10-18 11:23:08', 'Ivan Christian Jay Echanes Funcion', 'A1806231044313', '30000.00', '30000.00', '0.00');
 
 -- --------------------------------------------------------
 
@@ -7248,7 +7541,16 @@ INSERT INTO `tbl_salesdetails` (`salesdetail_id`, `sales_id`, `product_id`, `pro
 (251, 197, '#Med1810101137245', 'Medicine', 'Medine 1 (1 (MilliGrams) )', '100.00', 100, '10000.00', '0.12', '1200.00', '11200.00', '2018-10-15', 77),
 (252, 198, '#Med1810101137245', 'Medicine', 'Medine 1 (1 (MilliGrams) )', '100.00', 40, '4000.00', '0.12', '480.00', '4480.00', '2018-10-15', 77),
 (253, 199, '#Med1810101137245', 'Medicine', 'Medine 1 (1 (MilliGrams) )', '100.00', 1, '100.00', '0.12', '12.00', '112.00', '2018-10-15', 77),
-(254, 200, '#Item1810090857238', 'Item', 'Bone Toy for Dogs ()', '100.00', 9, '900.00', '0.12', '108.00', '1008.00', '2018-10-15', 69);
+(254, 200, '#Item1810090857238', 'Item', 'Bone Toy for Dogs ()', '100.00', 9, '900.00', '0.12', '108.00', '1008.00', '2018-10-15', 69),
+(255, 201, '#Item1810090857238', 'Item', 'Bone Toy for Dogs ()', '100.00', 45, '4500.00', '0.12', '540.00', '5040.00', '2018-10-15', 69),
+(256, 202, '#Item1810101207389', 'Item', 'Bone Toy for Puppies ()', '181.25', 44, '7975.00', '0.12', '957.00', '8932.00', '2018-10-15', 71),
+(257, 203, '#Med1809141208272', 'Medicine', 'Clavamox (3 (Kg) )', '100.00', 11, '1100.00', '0.12', '132.00', '1232.00', '2018-10-17', 78),
+(258, 204, '#Med1809141208272', 'Medicine', 'Clavamox (3 (Kg) )', '100.00', 2, '200.00', '0.12', '24.00', '224.00', '2018-10-18', 78),
+(259, 205, '#Med1809141208272', 'Medicine', 'Clavamox (3 (Kg) )', '100.00', 3, '300.00', '0.12', '36.00', '336.00', '2018-10-18', 78),
+(260, 206, '#Med1809141208272', 'Medicine', 'Clavamox (3 (Kg) )', '100.00', 40, '4000.00', '0.12', '480.00', '4480.00', '2018-10-18', 78),
+(261, 207, '#Med1810101137245', 'Medicine', 'Medine 1 (1 (MilliGrams) )', '100.00', 160, '16000.00', '0.12', '1920.00', '17920.00', '2018-10-18', 77),
+(262, 208, '#Med1809141208272', 'Medicine', 'Clavamox (3 (Kg) )', '100.00', 300, '30000.00', '0.12', '3600.00', '33600.00', '2018-10-18', 78),
+(263, 209, '#Med1809141208272', 'Medicine', 'Clavamox (3 (Kg) )', '100.00', 300, '30000.00', '0.12', '3600.00', '33600.00', '2018-10-18', 78);
 
 -- --------------------------------------------------------
 
@@ -7819,7 +8121,7 @@ ALTER TABLE `tbl_customers`
 -- AUTO_INCREMENT for table `tbl_logs`
 --
 ALTER TABLE `tbl_logs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10052;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10315;
 --
 -- AUTO_INCREMENT for table `tbl_petbreeds`
 --
@@ -7859,7 +8161,7 @@ ALTER TABLE `tbl_productfoods`
 -- AUTO_INCREMENT for table `tbl_productinventories`
 --
 ALTER TABLE `tbl_productinventories`
-  MODIFY `inv_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=479;
+  MODIFY `inv_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=495;
 --
 -- AUTO_INCREMENT for table `tbl_productitems`
 --
@@ -7869,12 +8171,12 @@ ALTER TABLE `tbl_productitems`
 -- AUTO_INCREMENT for table `tbl_productmedicines`
 --
 ALTER TABLE `tbl_productmedicines`
-  MODIFY `med_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `med_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tbl_products`
 --
 ALTER TABLE `tbl_products`
-  MODIFY `product_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `product_table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 --
 -- AUTO_INCREMENT for table `tbl_pullouts`
 --
@@ -7889,12 +8191,12 @@ ALTER TABLE `tbl_related_article`
 -- AUTO_INCREMENT for table `tbl_sales`
 --
 ALTER TABLE `tbl_sales`
-  MODIFY `sales_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+  MODIFY `sales_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
 --
 -- AUTO_INCREMENT for table `tbl_salesdetails`
 --
 ALTER TABLE `tbl_salesdetails`
-  MODIFY `salesdetail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=255;
+  MODIFY `salesdetail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=264;
 --
 -- AUTO_INCREMENT for table `tbl_services`
 --

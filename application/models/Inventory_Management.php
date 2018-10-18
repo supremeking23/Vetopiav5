@@ -26,7 +26,7 @@ class Inventory_Management extends CI_Model {
         $this->db->from('tbl_salesdetails a');
         $this->db->join('tbl_products b','a.product_table_id = b.product_table_id');
         //$this->db->where('a.sales_date', 'YEAR(curdate())');
-        //$this->db->where('a.sales_date', $sf_date);
+        $this->db->where('MONTH(a.sales_date)', $sf_date);
         $this->db->group_by('b.product_name');
         $this->db->order_by('b.product_table_id','DESC');
         $query = $this->db->get();
@@ -50,12 +50,54 @@ class Inventory_Management extends CI_Model {
    }
 
 
+   /*oct 18*/
+   public function get_sales_detail_and_sales_by_product_id($product_id){
+        $this->db->select('a.sales_date,a.sales_id,b.product_id,MONTH(a.sales_date) as "numeric_month"');
+        $this->db->from('tbl_sales a');
+        $this->db->join('tbl_salesdetails b','a.sales_id = b.sales_id');
+        $this->db->where('product_id', $product_id);
+        $this->db->group_by('monthname(a.sales_date)');
+        $query = $this->db->get();
 
-   public function new_inventory_detail($product_id){
+        $result_set = $query->result();
+
+        return $result_set;
+   }
+
+  public function get_number_product_quantity_in_inventory_by_product_id($product_id,$number_month){
+          $this->db->select('SUM(quantity) as "sum_quantity"');
+          $this->db->from('tbl_productinventories');
+          $this->db->where('product_id',$product_id);
+          $this->db->where('action','Add Supply');
+          $this->db->where('Month(inventory_date)',$number_month);                
+          $query = $this->db->get();
+
+          $result_set = $query->result();
+
+          return $result_set;
+  }
+
+  public function get_end_inventory_data_purchased($product_id,$number_month){
+          $this->db->select('SUM(quantity) as "sum_quantity_purchased"');
+          $this->db->from('tbl_productinventories');
+          $this->db->where('product_id',$product_id);
+          $this->db->where('action','Purchased Product');
+          $this->db->where('Month(inventory_date)',$number_month);                
+          $query = $this->db->get();
+
+          $result_set = $query->result();
+
+          return $result_set;
+  }
+
+
+
+   public function new_inventory_detail($product_id,$number_month){
         $this->db->select('*');
         $this->db->from('tbl_productinventories');
         $this->db->where('product_id', $product_id);
         $this->db->where('action', 'Add Supply');
+        $this->db->where('Month(inventory_date)',$number_month); 
         $this->db->order_by('inv_table_id','DESC');
         $this->db->limit(1);
         //$this->db->where('is_active',$active);
@@ -66,6 +108,99 @@ class Inventory_Management extends CI_Model {
 
         return $result_set;
    }
+
+   public function new_inventory_detail_dashboard($product_id){
+        $this->db->select('*');
+        $this->db->from('tbl_productinventories');
+        $this->db->where('product_id', $product_id);
+        $this->db->where('action', 'Add Supply');
+        
+        $this->db->order_by('inv_table_id','DESC');
+        $this->db->limit(1);
+        //$this->db->where('is_active',$active);
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;
+   }
+
+
+
+
+   public function get_sales_detail_by_month($product_id,$numeric_month){
+        $this->db->select('a.sales_id,b.product_id,MONTH(a.sales_date) as "numeric_month",SUM(b.sales_quantity) as "sales_in_month"');
+        $this->db->from('tbl_sales a');
+        $this->db->join('tbl_salesdetails b','a.sales_id = b.sales_id');
+        $this->db->where('product_id', $product_id);
+        $this->db->where('Month(a.sales_date)',$numeric_month); 
+        $this->db->group_by('monthname(a.sales_date)');
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set;   
+   }
+
+
+   public function get_avg_order_by_month($product_id){
+        $this->db->select('AVG(quantity) as "quantity"');
+        $this->db->from('tbl_productinventories');
+        $this->db->where('product_id', $product_id);
+        $this->db->where('action', 'Add Supply');
+        $this->db->where('product_id', $product_id);
+        //$this->db->where('Month(inventory_date)',$numeric_month); 
+        $this->db->group_by('monthname(inventory_date)');
+        $this->db->order_by('inv_table_id','DESC');
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set; 
+   }
+
+
+  public function get_max_order_by_month($product_id,$numeric_month){
+        $this->db->select('max(quantity) as "quantity_sum_max"');
+        $this->db->from('tbl_productinventories');
+        $this->db->where('product_id', $product_id);
+        $this->db->where('action', 'Add Supply');
+        $this->db->where('product_id', $product_id);
+        $this->db->where('Month(inventory_date)',$numeric_month); 
+        $this->db->having('max(quantity_sum_max)');
+        $this->db->group_by('monthname(inventory_date)');
+        $this->db->order_by('inv_table_id','DESC');
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set; 
+  }
+
+  public function get_min_order_by_month($product_id,$numeric_month){
+        $this->db->select('min(quantity) as "quantity_sum_min"');
+        $this->db->from('tbl_productinventories');
+        $this->db->where('product_id', $product_id);
+        $this->db->where('action', 'Add Supply');
+        $this->db->where('product_id', $product_id);
+        $this->db->where('Month(inventory_date)',$numeric_month); 
+        $this->db->having('min(quantity_sum_min)');
+        $this->db->group_by('monthname(inventory_date)');
+        $this->db->order_by('inv_table_id','DESC');
+
+        $query = $this->db->get();
+
+        $result_set = $query->result();
+
+        return $result_set; 
+  }
+
+
+
+/*oct 18*/
 
 
    public function get_two_months_in_inventory($product_id){

@@ -67,176 +67,7 @@
 
       <!-- /.box -->
 
-      <div class="row">
-        <div class="col-md-12">
-                    <!-- BAR CHART -->
-          <div class="box box-solid <?php echo $box_color?>">
-            <div class="box-header with-border">
-              <h3 class="box-title">Slow and Fast moving Products</h3>
 
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                
-              </div>
-            </div>
-            <div class="box-body ">
-              <table  class="datatablesfastslow table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>Product Name</th>
-                  <th>Product ID </th>
-                  <th>Product Type</th>
-                  <th>Inventory Turnover Ratio</th>
-                </tr>
-                </thead>
-                <tbody>
-               
-                <?php foreach($slow_fast as $sf):
-                  
-                  ?>
-
-                <tr>
-
-                  <td><?php echo $sf->product_name;?></td>
-                  <td><?php echo $sf->product_id;?></td>
-                  <td><?php echo $sf->productType;?></td>
-                
-                  <td><?php 
-
-                      //first compute for the beginning inventory
-                      //beginning inventory = (cost of goods sold + ending inventory) - amount of inventory purchased
-                      //get cost of good sold cogs
-                      $product_detail_in_salesdetail = $this->inventory_management->get_sum_total_quantity_sales_detail_by_product_table_id($sf->product_table_id);
-                      foreach($product_detail_in_salesdetail as $pds){
-                             $cogs = $pds->sales_quantity * $sf->product_price;
-                      }
-
-
-                      $ending_inventory = $sf->productInstore;
-
-                      $new_inventory = $this->inventory_management->new_inventory_detail($sf->product_id);
-                      foreach($new_inventory as $ni){
-                         $new_inventory = $ni->quantity;
-                      }
-
-                      $beginning_inventory = ($cogs + $ending_inventory) - $new_inventory;
-
-                      //compute for the inventory turonver ration(one way of knowing if a product is a slow/fast mover in the inventory)
-
-                      //$inventory_turnover_ratio = cost of goods sold/(beginning_inventory + end_inventory)/2;
-                      $inventory_turnover_ratio = $cogs/($beginning_inventory + $ending_inventory)/2;
-                      echo  $inventory_turnover_ratio .'%';
-                     //echo number_format($inventory_turnover_ratio,2);
-
-                  ?></td>
-                  
-                </tr>
-
-
-              <?php endforeach;?>
-                
-                </tbody>
-               
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-                    <!-- BAR CHART -->
-          <div class="box box-solid <?php echo $box_color?>">
-            <div class="box-header with-border">
-              <h3 class="box-title">Economic Order Quantity</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                
-              </div>
-            </div>
-            <div class="box-body ">
-              <table  class="datatableseoq table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>Product Name</th>
-                  <th>Product ID </th>
-                  <th>Product Type</th>
-                  <th>Optimal Order Size</th>
-                </tr>
-                </thead>
-                <tbody>
-               
-                <?php foreach($slow_fast as $sf):
-                  
-                  ?>
-
-                <tr>
-
-                  <td><?php echo $sf->product_name;?></td>
-                  <td><?php echo $sf->product_id;?></td>
-                  <td><?php echo $sf->productType;?></td>
-                
-                  <td><?php 
-
-                      $product_detail_in_salesdetail = $this->inventory_management->get_sum_total_quantity_sales_detail_by_product_table_id($sf->product_table_id);
-                      foreach($product_detail_in_salesdetail as $pds){
-                             $demand = $pds->sales_quantity;
-                      }
-
-                     // echo "<br />";
-
-                      $order_cost = $sf->product_price;
-                      $carrying_host = 100;
-
-                      /*
-                        EOQ - econimic order quantity
-
-                        little - stockout
-                        too much - spoilage storage
-
-                        total cost = purchase_cost + (ordering cost + carrying cost)-> balance these costs find optimal order size
-
-                        Q* = optimal order
-                        R = Order Cost  
-                        H = carrying cost
-                        D = Annual/Units demand
-
-                        Q* - 2RD/H root sa labas
-
-                        ex: D 200 milks 15
-                            R 50 +  80
-                            H 2 +  100
-
-
-                        use EoQ to solve for the optimal ordering size
-                      */
-
-
-                      $optimal_order= sqrt((2*$order_cost)*$demand/$carrying_host);
-
-                      echo round($optimal_order);
-
-                  ?></td>
-                  
-                </tr>
-
-
-              <?php endforeach;?>
-                
-                </tbody>
-               
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-      </div>
 
 
       <div class="row">
@@ -268,7 +99,7 @@
                 </style>
                 <ul class="legend">
                   <li style="height: 20px;width: 20px;background: #00c0ef;margin:10px 10px 10px 0" data-tooltip="tooltip" data-title="product count is sufficient"></li>
-                  <li style="height: 20px;width: 20px;background: #f39c12;margin:10px 10px 10px 0" data-tooltip="tooltip" data-title="product count is below of half of the maximum product count"></li>
+                  <!--<li style="height: 20px;width: 20px;background: #f39c12;margin:10px 10px 10px 0" data-tooltip="tooltip" data-title="product count is below of half of the maximum product count"></li> -->
                   <li style="height: 20px;width: 20px;background: red;margin:10px 10px 10px 0" data-tooltip="tooltip" data-title="product count is critical"></li>
                 </ul>
               </div>
@@ -301,7 +132,10 @@
                   <td>
 
 
-                    <?php $two_months = $this->inventory_management->get_two_months_in_inventory($a_products->product_id);
+                    <?php 
+
+
+                    /*$two_months = $this->inventory_management->get_two_months_in_inventory($a_products->product_id);
                         $safety_stock = 0;
                         foreach($two_months as $two){
                           $safety_stock =   $two->quantity - $safety_stock;
@@ -315,6 +149,29 @@
                       }
 
                       $critical_stock_boundary = ($monthly_average + $abs_safety_stock) / 2;
+
+                      */
+                        $number_month = date('m');
+                        $get_avg_order_by_month = $this->inventory_management->get_avg_order_by_month($a_products->product_id,$number_month );
+                          foreach($get_avg_order_by_month as $avg_month){
+                            $avg_month_orders =  $avg_month->quantity;
+                          }
+
+                          $get_max_order_by_month =  $this->inventory_management->get_max_order_by_month($a_products->product_id,$number_month );
+                          foreach($get_max_order_by_month as $max_order){            
+                            $max_order =  $max_order->quantity_sum_max;
+                          }
+
+                          $get_min_order_by_month =  $this->inventory_management->get_min_order_by_month($a_products->product_id,$number_month);
+                          foreach($get_min_order_by_month as $min_order){            
+                            $min_order =  $min_order->quantity_sum_min;
+                          }   
+
+                          $safety_stock = $max_order - $min_order;
+
+                          $abs_safety_stock = abs($safety_stock);
+
+                          $critical_stock_boundary = ($avg_month_orders + $abs_safety_stock) / 2;
                     ?>
                       <div class="progress-group">
                         <span class="progress-text">&nbsp;</span>
@@ -353,7 +210,7 @@
 
                           ?>
 
-                          <div class="progress-bar <?php echo $progress_bar_status?>" style="width: <?php echo $percentage;?>%" data-tooltip="tooltip" data-title="<?php //echo $data_tooltip_message;?>"></div>
+                          <div class="progress-bar <?php echo $progress_bar_status?>" style="width: <?php echo $percentage;?>%" data-tooltip="tooltip" data-title="<?php echo 'Critical number of stock is :'.round($critical_stock_boundary);?>"></div>
                         </div>
                       </div>
                       <?php //echo $percentage;?>
@@ -454,6 +311,181 @@
 
 
 
+      <div class="row">
+        <div class="col-md-12">
+                    <!-- BAR CHART -->
+          <div class="box box-solid <?php echo $box_color?>">
+            <div class="box-header with-border">
+              <h3 class="box-title">Slow and Fast moving Products</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                
+              </div>
+            </div>
+            <div class="box-body ">
+              <table  class="datatablesfastslow table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Product Name</th>
+                  <th>Product ID </th>
+                  <th>Product Type</th>
+                  <th>Inventory Turnover Ratio</th>
+                </tr>
+                </thead>
+                <tbody>
+               
+                <?php foreach($slow_fast as $sf):
+                  
+                  ?>
+
+                <tr>
+
+                  <td><?php echo $sf->product_name;?></td>
+                  <td><?php echo $sf->product_id;?></td>
+                  <td><?php echo $sf->productType;?></td>
+                
+                  <td><?php 
+
+                      //first compute for the beginning inventory
+                      //beginning inventory = (cost of goods sold + ending inventory) - amount of inventory purchased
+                      //get cost of good sold cogs
+                      $product_detail_in_salesdetail = $this->inventory_management->get_sum_total_quantity_sales_detail_by_product_table_id($sf->product_table_id);
+                      foreach($product_detail_in_salesdetail as $pds){
+                             $cogs = $pds->sales_quantity * $sf->product_price;
+                      }
+
+
+                      $ending_inventory = $sf->productInstore;
+
+                      $new_inventory = $this->inventory_management->new_inventory_detail_dashboard($sf->product_id);
+                      foreach($new_inventory as $ni){
+                         $new_inventory = $ni->quantity;
+                      }
+
+                      $beginning_inventory = ($cogs + $ending_inventory) - $new_inventory;
+
+                      //compute for the inventory turonver ration(one way of knowing if a product is a slow/fast mover in the inventory)
+
+                      //$inventory_turnover_ratio = cost of goods sold/(beginning_inventory + end_inventory)/2;
+                      $inventory_turnover_ratio = $cogs/($beginning_inventory + $ending_inventory)/2;
+                      echo  $inventory_turnover_ratio .'%';
+                     //echo number_format($inventory_turnover_ratio,2);
+
+                  ?></td>
+                  
+                </tr>
+
+
+              <?php endforeach;?>
+                
+                </tbody>
+               
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="col-md-12">
+                    <!-- BAR CHART -->
+          <div class="box box-solid <?php echo $box_color?>">
+            <div class="box-header with-border">
+              <h3 class="box-title">Economic Order Quantity</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                
+              </div>
+            </div>
+            <div class="box-body ">
+              <table  class="datatableseoq table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Product Name</th>
+                  <th>Product ID </th>
+                  <th>Product Type</th>
+                  <th>Optimal Order Size</th>
+                </tr>
+                </thead>
+                <tbody>
+               
+                <?php foreach($slow_fast as $sf):
+                  
+                  ?>
+
+                <tr>
+
+                  <td><?php echo $sf->product_name;?></td>
+                  <td><?php echo $sf->product_id;?></td>
+                  <td><?php echo $sf->productType;?></td>
+                
+                  <td><?php 
+
+                      $product_detail_in_salesdetail = $this->inventory_management->get_sum_total_quantity_sales_detail_by_product_table_id($sf->product_table_id);
+                      foreach($product_detail_in_salesdetail as $pds){
+                             $demand = $pds->sales_quantity;
+                      }
+
+                     // echo "<br />";
+
+                      $order_cost = $sf->product_price;
+                      $carrying_host = 100;
+
+                      /*
+                        EOQ - econimic order quantity
+
+                        little - stockout
+                        too much - spoilage storage
+
+                        total cost = purchase_cost + (ordering cost + carrying cost)-> balance these costs find optimal order size
+
+                        Q* = optimal order
+                        R = Order Cost  
+                        H = carrying cost
+                        D = Annual/Units demand
+
+                        Q* - 2RD/H root sa labas
+
+                        ex: D 200 milks 15
+                            R 50 +  80
+                            H 2 +  100
+
+
+                        use EoQ to solve for the optimal ordering size
+                      */
+
+
+                      $optimal_order= sqrt((2*$order_cost)*$demand/$carrying_host);
+
+                      echo round($optimal_order);
+
+                  ?></td>
+                  
+                </tr>
+
+
+              <?php endforeach;?>
+                
+                </tbody>
+               
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+
+
+
      
 
 
@@ -551,9 +583,6 @@ while($row = mysqli_fetch_array($result))
   $date =date_create($row["sales_D"]);
   $sales_d= date_format($date,"F d, Y ");
  $chart_labels .= $sales_d;
-
-
-
 }
 
 echo $sales = json_encode($chart_data);
@@ -590,6 +619,24 @@ foreach($result2 as $r2){
 
   //merget the vent array into the return array
   array_push($sales2, $datas);
+}
+
+
+//testing oct 17
+$connect = mysqli_connect("localhost", "root", "", "vetopia_db");
+$testing1 = "SELECT a.product_name,a.productType, a.product_id,a.product_price,monthname(c.sales_date) as 'sales_month',sum(a.product_price) as 'product_price',sum(sales_quantity) as 'qty' from tbl_products a join tbl_salesdetails b on(a.product_id = b.product_id) join tbl_sales c on(b.sales_id = c.sales_id);";
+$resulttesting1 = mysqli_query($connect, $testing1);
+
+
+$resultdata1 = array();
+foreach($resulttesting1 as $rt1){
+  $datas = array();
+  echo $datas['y'] = $rt1['sales_month'];
+ echo  $datas['item1'] = $rt1['product_name'];
+
+  echo "<br />";
+  //merget the vent array into the return array
+ //echo  array_push($resultdata1, $datas);
 }
 
 
@@ -704,6 +751,8 @@ $datas = json_encode($data);*/
 
 <!-- page script -->
 <script>
+
+
 
     $('.datatablestats').DataTable( {
         'ordering'    : false,
@@ -992,6 +1041,29 @@ $datas = json_encode($data);*/
         {y: '2012', a: 100, b: 90}
       ],*/
 
+    // LINE CHART
+   /* var line = new Morris.Line({
+      element: 'line-chart',
+      resize: true,
+      data: [
+        {y: '2011 Q1', item1: 2666},
+        {y: '2011 Q2', item1: 2778},
+        {y: '2011 Q3', item1: 4912},
+        {y: '2011 Q4', item1: 3767},
+        {y: '2012 Q1', item1: 6810},
+        {y: '2012 Q2', item1: 5670},
+        {y: '2012 Q3', item1: 4820},
+        {y: '2012 Q4', item1: 15073},
+        {y: '2013 Q1', item1: 10687},
+        {y: '2013 Q2', item1: 8432}
+      ],
+      xkey: 'y',
+      ykeys: ['item1'],
+      labels: ['Turnover Ratio for this Month'],
+      lineColors: ['#3c8dbc'],
+      hideHover: 'auto'
+    });*/
+
     var bar1 = new Morris.Bar({
       element: 'bar-chart-day',
       resize: true,
@@ -1046,131 +1118,9 @@ $datas = json_encode($data);*/
      <?php echo json_encode($pet_stat);?>
     ]*/
     //-------------
-    // Get context with jQuery - using jQuery's .get() method.  
-    var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
-    var pieChart       = new Chart(pieChartCanvas)
-    var PieData        = <?php echo json_encode($pet_stat);?>
+    /*
 
-    var pieOptions     = {
-      //Boolean - Whether we should show a stroke on each segment
-      segmentShowStroke    : true,
-      //String - The colour of each segment stroke
-      segmentStrokeColor   : '#fff',
-      //Number - The width of each segment stroke
-      segmentStrokeWidth   : 2,
-      //Number - The percentage of the chart that we cut out of the middle
-      percentageInnerCutout: 50, // This is 0 for Pie charts
-      //Number - Amount of animation steps
-      animationSteps       : 100,
-      //String - Animation easing effect
-      animationEasing      : 'easeOutBounce',
-      //Boolean - Whether we animate the rotation of the Doughnut
-      animateRotate        : true,
-      //Boolean - Whether we animate scaling the Doughnut from the centre
-      animateScale         : false,
-      //Boolean - whether to make the chart responsive to window resizing
-      responsive           : true,
-      // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-      maintainAspectRatio  : true,
-      //String - A legend template
-      legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
-    }
-    //Create pie or douhnut chart
-    // You can switch between pie and douhnut using the method below.
-    pieChart.Doughnut(PieData, pieOptions)
-
-
-    //pie2
-        //-------------
-    //- PIE CHART -
-    //-------------
-    // Get context with jQuery - using jQuery's .get() method.
-    var pieChartCanvas2 = $('#pieChart2').get(0).getContext('2d')
-    var pieChart2       = new Chart(pieChartCanvas2)
-    var PieData2        = <?php echo json_encode($pet_stat2);?>
-
-    var pieOptions2     = {
-      //Boolean - Whether we should show a stroke on each segment
-      segmentShowStroke    : true,
-      //String - The colour of each segment stroke
-      segmentStrokeColor   : '#fff',
-      //Number - The width of each segment stroke
-      segmentStrokeWidth   : 2,
-      //Number - The percentage of the chart that we cut out of the middle
-      percentageInnerCutout: 50, // This is 0 for Pie charts
-      //Number - Amount of animation steps
-      animationSteps       : 100,
-      //String - Animation easing effect
-      animationEasing      : 'easeOutBounce',
-      //Boolean - Whether we animate the rotation of the Doughnut
-      animateRotate        : true,
-      //Boolean - Whether we animate scaling the Doughnut from the centre
-      animateScale         : false,
-      //Boolean - whether to make the chart responsive to window resizing
-      responsive           : true,
-      // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-      maintainAspectRatio  : true,
-      //String - A legend template
-      legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
-    }
-    //Create pie or douhnut chart
-    // You can switch between pie and douhnut using the method below.
-    pieChart2.Doughnut(PieData2, pieOptions2)
-
-
-
-
-
-    //pie3
-        //-------------
-    //- PIE CHART -
-    //-------------
-    // Get context with jQuery - using jQuery's .get() method.
-    var pieChartCanvas3 = $('#pieChart3').get(0).getContext('2d')
-    var pieChart3       = new Chart(pieChartCanvas3)
-    var PieData3        = [
-      {
-        value    : 700,
-        color    : 'rgb(233,22,221)',
-        highlight: 'rgb(233,22,221)',
-        label    : 'Ivan'
-      },
-      {
-        value    : 500,
-        color    : '#00a65a',
-        highlight: '#00a65a',
-        label    : 'Ivan'
-      },
-     
-    ]
-
-    var pieOptions3     = {
-      //Boolean - Whether we should show a stroke on each segment
-      segmentShowStroke    : true,
-      //String - The colour of each segment stroke
-      segmentStrokeColor   : '#fff',
-      //Number - The width of each segment stroke
-      segmentStrokeWidth   : 2,
-      //Number - The percentage of the chart that we cut out of the middle
-      percentageInnerCutout: 50, // This is 0 for Pie charts
-      //Number - Amount of animation steps
-      animationSteps       : 100,
-      //String - Animation easing effect
-      animationEasing      : 'easeOutBounce',
-      //Boolean - Whether we animate the rotation of the Doughnut
-      animateRotate        : true,
-      //Boolean - Whether we animate scaling the Doughnut from the centre
-      animateScale         : false,
-      //Boolean - whether to make the chart responsive to window resizing
-      responsive           : true,
-      // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-      maintainAspectRatio  : true,
-      //String - A legend template
-      legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
-    }
-    //Create pie or douhnut chart
-    // You can switch between pie and douhnut using the method below.
-    pieChart3.Doughnut(PieData3, pieOptions3)
+    */
 
 </script>
 <!-- footer scripts -->

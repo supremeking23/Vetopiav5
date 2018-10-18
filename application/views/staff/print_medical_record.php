@@ -203,8 +203,21 @@
 
       <?php endforeach;?>
 
+
+
+      <div class="row">
+        <div class="col-md-12">
+          <br />
+          <p style="margin-left: 30px"><b>Issued By : <?php echo $this->session->userdata('complete_name');?></b></p>
+        </div>
+      </div>
+
     </div>
     <!-- /.row -->
+
+
+
+
 
   
   </section>

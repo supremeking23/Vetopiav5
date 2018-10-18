@@ -118,7 +118,7 @@ class Admin extends CI_Controller {
 		$data['count_customers'] = $this->customer_management->count_all_customers();
 
 
-		$sf_date = date('Y');
+		$sf_date = date('m');
 		$data['slow_fast'] = $this->inventory_management->slow_fast_moving($sf_date);
 
 
@@ -1143,6 +1143,8 @@ class Admin extends CI_Controller {
 		
 		$data['item_inventory_detail'] = $this->inventory_management->get_item_inventory_detail_by_item_table_id($product_id);
 
+		$data['sales_detail_by_product_id'] =  $this->inventory_management->get_sales_detail_and_sales_by_product_id($product_id);
+
 		$name = $this->session->userdata('complete_name');
 		$log_usertype =  $this->session->userdata('account_type');
 		$log_userID = $this->session->userdata("user_id");
@@ -1225,6 +1227,7 @@ class Admin extends CI_Controller {
 		}
 
 		$data['food_inventory_detail'] = $this->inventory_management->get_food_inventory_detail_by_food_table_id($product_id);
+		$data['sales_detail_by_product_id'] =  $this->inventory_management->get_sales_detail_and_sales_by_product_id($product_id);
 
 		//echo 1;
 
@@ -1312,6 +1315,8 @@ class Admin extends CI_Controller {
 		}
 
 		$data['med_inventory_detail'] = $this->inventory_management->get_medicine_inventory_detail_by_medicine_table_id($product_id);
+		//product id = #Med121233
+		$data['sales_detail_by_product_id'] =  $this->inventory_management->get_sales_detail_and_sales_by_product_id($product_id);
 
 
 
